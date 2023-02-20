@@ -1,1 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
+* {box-sizing: border-box; padding: 0; margin: 0;font-family:Arial, Helvetica, sans-serif}
+
+html {background-color: gray}
+
+body {
+  background-color: white;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  display: block;
+  color: black;
+}
+
+li {list-style: none;}
+
+.sectioncont {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-content: flex-start;
+  margin: 0.5rem;
+  min-height: 5rem;
+}
+
+.bl-wh {
+  background-color: black;
+  color: white;
+}
+
+.or-bl {
+  background-color: orange;
+  color: black;
+}
+
+.gr-wh {
+  background-color: green;
+  color: white;
+}
+
+.re-wh {
+  background-color: red;
+  color: white;
+}
+
+button {
+  display: inline-block;
+  text-align: center;
+  padding: 0.2rem;
+}
+
+button:disabled {
+  background-color: white;
+  color: gray;
+}
+
+
+[hidden] { display: none !important; }

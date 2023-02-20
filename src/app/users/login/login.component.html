@@ -1,0 +1,9 @@
+<form class="sectioncont" [formGroup]="loginUserForm" (ngSubmit)="onLogin()">
+
+  <input type="email" formControlName="userEmail" placeholder="E-amil cím">
+  <input type="password" formControlName="userPass" placeholder="Jelszó">
+  <div class="buttoncont">
+    <button class="bl-wh" type="submit" [disabled]="!loginUserForm.valid">Belépés</button>
+  </div>
+
+</form>

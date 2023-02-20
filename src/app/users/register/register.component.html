@@ -1,0 +1,10 @@
+<form class="sectioncont" [formGroup]="regUserForm" (ngSubmit)="onSubmit()">
+
+  <input type="text" formControlName="userName" placeholder="Név">
+  <input type="email" formControlName="userEmail" placeholder="E-amil cím">
+  <input type="password" formControlName="userPass" placeholder="Jelszó">
+  <div class="buttoncont">
+    <button class="bl-wh" type="submit" [disabled]="!regUserForm.valid">Regisztráció</button>
+  </div>
+
+</form>

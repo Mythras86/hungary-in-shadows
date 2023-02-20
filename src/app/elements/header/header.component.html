@@ -1,0 +1,33 @@
+<nav>
+  <div class="flexcont bl-wh">
+    <div class="logo w100">
+      <div class="head">
+        Hungary In Shadows
+      </div>
+      <div class="w60" *ngIf="userIsAuthenticated">
+        Isten hozott!
+      </div>
+      <div class="creator or-bl w40">
+        Karakterlap by Mythras
+      </div>
+    </div>
+  </div>
+  <ul class="flexcont bl-wh">
+    <li class="w30">
+      <a routerLink="/">Főoldal</a>
+    </li>
+    <li class="w30">
+      <a routerLink="/chars">Karakterek</a>
+    </li>
+    <li class="w30">
+      <a routerLink="/login" *ngIf="!userIsAuthenticated">Belépés</a>
+    </li>
+    <li class="w30">
+      <a routerLink="/register" *ngIf="!userIsAuthenticated">Regisztráció</a>
+    </li>
+    <li class="w30">
+      <a (click)="onLogout()" *ngIf="userIsAuthenticated">Kilépés</a>
+    </li>
+  </ul>
+
+</nav>
