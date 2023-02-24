@@ -1,0 +1,15 @@
+<div class="sectioncont">
+
+  <form [formGroup]="mainCharForm" (ngSubmit)="createNewChar()">
+    <div>{{authServ.getUserId()}}</div>
+    <div>{{authServ.getUserName()}}</div>
+    <input type="text" formControlName="nev">
+    <input type="text" formControlName="kaszt">
+    <div class="or-bl buttoncont">
+      <button class="bl-wh" type="submit" [disabled]="!mainCharForm.valid">Karakter mentése</button>
+      <button class="or-bl" type="button" (click)="backToList()">Vissza</button>
+    </div>
+
+  </form>
+
+</div>

@@ -1,1 +1,15 @@
-<p>chars works!</p>
+<div class="sectioncont">
+
+  <div class="w40 charcont flexcont" *ngFor="let char of getCharsList()">
+    <div class="bl-wh w100">{{char.nev}}</div>
+    <div class="or-bl w100">{{char.kaszt}}</div>
+    <div class="buttoncont">
+      <button class="bl-wh" type="button" (click)="onUpdateChar(char._id)">Módosítás</button>
+      <button class="re-wh" (click)="onDeleteChar(char._id)">Törlés</button>
+    </div>
+  </div>
+  <div class="buttoncont">
+    <button class="gr-wh" (click)="onNewChar()" *ngIf="userIsAuthenticated">Új Karakter</button>
+  </div>
+
+</div>

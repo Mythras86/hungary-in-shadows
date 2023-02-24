@@ -5,7 +5,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './elements/header/header.component';
 import { FooterComponent } from './elements/footer/footer.component';
-import { SpinnerComponent } from './elements/spinner/spinner.component';
 import { MainComponent } from './pages/main/main.component';
 import { CharsComponent } from './pages/chars/chars.component';
 import { LoginComponent } from './users/login/login.component';
@@ -14,18 +13,18 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './users/auth-interceptor';
 import { AppRoutingModule } from './app-routing.module';
-import { SpinnerLoadingInterceptor } from './elements/spinner/spinner-loading.interceptor';
+import { CreateCharComponent } from './pages/chars/create-char/create-char.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    SpinnerComponent,
     MainComponent,
     CharsComponent,
     LoginComponent,
     RegisterComponent,
+    CreateCharComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +35,6 @@ import { SpinnerLoadingInterceptor } from './elements/spinner/spinner-loading.in
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: SpinnerLoadingInterceptor, multi: true }
   ],
 
   bootstrap: [AppComponent]

@@ -1,7 +1,5 @@
-<span  *ngIf="!spinnerServ.getLoading()">
+<span>
   <app-header></app-header>
   <router-outlet></router-outlet>
   <app-footer></app-footer>
 </span>
-
-<app-spinner *ngIf="spinnerServ.getLoading()"></app-spinner>
