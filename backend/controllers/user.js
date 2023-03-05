@@ -10,7 +10,6 @@ exports.registerUser = (req, res, next) => {
       userEmail: req.body.userEmail,
       userPass: hash
     });
-    console.log(user);
     user
       .save()
       .then(result => {

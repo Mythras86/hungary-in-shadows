@@ -2,8 +2,8 @@ const Char = require("../models/char");
 
 exports.createChar = (req, res, next) => {
   const char = new Char ({
-    creatorName: req.body.creatorName,
-    creatorID: req.userData.userId,
+    creatorName: req.userData.userName,
+    creatorId: req.userData.userId,
     nev: req.body.nev,
     kaszt: req.body.kaszt,
   });
@@ -26,17 +26,14 @@ exports.createChar = (req, res, next) => {
 };
 
 exports.updateChar = (req, res, next) => {
-  if (req.file) {
-    const url = req.protocol + "://" + req.get("host");
-  }
   const char = new Char({
     _id: req.body._id,
     creatorName: req.body.creatorName,
-    creatorID: req.userData.userId,
+    creatorId: req.userData.userId,
     nev: req.body.nev,
     kaszt: req.body.kaszt,
   });
-  Char.updateOne({ _id: req.params._id, creatorID: req.userData.userId }, char)
+  Char.updateOne({ _id: req.params._id, creatorId: req.userData.userId }, char)
   .then(result => {
     console.log (result);
     if (result.modifiedCount > 0) {
@@ -85,7 +82,7 @@ exports.getOneChar = (req, res, next) => {
 };
 
 exports.deleteChar = (req, res, next) => {
-  Char.deleteOne({ _id: req.params._id, creator: req.userData.userId })
+  Char.deleteOne({ _id: req.params._id, creatorId: req.userData.userId })
     .then(result => {
       console.log(result);
       if (result.deletedCount > 0) {

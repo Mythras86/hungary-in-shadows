@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: "register", component: RegisterComponent, title: "Regisztráció"},
 
   { path: "chars", component: CharsComponent, title: "Karakterek"},
-  { path: "newchar", component: CreateCharComponent, title: "Új karakter"},
-  { path: "editchar/:charID", component: CreateCharComponent, title: "Új karakter"},
+  { path: "newchar", component: CreateCharComponent, title: "Új karakter", canActivate: [AuthGuard]},
+  { path: "editchar/:charID", component: CreateCharComponent, title: "Karakter szerkesztés", canActivate: [AuthGuard]},
 ];
 
 @NgModule({

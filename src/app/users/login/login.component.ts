@@ -15,19 +15,18 @@ export class LoginComponent implements OnInit {
     public authservice:AuthService,
     ) { }
 
-  ngOnInit(): void {
-    this.loginUserForm = new FormGroup({
-      'userEmail': new FormControl (null, Validators.required),
-      'userPass': new FormControl (null, Validators.required),
-    });
-  }
-
-  onLogin() {
-    var form = this.loginUserForm;
-    if (form.invalid) {
-      return;
+    onLogin() {
+      var form = this.loginUserForm;
+      if (form.invalid) {
+        return;
+      }
+      this.authservice.loginUser(form.value.userEmail, form.value.userPass);
     }
-    this.authservice.loginUser(form.value.userEmail, form.value.userPass);
-  }
 
+    ngOnInit(): void {
+      this.loginUserForm = new FormGroup({
+        'userEmail': new FormControl (null, Validators.required),
+        'userPass': new FormControl (null, Validators.required),
+      });
+    }
 }

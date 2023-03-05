@@ -55,4 +55,9 @@ button:disabled {
   color: gray;
 }
 
+.w100 {
+  flex: 1 1 0;
+  min-width: 100%;
+}
+
 [hidden] { display: none !important; }

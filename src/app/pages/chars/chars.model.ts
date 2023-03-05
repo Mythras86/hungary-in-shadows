@@ -1,7 +1,7 @@
 export interface CharModel {
   _id: string;
   creatorName: string;
-  creatorID: string;
+  creatorId: string;
   nev: string;
   kaszt: string;
 }

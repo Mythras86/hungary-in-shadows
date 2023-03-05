@@ -11,6 +11,7 @@ const BACKEND_URL = environment.apiUrl + "/user/";
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
+
   private isAuthenticated = false;
   private token: any;
   private tokenTimer: any;
@@ -94,6 +95,7 @@ export class AuthService {
       this.token = authInformation.token;
       this.isAuthenticated = true;
       this.userId = authInformation.userId;
+      this.userName = authInformation.userName;
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
     }

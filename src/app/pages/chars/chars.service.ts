@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, Observable, of, Subject, tap } from 'rxjs';
+import { AuthService } from 'src/app/users/auth.service';
 import { environment } from 'src/environments/environment';
 import { CharModel, CharsDataInterface } from './chars.model';
 
@@ -15,42 +16,47 @@ export class CharsService {
   constructor(
     private http: HttpClient,
     private router: Router,
+    private authServ: AuthService
     ) { }
 
     public charsList: CharModel[] = [];
+    private charsUpdated = new Subject<{chars: CharModel[]}>();
 
-  getChars(): Observable<CharModel[]> {
+  getChars() {
     return this.http
     .get<{ message: string; chars: any}>(BACKEND_URL + "list")
     .pipe(
-      map(this.processCharsData),
-      tap(this.setCharsList.bind(this))
-    );
-  }
-
-  private processCharsData(charsData: CharsDataInterface) {
-    return charsData.chars.map((w) => {
-      return {
-        _id: w._id,
-        creatorName: w.creatorName,
-        creatorID: w.creatorID,
-        nev: w.nev,
-        kaszt: w.kaszt,
-     } as CharModel
+      map(w => {
+        return {
+          chars: w.chars.map((char: { _id: string; creatorName: string; creatorId: string; nev: string; kaszt: string; }) => {
+            return {
+              _id: char._id,
+              creatorName: char.creatorName,
+              creatorId: char.creatorId,
+              nev: char.nev,
+              kaszt: char.kaszt,
+            };
+          })
+        };
+      })
+    )
+    .subscribe(w => {
+      this.charsList = w.chars;
+      this.charsUpdated.next({
+        chars: [...this.charsList]
+      });
     });
   }
 
-  private setCharsList(charsList: CharModel[]) {
-    this.charsList = charsList;
+  getCharsUpdateListener() {
+    return this.charsUpdated.asObservable();
   }
-
-
 
   getOneChar(_id: string) {
     return this.http.get<{
       _id: string,
       creatorName: string,
-      creatorID: string,
+      creatorId: string,
       nev: string,
       kaszt: string
       }>(BACKEND_URL + _id);
@@ -59,14 +65,14 @@ export class CharsService {
   addOneChar(
     _id: string,
     creatorName: string,
-    creatorID: string,
+    creatorId: string,
     nev: string,
     kaszt: string
   ) {
     const charData: CharModel = {
       _id: '',
-      creatorName: creatorName,
-      creatorID: creatorID,
+      creatorName: '',
+      creatorId: '',
       nev: nev,
       kaszt: kaszt,
     };
@@ -79,14 +85,14 @@ export class CharsService {
   updateOneChar(
     _id: string,
     creatorName: string,
-    creatorID: string,
+    creatorId: string,
     nev: string,
     kaszt: string
   ) {
     let charData: CharModel;
     charData = {
       _id: _id,
-      creatorID: creatorID,
+      creatorId: creatorId,
       creatorName: creatorName,
       nev: nev,
       kaszt: kaszt

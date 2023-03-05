@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/users/auth.service';
+import { CharModel } from './chars.model';
 import { CharsService } from './chars.service';
 
 @Component({
@@ -17,13 +18,11 @@ export class CharsComponent implements OnInit, OnDestroy {
     private router: Router,
   ) {}
 
+  charsList: CharModel[] = []
   userIsAuthenticated = false;
   userId!: string;
   private authStatusSub!: Subscription;
-
-  getCharsList():Array<any> | null {
-    return this.charServ.charsList;
-  }
+  private charSub!: Subscription;
 
   onNewChar() {
     (<any>this.router).navigate(["/newchar"]);
@@ -41,6 +40,7 @@ export class CharsComponent implements OnInit, OnDestroy {
 
   ngOnInit():void {
     this.userId = this.authServ.getUserId();
+    this.charServ.getChars();
     this.userIsAuthenticated = this.authServ.getIsAuth();
     this.authStatusSub = this.authServ
     .getAuthStatusListener()
@@ -48,15 +48,16 @@ export class CharsComponent implements OnInit, OnDestroy {
       this.userIsAuthenticated = isAuthenticated;
       this.userId = this.authServ.getUserId();
     });
-    this.charServ.getChars().subscribe({
-      next: (w) => {
-        this.charServ.charsList = w;
+    this.charSub = this.charServ.getCharsUpdateListener()
+    .subscribe(w => {
+        this.charsList = w.chars;
       }
-    });
+    )
   }
 
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
+    this.charSub.unsubscribe();
   }
 
 }

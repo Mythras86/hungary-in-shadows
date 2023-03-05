@@ -15,6 +15,14 @@ export class RegisterComponent implements OnInit {
     public authService: AuthService,
     ) { }
 
+    onSubmit() {
+      var form = this.regUserForm;
+      if (form.invalid) {
+        return;
+      }
+      this.authService.registerUser(form.value.userName, form.value.userEmail, form.value.userPass);
+    }
+
   ngOnInit(): void {
     this.regUserForm = new FormGroup({
       'userName': new FormControl(null, Validators.required),
@@ -22,13 +30,4 @@ export class RegisterComponent implements OnInit {
       'userPass': new FormControl(null, Validators.required),
     });
   }
-
-  onSubmit() {
-    var form = this.regUserForm;
-    if (form.invalid) {
-      return;
-    }
-    this.authService.registerUser(form.value.userName, form.value.userEmail, form.value.userPass);
-  }
-
 }

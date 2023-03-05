@@ -29,12 +29,11 @@ export class CreateCharComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    console.log(form);
     if (this.mode === 'create') {
     this.charServ.addOneChar(
       form.value._id,
       form.value.creatorName,
-      form.value.creatorID,
+      form.value.creatorId,
       form.value.nev,
       form.value.kaszt,
 
@@ -43,7 +42,7 @@ export class CreateCharComponent implements OnInit {
       this.charServ.updateOneChar(
         form.value._id,
         form.value.creatorName,
-        form.value.creatorID,
+        form.value.creatorId,
         form.value.nev,
         form.value.kaszt,
       );
@@ -56,7 +55,7 @@ export class CreateCharComponent implements OnInit {
     this.mainCharForm = this.fb.group({
       _id: [''],
       creatorName: [this.authServ.getUserName()],
-      creatorID: [this.authServ.getUserId()],
+      creatorId: [this.authServ.getUserId()],
       nev: [''],
       kaszt: [''],
     });
@@ -68,7 +67,7 @@ export class CreateCharComponent implements OnInit {
           this.mainCharForm = this.fb.group({
             _id: w._id,
             creatorName: w.creatorName,
-            creatorID: w.creatorID,
+            creatorId: w.creatorId,
             nev: w.nev,
             kaszt: w.kaszt,
           });
