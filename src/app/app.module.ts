@@ -1,30 +1,35 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { AppComponent } from './app.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+
 import { HeaderComponent } from './elements/header/header.component';
 import { FooterComponent } from './elements/footer/footer.component';
-import { MainComponent } from './pages/main/main.component';
-import { CharsComponent } from './pages/chars/chars.component';
-import { LoginComponent } from './users/login/login.component';
-import { RegisterComponent } from './users/register/register.component';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './users/auth-interceptor';
+import { MainComponent } from './main/main.component';
+import { CharsListComponent } from './characters/chars-list/chars-list.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CreateCharComponent } from './pages/chars/create-char/create-char.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { AuthInterceptor } from './authentication/auth-interceptor';
+import { AuthService } from './authentication/auth.service';
+import { SpinnerComponent } from './elements/spinner/spinner.component';
+import { CharsMainComponent } from './characters/chars-main/chars-main.component';
+import { CharsMainService } from './characters/chars-main/chars-main.service';
+import { SpinnerService } from './elements/spinner/spinner.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AuthenticationComponent,
     HeaderComponent,
     FooterComponent,
+    SpinnerComponent,
+
     MainComponent,
-    CharsComponent,
-    LoginComponent,
-    RegisterComponent,
-    CreateCharComponent,
+    CharsListComponent,
+    CharsMainComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -35,6 +40,9 @@ import { CreateCharComponent } from './pages/chars/create-char/create-char.compo
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    AuthService,
+    CharsMainService,
+    SpinnerService
   ],
 
   bootstrap: [AppComponent]

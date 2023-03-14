@@ -18,13 +18,10 @@
       <a routerLink="/">Főoldal</a>
     </li>
     <li class="w30">
-      <a routerLink="/chars">Karakterek</a>
+      <a routerLink="/charslist">Karakterek</a>
     </li>
     <li class="w30">
-      <a routerLink="/login" *ngIf="!userIsAuthenticated">Belépés</a>
-    </li>
-    <li class="w30">
-      <a routerLink="/register" *ngIf="!userIsAuthenticated">Regisztráció</a>
+      <a routerLink="/auth" *ngIf="!userIsAuthenticated">Belépés / Regisztráció</a>
     </li>
     <li class="w30">
       <a (click)="onLogout()" *ngIf="userIsAuthenticated">Kilépés</a>

@@ -1,21 +1,20 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { CharsComponent } from "./pages/chars/chars.component";
-import { CreateCharComponent } from "./pages/chars/create-char/create-char.component";
-import { MainComponent } from "./pages/main/main.component";
-import { AuthGuard } from "./users/auth.guard";
-import { LoginComponent } from "./users/login/login.component";
-import { RegisterComponent } from "./users/register/register.component";
+import { AuthGuard } from "./authentication/auth.guard";
+import { AuthenticationComponent } from "./authentication/authentication.component";
+import { CharsListComponent } from "./characters/chars-list/chars-list.component";
+import { CharsMainComponent } from "./characters/chars-main/chars-main.component";
+import { SpinnerComponent } from "./elements/spinner/spinner.component";
+import { MainComponent } from "./main/main.component";
 
 
 const routes: Routes = [
   { path: "", component: MainComponent, title: "Főoldal" },
-  { path: "login", component: LoginComponent, title: "Belépés"},
-  { path: "register", component: RegisterComponent, title: "Regisztráció"},
+  { path: "auth", component: AuthenticationComponent, title: "Azonosítás"},
 
-  { path: "chars", component: CharsComponent, title: "Karakterek"},
-  { path: "newchar", component: CreateCharComponent, title: "Új karakter", canActivate: [AuthGuard]},
-  { path: "editchar/:charID", component: CreateCharComponent, title: "Karakter szerkesztés", canActivate: [AuthGuard]},
+  { path: "charslist", component: CharsListComponent, title: "Karakterlista"},
+  { path: "charsheet", component: CharsMainComponent, title: "Karakterlap", canActivate: [AuthGuard]},
+  { path: "editchar/:charID", component: CharsMainComponent, title: "Karakter szerkesztés", canActivate: [AuthGuard]},
 ];
 
 @NgModule({

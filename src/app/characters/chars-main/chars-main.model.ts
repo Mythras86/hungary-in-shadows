@@ -5,7 +5,3 @@ export interface CharModel {
   nev: string;
   kaszt: string;
 }
-
-export interface CharsDataInterface {
-  chars: CharModel[];
-}

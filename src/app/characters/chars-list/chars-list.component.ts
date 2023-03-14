@@ -1,21 +1,23 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/users/auth.service';
-import { CharModel } from './chars.model';
-import { CharsService } from './chars.service';
+import { AuthService } from 'src/app/authentication/auth.service';
+import { SpinnerService } from 'src/app/elements/spinner/spinner.service';
+import { CharModel } from '../chars-main/chars-main.model';
+import { CharsMainService } from '../chars-main/chars-main.service';
 
 @Component({
   selector: 'app-chars',
-  templateUrl: './chars.component.html',
-  styleUrls: ['./chars.component.css']
+  templateUrl: './chars-list.component.html',
+  styleUrls: ['./chars-list.component.css']
 })
-export class CharsComponent implements OnInit, OnDestroy {
+export class CharsListComponent implements OnInit, OnDestroy {
 
   constructor(
-    public charServ: CharsService,
+    public charServ: CharsMainService,
     private authServ: AuthService,
     private router: Router,
+    public spinServ: SpinnerService
   ) {}
 
   charsList: CharModel[] = []
@@ -25,7 +27,7 @@ export class CharsComponent implements OnInit, OnDestroy {
   private charSub!: Subscription;
 
   onNewChar() {
-    (<any>this.router).navigate(["/newchar"]);
+    (<any>this.router).navigate(["/charsheet"]);
   }
 
   onUpdateChar(_id:string) {
@@ -39,6 +41,7 @@ export class CharsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit():void {
+    this.spinServ.spinnerOn();
     this.userId = this.authServ.getUserId();
     this.charServ.getChars();
     this.userIsAuthenticated = this.authServ.getIsAuth();
@@ -51,6 +54,7 @@ export class CharsComponent implements OnInit, OnDestroy {
     this.charSub = this.charServ.getCharsUpdateListener()
     .subscribe(w => {
         this.charsList = w.chars;
+        this.spinServ.spinnerOff();
       }
     )
   }

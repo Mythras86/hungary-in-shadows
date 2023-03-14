@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/users/auth.service';
+import { AuthService } from 'src/app/authentication/auth.service';
 
 @Component({
   selector: 'app-footer',

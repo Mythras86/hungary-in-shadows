@@ -1,22 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { map, Observable, of, Subject, tap } from 'rxjs';
-import { AuthService } from 'src/app/users/auth.service';
+import { map, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CharModel, CharsDataInterface } from './chars.model';
+import { CharModel } from './chars-main.model';
 
 const BACKEND_URL = environment.apiUrl + "/char/";
 
 @Injectable({
   providedIn: 'root'
 })
-export class CharsService {
+export class CharsMainService {
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private authServ: AuthService
     ) { }
 
     public charsList: CharModel[] = [];
@@ -28,7 +26,7 @@ export class CharsService {
     .pipe(
       map(w => {
         return {
-          chars: w.chars.map((char: { _id: string; creatorName: string; creatorId: string; nev: string; kaszt: string; }) => {
+          chars: w.chars.map((char: CharModel) => {
             return {
               _id: char._id,
               creatorName: char.creatorName,
@@ -58,8 +56,8 @@ export class CharsService {
       creatorName: string,
       creatorId: string,
       nev: string,
-      kaszt: string
-      }>(BACKEND_URL + _id);
+      kaszt: string,
+    }>(BACKEND_URL + _id);
   }
 
   addOneChar(
@@ -67,7 +65,7 @@ export class CharsService {
     creatorName: string,
     creatorId: string,
     nev: string,
-    kaszt: string
+    kaszt: string,
   ) {
     const charData: CharModel = {
       _id: '',
@@ -78,8 +76,9 @@ export class CharsService {
     };
     this.http.post<{ message: string; char: CharModel }>(
       BACKEND_URL + "create", charData).subscribe(response => {
-        this.router.navigate(["/chars"]);
+        this.router.navigate(["/charslist"]);
       });
+    this.getChars();
   }
 
   updateOneChar(
@@ -87,7 +86,7 @@ export class CharsService {
     creatorName: string,
     creatorId: string,
     nev: string,
-    kaszt: string
+    kaszt: string,
   ) {
     let charData: CharModel;
     charData = {
@@ -100,7 +99,7 @@ export class CharsService {
       this.http
       .put(BACKEND_URL + _id, charData)
       .subscribe(response => {
-        this.router.navigate(["/chars"]);
+        this.router.navigate(["/charslist"]);
       });
   }
 
