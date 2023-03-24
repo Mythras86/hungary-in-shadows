@@ -14,7 +14,7 @@ const routes: Routes = [
 
   { path: "charslist", component: CharsListComponent, title: "Karakterlista"},
   { path: "charsheet", component: CharsMainComponent, title: "Karakterlap", canActivate: [AuthGuard]},
-  { path: "editchar/:charID", component: CharsMainComponent, title: "Karakter szerkesztés", canActivate: [AuthGuard]},
+  { path: "editchar/:_id", component: CharsMainComponent, title: "Karakter szerkesztés", canActivate: [AuthGuard]},
 ];
 
 @NgModule({

@@ -1,0 +1,9 @@
+<div class="modalBack" *ngIf="inputModServ.modalStatus">
+  <div class="modalContent">
+    <div class="ngrn text">{{inputModServ.nev}}</div>
+    <div class="ngrn text">{{inputModServ.megjegyz}}</div>
+    <input class="grayCell text" id="modalInput" type="text" [value]="inputModServ.fcName.value">
+    <button class="ngrn text" type="button" (click)="inputModServ.saveValue()">Mentés</button>
+    <button class="nrd text" type="button" (click)="inputModServ.closeModal()">Vissza</button>
+  </div>
+</div>

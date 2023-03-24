@@ -1,31 +1,28 @@
-<nav>
-  <div class="flexcont bl-wh">
-    <div class="logo w100">
-      <div class="head">
-        Hungary In Shadows
-      </div>
-      <div class="w60" *ngIf="userIsAuthenticated">
-        Isten hozott {{headerName()}}!
-      </div>
-      <div>{{headerId()}}</div>
-      <div class="creator or-bl w40">
-        Karakterlap by Mythras
-      </div>
-    </div>
+<div class="logo ntl">
+  <p *ngIf="!userIsAuthenticated">
+    Magyarország az Árnyakban
+  </p>
+  <p *ngIf="userIsAuthenticated">
+    Üdv újra itt {{headerName()}}!
+  </p>
+  <div class="creator ngrn">
+    Karakterlap by Mythras
   </div>
-  <ul class="flexcont bl-wh">
-    <li class="w30">
-      <a routerLink="/">Főoldal</a>
+</div>
+
+<nav>
+  <ul>
+    <li>
+      <a class="nprpl" routerLink="/">Főoldal</a>
     </li>
-    <li class="w30">
-      <a routerLink="/charslist">Karakterek</a>
+    <li>
+      <a class="nprpl" routerLink="/charslist">Karakterek</a>
     </li>
-    <li class="w30">
-      <a routerLink="/auth" *ngIf="!userIsAuthenticated">Belépés / Regisztráció</a>
+    <li *ngIf="!userIsAuthenticated">
+      <a class="nprpl" routerLink="/auth">Belépés</a>
     </li>
-    <li class="w30">
-      <a (click)="onLogout()" *ngIf="userIsAuthenticated">Kilépés</a>
+    <li *ngIf="userIsAuthenticated">
+      <a class="nprpl" (click)="onLogout()">Kilépés</a>
     </li>
   </ul>
-
 </nav>

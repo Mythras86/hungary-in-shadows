@@ -1,0 +1,35 @@
+.pageCont {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  justify-content: space-evenly;
+}
+
+.grayCell {
+  text-align: center;
+}
+
+span {
+  position: relative;
+  text-align: center;
+}
+
+.edit {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.w30 {
+  flex: 3 1 0;
+  min-width: 30%;
+}
+.w50 {
+  flex: 3 1 0;
+  min-width: 50%;
+}
+.w70 {
+  flex: 7 1 0;
+  min-width: 70%;
+}

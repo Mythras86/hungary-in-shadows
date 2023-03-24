@@ -17,6 +17,12 @@ import { SpinnerComponent } from './elements/spinner/spinner.component';
 import { CharsMainComponent } from './characters/chars-main/chars-main.component';
 import { CharsMainService } from './characters/chars-main/chars-main.service';
 import { SpinnerService } from './elements/spinner/spinner.service';
+import { CharDetailsComponent } from './characters/chars-main/chars-subforms/details/details.component';
+import { CharResourcesComponent } from './characters/chars-main/chars-subforms/resources/resources.component';
+import { SectionHeadComponent } from './elements/section-head/section-head.component';
+import { InputModalComponent } from './elements/input-modal/input-modal.component';
+import { InputModalService } from './elements/input-modal/input-modal.service';
+import { SectionHeadService } from './elements/section-head/section-head.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +35,10 @@ import { SpinnerService } from './elements/spinner/spinner.service';
     MainComponent,
     CharsListComponent,
     CharsMainComponent,
+    CharDetailsComponent,
+    CharResourcesComponent,
+    SectionHeadComponent,
+    InputModalComponent,
 
   ],
   imports: [
@@ -42,7 +52,9 @@ import { SpinnerService } from './elements/spinner/spinner.service';
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     AuthService,
     CharsMainService,
-    SpinnerService
+    SpinnerService,
+    InputModalService,
+    SectionHeadService,
   ],
 
   bootstrap: [AppComponent]

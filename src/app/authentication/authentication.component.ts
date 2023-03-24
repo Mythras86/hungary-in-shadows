@@ -31,7 +31,7 @@ export class AuthenticationComponent implements OnInit {
       if (form.invalid) {
         return;
       }
-      this.spinServ.spinnerOn();
+      this.spinServ.toggleSpinner(true);
       this.authServ.loginUser(form.value.userEmail, form.value.userPass);
     }
 
@@ -52,6 +52,7 @@ export class AuthenticationComponent implements OnInit {
     }
 
     ngOnInit(): void {
+      this.spinServ.toggleSpinner(false);
       this.prepLoginForm();
       this.prepRegForm();
     }

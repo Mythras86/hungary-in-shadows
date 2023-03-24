@@ -1,0 +1,14 @@
+<div class="pageCont" [formGroup]="getForm()" *ngIf="getForm()">
+
+    <div class="w{{item.meret}}" *ngFor="let item of getDetailsUtil(); first as isFirst">
+      <span>
+        <div class="ngrn text">{{item.nev}}</div>
+        <button class="nyllw edit" type="button" (click)="inputModServ.openModal(
+          item.nev, item.megjegyz, getFcPath(item.fcname)
+        )">&#9998;</button>
+      </span>
+      <div class="grayCell text">{{this.getValue(item.fcname)}} {{item.unit}}</div>
+    </div>
+
+</div>
+

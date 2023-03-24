@@ -1,0 +1,11 @@
+<div class="pageCont" [formGroup]="getForm()" *ngIf="getForm()">
+
+  <div class="sectionContV" *ngFor='let res of getResUtil()'>
+    <div class="nrd w70">
+      {{res.nev}}
+    </div>
+    <input class="w30" [formControlName]='res.fcname' *ngIf="res.hide==true" type="number" readonly
+    [value]="getFcValue(res.fcname)">
+  </div>
+
+</div>

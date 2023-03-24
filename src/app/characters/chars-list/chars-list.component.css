@@ -1,0 +1,11 @@
+.pageCont {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+  gap: 0.2rem 0.1rem;
+}
+
+.sectionContV {
+  flex: 1 1 50%;
+  max-width: 49%;
+}

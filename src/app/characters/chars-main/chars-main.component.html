@@ -1,15 +1,20 @@
-<div class="sectioncont">
-
-  <form [formGroup]="mainCharForm" (ngSubmit)="createNewChar()">
-    <div>{{authServ.getUserId()}}</div>
-    <div>{{authServ.getUserName()}}</div>
-    <input type="text" formControlName="nev">
-    <input type="text" formControlName="kaszt">
-    <div class="or-bl buttoncont">
-      <button class="bl-wh" type="submit" [disabled]="!mainCharForm.valid">Karakter mentése</button>
-      <button class="or-bl" type="button" (click)="backToList()">Vissza</button>
-    </div>
-
-  </form>
-
+<div class="buttonCont">
+  <button class="ngrn text" type="submit" >Karakter mentése</button>
+  <button class="nyllw text" type="button" (click)="backToList()">Vissza</button>
 </div>
+
+<form *ngIf="mainCharForm" [formGroup]="mainCharForm" (ngSubmit)="createNewChar()">
+
+  <app-section-head
+  [subForm]="'details'"
+  [headText]="'Jellemzők'"
+  ></app-section-head>
+  <app-details [hidden]="this.headServ.showMeSatus !== 'details'"></app-details>
+
+  <app-section-head
+  [subForm]="'resources'"
+  [headText]="'Erőforrások'"
+  ></app-section-head>
+  <app-resources [hidden]="this.headServ.showMeSatus !== 'resources'"></app-resources>
+
+</form>

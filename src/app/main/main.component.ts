@@ -13,6 +13,6 @@ export class MainComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.spinServ.spinnerOff();
+    this.spinServ.toggleSpinner(false);
   }
 }

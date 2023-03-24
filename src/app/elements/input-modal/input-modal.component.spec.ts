@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CharsListComponent } from './chars-list.component';
+import { InputModalComponent } from './input-modal.component';
 
-describe('CharsComponent', () => {
-  let component: CharsListComponent;
-  let fixture: ComponentFixture<CharsListComponent>;
+describe('InputModalComponent', () => {
+  let component: InputModalComponent;
+  let fixture: ComponentFixture<InputModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CharsListComponent ]
+      declarations: [ InputModalComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CharsListComponent);
+    fixture = TestBed.createComponent(InputModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,20 +1,34 @@
-<form class="sectioncont" [formGroup]="loginUserForm" (ngSubmit)="onLogin()">
+<div class="pageCont">
 
-  <input type="email" formControlName="userEmail" placeholder="E-amil cím">
-  <input type="password" formControlName="userPass" placeholder="Jelszó">
-  <div class="buttoncont">
-    <button class="bl-wh" type="submit" [disabled]="!loginUserForm.valid">Belépés</button>
-  </div>
+  <div class="sectionHead nbl" >Holozz a Főnöknek, megjöttem!</div>
 
-</form>
+  <form class="authCont" [formGroup]="loginUserForm" (ngSubmit)="onLogin()">
 
-<form class="sectioncont" [formGroup]="regUserForm" (ngSubmit)="onSubmit()">
+    <label class="nbl text" for="loginEmail">Email Cím</label>
+    <input class="text" id="loginEmail" type="email" formControlName="userEmail" placeholder="E-amil cím">
+    <label class="nbl text" for="loginPass">Jelszó</label>
+    <input class="text" id="loginPass" type="password" formControlName="userPass" placeholder="Jelszó">
+    <div class="buttonCont">
+      <button class="nrng text" type="submit" [disabled]="!loginUserForm.valid">Belépés</button>
+    </div>
 
-  <input type="text" formControlName="userName" placeholder="Név">
-  <input type="email" formControlName="userEmail" placeholder="E-amil cím">
-  <input type="password" formControlName="userPass" placeholder="Jelszó">
-  <div class="buttoncont">
-    <button class="bl-wh" type="submit" [disabled]="!regUserForm.valid">Regisztráció</button>
-  </div>
+  </form>
 
-</form>
+  <div class="sectionHead ngrn" >Itt az ideje, csatlakozz az Árnyakhoz!</div>
+
+  <form class="authCont" [formGroup]="regUserForm" (ngSubmit)="onSubmit()">
+
+    <label class="ngrn text" for="regNev">Felhasználónév</label>
+    <input class="text" id="regNev" type="text" formControlName="userName" placeholder="Név">
+    <label class="ngrn text" for="regEmail">Email Cím</label>
+    <input class="text" id="regEmail" type="email" formControlName="userEmail" placeholder="E-amil cím">
+    <label class="ngrn text" for="regPass">Jelszó</label>
+    <input class="text" id="regPass" type="password" formControlName="userPass" placeholder="Jelszó">
+    <div class="buttonCont">
+      <button class="nrng text" type="submit" [disabled]="!regUserForm.valid">Regisztráció</button>
+    </div>
+
+  </form>
+
+</div>
+

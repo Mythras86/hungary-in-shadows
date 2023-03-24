@@ -1,30 +1,29 @@
-export interface CharModel {
-
-  _id: string;
-  creatorName: string;
-  creatorId: string;
-
-  //Jellemzők
+export interface Details {
+  //szöveges
   teljesnev: string,
   becenev:string,
   alnev:string,
   testalkat:string,
   hajstilus:string,
   szakall:string,
+  //értékválasztó
   nem: string,
   faj:string,
   anyanyelv: string,
-  eletkor:number,
-  magassag:number,
-  testsuly:number,
+  eletkor:string,
+  magassag:string,
+  testsuly:string,
+  //szín
   szemszin:string,
   hajszin:string,
   szorszin:string,
   borszin:string,
+  // hosszú szöveg
   felelem:string,
   osztonzo:string,
   gyulolet:string,
   kedvenc:string,
   irtozat:string,
   vonzalom:string,
-}
+};
+

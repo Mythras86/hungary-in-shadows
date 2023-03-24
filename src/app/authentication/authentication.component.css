@@ -1,0 +1,10 @@
+.authCont {
+  max-width: 50%;
+  margin: 1rem auto;
+}
+
+input, label {
+  display: block;
+  width: 100%;
+  text-align: center;
+}

@@ -7,14 +7,10 @@ export class SpinnerService {
 
   constructor() { }
 
-  public setSpinnerStatus:boolean = false;
+  public spinnerStatus:boolean = false;
 
-  spinnerOn() {
-    return this.setSpinnerStatus = true;
-  }
-
-  spinnerOff() {
-    return this.setSpinnerStatus = false;
+  toggleSpinner(status: boolean):boolean {
+    return this.spinnerStatus = status;
   }
 
 }

@@ -4,9 +4,29 @@ exports.createChar = (req, res, next) => {
   const char = new Char ({
     creatorName: req.userData.userName,
     creatorId: req.userData.userId,
-    nev: req.body.nev,
-    kaszt: req.body.kaszt,
-  });
+    teljesnev: req.body.teljesnev,
+    becenev: req.body.becenev,
+    alnev: req.body.alnev,
+    testalkat: req.body.testalkat,
+    hajstilus: req.body.hajstilus,
+    szakall: req.body.szakall,
+    nem: req.body.nem,
+    faj: req.body.faj,
+    anyanyelv: req.body.anyanyelv,
+    eletkor: req.body.eletkor,
+    magassag: req.body.magassag,
+    testsuly: req.body.testsuly,
+    szemszin: req.body.szemszin,
+    hajszin: req.body.hajszin,
+    szorszin: req.body.szorszin,
+    borszin: req.body.borszin,
+    felelem: req.body.felelem,
+    osztonzo: req.body.osztonzo,
+    gyulolet: req.body.gyulolet,
+    kedvenc: req.body.kedvenc,
+    irtozat: req.body.irtozat,
+    vonzalom: req.body.vonzalom,
+});
   char
   .save()
   .then(createdChar => {
@@ -14,7 +34,7 @@ exports.createChar = (req, res, next) => {
       message: "Character added successfully",
       char: {
         ...createdChar,
-        _id: createdChar._id
+       _id: createdChar._id
       }
     });
   })
@@ -30,10 +50,30 @@ exports.updateChar = (req, res, next) => {
     _id: req.body._id,
     creatorName: req.body.creatorName,
     creatorId: req.userData.userId,
-    nev: req.body.nev,
-    kaszt: req.body.kaszt,
+    teljesnev: req.body.teljesnev,
+    becenev: req.body.becenev,
+    alnev: req.body.alnev,
+    testalkat: req.body.testalkat,
+    hajstilus: req.body.hajstilus,
+    szakall: req.body.szakall,
+    nem: req.body.nem,
+    faj: req.body.faj,
+    anyanyelv: req.body.anyanyelv,
+    eletkor: req.body.eletkor,
+    magassag: req.body.magassag,
+    testsuly: req.body.testsuly,
+    szemszin: req.body.szemszin,
+    hajszin: req.body.hajszin,
+    szorszin: req.body.szorszin,
+    borszin: req.body.borszin,
+    felelem: req.body.felelem,
+    osztonzo: req.body.osztonzo,
+    gyulolet: req.body.gyulolet,
+    kedvenc: req.body.kedvenc,
+    irtozat: req.body.irtozat,
+    vonzalom: req.body.vonzalom,
   });
-  Char.updateOne({ _id: req.params._id, creatorId: req.userData.userId }, char)
+  Char.updateOne({_id: req.params._id, creatorId: req.userData.userId }, char)
   .then(result => {
     console.log (result);
     if (result.modifiedCount > 0) {
@@ -82,7 +122,7 @@ exports.getOneChar = (req, res, next) => {
 };
 
 exports.deleteChar = (req, res, next) => {
-  Char.deleteOne({ _id: req.params._id, creatorId: req.userData.userId })
+  Char.deleteOne({_id: req.params._id, creatorId: req.userData.userId })
     .then(result => {
       console.log(result);
       if (result.deletedCount > 0) {

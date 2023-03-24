@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/authentication/auth.service';
 import { SpinnerService } from 'src/app/elements/spinner/spinner.service';
 import { CharModel } from '../chars-main/chars-main.model';
-import { CharsMainService } from '../chars-main/chars-main.service';
+import { CharsListService } from './chars-list.service';
 
 @Component({
   selector: 'app-chars',
@@ -14,13 +14,12 @@ import { CharsMainService } from '../chars-main/chars-main.service';
 export class CharsListComponent implements OnInit, OnDestroy {
 
   constructor(
-    public charServ: CharsMainService,
+    public charsListServ: CharsListService,
     private authServ: AuthService,
     private router: Router,
     public spinServ: SpinnerService
   ) {}
 
-  charsList: CharModel[] = []
   userIsAuthenticated = false;
   userId!: string;
   private authStatusSub!: Subscription;
@@ -35,15 +34,15 @@ export class CharsListComponent implements OnInit, OnDestroy {
   }
 
   onDeleteChar(_id:string) {
-    this.charServ.deleteOneChar(_id).subscribe(() => {
-      this.charServ.getChars();
+    this.charsListServ.deleteOneChar(_id).subscribe(() => {
+      this.charsListServ.getChars();
     });
   }
 
   ngOnInit():void {
-    this.spinServ.spinnerOn();
+    this.spinServ.toggleSpinner(false);
     this.userId = this.authServ.getUserId();
-    this.charServ.getChars();
+    this.charsListServ.getChars();
     this.userIsAuthenticated = this.authServ.getIsAuth();
     this.authStatusSub = this.authServ
     .getAuthStatusListener()
@@ -51,10 +50,11 @@ export class CharsListComponent implements OnInit, OnDestroy {
       this.userIsAuthenticated = isAuthenticated;
       this.userId = this.authServ.getUserId();
     });
-    this.charSub = this.charServ.getCharsUpdateListener()
+    this.charSub = this.charsListServ.getCharsUpdateListener()
     .subscribe(w => {
-        this.charsList = w.chars;
-        this.spinServ.spinnerOff();
+        this.charsListServ.charsList = w.chars;
+        this.spinServ.toggleSpinner(false);
+
       }
     )
   }
