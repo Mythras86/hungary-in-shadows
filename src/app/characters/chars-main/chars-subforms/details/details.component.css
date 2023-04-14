@@ -33,3 +33,7 @@ span {
   flex: 7 1 0;
   min-width: 70%;
 }
+.w100 {
+  flex: 10 1 0;
+  min-width: 100%;
+}

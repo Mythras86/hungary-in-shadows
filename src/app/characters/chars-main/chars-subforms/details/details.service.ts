@@ -23,7 +23,7 @@ export class DetailsService {
         szakall: ['', Validators.required],
       // értékválasztó
         nem: ['', Validators.required],
-        faj: ['', Validators.required],
+        fajta: ['ember', Validators.required],
         anyanyelv: ['', Validators.required],
         eletkor:['0', Validators.required],
         magassag: ['0', Validators.required],

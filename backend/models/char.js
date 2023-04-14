@@ -10,7 +10,7 @@ const charSchema = mongoose.Schema({
   hajstilus:{ type: String, required: false},
   szakall:{ type: String, required: false},
   nem: { type: String, required: false},
-  faj:{ type: String, required: false},
+  fajta:{ type: String, required: false},
   anyanyelv: { type: String, required: false},
   eletkor:{ type: Number, required: false},
   magassag:{ type: Number, required: false},

@@ -8,7 +8,7 @@ export interface Details {
   szakall:string,
   //értékválasztó
   nem: string,
-  faj:string,
+  fajta:string,
   anyanyelv: string,
   eletkor:string,
   magassag:string,

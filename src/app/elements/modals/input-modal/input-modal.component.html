@@ -1,0 +1,29 @@
+<div class="modalContent">
+  <div class="ngrn text">{{fejlec}}</div>
+  <div class="nbl text">{{megjegyzes}}</div>
+
+  <!-- text input -->
+  <input *ngIf="tipus == 'text'" class="grayCell text" id="modalInput" type="text" [value]="ertek">
+
+  <!-- color input -->
+  <input *ngIf="tipus == 'color'"
+  list="presetcolors"
+  class="grayCell text"
+  id="modalInput"
+  type="color"
+  [value]="ertek">
+    <datalist id="presetcolors" *ngIf="tipus == 'color'">
+      <option>#c58c85</option>
+      <option>#ecbcb4</option>
+      <option>#d1a3a4</option>
+      <option>#a1665e</option>
+      <option>#503335</option>
+      <option>#592f2a</option>
+    </datalist>
+
+    <!-- number input -->
+    <input *ngIf="tipus == 'number'" class="grayCell text" id="modalInput" type="number" [value]="ertek">
+
+  <button class="ngrn text" type="button" (click)="onSave()">Mentés</button>
+  <button class="nrd text" type="button" (click)="onClose()">Vissza</button>
+</div>

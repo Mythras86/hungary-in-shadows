@@ -20,9 +20,10 @@ import { SpinnerService } from './elements/spinner/spinner.service';
 import { CharDetailsComponent } from './characters/chars-main/chars-subforms/details/details.component';
 import { CharResourcesComponent } from './characters/chars-main/chars-subforms/resources/resources.component';
 import { SectionHeadComponent } from './elements/section-head/section-head.component';
-import { InputModalComponent } from './elements/input-modal/input-modal.component';
-import { InputModalService } from './elements/input-modal/input-modal.service';
 import { SectionHeadService } from './elements/section-head/section-head.service';
+import { ModalWrapperComponent } from './elements/modals/modal-wrapper.component';
+import { ModalService } from './elements/modals/modal.service';
+import { InputModalComponent } from './elements/modals/input-modal/input-modal.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,8 @@ import { SectionHeadService } from './elements/section-head/section-head.service
     HeaderComponent,
     FooterComponent,
     SpinnerComponent,
+    ModalWrapperComponent,
+    InputModalComponent,
 
     MainComponent,
     CharsListComponent,
@@ -38,7 +41,6 @@ import { SectionHeadService } from './elements/section-head/section-head.service
     CharDetailsComponent,
     CharResourcesComponent,
     SectionHeadComponent,
-    InputModalComponent,
 
   ],
   imports: [
@@ -46,15 +48,15 @@ import { SectionHeadService } from './elements/section-head/section-head.service
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     AuthService,
     CharsMainService,
     SpinnerService,
-    InputModalService,
     SectionHeadService,
+    ModalService,
   ],
 
   bootstrap: [AppComponent]

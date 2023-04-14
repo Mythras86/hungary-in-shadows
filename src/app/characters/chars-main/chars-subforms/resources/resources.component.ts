@@ -24,8 +24,8 @@ export class CharResourcesComponent implements OnInit {
     return this.resServ.resourcesForm;
   }
 
-  getFcValue(fcname: any):any {
-    return this.resServ.resourcesForm.get(fcname)?.value
+  getFcValue(fcName: any):any {
+    return this.resServ.resourcesForm.get(fcName)?.value
   }
 
   ngOnInit(): void {
