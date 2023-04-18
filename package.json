@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "start": "nx serve",
+    "serve": "HungaryInShadows:serve",
+    "build": "nx build",
+    "watch": "nx build --watch --configuration development",
+    "test": "nx test",
     "demon": "nodemon server.js"
   },
   "private": true,
@@ -31,8 +32,14 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.1.5",
+    "@angular-devkit/core": "~15.1.5",
+    "@angular-devkit/schematics": "~15.1.5",
     "@angular/cli": "~15.1.5",
     "@angular/compiler-cli": "^15.1.0",
+    "@nrwl/angular": "15.9.2",
+    "@nrwl/nx-cloud": "latest",
+    "@nrwl/workspace": "15.9.2",
+    "@schematics/angular": "~15.1.5",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
@@ -41,6 +48,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "nodemon": "^2.0.20",
+    "nx": "15.9.2",
     "typescript": "~4.9.4"
   },
   "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.",

@@ -21,12 +21,23 @@ export class InputModalComponent implements OnInit, AModal {
     public fejlec: string = '';
     public megjegyzes: string = '';
     public ertek: any;
+    public lista: any;
+    public egyseg!: string;
+    public lepes!: number;
 
     loadData(modalData: any): void {
       this.tipus = modalData.tipus;
       this.fejlec = modalData.fejlec;
       this.megjegyzes = modalData.megjegyzes;
       this.ertek = modalData.ertek;
+      this.lista = modalData.lista;
+      this.egyseg = modalData.egyseg;
+      this.lepes = modalData.lepes;
+    }
+
+    changeValue(step: number):number {
+      const inputValue: any = document.getElementById('modalInput');
+      return inputValue.value = inputValue.value*1 + step;
     }
 
     onSave() {
@@ -36,8 +47,8 @@ export class InputModalComponent implements OnInit, AModal {
     }
 
     onClose() {
-      this.closeEvent.next('none');
-      this.closeEvent.complete();
+      this.closeEvent.next(this.ertek),
+      this.closeEvent.complete()
     }
 
     ngOnInit(): void {

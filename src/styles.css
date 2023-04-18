@@ -73,6 +73,57 @@ ul, li {
   border: 0.1rem solid black;
 }
 
+.w10 {
+  flex: 1 1 0;
+  max-width: 10%;
+  min-width: 10%;
+}
+.w15 {
+  flex: 1 1 0;
+  max-width: 15%;
+  min-width: 15%;
+}
+.w20 {
+  flex: 1 1 0;
+  max-width: 20%;
+  min-width: 20%;
+}
+.w33 {
+  flex: 1 1 0;
+  max-width: 33.33%;
+  min-width: 33.33%;
+}
+.w40 {
+  flex: 1 1 0;
+  max-width: 40%;
+  min-width: 40%;
+}
+.w50 {
+  flex: 1 1 0;
+  max-width: 50%;
+  min-width: 50%;
+}
+.w60 {
+  flex: 1 1 0;
+  max-width: 60%;
+  min-width: 60%;
+}
+.w66 {
+  flex: 1 1 0;
+  max-width: 66%;
+  min-width: 66%;
+}
+.w80 {
+  flex: 1 1 0;
+  max-width: 80%;
+  min-width: 80%;
+}
+.w100 {
+  flex: 1 1 0;
+  max-width: 100%;
+  min-width: 100%;
+}
+
 .text {
   padding-top: 0.3rem;
   padding-bottom: 0.1rem;

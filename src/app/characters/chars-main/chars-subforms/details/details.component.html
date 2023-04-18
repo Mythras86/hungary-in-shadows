@@ -3,15 +3,26 @@
   <div class="w{{item.meret}}" *ngFor="let item of getDetailsUtil(); first as isFirst">
     <span *ngIf="item.tipus !== 'kepessegek'">
       <div class="ngrn text">{{item.fejlec}}</div>
-      <button class="nyllw edit" type="button" (click)="sendData(
-        item.fcName,
+      <button *ngIf="hideButton(item.fcName)" class="nyllw edit" type="button" (click)="inputModalServ.sendData(
+        getFcPath(item.fcName),
         item.tipus,
         item.fejlec,
         item.megjegyzes,
-        getValue(item.fcName)
+        getValue(item.fcName),
+        getList(item.fcName+'Lista'),
+        item.egyseg,
+        item.lepes
       )">&#9998;</button>
-      <div class="grayCell text" *ngIf="item.tipus != 'color'">{{getValue(item.fcName)}} {{item.unit}}</div>
-      <div class="grayCell text" *ngIf="item.tipus == 'color'" [style.backgroundColor]="getValue(item.fcName)">{{this.getValue(item.fcName)}} {{item.unit}}</div>
+
+      <!-- input -->
+      <div class="grayCell text" *ngIf="item.tipus != 'color'">
+        {{getValue(item.fcName)}} {{item.egyseg}}
+      </div>
+
+      <!-- color input -->
+      <div class="grayCell text" *ngIf="item.tipus == 'color'" [style.backgroundColor]="getValue(item.fcName)">
+        {{this.getDefault(item.fcName)}} {{item.unit}}
+      </div>
     </span>
 
     <span *ngIf="item.tipus == 'kepessegek'">

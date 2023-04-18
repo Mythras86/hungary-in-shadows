@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Fajok, detailsUtil} from './details-utility';
+import { FormGroup } from '@angular/forms';
+import { detailsUtil, genekUtil, nemekUtil, nyelvekUtil} from './details-utility';
 import { DetailsService } from './details.service';
-import { ModalService } from 'src/app/elements/modals/modal.service';
-import { InputModalComponent } from 'src/app/elements/modals/input-modal/input-modal.component';
-import { __values } from 'tslib';
+import { InputModalService } from 'src/app/elements/modals/input-modal/input-modal.service';
 
 @Component({
   selector: 'app-details',
@@ -15,10 +13,8 @@ export class CharDetailsComponent implements OnInit {
 
   constructor(
     public detailsServ: DetailsService,
-    private modalServ: ModalService,
+    public inputModalServ: InputModalService,
   ) {}
-
-  public edit: boolean = false;
 
   getDetailsUtil():any {
     return detailsUtil;
@@ -28,16 +24,8 @@ export class CharDetailsComponent implements OnInit {
     return this.detailsServ.detailsForm.get(fcName)?.value;
   }
 
-  toggleEdit(): boolean {
-    return this.edit = !this.edit
-  }
-
   getForm(): FormGroup {
     return this.detailsServ.detailsForm;
-  }
-
-  getFcValue(fcName: string):FormControl {
-    return this.detailsServ.detailsForm.get(fcName)?.value;
   }
 
   getFcPath(fcName: string):any {
@@ -46,36 +34,51 @@ export class CharDetailsComponent implements OnInit {
   }
 
   getDefault(fcName: string):any {
-    const valasztottFaj: string = this.detailsServ.detailsForm.get('fajta')?.value
+    const valasztottFaj: string = this.detailsServ.detailsForm.get('genek')?.value
     if (valasztottFaj !== '') {
       if (fcName == 'eletkor') {
-        const defAge = Fajok.filter(x=>x.fajnev = valasztottFaj).map(x=>x.defAge)[0];
+        const defAge = genekUtil.filter(x=>x.genek = valasztottFaj).map(x=>x.defAge)[0];
+        console.log(defAge)
         return defAge;
       }
       if (fcName == 'magassag') {
-        const defHeight = Fajok.filter(x=>x.fajnev = valasztottFaj).map(x=>x.defHeight)[0];
+        const defHeight = genekUtil.filter(x=>x.genek = valasztottFaj).map(x=>x.defHeight)[0];
         return defHeight;
       }
       if (fcName == 'testsuly') {
-        const defWieght = Fajok.filter(x=>x.fajnev = valasztottFaj).map(x=>x.defWieght)[0];
+        const defWieght = genekUtil.filter(x=>x.genek = valasztottFaj).map(x=>x.defWieght)[0];
         return defWieght;
       }
       if (fcName == 'kepessegek') {
-        const kepessegek = Fajok.filter(x=>x.fajnev = valasztottFaj).map(x=>x.defKepessegek)[0];
+        const kepessegek = genekUtil.filter(x=>x.genek = valasztottFaj).map(x=>x.defKepessegek)[0];
         return kepessegek;
       }
     }
-    return null;
+    return this.detailsServ.detailsForm.get(fcName)?.value;
   }
 
-  sendData(fcName:string, tipus:string, fejlec:string, megjegyzes:string, ertek: any) {
-    this.modalServ.openModal(InputModalComponent, {tipus: tipus, fejlec: fejlec, megjegyzes: megjegyzes, ertek: ertek}).subscribe(
-      w => this.updateData(fcName, w)
-    );
+  getList(listaNev:string):Array<any> {
+    if (listaNev == 'genekLista') {
+      const genekLista = genekUtil.map(x => x.dns);
+      return genekLista;
+    }
+    if (listaNev == 'nemLista') {
+      return nemekUtil.map(x => x);
+    }
+    if (listaNev == 'anyanyelvLista') {
+      return nyelvekUtil.map(x => x);
+    }
+    return [];
   }
 
-  updateData(fcName:any, value:any) {
-    return this.detailsServ.detailsForm.get(fcName)?.patchValue(value);
+  hideButton(fcName: string):boolean {
+    if (fcName !== 'genek'
+    && fcName !== 'nem'
+    && (this.getDefault('nem') == ''
+    || this.getDefault('genek') == '') ) {
+      return false
+    }
+    return true;
   }
 
   ngOnInit(): void {

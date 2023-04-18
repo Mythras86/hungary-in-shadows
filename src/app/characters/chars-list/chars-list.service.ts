@@ -30,7 +30,7 @@ export class CharsListService {
               creatorName: char.creatorName,
               creatorId: char.creatorId,
               teljesnev: char.teljesnev,
-              fajta: char.fajta,
+              genek: char.genek,
             };
           })
         };

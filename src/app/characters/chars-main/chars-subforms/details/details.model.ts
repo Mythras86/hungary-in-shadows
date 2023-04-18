@@ -5,10 +5,9 @@ export interface Details {
   alnev:string,
   testalkat:string,
   hajstilus:string,
-  szakall:string,
   //értékválasztó
   nem: string,
-  fajta:string,
+  genek:string,
   anyanyelv: string,
   eletkor:string,
   magassag:string,
@@ -25,5 +24,6 @@ export interface Details {
   kedvenc:string,
   irtozat:string,
   vonzalom:string,
+  megjelenes:string,
 };
 

@@ -24,10 +24,12 @@ import { SectionHeadService } from './elements/section-head/section-head.service
 import { ModalWrapperComponent } from './elements/modals/modal-wrapper.component';
 import { ModalService } from './elements/modals/modal.service';
 import { InputModalComponent } from './elements/modals/input-modal/input-modal.component';
+import { InputModalService } from './elements/modals/input-modal/input-modal.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+
     AuthenticationComponent,
     HeaderComponent,
     FooterComponent,
@@ -57,6 +59,7 @@ import { InputModalComponent } from './elements/modals/input-modal/input-modal.c
     SpinnerService,
     SectionHeadService,
     ModalService,
+    InputModalService,
   ],
 
   bootstrap: [AppComponent]

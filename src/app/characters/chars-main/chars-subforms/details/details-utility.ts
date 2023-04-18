@@ -1,41 +1,41 @@
 export const detailsUtil: Array<any> = [
-  {meret: 70, fejlec: 'Teljes név', fcName:'teljesnev', tipus: 'text', megjegyzes: 'Amit a Sírodra vésnek...'},
-  {meret: 30, fejlec: 'Életkor', fcName:'eletkor', tipus: 'number', unit: ' év'},
-  {meret: 70, fejlec: 'Becenév', fcName:'becenev', tipus: 'text', megjegyzes: 'Ahogy a Haverok ismernek...'},
-  {meret: 30, fejlec: 'Magasság', fcName:'magassag', tipus: 'number', unit: ' cm'},
-  {meret: 70, fejlec: 'Álnév', fcName:'alnev', tipus: 'text', megjegyzes: 'Az Alvilágban így hívnak...'},
-  {meret: 30, fejlec: 'Testsúly', fcName:'testsuly', tipus: 'number', unit: ' kg'},
-  {meret: 30, fejlec: 'Anyanyelv', fcName:'anyanyelv', tipus: 'inpselect', listname:'Nyelvek', megjegyzes:'Ha kitolod, levágjuk...'},
-  {meret: 30, fejlec: 'Faj', fcName:'fajta', tipus: 'select', listname:'Fajok', megjegyzes:'Fajta, te paraszt!'},
-  {meret: 30, fejlec: 'Testalkat', fcName:'testalkat', tipus: 'text', megjegyzes: 'Mackós, vagy girhes?'},
-  {meret: 30, fejlec: 'Nem', fcName:'nem', tipus: 'select', listname:'Nem', megjegyzes:'De! Vagy mit tudom én!?'},
-  {meret: 30, fejlec: 'Szemszín', fcName:'szemszin', tipus: 'color'},
-  {meret: 30, fejlec: 'Bőrszín', fcName:'borszin', tipus: 'color'},
-  {meret: 30, fejlec: 'Hajszín', fcName:'hajszin', tipus: 'color'},
-  {meret: 30, fejlec: 'Hajstílus', fcName:'hajstilus', tipus: 'text', megjegyzes: 'Az Árnyak között is fontos!'},
-  {meret: 30, fejlec: 'Szőrzet színe', fcName:'szorszin', tipus: 'color'},
+  {meret: 33, fejlec: 'Gének', fcName:'genek', tipus: 'select', megjegyzes:'Nem faj! Legfeljebb fajta te rasszista paraszt!'},
+  {meret: 33, fejlec: 'Nem', fcName:'nem', tipus: 'select', megjegyzes:'Nem? De! Vagy mit tudom én!?'},
+  {meret: 33, fejlec: 'Anyanyelv', fcName:'anyanyelv', tipus: 'inpselect', megjegyzes:'Kezdj el csicseregni, de ha kitolod, levágjuk...'},
+  {meret: 66, fejlec: 'Teljes név', fcName:'teljesnev', tipus: 'text', megjegyzes: 'Amit a sírodra vésnek, ha kisimultak az intenzív vonalaid...'},
+  {meret: 33, fejlec: 'Életkor', fcName:'eletkor', tipus: 'number', megjegyzes: 'Vajon ezért a vénségért mennyit kapni a rabszolgapiacon?', egyseg: ' év', lepes: 10},
+  {meret: 66, fejlec: 'Becenév', fcName:'becenev', tipus: 'text', megjegyzes: 'Ahogy a haverok ismernek, már ha még élnek...'},
+  {meret: 33, fejlec: 'Magasság', fcName:'magassag', tipus: 'number', megjegyzes: 'Ettől függ, hogy hokedlinek, vagy toronynak becéznek', egyseg: ' cm', lepes: 10},
+  {meret: 66, fejlec: 'Álnév', fcName:'alnev', tipus: 'text', megjegyzes: 'Az alvilágban jobb, ha csak ezt ismerik...'},
+  {meret: 33, fejlec: 'Testsúly', fcName:'testsuly', tipus: 'number', megjegyzes: 'Vajon lecsontozva mennyit ér a húsod?', egyseg: ' kg', lepes: 10},
+  {meret: 33, fejlec: 'Testalkat', fcName:'testalkat', tipus: 'text', megjegyzes: 'Ki a mellet, be a hasat, hadd mártom meg benned a vasat!'},
+  {meret: 33, fejlec: 'Szemszín', fcName:'szemszin', tipus: 'color', megjegyzes: 'Mi a kedvenc színed? Barna? Nem, a kékááá...'},
+  {meret: 33, fejlec: 'Bőrszín', fcName:'borszin', tipus: 'color', megjegyzes: 'Hidd el, lassan már senkit nem érdekel, kivéve ha ember vagy.'},
+  {meret: 33, fejlec: 'Hajszín', fcName:'hajszin', tipus: 'color', megjegyzes: 'Milyet szeretnél? Van egyáltalán saját hajad?'},
+  {meret: 33, fejlec: 'Hajstílus', fcName:'hajstilus', tipus: 'text', megjegyzes: 'Az Árnyak között is fontos a jó megjelenés!'},
+  {meret: 33, fejlec: 'Szőrzet színe', fcName:'szorszin', tipus: 'color', megjegyzes: 'A hajat szokták festeni, de milyen színű a fa... famentes papír?'},
   {meret: 50, fejlec: 'Félelem', fcName:'felelem', tipus: 'text', megjegyzes: 'Mindenki fél valamitől...'},
   {meret: 50, fejlec: 'Ösztönző', fcName:'osztonzo', tipus: 'text', megjegyzes: 'De van, ami képes bátorítani!'},
   {meret: 50, fejlec: 'Gyűlölet', fcName:'gyulolet', tipus: 'text', megjegyzes: 'Ne a gyűlölet vezéreljen...'},
-  {meret: 50, fejlec: 'Kedvenc', fcName:'kedvenc', tipus: 'text', megjegyzes: 'Hanem ami boldoggá tesz!'},
-  {meret: 50, fejlec: 'Írtózat', fcName:'irtozat', tipus: 'text', megjegyzes: 'Lehet, mástól kifordul a beled...'},
+  {meret: 50, fejlec: 'Kedvenc', fcName:'kedvenc', tipus: 'text', megjegyzes: 'Hanem az, ami boldoggá tesz!'},
+  {meret: 50, fejlec: 'Írtózat', fcName:'irtozat', tipus: 'text', megjegyzes: 'Lehet, hogy valamitől kifordul a beled...'},
   {meret: 50, fejlec: 'Vonzalom', fcName:'vonzalom', tipus: 'text', megjegyzes: 'De ennek te sem tudsz ellenállni!'},
-  {meret: 100, fejlec: 'Egyéb jellemzők', fcName:'szakall', tipus: 'text', megjegyzes: 'Szakáll, smink, tetkó, meg ami a többi helyre nem fér el :)'},
+  {meret: 100, fejlec: 'Egyéb jellemzők, megjelenés', fcName:'megjelenes', tipus: 'text', megjegyzes: 'Szakáll, smink, tetkó, meg ami a többi helyre nem fér el :)'},
   {meret: 100, fejlec: 'Különleges képességek', fcName:'kepessegek', tipus: 'kepessegek'},
 ];
 
-export const Fajok: Array<any> = [
+export const genekUtil: Array<any> = [
   {
-    fajnev: 'Ember',
+    dns: 'Ember',
     karKockatartalekMin: 3,
     karKockatartalekMax: 3,
-    defHeight: 180,
-    defWieght: 75,
+    defHeight: 175,
+    defWieght: 85,
     defAge: 65,
     defKepessegek: [{kepesseg: '+3 Karmatartalék'}],
   },
   {
-    fajnev: 'Tünde',
+    dns: 'Tünde',
     karFizGyoMax: 1,
     karAsztAllMax: 2,
     defHeight: 180,
@@ -48,7 +48,7 @@ export const Fajok: Array<any> = [
     ],
   },
   {
-    fajnev: 'Törpe',
+    dns: 'Törpe',
     karFizEroMax: 2,
     karFizAll: 1,
     karAsztEroMax: 1,
@@ -61,7 +61,7 @@ export const Fajok: Array<any> = [
     ],
   },
   {
-    fajnev: 'Ork',
+    dns: 'Ork',
     karFizEroMax: 2,
     karFizAllMax: 3,
     karAsztAllMax: -1,
@@ -76,7 +76,7 @@ export const Fajok: Array<any> = [
     ],
   },
   {
-    fajnev: 'Troll',
+    dns: 'Troll',
     karFizEroMax: 4,
     karFizGyoMax: -1,
     karFizAllMax: 4,
@@ -93,7 +93,7 @@ export const Fajok: Array<any> = [
   },
 ];
 
-export const Nemek: Array<any> = [
+export const nemekUtil: Array<any> = [
   'Férfi',
   'Nő',
   'Mindkettő',
@@ -101,7 +101,7 @@ export const Nemek: Array<any> = [
   'Egyéb',
 ];
 
-export const Nyelvek: Array<any> = [
+export const nyelvekUtil: Array<any> = [
   'magyar',
   'angol',
   'francia',
