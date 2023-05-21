@@ -1,31 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { resUtil } from './resources-utility';
 import {ResourcesService } from './resources.service';
+import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
+import { FormControlName } from '@angular/forms';
 
 @Component({
   selector: 'app-resources',
   templateUrl: './resources.component.html',
   styleUrls: ['./resources.component.css']
 })
-export class CharResourcesComponent implements OnInit {
+export class ResourcesComponent implements OnInit {
 
   constructor(
-    private resServ:ResourcesService
-  ) {
-
-  }
+    public resServ:ResourcesService,
+    public lvlContServ: LevelcontrolService,
+  ) { }
 
   getResUtil() {
     return resUtil;
   }
 
-  getForm(): FormGroup {
-    return this.resServ.resourcesForm;
+  getFcPath(fcName: string):any {
+    return this.resServ.resourcesForm.get(fcName);
   }
 
-  getFcValue(fcName: any):any {
-    return this.resServ.resourcesForm.get(fcName)?.value
+  getFcValue(fcName: string):any {
+    return this.resServ.resourcesForm.get(fcName)?.value;
   }
 
   ngOnInit(): void {

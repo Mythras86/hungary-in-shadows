@@ -1,4 +1,4 @@
-export interface Details {
+export interface DetailsModel {
   //szöveges
   teljesnev: string,
   becenev:string,
@@ -7,7 +7,7 @@ export interface Details {
   hajstilus:string,
   //értékválasztó
   nem: string,
-  genek:string,
+  dns:string,
   anyanyelv: string,
   eletkor:string,
   magassag:string,
@@ -17,6 +17,7 @@ export interface Details {
   hajszin:string,
   szorszin:string,
   borszin:string,
+  kedvencszin:string,
   // hosszú szöveg
   felelem:string,
   osztonzo:string,

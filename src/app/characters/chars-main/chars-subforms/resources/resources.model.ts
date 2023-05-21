@@ -1,9 +1,9 @@
-export interface Resources {
-  basekarma: number,
-  gainedkarma: number,
-  karmaonattr: number,
-  karmaonskills: number,
-  karmaonmoney: number,
-  gainedmoney: number,
-  karmaonmagic: number,
+export interface ResourcesModel {
+  baseKarma: number,
+  gainedKarma: number,
+  karmaOnAttr: number,
+  karmaOnSkills: number,
+  karmaOnMoney: number,
+  gainedMoney: number,
+  karmaOnMagic: number,
 }

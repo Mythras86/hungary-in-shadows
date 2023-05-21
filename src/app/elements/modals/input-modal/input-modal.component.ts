@@ -15,34 +15,35 @@ export class InputModalComponent implements OnInit, AModal {
     ) { }
 
     public canBeClosed: boolean = true;
-    closeEvent: Subject<string> = new Subject;
+    closeEvent: Subject<any> = new Subject;
 
+    public fcPath: string = '';
+    public fcName: string = '';
     public tipus: string = '';
     public fejlec: string = '';
     public megjegyzes: string = '';
     public ertek: any;
     public lista: any;
-    public egyseg!: string;
-    public lepes!: number;
+    public egyseg: string = '';
 
     loadData(modalData: any): void {
+      this.fcPath = modalData.fcPath;
+      this.fcName = modalData.fcName;
       this.tipus = modalData.tipus;
       this.fejlec = modalData.fejlec;
       this.megjegyzes = modalData.megjegyzes;
       this.ertek = modalData.ertek;
       this.lista = modalData.lista;
       this.egyseg = modalData.egyseg;
-      this.lepes = modalData.lepes;
     }
 
-    changeValue(step: number):number {
-      const inputValue: any = document.getElementById('modalInput');
-      return inputValue.value = inputValue.value*1 + step;
-    }
-
-    onSave() {
-      const inputValue: any = document.getElementById('modalInput');
-      this.closeEvent.next(inputValue.value);
+    onSave(id:string) {
+      const input:any = document.getElementById(id);
+      if (this.tipus == 'number') {
+        this.closeEvent.next(Math.round(input.value*100)/100);
+        this.closeEvent.complete();
+      }
+      this.closeEvent.next(input.value);
       this.closeEvent.complete();
     }
 

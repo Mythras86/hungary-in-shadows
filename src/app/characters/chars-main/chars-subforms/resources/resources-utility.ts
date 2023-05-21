@@ -1,9 +1,7 @@
 export const resUtil: Array<any> = [
-  {nev: 'Induló Karma', fcName: 'basekarma', maxValue: 250, hide: true},
-  {nev: 'Kapott Karma', fcName: 'gainedkarma', maxValue: 50, hide: true},
-  {nev: 'Tulajdonságok (3karma/1pont)', fcName: 'karmaonattr', lepes:3, maxValue: 45, hide: false},
-  {nev: 'Szakértelmek (2karma/1pont)', fcName: 'karmaonskills', lepes:2, maxValue: 60, hide: false},
-  {nev: 'Alaptőke (1karma/6000cred)', fcName: 'karmaonmoney', maxValue: 150, hide: false},
-  {nev: 'Szerzett tőke',  fcName: 'gainedmoney', hide: true},
-  {nev: 'Mágia pontok (2karma/1pont)', fcName: 'karmaonmagic', lepes:2, maxValue: 65, hide: false},
+  {fejlec: 'Szabad Karma', fcName: 'karmaToSpend', megjegyzes: 'van', egyseg: ' Karma', novelheto: true},
+  {fejlec: 'Szabad Tőke', fcName: 'moneyToSpend', megjegyzes: '1karma/5000cred', karmaKtsg: 1, jutalom: 6000, lepes: 10, egyseg: ' Cred', maxErtek: 150, novelheto: false},
+  {fejlec: 'Tulajdonságok', fcName: 'attrToSpend', megjegyzes: '3karma/1pont', karmaKtsg: 3, jutalom: 1, lepes:5, egyseg: ' Pont', maxErtek: 135, novelheto: false},
+  {fejlec: 'Szakértelmek', fcName: 'skillsToSpend', megjegyzes: '2karma/1pont', karmaKtsg: 2, jutalom: 1, lepes:5, egyseg: ' Pont', maxErtek: 140, novelheto: false},
+  {fejlec: 'Mágia pontok', fcName: 'magicToSpend', megjegyzes: '2karma/1pont', karmaKtsg: 2, jutalom: 1, lepes:5, egyseg: 'Mp', maxErtek: 140, novelheto: false},
 ];

@@ -1,5 +1,5 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/authentication/auth.service';
@@ -8,6 +8,7 @@ import { SpinnerService } from 'src/app/elements/spinner/spinner.service';
 import { CharsMainService } from './chars-main.service';
 import { DetailsService } from './chars-subforms/details/details.service';
 import {ResourcesService } from './chars-subforms/resources/resources.service';
+import { AttributesService } from './chars-subforms/attributes/attributes.service';
 
 @Component({
   selector: 'app-chars-main',
@@ -26,7 +27,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
     public headServ: SectionHeadService,
 
     private detailsServ: DetailsService,
-    private resServ:ResourcesService
+    private resServ:ResourcesService,
+    private attrServ: AttributesService,
     ) {}
 
   mainCharForm!: FormGroup;
@@ -43,6 +45,7 @@ export class CharsMainComponent implements OnInit, OnDestroy {
       creatorId: [this.authServ.getUserId()],
       detailsForm: this.detailsServ.detailsForm,
       resourcesForm: this.resServ.resourcesForm,
+      attributesForm: this.attrServ.attributesForm
     });
   }
 
@@ -64,7 +67,7 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         form.value.hajstilus,
         form.value.megjelenes,
         form.value.nem,
-        form.value.genek,
+        form.value.dns,
         form.value.anyanyelv,
         form.value.eletkor,
         form.value.magassag,
@@ -92,7 +95,7 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         form.value.hajstilus,
         form.value.megjelenes,
         form.value.nem,
-        form.value.genek,
+        form.value.dns,
         form.value.anyanyelv,
         form.value.eletkor,
         form.value.magassag,
@@ -143,7 +146,7 @@ export class CharsMainComponent implements OnInit, OnDestroy {
             hajstilus: w.hajstilus,
             megjelenes: w.megjelenes,
             nem: w.nem,
-            genek: w.genek,
+            dns: w.dns,
             anyanyelv: w.anyanyelv,
             eletkor: w.eletkor,
             magassag: w.magassag,

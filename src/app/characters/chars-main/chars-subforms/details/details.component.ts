@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { detailsUtil, genekUtil, nemekUtil, nyelvekUtil} from './details-utility';
+import { detailsUtil, dnsUtil, nemekUtil, nyelvekUtil} from './details-utility';
 import { DetailsService } from './details.service';
 import { InputModalService } from 'src/app/elements/modals/input-modal/input-modal.service';
 
@@ -9,7 +8,7 @@ import { InputModalService } from 'src/app/elements/modals/input-modal/input-mod
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css']
 })
-export class CharDetailsComponent implements OnInit {
+export class DetailsComponent implements OnInit {
 
   constructor(
     public detailsServ: DetailsService,
@@ -24,58 +23,53 @@ export class CharDetailsComponent implements OnInit {
     return this.detailsServ.detailsForm.get(fcName)?.value;
   }
 
-  getForm(): FormGroup {
-    return this.detailsServ.detailsForm;
-  }
-
   getFcPath(fcName: string):any {
-    let fc = this.detailsServ.detailsForm.get(fcName);
+    const fc = this.detailsServ.detailsForm.get(fcName);
     return fc;
   }
 
   getDefault(fcName: string):any {
-    const valasztottFaj: string = this.detailsServ.detailsForm.get('genek')?.value
+    const valasztottFaj: string = this.detailsServ.detailsForm.get('dns')?.value;
     if (valasztottFaj !== '') {
       if (fcName == 'eletkor') {
-        const defAge = genekUtil.filter(x=>x.genek = valasztottFaj).map(x=>x.defAge)[0];
-        console.log(defAge)
+        const defAge = dnsUtil.filter(x=>x.dns == valasztottFaj).map(x=>x.defAge)[0];
         return defAge;
       }
       if (fcName == 'magassag') {
-        const defHeight = genekUtil.filter(x=>x.genek = valasztottFaj).map(x=>x.defHeight)[0];
+        const defHeight = dnsUtil.filter(x=>x.dns == valasztottFaj).map(x=>x.defHeight)[0];
         return defHeight;
       }
       if (fcName == 'testsuly') {
-        const defWieght = genekUtil.filter(x=>x.genek = valasztottFaj).map(x=>x.defWieght)[0];
+        const defWieght = dnsUtil.filter(x=>x.dns == valasztottFaj).map(x=>x.defWieght)[0];
         return defWieght;
       }
       if (fcName == 'kepessegek') {
-        const kepessegek = genekUtil.filter(x=>x.genek = valasztottFaj).map(x=>x.defKepessegek)[0];
+        const kepessegek: Array<any> = dnsUtil.filter(x=>x.dns == valasztottFaj).map(x=>x.defKepessegek)[0];
         return kepessegek;
       }
     }
-    return this.detailsServ.detailsForm.get(fcName)?.value;
+    return null;
   }
 
   getList(listaNev:string):Array<any> {
-    if (listaNev == 'genekLista') {
-      const genekLista = genekUtil.map(x => x.dns);
+    if (listaNev == 'dns') {
+      const genekLista = dnsUtil.map(x => x.dns);
       return genekLista;
     }
-    if (listaNev == 'nemLista') {
+    if (listaNev == 'nem') {
       return nemekUtil.map(x => x);
     }
-    if (listaNev == 'anyanyelvLista') {
+    if (listaNev == 'anyanyelv') {
       return nyelvekUtil.map(x => x);
     }
     return [];
   }
 
   hideButton(fcName: string):boolean {
-    if (fcName !== 'genek'
+    if (fcName !== 'dns'
     && fcName !== 'nem'
-    && (this.getDefault('nem') == ''
-    || this.getDefault('genek') == '') ) {
+    && (this.getValue('nem') == ''
+    || this.getValue('dns') == '') ) {
       return false
     }
     return true;

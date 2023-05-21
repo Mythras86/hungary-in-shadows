@@ -1,11 +1,32 @@
-<div class="pageCont" [formGroup]="getForm()" *ngIf="getForm()">
+<div class="pageCont" [formGroup]="resServ.resourcesForm" *ngIf="resServ.resourcesForm">
 
-  <div class="sectionContV" *ngFor='let res of getResUtil()'>
-    <div class="nrd w70">
-      {{res.nev}}
+  <div class="itemCont w100" *ngFor='let res of getResUtil()'>
+    <div class="ngrn w40 text1">
+      {{res.fejlec}}
     </div>
-    <input class="w33" [formControlName]='res.fcName' *ngIf="res.hide==true" type="number" readonly
-    [value]="getFcValue(res.fcName)">
+    <div *ngIf="res.karmaKtsg" class="karmaCost text1 w10">
+      {{res.karmaKtsg}}
+    </div>
+    <div *ngIf="!res.karmaKtsg" class="karmaCost text1 w10">
+      0
+    </div>
+
+    <button [disabled]="res.novelheto" class="nyllw edit w10" type="button" (click)="lvlContServ.sendData(
+    res.fejlec,
+    res.megjegyzes,
+    getFcPath(res.fcName),
+    res.jutalom,
+    res.lepes,
+    res.karmaKtsg,
+    getFcPath('karmaToSpend'),
+    getFcValue('karmaToSpend'),
+    res.maxErtek
+    )">&#9998;</button>
+
+    <div class="w40 grayCell text1">
+      {{getFcValue(res.fcName)}} {{res.egyseg}}
+    </div>
+
   </div>
 
 </div>

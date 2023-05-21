@@ -6,12 +6,6 @@
   width: 90%;
 }
 
-input {
-  display: block;
-  height: 1.5rem;
-  text-align: center;
-}
-
 span {
   display: flex;
   flex-flow: row wrap;
@@ -29,6 +23,15 @@ span {
   padding: 1rem;
 }
 
-.buttonCont {
-  padding: 1rem;
+.buttonHflex {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.display {
+  text-align: center;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

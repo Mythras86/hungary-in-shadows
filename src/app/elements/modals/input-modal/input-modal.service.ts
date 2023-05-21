@@ -12,25 +12,27 @@ export class InputModalService {
   ) { }
 
   sendData(
-    fcName:string,
-    tipus:string,
-    fejlec:string,
-    megjegyzes:string,
+    fcPath: string,
+    fcName: string,
+    tipus: string,
+    fejlec: string,
+    megjegyzes:any,
     ertek: any,
     lista: any,
     egyseg: string,
-    lepes: number
     ) {
     this.modalServ.openModal(InputModalComponent, {
+      fcPath: fcPath,
+      fcName: fcName,
       tipus: tipus,
       fejlec: fejlec,
       megjegyzes: megjegyzes,
       ertek: ertek,
       lista: lista,
       egyseg: egyseg,
-      lepes: lepes
+
     }).subscribe(
-      w => this.updateData(fcName, w)
+      w => this.updateData(fcPath, w)
     );
   }
 

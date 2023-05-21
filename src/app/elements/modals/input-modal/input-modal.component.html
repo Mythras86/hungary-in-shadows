@@ -2,12 +2,14 @@
   <span>
     <div class="nrng text fejlec w80">{{fejlec}}</div>
     <button class="nrd text w20" type="button" (click)="onClose()">Vissza</button>
-    <div class="nbl text megjegyzes w100">{{megjegyzes}}</div>
+    <span *ngFor="let item of megjegyzes; first as isFirst">
+      <div *ngIf="item !== null" class="ntl text megjegyzes w100">{{item}}</div>
+    </span>
   </span>
 
   <!-- text input -->
   <span *ngIf="tipus == 'text'">
-    <input class="grayCell text w100" id="modalInput" type="text" [value]="ertek">
+    <input class="grayCell text w100" [id]="fcName" type="text" [value]="ertek">
   </span>
 
   <!-- color input -->
@@ -15,7 +17,7 @@
     <input
     list="presetcolors"
     class="grayCell text w50"
-    id="modalInput"
+    [id]="fcName"
     type="color"
     [value]="ertek">
     <datalist id="presetcolors">
@@ -28,27 +30,32 @@
     </datalist>
   </span>
 
-  <!-- number input -->
+  <!-- normal number input -->
   <span *ngIf="tipus == 'number'">
-    <button class="nrd w15" (click)="changeValue(-lepes)" type="button">-{{lepes}}</button>
-    <button class="nrd w15" (click)="changeValue(-1)" type="button">-1</button>
-    <input class="grayCell text w40" readonly id="modalInput" type="number" [value]="ertek">
-    <button class="ngrn w15" (click)="changeValue(+1)" type="button">+1</button>
-    <button class="ngrn w15" (click)="changeValue(+lepes)" type="button">+{{lepes}}</button>
-    </span>
+    <input class="grayCell text w60" [id]="fcName" type="number" [value]="ertek">
+  </span>
 
-    <!-- list input -->
-    <span *ngIf='tipus == "select"'>
-      <select class="grayCell text w50" id="modalInput">
-        <option selected [value]=ertek>{{ertek}}</option>
-        <option *ngFor="let listitem of lista" [value]=listitem>{{listitem}}</option>
-      </select>
-    </span>
+
+  <!-- list input -->
+  <span *ngIf='tipus == "select"'>
+    <select class="grayCell text w50" [id]="fcName">
+      <option selected [value]="ertek">{{ertek}}</option>
+      <option *ngFor="let listitem of lista" [value]=listitem>{{listitem}}</option>
+    </select>
+  </span>
+
+  <!-- input field with list -->
+
+  <span *ngIf="tipus == 'inpselect'">
+    <input class="grayCell text w50" type="text" [id]="fcName" list="lista" [value]="ertek"/>
+    <datalist id="lista">
+      <option *ngFor="let listitem of lista" [value]=listitem>{{listitem}}</option>
+    </datalist>
+  </span>
 
     <!-- save button -->
 
-    <span class="buttonCont">
-      <button class="ngrn text w20" type="button" (click)="onSave()">Mentés</button>
-    </span>
-
-  </div>
+  <span class="buttonCont">
+    <button class="ngrn text w20" type="button" (click)="onSave(fcName)">Mentés</button>
+  </span>
+</div>

@@ -1,6 +1,6 @@
 <div class="buttonCont">
-  <button class="ngrn text" type="submit" >Karakter mentése</button>
-  <button class="nyllw text" type="button" (click)="backToList()">Vissza</button>
+  <button class="ngrn text1" type="submit" >Karakter mentése</button>
+  <button class="nyllw text1" type="button" (click)="backToList()">Vissza</button>
 </div>
 
 <form *ngIf="mainCharForm" [formGroup]="mainCharForm" (ngSubmit)="createNewChar()">
@@ -16,5 +16,11 @@
   [headText]="'Erőforrások'"
   ></app-section-head>
   <app-resources [hidden]="this.headServ.showMeSatus !== 'resources'"></app-resources>
+
+  <app-section-head
+  [subForm]="'attributes'"
+  [headText]="'Tulajdonságok'"
+  ></app-section-head>
+  <app-attributes [hidden]="this.headServ.showMeSatus !== 'attributes'"></app-attributes>
 
 </form>

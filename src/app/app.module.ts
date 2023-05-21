@@ -12,19 +12,15 @@ import { CharsListComponent } from './characters/chars-list/chars-list.component
 import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { AuthInterceptor } from './authentication/auth-interceptor';
-import { AuthService } from './authentication/auth.service';
 import { SpinnerComponent } from './elements/spinner/spinner.component';
 import { CharsMainComponent } from './characters/chars-main/chars-main.component';
-import { CharsMainService } from './characters/chars-main/chars-main.service';
-import { SpinnerService } from './elements/spinner/spinner.service';
-import { CharDetailsComponent } from './characters/chars-main/chars-subforms/details/details.component';
-import { CharResourcesComponent } from './characters/chars-main/chars-subforms/resources/resources.component';
+import { DetailsComponent } from './characters/chars-main/chars-subforms/details/details.component';
+import { ResourcesComponent } from './characters/chars-main/chars-subforms/resources/resources.component';
 import { SectionHeadComponent } from './elements/section-head/section-head.component';
-import { SectionHeadService } from './elements/section-head/section-head.service';
 import { ModalWrapperComponent } from './elements/modals/modal-wrapper.component';
-import { ModalService } from './elements/modals/modal.service';
+import { AttributesComponent } from './characters/chars-main/chars-subforms//attributes/attributes.component';
+import { LevelcontrolComponent } from './elements/modals/levelcontrol//levelcontrol.component';
 import { InputModalComponent } from './elements/modals/input-modal/input-modal.component';
-import { InputModalService } from './elements/modals/input-modal/input-modal.service';
 
 @NgModule({
   declarations: [
@@ -34,16 +30,18 @@ import { InputModalService } from './elements/modals/input-modal/input-modal.ser
     HeaderComponent,
     FooterComponent,
     SpinnerComponent,
+    SectionHeadComponent,
+
     ModalWrapperComponent,
     InputModalComponent,
+    LevelcontrolComponent,
 
     MainComponent,
     CharsListComponent,
     CharsMainComponent,
-    CharDetailsComponent,
-    CharResourcesComponent,
-    SectionHeadComponent,
-
+    DetailsComponent,
+    ResourcesComponent,
+    AttributesComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,14 +52,8 @@ import { InputModalService } from './elements/modals/input-modal/input-modal.ser
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    AuthService,
-    CharsMainService,
-    SpinnerService,
-    SectionHeadService,
-    ModalService,
-    InputModalService,
   ],
 
   bootstrap: [AppComponent]
-})
+, exports: [AttributesComponent]})
 export class AppModule { }

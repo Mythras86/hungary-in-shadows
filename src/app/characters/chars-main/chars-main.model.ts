@@ -12,7 +12,7 @@ export interface CharModel {
   hajstilus:string,
   megjelenes:string,
   nem: string,
-  genek:string,
+  dns:string,
   anyanyelv: string,
   eletkor:number,
   magassag:number,

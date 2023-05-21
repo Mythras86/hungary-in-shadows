@@ -13,7 +13,8 @@ ul {
 }
 
 a {
-  padding: 0.5rem;
+  display: block;
+  text-align: center;
 }
 
 li {
@@ -45,6 +46,5 @@ li :hover {
   display: block;
   position: relative;
   text-align: center;
-  font-size: 1.5rem;
   padding: 0.8rem;
 }

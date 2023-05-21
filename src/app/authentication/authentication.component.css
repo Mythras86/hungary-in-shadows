@@ -1,10 +1,16 @@
-.authCont {
-  max-width: 50%;
-  margin: 1rem auto;
+.text1 {
+  justify-content: center;
+  text-align: center;
 }
 
-input, label {
-  display: block;
-  width: 100%;
-  text-align: center;
+.text1 {
+  margin-bottom: 1rem;
+}
+
+.itemCont {
+  border: none;
+}
+
+.buttonCont {
+  margin: 1rem 0;
 }

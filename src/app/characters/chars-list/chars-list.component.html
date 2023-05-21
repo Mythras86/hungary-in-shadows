@@ -1,7 +1,7 @@
 <div class="pageCont">
 
   <div class="buttonCont">
-    <button class="ngrn" (click)="onNewChar()" *ngIf="userIsAuthenticated">Új Karakter</button>
+    <button class="ngrn text1" (click)="onNewChar()" *ngIf="userIsAuthenticated">Új Karakter</button>
   </div>
 </div>
 
@@ -10,7 +10,7 @@
   <div class="sectionContV" *ngFor="let char of charsListServ.charsList">
     <div class="nprpl">User: {{char.creatorName}}</div>
     <div class="nbl">Név: {{char.teljesnev}}</div>
-    <div class="ngrn">Kaszt: {{char.genek}}</div>
+    <div class="ngrn">Kaszt: {{char.dns}}</div>
     <div class="buttonCont" *ngIf="userIsAuthenticated && userId === char.creatorId">
       <button class="nyllw" type="button" (click)="onUpdateChar(char._id)">Módosítás</button>
       <button class="nrd" (click)="onDeleteChar(char._id)">Törlés</button>

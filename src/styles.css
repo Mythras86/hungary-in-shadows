@@ -3,13 +3,18 @@
 html {background-color: gray}
 
 body {
-  background-color: white;
+  background-color: gray;
   width: 100%;
 }
 
 input, label {
   border: none;
   width: 100%;
+}
+
+h3 {
+  margin: 0.4rem auto;
+  justify-content: center;
 }
 
 a {
@@ -70,7 +75,25 @@ ul, li {
 .grayCell {
   color: black;
   background-color: lightgray;
-  border: 0.1rem solid black;
+  box-shadow: 2px 2px 6px black inset;
+}
+
+.karmaCost {
+  color: white;
+  text-shadow: 0 0 3px rgb(249, 59, 233), 0 0 5px lightpink;
+  background-color: purple;
+  box-shadow: 2px 2px 6px lightpink inset;
+  padding-right: 0.2rem;
+  text-align: center;
+}
+
+.moneyCost {
+  color: white;
+  text-shadow: 0 0 3px rgb(255, 197, 81), 0 0 5px lightgoldenrodyellow;
+  background-color: orange;
+  box-shadow: 2px 2px 6px lightgoldenrodyellow inset;
+  padding-right: 1rem;
+  text-align: center;
 }
 
 .w10 {
@@ -87,6 +110,11 @@ ul, li {
   flex: 1 1 0;
   max-width: 20%;
   min-width: 20%;
+}
+.w30 {
+  flex: 1 1 0;
+  max-width: 30%;
+  min-width: 30%;
 }
 .w33 {
   flex: 1 1 0;
@@ -118,22 +146,37 @@ ul, li {
   max-width: 80%;
   min-width: 80%;
 }
+.w90 {
+  flex: 1 1 0;
+  max-width: 90%;
+  min-width: 90%;
+}
 .w100 {
   flex: 1 1 0;
   max-width: 100%;
   min-width: 100%;
 }
 
-.text {
-  padding-top: 0.3rem;
-  padding-bottom: 0.1rem;
-  padding-left: 0.2rem;
-  padding-right: 0.2rem;
-  min-height: 1.7rem;
+.text1 {
+  font-size: 1.1rem;
+  padding: 0.3rem 0.3rem;
+  display: flex;
+  align-items: center;
 }
 
 .pageCont {
   margin: 0.5rem;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  justify-content: space-evenly;
+}
+
+.itemCont {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  justify-content: space-evenly;
 }
 
 .buttonCont {
@@ -142,14 +185,11 @@ ul, li {
   text-align: center;
 }
 
-button {
-  min-height: 1.2rem;
-  padding: 0.1rem;
-}
-
 button:disabled {
-  background-color: gray;
-  text-decoration: 1px line-through black;
+  background-color: lightgray;
+  color: gray;
+  text-shadow: none;
+  box-shadow: none;
 }
 
 [hidden] { display: none !important; }

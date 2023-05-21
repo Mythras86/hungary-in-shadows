@@ -1,0 +1,47 @@
+
+<div class="modalContent">
+
+  <span>
+    <div class="nrng text fejlec w80">{{fejlec}}</div>
+    <button class="nrd text w20" type="button" (click)="onClose()">Vissza</button>
+    <div class="ntl text megjegyzes w100">{{megjegyzes}}</div>
+  </span>
+
+  <!-- level number input -->
+  <span>
+    <div class="w20 buttonHflex">
+      <button class="w100 ngrn text" [disabled]="buttonDisInc(maxErtek, 1)"
+      (click)="changeValue(1)" type="button">
+        +{{lepes/lepes*jutalom}}
+      </button>
+
+      <button class="w100 ngrn text" [disabled]="buttonDisInc(maxErtek, lepes)"
+      (click)="changeValue(lepes)" type="button">
+        +{{lepes*jutalom}}
+      </button>
+    </div>
+
+    <div class="nprpl text w60 display">{{getValue(valtErtekUtv) + ertekValtozas*jutalom}}</div>
+
+    <div class="w20 buttonHflex">
+      <button class="w100 nrd text" [disabled]="buttonDisDec(1)"
+      (click)="changeValue(-1)" type="button">
+        -{{lepes/lepes*jutalom}}
+      </button>
+
+      <button class="w100 nrd text" [disabled]="buttonDisDec(lepes)"
+      (click)="changeValue(-lepes)" type="button">
+        -{{lepes*jutalom}}
+      </button>
+    </div>
+
+    <div class="grayCell text w40">{{getValue(ellenErtekUtv) - ertekValtozas*ktsg}}</div>
+    <div class="nrng w60 text">{{ertekValtozas}} / {{maxErtek}}</div>
+  </span>
+
+  <!-- save button -->
+
+  <span class="buttonCont">
+    <button class="ngrn text w20" type="button" (click)="onSave()">Mentés</button>
+  </span>
+</div>

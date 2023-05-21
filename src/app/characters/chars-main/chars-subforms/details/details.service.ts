@@ -15,31 +15,32 @@ export class DetailsService {
   createDetails(): FormGroup {
     const details = {
       // szöveges
-        teljesnev: ['', Validators.required],
-        becenev: ['', Validators.required],
-        alnev: ['', Validators.required],
-        testalkat: ['', Validators.required],
-        hajstilus: ['', Validators.required],
+        teljesnev: ['Farkas Krisztián', Validators.required],
+        becenev: ['Mythras', Validators.required],
+        alnev: ['Hypo', Validators.required],
+        testalkat: ['Szikár', Validators.required],
+        hajstilus: ['Vállig érő', Validators.required],
         // értékválasztó
-        nem: ['', Validators.required],
-        genek: ['', Validators.required],
-        anyanyelv: ['', Validators.required],
-        eletkor:['0', Validators.required],
-        magassag: ['0', Validators.required],
-        testsuly: ['0', Validators.required],
+        nem: ['Férfi', Validators.required],
+        dns: ['Tünde', Validators.required],
+        anyanyelv: ['Magyar', Validators.required],
+        eletkor:[36, Validators.required],
+        magassag: [183, Validators.required],
+        testsuly: [80, Validators.required],
         // szín
         szemszin: ['#503335', Validators.required],
         hajszin: ['#503335', Validators.required],
         szorszin: ['#503335', Validators.required],
         borszin: ['#ecbcb4', Validators.required],
+        kedvencszin: ['#00fbff', Validators.required],
         // hosszú szöveg
-        felelem: ['', Validators.required],
-        osztonzo: ['', Validators.required],
-        gyulolet: ['', Validators.required],
-        kedvenc: ['', Validators.required],
-        irtozat: ['', Validators.required],
-        vonzalom: ['', Validators.required],
-        megjelenes: ['', Validators.required],
+        felelem: ['Van', Validators.required],
+        osztonzo: ['Van', Validators.required],
+        gyulolet: ['Van', Validators.required],
+        kedvenc: ['Van', Validators.required],
+        irtozat: ['Van', Validators.required],
+        vonzalom: ['Van', Validators.required],
+        megjelenes: ['Van', Validators.required],
       };
       return this.detailsForm = this.fb.group(details);
   }
