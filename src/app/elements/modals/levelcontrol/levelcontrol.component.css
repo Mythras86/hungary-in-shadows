@@ -4,28 +4,11 @@
 
 .modalContent {
   width: 90%;
-}
-
-span {
-  display: flex;
-  flex-flow: row wrap;
   background-color: black;
-  width: 100%;
 }
 
-.fejlec {
-  text-align: center;
-}
-
-.megjegyzes {
-  flex: 1;
-  text-align: left;
-  padding: 1rem;
-}
-
-.buttonHflex {
-  display: flex;
-  flex-flow: column nowrap;
+.fejlec, button {
+  justify-content: center;
 }
 
 .display {
@@ -34,4 +17,8 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.buttonCont {
+  padding-top: 1rem;
 }

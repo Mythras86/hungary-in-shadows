@@ -3,32 +3,18 @@
 }
 
 .modalContent {
+  background-color: black;
   width: 90%;
 }
 
+.fejlec, button {
+  justify-content: center;
+}
+
 input {
-  display: block;
-  height: 1.5rem;
   text-align: center;
 }
 
-span {
-  display: flex;
-  flex-flow: row wrap;
-  background-color: black;
-  width: 100%;
-}
-
-.fejlec {
-  text-align: center;
-}
-
-.megjegyzes {
-  flex: 1;
-  text-align: left;
-  padding: 1rem;
-}
-
-.buttonCont {
-  padding: 1rem;
+.buttonCont{
+  padding-top: 1rem;
 }

@@ -1,20 +1,10 @@
 <div class="pageCont" [formGroup]="detailsServ.detailsForm" *ngIf="detailsServ.detailsForm">
 
-  <div class="w{{item.meret}} itemCont" *ngFor="let item of getDetailsUtil(); first as isFirst">
-    <span class="itemCont" *ngIf="item.tipus !== 'kepessegek'">
-      <div class="w100 ngrn text1">{{item.fejlec}}</div>
+  <div class="{{item.meret}} itemCont" *ngFor="let item of getDetailsUtil(); first as isFirst">
+    <div class="itemCont w100" *ngIf="item.tipus !== 'kepessegek'">
+      <div class="w80 ngrn text1">{{item.fejlec}}</div>
 
-      <!-- input -->
-      <div class="grayCell text1" *ngIf="item.tipus !== 'color'">
-        {{getValue(item.fcName)}} {{item.egyseg}}
-      </div>
-
-      <!-- color input -->
-      <div class="grayCell text1" *ngIf="item.tipus == 'color'" [style.backgroundColor]="getValue(item.fcName)">
-        {{getValue(item.fcName)}}
-      </div>
-
-      <button *ngIf="hideButton(item.fcName)" class="nyllw edit" type="button" (click)="inputModalServ.sendData(
+      <button *ngIf="hideButton(item.fcName)" class="nyllw w20 edit" type="button" (click)="inputModalServ.sendData(
         getFcPath(item.fcName),
         item.fcName,
         item.tipus,
@@ -24,14 +14,24 @@
         getList(item.fcName),
         item.egyseg
       )">&#9998;</button>
-    </span>
+    </div>
 
-    <span *ngIf="item.tipus == 'kepessegek'">
-      <div class="ngrn text1">{{item.fejlec}}</div>
-      <div  class="grayCell text1" *ngFor="let item of getDefault('kepessegek')">
+      <!-- input -->
+      <div class="grayCell w100 text1" *ngIf="item.tipus !== 'color'">
+        {{getValue(item.fcName)}} {{item.egyseg}}
+      </div>
+
+      <!-- color input -->
+      <div class="grayCell w100 text1" *ngIf="item.tipus == 'color'" [style.backgroundColor]="getValue(item.fcName)">
+        {{getValue(item.fcName)}}
+      </div>
+
+    <div class="itemCont w100" *ngIf="item.tipus == 'kepessegek'">
+      <div class="ngrn text1 w100">{{item.fejlec}}</div>
+      <div class="grayCell w100 text1" *ngFor="let item of getDefault('kepessegek')">
         {{item}}
       </div>
-    </span>
+    </div>
   </div>
 
 </div>

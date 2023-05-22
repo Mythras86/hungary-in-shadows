@@ -7,9 +7,10 @@ body {
   width: 100%;
 }
 
-input, label {
+input, label, datalist, option, select {
   border: none;
   width: 100%;
+  min-height: 1.2rem;
 }
 
 h3 {
@@ -111,6 +112,11 @@ ul, li {
   max-width: 20%;
   min-width: 20%;
 }
+.w25 {
+  flex: 1 1 0;
+  max-width: 25%;
+  min-width: 25%;
+}
 .w30 {
   flex: 1 1 0;
   max-width: 30%;
@@ -159,7 +165,7 @@ ul, li {
 
 .text1 {
   font-size: 1.1rem;
-  padding: 0.3rem 0.3rem;
+  padding: 0.4rem 0.3rem 0.3rem 0.4rem;
   display: flex;
   align-items: center;
 }

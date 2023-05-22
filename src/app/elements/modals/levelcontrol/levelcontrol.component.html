@@ -1,47 +1,39 @@
+<div class="modalContent itemCont">
 
-<div class="modalContent">
-
-  <span>
-    <div class="nrng text fejlec w80">{{fejlec}}</div>
-    <button class="nrd text w20" type="button" (click)="onClose()">Vissza</button>
-    <div class="ntl text megjegyzes w100">{{megjegyzes}}</div>
-  </span>
+  <div class="nrng text1 fejlec w80">{{fejlec}}</div>
+  <button class="nrd text1 w20" type="button" (click)="onClose()">Vissza</button>
+  <div class="ntl text1 w100">{{megjegyzes}}</div>
+  <div class="ntl text1 w100">{{ktsg}} Karma / {{jutalom}} {{egyseg}}</div>
 
   <!-- level number input -->
-  <span>
-    <div class="w20 buttonHflex">
-      <button class="w100 ngrn text" [disabled]="buttonDisInc(maxErtek, 1)"
-      (click)="changeValue(1)" type="button">
-        +{{lepes/lepes*jutalom}}
-      </button>
+  <button class="w50 ngrn text1" [disabled]="buttonDisInc(maxErtek, 1)"
+  (click)="changeValue(1)" type="button">
+    +{{lepes/lepes*jutalom}} {{egyseg}}
+  </button>
 
-      <button class="w100 ngrn text" [disabled]="buttonDisInc(maxErtek, lepes)"
-      (click)="changeValue(lepes)" type="button">
-        +{{lepes*jutalom}}
-      </button>
-    </div>
+  <button class="w50 ngrn text1" [disabled]="buttonDisInc(maxErtek, lepes)"
+  (click)="changeValue(lepes)" type="button">
+    +{{lepes*jutalom}} {{egyseg}}
+  </button>
 
-    <div class="nprpl text w60 display">{{getValue(valtErtekUtv) + ertekValtozas*jutalom}}</div>
+  <div class="nprpl text1 w100 display">{{getValue(valtErtekUtv) + ertekValtozas*jutalom}} {{egyseg}}</div>
 
-    <div class="w20 buttonHflex">
-      <button class="w100 nrd text" [disabled]="buttonDisDec(1)"
-      (click)="changeValue(-1)" type="button">
-        -{{lepes/lepes*jutalom}}
-      </button>
+  <button class="w50 nrd text1" [disabled]="buttonDisDec(1)"
+  (click)="changeValue(-1)" type="button">
+    -{{lepes/lepes*jutalom}} {{egyseg}}
+  </button>
 
-      <button class="w100 nrd text" [disabled]="buttonDisDec(lepes)"
-      (click)="changeValue(-lepes)" type="button">
-        -{{lepes*jutalom}}
-      </button>
-    </div>
+  <button class="w50 nrd text1" [disabled]="buttonDisDec(lepes)"
+  (click)="changeValue(-lepes)" type="button">
+    -{{lepes*jutalom}} {{egyseg}}
+  </button>
 
-    <div class="grayCell text w40">{{getValue(ellenErtekUtv) - ertekValtozas*ktsg}}</div>
-    <div class="nrng w60 text">{{ertekValtozas}} / {{maxErtek}}</div>
-  </span>
+  <div class="grayCell text1 w50">{{getValue(ellenErtekUtv) - ertekValtozas*ktsg}}</div>
+  <div class="nrng w50 text1">{{ertekValtozas}} / {{maxErtek}}</div>
 
   <!-- save button -->
 
-  <span class="buttonCont">
-    <button class="ngrn text w20" type="button" (click)="onSave()">Mentés</button>
-  </span>
+  <div class="buttonCont w100">
+    <button class="ngrn text1" type="button" (click)="onSave()">Mentés</button>
+  </div>
 </div>

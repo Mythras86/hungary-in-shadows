@@ -20,6 +20,7 @@ export class LevelcontrolComponent {
   public valtErtekUtv: string = '';
   public jutalom: number = 0;
   public lepes: number = 0;
+  public egyseg: string = '';
   public ktsg: number = 0;
   public ellenErtekUtv: string = '';
   public maxErtek: number = 0;
@@ -33,6 +34,7 @@ export class LevelcontrolComponent {
     this.valtErtekUtv = modalData.valtErtekUtv;
     this.jutalom = modalData.jutalom;
     this.lepes = modalData.lepes;
+    this.egyseg = modalData.egyseg;
     this.ktsg = modalData.ktsg;
     this.ellenErtekUtv = modalData.ellenErtekUtv;
     this.maxErtek = modalData.maxErtek;
