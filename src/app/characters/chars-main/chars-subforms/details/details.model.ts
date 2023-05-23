@@ -1,3 +1,5 @@
+import { CharModel } from "../../chars-main.model";
+
 export interface DetailsModel {
   //szöveges
   teljesnev: string,
@@ -9,9 +11,9 @@ export interface DetailsModel {
   nem: string,
   dns:string,
   anyanyelv: string,
-  eletkor:string,
-  magassag:string,
-  testsuly:string,
+  eletkor:number,
+  magassag:number,
+  testsuly:number,
   //szín
   szemszin:string,
   hajszin:string,

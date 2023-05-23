@@ -1,24 +1,22 @@
 <div class="pageCont">
 
-  <div class="buttonCont">
+  <div class="buttonCont w100">
     <button class="ngrn text1" (click)="onNewChar()" *ngIf="userIsAuthenticated">Új Karakter</button>
   </div>
-</div>
 
-<div class="pageCont">
+  <div class="itemCont w50" *ngFor="let char of charsListServ.charsList">
+    <div class="nprpl w100 text1">User: {{char.creatorName}}</div>
+    <div class="nbl w100 text1">Név: {{char.teljesnev}}</div>
+    <div class="ngrn w100 text1">Kaszt: {{char.dns}}</div>
 
-  <div class="sectionContV" *ngFor="let char of charsListServ.charsList">
-    <div class="nprpl">User: {{char.creatorName}}</div>
-    <div class="nbl">Név: {{char.teljesnev}}</div>
-    <div class="ngrn">Kaszt: {{char.dns}}</div>
-    <div class="buttonCont" *ngIf="userIsAuthenticated && userId === char.creatorId">
-      <button class="nyllw" type="button" (click)="onUpdateChar(char._id)">Módosítás</button>
-      <button class="nrd" (click)="onDeleteChar(char._id)">Törlés</button>
+    <div class="buttonCont w100" *ngIf="userIsAuthenticated && userId === char.creatorId">
+      <button class="nyllw text1 w50" type="button" (click)="onUpdateChar(char._id)">Szerk.</button>
+      <button class="nrd text1 w50" (click)="onDeleteChar(char._id)">Törlés</button>
     </div>
     <div class="buttonCont" *ngIf="!userIsAuthenticated || userId !== char.creatorId">
-      <button class="ngrn" type="button" (click)="onUpdateChar(char._id)">Megtekintés</button>
+      <button class="ngrn text1" type="button" (click)="onUpdateChar(char._id)">Megtekintés</button>
     </div>
+
   </div>
 
 </div>
-

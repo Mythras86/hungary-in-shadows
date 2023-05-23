@@ -21,7 +21,7 @@ export class CharsListComponent implements OnInit, OnDestroy {
   ) {}
 
   userIsAuthenticated = false;
-  userId!: string;
+  userId: string = '';
   private authStatusSub!: Subscription;
   private charSub!: Subscription;
 

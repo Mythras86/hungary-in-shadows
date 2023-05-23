@@ -5,6 +5,7 @@ import { ResourcesService } from '../resources/resources.service';
 import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
 import { DetailsService } from '../details/details.service';
 import { dnsUtil } from '../details/details-utility';
+import { CharsMainService } from '../../chars-main.service';
 
 @Component({
   selector: 'app-attributes',
@@ -18,6 +19,7 @@ export class AttributesComponent implements OnInit {
     public resServ: ResourcesService,
     public lvlContServ: LevelcontrolService,
     public detailsServ: DetailsService,
+    public charServ: CharsMainService
   ) {}
 
   getCsoport (): Array<any> {

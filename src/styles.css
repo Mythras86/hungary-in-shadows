@@ -188,7 +188,11 @@ ul, li {
 .buttonCont {
   display: flex;
   flex-flow: row nowrap;
-  text-align: center;
+}
+
+button {
+  justify-content: center;
+  align-items: center;
 }
 
 button:disabled {

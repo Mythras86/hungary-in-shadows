@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/authentication/auth.service';
@@ -7,7 +7,7 @@ import { SectionHeadService } from 'src/app/elements/section-head/section-head.s
 import { SpinnerService } from 'src/app/elements/spinner/spinner.service';
 import { CharsMainService } from './chars-main.service';
 import { DetailsService } from './chars-subforms/details/details.service';
-import {ResourcesService } from './chars-subforms/resources/resources.service';
+import { ResourcesService } from './chars-subforms/resources/resources.service';
 import { AttributesService } from './chars-subforms/attributes/attributes.service';
 
 @Component({
@@ -18,100 +18,174 @@ import { AttributesService } from './chars-subforms/attributes/attributes.servic
 export class CharsMainComponent implements OnInit, OnDestroy {
 
   constructor (
-    private charServ: CharsMainService,
+    public charServ: CharsMainService,
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     public authServ: AuthService,
     public spinServ: SpinnerService,
     public headServ: SectionHeadService,
-
     private detailsServ: DetailsService,
-    private resServ:ResourcesService,
+    private resServ: ResourcesService,
     private attrServ: AttributesService,
-    ) {}
+  ) {}
 
-  mainCharForm!: FormGroup;
+  mode:string = 'create';
+  _id:string = '';
+
+  userIsAuthenticated = false;
+  userId: string = '';
   private authStatusSub!: Subscription;
 
-  public mode:string = 'create';
-  public _id:string = '';
-
-
-  prepMainForm(): void {
-    this.mainCharForm = this.fb.group({
-     _id: [''],
-      creatorName: [this.authServ.getUserName()],
-      creatorId: [this.authServ.getUserId()],
-      detailsForm: this.detailsServ.detailsForm,
-      resourcesForm: this.resServ.resourcesForm,
-      attributesForm: this.attrServ.attributesForm
-    });
+  getCreatorId():string {
+    return this.charServ.mainCharForm.get('creatorId')?.value;
   }
 
   createNewChar() {
-    var form = this.mainCharForm;
-    if (form.invalid) {
-      return;
-    }
-    this.spinServ.toggleSpinner(true);
-    if (this.mode === 'create') {
-      this.charServ.addOneChar(
-        form.value._id,
-        form.value.creatorName,
-        form.value.creatorId,
-        form.value.teljesnev,
-        form.value.becenev,
-        form.value.alnev,
-        form.value.testalkat,
-        form.value.hajstilus,
-        form.value.megjelenes,
-        form.value.nem,
-        form.value.dns,
-        form.value.anyanyelv,
-        form.value.eletkor,
-        form.value.magassag,
-        form.value.testsuly,
-        form.value.szemszin,
-        form.value.hajszin,
-        form.value.szorszin,
-        form.value.borszin,
-        form.value.felelem,
-        form.value.osztonzo,
-        form.value.gyulolet,
-        form.value.kedvenc,
-        form.value.irtozat,
-        form.value.vonzalom,
-      );
-    } else {
-      this.charServ.updateOneChar(
-        form.value._id,
-        form.value.creatorName,
-        form.value.creatorId,
-        form.value.teljesnev,
-        form.value.becenev,
-        form.value.alnev,
-        form.value.testalkat,
-        form.value.hajstilus,
-        form.value.megjelenes,
-        form.value.nem,
-        form.value.dns,
-        form.value.anyanyelv,
-        form.value.eletkor,
-        form.value.magassag,
-        form.value.testsuly,
-        form.value.szemszin,
-        form.value.hajszin,
-        form.value.szorszin,
-        form.value.borszin,
-        form.value.felelem,
-        form.value.osztonzo,
-        form.value.gyulolet,
-        form.value.kedvenc,
-        form.value.irtozat,
-        form.value.vonzalom,
-      );
-    }
+   var main = this.charServ.mainCharForm;
+   var details = this.detailsServ.detailsForm;
+   var res = this.resServ.resourcesForm;
+   var attrs = this.attrServ.attributesForm;
+   if (main.invalid
+     || details.invalid
+     || res.invalid
+     || attrs.invalid
+     ) {
+     return;
+   }
+   this.spinServ.toggleSpinner(true);
+   if (this.mode === 'create') {
+     this.charServ.addOneChar(
+       main.value._id,
+       main.value.creatorName,
+       main.value.creatorId,
+       //szöveges
+       details.value.teljesnev,
+       details.value.becenev,
+       details.value.alnev,
+       details.value.testalkat,
+       details.value.hajstilus,
+       //értékválasztó
+       details.value.nem,
+       details.value.dns,
+       details.value.anyanyelv,
+       details.value.eletkor,
+       details.value.magassag,
+       details.value.testsuly,
+       //szín
+       details.value.szemszin,
+       details.value.hajszin,
+       details.value.szorszin,
+       details.value.borszin,
+       details.value.kedvencszin,
+       //hosszú szöveg
+       details.value.felelem,
+       details.value.osztonzo,
+       details.value.gyulolet,
+       details.value.kedvenc,
+       details.value.irtozat,
+       details.value.vonzalom,
+       details.value.megjelenes,
+       //erőforrások
+       res.value.karmaToSpend,
+       res.value.moneyToSpend,
+       res.value.attrToSpend,
+       res.value.skillsToSpend,
+       res.value.magicToSpend,
+       //fizikai
+       attrs.value.fizEro,
+       attrs.value.fizEroMod,
+       attrs.value.fizGyo,
+       attrs.value.fizGyoMod,
+       attrs.value.fizUgy,
+       attrs.value.fizUgyMod,
+       attrs.value.fizAll,
+       attrs.value.fizAllMod,
+       //asztrál
+       attrs.value.asztEro,
+       attrs.value.asztEroMod,
+       attrs.value.asztGyo,
+       attrs.value.asztGyoMod,
+       attrs.value.asztUgy,
+       attrs.value.asztUgyMod,
+       attrs.value.asztAll,
+       attrs.value.asztAllMod,
+       //speciális
+       attrs.value.magia,
+       attrs.value.magiaMod,
+       attrs.value.esszencia,
+       attrs.value.esszenciaMod,
+       attrs.value.kockatartalek,
+       attrs.value.kockatartalekMod,
+       attrs.value.kezdemenyezes,
+       attrs.value.kezdemenyezesMod,
+     );
+   } else {
+     this.charServ.updateOneChar(
+       main.value._id,
+       main.value.creatorName,
+       main.value.creatorId,
+       //szöveges
+       details.value.teljesnev,
+       details.value.becenev,
+       details.value.alnev,
+       details.value.testalkat,
+       details.value.hajstilus,
+       //értékválasztó
+       details.value.nem,
+       details.value.dns,
+       details.value.anyanyelv,
+       details.value.eletkor,
+       details.value.magassag,
+       details.value.testsuly,
+       //szín
+       details.value.szemszin,
+       details.value.hajszin,
+       details.value.szorszin,
+       details.value.borszin,
+       details.value.kedvencszin,
+       //hosszú szöveg
+       details.value.felelem,
+       details.value.osztonzo,
+       details.value.gyulolet,
+       details.value.kedvenc,
+       details.value.irtozat,
+       details.value.vonzalom,
+       details.value.megjelenes,
+       //erőforrások
+       res.value.karmaToSpend,
+       res.value.moneyToSpend,
+       res.value.attrToSpend,
+       res.value.skillsToSpend,
+       res.value.magicToSpend,
+       //fizikai
+       attrs.value.fizEro,
+       attrs.value.fizEroMod,
+       attrs.value.fizGyo,
+       attrs.value.fizGyoMod,
+       attrs.value.fizUgy,
+       attrs.value.fizUgyMod,
+       attrs.value.fizAll,
+       attrs.value.fizAllMod,
+       //asztrál
+       attrs.value.asztEro,
+       attrs.value.asztEroMod,
+       attrs.value.asztGyo,
+       attrs.value.asztGyoMod,
+       attrs.value.asztUgy,
+       attrs.value.asztUgyMod,
+       attrs.value.asztAll,
+       attrs.value.asztAllMod,
+       //speciális
+       attrs.value.magia,
+       attrs.value.magiaMod,
+       attrs.value.esszencia,
+       attrs.value.esszenciaMod,
+       attrs.value.kockatartalek,
+       attrs.value.kockatartalekMod,
+       attrs.value.kezdemenyezes,
+       attrs.value.kezdemenyezesMod,
+     )};
     this.router.navigate(["/charslist"]);
   }
 
@@ -121,13 +195,17 @@ export class CharsMainComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.spinServ.toggleSpinner(false);
+    this.userId = this.authServ.getUserId();
+    this.userIsAuthenticated = this.authServ.getIsAuth();
     this.authStatusSub = this.authServ
     .getAuthStatusListener()
-    .subscribe(authStatus => {
+    .subscribe((isAuthenticated: boolean) => {
+      this.userIsAuthenticated = isAuthenticated;
+      this.userId = this.authServ.getUserId();
       this.spinServ.toggleSpinner(true);
     });
     this.spinServ.toggleSpinner(false);
-    this.prepMainForm();
+    this.charServ.createMainForm();
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if(paramMap.has('_id')) {
         this.mode = 'edit';
@@ -135,32 +213,76 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         this.spinServ.toggleSpinner(true);
         this.charServ.getOneChar(this._id).subscribe(w => {
           this.spinServ.toggleSpinner(false);
-          this.mainCharForm = this.fb.group({
+          this.charServ.mainCharForm = this.fb.group({
             _id: w._id,
             creatorName: w.creatorName,
             creatorId: w.creatorId,
+          });
+          this.detailsServ.detailsForm = this.fb.group({
+            //szöveges
             teljesnev: w.teljesnev,
             becenev: w.becenev,
             alnev: w.alnev,
             testalkat: w.testalkat,
             hajstilus: w.hajstilus,
-            megjelenes: w.megjelenes,
+            //értékválasztó
             nem: w.nem,
             dns: w.dns,
             anyanyelv: w.anyanyelv,
             eletkor: w.eletkor,
             magassag: w.magassag,
             testsuly: w.testsuly,
+            //szín
             szemszin: w.szemszin,
             hajszin: w.hajszin,
             szorszin: w.szorszin,
             borszin: w.borszin,
+            kedvencszin: w.kedvencszin,
+            //hosszú szöveg
             felelem: w.felelem,
             osztonzo: w.osztonzo,
             gyulolet: w.gyulolet,
             kedvenc: w.kedvenc,
             irtozat: w.irtozat,
             vonzalom: w.vonzalom,
+            megjelenes: w.megjelenes,
+          });
+          this.resServ.resourcesForm = this.fb.group({
+            //erőforrások
+            karmaToSpend: w.karmaToSpend,
+            moneyToSpend: w.moneyToSpend,
+            attrToSpend: w.attrToSpend,
+            skillsToSpend: w.skillsToSpend,
+            magicToSpend: w.magicToSpend,
+          });
+          this.attrServ.attributesForm = this.fb.group({
+            //fizikai
+            fizEro: w.fizEro,
+            fizEroMod: w.fizEroMod,
+            fizGyo: w.fizGyo,
+            fizGyoMod: w.fizGyoMod,
+            fizUgy: w.fizUgy,
+            fizUgyMod: w.fizUgyMod,
+            fizAll: w.fizAll,
+            fizAllMod: w.fizAllMod,
+            //asztrál
+            asztEro: w.asztEro,
+            asztEroMod: w.asztEroMod,
+            asztGyo: w.asztGyo,
+            asztGyoMod: w.asztGyoMod,
+            asztUgy: w.asztUgy,
+            asztUgyMod: w.asztUgyMod,
+            asztAll: w.asztAll,
+            asztAllMod: w.asztAllMod,
+            //speciális
+            magia: w.magia,
+            magiaMod: w.magiaMod,
+            esszencia: w.esszencia,
+            esszenciaMod: w.esszenciaMod,
+            kockatartalek: w.kockatartalek,
+            kockatartalekMod: w.kockatartalekMod,
+            kezdemenyezes: w.kezdemenyezes,
+            kezdemenyezesMod: w.kezdemenyezesMod,
           });
         });
       } else {

@@ -1,9 +1,10 @@
-<div class="buttonCont">
-  <button class="ngrn text1" type="submit" >Karakter mentése</button>
-  <button class="nyllw text1" type="button" (click)="backToList()">Vissza</button>
-</div>
 
-<form *ngIf="mainCharForm" [formGroup]="mainCharForm" (ngSubmit)="createNewChar()">
+<form *ngIf="charServ.mainCharForm" [formGroup]="charServ.mainCharForm" (ngSubmit)="createNewChar()">
+
+  <div class="buttonCont">
+    <button *ngIf="userIsAuthenticated && userId == getCreatorId()" class="ngrn text1" type="submit">Karakter mentése</button>
+    <button class="nyllw text1" type="button" (click)="backToList()">Vissza</button>
+  </div>
 
   <app-section-head
   [subForm]="'details'"
