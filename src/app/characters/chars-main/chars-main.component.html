@@ -24,4 +24,10 @@
   ></app-section-head>
   <app-attributes [hidden]="this.headServ.showMeSatus !== 'attributes'"></app-attributes>
 
+  <app-section-head
+  [subForm]="'status'"
+  [headText]="'Állapotjelző'"
+  ></app-section-head>
+  <app-status [hidden]="this.headServ.showMeSatus !== 'status'"></app-status>
+
 </form>

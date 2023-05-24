@@ -7,7 +7,7 @@ body {
   width: 100%;
 }
 
-input, label, datalist, option, select {
+input, label {
   border: none;
   width: 100%;
   min-height: 1.2rem;

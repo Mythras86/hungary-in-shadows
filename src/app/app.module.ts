@@ -21,6 +21,7 @@ import { ModalWrapperComponent } from './elements/modals/modal-wrapper.component
 import { AttributesComponent } from './characters/chars-main/chars-subforms//attributes/attributes.component';
 import { LevelcontrolComponent } from './elements/modals/levelcontrol//levelcontrol.component';
 import { InputModalComponent } from './elements/modals/input-modal/input-modal.component';
+import { StatusComponent } from './characters/chars-main/chars-subforms/status/status.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { InputModalComponent } from './elements/modals/input-modal/input-modal.c
     DetailsComponent,
     ResourcesComponent,
     AttributesComponent,
-  ],
+  StatusComponent,],
   imports: [
     BrowserModule,
     CommonModule,

@@ -1,0 +1,14 @@
+.text1 {
+  justify-content: center;
+}
+
+.pusztakez {
+  position: relative;
+}
+
+.dropDown {
+  position: absolute;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}

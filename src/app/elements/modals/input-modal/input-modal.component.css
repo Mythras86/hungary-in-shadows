@@ -5,13 +5,15 @@
 .modalContent {
   background-color: black;
   width: 90%;
+  display: flex;
+  justify-content: center;
 }
 
 .fejlec {
   justify-content: center;
 }
 
-input {
+input, select {
   text-align: center;
 }
 

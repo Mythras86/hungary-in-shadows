@@ -1,0 +1,66 @@
+<div class="pageCont">
+
+  <div class="w66 ntl text1">Asztrális állapot</div>
+  <div class="w33 nyllw text1" (click)="sendStatus('astral', 0)">Gyógyult</div>
+
+  <div *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]"
+  class="w10 text1" [ngClass]="toggleColor('astral', number)"
+  (click)="sendStatus('astral', number)">
+    {{getModosito(number)}}
+  </div>
+
+  <div class="w66 ntl text1">Fizikai állapot</div>
+  <div class="w33 nyllw text1" (click)="sendStatus('body', 0)">Gyógyult</div>
+
+  <div *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]"
+  class="w10 text1" [ngClass]="toggleColor('body', number)"
+  (click)="sendStatus('body', number)">
+    {{getModosito(number)}}
+  </div>
+
+  <div class="w33">
+    <div class="nrng text1">Célszám</div>
+    <div [ngClass]="toggleSpecColor(getMaxMod())" class="text1">+{{getMaxMod()}}</div>
+  </div>
+  <div class="w33">
+    <div class="nrng text1">Kocka</div>
+    <div [ngClass]="toggleSpecColor(getMaxMod())" class="text1">-{{getMaxMod()}}</div>
+  </div>
+  <div class="w33">
+    <div class="ntl text1">Páncélérték</div>
+    <div class="nyllw text1">10</div>
+  </div>
+
+  <div class="w50 pusztakez">
+    <div class="ntl text1">Pusztakéz</div>
+    <div [hidden]="!hideMe" class="nyllw text1" (click)="showMe()">
+      {{akcio}}AP/ {{this.attrServ.getTamadoEro()-1+akcio}} ({{this.attrServ.getTulErtek("fizEro")+sebzesMod(sebzes)}} {{sebzes}})
+    </div>
+    <div [hidden]="hideMe" class="dropDown w100">
+      <div class="nyllw text1 w100" (click)="onSelectMode(1, 'K')">
+        1AP/ {{this.attrServ.getTamadoEro()-1+1}} ({{this.attrServ.getTulErtek("fizEro")+sebzesMod('K')}} 'K')
+      </div>
+      <div class="nyllw text1 w100" (click)="onSelectMode(1, 'K')">
+        3AP/ {{this.attrServ.getTamadoEro()-1+3}} ({{this.attrServ.getTulErtek("fizEro")+sebzesMod('K')}} 'K')
+      </div>
+      <div class="nyllw text1 w100" (click)="onSelectMode(1, 'K')">
+        5AP/ {{this.attrServ.getTamadoEro()-1+5}} ({{this.attrServ.getTulErtek("fizEro")+sebzesMod('K')}} 'K')
+      </div>
+      <div class="nyllw text1 w100" (click)="onSelectMode(1, 'F')">
+        1AP/ {{this.attrServ.getTamadoEro()-1+1}} ({{this.attrServ.getTulErtek("fizEro")+sebzesMod('F')}} 'F')
+      </div>
+      <div class="nyllw text1 w100" (click)="onSelectMode(1, 'F')">
+        3AP/ {{this.attrServ.getTamadoEro()-1+3}} ({{this.attrServ.getTulErtek("fizEro")+sebzesMod('F')}} 'F')
+      </div>
+      <div class="nyllw text1 w100" (click)="onSelectMode(1, 'F')">
+        5AP/ {{this.attrServ.getTamadoEro()-1+5}} ({{this.attrServ.getTulErtek("fizEro")+sebzesMod('K')}} 'F')
+      </div>
+    </div>
+  </div>
+
+  <div class="w50">
+    <div class="ntl text1">Kezdeményezés</div>
+    <div class="nyllw text1">{{attrServ.getKezdKocka()}}*d6 + {{attrServ.getKezdKonst()}}</div>
+  </div>
+
+</div>

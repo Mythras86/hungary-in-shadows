@@ -3,14 +3,10 @@
   text-align: center;
 }
 
-.text1 {
-  margin-bottom: 1rem;
+.itemCont .w100, .itemCont button {
+  margin: 1rem 0;
 }
 
 .itemCont {
   border: none;
-}
-
-.buttonCont {
-  margin: 1rem 0;
 }

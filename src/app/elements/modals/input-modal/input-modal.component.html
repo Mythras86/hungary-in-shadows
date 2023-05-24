@@ -3,8 +3,8 @@
 
   <button class="nrd text1 w20" type="button" (click)="onClose()">Vissza</button>
 
-  <div *ngFor="let item of megjegyzes; first as isFirst">
-    <div *ngIf="item !== null" class="ntl text1 megjegyzes w100">{{item}}</div>
+  <div class="w100 ntl text1" *ngFor="let item of megjegyzes; first as isFirst">
+    {{item}}
   </div>
 
   <!-- text1 input -->
@@ -27,17 +27,17 @@
   </datalist>
 
   <!-- normal number input -->
-  <input *ngIf="tipus == 'number'" class="grayCell text1 w60" [id]="fcName" type="number" [value]="ertek">
+  <input *ngIf="tipus == 'number'" class="grayCell text1 w100" [id]="fcName" type="number" [value]="ertek">
 
   <!-- list input -->
-  <select *ngIf='tipus == "select"' class="grayCell text1 w50" [id]="fcName">
+  <select *ngIf='tipus == "select"' class="grayCell text1 w100" [id]="fcName">
     <option selected [value]="ertek">{{ertek}}</option>
     <option *ngFor="let listitem of lista" [value]=listitem>{{listitem}}</option>
   </select>
 
   <!-- input field with list -->
 
-  <input *ngIf="tipus == 'inpselect'" class="grayCell text1 w50" type="text1" [id]="fcName" list="lista" [value]="ertek"/>
+  <input *ngIf="tipus == 'inpselect'" class="grayCell text1 w100" type="text1" [id]="fcName" list="lista" [value]="ertek"/>
   <datalist *ngIf="tipus == 'inpselect'" id="lista">
     <option *ngFor="let listitem of lista" [value]=listitem>{{listitem}}</option>
   </datalist>

@@ -44,13 +44,13 @@ export class AttributesComponent implements OnInit {
     return this.attrServ.attributesForm.get(fcName)?.value;
   }
 
-  getAttrMax(fcName: string):number {
+  getAttrMax(fcName: string, attrMax: number):number {
     const valasztottDns = this.detailsServ.detailsForm.get('dns')?.value;
     const dnsChange = dnsUtil.filter(x => x.dns == valasztottDns).map(x => x[fcName])[0];
     if (dnsChange !== undefined) {
       return dnsChange;
     }
-    return 6;
+    return attrMax;
   }
 
   ngOnInit(): void {

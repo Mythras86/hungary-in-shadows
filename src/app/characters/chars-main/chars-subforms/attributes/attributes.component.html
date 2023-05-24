@@ -9,7 +9,7 @@
         {{attr.fejlec}}
       </div>
       <div class="nyllw w15 text1 attrNum">
-        {{getValue(attr.fcName)}}/{{getAttrMax(attr.fcName)}}
+        {{getValue(attr.fcName)}}/{{getAttrMax(attr.fcName, attr.max)}}
       </div>
       <div class="nrng w15 text1 attrNum">
         {{getValue(attr.fcName+'Mod')}}
@@ -17,9 +17,8 @@
       <div class="ngrn w20 text1 attrNum">
         {{getValue(attr.fcName) + getValue(attr.fcName+'Mod')}}
       </div>
-      <button [disabled]="attr.novelheto == false
-      || resServ.resourcesForm.get('attrToSpend')?.value <= 0
-      || getValue(attr.fcName) >= getAttrMax(attr.fcName)"
+      <button [disabled]="resServ.resourcesForm.get('attrToSpend')?.value <= 0
+      || getValue(attr.fcName) >= getAttrMax(attr.fcName, attr.max)"
       class="nyllw edit w10" type="button"
       (click)="lvlContServ.sendData(
         attr.fejlec,
@@ -31,7 +30,7 @@
         1,
         getAttrPointsPath(),
         getValue(attr.fcName),
-        getAttrMax(attr.fcName)-1
+        getAttrMax(attr.fcName, attr.max)-1
         )">&#9998;</button>
 
     </div>

@@ -6,21 +6,21 @@
   <div class="ntl text1 w100">{{ktsg}} Karma / {{jutalom}} {{egyseg}}</div>
 
   <!-- level number input -->
+  <div class="nprpl text1 w100 display">{{getValue(valtErtekUtv) + ertekValtozas*jutalom}} {{egyseg}}</div>
+
   <button class="w50 ngrn text1" [disabled]="buttonDisInc(maxErtek, 1)"
   (click)="changeValue(1)" type="button">
-    +{{lepes/lepes*jutalom}} {{egyseg}}
+  +{{lepes/lepes*jutalom}} {{egyseg}}
+</button>
+
+  <button class="w50 nrd text1" [disabled]="buttonDisDec(1)"
+  (click)="changeValue(-1)" type="button">
+    -{{lepes/lepes*jutalom}} {{egyseg}}
   </button>
 
   <button class="w50 ngrn text1" [disabled]="buttonDisInc(maxErtek, lepes)"
   (click)="changeValue(lepes)" type="button">
     +{{lepes*jutalom}} {{egyseg}}
-  </button>
-
-  <div class="nprpl text1 w100 display">{{getValue(valtErtekUtv) + ertekValtozas*jutalom}} {{egyseg}}</div>
-
-  <button class="w50 nrd text1" [disabled]="buttonDisDec(1)"
-  (click)="changeValue(-1)" type="button">
-    -{{lepes/lepes*jutalom}} {{egyseg}}
   </button>
 
   <button class="w50 nrd text1" [disabled]="buttonDisDec(lepes)"
