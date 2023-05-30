@@ -1,7 +1,7 @@
 export interface ResourcesModel {
-  karmaToSpend: number,
-  moneyToSpend: number,
-  attrToSpend: number,
-  skillsToSpend: number,
-  magicToSpend: number,
+  elkolthetoKarma: number,
+  elkolthetoToke: number,
+  elkolthetoTulPont: number,
+  elkolthetoSzakPont: number,
+  elkolthetoMagPont: number,
 }

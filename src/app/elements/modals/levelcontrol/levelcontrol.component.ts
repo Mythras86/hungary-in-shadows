@@ -57,7 +57,7 @@ export class LevelcontrolComponent {
   }
 
   buttonDisInc(maxErtek:number, lepes:number): boolean {
-    if (this.ertekValtozas+lepes*this.ktsg>maxErtek
+    if (this.ertekValtozas*this.ktsg+lepes*this.ktsg>maxErtek
       || this.getValue(this.ellenErtekUtv)-this.ertekValtozas*this.ktsg-lepes*this.ktsg<0
       ) {
       return true;

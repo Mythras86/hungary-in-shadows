@@ -3,10 +3,14 @@
   text-align: center;
 }
 
-.itemCont .w100, .itemCont button {
+.itemCont .w100 {
   margin: 1rem 0;
 }
 
 .itemCont {
   border: none;
+}
+
+.buttonCont {
+  justify-content: center;
 }

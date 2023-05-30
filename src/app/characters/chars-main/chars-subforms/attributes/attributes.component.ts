@@ -37,7 +37,7 @@ export class AttributesComponent implements OnInit {
   }
 
   getAttrPointsPath(): any {
-    return this.resServ.resourcesForm.get('attrToSpend');
+    return this.resServ.resourcesForm.get('elkolthetoTulPont');
   }
 
   getValue(fcName: string):number {

@@ -35,11 +35,11 @@ export interface CharModel {
   vonzalom:string,
   megjelenes:string,
   //erőforrások
-  karmaToSpend: number,
-  moneyToSpend: number,
-  attrToSpend: number,
-  skillsToSpend: number,
-  magicToSpend: number,
+  elkolthetoKarma: number,
+  elkolthetoToke: number,
+  elkolthetoTulPont: number,
+  elkolthetoSzakPont: number,
+  elkolthetoMagPont: number,
   //fizikai
   fizEro: number,
   fizEroMod: number,

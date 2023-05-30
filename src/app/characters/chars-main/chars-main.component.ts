@@ -87,11 +87,11 @@ export class CharsMainComponent implements OnInit, OnDestroy {
        details.value.vonzalom,
        details.value.megjelenes,
        //erőforrások
-       res.value.karmaToSpend,
-       res.value.moneyToSpend,
-       res.value.attrToSpend,
-       res.value.skillsToSpend,
-       res.value.magicToSpend,
+       res.value.elkolthetoKarma,
+       res.value.elkolthetoToke,
+       res.value.elkolthetoTulPont,
+       res.value.elkolthetoSzakPont,
+       res.value.elkolthetoMagPont,
        //fizikai
        attrs.value.fizEro,
        attrs.value.fizEroMod,
@@ -153,11 +153,11 @@ export class CharsMainComponent implements OnInit, OnDestroy {
        details.value.vonzalom,
        details.value.megjelenes,
        //erőforrások
-       res.value.karmaToSpend,
-       res.value.moneyToSpend,
-       res.value.attrToSpend,
-       res.value.skillsToSpend,
-       res.value.magicToSpend,
+       res.value.elkolthetoKarma,
+       res.value.elkolthetoToke,
+       res.value.elkolthetoTulPont,
+       res.value.elkolthetoSzakPont,
+       res.value.elkolthetoMagPont,
        //fizikai
        attrs.value.fizEro,
        attrs.value.fizEroMod,
@@ -249,11 +249,11 @@ export class CharsMainComponent implements OnInit, OnDestroy {
           });
           this.resServ.resourcesForm = this.fb.group({
             //erőforrások
-            karmaToSpend: w.karmaToSpend,
-            moneyToSpend: w.moneyToSpend,
-            attrToSpend: w.attrToSpend,
-            skillsToSpend: w.skillsToSpend,
-            magicToSpend: w.magicToSpend,
+            elkolthetoKarma: w.elkolthetoKarma,
+            elkolthetoToke: w.elkolthetoToke,
+            elkolthetoTulPont: w.elkolthetoTulPont,
+            elkolthetoSzakPont: w.elkolthetoSzakPont,
+            elkolthetoMagPont: w.elkolthetoMagPont,
           });
           this.attrServ.attributesForm = this.fb.group({
             //fizikai

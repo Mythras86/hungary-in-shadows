@@ -33,11 +33,11 @@ const charSchema = mongoose.Schema({
   megjelenes:{ type: String, required: true},
 
   //erőforrások
-  karmaToSpend: { type: Number, required: true},
-  moneyToSpend: { type: Number, required: true},
-  attrToSpend: { type: Number, required: true},
-  skillsToSpend: { type: Number, required: true},
-  magicToSpend: { type: Number, required: true},
+  elkolthetoKarma: { type: Number, required: true},
+  elkolthetoToke: { type: Number, required: true},
+  elkolthetoTulPont: { type: Number, required: true},
+  elkolthetoSzakPont: { type: Number, required: true},
+  elkolthetoMagPont: { type: Number, required: true},
 
   //fizikai
   fizEro: { type: Number, required: true},

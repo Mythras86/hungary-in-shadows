@@ -17,7 +17,7 @@
       <div class="ngrn w20 text1 attrNum">
         {{getValue(attr.fcName) + getValue(attr.fcName+'Mod')}}
       </div>
-      <button [disabled]="resServ.resourcesForm.get('attrToSpend')?.value <= 0
+      <button [disabled]="resServ.resourcesForm.get('elkolthetoTulPont')?.value <= 0
       || getValue(attr.fcName) >= getAttrMax(attr.fcName, attr.max)"
       class="nyllw edit w10" type="button"
       (click)="lvlContServ.sendData(

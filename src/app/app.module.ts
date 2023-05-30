@@ -22,6 +22,8 @@ import { AttributesComponent } from './characters/chars-main/chars-subforms//att
 import { LevelcontrolComponent } from './elements/modals/levelcontrol//levelcontrol.component';
 import { InputModalComponent } from './elements/modals/input-modal/input-modal.component';
 import { StatusComponent } from './characters/chars-main/chars-subforms/status/status.component';
+import { SkillsComponent } from './characters/chars-main/chars-subforms/skills/skills.component';
+import { SelectSkillsComponent } from './elements/modals/select-skills//select-skills.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,7 @@ import { StatusComponent } from './characters/chars-main/chars-subforms/status/s
     DetailsComponent,
     ResourcesComponent,
     AttributesComponent,
-  StatusComponent,],
+  StatusComponent,SkillsComponent,SelectSkillsComponent,],
   imports: [
     BrowserModule,
     CommonModule,
@@ -56,5 +58,5 @@ import { StatusComponent } from './characters/chars-main/chars-subforms/status/s
   ],
 
   bootstrap: [AppComponent]
-, exports: [AttributesComponent]})
+, exports: [AttributesComponent, SkillsComponent]})
 export class AppModule { }

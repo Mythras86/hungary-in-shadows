@@ -1,0 +1,16 @@
+<div class="modalContent itemCont">
+  <div class="nrng text1 fejlec w80">Választható Szakértelmek</div>
+
+  <button class="nrd text1 w20" type="button" (click)="onClose()">Vissza</button>
+
+  <!-- list input -->
+  <select class="grayCell text1 w100" [id]='"selectedSkill"'>
+    <option *ngFor="let skill of getSkills()" [value]=skill.nev>{{skill.nev}}</option>
+  </select>
+
+    <!-- save button -->
+
+  <div class="buttonCont w100">
+    <button class="ngrn text1" type="button" (click)="onSave()">Mentés</button>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+:host {
+  width: 100%;
+}
+
+.modalContent {
+  background-color: black;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.fejlec {
+  justify-content: center;
+}
+
+input, select {
+  text-align: center;
+}
+
+.buttonCont{
+  padding-top: 1rem;
+}

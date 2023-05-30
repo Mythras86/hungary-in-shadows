@@ -32,11 +32,11 @@ exports.createChar = (req, res, next) => {
     vonzalom:req.body.vonzalom,
     megjelenes:req.body.megjelenes,
     //erőforrások
-    karmaToSpend: req.body.karmaToSpend,
-    moneyToSpend: req.body.moneyToSpend,
-    attrToSpend: req.body.attrToSpend,
-    skillsToSpend: req.body.skillsToSpend,
-    magicToSpend: req.body.magicToSpend,
+    elkolthetoKarma: req.body.elkolthetoKarma,
+    elkolthetoToke: req.body.elkolthetoToke,
+    elkolthetoTulPont: req.body.elkolthetoTulPont,
+    elkolthetoSzakPont: req.body.elkolthetoSzakPont,
+    elkolthetoMagPont: req.body.elkolthetoMagPont,
     //fizikai
     fizEro: req.body.fizEro,
     fizEroMod: req.body.fizEroMod,
@@ -116,11 +116,11 @@ exports.updateChar = (req, res, next) => {
         vonzalom:req.body.vonzalom,
         megjelenes:req.body.megjelenes,
         //erőforrások
-        karmaToSpend: req.body.karmaToSpend,
-        moneyToSpend: req.body.moneyToSpend,
-        attrToSpend: req.body.attrToSpend,
-        skillsToSpend: req.body.skillsToSpend,
-        magicToSpend: req.body.magicToSpend,
+        elkolthetoKarma: req.body.elkolthetoKarma,
+        elkolthetoToke: req.body.elkolthetoToke,
+        elkolthetoTulPont: req.body.elkolthetoTulPont,
+        elkolthetoSzakPont: req.body.elkolthetoSzakPont,
+        elkolthetoMagPont: req.body.elkolthetoMagPont,
         //fizikai
         fizEro: req.body.fizEro,
         fizEroMod: req.body.fizEroMod,
