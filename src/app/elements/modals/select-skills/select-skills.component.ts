@@ -8,6 +8,7 @@ import { skillsUtil } from 'src/app/characters/chars-main/chars-subforms/skills/
   styleUrls: ['./select-skills.component.css']
 })
 export class SelectSkillsComponent {
+[x: string]: any;
   constructor( ) { }
 
   public canBeClosed: boolean = true;
@@ -17,17 +18,23 @@ export class SelectSkillsComponent {
     return skillsUtil;
   }
 
+  getCsoport(nev: string) {
+    const csoport = skillsUtil.filter(x => x.nev == nev).map(x => x.csoport)[0];
+    console.log(csoport);
+    return csoport;
+  }
+
   loadData(modalData: any): void {
 
   }
 
-  onSave() {
-    this.closeEvent.next();
+  selectSkill(skill: string) {
+    this.closeEvent.next(skill);
     this.closeEvent.complete();
   }
 
   onClose() {
-    this.closeEvent.next(),
+    this.closeEvent.next(''),
     this.closeEvent.complete()
   }
 

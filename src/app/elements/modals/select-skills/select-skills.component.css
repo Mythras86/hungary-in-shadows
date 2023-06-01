@@ -1,16 +1,9 @@
-:host {
-  width: 100%;
-}
-
 .modalContent {
-  background-color: black;
-  width: 90%;
   display: flex;
+  flex-flow: row wrap;
   justify-content: center;
-}
-
-.fejlec {
-  justify-content: center;
+  align-items: flex-start;
+  background-color: black;
 }
 
 input, select {

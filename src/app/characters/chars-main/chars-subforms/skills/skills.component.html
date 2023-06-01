@@ -1,15 +1,15 @@
-<div class="pageCont" [formGroup]="skillsServ.skillsForm">
+<div class="pageCont" [formGroup]="skillsServ.skillsForm" *ngIf="skillsServ.skillsForm">
 
   <button class="ngrn text1" type="button" (click)="selSkillsModalServ.openModal()">Új Szakértelem</button>
 
-  <div class="itemCont w100" *ngFor='let tipus of getTipus()'>
+  <div class="itemCont w100" formArrayName="skills" *ngFor='let tipus of getTipus()'>
 
     <h3 class="w100 ntl text1">{{tipus}}</h3>
 
     <div class="" [formGroupName]='i' *ngFor="let skill of getControls(tipus); let i = index">
 
 
-      <button class="nyllw edit w10" type="button" (click)="lvlContServ.sendData(
+      <!-- <button class="nyllw edit w10" type="button" (click)="lvlContServ.sendData(
         skill.fejlec,
         skill.megjegyzes,
         getFcPath(skill.fcName),
@@ -20,8 +20,8 @@
         getSkillPointsPath(),
         getFcValue(i),
         skill.maxErtek
-        )">&#9998;</button>
-      </div>
+        )">&#9998;</button> -->
+    </div>
   </div>
 
 </div>

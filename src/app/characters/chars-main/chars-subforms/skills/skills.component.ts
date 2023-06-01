@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SkillsService } from './skills.service';
 import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
 import { skillsUtil } from './skills.util';
-import { FormArray, FormGroup } from '@angular/forms';
+import { FormArray, FormArrayName, FormGroup } from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
 import { SelectSkillsService } from 'src/app/elements/modals/select-skills/select-skills.service';
 
@@ -19,6 +19,10 @@ export class SkillsComponent {
     private resServ: ResourcesService,
     public selSkillsModalServ: SelectSkillsService
   ) { }
+
+  get skills() : FormArray {
+    return this.skillsServ.skillsForm.get("skills") as FormArray;
+  }
 
   getTipus():Array<any> {
     const tipus = [...new Set(skillsUtil.map(x=> x.tipus))];
@@ -53,8 +57,8 @@ export class SkillsComponent {
 
   ngOnInit(): void {
     this.skillsServ.createSkills();
-    this.skillsServ.addFirstLanguage('Anyanyelvi beszéd', '', 0);
-    this.skillsServ.addFirstLanguage('Anyanyelvi Í/O', '', 0);
+    // this.skillsServ.addFirstLanguage('Anyanyelvi beszéd', '', 0);
+    // this.skillsServ.addFirstLanguage('Anyanyelvi Í/O', '', 0);
 
   }
 
