@@ -1,5 +1,5 @@
-<h2 class="sectionHead nrd" (click)="showMe(this.subForm)">
-  <div>{{headText}}</div>
-  <div class="normal" *ngIf="this.headServ.showMeSatus !== this.subForm">&#10148;</div>
-  <div class="down" *ngIf="this.headServ.showMeSatus == this.subForm">&#10148;</div>
-</h2>
+<div class="nrd itemCont" (click)="showMe(this.subForm)">
+  <div class="text2" *ngIf="this.headServ.showMeSatus !== this.subForm">&#10148;</div>
+  <div class="down text2" *ngIf="this.headServ.showMeSatus == this.subForm">&#10148;</div>
+  <h2 class="w80">{{headText}}</h2>
+</div>

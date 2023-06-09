@@ -4,7 +4,7 @@
     <div class="itemCont w100" *ngIf="item.tipus !== 'kepessegek'">
       <div class="w80 ngrn text1">{{item.fejlec}}</div>
 
-      <button *ngIf="hideButton(item.fcName)" class="nyllw w20 edit" type="button" (click)="inputModalServ.sendData(
+      <button *ngIf="hideButton(item.fcName)" class="nyllw text1 w20" type="button" (click)="inputModalServ.sendData(
         getFcPath(item.fcName),
         item.fcName,
         item.tipus,
@@ -14,10 +14,9 @@
         getList(item.fcName),
         item.egyseg
       )">&#9998;</button>
-    </div>
 
       <!-- input -->
-      <div class="grayCell w100 text1" *ngIf="item.tipus !== 'color'">
+      <div class="grayCell w100 text2" *ngIf="item.tipus !== 'color'">
         {{getValue(item.fcName)}} {{item.egyseg}}
       </div>
 
@@ -26,6 +25,7 @@
         {{getValue(item.fcName)}}
       </div>
 
+    </div>
     <div class="itemCont w100" *ngIf="item.tipus == 'kepessegek'">
       <div class="ngrn text1 w100">{{item.fejlec}}</div>
       <div class="grayCell w100 text1" *ngFor="let item of getDefault('kepessegek')">

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ModalService } from '../modal.service';
 import { SelectSkillsComponent } from './select-skills.component';
+import { SkillsService } from 'src/app/characters/chars-main/chars-subforms/skills/skills.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,17 +9,14 @@ import { SelectSkillsComponent } from './select-skills.component';
 export class SelectSkillsService {
 
   constructor(
-    private modalServ: ModalService
+    private modalServ: ModalService,
+    private skillsServ: SkillsService,
   ) { }
 
   openModal() {
     this.modalServ.openModal(SelectSkillsComponent, '').subscribe(
-      w => this.updateData(w)
+      w => this.skillsServ.addSkill(w)
     );
-  }
-
-  updateData(w: string) {
-    return w;
   }
 
 }

@@ -3,7 +3,7 @@
   flex-flow: row wrap;
   justify-content: center;
   align-items: flex-start;
-  background-color: black;
+  background-color: gray;
 }
 
 input, select {
@@ -12,4 +12,8 @@ input, select {
 
 .buttonCont{
   padding-top: 1rem;
+}
+
+.filterCont {
+  margin: 0.5rem 0;
 }

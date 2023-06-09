@@ -45,7 +45,10 @@ import { SelectSkillsComponent } from './elements/modals/select-skills//select-s
     DetailsComponent,
     ResourcesComponent,
     AttributesComponent,
-  StatusComponent,SkillsComponent,SelectSkillsComponent,],
+    StatusComponent,
+    SkillsComponent,
+    SelectSkillsComponent
+  ],
   imports: [
     BrowserModule,
     CommonModule,

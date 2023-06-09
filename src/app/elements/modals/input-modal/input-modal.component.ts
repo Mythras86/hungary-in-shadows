@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { AModal } from '../modal.abstract';
-import { DetailsService } from 'src/app/characters/chars-main/chars-subforms/details/details.service';
+import { InputModalService } from './input-modal.service';
 
 @Component({
   selector: 'app-input-modal',
@@ -11,7 +11,7 @@ import { DetailsService } from 'src/app/characters/chars-main/chars-subforms/det
 export class InputModalComponent implements OnInit, AModal {
 
     constructor(
-      public detailsServ: DetailsService
+      public inputModServ: InputModalService,
     ) { }
 
     public canBeClosed: boolean = true;
@@ -21,7 +21,7 @@ export class InputModalComponent implements OnInit, AModal {
     public fcName: string = '';
     public tipus: string = '';
     public fejlec: string = '';
-    public megjegyzes: string = '';
+    public megjegyzes: Array<string> = [];
     public ertek: any;
     public lista: any;
     public egyseg: string = '';

@@ -2,12 +2,18 @@
 
   <button class="ngrn text1" type="button" (click)="selSkillsModalServ.openModal()">Új Szakértelem</button>
 
-  <div class="itemCont w100" formArrayName="skills" *ngFor='let tipus of getTipus()'>
+  <div class="itemCont w100" formArrayName="skills" *ngFor='let csoport of getCsoportok()'>
 
-    <h3 class="w100 ntl text1">{{tipus}}</h3>
+    <h3 *ngIf="checkCsoport(csoport)" class="w100 ntl text1">{{csoport}}</h3>
 
-    <div class="" [formGroupName]='i' *ngFor="let skill of getControls(tipus); let i = index">
+    <div class="w100" [formGroupName]='i' *ngFor="let skill of getControls(); let i = index">
 
+      <div class="itemCont" *ngIf="getSkillData(i, 'szakertCsoport') == csoport">
+
+        <div class="ntl text1 w50">{{getSkillData(i, 'szakertNev')}}</div>
+        <div class="ntl text1 w40">{{getSkillData(i, 'szakertMegjegyzes')}}</div>
+        <div class="ntl text1 w10">{{getSkillData(i, 'szakertSzint')}}</div>
+      </div>
 
       <!-- <button class="nyllw edit w10" type="button" (click)="lvlContServ.sendData(
         skill.fejlec,

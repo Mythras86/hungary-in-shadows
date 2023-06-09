@@ -20,22 +20,36 @@ export class SkillsComponent {
     public selSkillsModalServ: SelectSkillsService
   ) { }
 
-  get skills() : FormArray {
-    return this.skillsServ.skillsForm.get("skills") as FormArray;
-  }
-
-  getTipus():Array<any> {
-    const tipus = [...new Set(skillsUtil.map(x=> x.tipus))];
-    return tipus;
-  }
-
-  getControls(tipus:string):Array<any> | null {
-    const filtered = skillsUtil.filter(x => x.tipus == tipus).map(x => x);
-    if (!this.skillsServ.skillsForm) {
+  public get skills(): FormArray | null {
+    if(!this.skillsServ.skillsForm) {
       return null;
     }
-    return filtered;
+    return this.skillsServ.skillsForm.controls['skills'] as FormArray;
   }
+
+  getCsoportok():Array<any> {
+    const csoport = [...new Set(skillsUtil.map(x=> x.csoport))];
+    return csoport;
+  }
+
+  checkCsoport(csoport: string):boolean {
+    const form = (this.skillsServ.skillsForm.get('skills') as FormArray);
+    const csoportArr = Object.values(form.controls).map(x => x.value).map(x => x.szakertCsoport);
+    const csopArrUniq = [...new Set(csoportArr.map(x=> x))];
+    const check = csopArrUniq.includes(csoport);
+    return check;
+  }
+
+  getControls():Array<any> {
+    const controls = (this.skillsServ.skillsForm.get('skills') as FormArray).controls;
+    return controls;
+  }
+
+  getSkillData(i:number, dataname:string) {
+    const data = ((this.skillsServ.skillsForm.get('skills') as FormArray).at(i) as FormGroup).get(dataname)?.value;
+    return data;
+  }
+
 
   getSkillsUtil(): Array<any> {
     return skillsUtil;

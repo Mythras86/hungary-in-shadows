@@ -1,22 +1,7 @@
-.sectionHead {
-  display: block;
+.h2 {
   position: relative;
-  width: 100%;
-  text-align: center;
-  padding: 0.5rem 0;
-}
-
-.normal {
-  display: inline-block;
-  position: absolute;
-  top: 0.3rem;
-  left: 0.5rem;
 }
 
 .down {
-  display: inline-block;
   transform: rotate(90deg);
-  position: absolute;
-  top: 0.3rem;
-  left: 0.5rem;
 }

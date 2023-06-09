@@ -8,24 +8,41 @@ import { skillsUtil } from 'src/app/characters/chars-main/chars-subforms/skills/
   styleUrls: ['./select-skills.component.css']
 })
 export class SelectSkillsComponent {
-[x: string]: any;
+
   constructor( ) { }
 
   public canBeClosed: boolean = true;
   closeEvent: Subject<any> = new Subject;
 
-  getSkills(): Array<any> {
-    return skillsUtil;
+  skillFilter: string = 'Nincs';
+
+  loadData(modalData: any): void {
   }
 
-  getCsoport(nev: string) {
-    const csoport = skillsUtil.filter(x => x.nev == nev).map(x => x.csoport)[0];
-    console.log(csoport);
+  getSkills(csoport: string): Array<any> {
+    const skills = skillsUtil.filter(x=> x.csoport == csoport);
+    return skills;
+  }
+
+  getCsoportok(): Array<any> {
+    const csoport = [...new Set(skillsUtil.map(x=> x.csoport))];
     return csoport;
   }
 
-  loadData(modalData: any): void {
+  getFilteredCsoportok(): Array<any> {
+    if (this.skillFilter == 'Nincs') {
+      return this.getCsoportok();
+    }
+    return [this.skillFilter];
+  }
 
+  getOneCsoport(nev: string): string {
+    const csoport = skillsUtil.filter(x => x.nev == nev).map(x => x.csoport)[0];
+    return csoport;
+  }
+
+  selectFilter(status: string) {
+    return this.skillFilter = status;
   }
 
   selectSkill(skill: string) {
