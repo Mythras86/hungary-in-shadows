@@ -1,4 +1,4 @@
-<div class="modalContent">
+<div *ngIf="!isButton" class="modalContent">
   <div class="nrng text1 fejlec w80">{{fejlec}}</div>
 
   <button class="nrd text1 w20" type="button" (click)="onClose()">Vissza</button>
@@ -48,3 +48,16 @@
     <button class="ngrn text1" type="button" (click)="onSave(fcName)">Mentés</button>
   </div>
 </div>
+
+<button *ngIf="isEnabled && isButton" class="buttonEdit bEnabled" type="button" (click)="inputModServ.sendData(
+  fcPath,
+  fcName,
+  tipus,
+  fejlec,
+  megjegyzes,
+  ertek,
+  lista,
+  egyseg
+)">&#9998;</button>
+
+<button *ngIf="!isEnabled && isButton" class="buttonEdit" type="button">&#9998;</button>

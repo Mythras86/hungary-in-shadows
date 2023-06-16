@@ -1,39 +1,44 @@
-<div class="modalContent">
+<div *ngIf="!isButton" class="modalContent">
 
-  <div class="nrng text1 fejlec w80">{{fejlec}}</div>
-  <button class="nrd text1 w20" type="button" (click)="onClose()">Vissza</button>
+  <div class="nrng text1 fejlec w100">{{fejlec}}</div>
   <div class="ntl text1 w100">{{megjegyzes}}</div>
   <div class="ntl text1 w100">{{ktsg}} Karma / {{jutalom}} {{egyseg}}</div>
 
   <!-- level number input -->
-  <div class="nprpl text1 w100 display">{{getValue(valtErtekUtv) + ertekValtozas*jutalom}} {{egyseg}}</div>
+  <div class="nprpl text1 w100 display">{{forrasErtekUtv.value + ertekValtozas*jutalom}} {{egyseg}}</div>
 
   <button class="w50 ngrn text1" [disabled]="buttonDisInc(maxErtek, 1)"
-  (click)="changeValue(1)" type="button">
-  +{{lepes/lepes*jutalom}} {{egyseg}}
-</button>
+    (click)="changeValue(1)" type="button">
+    +{{lepes/lepes*jutalom}} {{egyseg}}
+  </button>
 
   <button class="w50 nrd text1" [disabled]="buttonDisDec(1)"
-  (click)="changeValue(-1)" type="button">
+    (click)="changeValue(-1)" type="button">
     -{{lepes/lepes*jutalom}} {{egyseg}}
   </button>
 
   <button class="w50 ngrn text1" [disabled]="buttonDisInc(maxErtek, lepes)"
-  (click)="changeValue(lepes)" type="button">
+    (click)="changeValue(lepes)" type="button">
     +{{lepes*jutalom}} {{egyseg}}
   </button>
 
   <button class="w50 nrd text1" [disabled]="buttonDisDec(lepes)"
-  (click)="changeValue(-lepes)" type="button">
+    (click)="changeValue(-lepes)" type="button">
     -{{lepes*jutalom}} {{egyseg}}
   </button>
 
-  <div class="grayCell text1 w50">{{getValue(ellenErtekUtv) - ertekValtozas*ktsg}}</div>
-  <div class="nrng w50 text1">{{ertekValtozas*ktsg}} / {{maxErtek}}</div>
+  <div class="grayCell text1 w50">{{ellenErtekUtv.value - ertekValtozas*ktsg}}</div>
+  <div class="nrng w50 text1">{{minErtek + ertekValtozas}} / {{maxErtek}}</div>
 
   <!-- save button -->
 
   <div class="buttonCont w100">
     <button class="ngrn text1" type="button" (click)="onSave()">Mentés</button>
+    <button class="nrd text1" type="button" (click)="onClose()">Vissza</button>
   </div>
+
 </div>
+
+<button *ngIf="isEnabled && isButton" class="buttonUp bEnabled" type="button" (click)="buttonAction.emit()">&#9650;</button>
+
+<button *ngIf="!isEnabled && isButton" class="buttonUp grayCell" type="button">&#9650;</button>

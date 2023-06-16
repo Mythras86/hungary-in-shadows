@@ -68,8 +68,8 @@ button:disabled {
   box-shadow: 2px 2px 6px purple inset;
 }
 .nbl {
-  color: rgb(125, 125, 255);
-  text-shadow: 0 0 3px blue, 0 0 5px lightblue;
+  color: lightskyblue;
+  text-shadow: 0 0 3px blue, 0 0 5px lightskyblue;
   background-color: black;
   box-shadow: 2px 2px 6px blue inset;
 }
@@ -112,9 +112,9 @@ button:disabled {
 
 .karmaCost {
   color: white;
-  text-shadow: 0 0 3px rgb(249, 59, 233), 0 0 5px lightpink;
+  text-shadow: 0 0 3px black, 0 0 5px magenta;
   background-color: purple;
-  box-shadow: 2px 2px 6px lightpink inset;
+  box-shadow: 2px 2px 6px magenta inset;
   padding-right: 0.2rem;
   text-align: center;
 }

@@ -5,12 +5,6 @@ import { environment } from 'src/environments/environment';
 import { CharModel } from './chars-main.model';
 import { AuthService } from 'src/app/authentication/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { DetailsService } from './chars-subforms/details/details.service';
-import { ResourcesService } from './chars-subforms/resources/resources.service';
-import { AttributesService } from './chars-subforms/attributes/attributes.service';
-import { DetailsModel } from './chars-subforms/details/details.model';
-import { AttributesModel } from './chars-subforms/attributes/attributes.model';
-import { ResourcesModel } from './chars-subforms/resources/resources.model';
 
 const BACKEND_URL = environment.apiUrl + "/char/";
 
@@ -71,9 +65,7 @@ export class CharsMainService {
       //erőforrások
       elkolthetoKarma: number,
       elkolthetoToke: number,
-      elkolthetoTulPont: number,
-      elkolthetoSzakPont: number,
-      elkolthetoMagPont: number,
+      karmabolToke: number,
       //fizikai
       fizEro: number,
       fizEroMod: number,
@@ -138,9 +130,7 @@ export class CharsMainService {
     //erőforrások
     elkolthetoKarma: number,
     elkolthetoToke: number,
-    elkolthetoTulPont: number,
-    elkolthetoSzakPont: number,
-    elkolthetoMagPont: number,
+    karmabolToke: number,
     //fizikai
     fizEro: number,
     fizEroMod: number,
@@ -203,9 +193,7 @@ export class CharsMainService {
       //erőforrások
       elkolthetoKarma: elkolthetoKarma,
       elkolthetoToke: elkolthetoToke,
-      elkolthetoTulPont: elkolthetoTulPont,
-      elkolthetoSzakPont: elkolthetoSzakPont,
-      elkolthetoMagPont: elkolthetoMagPont,
+      karmabolToke: karmabolToke,
       //fizikai
       fizEro: fizEro,
       fizEroMod: fizEroMod,
@@ -274,10 +262,8 @@ export class CharsMainService {
     //erőforrások
     elkolthetoKarma: number,
     elkolthetoToke: number,
-    elkolthetoTulPont: number,
-    elkolthetoSzakPont: number,
-    elkolthetoMagPont: number,
-    //fizikai
+    karmabolToke: number,
+      //fizikai
     fizEro: number,
     fizEroMod: number,
     fizGyo: number,
@@ -340,10 +326,8 @@ export class CharsMainService {
       //erőforrások
       elkolthetoKarma: elkolthetoKarma,
       elkolthetoToke: elkolthetoToke,
-      elkolthetoTulPont: elkolthetoTulPont,
-      elkolthetoSzakPont: elkolthetoSzakPont,
-      elkolthetoMagPont: elkolthetoMagPont,
-      //fizikai
+      karmabolToke: karmabolToke,
+          //fizikai
       fizEro: fizEro,
       fizEroMod: fizEroMod,
       fizGyo: fizGyo,

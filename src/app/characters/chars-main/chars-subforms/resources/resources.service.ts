@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Injectable({
@@ -16,11 +16,13 @@ export class ResourcesService {
     const resources = {
       elkolthetoKarma: [350, Validators.required],
       elkolthetoToke: [100000, Validators.required],
-      elkolthetoTulPont: [10, Validators.required],
-      elkolthetoSzakPont: [10, Validators.required],
-      elkolthetoMagPont: [0, Validators.required],
+      karmabolToke: [0, Validators.required],
     };
     return this.resourcesForm = this.fb.group(resources);
+  }
+
+  getFc(fcName: string):any {
+    return this.resourcesForm.get(fcName);
   }
 
 }

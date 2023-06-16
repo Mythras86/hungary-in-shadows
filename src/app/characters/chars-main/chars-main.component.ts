@@ -89,9 +89,7 @@ export class CharsMainComponent implements OnInit, OnDestroy {
        //erőforrások
        res.value.elkolthetoKarma,
        res.value.elkolthetoToke,
-       res.value.elkolthetoTulPont,
-       res.value.elkolthetoSzakPont,
-       res.value.elkolthetoMagPont,
+       res.value.karmabolToke,
        //fizikai
        attrs.value.fizEro,
        attrs.value.fizEroMod,
@@ -155,9 +153,7 @@ export class CharsMainComponent implements OnInit, OnDestroy {
        //erőforrások
        res.value.elkolthetoKarma,
        res.value.elkolthetoToke,
-       res.value.elkolthetoTulPont,
-       res.value.elkolthetoSzakPont,
-       res.value.elkolthetoMagPont,
+       res.value.karmabolToke,
        //fizikai
        attrs.value.fizEro,
        attrs.value.fizEroMod,
@@ -251,9 +247,7 @@ export class CharsMainComponent implements OnInit, OnDestroy {
             //erőforrások
             elkolthetoKarma: w.elkolthetoKarma,
             elkolthetoToke: w.elkolthetoToke,
-            elkolthetoTulPont: w.elkolthetoTulPont,
-            elkolthetoSzakPont: w.elkolthetoSzakPont,
-            elkolthetoMagPont: w.elkolthetoMagPont,
+            karmabolToke: w.karmabolToke,
           });
           this.attrServ.attributesForm = this.fb.group({
             //fizikai

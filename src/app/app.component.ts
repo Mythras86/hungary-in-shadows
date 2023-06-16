@@ -10,7 +10,6 @@ export class AppComponent implements OnInit {
 
   constructor (
     private authServ: AuthService,
-    private spinn: AuthService,
   ) {}
 
   ngOnInit(): void {

@@ -37,9 +37,7 @@ export interface CharModel {
   //erőforrások
   elkolthetoKarma: number,
   elkolthetoToke: number,
-  elkolthetoTulPont: number,
-  elkolthetoSzakPont: number,
-  elkolthetoMagPont: number,
+  karmabolToke: number
   //fizikai
   fizEro: number,
   fizEroMod: number,

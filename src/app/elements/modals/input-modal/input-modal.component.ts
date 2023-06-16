@@ -17,14 +17,21 @@ export class InputModalComponent implements OnInit, AModal {
     public canBeClosed: boolean = true;
     closeEvent: Subject<any> = new Subject;
 
-    public fcPath: string = '';
-    public fcName: string = '';
-    public tipus: string = '';
-    public fejlec: string = '';
-    public megjegyzes: Array<string> = [];
-    public ertek: any;
-    public lista: any;
-    public egyseg: string = '';
+    @Input() fcPath: any = '';
+    @Input() fcName: string = '';
+    @Input() tipus: string = '';
+    @Input() fejlec: string = '';
+    @Input() megjegyzes: Array<string> = [];
+    @Input() ertek: any;
+    @Input() lista: any;
+    @Input() egyseg: string = '';
+
+    public isButton: boolean = true;
+    @Input() isEnabled: boolean = false;
+
+    toggleIsButton() {
+      this.isButton = !this.isButton;
+    }
 
     loadData(modalData: any): void {
       this.fcPath = modalData.fcPath;
@@ -35,6 +42,7 @@ export class InputModalComponent implements OnInit, AModal {
       this.ertek = modalData.ertek;
       this.lista = modalData.lista;
       this.egyseg = modalData.egyseg;
+      this.toggleIsButton();
     }
 
     onSave(id:string) {

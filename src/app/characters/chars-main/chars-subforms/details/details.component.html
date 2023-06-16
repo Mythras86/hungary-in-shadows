@@ -1,22 +1,23 @@
 <div class="pageCont" [formGroup]="detailsServ.detailsForm" *ngIf="detailsServ.detailsForm">
 
-  <div class="{{item.meret}} itemCont" *ngFor="let item of getDetailsUtil(); first as isFirst">
+  <div class="w{{item.meret}} itemCont" *ngFor="let item of getDetailsUtil(); first as isFirst">
     <div class="itemCont w100" *ngIf="item.tipus !== 'kepessegek'">
-      <div class="w80 ngrn text1">{{item.fejlec}}</div>
+      <div class="w{{100-1/item.meret*1000}} ngrn text1">{{item.fejlec}}</div>
 
-      <button *ngIf="hideButton(item.fcName)" class="nyllw text1 w20" type="button" (click)="inputModalServ.sendData(
-        getFcPath(item.fcName),
-        item.fcName,
-        item.tipus,
-        item.fejlec,
-        [item.megjegyzes, getDefault(item.fcName)],
-        getValue(item.fcName),
-        getList(item.fcName),
-        item.egyseg
-      )">&#9998;</button>
+      <app-input-modal class="w{{1/item.meret*1000}}"
+        [isEnabled]="true"
+        [fcPath]="getFcPath(item.fcName)"
+        [fcName]="item.fcName"
+        [tipus]="item.tipus"
+        [fejlec]="item.fejlec"
+        [megjegyzes]="[item.megjegyzes, getDefault(item.fcName)]"
+        [ertek]="getValue(item.fcName)"
+        [lista]="getList(item.fcName)"
+        [egyseg]="item.egyseg"
+      ></app-input-modal>
 
       <!-- input -->
-      <div class="grayCell w100 text2" *ngIf="item.tipus !== 'color'">
+      <div class="grayCell w100 text1" *ngIf="item.tipus !== 'color'">
         {{getValue(item.fcName)}} {{item.egyseg}}
       </div>
 
@@ -33,5 +34,6 @@
       </div>
     </div>
   </div>
+
 
 </div>

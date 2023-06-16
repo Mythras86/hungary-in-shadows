@@ -18,12 +18,12 @@ import { DetailsComponent } from './characters/chars-main/chars-subforms/details
 import { ResourcesComponent } from './characters/chars-main/chars-subforms/resources/resources.component';
 import { SectionHeadComponent } from './elements/section-head/section-head.component';
 import { ModalWrapperComponent } from './elements/modals/modal-wrapper.component';
-import { AttributesComponent } from './characters/chars-main/chars-subforms//attributes/attributes.component';
 import { LevelcontrolComponent } from './elements/modals/levelcontrol//levelcontrol.component';
 import { InputModalComponent } from './elements/modals/input-modal/input-modal.component';
 import { StatusComponent } from './characters/chars-main/chars-subforms/status/status.component';
 import { SkillsComponent } from './characters/chars-main/chars-subforms/skills/skills.component';
 import { SelectSkillsComponent } from './elements/modals/select-skills//select-skills.component';
+import { AttributesComponent } from './characters/chars-main/chars-subforms/attributes/attributes.component';
 
 @NgModule({
   declarations: [
@@ -42,9 +42,9 @@ import { SelectSkillsComponent } from './elements/modals/select-skills//select-s
     MainComponent,
     CharsListComponent,
     CharsMainComponent,
+    AttributesComponent,
     DetailsComponent,
     ResourcesComponent,
-    AttributesComponent,
     StatusComponent,
     SkillsComponent,
     SelectSkillsComponent
@@ -62,5 +62,5 @@ import { SelectSkillsComponent } from './elements/modals/select-skills//select-s
   ],
 
   bootstrap: [AppComponent]
-, exports: [AttributesComponent, SkillsComponent]})
+})
 export class AppModule { }

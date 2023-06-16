@@ -32,18 +32,6 @@ export class AttributesComponent implements OnInit {
     return filteredAttrs;
   }
 
-  getFcPath(fcName: string):any {
-    return this.attrServ.attributesForm.get(fcName);
-  }
-
-  getAttrPointsPath(): any {
-    return this.resServ.resourcesForm.get('elkolthetoTulPont');
-  }
-
-  getValue(fcName: string):number {
-    return this.attrServ.attributesForm.get(fcName)?.value;
-  }
-
   getAttrMax(fcName: string, attrMax: number):number {
     const valasztottDns = this.detailsServ.detailsForm.get('dns')?.value;
     const dnsChange = dnsUtil.filter(x => x.dns == valasztottDns).map(x => x[fcName])[0];
@@ -51,6 +39,19 @@ export class AttributesComponent implements OnInit {
       return dnsChange;
     }
     return attrMax;
+  }
+
+  buttonStatus(fcName: string, attrMax: number):boolean {
+    const karma = this.resServ.getFc('elkolthetoKarma').value;
+    const attrmax = this.getAttrMax(fcName, attrMax);
+    const fcvalue = this.attrServ.getFc(fcName).value;
+    if (
+      karma >= 3
+      && attrmax > fcvalue
+      ) {
+        return true;
+      }
+      return false;
   }
 
   ngOnInit(): void {

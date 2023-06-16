@@ -47,6 +47,10 @@ export class AttributesService {
     return this.attributesForm = this.fb.group(attributes);
   }
 
+  getFc(fcName: string):any {
+    return this.attributesForm.get(fcName);
+  }
+
   getTulErtek(fcName: string): number {
     const ertek = this.attributesForm.get(fcName)?.value +this.attributesForm.get(fcName+'Mod')?.value;
     if (ertek < 1) {

@@ -11,21 +11,25 @@
       0
     </div>
 
-    <button [disabled]="res.novelheto" class="nyllw edit w10" type="button" (click)="lvlContServ.sendData(
-    res.fejlec,
-    res.megjegyzes,
-    getFcPath(res.fcName),
-    res.jutalom,
-    res.lepes,
-    res.egyseg,
-    res.karmaKtsg,
-    getFcPath('elkolthetoKarma'),
-    getFcValue('elkolthetoKarma'),
-    res.maxErtek
-    )">&#9998;</button>
+    <app-levelcontrol class="w10"
+    [isEnabled]="res.novelheto
+    && resServ.getFc(res.fcName).value < res.maxErtek"
+    (buttonAction)="lvlContServ.buttonAction(
+      res.fejlec,
+      res.megjegyzes,
+      res.jutalom,
+      res.lepes,
+      res.egyseg,
+      res.ktsg,
+      resServ.getFc(res.fcName),
+      resServ.getFc('elkolthetoKarma'),
+      resServ.getFc(res.fcName).value,
+      res.maxErtek
+    )"
+    ></app-levelcontrol>
 
     <div class="w40 grayCell text1">
-      {{getFcValue(res.fcName)}} {{res.egyseg}}
+      {{resServ.getFc(res.fcName).value}} {{res.egyseg}}
     </div>
 
   </div>

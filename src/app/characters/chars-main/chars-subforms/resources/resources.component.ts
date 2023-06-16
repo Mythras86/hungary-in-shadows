@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { resUtil } from './resources-utility';
 import {ResourcesService } from './resources.service';
 import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
-import { FormControlName } from '@angular/forms';
+import { pairwise, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-resources',
@@ -12,7 +12,7 @@ import { FormControlName } from '@angular/forms';
 export class ResourcesComponent implements OnInit {
 
   constructor(
-    public resServ:ResourcesService,
+    public resServ: ResourcesService,
     public lvlContServ: LevelcontrolService,
   ) { }
 
@@ -20,15 +20,17 @@ export class ResourcesComponent implements OnInit {
     return resUtil;
   }
 
-  getFcPath(fcName: string):any {
-    return this.resServ.resourcesForm.get(fcName);
-  }
-
-  getFcValue(fcName: string):any {
-    return this.resServ.resourcesForm.get(fcName)?.value;
+  karmabolTokeChangeDetector() {
+    const karmabolToke = this.resServ.resourcesForm.get('karmabolToke');
+    const elkolthetoToke = this.resServ.resourcesForm.get('elkolthetoToke');
+    karmabolToke?.valueChanges.pipe(startWith(null), pairwise())
+    .subscribe(([prev, next]: [any, any]) => {
+      elkolthetoToke?.patchValue(elkolthetoToke.value+(next-prev)*7500)
+    });
   }
 
   ngOnInit(): void {
     this.resServ.createResources();
+    this.karmabolTokeChangeDetector();
   }
 }

@@ -16,7 +16,7 @@ export class SkillsComponent {
   constructor(
     public skillsServ: SkillsService,
     public lvlContServ: LevelcontrolService,
-    private resServ: ResourcesService,
+    public resServ: ResourcesService,
     public selSkillsModalServ: SelectSkillsService
   ) { }
 
@@ -45,28 +45,9 @@ export class SkillsComponent {
     return controls;
   }
 
-  getSkillData(i:number, dataname:string) {
-    const data = ((this.skillsServ.skillsForm.get('skills') as FormArray).at(i) as FormGroup).get(dataname)?.value;
-    return data;
-  }
-
-
-  getSkillsUtil(): Array<any> {
-    return skillsUtil;
-  }
-
-  getFcPath(i:number) {
-    const skillpath = ((this.skillsServ.skillsForm.get('skills') as FormArray).at(i) as FormGroup).get('szakertSzint');
-    return skillpath;
-  }
-
-  getFcValue(i:number) {
-    const skillvalue = ((this.skillsServ.skillsForm.get('skills') as FormArray).at(i) as FormGroup).get('szakertSzint')?.value;
-    return skillvalue;
-  }
-
-  getSkillPointsPath() {
-    return this.resServ.resourcesForm.get('elkolthetoSzakPont');
+  getMegjFromUtil(skillnev: string): Array<any> {
+    const megjegyzes = skillsUtil.filter(x => x.nev == skillnev).map(x => x.megjegyzes);
+    return megjegyzes;
   }
 
   ngOnInit(): void {
