@@ -1,5 +1,3 @@
-import { CharModel } from "../../chars-main.model";
-
 export interface DetailsModel {
   //szöveges
   teljesnev: string,

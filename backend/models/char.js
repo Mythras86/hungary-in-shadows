@@ -66,6 +66,11 @@ const charSchema = mongoose.Schema({
   kockatartalekMod: { type: Number, required: true},
   kezdemenyezes: { type: Number, required: true},
   kezdemenyezesMod: { type: Number, required: true},
+  // szakértelmek
+  skills: {type: Array, ref: 'Skills'},
+  // állapot
+  astral: { type: Number, required: true},
+  body: { type: Number, required: true},
 });
 
 module.exports = mongoose.model("Char", charSchema);

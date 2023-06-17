@@ -6,9 +6,11 @@ import { AuthService } from 'src/app/authentication/auth.service';
 import { SectionHeadService } from 'src/app/elements/section-head/section-head.service';
 import { SpinnerService } from 'src/app/elements/spinner/spinner.service';
 import { CharsMainService } from './chars-main.service';
-import { DetailsService } from './chars-subforms/details/details.service';
-import { ResourcesService } from './chars-subforms/resources/resources.service';
-import { AttributesService } from './chars-subforms/attributes/attributes.service';
+import { DetailsService } from '../chars-subforms/details/details.service';
+import { ResourcesService } from '../chars-subforms/resources/resources.service';
+import { AttributesService } from '../chars-subforms/attributes/attributes.service';
+import { SkillsService } from '../chars-subforms/skills/skills.service';
+import { StatusService } from '../chars-subforms/status/status.service';
 
 @Component({
   selector: 'app-chars-main',
@@ -28,6 +30,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
     private detailsServ: DetailsService,
     private resServ: ResourcesService,
     private attrServ: AttributesService,
+    private skillsServ: SkillsService,
+    private statusServ: StatusService,
   ) {}
 
   mode:string = 'create';
@@ -42,146 +46,158 @@ export class CharsMainComponent implements OnInit, OnDestroy {
   }
 
   createNewChar() {
-   var main = this.charServ.mainCharForm;
-   var details = this.detailsServ.detailsForm;
-   var res = this.resServ.resourcesForm;
-   var attrs = this.attrServ.attributesForm;
-   if (main.invalid
+    var main = this.charServ.mainCharForm;
+    var details = this.detailsServ.detailsForm;
+    var res = this.resServ.resourcesForm;
+    var attrs = this.attrServ.attributesForm;
+    var skills = this.skillsServ.skillsForm;
+    var status = this.statusServ.statusForm;
+    if (main.invalid
      || details.invalid
      || res.invalid
      || attrs.invalid
-     ) {
-     return;
+    ) {
+      return;
    }
    this.spinServ.toggleSpinner(true);
    if (this.mode === 'create') {
-     this.charServ.addOneChar(
-       main.value._id,
-       main.value.creatorName,
-       main.value.creatorId,
-       //szöveges
-       details.value.teljesnev,
-       details.value.becenev,
-       details.value.alnev,
-       details.value.testalkat,
-       details.value.hajstilus,
-       //értékválasztó
-       details.value.nem,
-       details.value.dns,
-       details.value.anyanyelv,
-       details.value.eletkor,
-       details.value.magassag,
-       details.value.testsuly,
-       //szín
-       details.value.szemszin,
-       details.value.hajszin,
-       details.value.szorszin,
-       details.value.borszin,
-       details.value.kedvencszin,
-       //hosszú szöveg
-       details.value.felelem,
-       details.value.osztonzo,
-       details.value.gyulolet,
-       details.value.kedvenc,
-       details.value.irtozat,
-       details.value.vonzalom,
-       details.value.megjelenes,
-       //erőforrások
-       res.value.elkolthetoKarma,
-       res.value.elkolthetoToke,
-       res.value.karmabolToke,
-       //fizikai
-       attrs.value.fizEro,
-       attrs.value.fizEroMod,
-       attrs.value.fizGyo,
-       attrs.value.fizGyoMod,
-       attrs.value.fizUgy,
-       attrs.value.fizUgyMod,
-       attrs.value.fizAll,
-       attrs.value.fizAllMod,
-       //asztrál
-       attrs.value.asztEro,
-       attrs.value.asztEroMod,
-       attrs.value.asztGyo,
-       attrs.value.asztGyoMod,
-       attrs.value.asztUgy,
-       attrs.value.asztUgyMod,
-       attrs.value.asztAll,
-       attrs.value.asztAllMod,
-       //speciális
-       attrs.value.magia,
-       attrs.value.magiaMod,
-       attrs.value.esszencia,
-       attrs.value.esszenciaMod,
-       attrs.value.kockatartalek,
-       attrs.value.kockatartalekMod,
-       attrs.value.kezdemenyezes,
-       attrs.value.kezdemenyezesMod,
-     );
+      this.charServ.addOneChar(
+        main.value._id,
+        main.value.creatorName,
+        main.value.creatorId,
+        //szöveges
+        details.value.teljesnev,
+        details.value.becenev,
+        details.value.alnev,
+        details.value.testalkat,
+        details.value.hajstilus,
+        //értékválasztó
+        details.value.nem,
+        details.value.dns,
+        details.value.anyanyelv,
+        details.value.eletkor,
+        details.value.magassag,
+        details.value.testsuly,
+        //szín
+        details.value.szemszin,
+        details.value.hajszin,
+        details.value.szorszin,
+        details.value.borszin,
+        details.value.kedvencszin,
+        //hosszú szöveg
+        details.value.felelem,
+        details.value.osztonzo,
+        details.value.gyulolet,
+        details.value.kedvenc,
+        details.value.irtozat,
+        details.value.vonzalom,
+        details.value.megjelenes,
+        //erőforrások
+        res.value.elkolthetoKarma,
+        res.value.elkolthetoToke,
+        res.value.karmabolToke,
+        //fizikai
+        attrs.value.fizEro,
+        attrs.value.fizEroMod,
+        attrs.value.fizGyo,
+        attrs.value.fizGyoMod,
+        attrs.value.fizUgy,
+        attrs.value.fizUgyMod,
+        attrs.value.fizAll,
+        attrs.value.fizAllMod,
+        //asztrál
+        attrs.value.asztEro,
+        attrs.value.asztEroMod,
+        attrs.value.asztGyo,
+        attrs.value.asztGyoMod,
+        attrs.value.asztUgy,
+        attrs.value.asztUgyMod,
+        attrs.value.asztAll,
+        attrs.value.asztAllMod,
+        //speciális
+        attrs.value.magia,
+        attrs.value.magiaMod,
+        attrs.value.esszencia,
+        attrs.value.esszenciaMod,
+        attrs.value.kockatartalek,
+        attrs.value.kockatartalekMod,
+        attrs.value.kezdemenyezes,
+        attrs.value.kezdemenyezesMod,
+        // szakértelmek
+        skills.value.skills,
+        // állapot
+        status.value.astral,
+        status.value.body,
+      );
    } else {
-     this.charServ.updateOneChar(
-       main.value._id,
-       main.value.creatorName,
-       main.value.creatorId,
-       //szöveges
-       details.value.teljesnev,
-       details.value.becenev,
-       details.value.alnev,
-       details.value.testalkat,
-       details.value.hajstilus,
-       //értékválasztó
-       details.value.nem,
-       details.value.dns,
-       details.value.anyanyelv,
-       details.value.eletkor,
-       details.value.magassag,
-       details.value.testsuly,
-       //szín
-       details.value.szemszin,
-       details.value.hajszin,
-       details.value.szorszin,
-       details.value.borszin,
-       details.value.kedvencszin,
-       //hosszú szöveg
-       details.value.felelem,
-       details.value.osztonzo,
-       details.value.gyulolet,
-       details.value.kedvenc,
-       details.value.irtozat,
-       details.value.vonzalom,
-       details.value.megjelenes,
-       //erőforrások
-       res.value.elkolthetoKarma,
-       res.value.elkolthetoToke,
-       res.value.karmabolToke,
-       //fizikai
-       attrs.value.fizEro,
-       attrs.value.fizEroMod,
-       attrs.value.fizGyo,
-       attrs.value.fizGyoMod,
-       attrs.value.fizUgy,
-       attrs.value.fizUgyMod,
-       attrs.value.fizAll,
-       attrs.value.fizAllMod,
-       //asztrál
-       attrs.value.asztEro,
-       attrs.value.asztEroMod,
-       attrs.value.asztGyo,
-       attrs.value.asztGyoMod,
-       attrs.value.asztUgy,
-       attrs.value.asztUgyMod,
-       attrs.value.asztAll,
-       attrs.value.asztAllMod,
-       //speciális
-       attrs.value.magia,
-       attrs.value.magiaMod,
-       attrs.value.esszencia,
-       attrs.value.esszenciaMod,
-       attrs.value.kockatartalek,
-       attrs.value.kockatartalekMod,
-       attrs.value.kezdemenyezes,
-       attrs.value.kezdemenyezesMod,
-     )};
+      this.charServ.updateOneChar(
+        main.value._id,
+        main.value.creatorName,
+        main.value.creatorId,
+        //szöveges
+        details.value.teljesnev,
+        details.value.becenev,
+        details.value.alnev,
+        details.value.testalkat,
+        details.value.hajstilus,
+        //értékválasztó
+        details.value.nem,
+        details.value.dns,
+        details.value.anyanyelv,
+        details.value.eletkor,
+        details.value.magassag,
+        details.value.testsuly,
+        //szín
+        details.value.szemszin,
+        details.value.hajszin,
+        details.value.szorszin,
+        details.value.borszin,
+        details.value.kedvencszin,
+        //hosszú szöveg
+        details.value.felelem,
+        details.value.osztonzo,
+        details.value.gyulolet,
+        details.value.kedvenc,
+        details.value.irtozat,
+        details.value.vonzalom,
+        details.value.megjelenes,
+        //erőforrások
+        res.value.elkolthetoKarma,
+        res.value.elkolthetoToke,
+        res.value.karmabolToke,
+        //fizikai
+        attrs.value.fizEro,
+        attrs.value.fizEroMod,
+        attrs.value.fizGyo,
+        attrs.value.fizGyoMod,
+        attrs.value.fizUgy,
+        attrs.value.fizUgyMod,
+        attrs.value.fizAll,
+        attrs.value.fizAllMod,
+        //asztrál
+        attrs.value.asztEro,
+        attrs.value.asztEroMod,
+        attrs.value.asztGyo,
+        attrs.value.asztGyoMod,
+        attrs.value.asztUgy,
+        attrs.value.asztUgyMod,
+        attrs.value.asztAll,
+        attrs.value.asztAllMod,
+        //speciális
+        attrs.value.magia,
+        attrs.value.magiaMod,
+        attrs.value.esszencia,
+        attrs.value.esszenciaMod,
+        attrs.value.kockatartalek,
+        attrs.value.kockatartalekMod,
+        attrs.value.kezdemenyezes,
+        attrs.value.kezdemenyezesMod,
+        // szakértelmek
+        skills.value.skills,
+        // állapot
+        status.value.astral,
+        status.value.body,
+      )};
     this.router.navigate(["/charslist"]);
   }
 
@@ -278,6 +294,13 @@ export class CharsMainComponent implements OnInit, OnDestroy {
             kezdemenyezes: w.kezdemenyezes,
             kezdemenyezesMod: w.kezdemenyezesMod,
           });
+          this.skillsServ.skillsForm = this.fb.group({
+            skills: w.skills
+          })
+          this.statusServ.statusForm = this.fb.group({
+            body: w.body,
+            astral: w.astral
+          })
         });
       } else {
         this.mode = 'create';

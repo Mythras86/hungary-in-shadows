@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { AModal } from '../modal.abstract';
 import { InputModalService } from './input-modal.service';
@@ -17,14 +17,16 @@ export class InputModalComponent implements OnInit, AModal {
     public canBeClosed: boolean = true;
     closeEvent: Subject<any> = new Subject;
 
-    @Input() fcPath: any = '';
-    @Input() fcName: string = '';
-    @Input() tipus: string = '';
-    @Input() fejlec: string = '';
-    @Input() megjegyzes: Array<string> = [];
-    @Input() ertek: any;
-    @Input() lista: any;
-    @Input() egyseg: string = '';
+    @Output() buttonAction: EventEmitter<void> = new EventEmitter();
+
+    public fcPath: any = '';
+    public fcName: string = '';
+    public tipus: string = '';
+    public fejlec: string = '';
+    public megjegyzes: Array<string> = [];
+    public ertek: any;
+    public lista: any;
+    public egyseg: string = '';
 
     public isButton: boolean = true;
     @Input() isEnabled: boolean = false;

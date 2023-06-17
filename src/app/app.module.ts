@@ -14,16 +14,16 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { AuthInterceptor } from './authentication/auth-interceptor';
 import { SpinnerComponent } from './elements/spinner/spinner.component';
 import { CharsMainComponent } from './characters/chars-main/chars-main.component';
-import { DetailsComponent } from './characters/chars-main/chars-subforms/details/details.component';
-import { ResourcesComponent } from './characters/chars-main/chars-subforms/resources/resources.component';
+import { DetailsComponent } from './characters/chars-subforms/details/details.component';
+import { ResourcesComponent } from './characters/chars-subforms/resources/resources.component';
 import { SectionHeadComponent } from './elements/section-head/section-head.component';
 import { ModalWrapperComponent } from './elements/modals/modal-wrapper.component';
 import { LevelcontrolComponent } from './elements/modals/levelcontrol//levelcontrol.component';
 import { InputModalComponent } from './elements/modals/input-modal/input-modal.component';
-import { StatusComponent } from './characters/chars-main/chars-subforms/status/status.component';
-import { SkillsComponent } from './characters/chars-main/chars-subforms/skills/skills.component';
+import { StatusComponent } from './characters/chars-subforms/status/status.component';
+import { SkillsComponent } from './characters/chars-subforms/skills/skills.component';
 import { SelectSkillsComponent } from './elements/modals/select-skills//select-skills.component';
-import { AttributesComponent } from './characters/chars-main/chars-subforms/attributes/attributes.component';
+import { AttributesComponent } from './characters/chars-subforms/attributes/attributes.component';
 
 @NgModule({
   declarations: [

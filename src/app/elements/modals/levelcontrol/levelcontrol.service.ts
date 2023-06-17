@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ModalService } from '../modal.service';
 import { LevelcontrolComponent } from './levelcontrol.component';
-import { ResourcesService } from 'src/app/characters/chars-main/chars-subforms/resources/resources.service';
-import { SkillsService } from 'src/app/characters/chars-main/chars-subforms/skills/skills.service';
 import { FormControl } from '@angular/forms';
 
 @Injectable({
@@ -12,7 +10,6 @@ export class LevelcontrolService {
 
   constructor(
     private modalServ: ModalService,
-    private resServ: ResourcesService,
     ) { }
 
     buttonAction(

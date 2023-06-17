@@ -12,7 +12,7 @@ export class DetailsComponent implements OnInit {
 
   constructor(
     public detailsServ: DetailsService,
-    public inputModalServ: InputModalService,
+    public inputModServ: InputModalService,
   ) {}
 
   getDetailsUtil():any {

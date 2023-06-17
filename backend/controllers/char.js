@@ -64,6 +64,11 @@ exports.createChar = (req, res, next) => {
     kockatartalekMod: req.body.kockatartalekMod,
     kezdemenyezes: req.body.kezdemenyezes,
     kezdemenyezesMod: req.body.kezdemenyezesMod,
+    // szakértelmek
+    skills: req.body.skills,
+    // állapot
+    astral: req.body.astral,
+    body: req.body.body
   });
   char
   .save()
@@ -88,66 +93,71 @@ exports.updateChar = (req, res, next) => {
     _id: req.body._id,
     creatorName: req.body.creatorName,
     creatorId: req.userData.userId,
-        //szöveges
-        teljesnev: req.body.teljesnev,
-        becenev:req.body.becenev,
-        alnev:req.body.alnev,
-        testalkat:req.body.testalkat,
-        hajstilus:req.body.hajstilus,
-        //értékválasztó
-        nem: req.body.nem,
-        dns:req.body.dns,
-        anyanyelv: req.body.anyanyelv,
-        eletkor:req.body.eletkor,
-        magassag:req.body.magassag,
-        testsuly:req.body.testsuly,
-        //szín
-        szemszin:req.body.szemszin,
-        hajszin:req.body.hajszin,
-        szorszin:req.body.szorszin,
-        borszin:req.body.borszin,
-        kedvencszin:req.body.kedvencszin,
-        // hosszú szöveg
-        felelem:req.body.felelem,
-        osztonzo:req.body.osztonzo,
-        gyulolet:req.body.gyulolet,
-        kedvenc:req.body.kedvenc,
-        irtozat:req.body.irtozat,
-        vonzalom:req.body.vonzalom,
-        megjelenes:req.body.megjelenes,
-        //erőforrások
-        elkolthetoKarma: req.body.elkolthetoKarma,
-        elkolthetoToke: req.body.elkolthetoToke,
-        elkolthetoTulPont: req.body.elkolthetoTulPont,
-        elkolthetoSzakPont: req.body.elkolthetoSzakPont,
-        elkolthetoMagPont: req.body.elkolthetoMagPont,
-        //fizikai
-        fizEro: req.body.fizEro,
-        fizEroMod: req.body.fizEroMod,
-        fizGyo: req.body.fizGyo,
-        fizGyoMod: req.body.fizGyoMod,
-        fizUgy: req.body.fizUgy,
-        fizUgyMod: req.body.fizUgyMod,
-        fizAll: req.body.fizAll,
-        fizAllMod: req.body.fizAllMod,
-        //asztrál
-        asztEro: req.body.asztEro,
-        asztEroMod: req.body.asztEroMod,
-        asztGyo: req.body.asztGyo,
-        asztGyoMod: req.body.asztGyoMod,
-        asztUgy: req.body.asztUgy,
-        asztUgyMod: req.body.asztUgyMod,
-        asztAll: req.body.asztAll,
-        asztAllMod: req.body.asztAllMod,
-        //speciális
-        magia: req.body.magia,
-        magiaMod: req.body.magiaMod,
-        esszencia: req.body.esszencia,
-        esszenciaMod: req.body.esszenciaMod,
-        kockatartalek: req.body.kockatartalek,
-        kockatartalekMod: req.body.kockatartalekMod,
-        kezdemenyezes: req.body.kezdemenyezes,
-        kezdemenyezesMod: req.body.kezdemenyezesMod,
+    //szöveges
+    teljesnev: req.body.teljesnev,
+    becenev:req.body.becenev,
+    alnev:req.body.alnev,
+    testalkat:req.body.testalkat,
+    hajstilus:req.body.hajstilus,
+    //értékválasztó
+    nem: req.body.nem,
+    dns:req.body.dns,
+    anyanyelv: req.body.anyanyelv,
+    eletkor:req.body.eletkor,
+    magassag:req.body.magassag,
+    testsuly:req.body.testsuly,
+    //szín
+    szemszin:req.body.szemszin,
+    hajszin:req.body.hajszin,
+    szorszin:req.body.szorszin,
+    borszin:req.body.borszin,
+    kedvencszin:req.body.kedvencszin,
+    // hosszú szöveg
+    felelem:req.body.felelem,
+    osztonzo:req.body.osztonzo,
+    gyulolet:req.body.gyulolet,
+    kedvenc:req.body.kedvenc,
+    irtozat:req.body.irtozat,
+    vonzalom:req.body.vonzalom,
+    megjelenes:req.body.megjelenes,
+    //erőforrások
+    elkolthetoKarma: req.body.elkolthetoKarma,
+    elkolthetoToke: req.body.elkolthetoToke,
+    elkolthetoTulPont: req.body.elkolthetoTulPont,
+    elkolthetoSzakPont: req.body.elkolthetoSzakPont,
+    elkolthetoMagPont: req.body.elkolthetoMagPont,
+    //fizikai
+    fizEro: req.body.fizEro,
+    fizEroMod: req.body.fizEroMod,
+    fizGyo: req.body.fizGyo,
+    fizGyoMod: req.body.fizGyoMod,
+    fizUgy: req.body.fizUgy,
+    fizUgyMod: req.body.fizUgyMod,
+    fizAll: req.body.fizAll,
+    fizAllMod: req.body.fizAllMod,
+    //asztrál
+    asztEro: req.body.asztEro,
+    asztEroMod: req.body.asztEroMod,
+    asztGyo: req.body.asztGyo,
+    asztGyoMod: req.body.asztGyoMod,
+    asztUgy: req.body.asztUgy,
+    asztUgyMod: req.body.asztUgyMod,
+    asztAll: req.body.asztAll,
+    asztAllMod: req.body.asztAllMod,
+    //speciális
+    magia: req.body.magia,
+    magiaMod: req.body.magiaMod,
+    esszencia: req.body.esszencia,
+    esszenciaMod: req.body.esszenciaMod,
+    kockatartalek: req.body.kockatartalek,
+    kockatartalekMod: req.body.kockatartalekMod,
+    kezdemenyezes: req.body.kezdemenyezes,
+    kezdemenyezesMod: req.body.kezdemenyezesMod,
+    // szakértelmek
+    skills: req.body.skills,
+    // állapot
+    astral: req.body.astral,
+    body: req.body.body
   });
   Char.updateOne({_id: req.params._id, creatorId: req.userData.userId }, char)
   .then(result => {

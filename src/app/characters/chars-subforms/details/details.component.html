@@ -6,14 +6,16 @@
 
       <app-input-modal class="w{{1/item.meret*1000}}"
         [isEnabled]="true"
-        [fcPath]="getFcPath(item.fcName)"
-        [fcName]="item.fcName"
-        [tipus]="item.tipus"
-        [fejlec]="item.fejlec"
-        [megjegyzes]="[item.megjegyzes, getDefault(item.fcName)]"
-        [ertek]="getValue(item.fcName)"
-        [lista]="getList(item.fcName)"
-        [egyseg]="item.egyseg"
+        (buttonAction)="inputModServ.buttonAction(
+          getFcPath(item.fcName),
+          item.fcName,
+          item.tipus,
+          item.fejlec,
+          [item.megjegyzes, getDefault(item.fcName)],
+          getValue(item.fcName),
+          getList(item.fcName),
+          item.egyseg
+        )"
       ></app-input-modal>
 
       <!-- input -->

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ModalService } from '../modal.service';
 import { SelectSkillsComponent } from './select-skills.component';
-import { SkillsService } from 'src/app/characters/chars-main/chars-subforms/skills/skills.service';
+import { SkillsService } from 'src/app/characters/chars-subforms/skills/skills.service';
 
 @Injectable({
   providedIn: 'root'

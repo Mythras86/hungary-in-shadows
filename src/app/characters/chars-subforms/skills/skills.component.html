@@ -15,26 +15,12 @@
 
       <div class="itemCont" *ngIf="skillsServ.getFc(i, 'szakertCsoport')?.value == csoport">
 
-        <div class="ntl text1 w50">{{skillsServ.getFc(i, 'szakertNev')?.value}}</div>
-        <div class="ntl text1 w50">{{skillsServ.getFc(i, 'szakertMegjegyzes')?.value}}</div>
+        <div class="nbl text1 w60">{{skillsServ.getFc(i, 'szakertNev')?.value}}</div>
+        <div class="nbl text1 w30">{{skillsServ.getFc(i, 'szakertSzint')?.value}}</div>
 
-        <app-input-modal class="w20"
-          [isEnabled]="true"
-          [fcPath]="skillsServ.getFc(i, 'szakertMegjegyzes')"
-          [fcName]="'input'"
-          [tipus]="'text'"
-          [fejlec]="skillsServ.getFc(i, 'szakertNev')?.value"
-          [megjegyzes]="getMegjFromUtil(skillsServ.getFc(i, 'szakertNev')?.value)"
-          [ertek]="skillsServ.getFc(i, 'szakertMegjegyzes')?.value"
-          [lista]="''"
-          [egyseg]="''"
-        ></app-input-modal>
-
-        <div class="ntl text1 w20">{{skillsServ.getFc(i, 'szakertSzint')?.value}}</div>
-
-        <app-levelcontrol class="w20"
-          [isEnabled]="resServ.getFc('elkolthetoKarma').value >= 2"
-          (buttonAction)="lvlContServ.buttonAction(
+        <app-levelcontrol class="w10"
+        [isEnabled]="resServ.getFc('elkolthetoKarma').value >= 2"
+        (buttonAction)="lvlContServ.buttonAction(
             skillsServ.getFc(i, 'szakertNev')?.value,
             getMegjFromUtil(skillsServ.getFc(i, 'szakertNev')?.value),
             1,
@@ -45,8 +31,25 @@
             resServ.getFc('elkolthetoKarma'),
             skillsServ.getFc(i, 'szakertSzint')?.value,
             6
-          )"
-        ></app-levelcontrol>
+            )"
+            ></app-levelcontrol>
+
+        <div class="nbl text1 w90">{{skillsServ.getFc(i, 'szakertMegjegyzes')?.value}}</div>
+
+        <app-input-modal class="w10"
+          [isEnabled]="true"
+          (buttonAction)="inputModServ.buttonAction(
+            skillsServ.getFc(i, 'szakertMegjegyzes'),
+            'input',
+            'text',
+            skillsServ.getFc(i, 'szakertNev')?.value,
+            getMegjFromUtil(skillsServ.getFc(i, 'szakertNev')?.value),
+            skillsServ.getFc(i, 'szakertMegjegyzes')?.value,
+            '',
+            ''
+            )"
+        ></app-input-modal>
+
       </div>
 
     </div>

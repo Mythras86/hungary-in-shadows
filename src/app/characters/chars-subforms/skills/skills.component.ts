@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { SkillsService } from './skills.service';
 import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
 import { skillsUtil } from './skills.util';
-import { FormArray, FormArrayName, FormGroup } from '@angular/forms';
+import { FormArray} from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
 import { SelectSkillsService } from 'src/app/elements/modals/select-skills/select-skills.service';
+import { InputModalService } from 'src/app/elements/modals/input-modal/input-modal.service';
 
 @Component({
   selector: 'app-skills',
@@ -15,6 +16,7 @@ export class SkillsComponent {
 
   constructor(
     public skillsServ: SkillsService,
+    public inputModServ: InputModalService,
     public lvlContServ: LevelcontrolService,
     public resServ: ResourcesService,
     public selSkillsModalServ: SelectSkillsService

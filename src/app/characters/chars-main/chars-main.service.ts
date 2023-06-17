@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { CharModel } from './chars-main.model';
 import { AuthService } from 'src/app/authentication/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { SkillsModel } from '../chars-subforms/skills/skills.model';
 
 const BACKEND_URL = environment.apiUrl + "/char/";
 
@@ -93,6 +94,11 @@ export class CharsMainService {
       kockatartalekMod: number,
       kezdemenyezes: number,
       kezdemenyezesMod: number,
+      // szakértelmek
+      skills: Array<SkillsModel>,
+      // állapot
+      astral: number,
+      body: number
     }>(BACKEND_URL +_id);
   }
 
@@ -158,6 +164,11 @@ export class CharsMainService {
     kockatartalekMod: number,
     kezdemenyezes: number,
     kezdemenyezesMod: number,
+    // szakértelmek
+    skills: Array<SkillsModel>,
+    // állapot
+    astral: number,
+    body: number
   ) {
     const charData = {
       _id: '',
@@ -221,6 +232,11 @@ export class CharsMainService {
       kockatartalekMod: kockatartalekMod,
       kezdemenyezes: kezdemenyezes,
       kezdemenyezesMod: kezdemenyezesMod,
+      // szakértelmek
+      skills: skills,
+      // állapot
+      astral: astral,
+      body: body
     };
     this.http.post<{ message: string; char: CharModel }>(
       BACKEND_URL + "create", charData).subscribe(response => {
@@ -290,6 +306,11 @@ export class CharsMainService {
     kockatartalekMod: number,
     kezdemenyezes: number,
     kezdemenyezesMod: number,
+    // szakértelmek
+    skills: Array<SkillsModel>,
+    // állapot
+    astral: number,
+    body: number
   ) {
     let charData: CharModel;
     charData = {
@@ -354,6 +375,11 @@ export class CharsMainService {
       kockatartalekMod: kockatartalekMod,
       kezdemenyezes: kezdemenyezes,
       kezdemenyezesMod: kezdemenyezesMod,
+      // szakértelmek
+      skills: skills,
+      // állapot
+      astral: astral,
+      body: body
     };
     this.http
       .put(BACKEND_URL +_id, charData)

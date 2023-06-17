@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Subject } from 'rxjs';
-import { skillsUtil } from 'src/app/characters/chars-main/chars-subforms/skills/skills.util';
+import { skillsUtil } from 'src/app/characters/chars-subforms/skills/skills.util';
 
 @Component({
   selector: 'app-select-skills',

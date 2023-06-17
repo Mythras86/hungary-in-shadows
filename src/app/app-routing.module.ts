@@ -4,7 +4,6 @@ import { AuthGuard } from "./authentication/auth.guard";
 import { AuthenticationComponent } from "./authentication/authentication.component";
 import { CharsListComponent } from "./characters/chars-list/chars-list.component";
 import { CharsMainComponent } from "./characters/chars-main/chars-main.component";
-import { SpinnerComponent } from "./elements/spinner/spinner.component";
 import { MainComponent } from "./main/main.component";
 
 

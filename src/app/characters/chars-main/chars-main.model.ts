@@ -1,7 +1,3 @@
-import { AttributesModel } from "./chars-subforms/attributes/attributes.model";
-import { DetailsModel } from "./chars-subforms/details/details.model";
-import { ResourcesModel } from "./chars-subforms/resources/resources.model";
-
 export interface CharModel {
 
   _id: string;
@@ -65,4 +61,10 @@ export interface CharModel {
   kockatartalekMod: number,
   kezdemenyezes: number,
   kezdemenyezesMod: number,
+  // szakértelmek
+  skills: Array<any>,
+  // állapot
+  astral: number,
+  body: number,
+
 }

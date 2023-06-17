@@ -49,15 +49,6 @@
   </div>
 </div>
 
-<button *ngIf="isEnabled && isButton" class="buttonEdit bEnabled" type="button" (click)="inputModServ.sendData(
-  fcPath,
-  fcName,
-  tipus,
-  fejlec,
-  megjegyzes,
-  ertek,
-  lista,
-  egyseg
-)">&#9998;</button>
+<button *ngIf="isEnabled && isButton" class="buttonEdit bEnabled" type="button" (click)="buttonAction.emit()">&#9998;</button>
 
 <button *ngIf="!isEnabled && isButton" class="buttonEdit" type="button">&#9998;</button>

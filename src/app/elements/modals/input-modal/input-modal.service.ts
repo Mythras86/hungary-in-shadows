@@ -11,8 +11,8 @@ export class InputModalService {
     private modalServ: ModalService
   ) { }
 
-  sendData(
-    fcPath: string,
+  buttonAction(
+    fcPath: any,
     fcName: string,
     tipus: string,
     fejlec: string,
