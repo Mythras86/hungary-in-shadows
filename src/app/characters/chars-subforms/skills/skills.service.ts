@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { skillsUtil } from './skills.util';
 import { ResourcesService } from '../resources/resources.service';
 
@@ -26,13 +26,27 @@ export class SkillsService {
     const karma = this.resServ.getFc('elkolthetoKarma');
     const csoport = skillsUtil.filter(x => x.nev == nev).map(x => x.csoport)[0];
     const skills = this.fb.group({
-      szakertNev: [nev, {value: nev, disabled: false}],
-      szakertCsoport: [csoport, {value: csoport, disabled: false}],
-      szakertMegjegyzes: ['', {value: '', disabled: false}],
-      szakertSzint: [1, {value: 1, disabled: false}],
+      szakertNev: [nev, Validators.required],
+      szakertCsoport: [csoport, Validators.required],
+      szakertMegjegyzes: [''],
+      szakertSzint: [1, Validators.required],
     });
     karma.patchValue(karma.value-2);
     (this.skillsForm.get('skills') as FormArray).push(skills);
+  }
+
+  setSkills(dataset: any[]): FormArray<any> {
+    const skills = (this.skillsForm.get('skills') as FormArray);
+    dataset.forEach(e => {
+      skills.push(
+        this.fb.group({
+          szakertNev: e.szakertNev,
+          szakertCsoport: e.szakertCsoport,
+          szakertMegjegyzes: e.szakertMegjegyzes,
+          szakertSzint: e.szakertSzint
+        }))
+    });
+    return skills;
   }
 
   removeSkill(i:number): void {
@@ -46,12 +60,12 @@ export class SkillsService {
 
   addFirstLanguage(langName:string, langDesc:string, baseLvl: number): void {
     const skillsForm = this.fb.group({
-      szakertNev: [langName, {value: langName, disabled: false}],
-      szakertCsoport: ['', {value: '', disabled: false}],
-      szakertMegjegyzes: [langDesc, {value: langDesc, disabled: false}],
-      szakertSzint: [baseLvl, {value: baseLvl, disabled: false}],
+      szakertNev: [langName, Validators.required],
+      szakertCsoport: ['Nyelvi', Validators.required],
+      szakertMegjegyzes: [langDesc],
+      szakertSzint: [baseLvl, Validators.required],
     });
-    (this.skillsForm.get('languageSkills') as FormArray).push(skillsForm);
+    (this.skillsForm.get('skills') as FormArray).push(skillsForm);
   }
 
 }

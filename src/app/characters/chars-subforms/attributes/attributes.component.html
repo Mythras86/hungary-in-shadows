@@ -2,11 +2,11 @@
 
   <div class="itemCont w100" *ngFor="let csoport of getCsoport()">
 
-    <h3 class="w100 ntl text1">{{csoport}}</h3>
+    <h3 class="w100 ntl text1">{{csoport}} {{getCsoportErtek(csoport)}}</h3>
 
     <div class="itemCont w100" *ngFor="let attr of getAttrsByCsoport(csoport)">
       <div class="nbl w50 text1">
-        {{attr.fejlec}}
+        {{attr.nev}}
       </div>
       <div class="nyllw w15 text1 attrNum">
         {{attrServ.getFc(attr.fcName).value}}/{{getAttrMax(attr.fcName, attr.max)}}
@@ -21,7 +21,7 @@
       <app-levelcontrol class="w10"
         [isEnabled]="buttonStatus(attr.fcName, attr.max)"
         (buttonAction)="lvlContServ.buttonAction(
-          attr.fejlec,
+          attr.nev,
           attr.megjegyzes,
           1,
           attr.lepes,

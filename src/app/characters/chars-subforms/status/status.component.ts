@@ -38,6 +38,22 @@ export class StatusComponent implements OnInit {
     return -2;
   }
 
+  toggleKockaMColor(fcName: string, i:number):string {
+    if(i == 0 && this.getFcValue(fcName) == i) {
+      return 'ngrn'
+    }
+    if(i == 1 && this.getFcValue(fcName) == i) {
+      return 'nyllw'
+    }
+    if(i == 2 && this.getFcValue(fcName) == i) {
+      return 'nrng'
+    }
+    if(i == 3 && this.getFcValue(fcName) == i) {
+      return 'nrd'
+    }
+    return 'grayCell';
+  }
+
   sendStatus(fcName: string, i: number) {
     const sendStatus = this.statServ.statusForm.get(fcName)?.patchValue(i);
     return sendStatus;
@@ -51,11 +67,11 @@ export class StatusComponent implements OnInit {
     if(this.getFcValue(fcName) >= i) {
       return 'nrd';
     }
-    return 'ngrn';
+    return 'nyllw';
   }
 
   toggleSpecColor(i: number):string {
-    if (i == 0) {
+    if (i = 0) {
       return 'nrng';
     }
     if (i > 0) {
@@ -72,13 +88,13 @@ export class StatusComponent implements OnInit {
     return terheles;
   }
 
-  getMaxMod(): number {
-    const astral = this.getFcValue('astral');
-    const body = this.getFcValue('body');
-    if (astral > body) {
-      return this.getModosito(astral);
+  getMaxMod(astral: string, body: string): number {
+    const asztral = this.getFcValue(astral);
+    const fizikum = this.getFcValue(body);
+    if (asztral > fizikum) {
+      return asztral;
     }
-    return this.getModosito(body);
+    return fizikum;
   }
 
   onSelectMode(i: number, type: string) {

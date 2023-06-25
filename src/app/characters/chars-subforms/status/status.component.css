@@ -2,6 +2,10 @@
   justify-content: center;
 }
 
+.itemCont {
+  margin-bottom: 0.3rem;
+}
+
 .pusztakez {
   position: relative;
 }

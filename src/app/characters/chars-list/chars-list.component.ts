@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/authentication/auth.service';
 import { SpinnerService } from 'src/app/elements/spinner/spinner.service';
-import { CharModel } from '../chars-main/chars-main.model';
 import { CharsListService } from './chars-list.service';
 
 @Component({
@@ -54,7 +53,6 @@ export class CharsListComponent implements OnInit, OnDestroy {
     .subscribe(w => {
         this.charsListServ.charsList = w.chars;
         this.spinServ.toggleSpinner(false);
-
       }
     )
   }

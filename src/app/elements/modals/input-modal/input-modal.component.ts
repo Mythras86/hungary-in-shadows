@@ -22,7 +22,7 @@ export class InputModalComponent implements OnInit, AModal {
     public fcPath: any = '';
     public fcName: string = '';
     public tipus: string = '';
-    public fejlec: string = '';
+    public nev: string = '';
     public megjegyzes: Array<string> = [];
     public ertek: any;
     public lista: any;
@@ -39,7 +39,7 @@ export class InputModalComponent implements OnInit, AModal {
       this.fcPath = modalData.fcPath;
       this.fcName = modalData.fcName;
       this.tipus = modalData.tipus;
-      this.fejlec = modalData.fejlec;
+      this.nev = modalData.nev;
       this.megjegyzes = modalData.megjegyzes;
       this.ertek = modalData.ertek;
       this.lista = modalData.lista;

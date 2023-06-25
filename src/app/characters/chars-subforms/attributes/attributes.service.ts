@@ -23,8 +23,8 @@ export class AttributesService {
       fizGyoMod: [0, Validators.required],
       fizUgy: [1, Validators.required],
       fizUgyMod: [0, Validators.required],
-      fizAll: [1, Validators.required],
-      fizAllMod: [0, Validators.required],
+      fizKit: [1, Validators.required],
+      fizKitMod: [0, Validators.required],
       //asztrál
       asztEro: [1, Validators.required],
       asztEroMod: [0, Validators.required],
@@ -32,8 +32,8 @@ export class AttributesService {
       asztGyoMod: [0, Validators.required],
       asztUgy: [1, Validators.required],
       asztUgyMod: [0, Validators.required],
-      asztAll: [1, Validators.required],
-      asztAllMod: [0, Validators.required],
+      asztKit: [1, Validators.required],
+      asztKitMod: [0, Validators.required],
       //speciális
       magia: [0, Validators.required],
       magiaMod: [0, Validators.required],
@@ -77,16 +77,22 @@ export class AttributesService {
     return kezdKonst;
   }
 
-  getTamadoEro():number {
+  getFizikum(): number {
     const fizEro = this.attributesForm.get('fizEro')?.value +this.attributesForm.get('fizEroMod')?.value;
     const fizGyo = this.attributesForm.get('fizGyo')?.value +this.attributesForm.get('fizGyoMod')?.value;
     const fizUgy = this.attributesForm.get('fizUgy')?.value +this.attributesForm.get('fizUgyMod')?.value;
-    const meretKat = Math.floor(this.detailsServ.detailsForm.get('magassag')?.value/50);
-    const tamadoEro = Math.floor((fizGyo + fizUgy + meretKat)/2);
-    if (tamadoEro < 1) {
-      return 1;
-    }
-    return tamadoEro;
+    const fizKit = this.attributesForm.get('fizKit')?.value +this.attributesForm.get('fizKitMod')?.value;
+    const fizikum = Math.floor((fizEro + fizGyo + fizKit + fizUgy)/4)
+    return fizikum
+  }
+
+  getAsztral(): number {
+    const asztEro = this.attributesForm.get('asztEro')?.value +this.attributesForm.get('asztEroMod')?.value;
+    const asztGyo = this.attributesForm.get('asztGyo')?.value +this.attributesForm.get('asztGyoMod')?.value;
+    const asztUgy = this.attributesForm.get('asztUgy')?.value +this.attributesForm.get('asztUgyMod')?.value;
+    const asztKit = this.attributesForm.get('asztKit')?.value +this.attributesForm.get('asztKitMod')?.value;
+    const asztral = Math.floor((asztEro + asztGyo + asztKit + asztUgy)/4)
+    return asztral
   }
 
 

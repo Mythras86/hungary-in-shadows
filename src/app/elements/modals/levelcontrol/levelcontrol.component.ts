@@ -19,7 +19,7 @@ export class LevelcontrolComponent {
 
   @Output() buttonAction: EventEmitter<void> = new EventEmitter();
 
-  public fejlec: string = '';
+  public nev: string = '';
   public megjegyzes: any = '';
   public jutalom: number = 0;
   public lepes: number = 0;
@@ -40,7 +40,7 @@ export class LevelcontrolComponent {
   }
 
   loadData(modalData: any): void {
-    this.fejlec = modalData.fejlec;
+    this.nev = modalData.nev;
     this.megjegyzes = modalData.megjegyzes;
     this.jutalom = modalData.jutalom;
     this.lepes = modalData.lepes;

@@ -65,16 +65,6 @@ export class DetailsComponent implements OnInit {
     return [];
   }
 
-  hideButton(fcName: string):boolean {
-    if (fcName !== 'dns'
-    && fcName !== 'nem'
-    && (this.getValue('nem') == ''
-    || this.getValue('dns') == '') ) {
-      return false
-    }
-    return true;
-  }
-
   ngOnInit(): void {
     this.detailsServ.createDetails();
   }

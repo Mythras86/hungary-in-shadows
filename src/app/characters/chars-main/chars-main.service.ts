@@ -74,8 +74,8 @@ export class CharsMainService {
       fizGyoMod: number,
       fizUgy: number,
       fizUgyMod: number,
-      fizAll: number,
-      fizAllMod: number,
+      fizKit: number,
+      fizKitMod: number,
       //asztrál
       asztEro: number,
       asztEroMod: number,
@@ -83,8 +83,8 @@ export class CharsMainService {
       asztGyoMod: number,
       asztUgy: number,
       asztUgyMod: number,
-      asztAll: number,
-      asztAllMod: number,
+      asztKit: number,
+      asztKitMod: number,
       //speciális
       magia: number,
       magiaMod: number,
@@ -97,8 +97,10 @@ export class CharsMainService {
       // szakértelmek
       skills: Array<SkillsModel>,
       // állapot
-      astral: number,
-      body: number
+      asztralisAllapot: number,
+      fizikaiAllapot: number,
+      pinhentsegAllapot: number,
+      taplaltsagAllapot: number
     }>(BACKEND_URL +_id);
   }
 
@@ -144,8 +146,8 @@ export class CharsMainService {
     fizGyoMod: number,
     fizUgy: number,
     fizUgyMod: number,
-    fizAll: number,
-    fizAllMod: number,
+    fizKit: number,
+    fizKitMod: number,
     //asztrál
     asztEro: number,
     asztEroMod: number,
@@ -153,8 +155,8 @@ export class CharsMainService {
     asztGyoMod: number,
     asztUgy: number,
     asztUgyMod: number,
-    asztAll: number,
-    asztAllMod: number,
+    asztKit: number,
+    asztKitMod: number,
     //speciális
     magia: number,
     magiaMod: number,
@@ -167,8 +169,10 @@ export class CharsMainService {
     // szakértelmek
     skills: Array<SkillsModel>,
     // állapot
-    astral: number,
-    body: number
+    asztralisAllapot: number,
+    fizikaiAllapot: number,
+    pinhentsegAllapot: number,
+    taplaltsagAllapot: number
   ) {
     const charData = {
       _id: '',
@@ -212,8 +216,8 @@ export class CharsMainService {
       fizGyoMod: fizGyoMod,
       fizUgy: fizUgy,
       fizUgyMod: fizUgyMod,
-      fizAll: fizAll,
-      fizAllMod: fizAllMod,
+      fizKit: fizKit,
+      fizKitMod: fizKitMod,
       //asztrál
       asztEro: asztEro,
       asztEroMod: asztEroMod,
@@ -221,8 +225,8 @@ export class CharsMainService {
       asztGyoMod: asztGyoMod,
       asztUgy: asztUgy,
       asztUgyMod: asztUgyMod,
-      asztAll: asztAll,
-      asztAllMod: asztAllMod,
+      asztKit: asztKit,
+      asztKitMod: asztKitMod,
       //speciális
       magia: magia,
       magiaMod: magiaMod,
@@ -235,8 +239,10 @@ export class CharsMainService {
       // szakértelmek
       skills: skills,
       // állapot
-      astral: astral,
-      body: body
+      asztralisAllapot: asztralisAllapot,
+      fizikaiAllapot: fizikaiAllapot,
+      pinhentsegAllapot: pinhentsegAllapot,
+      taplaltsagAllapot: taplaltsagAllapot
     };
     this.http.post<{ message: string; char: CharModel }>(
       BACKEND_URL + "create", charData).subscribe(response => {
@@ -286,8 +292,8 @@ export class CharsMainService {
     fizGyoMod: number,
     fizUgy: number,
     fizUgyMod: number,
-    fizAll: number,
-    fizAllMod: number,
+    fizKit: number,
+    fizKitMod: number,
     //asztrál
     asztEro: number,
     asztEroMod: number,
@@ -295,8 +301,8 @@ export class CharsMainService {
     asztGyoMod: number,
     asztUgy: number,
     asztUgyMod: number,
-    asztAll: number,
-    asztAllMod: number,
+    asztKit: number,
+    asztKitMod: number,
     //speciális
     magia: number,
     magiaMod: number,
@@ -309,8 +315,10 @@ export class CharsMainService {
     // szakértelmek
     skills: Array<SkillsModel>,
     // állapot
-    astral: number,
-    body: number
+    asztralisAllapot: number,
+    fizikaiAllapot: number,
+    pinhentsegAllapot: number,
+    taplaltsagAllapot: number
   ) {
     let charData: CharModel;
     charData = {
@@ -355,8 +363,8 @@ export class CharsMainService {
       fizGyoMod: fizGyoMod,
       fizUgy: fizUgy,
       fizUgyMod: fizUgyMod,
-      fizAll: fizAll,
-      fizAllMod: fizAllMod,
+      fizKit: fizKit,
+      fizKitMod: fizKitMod,
       //asztrál
       asztEro: asztEro,
       asztEroMod: asztEroMod,
@@ -364,8 +372,8 @@ export class CharsMainService {
       asztGyoMod: asztGyoMod,
       asztUgy: asztUgy,
       asztUgyMod: asztUgyMod,
-      asztAll: asztAll,
-      asztAllMod: asztAllMod,
+      asztKit: asztKit,
+      asztKitMod: asztKitMod,
       //speciális
       magia: magia,
       magiaMod: magiaMod,
@@ -378,9 +386,11 @@ export class CharsMainService {
       // szakértelmek
       skills: skills,
       // állapot
-      astral: astral,
-      body: body
-    };
+      asztralisAllapot: asztralisAllapot,
+      fizikaiAllapot: fizikaiAllapot,
+      pinhentsegAllapot: pinhentsegAllapot,
+      taplaltsagAllapot: taplaltsagAllapot
+      };
     this.http
       .put(BACKEND_URL +_id, charData)
       .subscribe(response => {

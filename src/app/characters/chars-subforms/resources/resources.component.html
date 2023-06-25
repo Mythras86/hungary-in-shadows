@@ -2,7 +2,7 @@
 
   <div class="itemCont w100" *ngFor='let res of getResUtil()'>
     <div class="ngrn w40 text1">
-      {{res.fejlec}}
+      {{res.nev}}
     </div>
     <div *ngIf="res.karmaKtsg" class="karmaCost text1 w10">
       {{res.karmaKtsg}}
@@ -15,7 +15,7 @@
     [isEnabled]="res.novelheto
     && resServ.getFc(res.fcName).value < res.maxErtek"
     (buttonAction)="lvlContServ.buttonAction(
-      res.fejlec,
+      res.nev,
       res.megjegyzes,
       res.jutalom,
       res.lepes,

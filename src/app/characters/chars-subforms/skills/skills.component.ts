@@ -6,6 +6,7 @@ import { FormArray} from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
 import { SelectSkillsService } from 'src/app/elements/modals/select-skills/select-skills.service';
 import { InputModalService } from 'src/app/elements/modals/input-modal/input-modal.service';
+import { DetailsService } from '../details/details.service';
 
 @Component({
   selector: 'app-skills',
@@ -16,6 +17,7 @@ export class SkillsComponent {
 
   constructor(
     public skillsServ: SkillsService,
+    public detailssServ: DetailsService,
     public inputModServ: InputModalService,
     public lvlContServ: LevelcontrolService,
     public resServ: ResourcesService,
@@ -52,11 +54,17 @@ export class SkillsComponent {
     return megjegyzes;
   }
 
+  anyanyelvChangeDetector() {
+    const anyanyelv = this.detailssServ.detailsForm.get('anyanyelv');
+    anyanyelv?.valueChanges.subscribe(w =>{
+      this.skillsServ.addFirstLanguage('Anyanyelvi beszéd', w, 4);
+      this.skillsServ.addFirstLanguage('Anyanyelvi Í/O', w, 2);
+    })
+  }
+
   ngOnInit(): void {
     this.skillsServ.createSkills();
-    // this.skillsServ.addFirstLanguage('Anyanyelvi beszéd', '', 0);
-    // this.skillsServ.addFirstLanguage('Anyanyelvi Í/O', '', 0);
-
+    this.anyanyelvChangeDetector();
   }
 
 }

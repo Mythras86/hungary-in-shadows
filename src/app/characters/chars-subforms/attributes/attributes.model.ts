@@ -6,8 +6,8 @@ export interface AttributesModel {
   fizGyoMod: number,
   fizUgy: number,
   fizUgyMod: number,
-  fizAll: number,
-  fizAllMod: number,
+  fizKit: number,
+  fizKitMod: number,
   //asztrál
   asztEro: number,
   asztEroMod: number,
@@ -15,8 +15,8 @@ export interface AttributesModel {
   asztGyoMod: number,
   asztUgy: number,
   asztUgyMod: number,
-  asztAll: number,
-  asztAllMod: number,
+  asztKit: number,
+  asztKitMod: number,
   //speciális
   magia: number,
   magiaMod: number,

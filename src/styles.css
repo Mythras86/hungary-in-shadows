@@ -99,7 +99,7 @@ button:disabled {
 }
 .ntl {
   color: rgb(125, 255, 255);
-  text-shadow: 0 0 3px turquoise, 0 0 5px lightcyan;
+  text-shadow: 0 0 3px turquoise, 0 0 5px rgb(125, 255, 255);
   background-color: black;
   box-shadow: 2px 2px 6px turquoise inset;
 }
@@ -124,6 +124,15 @@ button:disabled {
   text-shadow: 0 0 3px rgb(255, 197, 81), 0 0 5px lightgoldenrodyellow;
   background-color: orange;
   box-shadow: 2px 2px 6px lightgoldenrodyellow inset;
+  padding-right: 1rem;
+  text-align: center;
+}
+
+.deleteItem {
+  color: white;
+  text-shadow: 0 0 3px darkred, 0 0 5px lightcoral;
+  background-color: red;
+  box-shadow: 2px 2px 6px white inset;
   padding-right: 1rem;
   text-align: center;
 }

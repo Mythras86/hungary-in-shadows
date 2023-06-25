@@ -39,6 +39,16 @@ export class AttributesComponent implements OnInit {
     return attrMax;
   }
 
+  getCsoportErtek(csoport: string) {
+    if(csoport == 'Fizikum') {
+      return this.attrServ.getFizikum();
+    }
+    if(csoport == 'Asztrál') {
+      return this.attrServ.getAsztral();
+    }
+    return null;
+  }
+
   buttonStatus(fcName: string, attrMax: number):boolean {
     const karma = this.resServ.getFc('elkolthetoKarma').value;
     const attrmax = this.getAttrMax(fcName, attrMax);

@@ -34,9 +34,7 @@ exports.createChar = (req, res, next) => {
     //erőforrások
     elkolthetoKarma: req.body.elkolthetoKarma,
     elkolthetoToke: req.body.elkolthetoToke,
-    elkolthetoTulPont: req.body.elkolthetoTulPont,
-    elkolthetoSzakPont: req.body.elkolthetoSzakPont,
-    elkolthetoMagPont: req.body.elkolthetoMagPont,
+    karmabolToke: req.body.karmabolToke,
     //fizikai
     fizEro: req.body.fizEro,
     fizEroMod: req.body.fizEroMod,
@@ -44,8 +42,8 @@ exports.createChar = (req, res, next) => {
     fizGyoMod: req.body.fizGyoMod,
     fizUgy: req.body.fizUgy,
     fizUgyMod: req.body.fizUgyMod,
-    fizAll: req.body.fizAll,
-    fizAllMod: req.body.fizAllMod,
+    fizKit: req.body.fizKit,
+    fizKitMod: req.body.fizKitMod,
     //asztrál
     asztEro: req.body.asztEro,
     asztEroMod: req.body.asztEroMod,
@@ -53,8 +51,8 @@ exports.createChar = (req, res, next) => {
     asztGyoMod: req.body.asztGyoMod,
     asztUgy: req.body.asztUgy,
     asztUgyMod: req.body.asztUgyMod,
-    asztAll: req.body.asztAll,
-    asztAllMod: req.body.asztAllMod,
+    asztKit: req.body.asztKit,
+    asztKitMod: req.body.asztKitMod,
     //speciális
     magia: req.body.magia,
     magiaMod: req.body.magiaMod,
@@ -67,8 +65,10 @@ exports.createChar = (req, res, next) => {
     // szakértelmek
     skills: req.body.skills,
     // állapot
-    astral: req.body.astral,
-    body: req.body.body
+    asztralisAllapot: req.body.asztralisAllapot,
+    fizikaiAllapot: req.body.fizikaiAllapot,
+    pinhentsegAllapot: req.body.pinhentsegAllapot,
+    taplaltsagAllapot: req.body.taplaltsagAllapot
   });
   char
   .save()
@@ -123,9 +123,7 @@ exports.updateChar = (req, res, next) => {
     //erőforrások
     elkolthetoKarma: req.body.elkolthetoKarma,
     elkolthetoToke: req.body.elkolthetoToke,
-    elkolthetoTulPont: req.body.elkolthetoTulPont,
-    elkolthetoSzakPont: req.body.elkolthetoSzakPont,
-    elkolthetoMagPont: req.body.elkolthetoMagPont,
+    karmabolToke: req.body.karmabolToke,
     //fizikai
     fizEro: req.body.fizEro,
     fizEroMod: req.body.fizEroMod,
@@ -133,8 +131,8 @@ exports.updateChar = (req, res, next) => {
     fizGyoMod: req.body.fizGyoMod,
     fizUgy: req.body.fizUgy,
     fizUgyMod: req.body.fizUgyMod,
-    fizAll: req.body.fizAll,
-    fizAllMod: req.body.fizAllMod,
+    fizKit: req.body.fizKit,
+    fizKitMod: req.body.fizKitMod,
     //asztrál
     asztEro: req.body.asztEro,
     asztEroMod: req.body.asztEroMod,
@@ -142,8 +140,8 @@ exports.updateChar = (req, res, next) => {
     asztGyoMod: req.body.asztGyoMod,
     asztUgy: req.body.asztUgy,
     asztUgyMod: req.body.asztUgyMod,
-    asztAll: req.body.asztAll,
-    asztAllMod: req.body.asztAllMod,
+    asztKit: req.body.asztKit,
+    asztKitMod: req.body.asztKitMod,
     //speciális
     magia: req.body.magia,
     magiaMod: req.body.magiaMod,
@@ -156,8 +154,10 @@ exports.updateChar = (req, res, next) => {
     // szakértelmek
     skills: req.body.skills,
     // állapot
-    astral: req.body.astral,
-    body: req.body.body
+    asztralisAllapot: req.body.asztralisAllapot,
+    fizikaiAllapot: req.body.fizikaiAllapot,
+    pinhentsegAllapot: req.body.pinhentsegAllapot,
+    taplaltsagAllapot: req.body.taplaltsagAllapot
   });
   Char.updateOne({_id: req.params._id, creatorId: req.userData.userId }, char)
   .then(result => {

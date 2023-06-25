@@ -31,7 +31,7 @@ export const skillsUtil: Array<any> = [
   {megjegyzes: 'van', nev: 'Motor', csoport: 'Jármű', kapcsoltTul: 'van'},
   {megjegyzes: 'van', nev: 'Motoros hajó', csoport: 'Jármű', kapcsoltTul: 'van'},
   {megjegyzes: 'van', nev: 'Nagy hajó', csoport: 'Jármű', kapcsoltTul: 'van'},
-  {megjegyzes: 'van', nev: 'Rakétahajtású Jármű', csoport: 'Jármű', kapcsoltTul: 'van'},
+  {megjegyzes: 'van', nev: 'Rakétahajtású', csoport: 'Jármű', kapcsoltTul: 'van'},
   {megjegyzes: 'van', nev: 'Repülő', csoport: 'Jármű', kapcsoltTul: 'van'},
   {megjegyzes: 'van', nev: 'Tengeralattjáró', csoport: 'Jármű', kapcsoltTul: 'van'},
   {megjegyzes: 'van', nev: 'Vitorlás', csoport: 'Jármű', kapcsoltTul: 'van'},

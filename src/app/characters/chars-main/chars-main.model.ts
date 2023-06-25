@@ -41,8 +41,8 @@ export interface CharModel {
   fizGyoMod: number,
   fizUgy: number,
   fizUgyMod: number,
-  fizAll: number,
-  fizAllMod: number,
+  fizKit: number,
+  fizKitMod: number,
   //asztrál
   asztEro: number,
   asztEroMod: number,
@@ -50,8 +50,8 @@ export interface CharModel {
   asztGyoMod: number,
   asztUgy: number,
   asztUgyMod: number,
-  asztAll: number,
-  asztAllMod: number,
+  asztKit: number,
+  asztKitMod: number,
   //speciális
   magia: number,
   magiaMod: number,
@@ -64,7 +64,8 @@ export interface CharModel {
   // szakértelmek
   skills: Array<any>,
   // állapot
-  astral: number,
-  body: number,
-
+  asztralisAllapot: number,
+  fizikaiAllapot: number,
+  pinhentsegAllapot: number,
+  taplaltsagAllapot: number,
 }

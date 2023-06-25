@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/authentication/auth.service';
@@ -103,8 +103,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         attrs.value.fizGyoMod,
         attrs.value.fizUgy,
         attrs.value.fizUgyMod,
-        attrs.value.fizAll,
-        attrs.value.fizAllMod,
+        attrs.value.fizKit,
+        attrs.value.fizKitMod,
         //asztrál
         attrs.value.asztEro,
         attrs.value.asztEroMod,
@@ -112,8 +112,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         attrs.value.asztGyoMod,
         attrs.value.asztUgy,
         attrs.value.asztUgyMod,
-        attrs.value.asztAll,
-        attrs.value.asztAllMod,
+        attrs.value.asztKit,
+        attrs.value.asztKitMod,
         //speciális
         attrs.value.magia,
         attrs.value.magiaMod,
@@ -126,8 +126,10 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         // szakértelmek
         skills.value.skills,
         // állapot
-        status.value.astral,
-        status.value.body,
+        status.value.asztralisAllapot,
+        status.value.fizikaiAllapot,
+        status.value.pinhentsegAllapot,
+        status.value.taplaltsagAllapot,
       );
    } else {
       this.charServ.updateOneChar(
@@ -172,8 +174,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         attrs.value.fizGyoMod,
         attrs.value.fizUgy,
         attrs.value.fizUgyMod,
-        attrs.value.fizAll,
-        attrs.value.fizAllMod,
+        attrs.value.fizKit,
+        attrs.value.fizKitMod,
         //asztrál
         attrs.value.asztEro,
         attrs.value.asztEroMod,
@@ -181,8 +183,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         attrs.value.asztGyoMod,
         attrs.value.asztUgy,
         attrs.value.asztUgyMod,
-        attrs.value.asztAll,
-        attrs.value.asztAllMod,
+        attrs.value.asztKit,
+        attrs.value.asztKitMod,
         //speciális
         attrs.value.magia,
         attrs.value.magiaMod,
@@ -195,8 +197,10 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         // szakértelmek
         skills.value.skills,
         // állapot
-        status.value.astral,
-        status.value.body,
+        status.value.asztralisAllapot,
+        status.value.fizikaiAllapot,
+        status.value.pinhentsegAllapot,
+        status.value.taplaltsagAllapot,
       )};
     this.router.navigate(["/charslist"]);
   }
@@ -273,8 +277,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
             fizGyoMod: w.fizGyoMod,
             fizUgy: w.fizUgy,
             fizUgyMod: w.fizUgyMod,
-            fizAll: w.fizAll,
-            fizAllMod: w.fizAllMod,
+            fizKit: w.fizKit,
+            fizKitMod: w.fizKitMod,
             //asztrál
             asztEro: w.asztEro,
             asztEroMod: w.asztEroMod,
@@ -282,8 +286,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
             asztGyoMod: w.asztGyoMod,
             asztUgy: w.asztUgy,
             asztUgyMod: w.asztUgyMod,
-            asztAll: w.asztAll,
-            asztAllMod: w.asztAllMod,
+            asztKit: w.asztKit,
+            asztKitMod: w.asztKitMod,
             //speciális
             magia: w.magia,
             magiaMod: w.magiaMod,
@@ -294,12 +298,13 @@ export class CharsMainComponent implements OnInit, OnDestroy {
             kezdemenyezes: w.kezdemenyezes,
             kezdemenyezesMod: w.kezdemenyezesMod,
           });
-          this.skillsServ.skillsForm = this.fb.group({
-            skills: w.skills
-          })
+          this.skillsServ.skillsForm.addControl('skillsForm', new FormGroup({}));
+          (this.skillsServ.skillsForm.get('skillsForm') as FormGroup).addControl('skills', this.skillsServ.setSkills(w.skills));
           this.statusServ.statusForm = this.fb.group({
-            body: w.body,
-            astral: w.astral
+            fizikaiAllapot: w.fizikaiAllapot,
+            asztralisAllapot: w.asztralisAllapot,
+            pinhentsegAllapot: w.pinhentsegAllapot,
+            taplaltsagAllapot: w.taplaltsagAllapot,
           })
         });
       } else {

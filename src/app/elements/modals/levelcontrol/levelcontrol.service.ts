@@ -13,7 +13,7 @@ export class LevelcontrolService {
     ) { }
 
     buttonAction(
-      fejlec: string,
+      nev: string,
       megjegyzes: any,
       jutalom: number,
       lepes: number,
@@ -25,7 +25,7 @@ export class LevelcontrolService {
       maxErtek: number,
       ) {
         this.modalServ.openModal(LevelcontrolComponent, {
-        fejlec: fejlec,
+        nev: nev,
         megjegyzes: megjegyzes,
         jutalom: jutalom,
         lepes: lepes,

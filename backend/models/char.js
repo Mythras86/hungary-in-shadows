@@ -35,9 +35,7 @@ const charSchema = mongoose.Schema({
   //erőforrások
   elkolthetoKarma: { type: Number, required: true},
   elkolthetoToke: { type: Number, required: true},
-  elkolthetoTulPont: { type: Number, required: true},
-  elkolthetoSzakPont: { type: Number, required: true},
-  elkolthetoMagPont: { type: Number, required: true},
+  karmabolToke: { type: Number, required: true},
 
   //fizikai
   fizEro: { type: Number, required: true},
@@ -46,8 +44,8 @@ const charSchema = mongoose.Schema({
   fizGyoMod: { type: Number, required: true},
   fizUgy: { type: Number, required: true},
   fizUgyMod: { type: Number, required: true},
-  fizAll: { type: Number, required: true},
-  fizAllMod: { type: Number, required: true},
+  fizKit: { type: Number, required: true},
+  fizKitMod: { type: Number, required: true},
   //asztrál
   asztEro: { type: Number, required: true},
   asztEroMod: { type: Number, required: true},
@@ -55,8 +53,8 @@ const charSchema = mongoose.Schema({
   asztGyoMod: { type: Number, required: true},
   asztUgy: { type: Number, required: true},
   asztUgyMod: { type: Number, required: true},
-  asztAll: { type: Number, required: true},
-  asztAllMod: { type: Number, required: true},
+  asztKit: { type: Number, required: true},
+  asztKitMod: { type: Number, required: true},
   //speciális
   magia: { type: Number, required: true},
   magiaMod: { type: Number, required: true},
@@ -67,10 +65,12 @@ const charSchema = mongoose.Schema({
   kezdemenyezes: { type: Number, required: true},
   kezdemenyezesMod: { type: Number, required: true},
   // szakértelmek
-  skills: {type: Array, ref: 'Skills'},
+  skills: {type: Array, ref: 'Skill'},
   // állapot
-  astral: { type: Number, required: true},
-  body: { type: Number, required: true},
+  asztralisAllapot: { type: Number, required: true},
+  fizikaiAllapot: { type: Number, required: true},
+  pinhentsegAllapot: { type: Number, required: true},
+  taplaltsagAllapot: { type: Number, required: true}
 });
 
 module.exports = mongoose.model("Char", charSchema);
