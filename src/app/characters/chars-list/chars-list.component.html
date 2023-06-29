@@ -4,7 +4,7 @@
     <button class="ngrn text1" (click)="onNewChar()" *ngIf="userIsAuthenticated">Új Karakter</button>
   </div>
 
-  <div class="itemCont w50" *ngFor="let char of charsListServ.charsList">
+  <div class="itemCont w50" *ngFor="let char of charsList">
     <div class="nprpl w100 text1">User: {{char.creatorName}}</div>
     <div class="nbl w100 text1">Név: {{char.teljesnev}}</div>
     <div class="ngrn w100 text1">Kaszt: {{char.dns}}</div>

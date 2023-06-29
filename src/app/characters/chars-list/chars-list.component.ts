@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/authentication/auth.service';
 import { SpinnerService } from 'src/app/elements/spinner/spinner.service';
 import { CharsListService } from './chars-list.service';
+import { CharModel } from '../chars-main/chars-main.model';
 
 @Component({
   selector: 'app-chars',
@@ -23,6 +24,7 @@ export class CharsListComponent implements OnInit, OnDestroy {
   userId: string = '';
   private authStatusSub!: Subscription;
   private charSub!: Subscription;
+  public charsList: CharModel[] = [];
 
   onNewChar() {
     (<any>this.router).navigate(["/charsheet"]);
@@ -40,21 +42,20 @@ export class CharsListComponent implements OnInit, OnDestroy {
 
   ngOnInit():void {
     this.spinServ.toggleSpinner(false);
-    this.userId = this.authServ.getUserId();
     this.charsListServ.getChars();
+    this.userId = this.authServ.getUserId();
     this.userIsAuthenticated = this.authServ.getIsAuth();
     this.authStatusSub = this.authServ
-    .getAuthStatusListener()
-    .subscribe((isAuthenticated: boolean) => {
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated: boolean) => {
       this.userIsAuthenticated = isAuthenticated;
       this.userId = this.authServ.getUserId();
-    });
+      });
     this.charSub = this.charsListServ.getCharsUpdateListener()
-    .subscribe(w => {
-        this.charsListServ.charsList = w.chars;
+      .subscribe((w: {chars:CharModel[]}) => {
         this.spinServ.toggleSpinner(false);
-      }
-    )
+        this.charsList = w.chars;
+      });
   }
 
   ngOnDestroy() {

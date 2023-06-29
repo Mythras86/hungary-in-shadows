@@ -36,8 +36,8 @@ export class CharsListService {
         };
       })
     )
-    .subscribe(w => {
-      this.charsList = w.chars;
+    .subscribe(wx => {
+      this.charsList = wx.chars;
       this.charsUpdated.next({
         chars: [...this.charsList]
       });

@@ -24,6 +24,10 @@ import { StatusComponent } from './characters/chars-subforms/status/status.compo
 import { SkillsComponent } from './characters/chars-subforms/skills/skills.component';
 import { SelectSkillsComponent } from './elements/modals/select-skills//select-skills.component';
 import { AttributesComponent } from './characters/chars-subforms/attributes/attributes.component';
+import { ArmorsComponent } from './characters/chars-subforms/armors/armors.component';
+import { CybersComponent } from './characters/chars-subforms/cybers/cybers.component';
+import { MagicsComponent } from './characters/chars-subforms/magics/magics.component';
+import { ToolsComponent } from './characters/chars-subforms/tools/tools.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,11 @@ import { AttributesComponent } from './characters/chars-subforms/attributes/attr
     ResourcesComponent,
     StatusComponent,
     SkillsComponent,
-    SelectSkillsComponent
+    SelectSkillsComponent,
+    ArmorsComponent,
+    CybersComponent,
+    MagicsComponent,
+    ToolsComponent
   ],
   imports: [
     BrowserModule,
