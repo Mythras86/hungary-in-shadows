@@ -11,6 +11,7 @@ import { ResourcesService } from '../chars-subforms/resources/resources.service'
 import { AttributesService } from '../chars-subforms/attributes/attributes.service';
 import { SkillsService } from '../chars-subforms/skills/skills.service';
 import { StatusService } from '../chars-subforms/status/status.service';
+import { ArmorsService } from '../chars-subforms/armors/armors.service';
 
 @Component({
   selector: 'app-chars-main',
@@ -32,6 +33,7 @@ export class CharsMainComponent implements OnInit, OnDestroy {
     private attrServ: AttributesService,
     private skillsServ: SkillsService,
     private statusServ: StatusService,
+    private armorsServ: ArmorsService
   ) {}
 
   mode:string = 'create';
@@ -52,6 +54,7 @@ export class CharsMainComponent implements OnInit, OnDestroy {
     var attrs = this.attrServ.attributesForm;
     var skills = this.skillsServ.skillsForm;
     var status = this.statusServ.statusForm;
+    var armors = this.armorsServ.armorsForm;
     if (main.invalid
      || details.invalid
      || res.invalid
@@ -130,6 +133,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         status.value.fizikaiAllapot,
         status.value.pinhentsegAllapot,
         status.value.taplaltsagAllapot,
+        // páncélok
+        armors.value.armors
       );
    } else {
       this.charServ.updateOneChar(
@@ -201,6 +206,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         status.value.fizikaiAllapot,
         status.value.pinhentsegAllapot,
         status.value.taplaltsagAllapot,
+        // páncélok
+        armors.value.armors
       )};
     this.router.navigate(["/charslist"]);
   }
@@ -299,13 +306,15 @@ export class CharsMainComponent implements OnInit, OnDestroy {
             kezdemenyezesMod: w.kezdemenyezesMod,
           });
           this.skillsServ.skillsForm.addControl('skillsForm', new FormGroup({}));
-          (this.skillsServ.skillsForm.get('skillsForm') as FormGroup).addControl('skills', this.skillsServ.setSkills(w.skills));
+          (this.skillsServ.skillsForm as FormGroup).addControl('skills', this.skillsServ.setSkills(w.skills));
           this.statusServ.statusForm = this.fb.group({
             fizikaiAllapot: w.fizikaiAllapot,
             asztralisAllapot: w.asztralisAllapot,
             pinhentsegAllapot: w.pinhentsegAllapot,
             taplaltsagAllapot: w.taplaltsagAllapot,
           })
+          this.armorsServ.armorsForm.addControl('armorsForm', new FormGroup({}));
+          (this.armorsServ.armorsForm as FormGroup).addControl('armors', this.armorsServ.setArmors(w.armors));
         });
       } else {
         this.mode = 'create';

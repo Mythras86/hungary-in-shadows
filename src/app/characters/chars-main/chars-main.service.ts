@@ -6,6 +6,7 @@ import { CharModel } from './chars-main.model';
 import { AuthService } from 'src/app/authentication/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SkillsModel } from '../chars-subforms/skills/skills.model';
+import { ArmorsModel } from '../chars-subforms/armors/armors.model';
 
 const BACKEND_URL = environment.apiUrl + "/char/";
 
@@ -100,7 +101,9 @@ export class CharsMainService {
       asztralisAllapot: number,
       fizikaiAllapot: number,
       pinhentsegAllapot: number,
-      taplaltsagAllapot: number
+      taplaltsagAllapot: number,
+      // páncélok
+      armors: Array<ArmorsModel>
     }>(BACKEND_URL +_id);
   }
 
@@ -172,7 +175,9 @@ export class CharsMainService {
     asztralisAllapot: number,
     fizikaiAllapot: number,
     pinhentsegAllapot: number,
-    taplaltsagAllapot: number
+    taplaltsagAllapot: number,
+    // páncélok
+    armors: Array<ArmorsModel>
   ) {
     const charData = {
       _id: '',
@@ -242,7 +247,9 @@ export class CharsMainService {
       asztralisAllapot: asztralisAllapot,
       fizikaiAllapot: fizikaiAllapot,
       pinhentsegAllapot: pinhentsegAllapot,
-      taplaltsagAllapot: taplaltsagAllapot
+      taplaltsagAllapot: taplaltsagAllapot,
+      // páncélok
+      armors: armors,
     };
     this.http.post<{ message: string; char: CharModel }>(
       BACKEND_URL + "create", charData).subscribe(response => {
@@ -318,7 +325,9 @@ export class CharsMainService {
     asztralisAllapot: number,
     fizikaiAllapot: number,
     pinhentsegAllapot: number,
-    taplaltsagAllapot: number
+    taplaltsagAllapot: number,
+    // páncélok
+    armors: Array<ArmorsModel>
   ) {
     let charData: CharModel;
     charData = {
@@ -389,7 +398,9 @@ export class CharsMainService {
       asztralisAllapot: asztralisAllapot,
       fizikaiAllapot: fizikaiAllapot,
       pinhentsegAllapot: pinhentsegAllapot,
-      taplaltsagAllapot: taplaltsagAllapot
+      taplaltsagAllapot: taplaltsagAllapot,
+      // páncélok
+      armors: armors,
       };
     this.http
       .put(BACKEND_URL +_id, charData)

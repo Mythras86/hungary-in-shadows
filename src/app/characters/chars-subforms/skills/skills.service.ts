@@ -23,13 +23,16 @@ export class SkillsService {
   }
 
   addSkill(nev: string): void {
+    if (nev == '') {
+      return;
+    }
     const karma = this.resServ.getFc('elkolthetoKarma');
     const csoport = skillsUtil.filter(x => x.nev == nev).map(x => x.csoport)[0];
     const skills = this.fb.group({
-      szakertNev: [nev, Validators.required],
-      szakertCsoport: [csoport, Validators.required],
-      szakertMegjegyzes: [''],
-      szakertSzint: [1, Validators.required],
+      nev: [nev, Validators.required],
+      csoport: [csoport, Validators.required],
+      megjegyzes: [''],
+      szint: [1, Validators.required],
     });
     karma.patchValue(karma.value-2);
     (this.skillsForm.get('skills') as FormArray).push(skills);
@@ -40,12 +43,13 @@ export class SkillsService {
     dataset.forEach(e => {
       skills.push(
         this.fb.group({
-          szakertNev: e.szakertNev,
-          szakertCsoport: e.szakertCsoport,
-          szakertMegjegyzes: e.szakertMegjegyzes,
-          szakertSzint: e.szakertSzint
+          nev: e.nev,
+          csoport: e.csoport,
+          megjegyzes: e.megjegyzes,
+          szint: e.szint
         }))
     });
+    console.log(dataset)
     return skills;
   }
 
@@ -60,10 +64,10 @@ export class SkillsService {
 
   addFirstLanguage(langName:string, langDesc:string, baseLvl: number): void {
     const skillsForm = this.fb.group({
-      szakertNev: [langName, Validators.required],
-      szakertCsoport: ['Nyelvi', Validators.required],
-      szakertMegjegyzes: [langDesc],
-      szakertSzint: [baseLvl, Validators.required],
+      nev: [langName, Validators.required],
+      csoport: ['Nyelvi', Validators.required],
+      megjegyzes: [langDesc],
+      szint: [baseLvl, Validators.required],
     });
     (this.skillsForm.get('skills') as FormArray).push(skillsForm);
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SkillsService } from './skills.service';
 import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
 import { skillsUtil } from './skills.util';
@@ -13,7 +13,7 @@ import { DetailsService } from '../details/details.service';
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.css']
 })
-export class SkillsComponent {
+export class SkillsComponent implements OnInit {
 
   constructor(
     public skillsServ: SkillsService,
@@ -38,7 +38,7 @@ export class SkillsComponent {
 
   checkCsoport(csoport: string):boolean {
     const form = (this.skillsServ.skillsForm.get('skills') as FormArray);
-    const csoportArr = Object.values(form.controls).map(x => x.value).map(x => x.szakertCsoport);
+    const csoportArr = Object.values(form.controls).map(x => x.value).map(x => x.csoport);
     const csopArrUniq = [...new Set(csoportArr.map(x=> x))];
     const check = csopArrUniq.includes(csoport);
     return check;

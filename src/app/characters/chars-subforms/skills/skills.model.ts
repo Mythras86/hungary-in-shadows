@@ -1,6 +1,6 @@
 export interface SkillsModel{
-  szakertNev: string;
-  szakertCsoport: string;
-  szakertMegjegyzes: string;
-  szakertSzint: number;
+  nev: string;
+  csoport: string;
+  megjegyzes: string;
+  szint: number;
 }

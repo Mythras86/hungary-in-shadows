@@ -28,6 +28,7 @@ import { ArmorsComponent } from './characters/chars-subforms/armors/armors.compo
 import { CybersComponent } from './characters/chars-subforms/cybers/cybers.component';
 import { MagicsComponent } from './characters/chars-subforms/magics/magics.component';
 import { ToolsComponent } from './characters/chars-subforms/tools/tools.component';
+import { SelectArmorsComponent } from './elements/modals/select-armors/select-armors.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { ToolsComponent } from './characters/chars-subforms/tools/tools.componen
     ArmorsComponent,
     CybersComponent,
     MagicsComponent,
-    ToolsComponent
+    ToolsComponent,
+    SelectArmorsComponent,
   ],
   imports: [
     BrowserModule,

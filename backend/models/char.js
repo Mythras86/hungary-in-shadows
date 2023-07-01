@@ -70,7 +70,9 @@ const charSchema = mongoose.Schema({
   asztralisAllapot: { type: Number, required: true},
   fizikaiAllapot: { type: Number, required: true},
   pinhentsegAllapot: { type: Number, required: true},
-  taplaltsagAllapot: { type: Number, required: true}
+  taplaltsagAllapot: { type: Number, required: true},
+  // páncélok
+  armors: {type: Array, ref: 'Armor'},
 });
 
 module.exports = mongoose.model("Char", charSchema);

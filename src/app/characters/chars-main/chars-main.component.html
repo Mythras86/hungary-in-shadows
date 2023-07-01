@@ -40,24 +40,24 @@
   [subForm]="'armors'"
   [headText]="'Viselt Páncélzat'"
   ></app-section-head>
-  <app-skills [hidden]="this.headServ.showMeSatus !== 'armors'"></app-skills>
+  <app-armors [hidden]="this.headServ.showMeSatus !== 'armors'"></app-armors>
 
   <app-section-head
   [subForm]="'tools'"
   [headText]="'Felszerelések'"
   ></app-section-head>
-  <app-skills [hidden]="this.headServ.showMeSatus !== 'tools'"></app-skills>
+  <app-tools [hidden]="this.headServ.showMeSatus !== 'tools'"></app-tools>
 
   <app-section-head
   [subForm]="'cybers'"
   [headText]="'Kibervilág'"
   ></app-section-head>
-  <app-skills [hidden]="this.headServ.showMeSatus !== 'cybers'"></app-skills>
+  <app-cybers [hidden]="this.headServ.showMeSatus !== 'cybers'"></app-cybers>
 
   <app-section-head
   [subForm]="'magics'"
   [headText]="'Mágia'"
   ></app-section-head>
-  <app-skills [hidden]="this.headServ.showMeSatus !== 'magics'"></app-skills>
+  <app-magics [hidden]="this.headServ.showMeSatus !== 'magics'"></app-magics>
 
 </form>

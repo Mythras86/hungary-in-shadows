@@ -68,7 +68,9 @@ exports.createChar = (req, res, next) => {
     asztralisAllapot: req.body.asztralisAllapot,
     fizikaiAllapot: req.body.fizikaiAllapot,
     pinhentsegAllapot: req.body.pinhentsegAllapot,
-    taplaltsagAllapot: req.body.taplaltsagAllapot
+    taplaltsagAllapot: req.body.taplaltsagAllapot,
+    // páncélok
+    armors: req.body.armors,
   });
   char
   .save()
@@ -157,7 +159,9 @@ exports.updateChar = (req, res, next) => {
     asztralisAllapot: req.body.asztralisAllapot,
     fizikaiAllapot: req.body.fizikaiAllapot,
     pinhentsegAllapot: req.body.pinhentsegAllapot,
-    taplaltsagAllapot: req.body.taplaltsagAllapot
+    taplaltsagAllapot: req.body.taplaltsagAllapot,
+    // páncélok
+    armors: req.body.armors,
   });
   Char.updateOne({_id: req.params._id, creatorId: req.userData.userId }, char)
   .then(result => {

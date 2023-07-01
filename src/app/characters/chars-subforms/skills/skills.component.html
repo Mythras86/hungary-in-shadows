@@ -13,39 +13,39 @@
 
     <div class="w100" [formGroupName]='i' *ngFor="let skill of getControls(); let i = index">
 
-      <div class="itemCont" *ngIf="skillsServ.getFc(i, 'szakertCsoport')?.value == csoport">
+      <div class="itemCont" *ngIf="skillsServ.getFc(i, 'csoport')?.value == csoport">
 
         <button class="w10 deleteItem text1" type="button" (click)="skillsServ.removeSkill(i)">X</button>
-        <div class="nbl text1 w50">{{skillsServ.getFc(i, 'szakertNev')?.value}}</div>
-        <div class="nbl text1 w30">{{skillsServ.getFc(i, 'szakertSzint')?.value}}</div>
+        <div class="nbl text1 w50">{{skillsServ.getFc(i, 'nev')?.value}}</div>
+        <div class="nbl text1 w30">{{skillsServ.getFc(i, 'szint')?.value}}</div>
 
         <app-levelcontrol class="w10"
           [isEnabled]="resServ.getFc('elkolthetoKarma').value >= 2"
           (buttonAction)="lvlContServ.buttonAction(
-          skillsServ.getFc(i, 'szakertNev')?.value,
-          getMegjFromUtil(skillsServ.getFc(i, 'szakertNev')?.value),
+          skillsServ.getFc(i, 'nev')?.value,
+          getMegjFromUtil(skillsServ.getFc(i, 'nev')?.value),
           1,
           5,
           'Szint',
           2,
-          skillsServ.getFc(i, 'szakertSzint'),
+          skillsServ.getFc(i, 'szint'),
           resServ.getFc('elkolthetoKarma'),
-          skillsServ.getFc(i, 'szakertSzint')?.value,
+          skillsServ.getFc(i, 'szint')?.value,
           6
           )"
         ></app-levelcontrol>
 
-        <div class="grayCell text1 w90">{{skillsServ.getFc(i, 'szakertMegjegyzes')?.value}}</div>
+        <div class="grayCell text1 w90">{{skillsServ.getFc(i, 'megjegyzes')?.value}}</div>
 
         <app-input-modal class="w10"
           [isEnabled]="true"
           (buttonAction)="inputModServ.buttonAction(
-          skillsServ.getFc(i, 'szakertMegjegyzes'),
+          skillsServ.getFc(i, 'megjegyzes'),
           'input',
           'text',
-          skillsServ.getFc(i, 'szakertNev')?.value,
-          getMegjFromUtil(skillsServ.getFc(i, 'szakertNev')?.value),
-          skillsServ.getFc(i, 'szakertMegjegyzes')?.value,
+          skillsServ.getFc(i, 'nev')?.value,
+          getMegjFromUtil(skillsServ.getFc(i, 'nev')?.value),
+          skillsServ.getFc(i, 'megjegyzes')?.value,
           '',
           ''
           )"

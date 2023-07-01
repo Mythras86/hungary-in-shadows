@@ -68,4 +68,6 @@ export interface CharModel {
   fizikaiAllapot: number,
   pinhentsegAllapot: number,
   taplaltsagAllapot: number,
+  // páncélok
+  armors: Array<any>,
 }
