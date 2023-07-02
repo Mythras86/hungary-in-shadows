@@ -116,7 +116,7 @@ button:disabled {
   background-color: purple;
   box-shadow: 2px 2px 6px magenta inset;
   padding-right: 0.2rem;
-  text-align: center;
+  justify-content: center;
 }
 
 .moneyCost {
@@ -125,7 +125,7 @@ button:disabled {
   background-color: orange;
   box-shadow: 2px 2px 6px lightgoldenrodyellow inset;
   padding-right: 1rem;
-  text-align: center;
+  justify-content: center;
 }
 
 .deleteItem {
@@ -134,7 +134,7 @@ button:disabled {
   background-color: red;
   box-shadow: 2px 2px 6px white inset;
   padding-right: 1rem;
-  text-align: center;
+  justify-content: center;
 }
 
 .w10 {

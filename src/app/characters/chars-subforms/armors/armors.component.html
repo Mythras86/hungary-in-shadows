@@ -1,15 +1,21 @@
 <div class="pageCont" [formGroup]="armorsServ.armorsForm" *ngIf="armorsServ.armorsForm">
 
-  <button *ngIf="resServ.getFc('elkolthetoToke').value >= 0" class="ngrn text1" type="button">Új Páncél Vásárlása</button>
+  <button *ngIf="resServ.getFc('elkolthetoToke').value >= 0" class="ngrn text1" type="button" (click)="sArmorServ.openModal()">Új Páncél Vásárlása</button>
   <button *ngIf="resServ.getFc('elkolthetoToke').value < 0" class="grayCell text1" type="button">Új Páncél Vásárlása</button>
 
-  <!-- <div class="itemCont w100" formArrayName="armors">
+  <div class="itemCont w100" formArrayName="armors">
 
-    <div class="w100" [formGroupName]='i' *ngFor="let armor of armors; let i = index">
-      <div>{{armorsServ.getFc(i)}}</div>
+    <div class="w100 itemCont" [formGroupName]='i' *ngFor="let armor of getControls(); let i = index">
+      <div class="ntl text1 w60">{{armorsServ.getFc(i, 'nev')?.value}}</div>
+      <div class="nprpl text1 w10">{{armorsServ.getFc(i, 'szint')?.value}}</div>
+      <div class="moneyCost text1 w30">{{armorsServ.getFc(i, 'ar')?.value}} Cr</div>
+      <div class="grayCell text1 w30">{{armorsServ.getFc(i, 'kategoria')?.value}}</div>
+      <div class="grayCell text1 w20">{{armorsServ.getFc(i, 'suly')?.value}} Kg</div>
+      <div class="grayCell text1 w50">{{armorsServ.getFc(i, 'megjegyzes')?.value}}</div>
+
     </div>
 
-  </div> -->
+  </div>
 
 
 </div>

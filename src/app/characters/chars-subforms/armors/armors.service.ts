@@ -54,8 +54,8 @@ export class ArmorsService {
     (this.armorsForm.get('armors') as FormArray).removeAt(i);
   }
 
-  getFc(i:number) {
-    const armor = ((this.armorsForm.get('armors') as FormArray).at(i) as FormGroup);
+  getFc(i:number, fcName:string) {
+    const armor = ((this.armorsForm.get('armors') as FormArray).at(i) as FormGroup).get(fcName);
     return armor;
   }
 

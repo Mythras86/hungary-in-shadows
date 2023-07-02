@@ -1,1 +1,19 @@
+.modalContent {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: gray;
+}
 
+input, select {
+  text-align: center;
+}
+
+.buttonCont{
+  padding-top: 1rem;
+}
+
+.filterCont {
+  margin: 0.5rem 0;
+}
