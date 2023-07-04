@@ -16,17 +16,43 @@ export class SelectArmorsComponent implements OnInit {
     private spinServ: SpinnerService
   ) {}
 
+  public moneyFilter: number = 0;
+  public csoportFilter: string = 'Nincs'
+
   public canBeClosed: boolean = true;
   closeEvent: Subject<any> = new Subject;
 
   loadData(modalData: any): void {
+    this.moneyFilter = modalData.moneyFilter;
   }
 
   private armorSub!: Subscription;
   public armorsList: ArmorsModel[] = [];
 
-  selectArmor(addNev: string, addKateg: string, addSzint: number, addSuly: number, addAr: number, addMegj: string) {
-    this.closeEvent.next([addNev, addKateg, addSzint, addSuly, addAr, addMegj]);
+  selectFilter(status: string) {
+    return this.csoportFilter = status;
+  }
+
+  getCsoportok():Array<any> {
+    const csoport = this.selArmorServ.armorsList.map(x => x.csoport);
+    const csopUniq = [...new Set(csoport.map(x=> x))];
+    return csopUniq;
+  }
+
+  getFilteredCsoportok(): Array<any> {
+    if (this.csoportFilter == 'Nincs') {
+      return this.getCsoportok();
+    }
+    return [this.csoportFilter];
+  }
+
+  getFilteredArmorsList(csoport: string): Array<any> {
+    const filtered = this.armorsList.filter(x=>x.ar <= this.moneyFilter).filter(x=> x.csoport == csoport);
+    return filtered;
+  }
+
+  selectArmor(addNev: string, addCsop: string, addSzint: number, addSuly: number, addAr: number, addMegj: string) {
+    this.closeEvent.next([addNev, addCsop, addSzint, addSuly, addAr, addMegj]);
     this.closeEvent.complete();
   }
 

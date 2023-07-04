@@ -32,21 +32,16 @@ export class SkillsComponent implements OnInit {
   }
 
   getCsoportok():Array<any> {
-    const csoport = [...new Set(skillsUtil.map(x=> x.csoport))];
-    return csoport;
-  }
-
-  checkCsoport(csoport: string):boolean {
     const form = (this.skillsServ.skillsForm.get('skills') as FormArray);
     const csoportArr = Object.values(form.controls).map(x => x.value).map(x => x.csoport);
     const csopArrUniq = [...new Set(csoportArr.map(x=> x))];
-    const check = csopArrUniq.includes(csoport);
-    return check;
+    return csopArrUniq;
   }
 
-  getControls():Array<any> {
+  getControls(csoport: any):Array<any> {
     const controls = (this.skillsServ.skillsForm.get('skills') as FormArray).controls;
-    return controls;
+    const filtered = Object.values(controls).map(x => x.value).filter(x => x.csoport == csoport);
+    return filtered;
   }
 
   getMegjFromUtil(skillnev: string): Array<any> {

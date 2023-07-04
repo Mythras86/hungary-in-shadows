@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SectionHeadComponent } from './section-head.component';
+import { HideContentComponent } from './hide-content.component';
 
-describe('SectionHeadComponent', () => {
-  let component: SectionHeadComponent;
-  let fixture: ComponentFixture<SectionHeadComponent>;
+describe('HideContentComponent', () => {
+  let component: HideContentComponent;
+  let fixture: ComponentFixture<HideContentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SectionHeadComponent ]
+      declarations: [ HideContentComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SectionHeadComponent);
+    fixture = TestBed.createComponent(HideContentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

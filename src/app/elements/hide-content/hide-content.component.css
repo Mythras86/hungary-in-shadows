@@ -1,0 +1,18 @@
+.down {
+  writing-mode: vertical-lr;
+}
+
+.arrow {
+  display: flex;
+  flex: 0 0 10%;
+  max-width: 10%;
+  justify-content: center;
+  align-items: center;
+}
+
+.head {
+  flex: 1 1 90%;
+  justify-content: center;
+  align-items: center;
+
+}

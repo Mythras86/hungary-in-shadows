@@ -16,7 +16,7 @@ import { SpinnerComponent } from './elements/spinner/spinner.component';
 import { CharsMainComponent } from './characters/chars-main/chars-main.component';
 import { DetailsComponent } from './characters/chars-subforms/details/details.component';
 import { ResourcesComponent } from './characters/chars-subforms/resources/resources.component';
-import { SectionHeadComponent } from './elements/section-head/section-head.component';
+import { HideContentComponent } from './elements/hide-content/hide-content.component';
 import { ModalWrapperComponent } from './elements/modals/modal-wrapper.component';
 import { LevelcontrolComponent } from './elements/modals/levelcontrol//levelcontrol.component';
 import { InputModalComponent } from './elements/modals/input-modal/input-modal.component';
@@ -38,7 +38,7 @@ import { SelectArmorsComponent } from './elements/modals/select-armors/select-ar
     HeaderComponent,
     FooterComponent,
     SpinnerComponent,
-    SectionHeadComponent,
+    HideContentComponent,
 
     ModalWrapperComponent,
     InputModalComponent,

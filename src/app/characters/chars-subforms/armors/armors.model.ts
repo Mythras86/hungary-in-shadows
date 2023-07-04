@@ -1,8 +1,9 @@
 export interface ArmorsModel{
   nev: string,
-  kategoria: string,
+  csoport: string,
   szint: number,
   suly: number,
   ar: number,
-  megjegyzes: string
+  megjegyzes: string,
+  elhelyezes: string
 }

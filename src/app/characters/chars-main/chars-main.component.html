@@ -6,58 +6,76 @@
     <button class="nyllw text1" type="button" (click)="backToList()">Vissza</button>
   </div>
 
-  <app-section-head
-  [subForm]="'details'"
-  [headText]="'Jellemzők'"
-  ></app-section-head>
-  <app-details [hidden]="this.headServ.showMeSatus !== 'details'"></app-details>
+  <app-hide-content
+    [arrowClass]="'nrd text2'"
+    [keyWord]="'details'"
+    >
+    <h2 headText class="nrd w100">Jellemzők</h2>
+    <app-details></app-details>
+  </app-hide-content>
 
-  <app-section-head
-  [subForm]="'resources'"
-  [headText]="'Erőforrások'"
-  ></app-section-head>
-  <app-resources [hidden]="this.headServ.showMeSatus !== 'resources'"></app-resources>
+  <app-hide-content
+    [arrowClass]="'nrd text2'"
+    [keyWord]="'resources'"
+    >
+    <h2 headText class="nrd w100">Erőforrások</h2>
+    <app-resources></app-resources>
+  </app-hide-content>
 
-  <app-section-head
-  [subForm]="'attributes'"
-  [headText]="'Tulajdonságok'"
-  ></app-section-head>
-  <app-attributes [hidden]="this.headServ.showMeSatus !== 'attributes'"></app-attributes>
+  <app-hide-content
+    [arrowClass]="'nrd text2'"
+    [keyWord]="'attributes'"
+    >
+    <h2 headText class="nrd w100">Tulajdonságok</h2>
+    <app-attributes></app-attributes>
+  </app-hide-content>
 
-  <app-section-head
-  [subForm]="'status'"
-  [headText]="'Állapotjelző'"
-  ></app-section-head>
-  <app-status [hidden]="this.headServ.showMeSatus !== 'status'"></app-status>
+  <app-hide-content
+    [arrowClass]="'nrd text2'"
+    [keyWord]="'status'"
+    >
+    <h2 headText class="nrd w100">Állapotjelző</h2>
+    <app-status></app-status>
+  </app-hide-content>
 
-  <app-section-head
-  [subForm]="'skills'"
-  [headText]="'Szakértelmek'"
-  ></app-section-head>
-  <app-skills [hidden]="this.headServ.showMeSatus !== 'skills'"></app-skills>
+  <app-hide-content
+    [arrowClass]="'nrd text2'"
+    [keyWord]="'skills'"
+    >
+    <h2 headText class="nrd w100">Szakértelmek</h2>
+    <app-skills></app-skills>
+  </app-hide-content>
 
-  <app-section-head
-  [subForm]="'armors'"
-  [headText]="'Viselt Páncélzat'"
-  ></app-section-head>
-  <app-armors [hidden]="this.headServ.showMeSatus !== 'armors'"></app-armors>
+  <app-hide-content
+    [arrowClass]="'nrd text2'"
+    [keyWord]="'armors'"
+    >
+    <h2 headText class="nrd w100">Viselt Páncélzat</h2>
+    <app-armors></app-armors>
+  </app-hide-content>
 
-  <app-section-head
-  [subForm]="'tools'"
-  [headText]="'Felszerelések'"
-  ></app-section-head>
-  <app-tools [hidden]="this.headServ.showMeSatus !== 'tools'"></app-tools>
+  <app-hide-content
+    [arrowClass]="'nrd text2'"
+    [keyWord]="'tools'"
+    >
+    <h2 headText class="nrd w100">Felszerelések</h2>
+    <app-tools></app-tools>
+  </app-hide-content>
 
-  <app-section-head
-  [subForm]="'cybers'"
-  [headText]="'Kibervilág'"
-  ></app-section-head>
-  <app-cybers [hidden]="this.headServ.showMeSatus !== 'cybers'"></app-cybers>
+  <app-hide-content
+    [arrowClass]="'nrd text2'"
+    [keyWord]="'cybers'"
+    >
+    <h2 headText class="nrd w100">Kibervilág</h2>
+    <app-cybers></app-cybers>
+  </app-hide-content>
 
-  <app-section-head
-  [subForm]="'magics'"
-  [headText]="'Mágia'"
-  ></app-section-head>
-  <app-magics [hidden]="this.headServ.showMeSatus !== 'magics'"></app-magics>
+  <app-hide-content
+    [arrowClass]="'nrd text2'"
+    [keyWord]="'magics'"
+    >
+    <h2 headText class="nrd w100">Mágia</h2>
+    <app-magics></app-magics>
+  </app-hide-content>
 
 </form>

@@ -20,17 +20,8 @@ export class ResourcesComponent implements OnInit {
     return resUtil;
   }
 
-  karmabolTokeChangeDetector() {
-    const karmabolToke = this.resServ.resourcesForm.get('karmabolToke');
-    const elkolthetoToke = this.resServ.resourcesForm.get('elkolthetoToke');
-    karmabolToke?.valueChanges.pipe(startWith(null), pairwise())
-    .subscribe(([prev, next]: [any, any]) => {
-      elkolthetoToke?.patchValue(elkolthetoToke.value+(next-prev)*7500)
-    });
-  }
-
   ngOnInit(): void {
     this.resServ.createResources();
-    this.karmabolTokeChangeDetector();
+    this.resServ.karmabolTokeChangeDetector();
   }
 }

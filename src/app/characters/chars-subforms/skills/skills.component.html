@@ -1,17 +1,17 @@
 <div class="pageCont" [formGroup]="skillsServ.skillsForm" *ngIf="skillsServ.skillsForm">
 
   <button *ngIf="resServ.getFc('elkolthetoKarma').value >= 2" class="ngrn text1" type="button" (click)="selSkillsModalServ.openModal()">Új Szakértelem</button>
-  <button *ngIf="resServ.getFc('elkolthetoKarma').value < 2" class="grayCell text1" type="button">Új Szakértelem</button>
+  <button *ngIf="resServ.getFc('elkolthetoKarma').value < 2" class="grayCell text1" type="button">Nincs elég Karmád</button>
 
   <div class="itemCont w100" formArrayName="skills" *ngFor='let csoport of getCsoportok()'>
 
     <!-- csoportosítás -->
 
-    <h3 *ngIf="checkCsoport(csoport)" class="w100 ntl text1">{{csoport}}</h3>
+    <h3 class="w100 ntl text1">{{csoport}}</h3>
 
-    <!-- skillcontainer -->
+    <!-- csoport konténer -->
 
-    <div class="w100" [formGroupName]='i' *ngFor="let skill of getControls(); let i = index">
+    <div class="w100" [formGroupName]='i' *ngFor="let skill of getControls(csoport); let i = index">
 
       <div class="itemCont" *ngIf="skillsServ.getFc(i, 'csoport')?.value == csoport">
 
@@ -55,5 +55,7 @@
 
     </div>
   </div>
+
+
 
 </div>

@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/authentication/auth.service';
-import { SectionHeadService } from 'src/app/elements/section-head/section-head.service';
 import { SpinnerService } from 'src/app/elements/spinner/spinner.service';
 import { CharsMainService } from './chars-main.service';
 import { DetailsService } from '../chars-subforms/details/details.service';
@@ -12,11 +11,14 @@ import { AttributesService } from '../chars-subforms/attributes/attributes.servi
 import { SkillsService } from '../chars-subforms/skills/skills.service';
 import { StatusService } from '../chars-subforms/status/status.service';
 import { ArmorsService } from '../chars-subforms/armors/armors.service';
+import { HideService } from 'src/app/elements/hide-content/hide-content.service';
 
 @Component({
   selector: 'app-chars-main',
   templateUrl: './chars-main.component.html',
-  styleUrls: ['./chars-main.component.css']
+  styleUrls: ['./chars-main.component.css'],
+  providers: [HideService]
+
 })
 export class CharsMainComponent implements OnInit, OnDestroy {
 
@@ -27,7 +29,6 @@ export class CharsMainComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     public authServ: AuthService,
     public spinServ: SpinnerService,
-    public headServ: SectionHeadService,
     private detailsServ: DetailsService,
     private resServ: ResourcesService,
     private attrServ: AttributesService,

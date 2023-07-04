@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { ModalService } from '../modal.service';
 import { SelectArmorsComponent } from './select-armors.component';
 import { ArmorsService } from 'src/app/characters/chars-subforms/armors/armors.service';
+import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';
 
 const BACKEND_URL = environment.apiUrl + "/armor/";
 
@@ -19,6 +20,7 @@ export class SelectArmorService {
     private http: HttpClient,
     private modalServ: ModalService,
     private armorsServ: ArmorsService,
+    private resServ: ResourcesService,
   ) { }
 
   public armorsList: ArmorsModel[] = [];
@@ -34,7 +36,7 @@ export class SelectArmorService {
             return {
               _id: w._id,
               nev: w.armorName,
-              kategoria: w.armorCategory,
+              csoport: w.armorCategory,
               szint: w.armorRating,
               suly: w.armorWeight,
               ar: w.armorPrice,
@@ -57,7 +59,7 @@ export class SelectArmorService {
   }
 
   openModal() {
-    this.modalServ.openModal(SelectArmorsComponent, '').subscribe(
+    this.modalServ.openModal(SelectArmorsComponent, {moneyFilter: this.resServ.getFc('elkolthetoToke').value}).subscribe(
       w => this.armorsServ.addArmor(
         w[0], w[1], w[2], w[3], w[4], w[5]
         )

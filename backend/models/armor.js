@@ -7,6 +7,7 @@ const armorSchema = mongoose.Schema({
   armorWeight:{type: Number, required: true},
   armorPrice:{type: Number, required: true},
   armorDesc:{type: String, required: false},
+  armorPlace:{type: String, required: false},
 });
 
 module.exports = mongoose.model("Armor", armorSchema);
