@@ -14,10 +14,10 @@ export class StatusService {
 
   createStatus(): FormGroup {
     const status = {
-      asztralisAllapot: [0, Validators.required],
-      fizikaiAllapot: [0, Validators.required],
-      pinhentsegAllapot: [0, Validators.required],
-      taplaltsagAllapot: [0, Validators.required],
+      asztralisAllapot: [11, Validators.required],
+      fizikaiAllapot: [11, Validators.required],
+      pinhentsegAllapot: [4, Validators.required],
+      taplaltsagAllapot: [4, Validators.required],
     };
     return this.statusForm = this.fb.group(status);
   }

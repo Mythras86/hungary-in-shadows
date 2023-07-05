@@ -59,24 +59,6 @@ export class AttributesService {
     return ertek;
   }
 
-  getKezdKocka():number {
-    const kezdKocka = this.attributesForm.get('kezdemenyezes')?.value +this.attributesForm.get('kezdemenyezesMod')?.value;
-    if (kezdKocka < 1) {
-      return 1;
-    }
-    return kezdKocka;
-  }
-
-  getKezdKonst():number {
-    const fizGyo = this.attributesForm.get('fizGyo')?.value +this.attributesForm.get('fizGyoMod')?.value;
-    const asztGyo = this.attributesForm.get('asztGyo')?.value +this.attributesForm.get('asztGyoMod')?.value;
-    const kezdKonst = Math.floor((fizGyo+asztGyo)/2);
-    if (kezdKonst < 1) {
-      return 1;
-    }
-    return kezdKonst;
-  }
-
   getFizikum(): number {
     const fizEro = this.attributesForm.get('fizEro')?.value +this.attributesForm.get('fizEroMod')?.value;
     const fizGyo = this.attributesForm.get('fizGyo')?.value +this.attributesForm.get('fizGyoMod')?.value;

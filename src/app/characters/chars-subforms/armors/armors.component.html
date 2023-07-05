@@ -17,10 +17,10 @@
     <div class="w100 itemCont" [formGroupName]='i' *ngFor="let armor of getControls(); let i = index">
 
       <app-hide-content class="w100" *ngIf="armorsServ.getFcArr(i, 'csoport')?.value == csoport"
-        [arrowClass]="'ntl text1'"
+        [arrowClass]="'nbl'"
         [keyWord]="armorsServ.getFcArr(i, 'nev')?.value+i"
         >
-          <div headText class="ntl w60 text1">{{armorsServ.getFcArr(i, 'nev')?.value}}</div>
+          <div headText class="nbl w50 text1">{{armorsServ.getFcArr(i, 'nev')?.value}}</div>
           <div headOther class="nprpl w20 text1">{{armorsServ.getFcArr(i, 'szint')?.value}}</div>
           <div headOther class="nprpl w20 text1" (click)="changePlace(i)">{{armorsServ.getFcArr(i, 'elhelyezes')?.value}}</div>
         <div class="itemCont">

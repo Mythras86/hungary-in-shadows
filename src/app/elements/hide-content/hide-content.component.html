@@ -3,10 +3,8 @@
   <div [ngClass]=arrowClass class="{{!hideServ.checkStatus(keyWord) ? 'arrow' : 'arrow down'}}"
   (click)="hideServ.toggleStatus(keyWord)">&#10148;</div>
 
-  <span class="head itemCont">
-    <ng-content select="[headText]"></ng-content>
-    <ng-content select="[headOther]"></ng-content>
-  </span>
+  <ng-content select="[headText]"></ng-content>
+  <ng-content select="[headOther]"></ng-content>
 
 </div>
 

@@ -49,7 +49,6 @@ export class SkillsService {
           szint: e.szint
         }))
     });
-    console.log(dataset)
     return skills;
   }
 

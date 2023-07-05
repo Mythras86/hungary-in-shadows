@@ -5,14 +5,3 @@
 .itemCont {
   margin-bottom: 0.3rem;
 }
-
-.pusztakez {
-  position: relative;
-}
-
-.dropDown {
-  position: absolute;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-}

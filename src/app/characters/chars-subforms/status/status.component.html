@@ -3,10 +3,10 @@
   <!-- Asztrális állapot -->
   <span class="itemCont">
 
-    <div class="w66 ntl text1">Asztrális állapot</div>
-    <div class="w33 ngrn text1" (click)="sendStatus('asztralisAllapot', 0)">Gyógyult</div>
+    <div class="w30 text1" [ngClass]="toggleColor('asztralisAllapot', 10)" (click)="sendStatus('asztralisAllapot', 11)">Gyógyult</div>
+    <div class="w70 ntl text1">Asztrális állapot</div>
 
-    <div *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]"
+    <div *ngFor="let number of [10,9,8,7,6,5,4,3,2,1]"
     class="w10 text1" [ngClass]="toggleColor('asztralisAllapot', number)"
     (click)="sendStatus('asztralisAllapot', number)">
     {{getModosito(number)}}
@@ -17,21 +17,22 @@
   <!-- Pihentség állapot -->
   <span class="itemCont">
 
-    <div class="w100 ntl text1">Pihentség</div>
-    <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 0)" (click)="sendStatus('pinhentsegAllapot', 0)" class="w25 text1">Pihent</div>
-    <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 1)" (click)="sendStatus('pinhentsegAllapot', 1)" class="w25 text1">Fáradt</div>
-    <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 2)" (click)="sendStatus('pinhentsegAllapot', 2)" class="w25 text1">Kimerült</div>
-    <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 3)" (click)="sendStatus('pinhentsegAllapot', 3)" class="w25 text1">Elgyötört</div>
+    <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 4)" (click)="sendStatus('pinhentsegAllapot', 4)" class="w25 text1">Pihent</div>
+    <div class="w75 ntl text1">Pihentség</div>
+    <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 3)" (click)="sendStatus('pinhentsegAllapot', 3)" class="w25 text1">Rendben</div>
+    <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 2)" (click)="sendStatus('pinhentsegAllapot', 2)" class="w25 text1">Fáradt</div>
+    <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 1)" (click)="sendStatus('pinhentsegAllapot', 1)" class="w25 text1">Kimerült</div>
+    <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 0)" (click)="sendStatus('pinhentsegAllapot', 0)" class="w25 text1">Elgyötört</div>
 
   </span>
 
   <!-- Fizikai állapot -->
   <span class="itemCont">
 
-    <div class="w66 ntl text1">Fizikai állapot</div>
-    <div class="w33 ngrn text1" (click)="sendStatus('fizikaiAllapot', 0)">Gyógyult</div>
+    <div class="w30 text1"  [ngClass]="toggleColor('fizikaiAllapot', 10)"(click)="sendStatus('fizikaiAllapot', 11)">Gyógyult</div>
+    <div class="w70 ntl text1">Fizikai állapot</div>
 
-    <div *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]"
+    <div *ngFor="let number of [10,9,8,7,6,5,4,3,2,1]"
     class="w10 text1" [ngClass]="toggleColor('fizikaiAllapot', number)"
     (click)="sendStatus('fizikaiAllapot', number)">
     {{getModosito(number)}}
@@ -42,53 +43,53 @@
   <!-- Tápláltság állapot -->
   <span class="itemCont">
 
-    <div class="w100 ntl text1">Tápláltság</div>
-    <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 0)" (click)="sendStatus('taplaltsagAllapot', 0)" class="w25 text1">Táplált</div>
-    <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 1)" (click)="sendStatus('taplaltsagAllapot', 1)" class="w25 text1">Éhes</div>
-    <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 2)" (click)="sendStatus('taplaltsagAllapot', 2)" class="w25 text1">Nélkülöz</div>
-    <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 3)" (click)="sendStatus('taplaltsagAllapot', 3)" class="w25 text1">Éhező</div>
+    <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 4)" (click)="sendStatus('taplaltsagAllapot', 4)" class="w25 text1">Táplált</div>
+    <div class="w75 ntl text1">Tápláltság</div>
+    <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 3)" (click)="sendStatus('taplaltsagAllapot', 3)" class="w25 text1">Rendben</div>
+    <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 2)" (click)="sendStatus('taplaltsagAllapot', 2)" class="w25 text1">Éhes</div>
+    <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 1)" (click)="sendStatus('taplaltsagAllapot', 1)" class="w25 text1">Nélkülöz</div>
+    <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 0)" (click)="sendStatus('taplaltsagAllapot', 0)" class="w25 text1">Éhező</div>
 
   </span>
 
   <!-- Módosítók -->
-  <span class="itemCont">
+  <span class="itemCont w100">
 
-    <div class="w25 ntl text1">Célszám</div>
-    <div class="w50 ntl text1">Kezdeményezés</div>
-    <div class="w25 ntl text1">Kocka</div>
-    <div class="w25 nrd text1">+{{getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot'))}}</div>
-    <div class="w50 nyllw text1">
-      {{attrServ.getKezdKocka()}}*d6 + {{attrServ.getKezdKonst()-getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot'))}}
+    <div class="w25">
+      <div class="ntl text1">Célszám</div>
+      <div class="nrd text1">{{getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot'))}}</div>
     </div>
-    <div class="w25 nrd text1">-{{getMaxMod('pinhentsegAllapot', 'taplaltsagAllapot')}}</div>
+    <div class="w50">
+      <div class="ntl text1">Kezdeményezés</div>
+      <div class="nyllw text1">
+        {{attrServ.getTulErtek('kezdemenyezes')}}*d6 + {{getAkcio()-getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot'))}}
+      </div>
+    </div>
+    <div class="w25">
+      <div class="ntl text1">Kocka</div>
+      <div class="nrd text1">{{getMaxMod('pinhentsegAllapot', 'taplaltsagAllapot')-3}}</div>
+    </div>
 
   </span>
 
-<div class="w50 pusztakez">
-    <div class="ntl text1">Pusztakéz</div>
-    <div [hidden]="!hideMe" class="nyllw text1" (click)="showMe()">
-      {{akcio}}AP/ {{this.attrServ.getFizikum()-1+akcio}} ({{this.attrServ.getTulErtek("fizEro")+sebzesMod(sebzes)}} {{sebzes}})
+  <span class="itemCont w100">
+    <div class="w25">
+      <div class="ntl text1">Páncél</div>
+      <div class="nyllw text1">{{armorsServ.getFc('armorRating')?.value}}</div>
     </div>
-    <div [hidden]="hideMe" class="dropDown w100">
-      <div class="nyllw text1 w100" (click)="onSelectMode(1, 'K')">
-        1AP/ {{this.attrServ.getFizikum()-3+1}} ({{this.attrServ.getTulErtek("fizEro")+sebzesMod('K')}} K)
-      </div>
-      <div class="nyllw text1 w100" (click)="onSelectMode(3, 'K')">
-        3AP/ {{this.attrServ.getFizikum()-3+3}} ({{this.attrServ.getTulErtek("fizEro")+sebzesMod('K')}} K)
-      </div>
-      <div class="nyllw text1 w100" (click)="onSelectMode(5, 'K')">
-        5AP/ {{this.attrServ.getFizikum()-3+5}} ({{this.attrServ.getTulErtek("fizEro")+sebzesMod('K')}} K)
-      </div>
-      <div class="nyllw text1 w100" (click)="onSelectMode(1, 'F')">
-        1AP/ {{this.attrServ.getFizikum()-3+1}} ({{this.attrServ.getTulErtek("fizEro")+sebzesMod('F')}} F)
-      </div>
-      <div class="nyllw text1 w100" (click)="onSelectMode(3, 'F')">
-        3AP/ {{this.attrServ.getFizikum()-3+3}} ({{this.attrServ.getTulErtek("fizEro")+sebzesMod('F')}} F)
-      </div>
-      <div class="nyllw text1 w100" (click)="onSelectMode(5, 'F')">
-        5AP/ {{this.attrServ.getFizikum()-3+5}} ({{this.attrServ.getTulErtek("fizEro")+sebzesMod('K')}} F)
-      </div>
+    <div class="w50">
+      <div class="ntl text1">Pusztakezes</div>
+      <div class="nyllw text1">{{getPusztakez()}}</div>
     </div>
-  </div>
+    <div class="w25">
+      <div class="ntl text1">Akció</div>
+      <div class="nyllw text1">{{getAkcio()}}</div>
+    </div>
+    <div class="w25">
+      <div class="ntl text1">Méretkateg.</div>
+      <div class="nyllw text1">{{getMeretkateg()}}</div>
+    </div>
+  </span>
+
 
 </div>

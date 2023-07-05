@@ -40,7 +40,7 @@ export class ArmorsService {
   }
 
   addArmor(addNev: string, addKateg: string, addSzint: number, addSuly: number, addAr: number, addMegj: string): void {
-    if (addNev == '') {
+    if (addNev == null) {
       return;
     }
     const armor = this.fb.group({

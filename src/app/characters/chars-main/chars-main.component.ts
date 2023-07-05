@@ -29,6 +29,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     public authServ: AuthService,
     public spinServ: SpinnerService,
+    public hideServ: HideService,
+
     private detailsServ: DetailsService,
     private resServ: ResourcesService,
     private attrServ: AttributesService,

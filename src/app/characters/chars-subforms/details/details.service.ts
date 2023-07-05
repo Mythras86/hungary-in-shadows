@@ -44,4 +44,9 @@ export class DetailsService {
       };
       return this.detailsForm = this.fb.group(details);
   }
+
+  getFc(fcName: string):any {
+    return this.detailsForm.get(fcName);
+  }
+
 }
