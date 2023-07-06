@@ -3,13 +3,13 @@
   <!-- Asztrális állapot -->
   <span class="itemCont">
 
-    <div class="w30 text1" [ngClass]="toggleColor('asztralisAllapot', 10)" (click)="sendStatus('asztralisAllapot', 11)">Gyógyult</div>
+    <div class="w30 text1" [ngClass]="toggleColor(getFcValue('asztralisAllapot')-10)" (click)="sendStatus('asztralisAllapot', 11)">Gyógyult</div>
     <div class="w70 ntl text1">Asztrális állapot</div>
 
     <div *ngFor="let number of [10,9,8,7,6,5,4,3,2,1]"
-    class="w10 text1" [ngClass]="toggleColor('asztralisAllapot', number)"
+    class="w10 text1" [ngClass]="toggleColor(getFcValue('asztralisAllapot')-number)"
     (click)="sendStatus('asztralisAllapot', number)">
-    {{getModosito(number)}}
+      {{getModosito(number)}}
     </div>
 
   </span>
@@ -29,13 +29,13 @@
   <!-- Fizikai állapot -->
   <span class="itemCont">
 
-    <div class="w30 text1"  [ngClass]="toggleColor('fizikaiAllapot', 10)"(click)="sendStatus('fizikaiAllapot', 11)">Gyógyult</div>
+    <div class="w30 text1"  [ngClass]="toggleColor(getFcValue('fizikaiAllapot')-10)"(click)="sendStatus('fizikaiAllapot', 11)">Gyógyult</div>
     <div class="w70 ntl text1">Fizikai állapot</div>
 
     <div *ngFor="let number of [10,9,8,7,6,5,4,3,2,1]"
-    class="w10 text1" [ngClass]="toggleColor('fizikaiAllapot', number)"
+    class="w10 text1" [ngClass]="toggleColor(getFcValue('fizikaiAllapot')-number)"
     (click)="sendStatus('fizikaiAllapot', number)">
-    {{getModosito(number)}}
+      {{getModosito(number)}}
     </div>
 
   </span>
@@ -55,40 +55,54 @@
   <!-- Módosítók -->
   <span class="itemCont w100">
 
-    <div class="w25">
-      <div class="ntl text1">Célszám</div>
-      <div class="nrd text1">{{getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot'))}}</div>
-    </div>
     <div class="w50">
       <div class="ntl text1">Kezdeményezés</div>
-      <div class="nyllw text1">
-        {{attrServ.getTulErtek('kezdemenyezes')}}*d6 + {{getAkcio()-getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot'))}}
+      <div class="text1" [ngClass]="toggleColor(getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot')))">
+        {{attrServ.getTulErtek('kezdemenyezes')}}*d6 + {{getAkcio()+getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot'))}}
       </div>
     </div>
-    <div class="w25">
-      <div class="ntl text1">Kocka</div>
-      <div class="nrd text1">{{getMaxMod('pinhentsegAllapot', 'taplaltsagAllapot')-3}}</div>
+    <div class="w50">
+      <div class="ntl text1">Pusztakezes</div>
+      <div class="ngrn text1">
+        {{getPusztakez()}}
+      </div>
     </div>
 
   </span>
 
   <span class="itemCont w100">
-    <div class="w25">
-      <div class="ntl text1">Páncél</div>
-      <div class="nyllw text1">{{armorsServ.getFc('armorRating')?.value}}</div>
-    </div>
-    <div class="w50">
-      <div class="ntl text1">Pusztakezes</div>
-      <div class="nyllw text1">{{getPusztakez()}}</div>
-    </div>
+
     <div class="w25">
       <div class="ntl text1">Akció</div>
-      <div class="nyllw text1">{{getAkcio()}}</div>
+      <div class="text1" [ngClass]="toggleColor(getAkcio())">
+        {{getAkcio()}}
+      </div>
+    </div>
+    <div class="w25">
+      <div class="ntl text1">Páncél</div>
+      <div class="text1" [ngClass]="toggleColor(armorsServ.getFc('armorRating')?.value)">
+        {{armorsServ.getFc('armorRating')?.value}}
+      </div>
+    </div>
+    <div class="w25">
+      <div class="ntl text1">Kocka</div>
+      <div class="text1" [ngClass]="toggleColor(getMaxMod('pinhentsegAllapot', 'taplaltsagAllapot')-3)">
+        {{getMaxMod('pinhentsegAllapot', 'taplaltsagAllapot')-3}}
+      </div>
+    </div>
+    <div class="w25">
+      <div class="ntl text1">Célszám</div>
+      <div class="text1" [ngClass]="toggleColor(getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot')))">
+        {{getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot'))}}
+      </div>
     </div>
     <div class="w25">
       <div class="ntl text1">Méretkateg.</div>
-      <div class="nyllw text1">{{getMeretkateg()}}</div>
+      <div class="ngrn text1">
+        {{getMeretkateg()}}
+      </div>
     </div>
+
   </span>
 
 

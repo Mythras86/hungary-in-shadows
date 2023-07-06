@@ -11,31 +11,31 @@
 
     <!-- csoport konténer -->
 
-    <div class="w100" [formGroupName]='i' *ngFor="let skill of getControls(csoport); let i = index">
+    <div class="w100" [formGroupName]='i' *ngFor="let skill of getControls(); let i = index">
 
       <div class="itemCont" *ngIf="skillsServ.getFc(i, 'csoport')?.value == csoport">
 
-        <button class="w10 deleteItem text1" type="button" (click)="skillsServ.removeSkill(i)">X</button>
         <div class="nbl text1 w50">{{skillsServ.getFc(i, 'nev')?.value}}</div>
-        <div class="nbl text1 w30">{{skillsServ.getFc(i, 'szint')?.value}}</div>
-
+        <div class="nrng text1 center w20">{{skillsServ.getFc(i, 'kapTul')?.value}}</div>
         <app-levelcontrol class="w10"
           [isEnabled]="resServ.getFc('elkolthetoKarma').value >= 2"
           (buttonAction)="lvlContServ.buttonAction(
-          skillsServ.getFc(i, 'nev')?.value,
-          getMegjFromUtil(skillsServ.getFc(i, 'nev')?.value),
-          1,
-          5,
-          'Szint',
-          2,
-          skillsServ.getFc(i, 'szint'),
-          resServ.getFc('elkolthetoKarma'),
-          skillsServ.getFc(i, 'szint')?.value,
-          6
+            skillsServ.getFc(i, 'nev')?.value,
+            getMegjFromUtil(skillsServ.getFc(i, 'nev')?.value),
+            1,
+            5,
+            'Szint',
+            2,
+            skillsServ.getFc(i, 'szint'),
+            resServ.getFc('elkolthetoKarma'),
+            skillsServ.getFc(i, 'szint')?.value,
+            6
           )"
         ></app-levelcontrol>
+        <div class="ngrn text1 center w20">{{skillsServ.getFc(i, 'szint')?.value}}</div>
 
-        <div class="grayCell text1 w90">{{skillsServ.getFc(i, 'megjegyzes')?.value}}</div>
+        <button class="w10 deleteItem text1" type="button" (click)="skillsServ.removeSkill(i)">X</button>
+        <div class="grayCell text1 w80">{{skillsServ.getFc(i, 'megjegyzes')?.value}}</div>
 
         <app-input-modal class="w10"
           [isEnabled]="true"

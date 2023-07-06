@@ -15,7 +15,7 @@ export class SelectSkillsService {
 
   openModal() {
     this.modalServ.openModal(SelectSkillsComponent, '').subscribe(
-      w => this.skillsServ.addSkill(w)
+      w => this.skillsServ.addSkill(w[0], w[1], w[2])
     );
   }
 

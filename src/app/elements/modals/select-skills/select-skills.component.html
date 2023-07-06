@@ -1,8 +1,7 @@
-<div class="modalContent">
+<div class="pageCont">
 
-  <h1 class="nrd w90">Szakértelmek</h1>
-
-  <button class="nrd text2 w10" type="button" (click)="onClose()">X</button>
+  <h1 class="nrd w80">Szakértelmek</h1>
+  <button class="deleteItem text2 w20" type="button" (click)="onClose()">X</button>
 
   <div class="filterCont itemCont w100">
     <div class="nprpl text1 w33" (click)="selectFilter('Nincs')">Nincs</div>
@@ -15,11 +14,11 @@
 
     <h3 class="w100 nbl">{{filteredCs}}</h3>
 
-    <div class="itemCont w100" *ngFor="let skill of getSkills(filteredCs)" (click)="selectSkill(skill.nev)">
+    <div class="itemCont w100" *ngFor="let skill of getSkills(filteredCs)" (click)="selectSkill(skill.nev, skill.csoport, skill.kapTul)">
 
       <div class="itemCont w100">
-        <div class="ntl text1 w66">{{skill.nev}}</div>
-        <div class="ntl text1 w33">{{getOneCsoport(skill.nev)}}</div>
+        <div class="ntl text1 w70">{{skill.nev}}</div>
+        <div class="ntl text1 w30">{{skill.kapTul}}</div>
       </div>
 
     </div>

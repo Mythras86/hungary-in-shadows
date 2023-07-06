@@ -46,9 +46,12 @@ export class StatusComponent implements OnInit {
     return this.statServ.statusForm.get(fcName)?.value;
   }
 
-  toggleColor(fcName: string, i: number):string {
-    if(this.getFcValue(fcName) <= i) {
+  toggleColor(value: number):string {
+    if(value < 0) {
       return 'nrd';
+    }
+    if(value == 0) {
+      return 'nyllw';
     }
     return 'ngrn';
   }
@@ -58,7 +61,7 @@ export class StatusComponent implements OnInit {
     if (terheles < 0) {
       return 0;
     }
-    return terheles;
+    return -terheles;
   }
 
   getMaxMod(astral: string, body: string): number {

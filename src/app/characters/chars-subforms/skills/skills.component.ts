@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SkillsService } from './skills.service';
 import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
 import { skillsUtil } from './skills.util';
-import { FormArray} from '@angular/forms';
+import { FormArray, FormControl} from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
 import { SelectSkillsService } from 'src/app/elements/modals/select-skills/select-skills.service';
 import { InputModalService } from 'src/app/elements/modals/input-modal/input-modal.service';
@@ -38,10 +38,9 @@ export class SkillsComponent implements OnInit {
     return csopArrUniq;
   }
 
-  getControls(csoport: any):Array<any> {
+  getControls() {
     const controls = (this.skillsServ.skillsForm.get('skills') as FormArray).controls;
-    const filtered = Object.values(controls).map(x => x.value).filter(x => x.csoport == csoport);
-    return filtered;
+    return controls;
   }
 
   getMegjFromUtil(skillnev: string): Array<any> {

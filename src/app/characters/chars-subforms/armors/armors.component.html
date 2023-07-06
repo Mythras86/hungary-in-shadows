@@ -3,9 +3,7 @@
   <button *ngIf="resServ.getFc('elkolthetoToke').value >= 0" class="ngrn text1" type="button" (click)="sArmorServ.openModal()">Új Páncél Vásárlása</button>
   <button *ngIf="resServ.getFc('elkolthetoToke').value < 0" class="grayCell text1" type="button">Új Páncél Vásárlása</button>
 
-  <div class="nrd text2">{{armorsServ.getFc('armorRating')?.value}}</div>
-
-  <div class="itemCont w100" formArrayName="armors" *ngFor='let csoport of getCsoportok()'>
+  <div class="w100" formArrayName="armors" *ngFor='let csoport of getCsoportok()'>
 
     <!-- csoportosítás -->
 
@@ -16,20 +14,13 @@
 
     <div class="w100 itemCont" [formGroupName]='i' *ngFor="let armor of getControls(); let i = index">
 
-      <app-hide-content class="w100" *ngIf="armorsServ.getFcArr(i, 'csoport')?.value == csoport"
-        [arrowClass]="'nbl'"
-        [keyWord]="armorsServ.getFcArr(i, 'nev')?.value+i"
-        >
-          <div headText class="nbl w50 text1">{{armorsServ.getFcArr(i, 'nev')?.value}}</div>
-          <div headOther class="nprpl w20 text1">{{armorsServ.getFcArr(i, 'szint')?.value}}</div>
-          <div headOther class="nprpl w20 text1" (click)="changePlace(i)">{{armorsServ.getFcArr(i, 'elhelyezes')?.value}}</div>
-        <div class="itemCont">
-          <div class="moneyCost text1 w33">{{armorsServ.getFcArr(i, 'ar')?.value}} Cr</div>
-          <div class="grayCell text1 w33">{{armorsServ.getFcArr(i, 'suly')?.value}} Kg</div>
-          <button class="deleteItem w33 text1" type="button" (click)="armorsServ.removeArmor(i)">X</button>
-          <div *ngIf="armorsServ.getFcArr(i, 'megjegyzes')?.value" class="grayCell text1 w100">{{armorsServ.getFcArr(i, 'megjegyzes')?.value}}</div>
-        </div>
-      </app-hide-content>
+      <div class="nbl w70 text1">{{armorsServ.getFcArr(i, 'nev')?.value}}</div>
+      <div class="nrng w20 text1 center">{{armorsServ.getFcArr(i, 'szint')?.value}} AR</div>
+      <button class="deleteItem w10 text1" type="button" (click)="armorsServ.removeArmor(i)">X</button>
+      <div class="nprpl w33 text1 center" (click)="changePlace(i)">{{armorsServ.getFcArr(i, 'elhelyezes')?.value}}</div>
+      <div class="grayCell text1 w33 center">{{armorsServ.getFcArr(i, 'suly')?.value}} Kg</div>
+      <div class="moneyCost text1 w33">{{armorsServ.getFcArr(i, 'ar')?.value}} Cr</div>
+      <div *ngIf="armorsServ.getFcArr(i, 'megjegyzes')?.value" class="grayCell text1 w100">{{armorsServ.getFcArr(i, 'megjegyzes')?.value}}</div>
 
     </div>
 

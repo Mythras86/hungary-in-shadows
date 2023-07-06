@@ -116,17 +116,15 @@ button:disabled {
   text-shadow: 0 0 3px black, 0 0 5px magenta;
   background-color: purple;
   box-shadow: 2px 2px 6px magenta inset;
-  padding-right: 0.2rem;
   justify-content: center;
 }
 
 .moneyCost {
   color: white;
-  text-shadow: 0 0 3px rgb(255, 197, 81), 0 0 5px lightgoldenrodyellow;
+  text-shadow: 0 0 3px rgb(255, 197, 81), 0 0 5px darkgoldenrod;
   background-color: orange;
   box-shadow: 2px 2px 6px lightgoldenrodyellow inset;
-  padding-right: 1rem;
-  justify-content: center;
+  justify-content: right;
 }
 
 .deleteItem {
@@ -185,16 +183,21 @@ button:disabled {
 
 .text1 {
   font-size: 1.1rem;
-  padding: 0.4rem 0.3rem 0.3rem 0.4rem;
+  padding: 0.3rem;
   display: flex;
   align-items: center;
 }
 
 .text2 {
   font-size: 1.2rem;
-  padding: 0.4rem 0.3rem 0.3rem 0.4rem;
+  padding: 0.4rem;
   display: flex;
   align-items: center;
+}
+
+.center {
+  align-content: center;
+  justify-content: center;
 }
 
 .pageCont {

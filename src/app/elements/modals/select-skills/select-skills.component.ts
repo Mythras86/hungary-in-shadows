@@ -36,17 +36,12 @@ export class SelectSkillsComponent {
     return [this.skillFilter];
   }
 
-  getOneCsoport(nev: string): string {
-    const csoport = skillsUtil.filter(x => x.nev == nev).map(x => x.csoport)[0];
-    return csoport;
-  }
-
   selectFilter(status: string) {
     return this.skillFilter = status;
   }
 
-  selectSkill(skill: string) {
-    this.closeEvent.next(skill);
+  selectSkill(nev: string, csoport: string, tul: string) {
+    this.closeEvent.next([nev, csoport, tul]);
     this.closeEvent.complete();
   }
 

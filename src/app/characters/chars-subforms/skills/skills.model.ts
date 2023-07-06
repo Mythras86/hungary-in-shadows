@@ -3,4 +3,5 @@ export interface SkillsModel{
   csoport: string;
   megjegyzes: string;
   szint: number;
+  kapTul: string;
 }

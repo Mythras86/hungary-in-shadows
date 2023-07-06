@@ -1,8 +1,4 @@
-.modalContent {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: flex-start;
+.pageCont {
   background-color: gray;
 }
 

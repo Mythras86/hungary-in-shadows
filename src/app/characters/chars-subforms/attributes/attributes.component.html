@@ -1,6 +1,6 @@
 <div class="pageCont" [formGroup]="attrServ.attributesForm" *ngIf="attrServ.attributesForm">
 
-  <div class="itemCont w100" *ngFor="let csoport of getCsoport()">
+  <div class="w100" *ngFor="let csoport of getCsoport()">
 
     <h3 class="w100 ntl text1">{{csoport}} {{getCsoportErtek(csoport)}}</h3>
 
@@ -8,13 +8,13 @@
       <div class="nbl w50 text1">
         {{attr.nev}}
       </div>
-      <div class="nyllw w15 text1 attrNum">
+      <div class="grayCell w15 text1 center">
         {{attrServ.getFc(attr.fcName).value}}/{{getAttrMax(attr.fcName, attr.max)}}
       </div>
-      <div class="nrng w10 text1 attrNum">
+      <div class="grayCell w10 text1 center">
         {{attrServ.getFc(attr.fcName+'Mod').value}}
       </div>
-      <div class="ngrn w15 text1 attrNum">
+      <div class="ngrn w15 text1 center">
         {{attrServ.getFc(attr.fcName).value + attrServ.getFc(attr.fcName+'Mod').value}}
       </div>
 

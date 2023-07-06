@@ -1,7 +1,6 @@
-<div class="modalContent">
+<div class="pageCont">
 
   <h1 class="nrd w80">Páncélok</h1>
-
   <button class="nrd w20 text2 deleteItem" type="button" (click)="onClose()">X</button>
 
   <div class="filterCont itemCont w100">
@@ -13,18 +12,17 @@
 
   <div class="itemCont w100" *ngFor="let filteredCs of getFilteredCsoportok()">
 
-    <h3 class="w100 nbl">{{filteredCs}}</h3>
+    <h3 class="w100 ntl">{{filteredCs}}</h3>
 
     <div class="itemCont w100" *ngFor="let a of getFilteredArmorsList(filteredCs)" (click)="selectArmor(
       a.nev, a.csoport, a.szint, a.suly, a.ar, a.megjegyzes
       )">
 
-      <div class="ntl text1 w60">{{a.nev}}</div>
-      <div class="nprpl text1 w10">{{a.szint}}</div>
-      <div class="moneyCost text1 w30">{{a.ar}} Cr</div>
-      <div class="grayCell text1 w30">{{a.csoport}}</div>
-      <div class="grayCell text1 w20">{{a.suly}} Kg</div>
-      <div class="grayCell text1 w50">{{a.megjegyzes}}</div>
+      <div class="nbl text1 w60">{{a.nev}}</div>
+      <div class="nrng text1 center w15">{{a.szint}} AR</div>
+      <div class="moneyCost text1 w25">{{a.ar}} Cr</div>
+      <div class="grayCell center text1 w30">{{a.suly}} Kg</div>
+      <div class="grayCell text1 w70">{{a.megjegyzes}}</div>
 
     </div>
 
