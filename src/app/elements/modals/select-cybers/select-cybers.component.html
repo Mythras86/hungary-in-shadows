@@ -1,0 +1,29 @@
+<div class="pageCont">
+
+  <h1 class="nrd w80">Kiberverek</h1>
+  <button class="nrd w20 text2 deleteItem" type="button" (click)="onClose()">X</button>
+
+  <div class="filterCont itemCont w100">
+    <div class="nprpl text1 w50" (click)="selectFilter('Nincs')">Nincs</div>
+    <div class="nprpl text1 w50" *ngFor="let csoport of getCsoportok()" (click)="selectFilter(csoport)">
+      {{csoport}}
+    </div>
+  </div>
+
+  <div class="itemCont w100" *ngFor="let filteredCs of getFilteredCsoportok()">
+
+    <h3 class="w100 ntl">{{filteredCs}}</h3>
+
+    <div class="itemCont w100" *ngFor="let a of getFilteredCybersList(filteredCs)" (click)="selectCyber(
+      a._id, a.nev, a.csoport, a.szint, a.ar, a.esszencia, a.megjegyzes
+      )">
+
+      <div class="nbl text1 w66">{{a.nev}}</div>
+      <div class="moneyCost text1 w33">{{a.ar}} Cr</div>
+      <div class="grayCell text1 w100">{{a.esszencia}} E // {{a.megjegyzes}}</div>
+
+    </div>
+
+  </div>
+
+</div>

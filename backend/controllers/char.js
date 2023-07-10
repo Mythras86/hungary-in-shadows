@@ -71,6 +71,8 @@ exports.createChar = (req, res, next) => {
     taplaltsagAllapot: req.body.taplaltsagAllapot,
     // páncélok
     armors: req.body.armors,
+    // kiberverek
+    cybers: req.body.cybers,
   });
   char
   .save()
@@ -162,6 +164,8 @@ exports.updateChar = (req, res, next) => {
     taplaltsagAllapot: req.body.taplaltsagAllapot,
     // páncélok
     armors: req.body.armors,
+    // kiberverek
+    cybers: req.body.cybers,
   });
   Char.updateOne({_id: req.params._id, creatorId: req.userData.userId }, char)
   .then(result => {

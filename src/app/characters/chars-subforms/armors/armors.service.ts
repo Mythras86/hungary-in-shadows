@@ -27,6 +27,7 @@ export class ArmorsService {
     dataset.forEach(e => {
       armors.push(
         this.fb.group({
+          _id: e._id,
           nev: e.nev,
           csoport: e.kategoria,
           szint: e.szint,
@@ -39,11 +40,12 @@ export class ArmorsService {
     return armors;
   }
 
-  addArmor(addNev: string, addKateg: string, addSzint: number, addSuly: number, addAr: number, addMegj: string): void {
+  addArmor(addId: string, addNev: string, addKateg: string, addSzint: number, addSuly: number, addAr: number, addMegj: string): void {
     if (addNev == null) {
       return;
     }
     const armor = this.fb.group({
+      _id: [addId, Validators.required],
       nev: [addNev, Validators.required],
       csoport: [addKateg, Validators.required],
       szint: [addSzint, Validators.required],

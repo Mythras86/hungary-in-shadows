@@ -22,4 +22,8 @@ export class StatusService {
     return this.statusForm = this.fb.group(status);
   }
 
+  getFc(fcName: string):any {
+    return this.statusForm.get(fcName);
+  }
+
 }

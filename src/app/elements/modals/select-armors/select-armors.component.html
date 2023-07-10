@@ -15,7 +15,7 @@
     <h3 class="w100 ntl">{{filteredCs}}</h3>
 
     <div class="itemCont w100" *ngFor="let a of getFilteredArmorsList(filteredCs)" (click)="selectArmor(
-      a.nev, a.csoport, a.szint, a.suly, a.ar, a.megjegyzes
+      a._id, a.nev, a.csoport, a.szint, a.suly, a.ar, a.megjegyzes
       )">
 
       <div class="nbl text1 w60">{{a.nev}}</div>

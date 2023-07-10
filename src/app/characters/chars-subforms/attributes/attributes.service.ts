@@ -36,13 +36,9 @@ export class AttributesService {
       asztKitMod: [0, Validators.required],
       //speciális
       magia: [0, Validators.required],
-      magiaMod: [0, Validators.required],
       esszencia: [6, Validators.required],
-      esszenciaMod: [0, Validators.required],
       kockatartalek: [1, Validators.required],
-      kockatartalekMod: [0, Validators.required],
       kezdemenyezes: [1, Validators.required],
-      kezdemenyezesMod: [0, Validators.required],
     };
     return this.attributesForm = this.fb.group(attributes);
   }
@@ -77,5 +73,17 @@ export class AttributesService {
     return asztral
   }
 
+  getAkcio(): number {
+    const gyo = this.getTulErtek('fizGyo');
+    const int = this.getTulErtek('asztGyo');
+    const akcio = Math.floor((gyo+int)/2);
+    return akcio;
+  }
+
+
+  fizetesEsszenciabol(ertek: number): void {
+    const essz = this.getFc('esszenciaMod');
+    return essz.patchValue(essz.value-ertek);
+  }
 
 }

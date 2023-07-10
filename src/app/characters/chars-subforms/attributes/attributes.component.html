@@ -5,16 +5,16 @@
     <h3 class="w100 ntl text1">{{csoport}} {{getCsoportErtek(csoport)}}</h3>
 
     <div class="itemCont w100" *ngFor="let attr of getAttrsByCsoport(csoport)">
-      <div class="nbl w50 text1">
+      <div class="nbl w40 text1">
         {{attr.nev}}
       </div>
       <div class="grayCell w15 text1 center">
         {{attrServ.getFc(attr.fcName).value}}/{{getAttrMax(attr.fcName, attr.max)}}
       </div>
-      <div class="grayCell w10 text1 center">
+      <div class="grayCell w15 text1 center">
         {{attrServ.getFc(attr.fcName+'Mod').value}}
       </div>
-      <div class="ngrn w15 text1 center">
+      <div class="ngrn w20 text1 center">
         {{attrServ.getFc(attr.fcName).value + attrServ.getFc(attr.fcName+'Mod').value}}
       </div>
 
@@ -36,5 +36,67 @@
 
     </div>
   </div>
+
+  <h3 class="w100 ntl text1">Speciális</h3>
+
+  <div class="itemCont w50">
+    <div class="nbl text1 w100 center">Esszencia</div>
+    <div class="ngrn text1 w100 center">
+      {{attrServ.getFc('esszencia')?.value}}
+    </div>
+  </div>
+
+  <div class="itemCont w50">
+    <div class="nbl text1 w100 center">Mágia</div>
+    <div class="ngrn text1 w80 center">
+      {{attrServ.getFc('magia')?.value}}
+    </div>
+    <app-levelcontrol class="w20"
+      [isEnabled]="resServ.getFc('elkolthetoKarma')?.value>3"
+      (buttonAction)="lvlContServ.buttonAction(
+        'Mágia',
+        'van',
+        1,
+        6,
+        ' Pont',
+        3,
+        attrServ.getFc('magia'),
+        resServ.getFc('elkolthetoKarma'),
+        attrServ.getFc('magia')?.value,
+        6
+      )"
+    ></app-levelcontrol>
+  </div>
+
+  <div class="itemCont w50">
+    <div class="nbl text1 w100 center">Akció Pontok</div>
+    <div class="ngrn text1 w100 center">
+      {{attrServ.getAkcio()}}
+    </div>
+  </div>
+
+  <div class="itemCont w50">
+    <div class="nbl text1 w100 center">Kockatartalék</div>
+    <div class="ngrn text1 w80 center">
+      {{attrServ.getFc('kockatartalek')?.value}}
+    </div>
+    <app-levelcontrol class="w20"
+      [isEnabled]="resServ.getFc('elkolthetoKarma')?.value>3"
+      (buttonAction)="lvlContServ.buttonAction(
+        'Kockatartalék',
+        'van',
+        1,
+        5,
+        ' Pont',
+        3,
+        attrServ.getFc('kockatartalek'),
+        resServ.getFc('elkolthetoKarma'),
+        attrServ.getFc('kockatartalek')?.value,
+        6
+      )"
+    ></app-levelcontrol>
+  </div>
+
+
 
 </div>

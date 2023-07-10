@@ -3,6 +3,8 @@ import { StatusService } from './status.service';
 import { AttributesService } from '../attributes/attributes.service';
 import { DetailsService } from '../details/details.service';
 import { ArmorsService } from '../armors/armors.service';
+import { ResourcesService } from '../resources/resources.service';
+import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
 
 @Component({
   selector: 'app-status',
@@ -12,10 +14,12 @@ import { ArmorsService } from '../armors/armors.service';
 export class StatusComponent implements OnInit {
 
   constructor(
-    private statServ: StatusService,
+    public statServ: StatusService,
     public attrServ: AttributesService,
     public detailsServ: DetailsService,
     public armorsServ: ArmorsService,
+    public resServ: ResourcesService,
+    public lvlContServ: LevelcontrolService,
   ) {}
 
   toggleKockaMColor(fcName: string, i:number):string {
@@ -71,13 +75,6 @@ export class StatusComponent implements OnInit {
       return asztral;
     }
     return fizikum;
-  }
-
-  getAkcio(): number {
-    const gyo = this.attrServ.getTulErtek('fizGyo');
-    const int = this.attrServ.getTulErtek('asztGyo');
-    const akcio = Math.floor((gyo+int)/2);
-    return akcio;
   }
 
   getPusztakez():string {

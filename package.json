@@ -48,7 +48,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "nodemon": "^2.0.20",
-    "nx": "15.9.2",
+    "nx": "16.5.0",
     "typescript": "~4.9.4"
   },
   "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.",
@@ -69,5 +69,8 @@
   "bugs": {
     "url": "https://github.com/Mythras86/HungaryInShadows/issues"
   },
-  "homepage": "https://github.com/Mythras86/HungaryInShadows#readme"
+  "homepage": "https://github.com/Mythras86/HungaryInShadows#readme",
+  "nx": {
+    "targets": {}
+  }
 }

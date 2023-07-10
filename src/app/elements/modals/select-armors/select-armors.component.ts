@@ -17,7 +17,7 @@ export class SelectArmorsComponent implements OnInit {
   ) {}
 
   public moneyFilter: number = 0;
-  public csoportFilter: string = 'Nincs'
+  public csoportFilter: string = 'Nincs';
 
   public canBeClosed: boolean = true;
   closeEvent: Subject<any> = new Subject;
@@ -51,8 +51,8 @@ export class SelectArmorsComponent implements OnInit {
     return filtered;
   }
 
-  selectArmor(addNev: string, addCsop: string, addSzint: number, addSuly: number, addAr: number, addMegj: string) {
-    this.closeEvent.next([addNev, addCsop, addSzint, addSuly, addAr, addMegj]);
+  selectArmor(addId: string, addNev: string, addCsop: string, addSzint: number, addSuly: number, addAr: number, addMegj: string) {
+    this.closeEvent.next([addId, addNev, addCsop, addSzint, addSuly, addAr, addMegj]);
     this.closeEvent.complete();
   }
 

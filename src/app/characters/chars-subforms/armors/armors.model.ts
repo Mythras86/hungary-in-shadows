@@ -1,4 +1,5 @@
 export interface ArmorsModel{
+  _id: string,
   nev: string,
   csoport: string,
   szint: number,
