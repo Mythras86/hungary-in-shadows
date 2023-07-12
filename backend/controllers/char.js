@@ -55,13 +55,9 @@ exports.createChar = (req, res, next) => {
     asztKitMod: req.body.asztKitMod,
     //speciális
     magia: req.body.magia,
-    magiaMod: req.body.magiaMod,
     esszencia: req.body.esszencia,
-    esszenciaMod: req.body.esszenciaMod,
     kockatartalek: req.body.kockatartalek,
-    kockatartalekMod: req.body.kockatartalekMod,
     kezdemenyezes: req.body.kezdemenyezes,
-    kezdemenyezesMod: req.body.kezdemenyezesMod,
     // szakértelmek
     skills: req.body.skills,
     // állapot
@@ -148,13 +144,9 @@ exports.updateChar = (req, res, next) => {
     asztKitMod: req.body.asztKitMod,
     //speciális
     magia: req.body.magia,
-    magiaMod: req.body.magiaMod,
     esszencia: req.body.esszencia,
-    esszenciaMod: req.body.esszenciaMod,
     kockatartalek: req.body.kockatartalek,
-    kockatartalekMod: req.body.kockatartalekMod,
     kezdemenyezes: req.body.kezdemenyezes,
-    kezdemenyezesMod: req.body.kezdemenyezesMod,
     // szakértelmek
     skills: req.body.skills,
     // állapot

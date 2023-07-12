@@ -1,34 +1,48 @@
 <div *ngIf="!isButton" class="modalContent">
 
-  <div class="nrng text1 nev w100">{{nev}}</div>
-  <div class="ntl text1 w100">{{megjegyzes}}</div>
-  <div class="ntl text1 w100">{{ktsg}} Karma / {{jutalom}} {{egyseg}}</div>
+  <div class="ntl text2 nev w100">{{nev}}</div>
+  <div class="nbl text1 w100">{{megjegyzes}}</div>
 
   <!-- level number input -->
-  <div class="nprpl text1 w100 display">{{forrasErtekUtv.value + ertekValtozas*jutalom}} {{egyseg}}</div>
+  <div class="nprpl text1 w100 display">{{forrasErtekUtv.value + ertekValtozas}} {{egyseg}}</div>
 
   <button class="w50 ngrn text1" [disabled]="buttonDisInc(maxErtek, 1)"
     (click)="changeValue(1)" type="button">
-    +{{lepes/lepes*jutalom}} {{egyseg}}
+    +{{lepes/lepes}} {{egyseg}}
   </button>
 
   <button class="w50 nrd text1" [disabled]="buttonDisDec(1)"
     (click)="changeValue(-1)" type="button">
-    -{{lepes/lepes*jutalom}} {{egyseg}}
+    -{{lepes/lepes}} {{egyseg}}
   </button>
 
   <button class="w50 ngrn text1" [disabled]="buttonDisInc(maxErtek, lepes)"
     (click)="changeValue(lepes)" type="button">
-    +{{lepes*jutalom}} {{egyseg}}
+    +{{lepes}} {{egyseg}}
   </button>
 
   <button class="w50 nrd text1" [disabled]="buttonDisDec(lepes)"
     (click)="changeValue(-lepes)" type="button">
-    -{{lepes*jutalom}} {{egyseg}}
+    -{{lepes}} {{egyseg}}
   </button>
 
-  <div class="grayCell text1 w50">{{ellenErtekUtv.value - ertekValtozas*ktsg}}</div>
-  <div class="nrng w50 text1">{{minErtek + ertekValtozas}} / {{maxErtek}}</div>
+  <div class="nrng w100 center text1">Minimum: {{forrasErtekUtv.value + ertekValtozas}} / Maximum: {{maxErtek}}</div>
+
+  <div *ngIf="ar>0" class="w100 itemCont">
+    <div class="nyllw text1 w30 center">Tőke</div>
+    <div class="moneyCost text1 w30">{{ertekValtozas*ar}} Cr</div>
+    <div class="grayCell text1 w40 center">{{this.resServ.getFc('elkolthetoToke')?.value-ertekValtozas*ar}} Cr</div>
+  </div>
+  <div *ngIf="karma>0" class="w100 itemCont">
+    <div class="nprpl text1 w30 center">Karma</div>
+    <div class="karmaCost text1 w30">{{ertekValtozas*karma}} K</div>
+    <div class="grayCell text1 w40 center">{{this.resServ.getFc('elkolthetoKarma')?.value-ertekValtozas*karma}} K</div>
+  </div>
+  <div *ngIf="esszencia>0" class="w100 itemCont">
+    <div class="ntl text1 w30 center">Esszencia</div>
+    <div class="essenceCost text1 w30">{{ertekValtozas*esszencia}} E</div>
+    <div class="grayCell text1 w40 center">{{essCalc()}} E</div>
+  </div>
 
   <!-- save button -->
 

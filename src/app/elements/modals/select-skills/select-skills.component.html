@@ -3,7 +3,7 @@
   <h1 class="nrd w80">Szakértelmek</h1>
   <button class="deleteItem text2 w20" type="button" (click)="onClose()">X</button>
 
-  <div class="filterCont itemCont w100">
+  <div class="itemCont w100">
     <div class="nprpl text1 w33" (click)="selectFilter('Nincs')">Nincs</div>
     <div class="nprpl text1 w33" *ngFor="let csoport of getCsoportok()" (click)="selectFilter(csoport)">
       {{csoport}}
@@ -12,14 +12,12 @@
 
   <div class="itemCont w100" *ngFor="let filteredCs of getFilteredCsoportok()">
 
-    <h3 class="w100 nbl">{{filteredCs}}</h3>
+    <h3 class="w100 ntl">{{filteredCs}}</h3>
 
     <div class="itemCont w100" *ngFor="let skill of getSkills(filteredCs)" (click)="selectSkill(skill.nev, skill.csoport, skill.kapTul)">
 
-      <div class="itemCont w100">
-        <div class="ntl text1 w70">{{skill.nev}}</div>
-        <div class="ntl text1 w30">{{skill.kapTul}}</div>
-      </div>
+      <div class="nbl text1 w70">{{skill.nev}}</div>
+      <div class="grayCell text1 w30 center">{{skill.kapTul}}</div>
 
     </div>
 

@@ -38,7 +38,7 @@ export class SelectCyberService {
                 _id: w._id,
                 nev: w.cyberneticName,
                 csoport: w.cyberneticCategory,
-                szint: w.cyberneticMaxLevel,
+                maxSzint: w.cyberneticMaxLevel,
                 ar: w.cyberneticPrice,
                 esszencia: w.cyberneticEssence,
                 megjegyzes: w.cyberneticDesc,

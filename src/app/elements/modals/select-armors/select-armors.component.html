@@ -3,7 +3,7 @@
   <h1 class="nrd w80">Páncélok</h1>
   <button class="nrd w20 text2 deleteItem" type="button" (click)="onClose()">X</button>
 
-  <div class="filterCont itemCont w100">
+  <div class="itemCont w100">
     <div class="nprpl text1 w33" (click)="selectFilter('Nincs')">Nincs</div>
     <div class="nprpl text1 w33" *ngFor="let csoport of getCsoportok()" (click)="selectFilter(csoport)">
       {{csoport}}

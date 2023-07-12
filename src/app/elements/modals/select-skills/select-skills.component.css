@@ -2,14 +2,10 @@
   background-color: gray;
 }
 
-input, select {
-  text-align: center;
-}
-
-.buttonCont{
+.buttonCont {
   padding-top: 1rem;
 }
 
-.filterCont {
-  margin: 0.5rem 0;
+.itemCont {
+  margin: .3rem 0;
 }

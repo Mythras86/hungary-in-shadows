@@ -58,7 +58,7 @@
     [arrowClass]="'nrd text2'"
     [keyWord]="'tools'"
     >
-    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('tools')">Felszerelések</h2>
+    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('tools')">Eszközök</h2>
     <app-tools></app-tools>
   </app-hide-content>
 
@@ -66,16 +66,32 @@
     [arrowClass]="'nrd text2'"
     [keyWord]="'cybers'"
     >
-    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('cybers')">Kibervilág</h2>
+    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('cybers')">Kiberverek</h2>
     <app-cybers></app-cybers>
   </app-hide-content>
 
   <app-hide-content
     [arrowClass]="'nrd text2'"
-    [keyWord]="'magics'"
+    [keyWord]="'spells'"
     >
-    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('magics')">Mágia</h2>
-    <app-magics></app-magics>
+    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('spells')">Varázslatok</h2>
+    <app-spells></app-spells>
+  </app-hide-content>
+
+  <app-hide-content
+    [arrowClass]="'nrd text2'"
+    [keyWord]="'spirits'"
+    >
+    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('spirits')">Szellemek</h2>
+    <app-spells></app-spells>
+  </app-hide-content>
+
+  <app-hide-content
+    [arrowClass]="'nrd text2'"
+    [keyWord]="'artifacts'"
+    >
+    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('artifacts')">Ereklyék</h2>
+    <app-artifacts></app-artifacts>
   </app-hide-content>
 
 </form>

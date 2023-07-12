@@ -53,8 +53,8 @@ export class SelectCybersComponent {
     return filtered;
   }
 
-  selectCyber(addId: string, addNev: string, addCsop: string, addSzint: number, addAr: number, addEssz: number, addMegj: string) {
-    this.closeEvent.next([addId, addNev, addCsop, addSzint, addAr, addEssz, addMegj]);
+  selectCyber(addId: string, addNev: string, addCsop: string, addMSzint: number, addAr: number, addEssz: number, addMegj: string) {
+    this.closeEvent.next([addId, addNev, addCsop, addMSzint, addAr, addEssz, addMegj]);
     this.closeEvent.complete();
   }
 

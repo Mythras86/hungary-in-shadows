@@ -80,10 +80,9 @@ export class AttributesService {
     return akcio;
   }
 
-
   fizetesEsszenciabol(ertek: number): void {
-    const essz = this.getFc('esszenciaMod');
-    return essz.patchValue(essz.value-ertek);
+    const essz = this.getFc('esszencia');
+    return essz.patchValue(Math.round((essz.value-ertek)*1000)/1000);
   }
 
 }

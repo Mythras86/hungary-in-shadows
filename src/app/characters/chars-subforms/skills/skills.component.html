@@ -7,7 +7,7 @@
 
     <!-- csoportosítás -->
 
-    <h3 class="w100 ntl text1">{{csoport}}</h3>
+    <h3 class="w100 ntl">{{csoport}}</h3>
 
     <!-- csoport konténer -->
 
@@ -22,13 +22,12 @@
           (buttonAction)="lvlContServ.buttonAction(
             skillsServ.getFc(i, 'nev')?.value,
             getMegjFromUtil(skillsServ.getFc(i, 'nev')?.value),
-            1,
             5,
-            'Szint',
+            ' Szint',
+            0,
             2,
+            0,
             skillsServ.getFc(i, 'szint'),
-            resServ.getFc('elkolthetoKarma'),
-            skillsServ.getFc(i, 'szint')?.value,
             6
           )"
         ></app-levelcontrol>

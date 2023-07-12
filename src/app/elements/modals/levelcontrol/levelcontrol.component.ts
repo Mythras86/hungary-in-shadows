@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { LevelcontrolService } from './levelcontrol.service';
 import { FormControl } from '@angular/forms';
+import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';
+import { AttributesService } from 'src/app/characters/chars-subforms/attributes/attributes.service';
 
 @Component({
   selector: 'app-levelcontrol',
@@ -12,6 +14,8 @@ export class LevelcontrolComponent {
 
   constructor(
     public lvlContServ: LevelcontrolService,
+    public resServ: ResourcesService,
+    public attrServ: AttributesService,
   ) { }
 
   public canBeClosed: boolean = true;
@@ -21,13 +25,12 @@ export class LevelcontrolComponent {
 
   public nev: string = '';
   public megjegyzes: any = '';
-  public jutalom: number = 0;
   public lepes: number = 0;
   public egyseg: string = '';
-  public ktsg: number = 0;
+  public ar: number = 0;
+  public karma: number = 0;
+  public esszencia: number = 0;
   public forrasErtekUtv!: FormControl;
-  public ellenErtekUtv!: FormControl;
-  public minErtek: number = 0;
   public maxErtek: number = 0;
 
   public ertekValtozas: number = 0;
@@ -42,13 +45,12 @@ export class LevelcontrolComponent {
   loadData(modalData: any): void {
     this.nev = modalData.nev;
     this.megjegyzes = modalData.megjegyzes;
-    this.jutalom = modalData.jutalom;
     this.lepes = modalData.lepes;
     this.egyseg = modalData.egyseg;
-    this.ktsg = modalData.ktsg;
+    this.ar = modalData.ar;
+    this.karma = modalData.karma;
+    this.esszencia = modalData.esszencia;
     this.forrasErtekUtv = modalData.forrasErtekUtv;
-    this.ellenErtekUtv = modalData.ellenErtekUtv;
-    this.minErtek = modalData.minErtek;
     this.maxErtek = modalData.maxErtek;
     this.toggleIsButton();
   }
@@ -65,12 +67,19 @@ export class LevelcontrolComponent {
   }
 
   buttonDisInc(maxErtek:number, lepes:number): boolean {
-    if (this.minErtek+this.ertekValtozas+lepes>maxErtek
-      || this.ellenErtekUtv.value-this.ertekValtozas*this.ktsg-lepes*this.ktsg<0
+    if (this.forrasErtekUtv.value+this.ertekValtozas+lepes>maxErtek
+      || this.resServ.getFc('elkolthetoToke')?.value-this.ertekValtozas*this.ar-lepes*this.ar<0
+      || this.resServ.getFc('elkolthetoKarma')?.value-this.ertekValtozas*this.karma-lepes*this.karma<0
+      || this.attrServ.getFc('esszencia')?.value-this.ertekValtozas*this.esszencia-lepes*this.esszencia<0
       ) {
       return true;
     }
     return false;
+  }
+
+  essCalc():number | null {
+    const essz = this.attrServ.getFc('esszencia')?.value-this.ertekValtozas*this.esszencia;
+    return Math.round(essz*1000)/1000;
   }
 
   onSave() {

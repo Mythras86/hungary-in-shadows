@@ -3,6 +3,7 @@ export interface CybersModel {
   nev: string,
   csoport: string,
   maxSzint: number,
+  szint: number,
   ar: number,
   esszencia: number,
   megjegyzes: string,

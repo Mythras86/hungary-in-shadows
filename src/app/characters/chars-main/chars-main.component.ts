@@ -122,13 +122,9 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         attrs.value.asztKitMod,
         //speciális
         attrs.value.magia,
-        attrs.value.magiaMod,
         attrs.value.esszencia,
-        attrs.value.esszenciaMod,
         attrs.value.kockatartalek,
-        attrs.value.kockatartalekMod,
         attrs.value.kezdemenyezes,
-        attrs.value.kezdemenyezesMod,
         // szakértelmek
         skills.value.skills,
         // állapot
@@ -195,13 +191,9 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         attrs.value.asztKitMod,
         //speciális
         attrs.value.magia,
-        attrs.value.magiaMod,
         attrs.value.esszencia,
-        attrs.value.esszenciaMod,
         attrs.value.kockatartalek,
-        attrs.value.kockatartalekMod,
         attrs.value.kezdemenyezes,
-        attrs.value.kezdemenyezesMod,
         // szakértelmek
         skills.value.skills,
         // állapot
@@ -300,13 +292,9 @@ export class CharsMainComponent implements OnInit, OnDestroy {
             asztKitMod: w.asztKitMod,
             //speciális
             magia: w.magia,
-            magiaMod: w.magiaMod,
             esszencia: w.esszencia,
-            esszenciaMod: w.esszenciaMod,
             kockatartalek: w.kockatartalek,
-            kockatartalekMod: w.kockatartalekMod,
             kezdemenyezes: w.kezdemenyezes,
-            kezdemenyezesMod: w.kezdemenyezesMod,
           });
           this.skillsServ.skillsForm.addControl('skillsForm', new FormGroup({}));
           (this.skillsServ.skillsForm as FormGroup).addControl('skills', this.skillsServ.setSkills(w.skills));

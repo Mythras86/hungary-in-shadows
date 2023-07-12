@@ -26,10 +26,15 @@ import { SelectSkillsComponent } from './elements/modals/select-skills//select-s
 import { AttributesComponent } from './characters/chars-subforms/attributes/attributes.component';
 import { ArmorsComponent } from './characters/chars-subforms/armors/armors.component';
 import { CybersComponent } from './characters/chars-subforms/cybers/cybers.component';
-import { MagicsComponent } from './characters/chars-subforms/magics/magics.component';
+import { SpellsComponent } from './characters/chars-subforms/spells/spells.component';
 import { ToolsComponent } from './characters/chars-subforms/tools/tools.component';
 import { SelectArmorsComponent } from './elements/modals/select-armors/select-armors.component';
 import { SelectCybersComponent } from './elements/modals/select-cybers/select-cybers.component';
+import { SpiritsComponent } from './characters/chars-subforms/spirits/spirits.component';
+import { ArtifactsComponent } from './characters/chars-subforms/artifacts/artifacts.component';
+import { WeaponsComponent } from './characters/chars-subforms/weapons/weapons.component';
+import { ExplosivesComponent } from './characters/chars-subforms/explosives/explosives.component';
+import { SelectArtifactsComponent } from './elements/modals/select-artifacts/select-artifacts.component';
 
 @NgModule({
   declarations: [
@@ -53,14 +58,20 @@ import { SelectCybersComponent } from './elements/modals/select-cybers/select-cy
     ResourcesComponent,
     StatusComponent,
     SkillsComponent,
-    SelectSkillsComponent,
     ArmorsComponent,
     CybersComponent,
-    MagicsComponent,
+    SpellsComponent,
     ToolsComponent,
+    SpiritsComponent,
+    ArtifactsComponent,
+    WeaponsComponent,
+    ExplosivesComponent,
+
     SelectArmorsComponent,
+    SelectArtifactsComponent,
     SelectCybersComponent,
-],
+    SelectSkillsComponent,
+  ],
   imports: [
     BrowserModule,
     CommonModule,

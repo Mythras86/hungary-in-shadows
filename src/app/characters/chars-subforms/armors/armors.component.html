@@ -7,21 +7,21 @@
 
     <!-- csoportosítás -->
 
-    <h3 class="w100 ntl text1">{{csoport}}</h3>
+    <h3 class="w100 ntl">{{csoport}}</h3>
 
     <!-- csoport konténer -->
 
 
-    <div class="w100 itemCont" [formGroupName]='i' *ngFor="let armor of getControls(); let i = index">
-
-      <div class="nbl w70 text1">{{armorsServ.getFcArr(i, 'nev')?.value}}</div>
-      <div class="nrng w20 text1 center">{{armorsServ.getFcArr(i, 'szint')?.value}} AR</div>
-      <button class="deleteItem w10 text1" type="button" (click)="armorsServ.removeArmor(i)">X</button>
-      <div class="nprpl w33 text1 center" (click)="changePlace(i)">{{armorsServ.getFcArr(i, 'elhelyezes')?.value}}</div>
-      <div class="grayCell text1 w33 center">{{armorsServ.getFcArr(i, 'suly')?.value}} Kg</div>
-      <div class="moneyCost text1 w33">{{armorsServ.getFcArr(i, 'ar')?.value}} Cr</div>
-      <div *ngIf="armorsServ.getFcArr(i, 'megjegyzes')?.value" class="grayCell text1 w100">{{armorsServ.getFcArr(i, 'megjegyzes')?.value}}</div>
-
+    <div class="w100" [formGroupName]='i' *ngFor="let armor of getControls(); let i = index">
+      <div class="itemCont" *ngIf="armorsServ.getFcArr(i, 'csoport')?.value == csoport">
+        <div class="nbl w70 text1">{{armorsServ.getFcArr(i, 'nev')?.value}}</div>
+        <div class="nrng w20 text1 center">{{armorsServ.getFcArr(i, 'szint')?.value}} AR</div>
+        <button class="deleteItem w10 text1" type="button" (click)="armorsServ.removeArmor(i)">X</button>
+        <div class="nprpl w33 text1 center" (click)="changePlace(i)">{{armorsServ.getFcArr(i, 'elhelyezes')?.value}}</div>
+        <div class="grayCell text1 w33 center">{{armorsServ.getFcArr(i, 'suly')?.value}} Kg</div>
+        <div class="moneyCost text1 w33">{{armorsServ.getFcArr(i, 'ar')?.value}} Cr</div>
+        <div *ngIf="armorsServ.getFcArr(i, 'megjegyzes')?.value" class="grayCell text1 w100">{{armorsServ.getFcArr(i, 'megjegyzes')?.value}}</div>
+      </div>
     </div>
 
   </div>

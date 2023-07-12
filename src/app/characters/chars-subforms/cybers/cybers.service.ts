@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
 import { AttributesService } from '../attributes/attributes.service';
+import { pairwise, startWith } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,6 @@ export class CybersService {
 
   createCybers(): FormGroup {
     const cybers = {
-      cyberEssence: [0, Validators.required],
       cybers: this.fb.array([]),
     };
     return this.cybersForm = this.fb.group(cybers);
@@ -33,6 +33,7 @@ export class CybersService {
           nev: e.nev,
           csoport: e.csoport,
           maxSzint: e.maxSzint,
+          szint: e.szint,
           ar: e.ar,
           esszencia: e.esszencia,
           megjegyzes: e.megjegyzes,
@@ -50,6 +51,7 @@ export class CybersService {
       nev: [addNev, Validators.required],
       csoport: [addCsoport, Validators.required],
       maxSzint: [addMSzint, Validators.required],
+      szint: [1, Validators.required],
       ar: [addAr, Validators.required],
       esszencia: [addEssz, Validators.required],
       megjegyzes: [addMegj, Validators.required],
@@ -61,13 +63,10 @@ export class CybersService {
 
   removeCyber(i:number): void {
     const arVissza = (this.cybersForm.get('cybers') as FormArray).at(i).get('ar')?.value;
+    const esszVissza = (this.cybersForm.get('cybers') as FormArray).at(i).get('esszencia')?.value;
     this.resServ.fizetesTokebol(-arVissza);
+    this.attrServ.fizetesEsszenciabol(-esszVissza);
     (this.cybersForm.get('cybers') as FormArray).removeAt(i);
-  }
-
-  getFc(fcName:string) {
-    const aR = this.cybersForm.get(fcName);
-    return aR;
   }
 
   getFcArr(i:number, fcName:string) {

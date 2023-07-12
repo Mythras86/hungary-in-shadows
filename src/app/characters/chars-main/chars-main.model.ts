@@ -54,13 +54,9 @@ export interface CharModel {
   asztKitMod: number,
   //speciális
   magia: number,
-  magiaMod: number,
   esszencia: number,
-  esszenciaMod: number,
   kockatartalek: number,
-  kockatartalekMod: number,
   kezdemenyezes: number,
-  kezdemenyezesMod: number,
   // szakértelmek
   skills: Array<any>,
   // állapot

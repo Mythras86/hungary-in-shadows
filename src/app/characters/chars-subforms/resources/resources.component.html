@@ -17,13 +17,12 @@
     (buttonAction)="lvlContServ.buttonAction(
       res.nev,
       res.megjegyzes,
-      res.jutalom,
       res.lepes,
       res.egyseg,
-      res.ktsg,
+      0,
+      1,
+      0,
       resServ.getFc(res.fcName),
-      resServ.getFc('elkolthetoKarma'),
-      resServ.getFc(res.fcName).value,
       res.maxErtek
     )"
     ></app-levelcontrol>

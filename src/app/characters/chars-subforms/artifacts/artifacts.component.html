@@ -1,0 +1,50 @@
+<div class="pageCont" [formGroup]="artifactsServ.artifactsForm" *ngIf="artifactsServ.artifactsForm">
+
+  <button *ngIf="resServ.getFc('elkolthetoToke').value >= 0" class="ngrn text1" type="button" (click)="sArtifServ.openModal()">Új Ereklye</button>
+  <button *ngIf="resServ.getFc('elkolthetoToke').value < 0" class="grayCell text1" type="button">Nincs elég Tőkéd</button>
+
+  <div class="w100" formArrayName="cybers" *ngFor='let csoport of getCsoportok()'>
+
+    <!-- csoportosítás -->
+
+    <h3 class="w100 ntl">{{csoport}}</h3>
+
+    <!-- csoport konténer -->
+
+
+    <div class="w100" [formGroupName]='i' *ngFor="let cyber of getControls(); let i = index">
+
+      <div class="itemCont" *ngIf="artifactsServ.getFcArr(i, 'csoport')?.value == csoport">
+
+        <div class="nbl w90 text1">{{artifactsServ.getFcArr(i, 'nev')?.value}}</div>
+        <button class="deleteItem w10 text1" type="button" (click)="artifactsServ.removeArtifact(i)">X</button>
+        <div class="nrng w30 text1 center">{{artifactsServ.getFcArr(i, 'maxSzint')?.value}} / {{artifactsServ.getFcArr(i, 'szint')?.value}} SZ</div>
+
+        <app-levelcontrol class="w20"
+        [isEnabled]="resServ.getFc('elkolthetoToke')?.value > artifactsServ.getFcArr(i, 'ar')?.value
+        && resServ.getFc('elkolthetoKarma')?.value > artifactsServ.getFcArr(i, 'karma')?.value
+        && artifactsServ.getFcArr(i, 'maxSzint')?.value > artifactsServ.getFcArr(i, 'szint')?.value"
+        (buttonAction)="lvlContServ.buttonAction(
+          artifactsServ.getFcArr(i, 'nev')?.value,
+          'van',
+          5,
+          ' Szint',
+          artifactsServ.getFcArr(i, 'ar')?.value,
+          0,
+          artifactsServ.getFcArr(i, 'karma')?.value,
+          artifactsServ.getFcArr(i, 'szint'),
+          artifactsServ.getFcArr(i, 'maxSzint')?.value
+        )"
+        ></app-levelcontrol>
+
+        <div class="moneyCost text1 w30">{{artifactsServ.getFcArr(i, 'ar')?.value*artifactsServ.getFcArr(i, 'szint')?.value}} Cr</div>
+        <div class="essenceCost text1 w20">{{artifactsServ.getFcArr(i, 'karma')?.value*artifactsServ.getFcArr(i, 'szint')?.value}} E</div>
+        <div *ngIf="artifactsServ.getFcArr(i, 'megjegyzes')?.value" class="grayCell text1 w100">{{artifactsServ.getFcArr(i, 'megjegyzes')?.value}}</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

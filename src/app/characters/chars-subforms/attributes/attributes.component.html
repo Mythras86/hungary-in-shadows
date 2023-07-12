@@ -2,7 +2,7 @@
 
   <div class="w100" *ngFor="let csoport of getCsoport()">
 
-    <h3 class="w100 ntl text1">{{csoport}} {{getCsoportErtek(csoport)}}</h3>
+    <h3 class="w100 ntl">{{csoport}} {{getCsoportErtek(csoport)}}</h3>
 
     <div class="itemCont w100" *ngFor="let attr of getAttrsByCsoport(csoport)">
       <div class="nbl w40 text1">
@@ -23,13 +23,12 @@
         (buttonAction)="lvlContServ.buttonAction(
           attr.nev,
           attr.megjegyzes,
-          1,
           attr.lepes,
           attr.egyseg,
+          0,
           3,
+          0,
           attrServ.getFc(attr.fcName),
-          resServ.getFc('elkolthetoKarma'),
-          attrServ.getFc(attr.fcName).value,
           getAttrMax(attr.fcName, attr.max)
         )"
       ></app-levelcontrol>
@@ -37,7 +36,7 @@
     </div>
   </div>
 
-  <h3 class="w100 ntl text1">Speciális</h3>
+  <h3 class="w100 ntl">Speciális</h3>
 
   <div class="itemCont w50">
     <div class="nbl text1 w100 center">Esszencia</div>
@@ -47,25 +46,24 @@
   </div>
 
   <div class="itemCont w50">
-    <div class="nbl text1 w100 center">Mágia</div>
-    <div class="ngrn text1 w80 center">
-      {{attrServ.getFc('magia')?.value}}
-    </div>
+    <div class="nbl text1 w80 center">Mágia</div>
     <app-levelcontrol class="w20"
-      [isEnabled]="resServ.getFc('elkolthetoKarma')?.value>3"
+    [isEnabled]="resServ.getFc('elkolthetoKarma')?.value>3"
       (buttonAction)="lvlContServ.buttonAction(
         'Mágia',
         'van',
-        1,
         6,
         ' Pont',
+        0,
         3,
+        0,
         attrServ.getFc('magia'),
-        resServ.getFc('elkolthetoKarma'),
-        attrServ.getFc('magia')?.value,
         6
-      )"
-    ></app-levelcontrol>
+        )"
+        ></app-levelcontrol>
+        <div class="ngrn text1 w100 center">
+          {{attrServ.getFc('magia')?.value}}
+        </div>
   </div>
 
   <div class="itemCont w50">
@@ -76,25 +74,24 @@
   </div>
 
   <div class="itemCont w50">
-    <div class="nbl text1 w100 center">Kockatartalék</div>
-    <div class="ngrn text1 w80 center">
-      {{attrServ.getFc('kockatartalek')?.value}}
-    </div>
+    <div class="nbl text1 w80 center">Kockatartalék</div>
     <app-levelcontrol class="w20"
-      [isEnabled]="resServ.getFc('elkolthetoKarma')?.value>3"
+    [isEnabled]="resServ.getFc('elkolthetoKarma')?.value>3"
       (buttonAction)="lvlContServ.buttonAction(
         'Kockatartalék',
         'van',
-        1,
         5,
         ' Pont',
+        0,
         3,
+        0,
         attrServ.getFc('kockatartalek'),
-        resServ.getFc('elkolthetoKarma'),
-        attrServ.getFc('kockatartalek')?.value,
         6
       )"
-    ></app-levelcontrol>
+      ></app-levelcontrol>
+      <div class="ngrn text1 w100 center">
+        {{attrServ.getFc('kockatartalek')?.value}}
+      </div>
   </div>
 
 

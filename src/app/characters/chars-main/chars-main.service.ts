@@ -88,13 +88,9 @@ export class CharsMainService {
       asztKitMod: number,
       //speciális
       magia: number,
-      magiaMod: number,
       esszencia: number,
-      esszenciaMod: number,
       kockatartalek: number,
-      kockatartalekMod: number,
       kezdemenyezes: number,
-      kezdemenyezesMod: number,
       // szakértelmek
       skills: Array<SkillsModel>,
       // állapot
@@ -162,13 +158,9 @@ export class CharsMainService {
     asztKitMod: number,
     //speciális
     magia: number,
-    magiaMod: number,
     esszencia: number,
-    esszenciaMod: number,
     kockatartalek: number,
-    kockatartalekMod: number,
     kezdemenyezes: number,
-    kezdemenyezesMod: number,
     // szakértelmek
     skills: Array<SkillsModel>,
     // állapot
@@ -234,13 +226,9 @@ export class CharsMainService {
       asztKitMod: asztKitMod,
       //speciális
       magia: magia,
-      magiaMod: magiaMod,
       esszencia: esszencia,
-      esszenciaMod: esszenciaMod,
       kockatartalek: kockatartalek,
-      kockatartalekMod: kockatartalekMod,
       kezdemenyezes: kezdemenyezes,
-      kezdemenyezesMod: kezdemenyezesMod,
       // szakértelmek
       skills: skills,
       // állapot
@@ -312,13 +300,9 @@ export class CharsMainService {
     asztKitMod: number,
     //speciális
     magia: number,
-    magiaMod: number,
     esszencia: number,
-    esszenciaMod: number,
     kockatartalek: number,
-    kockatartalekMod: number,
     kezdemenyezes: number,
-    kezdemenyezesMod: number,
     // szakértelmek
     skills: Array<SkillsModel>,
     // állapot
@@ -385,13 +369,9 @@ export class CharsMainService {
       asztKitMod: asztKitMod,
       //speciális
       magia: magia,
-      magiaMod: magiaMod,
       esszencia: esszencia,
-      esszenciaMod: esszenciaMod,
       kockatartalek: kockatartalek,
-      kockatartalekMod: kockatartalekMod,
       kezdemenyezes: kezdemenyezes,
-      kezdemenyezesMod: kezdemenyezesMod,
       // szakértelmek
       skills: skills,
       // állapot
