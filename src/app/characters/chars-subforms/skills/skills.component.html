@@ -33,7 +33,7 @@
         ></app-levelcontrol>
         <div class="ngrn text1 center w20">{{skillsServ.getFc(i, 'szint')?.value}}</div>
 
-        <button class="w10 deleteItem text1" type="button" (click)="skillsServ.removeSkill(i)">X</button>
+        <button class="w10 deleteItem" type="button" (click)="skillsServ.removeSkill(i)">X</button>
         <div class="grayCell text1 w80">{{skillsServ.getFc(i, 'megjegyzes')?.value}}</div>
 
         <app-input-modal class="w10"

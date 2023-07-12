@@ -16,29 +16,28 @@
 
       <div class="itemCont" *ngIf="cybersServ.getFcArr(i, 'csoport')?.value == csoport">
 
-        <div class="nbl w90 text1">{{cybersServ.getFcArr(i, 'nev')?.value}}</div>
-        <button class="deleteItem w10 text1" type="button" (click)="cybersServ.removeCyber(i)">X</button>
-        <div class="nrng w30 text1 center">{{cybersServ.getFcArr(i, 'maxSzint')?.value}} / {{cybersServ.getFcArr(i, 'szint')?.value}} SZ</div>
-
-        <app-levelcontrol class="w20"
-        [isEnabled]="resServ.getFc('elkolthetoToke')?.value > cybersServ.getFcArr(i, 'ar')?.value
-        && attrServ.getFc('esszencia')?.value > cybersServ.getFcArr(i, 'esszencia')?.value
-        && cybersServ.getFcArr(i, 'maxSzint')?.value > cybersServ.getFcArr(i, 'szint')?.value"
-        (buttonAction)="lvlContServ.buttonAction(
-          cybersServ.getFcArr(i, 'nev')?.value,
-          'van',
-          5,
-          ' Szint',
-          cybersServ.getFcArr(i, 'ar')?.value,
-          0,
-          cybersServ.getFcArr(i, 'esszencia')?.value,
-          cybersServ.getFcArr(i, 'szint'),
-          cybersServ.getFcArr(i, 'maxSzint')?.value
-        )"
+        <div class="nbl w70 text1">{{cybersServ.getFcArr(i, 'nev')?.value}}</div>
+        <div class="ngrn w20 text1 center">{{cybersServ.getFcArr(i, 'szint')?.value}} SZ</div>
+        <app-levelcontrol class="w10"
+          [isEnabled]="resServ.getFc('elkolthetoToke')?.value > cybersServ.getFcArr(i, 'ar')?.value
+          && attrServ.getFc('esszencia')?.value > cybersServ.getFcArr(i, 'esszencia')?.value
+          && cybersServ.getFcArr(i, 'maxSzint')?.value > cybersServ.getFcArr(i, 'szint')?.value"
+          (buttonAction)="lvlContServ.buttonAction(
+            cybersServ.getFcArr(i, 'nev')?.value,
+            'van',
+            5,
+            ' Szint',
+            cybersServ.getFcArr(i, 'ar')?.value,
+            0,
+            cybersServ.getFcArr(i, 'esszencia')?.value,
+            cybersServ.getFcArr(i, 'szint'),
+            cybersServ.getFcArr(i, 'maxSzint')?.value
+          )"
         ></app-levelcontrol>
-
-        <div class="moneyCost text1 w30">{{cybersServ.getFcArr(i, 'ar')?.value*cybersServ.getFcArr(i, 'szint')?.value}} Cr</div>
+        <button class="deleteItem w10" type="button" (click)="cybersServ.removeCyber(i)">X</button>
+        <div class="moneyCost text1 w40">{{cybersServ.getFcArr(i, 'ar')?.value*cybersServ.getFcArr(i, 'szint')?.value}} Cr</div>
         <div class="essenceCost text1 w20">{{cybersServ.getFcArr(i, 'esszencia')?.value*cybersServ.getFcArr(i, 'szint')?.value}} E</div>
+        <div class="nrng w30 text1 center">max: {{cybersServ.getFcArr(i, 'maxSzint')?.value}} SZ</div>
         <div *ngIf="cybersServ.getFcArr(i, 'megjegyzes')?.value" class="grayCell text1 w100">{{cybersServ.getFcArr(i, 'megjegyzes')?.value}}</div>
 
       </div>

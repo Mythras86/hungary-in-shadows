@@ -61,8 +61,9 @@ export class ArtifactsService {
   removeArtifact(i:number): void {
     const arVissza = (this.artifactsForm.get('artifacts') as FormArray).at(i).get('ar')?.value;
     const karmaVissza = (this.artifactsForm.get('artifacts') as FormArray).at(i).get('karma')?.value;
-    this.resServ.fizetesTokebol(-arVissza);
-    this.resServ.fizetesKarmabol(-karmaVissza);
+    const szint = (this.artifactsForm.get('artifacts') as FormArray).at(i).get('szint')?.value;
+    this.resServ.fizetesTokebol(-arVissza*szint);
+    this.resServ.fizetesKarmabol(-karmaVissza*szint);
     (this.artifactsForm.get('artifacts') as FormArray).removeAt(i);
   }
 
