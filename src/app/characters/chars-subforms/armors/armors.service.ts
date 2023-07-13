@@ -33,8 +33,8 @@ export class ArmorsService {
           szint: e.szint,
           suly: e.suly,
           ar: e.ar,
-          megjegyzes: e.megjegyzes,
           elhelyezes: e.elhelyezes,
+          megjegyzes: e.megjegyzes,
         }))
     });
     return armors;
@@ -54,8 +54,8 @@ export class ArmorsService {
       megjegyzes: [addMegj, Validators.required],
       elhelyezes: ['raktár', Validators.required],
     });
-    (this.armorsForm.get('armors') as FormArray).push(armor);
     this.resServ.fizetesTokebol(addAr);
+    (this.armorsForm.get('armors') as FormArray).push(armor);
   }
 
   removeArmor(i:number): void {
@@ -65,8 +65,8 @@ export class ArmorsService {
   }
 
   getFc(fcName:string) {
-    const aR = this.armorsForm.get(fcName);
-    return aR;
+    const fc = this.armorsForm.get(fcName);
+    return fc;
   }
 
   getFcArr(i:number, fcName:string) {

@@ -33,6 +33,7 @@ export class ArtifactsService {
           szint: e.szint,
           ar: e.ar,
           karma: e.karma,
+          elhelyezes: e.elhelyezes,
           megjegyzes: e.megjegyzes,
         }))
     });
@@ -51,6 +52,7 @@ export class ArtifactsService {
       szint: [1, Validators.required],
       ar: [addAr, Validators.required],
       karma: [addKarma, Validators.required],
+      elhelyezes: ['raktár', Validators.required],
       megjegyzes: [addMegj, Validators.required],
     });
     this.resServ.fizetesTokebol(addAr);

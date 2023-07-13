@@ -7,6 +7,7 @@ const artifactSchema = mongoose.Schema({
   szint: {type: Number},
   ar: {type: Number},
   karma: {type: Number},
+  elhelyezes:{type: String, required: false},
   megjegyzes: {type: String},
 });
 

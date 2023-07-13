@@ -69,6 +69,10 @@ exports.createChar = (req, res, next) => {
     armors: req.body.armors,
     // kiberverek
     cybers: req.body.cybers,
+    // eszközök
+    tools: req.body.tools,
+    // ereklyélk
+    artifacts: req.body.artifacts,
   });
   char
   .save()

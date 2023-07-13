@@ -73,6 +73,9 @@ const charSchema = mongoose.Schema({
   taplaltsagAllapot: { type: Number, required: true},
   // páncélok
   armors: {type: Array, ref: 'Armor'},
+  cybers: {type: Array, ref: 'Cyber'},
+  tools: {type: Array, ref: 'Tool'},
+  artifacts: {type: Array, ref: 'Artifact'},
 });
 
 module.exports = mongoose.model("Char", charSchema);

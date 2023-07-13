@@ -6,5 +6,6 @@ export interface ArtifactsModel {
   szint: number,
   ar: number,
   karma: number,
-  megjegyzes: string
+  elhelyezes: string,
+  megjegyzes: string,
 };

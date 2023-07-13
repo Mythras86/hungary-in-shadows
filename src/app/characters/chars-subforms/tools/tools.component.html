@@ -1,1 +1,33 @@
-<p>tools works!</p>
+<div class="pageCont" [formGroup]="toolsServ.toolsForm" *ngIf="toolsServ.toolsForm">
+
+  <!-- <button *ngIf="resServ.getFc('elkolthetoToke').value >= 0" class="ngrn text1" type="button" (click)="stoolServ.openModal()">Új Páncél Vásárlása</button>
+  <button *ngIf="resServ.getFc('elkolthetoToke').value < 0" class="grayCell text1" type="button">Új Páncél Vásárlása</button> -->
+
+  <div class="w100" formArrayName="tools" *ngFor='let csoport of getCsoportok()'>
+
+    <!-- csoportosítás -->
+
+    <h3 class="w100 ntl">{{csoport}}</h3>
+
+    <!-- csoport konténer -->
+
+
+    <div class="w100" [formGroupName]='i' *ngFor="let tool of getControls(); let i = index">
+
+      <div class="itemCont" *ngIf="toolsServ.getFcArr(i, 'csoport')?.value == csoport">
+
+        <div class="nbl w70 text1">{{toolsServ.getFcArr(i, 'nev')?.value}}</div>
+        <div class="nrng w30 text1 center">{{toolsServ.getFcArr(i, 'szint')?.value}} Sz</div>
+        <button class="deleteItem w10" type="button" (click)="toolsServ.removeTool(i)">X</button>
+        <div class="moneyCost text1 w30">{{toolsServ.getFcArr(i, 'ar')?.value}} Cr</div>
+        <div class="grayCell text1 w30 center">{{toolsServ.getFcArr(i, 'suly')?.value}} Kg</div>
+        <div class="nprpl w30 text1 center" (click)="changePlace(i)">{{toolsServ.getFcArr(i, 'elhelyezes')?.value}}</div>
+        <div *ngIf="toolsServ.getFcArr(i, 'megjegyzes')?.value" class="grayCell text1 w100">{{toolsServ.getFcArr(i, 'megjegyzes')?.value}}</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

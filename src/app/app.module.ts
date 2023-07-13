@@ -35,6 +35,7 @@ import { ArtifactsComponent } from './characters/chars-subforms/artifacts/artifa
 import { WeaponsComponent } from './characters/chars-subforms/weapons/weapons.component';
 import { ExplosivesComponent } from './characters/chars-subforms/explosives/explosives.component';
 import { SelectArtifactsComponent } from './elements/modals/select-artifacts/select-artifacts.component';
+import { SelectToolsComponent } from './elements/modals/select-tools/select-tools.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { SelectArtifactsComponent } from './elements/modals/select-artifacts/sel
     SelectArtifactsComponent,
     SelectCybersComponent,
     SelectSkillsComponent,
+    SelectToolsComponent,
   ],
   imports: [
     BrowserModule,

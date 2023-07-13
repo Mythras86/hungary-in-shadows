@@ -13,7 +13,9 @@
 
 
     <div class="w100" [formGroupName]='i' *ngFor="let armor of getControls(); let i = index">
+
       <div class="itemCont" *ngIf="armorsServ.getFcArr(i, 'csoport')?.value == csoport">
+
         <div class="nbl w70 text1">{{armorsServ.getFcArr(i, 'nev')?.value}}</div>
         <div class="nrng w30 text1 center">{{armorsServ.getFcArr(i, 'szint')?.value}} AR</div>
         <button class="deleteItem w10" type="button" (click)="armorsServ.removeArmor(i)">X</button>
@@ -21,7 +23,9 @@
         <div class="grayCell text1 w30 center">{{armorsServ.getFcArr(i, 'suly')?.value}} Kg</div>
         <div class="nprpl w30 text1 center" (click)="changePlace(i)">{{armorsServ.getFcArr(i, 'elhelyezes')?.value}}</div>
         <div *ngIf="armorsServ.getFcArr(i, 'megjegyzes')?.value" class="grayCell text1 w100">{{armorsServ.getFcArr(i, 'megjegyzes')?.value}}</div>
+
       </div>
+
     </div>
 
   </div>
