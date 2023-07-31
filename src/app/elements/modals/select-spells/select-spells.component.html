@@ -1,6 +1,6 @@
 <div class="pageCont">
 
-  <h1 class="nrd w80">Eszközök</h1>
+  <h1 class="nrd w80">Varázslatok</h1>
   <button class="nrd w20 text2 deleteItem" type="button" (click)="onClose()">X</button>
 
   <div class="itemCont w100">
@@ -14,14 +14,16 @@
 
     <h3 class="w100 ntl">{{filteredCs}}</h3>
 
-    <div class="itemCont w100" *ngFor="let a of getFilteredToolsList(filteredCs)" (click)="selectTool(
-      a._id, a.nev, a.csoport, a.maxSzint, a.suly, a.ar, a.megjegyzes
+    <div class="itemCont w100" *ngFor="let a of getFilteredSpellsList(filteredCs)" (click)="selectSpell(
+      a._id, a.nev, a.csoport, a.tipus, a.celszam, a.hatotav, a.celpontok, a.hatoido, a.kifaradas, a.megjegyzes
       )">
 
       <div class="nbl text1 w100">{{a.nev}}</div>
-      <div class="nrng text1 w30">max: {{a.maxSzint}} Sz</div>
-      <div class="grayCell text1 w30 center">{{a.suly}} Kg</div>
-      <div class="moneyCost text1 w40">{{a.ar}} Cr</div>
+      <div class="grayCell text1 w50">Típus: {{a.tipus}}</div>
+      <div class="grayCell text1 w50">Célsz.: {{a.celszam}}</div>
+      <div class="grayCell text1 w50">Táv: {{a.hatotav}}</div>
+      <div class="grayCell text1 w50">Célpontok: {{a.celpontok}}</div>
+      <div class="grayCell text1 w20">{{a.kifaradas}}</div>
       <div class="grayCell text1 w100">{{a.megjegyzes}}</div>
 
     </div>

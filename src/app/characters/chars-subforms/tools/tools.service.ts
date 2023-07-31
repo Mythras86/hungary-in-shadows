@@ -28,7 +28,7 @@ export class ToolsService {
         this.fb.group({
           _id: e._id,
           nev: e.nev,
-          csoport: e.kategoria,
+          csoport: e.csoport,
           maxSzint: e.maxSzint,
           szint: e.szint,
           suly: e.suly,
@@ -61,7 +61,8 @@ export class ToolsService {
 
   removeTool(i:number): void {
     const arVissza = (this.toolsForm.get('tools') as FormArray).at(i).get('ar')?.value;
-    this.resServ.fizetesTokebol(-arVissza);
+    const szint = (this.toolsForm.get('tools') as FormArray).at(i).get('szint')?.value;
+    this.resServ.fizetesTokebol(-arVissza*szint);
     (this.toolsForm.get('tools') as FormArray).removeAt(i);
   }
 

@@ -1,6 +1,6 @@
 const express = require("express");
 
-const ArmorController = require("../controllers/armor");
+const ArmorController = require("../controllers/armors");
 
 const router = express.Router();
 

@@ -1,6 +1,6 @@
 <div class="pageCont" [formGroup]="armorsServ.armorsForm" *ngIf="armorsServ.armorsForm">
 
-  <button *ngIf="resServ.getFc('elkolthetoToke').value >= 0" class="ngrn text1" type="button" (click)="sArmorServ.openModal()">Új Páncél Vásárlása</button>
+  <button *ngIf="resServ.getFc('elkolthetoToke').value >= 0" class="ngrn text1" type="button" (click)="sArmorServ.openModal()">Új Páncél</button>
   <button *ngIf="resServ.getFc('elkolthetoToke').value < 0" class="grayCell text1" type="button">Új Páncél Vásárlása</button>
 
   <div class="w100" formArrayName="armors" *ngFor='let csoport of getCsoportok()'>

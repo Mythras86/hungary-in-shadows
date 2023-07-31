@@ -64,7 +64,7 @@ export class CybersService {
   removeCyber(i:number): void {
     const arVissza = (this.cybersForm.get('cybers') as FormArray).at(i).get('ar')?.value;
     const esszVissza = (this.cybersForm.get('cybers') as FormArray).at(i).get('esszencia')?.value;
-    const szint = (this.cybersForm.get('cybers') as FormArray).at(i).get('esszencia')?.value;
+    const szint = (this.cybersForm.get('cybers') as FormArray).at(i).get('szint')?.value;
     this.resServ.fizetesTokebol(-arVissza*szint);
     this.attrServ.fizetesEsszenciabol(-esszVissza*szint);
     (this.cybersForm.get('cybers') as FormArray).removeAt(i);

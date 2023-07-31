@@ -1,6 +1,6 @@
 const express = require("express");
 
-const EquipmentController = require("../controllers/tool");
+const EquipmentController = require("../controllers/tools");
 
 const router = express.Router();
 

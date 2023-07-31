@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CybersService } from './cybers.service';
 import { ResourcesService } from '../resources/resources.service';
 import { SelectCyberService } from 'src/app/elements/modals/select-cybers/select-cybers.service';
@@ -11,7 +11,7 @@ import { AttributesService } from '../attributes/attributes.service';
   templateUrl: './cybers.component.html',
   styleUrls: ['./cybers.component.css']
 })
-export class CybersComponent {
+export class CybersComponent implements OnInit {
 
   constructor(
     public cybersServ: CybersService,

@@ -71,8 +71,10 @@ exports.createChar = (req, res, next) => {
     cybers: req.body.cybers,
     // eszközök
     tools: req.body.tools,
-    // ereklyélk
+    // ereklyék
     artifacts: req.body.artifacts,
+    // varázslatok
+    spells: req.body.spells,
   });
   char
   .save()
@@ -162,6 +164,12 @@ exports.updateChar = (req, res, next) => {
     armors: req.body.armors,
     // kiberverek
     cybers: req.body.cybers,
+    // eszközök
+    tools: req.body.tools,
+    // ereklyék
+    artifacts: req.body.artifacts,
+    // varázslatok
+    spells: req.body.spells,
   });
   Char.updateOne({_id: req.params._id, creatorId: req.userData.userId }, char)
   .then(result => {

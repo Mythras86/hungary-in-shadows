@@ -51,21 +51,21 @@ exports.updateEquipment = (req, res, next) => {
         message: "Couldn't udpate Equipment!"
       });
     });
-};
+  };
 
 exports.getEquipments = (req, res, next) => {
-  const equipmentQuery = Tools.find();
+  const equipmentQuery = Equipment.find();
   let fetchedTools;
   equipmentQuery
-    .then(documents => {
-      fetchedTools = documents;
-      return Equipment.count();
-    })
-    .then(count => {
-      res.status(200).json({
-        message: "Equipments fetched successfully!",
-        tools: fetchedTools,
-        maxEquipments: count
+  .then(documents => {
+    fetchedTools = documents;
+    return Equipment.count();
+  })
+  .then(count => {
+    res.status(200).json({
+      message: "Equipments fetched successfully!",
+      tools: fetchedTools,
+      maxTools: count
       });
     })
     .catch(error => {

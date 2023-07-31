@@ -1,1 +1,47 @@
-<p>weapons works!</p>
+<div class="pageCont" [formGroup]="weaponsServ.weaponsForm" *ngIf="weaponsServ.weaponsForm">
+
+  <button *ngIf="resServ.getFc('elkolthetoToke').value >= 0" class="ngrn text1" type="button" (click)="sWeaponServ.openModal()">Új Fegyver</button>
+  <button *ngIf="resServ.getFc('elkolthetoToke').value < 0" class="grayCell text1" type="button">Nincs elég Tőkéd</button>
+
+  <div class="w100" formArrayName="weapons" *ngFor='let csoport of getCsoportok()'>
+
+    <!-- csoportosítás -->
+
+    <h3 class="w100 ntl">{{csoport}}</h3>
+
+    <!-- csoport konténer -->
+
+
+    <div class="w100" [formGroupName]='i' *ngFor="let weapon of getControls(); let i = index">
+
+      <div class="itemCont" *ngIf="weaponsServ.getFcArr(i, 'csoport')?.value == csoport">
+
+        <button class="deleteItem w10" type="button" (click)="weaponsServ.removeWeapon(i)">X</button>
+        <div class="nbl w60 text1">{{weaponsServ.getFcArr(i, 'nev')?.value}}</div>
+        <div class="nprpl w30 text1 center" (click)="changePlace(i)">{{weaponsServ.getFcArr(i, 'elhelyezes')?.value}}</div>
+        <div class="grayCell text1 w60 center">{{weaponsServ.getFcArr(i, 'tipus')?.value}}</div>
+        <div class="grayCell text1 w40 center">{{weaponsServ.getFcArr(i, 'tamadasiModok')?.value}}</div>
+        <div class="grayCell text1 w50 center">
+          {{weaponsServ.getFcArr(i, 'ero')?.value}}
+          ({{weaponsServ.getFcArr(i, 'sebzes')?.value}}
+          {{weaponsServ.getFcArr(i, 'sebzesTipus')?.value}})
+        </div>
+        <div class="grayCell text1 w50 center">{{weaponsServ.getFcArr(i, 'tar')?.value}}</div>
+        <div class="grayCell text1 w60 center">Táv:
+          {{weaponsServ.getFcArr(i, 'tav')?.value}}/
+          {{weaponsServ.getFcArr(i, 'tav')?.value*3}}/
+          {{weaponsServ.getFcArr(i, 'tav')?.value*6}}/
+          {{weaponsServ.getFcArr(i, 'tav')?.value*9}}
+        </div>
+        <div class="grayCell text1 w40 center">{{weaponsServ.getFcArr(i, 'suly')?.value}} Kg</div>
+
+
+        <div *ngIf="weaponsServ.getFcArr(i, 'megjegyzes')?.value" class="grayCell text1 w100">{{weaponsServ.getFcArr(i, 'megjegyzes')?.value}}</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

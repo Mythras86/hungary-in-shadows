@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArtifactsService } from './artifacts.service';
 import { ResourcesService } from '../resources/resources.service';
 import { FormArray } from '@angular/forms';
@@ -10,7 +10,7 @@ import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelc
   templateUrl: './artifacts.component.html',
   styleUrls: ['./artifacts.component.css']
 })
-export class ArtifactsComponent {
+export class ArtifactsComponent implements OnInit {
 
   constructor(
     public artifactsServ: ArtifactsService,
@@ -37,6 +37,19 @@ export class ArtifactsComponent {
     const controls = (this.artifactsServ.artifactsForm.get('artifacts') as FormArray).controls;
     return controls;
   }
+
+  changePlace(i: number) {
+    const elhelyezes = (this.artifactsServ.artifactsForm.get('artifacts') as FormArray).at(i).get('elhelyezes');
+
+    if (elhelyezes?.value == 'raktár') {
+      return elhelyezes.patchValue('táska');
+    }
+    if (elhelyezes?.value == 'táska') {
+      return elhelyezes.patchValue('viselt')
+    }
+    return elhelyezes?.patchValue('raktár');
+  }
+
 
   ngOnInit(): void {
     this.artifactsServ.createArtifacts();

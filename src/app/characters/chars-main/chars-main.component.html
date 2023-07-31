@@ -50,8 +50,16 @@
     [arrowClass]="'nrd text2'"
     [keyWord]="'armors'"
     >
-    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('armors')">Viselt Páncélzat</h2>
+    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('armors')">Páncélzat</h2>
     <app-armors></app-armors>
+  </app-hide-content>
+
+  <app-hide-content
+    [arrowClass]="'nrd text2'"
+    [keyWord]="'weapons'"
+    >
+    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('weapons')">Fegyverek</h2>
+    <app-weapons></app-weapons>
   </app-hide-content>
 
   <app-hide-content

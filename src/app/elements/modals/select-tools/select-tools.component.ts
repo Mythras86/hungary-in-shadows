@@ -51,8 +51,8 @@ export class SelectToolsComponent {
     return filtered;
   }
 
-  selectTool(addId: string, addNev: string, addCsop: string, addMSzint: number, addAr: number, addMegj: string) {
-    this.closeEvent.next([addId, addNev, addCsop, addMSzint, addAr, addMegj]);
+  selectTool(addId: string, addNev: string, addCsop: string, addMSzint: number, addSuly: number, addAr: number, addMegj: string) {
+    this.closeEvent.next([addId, addNev, addCsop, addMSzint, addSuly, addAr, addMegj]);
     this.closeEvent.complete();
   }
 

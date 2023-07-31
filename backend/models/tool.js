@@ -11,4 +11,4 @@ const toolSchema = mongoose.Schema({
   megjegyzes:{type: String, required: false},
 });
 
-module.exports = mongoose.model("Equipment", toolSchema);
+module.exports = mongoose.model("Equipment", toolSchema, "equipments");

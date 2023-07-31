@@ -1,6 +1,6 @@
 const express = require("express");
 
-const CharController = require("../controllers/char");
+const CharController = require("../controllers/chars");
 
 const checkAuth = require("../middleware/check-auth");
 

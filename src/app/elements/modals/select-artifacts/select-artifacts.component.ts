@@ -53,8 +53,8 @@ export class SelectArtifactsComponent {
     return filtered;
   }
 
-  selectArtifact(addId: string, addNev: string, addCsop: string, addMSzint: number, addAr: number, adddKarma: number, addMegj: string) {
-    this.closeEvent.next([addId, addNev, addCsop, addMSzint, addAr, adddKarma, addMegj]);
+  selectArtifact(addId: string, addNev: string, addCsop: string, addMSzint: number, addAr: number, addKarma: number, addMegj: string) {
+    this.closeEvent.next([addId, addNev, addCsop, addMSzint, addAr, addKarma, addMegj]);
     this.closeEvent.complete();
   }
 

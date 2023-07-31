@@ -37,8 +37,8 @@ export class SelectToolService {
                 nev: w.equipmentName,
                 csoport: w.equipmentCategory,
                 maxSzint: w.equipmentMaxLevel,
-                ar: w.equipmentPrice,
                 suly: w.equipmentWeight,
+                ar: w.equipmentPrice,
                 megjegyzes: w.equipmentDesc,
               };
             })
@@ -63,8 +63,7 @@ export class SelectToolService {
       }).subscribe(
         w => this.toolsServ.addTool(
           w[0], w[1], w[2], w[3], w[4], w[5], w[6]
-        )
-      );
+      ));
     }
 
   }

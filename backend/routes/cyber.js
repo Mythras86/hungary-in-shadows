@@ -1,6 +1,6 @@
 const express = require("express");
 
-const CyberController = require("../controllers/cyber");
+const CyberController = require("../controllers/cybers");
 
 const router = express.Router();
 
