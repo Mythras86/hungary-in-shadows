@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
 import { AttributesService } from '../attributes/attributes.service';
 import { pairwise, startWith } from 'rxjs';
+import { CybersModel } from './cybers.model';
 
 @Injectable({
   providedIn: 'root'
@@ -42,22 +43,22 @@ export class CybersService {
     return cybers;
   }
 
-  addCyber(addId: string, addNev: string, addCsoport: string, addMSzint: number, addAr: number, addEssz: number, addMegj: string): void {
-    if (addNev == null) {
+  addCyber(c: CybersModel): void {
+    if (c.nev == null) {
       return;
     }
     const cyber = this.fb.group({
-      _id: [addId, Validators.required],
-      nev: [addNev, Validators.required],
-      csoport: [addCsoport, Validators.required],
-      maxSzint: [addMSzint, Validators.required],
+      _id: [c._id, Validators.required],
+      nev: [c.nev, Validators.required],
+      csoport: [c.csoport, Validators.required],
+      maxSzint: [c.maxSzint, Validators.required],
       szint: [1, Validators.required],
-      ar: [addAr, Validators.required],
-      esszencia: [addEssz, Validators.required],
-      megjegyzes: [addMegj, Validators.required],
+      ar: [c.ar, Validators.required],
+      esszencia: [c.esszencia, Validators.required],
+      megjegyzes: [c.megjegyzes, Validators.required],
     });
-    this.resServ.fizetesTokebol(addAr);
-    this.attrServ.fizetesEsszenciabol(addEssz);
+    this.resServ.fizetesTokebol(c.ar);
+    this.attrServ.fizetesEsszenciabol(c.esszencia);
     (this.cybersForm.get('cybers') as FormArray).push(cyber);
   }
 

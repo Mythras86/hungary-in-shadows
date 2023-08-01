@@ -36,6 +36,7 @@ export class SelectToolsComponent {
   getCsoportok():Array<any> {
     const csoport = this.sToolServ.toolsList.map(x => x.csoport);
     const csopUniq = [...new Set(csoport.map(x=> x))];
+    csopUniq.sort();
     return csopUniq;
   }
 
@@ -51,8 +52,9 @@ export class SelectToolsComponent {
     return filtered;
   }
 
-  selectTool(addId: string, addNev: string, addCsop: string, addMSzint: number, addSuly: number, addAr: number, addMegj: string) {
-    this.closeEvent.next([addId, addNev, addCsop, addMSzint, addSuly, addAr, addMegj]);
+  selectTool(_id: string) {
+    const tool = this.toolsList.filter(x => x._id == _id)[0];
+    this.closeEvent.next(tool);
     this.closeEvent.complete();
   }
 

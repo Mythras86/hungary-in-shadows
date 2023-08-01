@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
+import { ArmorsModel } from './armors.model';
 
 @Injectable({
   providedIn: 'root'
@@ -40,21 +41,21 @@ export class ArmorsService {
     return armors;
   }
 
-  addArmor(addId: string, addNev: string, addKateg: string, addSzint: number, addSuly: number, addAr: number, addMegj: string): void {
-    if (addNev == null) {
+  addArmor(a: ArmorsModel): void {
+    if (a.nev == null) {
       return;
     }
     const armor = this.fb.group({
-      _id: [addId, Validators.required],
-      nev: [addNev, Validators.required],
-      csoport: [addKateg, Validators.required],
-      szint: [addSzint, Validators.required],
-      suly: [addSuly, Validators.required],
-      ar: [addAr, Validators.required],
-      megjegyzes: [addMegj, Validators.required],
+      _id: [a._id, Validators.required],
+      nev: [a.nev, Validators.required],
+      csoport: [a.csoport, Validators.required],
+      szint: [a.szint, Validators.required],
+      suly: [a.suly, Validators.required],
+      ar: [a.ar, Validators.required],
+      megjegyzes: [a.megjegyzes, Validators.required],
       elhelyezes: ['raktár', Validators.required],
     });
-    this.resServ.fizetesTokebol(addAr);
+    this.resServ.fizetesTokebol(a.ar);
     (this.armorsForm.get('armors') as FormArray).push(armor);
   }
 

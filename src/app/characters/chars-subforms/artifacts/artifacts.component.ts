@@ -4,6 +4,7 @@ import { ResourcesService } from '../resources/resources.service';
 import { FormArray } from '@angular/forms';
 import { SelectArtifactService } from 'src/app/elements/modals/select-artifacts/select-artifacts.service';
 import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
+import { SortMeService } from 'src/app/elements/sortme/sort-me.service';
 
 @Component({
   selector: 'app-artifacts',
@@ -16,7 +17,8 @@ export class ArtifactsComponent implements OnInit {
     public artifactsServ: ArtifactsService,
     public resServ: ResourcesService,
     public sArtifServ: SelectArtifactService,
-    public lvlContServ: LevelcontrolService
+    public lvlContServ: LevelcontrolService,
+    private sortServ: SortMeService
   ) { }
 
   public get artifacts(): FormArray | null | any {
@@ -30,12 +32,14 @@ export class ArtifactsComponent implements OnInit {
     const form = (this.artifactsServ.artifactsForm.get('artifacts') as FormArray);
     const csoportArr = Object.values(form.controls).map(x => x.value).map(x => x.csoport);
     const csopArrUniq = [...new Set(csoportArr.map(x=> x))];
+    csopArrUniq.sort();
     return csopArrUniq;
   }
 
   getControls() {
     const controls = (this.artifactsServ.artifactsForm.get('artifacts') as FormArray).controls;
     return controls;
+
   }
 
   changePlace(i: number) {

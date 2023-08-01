@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
 import { WeaponsModel } from './weapons.model';
+import { ExplosivesService } from '../explosives/explosives.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class WeaponsService {
   constructor(
     private fb: FormBuilder,
     private resServ: ResourcesService,
+    private explosivesServ: ExplosivesService
   ) { }
 
   weaponsForm!: FormGroup;
@@ -45,7 +47,6 @@ export class WeaponsService {
     });
     return weapons;
   }
-
   addWeapon(w: WeaponsModel): void {
     if (w.nev == null) {
       return;
@@ -72,8 +73,7 @@ export class WeaponsService {
 
   removeWeapon(i:number): void {
     const arVissza = (this.weaponsForm.get('weapons') as FormArray).at(i).get('ar')?.value;
-    const szint = (this.weaponsForm.get('weapons') as FormArray).at(i).get('szint')?.value;
-    this.resServ.fizetesTokebol(-arVissza*szint);
+    this.resServ.fizetesTokebol(-arVissza);
     (this.weaponsForm.get('weapons') as FormArray).removeAt(i);
   }
 

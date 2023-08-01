@@ -14,9 +14,7 @@
 
     <h3 class="w100 ntl">{{filteredCs}}</h3>
 
-    <div class="itemCont w100" *ngFor="let a of getFilteredArtifactsList(filteredCs)" (click)="selectArtifact(
-      a._id, a.nev, a.csoport, a.maxSzint, a.ar, a.karma, a.megjegyzes
-      )">
+    <div class="itemCont w100" *ngFor="let a of getFilteredArtifactsList(filteredCs)" (click)="selectArtifact(a._id)">
 
       <div class="nbl text1 w100">{{a.nev}}</div>
       <div class="nrng text1 w40">max: {{a.maxSzint}} Sz</div>

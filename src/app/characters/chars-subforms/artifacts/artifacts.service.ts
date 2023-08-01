@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
+import { ArtifactsModel } from './artifacts.model';
 
 @Injectable({
   providedIn: 'root'
@@ -40,23 +41,23 @@ export class ArtifactsService {
     return artifacts;
   }
 
-  addArtifact(addId: string, addNev: string, addCsoport: string, addMSzint: number, addAr: number, addKarma: number, addMegj: string): void {
-    if (addNev == null) {
+  addArtifact(a: ArtifactsModel): void {
+    if (a.nev == null) {
       return;
     }
     const artifact = this.fb.group({
-      _id: [addId, Validators.required],
-      nev: [addNev, Validators.required],
-      csoport: [addCsoport, Validators.required],
-      maxSzint: [addMSzint, Validators.required],
+      _id: [a._id, Validators.required],
+      nev: [a.nev, Validators.required],
+      csoport: [a.csoport, Validators.required],
+      maxSzint: [a.maxSzint, Validators.required],
       szint: [1, Validators.required],
-      ar: [addAr, Validators.required],
-      karma: [addKarma, Validators.required],
+      ar: [a.ar, Validators.required],
+      karma: [a.karma, Validators.required],
       elhelyezes: ['raktár', Validators.required],
-      megjegyzes: [addMegj, Validators.required],
+      megjegyzes: [a.megjegyzes, Validators.required],
     });
-    this.resServ.fizetesTokebol(addAr);
-    this.resServ.fizetesKarmabol(addKarma);
+    this.resServ.fizetesTokebol(a.ar);
+    this.resServ.fizetesKarmabol(a.karma);
     (this.artifactsForm.get('artifacts') as FormArray).push(artifact);
   }
 

@@ -62,9 +62,7 @@ export class SelectArtifactService {
         moneyFilter: this.resServ.getFc('elkolthetoToke').value,
         karmaFilter: this.resServ.getFc('elkolthetoKarma').value
       }).subscribe(
-        w => this.artifactsServ.addArtifact(
-          w[0], w[1], w[2], w[3], w[4], w[5], w[6]
-        )
+        w => this.artifactsServ.addArtifact(w)
       );
     }
 

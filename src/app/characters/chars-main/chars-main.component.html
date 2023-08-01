@@ -64,6 +64,14 @@
 
   <app-hide-content
     [arrowClass]="'nrd text2'"
+    [keyWord]="'explosives'"
+    >
+    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('explosives')">Robbanóanyagok</h2>
+    <app-explosives></app-explosives>
+  </app-hide-content>
+
+  <app-hide-content
+    [arrowClass]="'nrd text2'"
     [keyWord]="'tools'"
     >
     <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('tools')">Eszközök</h2>

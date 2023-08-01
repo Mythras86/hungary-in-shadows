@@ -7,5 +7,6 @@ export interface ToolsModel{
   suly: number,
   ar: number,
   elhelyezes: string,
+  darab: number,
   megjegyzes: string
 }

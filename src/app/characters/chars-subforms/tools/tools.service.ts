@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
+import { ToolsModel } from './tools.model';
 
 @Injectable({
   providedIn: 'root'
@@ -40,22 +41,22 @@ export class ToolsService {
     return tools;
   }
 
-  addTool(addId: string, addNev: string, addCsoport: string, addMSzint: number, addSuly: number, addAr: number, addMegj: string): void {
-    if (addNev == null) {
+  addTool(t: ToolsModel): void {
+    if (t.nev == null) {
       return;
     }
     const tool = this.fb.group({
-      _id: [addId, Validators.required],
-      nev: [addNev, Validators.required],
-      csoport: [addCsoport, Validators.required],
-      maxSzint: [addMSzint, Validators.required],
+      _id: [t._id, Validators.required],
+      nev: [t.nev, Validators.required],
+      csoport: [t.csoport, Validators.required],
+      maxSzint: [t.maxSzint, Validators.required],
       szint: [1, Validators.required],
-      suly: [addSuly, Validators.required],
-      ar: [addAr, Validators.required],
+      suly: [t.suly, Validators.required],
+      ar: [t.ar, Validators.required],
       elhelyezes: ['raktár', Validators.required],
-      megjegyzes: [addMegj, Validators.required],
+      megjegyzes: [t.megjegyzes, Validators.required],
     });
-    this.resServ.fizetesTokebol(addAr);
+    this.resServ.fizetesTokebol(t.ar);
     (this.toolsForm.get('tools') as FormArray).push(tool);
   }
 

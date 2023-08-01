@@ -64,9 +64,7 @@ export class SelectCyberService {
         moneyFilter: this.resServ.getFc('elkolthetoToke').value,
         essenceFilter: this.attrServ.getFc('esszencia').value
       }).subscribe(
-        w => this.cybersServ.addCyber(
-          w[0], w[1], w[2], w[3], w[4], w[5], w[6]
-          )
+        w => this.cybersServ.addCyber(w)
         );
     }
 

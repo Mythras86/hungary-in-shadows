@@ -38,6 +38,7 @@ export class SelectArtifactsComponent {
   getCsoportok():Array<any> {
     const csoport = this.sArtifactServ.artifactsList.map(x => x.csoport);
     const csopUniq = [...new Set(csoport.map(x=> x))];
+    csopUniq.sort();
     return csopUniq;
   }
 
@@ -53,8 +54,9 @@ export class SelectArtifactsComponent {
     return filtered;
   }
 
-  selectArtifact(addId: string, addNev: string, addCsop: string, addMSzint: number, addAr: number, addKarma: number, addMegj: string) {
-    this.closeEvent.next([addId, addNev, addCsop, addMSzint, addAr, addKarma, addMegj]);
+  selectArtifact(_id: string) {
+    const artifact = this.artifactsList.filter(x => x._id == _id)[0];
+    this.closeEvent.next(artifact);
     this.closeEvent.complete();
   }
 

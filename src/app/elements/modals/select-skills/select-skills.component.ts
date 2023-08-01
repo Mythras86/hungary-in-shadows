@@ -26,6 +26,7 @@ export class SelectSkillsComponent {
 
   getCsoportok(): Array<any> {
     const csoport = [...new Set(skillsUtil.map(x=> x.csoport))];
+    csoport.sort();
     return csoport;
   }
 

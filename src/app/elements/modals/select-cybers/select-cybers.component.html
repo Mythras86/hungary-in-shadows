@@ -14,9 +14,7 @@
 
     <h3 class="w100 ntl">{{filteredCs}}</h3>
 
-    <div class="itemCont w100" *ngFor="let a of getFilteredCybersList(filteredCs)" (click)="selectCyber(
-      a._id, a.nev, a.csoport, a.szint, a.ar, a.esszencia, a.megjegyzes
-      )">
+    <div class="itemCont w100" *ngFor="let a of getFilteredCybersList(filteredCs)" (click)="selectCyber(a._id)">
 
       <div class="nbl text1 w100">{{a.nev}}</div>
       <div class="nrng text1 w33">{{a.maxSzint}} Sz</div>

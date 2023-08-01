@@ -14,9 +14,7 @@
 
     <h3 class="w100 ntl">{{filteredCs}}</h3>
 
-    <div class="itemCont w100" *ngFor="let a of getFilteredSpellsList(filteredCs)" (click)="selectSpell(
-      a._id, a.nev, a.csoport, a.tipus, a.celszam, a.hatotav, a.celpontok, a.hatoido, a.kifaradas, a.megjegyzes
-      )">
+    <div class="itemCont w100" *ngFor="let a of getFilteredSpellsList(filteredCs)" (click)="selectSpell(a._id)">
 
       <div class="nbl text1 w100">{{a.nev}}</div>
       <div class="grayCell text1 w50">Típus: {{a.tipus}}</div>

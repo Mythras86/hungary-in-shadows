@@ -38,6 +38,7 @@ export class SelectSpellsComponent {
   getCsoportok():Array<any> {
     const csoport = this.sSpellServ.spellsList.map(x => x.csoport);
     const csopUniq = [...new Set(csoport.map(x=> x))];
+    csopUniq.sort();
     return csopUniq;
   }
 
@@ -53,9 +54,10 @@ export class SelectSpellsComponent {
     return filtered;
   }
 
-  selectSpell(addId: string, addNev: string, addCsop: string, addTipus: string, addCelszam: string,
-    addHatotav: string, addCelpontok: string, addHatoido: string, addKifaradas: string, addMegj: string) {
-    this.closeEvent.next([addId, addNev, addCsop, addTipus, addCelszam, addHatotav, addCelpontok, addHatoido, addKifaradas, addMegj]);
+  selectSpell(_id: string) {
+    const spell = this.spellsList.filter(x => x._id == _id)[0];
+
+    this.closeEvent.next(spell);
     this.closeEvent.complete();
   }
 

@@ -36,6 +36,7 @@ export class SelectArmorsComponent implements OnInit {
   getCsoportok():Array<any> {
     const csoport = this.selArmorServ.armorsList.map(x => x.csoport);
     const csopUniq = [...new Set(csoport.map(x=> x))];
+    csopUniq.sort();
     return csopUniq;
   }
 
@@ -51,8 +52,9 @@ export class SelectArmorsComponent implements OnInit {
     return filtered;
   }
 
-  selectArmor(addId: string, addNev: string, addCsop: string, addSzint: number, addSuly: number, addAr: number, addMegj: string) {
-    this.closeEvent.next([addId, addNev, addCsop, addSzint, addSuly, addAr, addMegj]);
+  selectArmor(_id: string) {
+    const armor = this.armorsList.filter(x => x._id == _id)[0];
+    this.closeEvent.next(armor);
     this.closeEvent.complete();
   }
 

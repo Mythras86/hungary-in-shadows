@@ -7,6 +7,7 @@ import { ResourcesService } from '../resources/resources.service';
 import { SelectSkillsService } from 'src/app/elements/modals/select-skills/select-skills.service';
 import { InputModalService } from 'src/app/elements/modals/input-modal/input-modal.service';
 import { DetailsService } from '../details/details.service';
+import { SortMeService } from 'src/app/elements/sortme/sort-me.service';
 
 @Component({
   selector: 'app-skills',
@@ -21,7 +22,8 @@ export class SkillsComponent implements OnInit {
     public inputModServ: InputModalService,
     public lvlContServ: LevelcontrolService,
     public resServ: ResourcesService,
-    public selSkillsModalServ: SelectSkillsService
+    public selSkillsModalServ: SelectSkillsService,
+    private sortServ: SortMeService
   ) { }
 
   public get skills(): FormArray | null {
@@ -35,6 +37,7 @@ export class SkillsComponent implements OnInit {
     const form = (this.skillsServ.skillsForm.get('skills') as FormArray);
     const csoportArr = Object.values(form.controls).map(x => x.value).map(x => x.csoport);
     const csopArrUniq = [...new Set(csoportArr.map(x=> x))];
+    csopArrUniq.sort();
     return csopArrUniq;
   }
 

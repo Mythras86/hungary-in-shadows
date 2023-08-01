@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
+import { SpellsModel } from './spells.model';
 
 @Injectable({
   providedIn: 'root'
@@ -42,23 +43,22 @@ export class SpellsService {
     return spells;
   }
 
-  addSpell(addId: string, addNev: string, addCsop: string, addTipus: string, addCelszam: string,
-    addHatotav: string, addCelpontok: string, addHatoido: string, addKifaradas: string, addMegj: string): void {
-    if (addNev == null) {
+  addSpell(s: SpellsModel): void {
+    if (s.nev == null) {
       return;
     }
     const spell = this.fb.group({
-      _id: [addId, Validators.required],
-      nev: [addNev, Validators.required],
-      csoport: [addCsop, Validators.required],
-      tipus: [addTipus, Validators.required],
+      _id: [s._id, Validators.required],
+      nev: [s.nev, Validators.required],
+      csoport: [s.csoport, Validators.required],
+      tipus: [s.tipus, Validators.required],
       szint: [1, Validators.required],
-      celpontok: [addCelpontok, Validators.required],
-      hatotav: [addHatotav, Validators.required],
-      celszam: [addCelszam, Validators.required],
-      hatoido: [addHatoido, Validators.required],
-      kifaradas: [addKifaradas, Validators.required],
-      megjegyzes: [addMegj, Validators.required],
+      celpontok: [s.celpontok, Validators.required],
+      hatotav: [s.hatotav, Validators.required],
+      celszam: [s.celszam, Validators.required],
+      hatoido: [s.hatoido, Validators.required],
+      kifaradas: [s.kifaradas, Validators.required],
+      megjegyzes: [s.megjegyzes, Validators.required],
     });
     this.resServ.fizetesTokebol(1000);
     this.resServ.fizetesKarmabol(2);

@@ -33,11 +33,12 @@ import { SelectCybersComponent } from './elements/modals/select-cybers/select-cy
 import { SpiritsComponent } from './characters/chars-subforms/spirits/spirits.component';
 import { ArtifactsComponent } from './characters/chars-subforms/artifacts/artifacts.component';
 import { WeaponsComponent } from './characters/chars-subforms/weapons/weapons.component';
-import { ExplosivesComponent } from './characters/chars-subforms/explosives/explosives.component';
 import { SelectArtifactsComponent } from './elements/modals/select-artifacts/select-artifacts.component';
 import { SelectToolsComponent } from './elements/modals/select-tools/select-tools.component';
 import { SelectSpellsComponent } from './elements/modals/select-spells/select-spells.component';
 import { SelectWeaponsComponent } from './elements/modals/select-weapons/select-weapons.component';
+import { SelectSpiritsComponent } from './elements/modals/select-spirits/select-spirits.component';
+import { ExplosivesComponent } from './characters/chars-subforms/explosives/explosives.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,6 @@ import { SelectWeaponsComponent } from './elements/modals/select-weapons/select-
     SpiritsComponent,
     ArtifactsComponent,
     WeaponsComponent,
-    ExplosivesComponent,
 
     SelectArmorsComponent,
     SelectArtifactsComponent,
@@ -77,7 +77,7 @@ import { SelectWeaponsComponent } from './elements/modals/select-weapons/select-
     SelectToolsComponent,
     SelectSpellsComponent,
     SelectWeaponsComponent,
-  ],
+  SelectSpiritsComponent,ExplosivesComponent,],
   imports: [
     BrowserModule,
     CommonModule,

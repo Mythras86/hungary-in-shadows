@@ -4,6 +4,7 @@ import { ResourcesService } from '../resources/resources.service';
 import { FormArray } from '@angular/forms';
 import { SelectToolService } from 'src/app/elements/modals/select-tools/select-tools.service';
 import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
+import { SortMeService } from 'src/app/elements/sortme/sort-me.service';
 
 @Component({
   selector: 'app-tools',
@@ -17,6 +18,7 @@ export class ToolsComponent implements OnInit {
     public resServ: ResourcesService,
     public stoolServ: SelectToolService,
     public lvlContServ: LevelcontrolService,
+    private sortServ: SortMeService
   ) { }
 
   public get tools(): FormArray | null | any {
@@ -30,12 +32,14 @@ export class ToolsComponent implements OnInit {
     const form = (this.toolsServ.toolsForm.get('tools') as FormArray);
     const csoportArr = Object.values(form.controls).map(x => x.value).map(x => x.csoport);
     const csopArrUniq = [...new Set(csoportArr.map(x=> x))];
+    csopArrUniq.sort();
     return csopArrUniq;
   }
 
   getControls() {
     const controls = (this.toolsServ.toolsForm.get('tools') as FormArray).controls;
     return controls;
+
   }
 
   changePlace(i: number) {

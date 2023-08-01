@@ -38,6 +38,7 @@ export class SelectCybersComponent {
   getCsoportok():Array<any> {
     const csoport = this.sCyberServ.cybersList.map(x => x.csoport);
     const csopUniq = [...new Set(csoport.map(x=> x))];
+    csopUniq.sort();
     return csopUniq;
   }
 
@@ -53,8 +54,9 @@ export class SelectCybersComponent {
     return filtered;
   }
 
-  selectCyber(addId: string, addNev: string, addCsop: string, addMSzint: number, addAr: number, addEssz: number, addMegj: string) {
-    this.closeEvent.next([addId, addNev, addCsop, addMSzint, addAr, addEssz, addMegj]);
+  selectCyber(_id: string) {
+    const cyber = this.cybersList.filter(x => x._id == _id)[0];
+    this.closeEvent.next(cyber);
     this.closeEvent.complete();
   }
 

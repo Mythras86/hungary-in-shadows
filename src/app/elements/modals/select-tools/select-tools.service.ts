@@ -61,9 +61,7 @@ export class SelectToolService {
       this.modalServ.openModal(SelectToolsComponent, {
         moneyFilter: this.resServ.getFc('elkolthetoToke').value,
       }).subscribe(
-        w => this.toolsServ.addTool(
-          w[0], w[1], w[2], w[3], w[4], w[5], w[6]
-      ));
+        w => this.toolsServ.addTool(w));
     }
 
   }

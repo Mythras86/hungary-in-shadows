@@ -4,6 +4,7 @@ import { FormArray, FormControl } from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
 import { SelectArmorService } from 'src/app/elements/modals/select-armors/select-armor.service';
 import { HideService } from 'src/app/elements/hide-content/hide-content.service';
+import { SortMeService } from 'src/app/elements/sortme/sort-me.service';
 
 @Component({
   selector: 'app-armors',
@@ -17,6 +18,7 @@ export class ArmorsComponent implements OnInit {
     public armorsServ: ArmorsService,
     public resServ: ResourcesService,
     public sArmorServ: SelectArmorService,
+    private sortServ: SortMeService
   ) { }
 
   public get armors(): FormArray | null | any {
@@ -30,12 +32,14 @@ export class ArmorsComponent implements OnInit {
     const form = (this.armorsServ.armorsForm.get('armors') as FormArray);
     const csoportArr = Object.values(form.controls).map(x => x.value).map(x => x.csoport);
     const csopArrUniq = [...new Set(csoportArr.map(x=> x))];
+    csopArrUniq.sort();
     return csopArrUniq;
   }
 
   getControls() {
     const controls = (this.armorsServ.armorsForm.get('armors') as FormArray).controls;
     return controls;
+
   }
 
   changePlace(i: number) {

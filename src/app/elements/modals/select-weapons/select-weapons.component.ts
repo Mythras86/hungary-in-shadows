@@ -3,6 +3,7 @@ import { SelectWeaponService } from './select-weapons.service';
 import { SpinnerService } from '../../spinner/spinner.service';
 import { Subject, Subscription, filter } from 'rxjs';
 import { WeaponsModel } from 'src/app/characters/chars-subforms/weapons/weapons.model';
+import { SortMeService } from '../../sortme/sort-me.service';
 
 @Component({
   selector: 'app-select-weapons',
@@ -13,17 +14,20 @@ export class SelectWeaponsComponent {
 
   constructor(
     private sWeaponServ: SelectWeaponService,
-    private spinServ: SpinnerService
+    private spinServ: SpinnerService,
+    private sortServ: SortMeService
   ) {}
 
   public moneyFilter: number = 0;
   public csoportFilter: string = 'Nincs';
+  public explosives: boolean = false;
 
   public canBeClosed: boolean = true;
   closeEvent: Subject<any> = new Subject;
 
   loadData(modalData: any): void {
     this.moneyFilter = modalData.moneyFilter;
+    this.explosives = modalData.explosives;
   }
 
   private weaponSub!: Subscription;
@@ -34,8 +38,14 @@ export class SelectWeaponsComponent {
   }
 
   getCsoportok():Array<any> {
-    const csoport = this.sWeaponServ.weaponsList.map(x => x.csoport);
-    const csopUniq = [...new Set(csoport.map(x=> x))];
+    const list = this.sWeaponServ.weaponsList;
+    if (this.explosives) {
+      const csopUniq = [...new Set(list.filter(x=> x.csoport == 'Robbanóanyagok').map(x => x.tipus).map(x=> x))];
+      csopUniq.sort();
+      return csopUniq;
+    }
+    const csopUniq = [...new Set(list.filter(x=> x.csoport != 'Robbanóanyagok').map(x => x.tipus).map(x=> x))];
+    csopUniq.sort();
     return csopUniq;
   }
 
@@ -46,8 +56,9 @@ export class SelectWeaponsComponent {
     return [this.csoportFilter];
   }
 
-  getFilteredWeaponsList(csoport: string): Array<any> {
-    const filtered = this.weaponsList.filter(x=>x.ar <= this.moneyFilter && x.csoport == csoport);
+  getFilteredWeaponsList(tipus: string): Array<any> {
+    const filtered = this.weaponsList.filter(x=>x.ar <= this.moneyFilter && x.tipus == tipus);
+    this.sortServ.sortByString(filtered, 'nev');
     return filtered;
   }
 

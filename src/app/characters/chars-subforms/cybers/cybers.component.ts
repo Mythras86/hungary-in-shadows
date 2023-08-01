@@ -5,6 +5,7 @@ import { SelectCyberService } from 'src/app/elements/modals/select-cybers/select
 import { FormArray } from '@angular/forms';
 import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
 import { AttributesService } from '../attributes/attributes.service';
+import { SortMeService } from 'src/app/elements/sortme/sort-me.service';
 
 @Component({
   selector: 'app-cybers',
@@ -19,6 +20,7 @@ export class CybersComponent implements OnInit {
     public attrServ: AttributesService,
     public sCyberServ: SelectCyberService,
     public lvlContServ: LevelcontrolService,
+    private sortServ: SortMeService
   ) { }
 
   public get cybers(): FormArray | null | any {
@@ -32,12 +34,14 @@ export class CybersComponent implements OnInit {
     const form = (this.cybersServ.cybersForm.get('cybers') as FormArray);
     const csoportArr = Object.values(form.controls).map(x => x.value).map(x => x.csoport);
     const csopArrUniq = [...new Set(csoportArr.map(x=> x))];
+    csopArrUniq.sort();
     return csopArrUniq;
   }
 
   getControls() {
     const controls = (this.cybersServ.cybersForm.get('cybers') as FormArray).controls;
     return controls;
+
   }
 
   ngOnInit(): void {

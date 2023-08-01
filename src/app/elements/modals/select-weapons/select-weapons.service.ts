@@ -7,6 +7,7 @@ import { ResourcesService } from 'src/app/characters/chars-subforms/resources/re
 import { SelectWeaponsComponent } from './select-weapons.component';
 import { WeaponsService } from 'src/app/characters/chars-subforms/weapons/weapons.service';
 import { WeaponsModel } from 'src/app/characters/chars-subforms/weapons/weapons.model';
+import { ExplosivesService } from 'src/app/characters/chars-subforms/explosives/explosives.service';
 
 const BACKEND_URL = environment.apiUrl + "/weapon/";
 
@@ -20,6 +21,7 @@ export class SelectWeaponService {
       private modalServ: ModalService,
       private resServ: ResourcesService,
       private weaponsServ: WeaponsService,
+      private explosivesServ: ExplosivesService,
     ) { }
 
     public weaponsList: WeaponsModel[] = [];
@@ -63,12 +65,18 @@ export class SelectWeaponService {
       return this.weaponsUpdated.asObservable();
     }
 
-    openModal() {
+    openModal(status: boolean) {
       this.modalServ.openModal(SelectWeaponsComponent, {
         moneyFilter: this.resServ.getFc('elkolthetoToke').value,
+        explosives: status
       }).subscribe(
-        w => this.weaponsServ.addWeapon(w)
-        );
+        w => {
+          if (status == false) {
+            return this.weaponsServ.addWeapon(w);
+          }
+          return this.explosivesServ.addExplosive(w);
+        }
+      );
     }
 
   }

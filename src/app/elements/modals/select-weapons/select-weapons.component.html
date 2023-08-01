@@ -1,11 +1,11 @@
 <div class="pageCont">
 
-  <h1 class="nrd w80">Eszközök</h1>
+  <h1 class="nrd w80">Fegyverek</h1>
   <button class="nrd w20 text2 deleteItem" type="button" (click)="onClose()">X</button>
 
   <div class="itemCont w100">
-    <div class="nprpl text1 w50 center" (click)="selectFilter('Nincs')">Nincs</div>
-    <div class="nprpl text1 w50 center" *ngFor="let csoport of getCsoportok()" (click)="selectFilter(csoport)">
+    <div class="nprpl text1" (click)="selectFilter('Nincs')">Nincs</div>
+    <div class="nprpl text1" *ngFor="let csoport of getCsoportok()" (click)="selectFilter(csoport)">
       {{csoport}}
     </div>
   </div>
@@ -14,9 +14,7 @@
 
     <h3 class="w100 ntl">{{filteredCs}}</h3>
 
-    <div class="itemCont w100" *ngFor="let a of getFilteredWeaponsList(filteredCs)" (click)="selectWeapon(
-      a._id
-      )">
+    <div class="itemCont w100" *ngFor="let a of getFilteredWeaponsList(filteredCs)" (click)="selectWeapon(a._id)">
 
       <div class="nbl text1 w66">{{a.nev}}</div>
       <div class="moneyCost text1 w33 center">{{a.ar}} Cr</div>
@@ -24,8 +22,9 @@
       <div class="grayCell text1 w33 center">{{a.tamadasiModok}}</div>
       <div class="grayCell text1 w50 center">{{a.ero}}({{a.sebzes}} {{a.sebzesTipus}})</div>
       <div class="grayCell text1 w50 center">{{a.tar}}</div>
-      <div class="grayCell text1 w66 center">Táv: {{a.tav}}/{{a.tav*3}}/{{a.tav*6}}/{{a.tav*9}} m</div>
-      <div class="grayCell text1 w33 center">{{a.suly}} Kg</div>
+      <div *ngIf="['Tűzfegyverek','Lőfegyverek','Nehézfegyverek'].includes(a.csoport)" class="grayCell text1 w70 center">Táv:{{a.tav}}/{{a.tav*3}}/{{a.tav*6}}/{{a.tav*9}} m</div>
+      <div *ngIf="!['Tűzfegyverek','Lőfegyverek','Nehézfegyverek'].includes(a.csoport)" class="grayCell text1 w70 center">Táv:{{a.tav}} m</div>
+      <div class="grayCell text1 w30 center">{{a.suly}} Kg</div>
       <div class="grayCell text1 w100">{{a.megjegyzes}}</div>
 
     </div>

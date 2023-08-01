@@ -5,6 +5,7 @@ import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelc
 import { FormArray } from '@angular/forms';
 import { SelectSpellService } from 'src/app/elements/modals/select-spells/select-spells.service';
 import { AttributesService } from '../attributes/attributes.service';
+import { SortMeService } from 'src/app/elements/sortme/sort-me.service';
 
 @Component({
   selector: 'app-spells',
@@ -18,6 +19,7 @@ export class SpellsComponent implements OnInit {
     public attrServ: AttributesService,
     public sSpellServ: SelectSpellService,
     public lvlContServ: LevelcontrolService,
+    private sortServ: SortMeService
   ) { }
 
   public get spells(): FormArray | null | any {
@@ -31,12 +33,14 @@ export class SpellsComponent implements OnInit {
     const form = (this.spellsServ.spellsForm.get('spells') as FormArray);
     const csoportArr = Object.values(form.controls).map(x => x.value).map(x => x.csoport);
     const csopArrUniq = [...new Set(csoportArr.map(x=> x))];
+    csopArrUniq.sort();
     return csopArrUniq;
   }
 
   getControls() {
     const controls = (this.spellsServ.spellsForm.get('spells') as FormArray).controls;
     return controls;
+
   }
 
   ngOnInit(): void {
