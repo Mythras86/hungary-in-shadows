@@ -30,32 +30,12 @@ export class AttributesComponent implements OnInit {
     return filteredAttrs;
   }
 
-  getAttrMax(fcName: string, attrMax: number):number {
-    const valasztottDns = this.detailsServ.detailsForm.get('dns')?.value;
-    const dnsChange = dnsUtil.filter(x => x.dns == valasztottDns).map(x => x[fcName])[0];
-    if (dnsChange !== undefined) {
-      return dnsChange;
-    }
-    return attrMax;
-  }
-
-  getCsoportErtek(csoport: string) {
-    if(csoport == 'Fizikum') {
-      return this.attrServ.getFizikum();
-    }
-    if(csoport == 'Asztrál') {
-      return this.attrServ.getAsztral();
-    }
-    return null;
-  }
-
   buttonStatus(fcName: string, attrMax: number):boolean {
     const karma = this.resServ.getFc('elkolthetoKarma').value;
-    const attrmax = this.getAttrMax(fcName, attrMax);
     const fcvalue = this.attrServ.getFc(fcName).value;
     if (
       karma >= 3
-      && attrmax > fcvalue
+      && 6 > fcvalue
       ) {
         return true;
       }

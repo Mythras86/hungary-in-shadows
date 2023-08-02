@@ -1,1 +1,49 @@
-<p>select-spirits works!</p>
+<div class="pageCont">
+
+  <h1 class="nrd w80">Szellemek</h1>
+  <button class="nrd w20 text2 deleteItem" type="button" (click)="onClose()">X</button>
+
+  <div class="itemCont w100">
+    <div class="nprpl text1 w50 center" (click)="selectFilter('Nincs')">Nincs</div>
+    <div class="nprpl text1 w50 center" *ngFor="let csoport of getCsoportok()" (click)="selectFilter(csoport)">
+      {{csoport}}
+    </div>
+  </div>
+
+  <div class="itemCont w100" *ngFor="let filteredCs of getFilteredCsoportok()">
+
+    <h3 class="w100 ntl">{{filteredCs}}</h3>
+
+    <div class="itemCont w100" *ngFor="let a of getFilteredSpiritsList(filteredCs)" (click)="selectSpirit(a._id)">
+
+      <div class="ntl text1 w60">{{a.nev}}</div>
+      <div class="nrng text1 w40 center">Sebzés: {{a.tamadas}}</div>
+
+      <span class="spAttrCont w100">
+        <div class="nbl text1 spAttr center">E</div>
+        <div class="nbl text1 spAttr center">Gy</div>
+        <div class="nbl text1 spAttr center">U</div>
+        <div class="nbl text1 spAttr center">Ki</div>
+        <div class="nbl text1 spAttr center">Ka</div>
+        <div class="nbl text1 spAttr center">In</div>
+        <div class="nbl text1 spAttr center">Lo</div>
+        <div class="nbl text1 spAttr center">Ak</div>
+      </span>
+
+      <span class="spAttrCont w100">
+        <div class="ngrn text1 spAttr center">{{a.fizEro}}</div>
+        <div class="ngrn text1 spAttr center">{{a.fizGyo}}</div>
+        <div class="ngrn text1 spAttr center">{{a.fizUgy}}</div>
+        <div class="ngrn text1 spAttr center">{{a.fizKit}}</div>
+        <div class="ngrn text1 spAttr center">{{a.asztEro}}</div>
+        <div class="ngrn text1 spAttr center">{{a.asztGyo}}</div>
+        <div class="ngrn text1 spAttr center">{{a.asztUgy}}</div>
+        <div class="ngrn text1 spAttr center">{{a.asztKit}}</div>
+      </span>
+      <div class="grayCell text1 w100">{{a.kepessegek}}</div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,1 +1,9 @@
+.spAttrCont {
+  display: flex;
+  flex-flow: row nowrap;
+}
 
+.spAttr {
+  flex: 1 1 auto;
+  max-width: 12.5%;
+}

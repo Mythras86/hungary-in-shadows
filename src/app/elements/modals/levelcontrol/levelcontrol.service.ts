@@ -25,6 +25,7 @@ export class LevelcontrolService {
       karma: number,
       esszencia: number,
       forrasErtekUtv: any,
+      minErtek: number,
       maxErtek: number,
       ) {
         this.modalServ.openModal(LevelcontrolComponent, {
@@ -36,6 +37,7 @@ export class LevelcontrolService {
         karma: karma,
         esszencia: esszencia,
         forrasErtekUtv: forrasErtekUtv,
+        minErtek: minErtek,
         maxErtek: maxErtek,
       }).subscribe(
         w => this.updateData(w, ar, karma, esszencia, forrasErtekUtv),

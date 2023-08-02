@@ -31,6 +31,7 @@ export class LevelcontrolComponent {
   public karma: number = 0;
   public esszencia: number = 0;
   public forrasErtekUtv!: FormControl;
+  public minErtek: number = 0;
   public maxErtek: number = 0;
 
   public ertekValtozas: number = 0;
@@ -51,6 +52,7 @@ export class LevelcontrolComponent {
     this.karma = modalData.karma;
     this.esszencia = modalData.esszencia;
     this.forrasErtekUtv = modalData.forrasErtekUtv;
+    this.minErtek = modalData.minErtek;
     this.maxErtek = modalData.maxErtek;
     this.toggleIsButton();
   }
@@ -60,7 +62,7 @@ export class LevelcontrolComponent {
   }
 
   buttonDisDec(lepes:number): boolean {
-    if (this.ertekValtozas-lepes<0) {
+    if (this.forrasErtekUtv?.value + this.ertekValtozas-lepes < this.minErtek) {
       return true;
     }
     return false;

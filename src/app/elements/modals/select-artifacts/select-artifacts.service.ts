@@ -15,55 +15,55 @@ const BACKEND_URL = environment.apiUrl + "/artifact/";
 })
 export class SelectArtifactService {
 
-    constructor(
-      private http: HttpClient,
-      private modalServ: ModalService,
-      private resServ: ResourcesService,
-      private artifactsServ: ArtifactsService,
-    ) { }
+  constructor(
+    private http: HttpClient,
+    private modalServ: ModalService,
+    private resServ: ResourcesService,
+    private artifactsServ: ArtifactsService,
+  ) { }
 
-    public artifactsList: ArtifactsModel[] = [];
-    private artifactsUpdated = new Subject<{artifacts: ArtifactsModel[]}>();
+  public artifactsList: ArtifactsModel[] = [];
+  private artifactsUpdated = new Subject<{artifacts: ArtifactsModel[]}>();
 
-    getArtifacts() {
-      return this.http
-      .get<{ message: string; artifacts: any}>(BACKEND_URL + "list")
-      .pipe(
-        map(w => {
-          return {
-            artifacts: (w as any).artifacts.map((w: any) => {
-              return {
-                _id: w._id,
-                nev: w.artifactName,
-                csoport: w.artifactCategory,
-                maxSzint: w.artifactMaxLevel,
-                ar: w.artifactPrice,
-                karma: w.artifactKarmaCost,
-                megjegyzes: w.artifactDesc,
-              };
-            })
-          };
-        })
-        )
-        .subscribe((w: any) => {
-        this.artifactsList = w.artifacts;
-        this.artifactsUpdated.next({
-          artifacts: [...this.artifactsList]
-        });
+  getArtifacts() {
+    return this.http
+    .get<{ message: string; artifacts: any}>(BACKEND_URL + "list")
+    .pipe(
+      map(w => {
+        return {
+          artifacts: (w as any).artifacts.map((w: any) => {
+            return {
+              _id: w._id,
+              nev: w.artifactName,
+              csoport: w.artifactCategory,
+              maxSzint: w.artifactMaxLevel,
+              ar: w.artifactPrice,
+              karma: w.artifactKarmaCost,
+              megjegyzes: w.artifactDesc,
+            };
+          })
+        };
+      })
+      )
+      .subscribe((w: any) => {
+      this.artifactsList = w.artifacts;
+      this.artifactsUpdated.next({
+        artifacts: [...this.artifactsList]
       });
-    }
-
-    getArtifactsUpdateListener() {
-      return this.artifactsUpdated.asObservable();
-    }
-
-    openModal() {
-      this.modalServ.openModal(SelectArtifactsComponent, {
-        moneyFilter: this.resServ.getFc('elkolthetoToke').value,
-        karmaFilter: this.resServ.getFc('elkolthetoKarma').value
-      }).subscribe(
-        w => this.artifactsServ.addArtifact(w)
-      );
-    }
-
+    });
   }
+
+  getArtifactsUpdateListener() {
+    return this.artifactsUpdated.asObservable();
+  }
+
+  openModal() {
+    this.modalServ.openModal(SelectArtifactsComponent, {
+      moneyFilter: this.resServ.getFc('elkolthetoToke').value,
+      karmaFilter: this.resServ.getFc('elkolthetoKarma').value
+    }).subscribe(
+      w => this.artifactsServ.addArtifact(w)
+    );
+  }
+
+}

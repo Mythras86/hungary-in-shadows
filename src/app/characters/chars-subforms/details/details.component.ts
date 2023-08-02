@@ -19,15 +19,6 @@ export class DetailsComponent implements OnInit {
     return detailsUtil;
   }
 
-  getValue(fcName: string) {
-    return this.detailsServ.detailsForm.get(fcName)?.value;
-  }
-
-  getFcPath(fcName: string):any {
-    const fc = this.detailsServ.detailsForm.get(fcName);
-    return fc;
-  }
-
   getDefault(fcName: string):any {
     const valasztottFaj: string = this.detailsServ.detailsForm.get('dns')?.value;
     if (valasztottFaj !== '') {

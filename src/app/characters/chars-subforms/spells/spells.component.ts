@@ -13,13 +13,13 @@ import { SortMeService } from 'src/app/elements/sortme/sort-me.service';
   styleUrls: ['./spells.component.css']
 })
 export class SpellsComponent implements OnInit {
+
   constructor(
     public spellsServ: SpellsService,
     public resServ: ResourcesService,
     public attrServ: AttributesService,
     public sSpellServ: SelectSpellService,
     public lvlContServ: LevelcontrolService,
-    private sortServ: SortMeService
   ) { }
 
   public get spells(): FormArray | null | any {
@@ -40,7 +40,14 @@ export class SpellsComponent implements OnInit {
   getControls() {
     const controls = (this.spellsServ.spellsForm.get('spells') as FormArray).controls;
     return controls;
+  }
 
+  spellType(i: number){
+    const tipus = this.spellsServ.spellsForm.get('tipus')?.value;
+    if (tipus == 'Mana') {
+      return 'M';
+    }
+    return 'F';
   }
 
   ngOnInit(): void {

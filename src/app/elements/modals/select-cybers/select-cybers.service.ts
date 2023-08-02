@@ -16,56 +16,56 @@ const BACKEND_URL = environment.apiUrl + "/cyber/";
 })
 export class SelectCyberService {
 
-    constructor(
-      private http: HttpClient,
-      private modalServ: ModalService,
-      private resServ: ResourcesService,
-      private attrServ: AttributesService,
-      private cybersServ: CybersService,
-    ) { }
+  constructor(
+    private http: HttpClient,
+    private modalServ: ModalService,
+    private resServ: ResourcesService,
+    private attrServ: AttributesService,
+    private cybersServ: CybersService,
+  ) { }
 
-    public cybersList: CybersModel[] = [];
-    private cybersUpdated = new Subject<{cybers: CybersModel[]}>();
+  public cybersList: CybersModel[] = [];
+  private cybersUpdated = new Subject<{cybers: CybersModel[]}>();
 
-    getCybers() {
-      return this.http
-      .get<{ message: string; cybers: any}>(BACKEND_URL + "list")
-      .pipe(
-        map(w => {
-          return {
-            cybers: (w as any).cybernetics.map((w: any) => {
-              return {
-                _id: w._id,
-                nev: w.cyberneticName,
-                csoport: w.cyberneticCategory,
-                maxSzint: w.cyberneticMaxLevel,
-                ar: w.cyberneticPrice,
-                esszencia: w.cyberneticEssence,
-                megjegyzes: w.cyberneticDesc,
-              };
-            })
-          };
-        })
-        )
-        .subscribe((w: any) => {
-        this.cybersList = w.cybers;
-        this.cybersUpdated.next({
-          cybers: [...this.cybersList]
-        });
+  getCybers() {
+    return this.http
+    .get<{ message: string; cybers: any}>(BACKEND_URL + "list")
+    .pipe(
+      map(w => {
+        return {
+          cybers: (w as any).cybernetics.map((w: any) => {
+            return {
+              _id: w._id,
+              nev: w.cyberneticName,
+              csoport: w.cyberneticCategory,
+              maxSzint: w.cyberneticMaxLevel,
+              ar: w.cyberneticPrice,
+              esszencia: w.cyberneticEssence,
+              megjegyzes: w.cyberneticDesc,
+            };
+          })
+        };
+      })
+      )
+      .subscribe((w: any) => {
+      this.cybersList = w.cybers;
+      this.cybersUpdated.next({
+        cybers: [...this.cybersList]
       });
-    }
-
-    getCybersUpdateListener() {
-      return this.cybersUpdated.asObservable();
-    }
-
-    openModal() {
-      this.modalServ.openModal(SelectCybersComponent, {
-        moneyFilter: this.resServ.getFc('elkolthetoToke').value,
-        essenceFilter: this.attrServ.getFc('esszencia').value
-      }).subscribe(
-        w => this.cybersServ.addCyber(w)
-        );
-    }
-
+    });
   }
+
+  getCybersUpdateListener() {
+    return this.cybersUpdated.asObservable();
+  }
+
+  openModal() {
+    this.modalServ.openModal(SelectCybersComponent, {
+      moneyFilter: this.resServ.getFc('elkolthetoToke').value,
+      essenceFilter: this.attrServ.getFc('esszencia').value
+    }).subscribe(
+      w => this.cybersServ.addCyber(w)
+      );
+  }
+
+}

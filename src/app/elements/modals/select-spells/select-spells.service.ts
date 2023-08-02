@@ -15,58 +15,58 @@ const BACKEND_URL = environment.apiUrl + "/spell/";
 })
 export class SelectSpellService {
 
-    constructor(
-      private http: HttpClient,
-      private modalServ: ModalService,
-      private resServ: ResourcesService,
-      private spellsServ: SpellsService,
-    ) { }
+  constructor(
+    private http: HttpClient,
+    private modalServ: ModalService,
+    private resServ: ResourcesService,
+    private spellsServ: SpellsService,
+  ) { }
 
-    public spellsList: SpellsModel[] = [];
-    private spellsUpdated = new Subject<{spells: SpellsModel[]}>();
+  public spellsList: SpellsModel[] = [];
+  private spellsUpdated = new Subject<{spells: SpellsModel[]}>();
 
-    getSpells() {
-      return this.http
-      .get<{ message: string; spells: any}>(BACKEND_URL + "list")
-      .pipe(
-        map(w => {
-          return {
-            spells: (w as any).spells.map((w: any) => {
-              return {
-                _id: w._id,
-                nev: w.spellName,
-                csoport: w.spellCategory,
-                tipus: w.spellType,
-                celpontok: w.spellTarget,
-                hatotav: w.spellRange,
-                celszam: w.spellTargetNum,
-                hatoido: w.spellDuration,
-                kifaradas: w.spellFatigue,
-                megjegyzes: w.spellDesc,
-              };
-            })
-          };
-        })
-        )
-        .subscribe((w: any) => {
-        this.spellsList = w.spells;
-        this.spellsUpdated.next({
-          spells: [...this.spellsList]
-        });
+  getSpells() {
+    return this.http
+    .get<{ message: string; spells: any}>(BACKEND_URL + "list")
+    .pipe(
+      map(w => {
+        return {
+          spells: (w as any).spells.map((w: any) => {
+            return {
+              _id: w._id,
+              nev: w.spellName,
+              csoport: w.spellCategory,
+              tipus: w.spellType,
+              celpontok: w.spellTarget,
+              hatotav: w.spellRange,
+              celszam: w.spellTargetNum,
+              hatoido: w.spellDuration,
+              kifaradas: w.spellFatigue,
+              megjegyzes: w.spellDesc,
+            };
+          })
+        };
+      })
+      )
+      .subscribe((w: any) => {
+      this.spellsList = w.spells;
+      this.spellsUpdated.next({
+        spells: [...this.spellsList]
       });
-    }
-
-    getSpellsUpdateListener() {
-      return this.spellsUpdated.asObservable();
-    }
-
-    openModal() {
-      this.modalServ.openModal(SelectSpellsComponent, {
-        moneyFilter: this.resServ.getFc('elkolthetoToke').value,
-        karmaFilter: this.resServ.getFc('elkolthetoKarma').value
-      }).subscribe(
-        w => this.spellsServ.addSpell(w)
-      );
-    }
-
+    });
   }
+
+  getSpellsUpdateListener() {
+    return this.spellsUpdated.asObservable();
+  }
+
+  openModal() {
+    this.modalServ.openModal(SelectSpellsComponent, {
+      moneyFilter: this.resServ.getFc('elkolthetoToke').value,
+      karmaFilter: this.resServ.getFc('elkolthetoKarma').value
+    }).subscribe(
+      w => this.spellsServ.addSpell(w)
+    );
+  }
+
+}

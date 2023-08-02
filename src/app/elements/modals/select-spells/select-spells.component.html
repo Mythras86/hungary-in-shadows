@@ -16,12 +16,11 @@
 
     <div class="itemCont w100" *ngFor="let a of getFilteredSpellsList(filteredCs)" (click)="selectSpell(a._id)">
 
-      <div class="nbl text1 w100">{{a.nev}}</div>
-      <div class="grayCell text1 w50">Típus: {{a.tipus}}</div>
-      <div class="grayCell text1 w50">Célsz.: {{a.celszam}}</div>
-      <div class="grayCell text1 w50">Táv: {{a.hatotav}}</div>
-      <div class="grayCell text1 w50">Célpontok: {{a.celpontok}}</div>
-      <div class="grayCell text1 w20">{{a.kifaradas}}</div>
+      <div class="nbl text1 w100">{{a.nev}} ({{a.tipus}}) / {{a.hatotav}}</div>
+      <div class="nrd text1 w50 center">{{a.kifaradas}}</div>
+      <div class="grayCell text1 w50 center">Célp.: {{a.celpontok}}</div>
+      <div class="grayCell text1 w60 center">Célsz.: {{a.celszam}}</div>
+      <div class="grayCell text1 w40 center">{{a.hatoido}}</div>
       <div class="grayCell text1 w100">{{a.megjegyzes}}</div>
 
     </div>

@@ -1,1 +1,122 @@
-<p>spirits works!</p>
+<div class="pageCont" [formGroup]="spiritsServ.spiritsForm" *ngIf="spiritsServ.spiritsForm">
+
+  <button *ngIf="resServ.getFc('elkolthetoToke').value >= 0" class="ngrn text1" type="button" (click)="sSpiritServ.openModal()">Új Szellem</button>
+  <button *ngIf="resServ.getFc('elkolthetoToke').value < 0" class="grayCell text1" type="button">Nincs elég Tőkéd</button>
+
+  <div class="w100" formArrayName="spirits" *ngFor='let csoport of getCsoportok()'>
+
+    <!-- csoportosítás -->
+
+    <h3 class="w100 ntl">{{csoport}}</h3>
+
+    <!-- csoport konténer -->
+
+    <div class="w100" [formGroupName]='i' *ngFor="let spirit of getControls(); let i = index">
+
+      <div class="itemCont" *ngIf="spiritsServ.getFcArr(i, 'csoport')?.value == csoport">
+
+        <button class="deleteItem w10" type="button" (click)="spiritsServ.removeSpirit(i)">X</button>
+        <div class="ntl w60 text1">{{spiritsServ.getFcArr(i, 'nev')?.value}}</div>
+        <div class="ngrn text1 w20 center">{{spiritsServ.getFcArr(i, 'szint')?.value}}</div>
+        <app-levelcontrol class="w10"
+          [isEnabled]="resServ.getFc('elkolthetoKarma')?.value>2
+          && resServ.getFc('elkolthetoToke')?.value>=1000 "
+          (buttonAction)="lvlContServ.buttonAction(
+            spiritsServ.getFcArr(i, 'nev')?.value,
+            'van',
+            5,
+            ' Szint',
+            1000,
+            1,
+            0,
+            spiritsServ.getFcArr(i, 'szint'),
+            spiritsServ.getFcArr(i, 'szint')?.value,
+            attrServ.getTulErtek('asztEro')*2
+          )"
+        ></app-levelcontrol>
+
+        <span class="spAttrCont w100">
+          <div class="nbl text1 spAttr center">E</div>
+          <div class="nbl text1 spAttr center">Gy</div>
+          <div class="nbl text1 spAttr center">U</div>
+          <div class="nbl text1 spAttr center">Ki</div>
+          <div class="nbl text1 spAttr center">Ka</div>
+          <div class="nbl text1 spAttr center">In</div>
+          <div class="nbl text1 spAttr center">Lo</div>
+          <div class="nbl text1 spAttr center">Ak</div>
+        </span>
+
+        <span class="spAttrCont w100">
+          <div class="ngrn text1 spAttr center">{{spiritsServ.getFcArr(i, 'fizEro')?.value+spiritsServ.getFcArr(i, 'szint')?.value}}</div>
+          <div class="ngrn text1 spAttr center">{{spiritsServ.getFcArr(i, 'fizGyo')?.value+spiritsServ.getFcArr(i, 'szint')?.value}}</div>
+          <div class="ngrn text1 spAttr center">{{spiritsServ.getFcArr(i, 'fizUgy')?.value+spiritsServ.getFcArr(i, 'szint')?.value}}</div>
+          <div class="ngrn text1 spAttr center">{{spiritsServ.getFcArr(i, 'fizKit')?.value+spiritsServ.getFcArr(i, 'szint')?.value}}</div>
+          <div class="ngrn text1 spAttr center">{{spiritsServ.getFcArr(i, 'asztEro')?.value+spiritsServ.getFcArr(i, 'szint')?.value}}</div>
+          <div class="ngrn text1 spAttr center">{{spiritsServ.getFcArr(i, 'asztGyo')?.value+spiritsServ.getFcArr(i, 'szint')?.value}}</div>
+          <div class="ngrn text1 spAttr center">{{spiritsServ.getFcArr(i, 'asztUgy')?.value+spiritsServ.getFcArr(i, 'szint')?.value}}</div>
+          <div class="ngrn text1 spAttr center">{{spiritsServ.getFcArr(i, 'asztKit')?.value+spiritsServ.getFcArr(i, 'szint')?.value}}</div>
+        </span>
+
+        <div class="itemCont w25">
+          <div class="nbl text1 w100 center">Essz</div>
+          <div class="ngrn text2 w100 center">
+            {{spiritsServ.getFcArr(i, 'szint')?.value}}
+          </div>
+        </div>
+
+        <div class="itemCont w25">
+          <div class="nbl text1 w100 center">Mágia</div>
+          <div class="ngrn text2 w100 center">
+            {{spiritsServ.getFcArr(i, 'szint')?.value}}
+          </div>
+        </div>
+
+        <div class="itemCont w25">
+          <div class="nbl text1 w100 center">AP</div>
+          <div class="ngrn text2 w100 center">
+            {{spiritsServ.getAkcio(i)}}
+          </div>
+        </div>
+
+        <div class="itemCont w25">
+          <div class="nbl text1 w100 center">Kocka</div>
+            <div class="ngrn text2 w100 center">
+              {{spiritsServ.getKockatart(i)}}
+            </div>
+          </div>
+
+          <div class="w40 ngrn text1 center">
+            {{spiritsServ.getFcArr(i, 'szolgalatok')?.value}} szolgálat
+          </div>
+          <app-levelcontrol class="w10"
+            [isEnabled]="resServ.getFc('elkolthetoKarma')?.value>2
+            && resServ.getFc('elkolthetoToke')?.value>=1000 "
+            (buttonAction)="lvlContServ.buttonAction(
+              'Szolgálatok száma',
+              'van',
+              5,
+              ' db',
+              1000,
+              0,
+              0,
+              spiritsServ.getFcArr(i, 'szolgalatok'),
+              spiritsServ.getFcArr(i, 'szolgalatok')?.value-1,
+              attrServ.getTulErtek('asztEro')*2
+              )"
+          ></app-levelcontrol>
+
+          <div class="w30 moneyCost text1">
+            {{spiritsServ.getFcArr(i, 'ar')?.value*spiritsServ.getFcArr(i, 'szint')?.value}} Cr
+          </div>
+          <div class="w20 karmaCost text1">
+            {{spiritsServ.getFcArr(i, 'karma')?.value*spiritsServ.getFcArr(i, 'szint')?.value}} K
+          </div>
+
+        <div class="grayCell text1 w100">{{spiritsServ.getFcArr(i, 'kepessegek')?.value}}</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

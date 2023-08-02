@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DetailsService } from '../details/details.service';
+import { dnsUtil } from '../details/details-utility';
 
 @Injectable({
   providedIn: 'root'
@@ -48,29 +49,25 @@ export class AttributesService {
   }
 
   getTulErtek(fcName: string): number {
-    const ertek = this.attributesForm.get(fcName)?.value +this.attributesForm.get(fcName+'Mod')?.value;
+    const ertek = this.attributesForm.get(fcName)?.value
+    +this.attributesForm.get(fcName+'Mod')?.value
+    +this.getDnsMod(fcName);
     if (ertek < 1) {
       return 1;
     }
     return ertek;
   }
 
-  getFizikum(): number {
-    const fizEro = this.attributesForm.get('fizEro')?.value +this.attributesForm.get('fizEroMod')?.value;
-    const fizGyo = this.attributesForm.get('fizGyo')?.value +this.attributesForm.get('fizGyoMod')?.value;
-    const fizUgy = this.attributesForm.get('fizUgy')?.value +this.attributesForm.get('fizUgyMod')?.value;
-    const fizKit = this.attributesForm.get('fizKit')?.value +this.attributesForm.get('fizKitMod')?.value;
-    const fizikum = Math.floor((fizEro + fizGyo + fizKit + fizUgy)/4)
-    return fizikum
-  }
-
-  getAsztral(): number {
-    const asztEro = this.attributesForm.get('asztEro')?.value +this.attributesForm.get('asztEroMod')?.value;
-    const asztGyo = this.attributesForm.get('asztGyo')?.value +this.attributesForm.get('asztGyoMod')?.value;
-    const asztUgy = this.attributesForm.get('asztUgy')?.value +this.attributesForm.get('asztUgyMod')?.value;
-    const asztKit = this.attributesForm.get('asztKit')?.value +this.attributesForm.get('asztKitMod')?.value;
-    const asztral = Math.floor((asztEro + asztGyo + asztKit + asztUgy)/4)
-    return asztral
+  getDnsMod(fcName: string) {
+    const selDns = this.detailsServ.detailsForm.get('dns')?.value;
+    const mod = dnsUtil.filter(x => x.dns == selDns).map(x => x[fcName + "Mod"]);
+    if (selDns) {
+      if (mod[0] != undefined) {
+        return mod[0];
+      }
+      return 0;
+    }
+    return 0;
   }
 
   getAkcio(): number {

@@ -81,8 +81,9 @@ export class StatusComponent implements OnInit {
     const ero = this.attrServ.getTulErtek('fizEro');
     const gyo = this.attrServ.getTulErtek('fizGyo');
     const ugy = this.attrServ.getTulErtek('fizUgy');
-    const tamEro = Math.round((ero + gyo + ugy)/3+this.getMeretkateg());
-    return '3AP / '+tamEro +'('+3+' K)';
+    const tamEro = Math.round((ero + ugy + this.getMeretkateg())/2);
+    const sebz = Math.round(Math.pow((ero * gyo * this.getMeretkateg()), 0.33));
+    return '1AP / '+tamEro +'('+sebz+' K)';
   }
 
   getMeretkateg():number {

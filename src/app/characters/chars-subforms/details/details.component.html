@@ -5,14 +5,14 @@
       <div class="w{{100-1/item.meret*1000}} ngrn text1">{{item.nev}}</div>
 
       <app-input-modal class="w{{1/item.meret*1000}}"
-        [isEnabled]="getValue(item.fcName) == (0 || null || '') || item.tipus == 'color'"
+        [isEnabled]="detailsServ.getFc(item.fcName)?.value == (0 || null || '') || item.tipus == 'color'"
         (buttonAction)="inputModServ.buttonAction(
-          getFcPath(item.fcName),
+          detailsServ.getFc(item.fcName),
           item.fcName,
           item.tipus,
           item.nev,
           [item.megjegyzes, getDefault(item.fcName)],
-          getValue(item.fcName),
+          detailsServ.getFc(item.fcName)?.value,
           getList(item.fcName),
           item.egyseg
         )"
@@ -20,12 +20,12 @@
 
       <!-- input -->
       <div class="grayCell w100 text1" *ngIf="item.tipus !== 'color'">
-        {{getValue(item.fcName)}} {{item.egyseg}}
+        {{detailsServ.getFc(item.fcName)?.value}} {{item.egyseg}}
       </div>
 
       <!-- color input -->
-      <div class="grayCell w100 text1" *ngIf="item.tipus == 'color'" [style.backgroundColor]="getValue(item.fcName)">
-        {{getValue(item.fcName)}}
+      <div class="grayCell w100 text1" *ngIf="item.tipus == 'color'" [style.backgroundColor]="detailsServ.getFc(item.fcName)?.value">
+        {{detailsServ.getFc(item.fcName)?.value}}
       </div>
 
     </div>

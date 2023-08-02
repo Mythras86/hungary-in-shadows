@@ -15,7 +15,6 @@ const BACKEND_URL = environment.apiUrl + "/armor/";
 })
 export class SelectArmorService {
 
-
   constructor(
     private http: HttpClient,
     private modalServ: ModalService,
