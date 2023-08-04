@@ -26,7 +26,7 @@ export class SkillsComponent implements OnInit {
     private sortServ: SortMeService
   ) { }
 
-  public get skills(): FormArray | null {
+  public get skills(): FormArray | null | any {
     if(!this.skillsServ.skillsForm) {
       return null;
     }

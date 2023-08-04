@@ -18,7 +18,6 @@ export class ArmorsComponent implements OnInit {
     public armorsServ: ArmorsService,
     public resServ: ResourcesService,
     public sArmorServ: SelectArmorService,
-    private sortServ: SortMeService
   ) { }
 
   public get armors(): FormArray | null | any {

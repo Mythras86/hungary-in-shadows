@@ -6,6 +6,7 @@ import { FormArray } from '@angular/forms';
 import { SelectSpellService } from 'src/app/elements/modals/select-spells/select-spells.service';
 import { AttributesService } from '../attributes/attributes.service';
 import { SortMeService } from 'src/app/elements/sortme/sort-me.service';
+import { SpellsModel } from './spells.model';
 
 @Component({
   selector: 'app-spells',
@@ -42,7 +43,7 @@ export class SpellsComponent implements OnInit {
     return controls;
   }
 
-  spellType(i: number){
+  spellType(){
     const tipus = this.spellsServ.spellsForm.get('tipus')?.value;
     if (tipus == 'Mana') {
       return 'M';

@@ -11,24 +11,24 @@
 
     <!-- csoport konténer -->
 
-    <div class="w100" [formGroupName]='i' *ngFor="let spell of getControls(); let i = index">
+    <div class="w100" [formGroupName]='i' *ngFor="let s of spells.value; let i = index">
 
-      <div class="itemCont" *ngIf="spellsServ.getFcArr(i, 'csoport')?.value == csoport">
+      <div class="itemCont" *ngIf="s.csoport == csoport">
 
         <button class="deleteItem w10" type="button" (click)="spellsServ.removeSpell(i)">X</button>
         <div class="nbl w90 text1">
-          {{spellsServ.getFcArr(i, 'nev')?.value}}
-          ({{spellType(i)}}) /
-          {{spellsServ.getFcArr(i, 'hatotav')?.value}}
+          {{i}} {{s.nev}}
+          ({{spellType()}}) /
+          {{s.hatotav}}
         </div>
-        <div class="nrd text1 w70 center">{{spellsServ.getFcArr(i, 'kifaradas')?.value}}</div>
-        <div class="ngrn w20 text1 center">{{spellsServ.getFcArr(i, 'szint')?.value}} SZ</div>
+        <div class="nrd text1 w70 center">{{s.kifaradas}}</div>
+        <div class="ngrn w20 text1 center">{{s.szint}} SZ</div>
         <app-levelcontrol class="w10"
           [isEnabled]="resServ.getFc('elkolthetoToke')?.value > 1000
           && resServ.getFc('elkolthetoKarma')?.value > 2
-          && attrServ.getFc('magia')?.value+3 > spellsServ.getFcArr(i, 'szint')?.value"
+          && attrServ.getFc('magia')?.value+3 > s.szint"
           (buttonAction)="lvlContServ.buttonAction(
-            spellsServ.getFcArr(i, 'nev')?.value,
+            s.nev,
             'van',
             5,
             ' Szint',
@@ -36,17 +36,17 @@
             2,
             0,
             spellsServ.getFcArr(i, 'szint'),
-            spellsServ.getFcArr(i, 'szint')?.value,
+            s.szint,
             attrServ.getFc('magia')?.value+3
             )"
         ></app-levelcontrol>
 
-        <div class="grayCell text1 w60 center">Célsz.: {{spellsServ.getFcArr(i, 'celszam')?.value}}</div>
-        <div class="moneyCost text1 w25">{{1000*spellsServ.getFcArr(i, 'szint')?.value}} Cr</div>
-        <div class="karmaCost text1 w15">{{2*spellsServ.getFcArr(i, 'szint')?.value}} K</div>
-        <div class="grayCell text1 w100 center">Célp.: {{spellsServ.getFcArr(i, 'celpontok')?.value}} / {{spellsServ.getFcArr(i, 'hatoido')?.value}}</div>
+        <div class="grayCell text1 w60 center">Célsz.: {{s.celszam}}</div>
+        <div class="moneyCost text1 w25">{{1000*s.szint}} Cr</div>
+        <div class="karmaCost text1 w15">{{2*s.szint}} K</div>
+        <div class="grayCell text1 w100 center">Célp.: {{s.celpontok}} / {{s.hatoido}}</div>
 
-        <div *ngIf="spellsServ.getFcArr(i, 'megjegyzes')?.value" class="grayCell text1 w100">{{spellsServ.getFcArr(i, 'megjegyzes')?.value}}</div>
+        <div *ngIf="spellsServ.getFcArr(i, 'megjegyzes')?.value" class="grayCell text1 w100">{{s.megjegyzes}}</div>
 
       </div>
 

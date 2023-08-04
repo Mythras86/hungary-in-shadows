@@ -18,7 +18,6 @@ export class ArtifactsComponent implements OnInit {
     public resServ: ResourcesService,
     public sArtifServ: SelectArtifactService,
     public lvlContServ: LevelcontrolService,
-    private sortServ: SortMeService
   ) { }
 
   public get artifacts(): FormArray | null | any {

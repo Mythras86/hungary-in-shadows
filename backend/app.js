@@ -11,6 +11,7 @@ const toolRoutes = require("./routes/tool");
 const spellRoutes = require("./routes/spell");
 const spiritRoutes = require("./routes/spirit");
 const weaponRoutes = require("./routes/weapon");
+const weaponAddonRoutes = require("./routes/weaponAddon");
 
 const app = express();
 
@@ -45,6 +46,7 @@ app.use ("/api/user", userRoutes);
 app.use ("/api/char", charRoutes);
 app.use ("/api/armor", armorRoutes);
 app.use ("/api/weapon", weaponRoutes);
+app.use ("/api/weaponAddon", weaponAddonRoutes);
 app.use ("/api/tool", toolRoutes);
 app.use ("/api/cyber", cyberRoutes);
 app.use ("/api/spell", spellRoutes);

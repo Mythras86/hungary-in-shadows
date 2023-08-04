@@ -11,41 +11,41 @@
 
     <!-- csoport konténer -->
 
-    <div class="w100" [formGroupName]='i' *ngFor="let explosive of getControls(); let i = index">
+    <div class="w100" [formGroupName]='i' *ngFor="let e of explosives.value; let i = index">
 
-      <div class="itemCont" *ngIf="explosivesServ.getFcArr(i, 'csoport')?.value == csoport">
+      <div class="itemCont" *ngIf="e.csoport == csoport">
 
         <button class="deleteItem w10" type="button" (click)="explosivesServ.removeExplosive(i)">X</button>
-        <div class="nbl w60 text1">{{explosivesServ.getFcArr(i, 'nev')?.value}}</div>
-        <div class="nprpl w30 text1 center" (click)="changePlace(i)">{{explosivesServ.getFcArr(i, 'elhelyezes')?.value}}</div>
-        <div class="grayCell text1 w40 center">{{explosivesServ.getFcArr(i, 'tipus')?.value}}</div>
-        <div class="moneyCost text1 w30 center">{{explosivesServ.getFcArr(i, 'ar')?.value*explosivesServ.getFcArr(i, 'darab')?.value}} Cr</div>
-        <div class="ngrn text1 w20 center">{{explosivesServ.getFcArr(i, 'darab')?.value}} db</div>
+        <div class="nbl w60 text1">{{e.nev}}</div>
+        <div class="nprpl w30 text1 center" (click)="changePlace(i)">{{e.elhelyezes}}</div>
+        <div class="grayCell text1 w40 center">{{e.tipus}}</div>
+        <div class="moneyCost text1 w30 center">{{e.ar*e.darab}} Cr</div>
+        <div class="ngrn text1 w20 center">{{e.darab}} db</div>
         <app-levelcontrol class="w10"
-          [isEnabled]="resServ.getFc('elkolthetoToke')?.value > explosivesServ.getFcArr(i, 'ar')?.value"
+          [isEnabled]="resServ.getFc('elkolthetoToke')?.value > e.ar"
           (buttonAction)="lvlContServ.buttonAction(
-            explosivesServ.getFcArr(i, 'nev')?.value,
+            e.nev,
             'van',
             5,
             ' Darab',
-            explosivesServ.getFcArr(i, 'ar')?.value,
+            e.ar,
             0,
             0,
             explosivesServ.getFcArr(i, 'darab'),
-            explosivesServ.getFcArr(i, 'darab')?.value,
+            e.darab,
             1000
           )"
         ></app-levelcontrol>
 
         <div class="grayCell text1 w40 center">
-          {{explosivesServ.getFcArr(i, 'ero')?.value}}
-          ({{explosivesServ.getFcArr(i, 'sebzes')?.value}}
-          {{explosivesServ.getFcArr(i, 'sebzesTipus')?.value}})
+          {{e.ero}}
+          ({{e.sebzes}}
+          {{e.sebzesTipus}})
         </div>
-        <div class="grayCell text1 w30 center">Táv: {{explosivesServ.getFcArr(i, 'tav')?.value}}</div>
-        <div class="grayCell text1 w30 center">{{explosivesServ.getFcArr(i, 'suly')?.value*explosivesServ.getFcArr(i, 'darab')?.value}} Kg</div>
+        <div class="grayCell text1 w30 center">Táv: {{e.tav}}</div>
+        <div class="grayCell text1 w30 center">{{e.suly*e.darab}} Kg</div>
 
-        <div *ngIf="explosivesServ.getFcArr(i, 'megjegyzes')?.value" class="grayCell text1 w100">{{explosivesServ.getFcArr(i, 'megjegyzes')?.value}}</div>
+        <div *ngIf="e.megjegyzes" class="grayCell text1 w100">{{e.megjegyzes}}</div>
 
       </div>
 

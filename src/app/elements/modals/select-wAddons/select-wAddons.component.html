@@ -1,0 +1,27 @@
+<div class="pageCont">
+
+  <h1 class="nrd w80">Fegyver Kiegészítők</h1>
+  <button class="nrd w20 text2 deleteItem" type="button" (click)="onClose()">X</button>
+
+  <div class="itemCont w100">
+    <div class="nprpl text1" (click)="selectFilter('Nincs')">Nincs</div>
+    <div class="nprpl text1" *ngFor="let csoport of getCsoportok()" (click)="selectFilter(csoport)">
+      {{csoport}}
+    </div>
+  </div>
+
+  <div class="itemCont w100" *ngFor="let filteredCs of getFilteredCsoportok()">
+
+    <h3 class="w100 ntl">{{filteredCs}}</h3>
+
+    <div class="itemCont w100" *ngFor="let a of getFilteredWAddonsList(filteredCs)" (click)="selectWAddon(a._id)">
+
+      <div class="nbl text1 w66">{{a.nev}}</div>
+      <div class="moneyCost text1 w33 center">{{a.ar}} Cr</div>
+      <div class="grayCell text1 w100">{{a.megjegyzes}}</div>
+
+    </div>
+
+  </div>
+
+</div>

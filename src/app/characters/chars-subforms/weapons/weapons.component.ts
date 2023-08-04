@@ -5,6 +5,7 @@ import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelc
 import { FormArray } from '@angular/forms';
 import { SelectWeaponService } from 'src/app/elements/modals/select-weapons/select-weapons.service';
 import { SortMeService } from 'src/app/elements/sortme/sort-me.service';
+import { SelectWAddonService } from 'src/app/elements/modals/select-wAddons/select-wAddons.service';
 
 @Component({
   selector: 'app-weapons',
@@ -18,7 +19,7 @@ export class WeaponsComponent {
     public resServ: ResourcesService,
     public sWeaponServ: SelectWeaponService,
     public lvlContServ: LevelcontrolService,
-    private sortServ: SortMeService
+    public sAddonServ: SelectWAddonService
   ) { }
 
   public get weapons(): FormArray | null | any {
@@ -26,6 +27,10 @@ export class WeaponsComponent {
       return null;
     }
     return this.weaponsServ.weaponsForm.controls['weapons'] as FormArray;
+  }
+
+  getWAddons(i: number): FormArray {
+    return this.weapons.at(i).get('addons') as FormArray;
   }
 
   getCsoportok():Array<any> {

@@ -39,6 +39,7 @@ import { SelectSpellsComponent } from './elements/modals/select-spells/select-sp
 import { SelectWeaponsComponent } from './elements/modals/select-weapons/select-weapons.component';
 import { SelectSpiritsComponent } from './elements/modals/select-spirits/select-spirits.component';
 import { ExplosivesComponent } from './characters/chars-subforms/explosives/explosives.component';
+import { SelectWAddonsComponent } from './elements/modals/select-wAddons/select-wAddons.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { ExplosivesComponent } from './characters/chars-subforms/explosives/expl
     SpiritsComponent,
     ArtifactsComponent,
     WeaponsComponent,
+    ExplosivesComponent,
 
     SelectArmorsComponent,
     SelectArtifactsComponent,
@@ -77,7 +79,9 @@ import { ExplosivesComponent } from './characters/chars-subforms/explosives/expl
     SelectToolsComponent,
     SelectSpellsComponent,
     SelectWeaponsComponent,
-  SelectSpiritsComponent,ExplosivesComponent,],
+    SelectSpiritsComponent,
+    SelectWAddonsComponent,
+  ],
   imports: [
     BrowserModule,
     CommonModule,

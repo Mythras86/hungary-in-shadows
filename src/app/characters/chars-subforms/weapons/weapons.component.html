@@ -11,34 +11,31 @@
 
     <!-- csoport konténer -->
 
-    <div class="w100" [formGroupName]='i' *ngFor="let weapon of getControls(); let i = index">
+    <div class="w100" [formGroupName]='i' *ngFor="let w of weapons.value; let i = index">
 
-      <div class="itemCont" *ngIf="weaponsServ.getFcArr(i, 'csoport')?.value == csoport">
+      <div class="itemCont" *ngIf="w.csoport == csoport">
 
         <button class="deleteItem w10" type="button" (click)="weaponsServ.removeWeapon(i)">X</button>
-        <div class="nbl w60 text1">{{weaponsServ.getFcArr(i, 'nev')?.value}}</div>
-        <div class="nprpl w30 text1 center" (click)="changePlace(i)">{{weaponsServ.getFcArr(i, 'elhelyezes')?.value}}</div>
-        <div class="grayCell text1 w60 center">{{weaponsServ.getFcArr(i, 'tipus')?.value}}</div>
-        <div class="grayCell text1 w40 center">{{weaponsServ.getFcArr(i, 'tamadasiModok')?.value}}</div>
+        <div class="nbl w60 text1">{{w.nev}}</div>
+        <div class="nprpl w30 text1 center" (click)="changePlace(i)">{{w.elhelyezes}}</div>
+        <div class="grayCell text1 w60 center">{{w.tipus}}</div>
+        <div class="grayCell text1 w40 center">{{w.tamadasiModok}}</div>
         <div class="grayCell text1 w50 center">
-          {{weaponsServ.getFcArr(i, 'ero')?.value}}
-          ({{weaponsServ.getFcArr(i, 'sebzes')?.value}}
-          {{weaponsServ.getFcArr(i, 'sebzesTipus')?.value}})
+          {{w.ero}}
+          ({{w.sebzes}}
+          {{w.sebzesTipus}})
         </div>
-        <div class="grayCell text1 w50 center">{{weaponsServ.getFcArr(i, 'tar')?.value}}</div>
-        <div *ngIf="['Tűzfegyverek','Lőfegyverek','Nehézfegyverek'].includes(weaponsServ.getFcArr(i, 'csoport')?.value)" class="grayCell text1 w70 center">
-          Táv:{{weaponsServ.getFcArr(i, 'tav')?.value}}/
-          {{weaponsServ.getFcArr(i, 'tav')?.value*3}}/
-          {{weaponsServ.getFcArr(i, 'tav')?.value*6}}/
-          {{weaponsServ.getFcArr(i, 'tav')?.value*9}} m
+        <div class="grayCell text1 w50 center">{{w.tar}}</div>
+        <div *ngIf="['Tűzfegyverek','Lőfegyverek','Nehézfegyverek'].includes(w.csoport)" class="grayCell text1 w70 center">
+          Táv:{{w.tav}}/{{w.tav*3}}/{{w.tav*6}}/{{w.tav*9}} m
         </div>
-        <div *ngIf="!['Tűzfegyverek','Lőfegyverek','Nehézfegyverek'].includes(weaponsServ.getFcArr(i, 'csoport')?.value)" class="grayCell text1 w70 center">Táv:
-          {{weaponsServ.getFcArr(i, 'tav')?.value}}
+        <div *ngIf="!['Tűzfegyverek','Lőfegyverek','Nehézfegyverek'].includes(w.csoport)" class="grayCell text1 w70 center">Táv:
+          {{w.tav}}
         </div>
-        <div class="grayCell text1 w30 center">{{weaponsServ.getFcArr(i, 'suly')?.value}} Kg</div>
-        <div *ngIf="weaponsServ.getFcArr(i, 'megjegyzes')?.value" class="grayCell text1 w100">{{weaponsServ.getFcArr(i, 'megjegyzes')?.value}}</div>
-        <div class="moneyCost text1 w50 center">{{weaponsServ.getFcArr(i, 'ar')?.value}} Cr</div>
-        <button type="button">Új Kiegészítő</button>
+        <div class="grayCell text1 w30 center">{{w.suly}} Kg</div>
+        <div *ngIf="w.megjegyzes" class="grayCell text1 w100">{{w.megjegyzes}}</div>
+        <div class="moneyCost text1 w50 center">{{w.ar}} Cr</div>
+        <button type="button" (click)="sAddonServ.openModal(i)">Új Kiegészítő</button>
       </div>
 
     </div>

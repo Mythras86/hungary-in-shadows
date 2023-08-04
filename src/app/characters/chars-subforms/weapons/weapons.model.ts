@@ -14,3 +14,13 @@ export interface WeaponsModel{
   elhelyezes: string,
   megjegyzes: string
 }
+
+export interface WAddonsModel{
+  _id: string,
+  nev: string,
+  csoport: string,
+  suly: number,
+  ar: number,
+  elhelyezes: string,
+  megjegyzes: string
+}
