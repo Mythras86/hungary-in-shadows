@@ -64,8 +64,11 @@ export class WeaponsService {
       sebzes: [w.sebzes, Validators.required],
       sebzesTipus: [w.sebzesTipus, Validators.required],
       suly: [w.suly, Validators.required],
+      kiegekSulya: [0, Validators.required],
       ar: [w.ar, Validators.required],
+      kiegekAra: [0, Validators.required],
       elhelyezes: ['raktár', Validators.required],
+      felszerelt: [Array(), Validators.required],
       megjegyzes: [w.megjegyzes, Validators.required],
       addons: this.fb.array([])
     });
@@ -75,7 +78,8 @@ export class WeaponsService {
 
   removeWeapon(i:number): void {
     const arVissza = (this.weaponsForm.get('weapons') as FormArray).at(i).get('ar')?.value;
-    this.resServ.fizetesTokebol(-arVissza);
+    const arVisszaKieggel = arVissza + (this.weaponsForm.get('weapons') as FormArray).at(i).get('kiegekAra')?.value;
+    this.resServ.fizetesTokebol(-arVisszaKieggel);
     (this.weaponsForm.get('weapons') as FormArray).removeAt(i);
   }
 
@@ -87,12 +91,21 @@ export class WeaponsService {
       _id: [w._id, Validators.required],
       nev: [w.nev, Validators.required],
       csoport: [w.csoport, Validators.required],
+      elhelyezes: [w.elhelyezes, Validators.required],
       suly: [w.suly, Validators.required],
+      sulySzorzo: [w.sulySzorzo, Validators.required],
       ar: [w.ar, Validators.required],
+      arSzorzo: [w.arSzorzo, Validators.required],
       megjegyzes: [w.megjegyzes, Validators.required],
     });
-    this.resServ.fizetesTokebol(w.ar);
-    return ((this.weaponsForm.get('weapons') as FormArray).at(i).get('addons') as FormArray).push(addon);
+    const weapon = (this.weaponsForm.get('weapons') as FormArray).at(i);
+    const kiegAr = Math.round(w.ar + this.getFcArr(i, 'ar')?.value*(w.arSzorzo-1));
+    const kiegSuly = Math.round(w.suly + this.getFcArr(i, 'suly')?.value*(w.sulySzorzo-1));
+    weapon.get('kiegekAra')?.patchValue(kiegAr);
+    weapon.get('kiegekSulya')?.patchValue(kiegSuly);
+    this.felszerel(i, w.elhelyezes);
+    this.resServ.fizetesTokebol(kiegAr);
+    return (weapon.get('addons') as FormArray).push(addon);
   }
 
   removeWAddon(wi:number, ai:number): void {
@@ -100,6 +113,14 @@ export class WeaponsService {
     const arVissza = addon.at(ai).get('ar')?.value;
     this.resServ.fizetesTokebol(-arVissza);
     addon.removeAt(ai);
+  }
+
+  felszerel(i:number, kieg: any) {
+    const weapon = (this.weaponsForm.get('weapons') as FormArray).at(i).get('felszerelt');
+    if (weapon?.value.find((x:string)=>x == kieg)) {
+      return;
+    }
+    return weapon?.value.push(kieg)
   }
 
   getFcArr(i:number, fcName:string) {

@@ -5,7 +5,6 @@ import { ModalService } from '../modal.service';
 import { Subject, map } from 'rxjs';
 import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';
 import { SelectWAddonsComponent } from './select-wAddons.component';
-import { ExplosivesService } from 'src/app/characters/chars-subforms/explosives/explosives.service';
 import { WAddonsModel } from 'src/app/characters/chars-subforms/weapons/weapons.model';
 import { WeaponsService } from 'src/app/characters/chars-subforms/weapons/weapons.service';
 
@@ -28,25 +27,21 @@ export class SelectWAddonService {
 
   getWAddons() {
     return this.http
-    .get<{ message: string; wAddons: any}>(BACKEND_URL + "list")
+    .get<{ message: string; addons: any}>(BACKEND_URL + "list")
     .pipe(
       map(w => {
         return {
-          wAddons: (w as any).wAddons.map((w: any) => {
+          wAddons: (w as any).addons.map((w: any) => {
             return {
               _id: w._id,
-              nev: w.wAddonName,
-              csoport: w.wAddonCategory,
-              tipus: w.wAddonType,
-              ero: w.wAddonPower,
-              sebzes: w.wAddonDamage,
-              sebzesTipus: w.wAddonDmgType,
-              tamadasiModok: w.wAddonMods,
-              tav: w.wAddonRange,
-              tar: w.wAddonClip,
-              ar: w.wAddonPrice,
-              suly: w.wAddonWeight,
-              megjegyzes: w.wAddonDesc
+              nev: w.addonName,
+              csoport: w.addonCategory,
+              elhelyezes: w.addonPlace,
+              suly: w.addonAddWeight,
+              sulySzorzo: w.addonMultiWeight,
+              ar: w.addonAddPrice,
+              arSzorzo: w.addonMultiPrice,
+              megjegyzes: w.addonDesc
             };
           })
         };
@@ -64,9 +59,10 @@ export class SelectWAddonService {
     return this.wAddonsUpdated.asObservable();
   }
 
-  openModal(i:number) {
+  openModal(i:number, csoport: string) {
     this.modalServ.openModal(SelectWAddonsComponent, {
       moneyFilter: this.resServ.getFc('elkolthetoToke').value,
+      csoportFilter: csoport
     }).subscribe(
       w => this.weaponsServ.addWAddon(w, i)
     );

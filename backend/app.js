@@ -46,7 +46,7 @@ app.use ("/api/user", userRoutes);
 app.use ("/api/char", charRoutes);
 app.use ("/api/armor", armorRoutes);
 app.use ("/api/weapon", weaponRoutes);
-app.use ("/api/weaponAddon", weaponAddonRoutes);
+app.use ("/api/wAddon", weaponAddonRoutes);
 app.use ("/api/tool", toolRoutes);
 app.use ("/api/cyber", cyberRoutes);
 app.use ("/api/spell", spellRoutes);

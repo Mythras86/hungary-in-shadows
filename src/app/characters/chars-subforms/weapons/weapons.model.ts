@@ -10,17 +10,23 @@ export interface WeaponsModel{
   sebzes: number,
   sebzesTipus: string,
   suly: number,
+  kiegekSulya: number,
   ar: number,
+  kiegekAra: number,
   elhelyezes: string,
   megjegyzes: string
+  felszerelt: Array<string>,
+  addons: Array<WAddonsModel>
 }
 
 export interface WAddonsModel{
   _id: string,
   nev: string,
   csoport: string,
-  suly: number,
-  ar: number,
   elhelyezes: string,
+  suly: number,
+  sulySzorzo: number,
+  ar: number,
+  arSzorzo: number,
   megjegyzes: string
 }

@@ -17,25 +17,37 @@
 
         <button class="deleteItem w10" type="button" (click)="weaponsServ.removeWeapon(i)">X</button>
         <div class="nbl w60 text1">{{w.nev}}</div>
-        <div class="nprpl w30 text1 center" (click)="changePlace(i)">{{w.elhelyezes}}</div>
-        <div class="grayCell text1 w60 center">{{w.tipus}}</div>
-        <div class="grayCell text1 w40 center">{{w.tamadasiModok}}</div>
-        <div class="grayCell text1 w50 center">
+        <div class="nrd text1 w30 center">
           {{w.ero}}
           ({{w.sebzes}}
-          {{w.sebzesTipus}})
+          {{getSebKod(w.sebzesTipus)}})
         </div>
-        <div class="grayCell text1 w50 center">{{w.tar}}</div>
-        <div *ngIf="['Tűzfegyverek','Lőfegyverek','Nehézfegyverek'].includes(w.csoport)" class="grayCell text1 w70 center">
-          Táv:{{w.tav}}/{{w.tav*3}}/{{w.tav*6}}/{{w.tav*9}} m
+
+        <div class="moneyCost text1 w40 center">{{w.ar + w.kiegekAra}} Cr</div>
+        <div class="grayCell text1 w30 center">{{w.suly + w.kiegekSulya}} Kg</div>
+        <div class="nprpl w30 text1 center" (click)="changePlace(i)">{{w.elhelyezes}}</div>
+
+        <div class="grayCell text1 w100 center">{{w.tipus}} // {{w.tar}}</div>
+
+        <div *ngIf="['Tűzfegyverek','Lőfegyverek','Nehézfegyverek'].includes(w.csoport)" class="grayCell text1 w100 center">
+          Táv: {{w.tav}}/{{w.tav*3}}/{{w.tav*6}}/{{w.tav*9}} m // {{w.tamadasiModok}}
         </div>
-        <div *ngIf="!['Tűzfegyverek','Lőfegyverek','Nehézfegyverek'].includes(w.csoport)" class="grayCell text1 w70 center">Táv:
-          {{w.tav}}
+        <div *ngIf="!['Tűzfegyverek','Lőfegyverek','Nehézfegyverek'].includes(w.csoport)" class="grayCell text1 w100 center">
+          Táv: {{w.tav}}  // {{w.tamadasiModok}}
         </div>
-        <div class="grayCell text1 w30 center">{{w.suly}} Kg</div>
+
         <div *ngIf="w.megjegyzes" class="grayCell text1 w100">{{w.megjegyzes}}</div>
-        <div class="moneyCost text1 w50 center">{{w.ar}} Cr</div>
-        <button type="button" (click)="sAddonServ.openModal(i)">Új Kiegészítő</button>
+
+        <button class="ngrn w100 text1 center" *ngIf="['Tűzfegyverek','Lőfegyverek','Közelharci fegyverek'].includes(w.csoport)" type="button" (click)="sAddonServ.openModal(i, w.csoport)">Új Kiegészítő</button>
+
+        <div class="w100" formArrayName="addons">
+          <div class="w100" [formGroupName]='k' *ngFor="let a of getWAddons(i).value; let k = index">
+            <div class="nprpl text1 w100">{{a.nev}}</div>
+            <div class="grayCell text1 w100">{{a.megjegyzes}}</div>
+          </div>
+        </div>
+
+
       </div>
 
     </div>

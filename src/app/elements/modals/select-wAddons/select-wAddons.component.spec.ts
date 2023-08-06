@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SelectWeaponsComponent } from './select-wAddons.component';
+import { SelectWAddonsComponent } from './select-wAddons.component';
 
 describe('SelectWeaponsComponent', () => {
-  let component: SelectWeaponsComponent;
-  let fixture: ComponentFixture<SelectWeaponsComponent>;
+  let component: SelectWAddonsComponent;
+  let fixture: ComponentFixture<SelectWAddonsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SelectWeaponsComponent ]
+      declarations: [ SelectWAddonsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SelectWeaponsComponent);
+    fixture = TestBed.createComponent(SelectWAddonsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

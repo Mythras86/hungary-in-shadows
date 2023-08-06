@@ -43,7 +43,7 @@ export class SpellsComponent implements OnInit {
     return controls;
   }
 
-  spellType(){
+  getSebKod(){
     const tipus = this.spellsServ.spellsForm.get('tipus')?.value;
     if (tipus == 'Mana') {
       return 'M';

@@ -19,40 +19,42 @@ export class SelectWAddonsComponent {
   ) {}
 
   public moneyFilter: number = 0;
-  public csoportFilter: string = 'Nincs';
-  public explosives: boolean = false;
+  public csoportFilter: string = '';
+  public kiegFilter: string = 'Nincs';
 
   public canBeClosed: boolean = true;
   closeEvent: Subject<any> = new Subject;
 
   loadData(modalData: any): void {
     this.moneyFilter = modalData.moneyFilter;
-    this.explosives = modalData.explosives;
+    this.csoportFilter = modalData.csoportFilter;
   }
 
   private wAddonSub!: Subscription;
   public wAddonsList: WAddonsModel[] = [];
 
   selectFilter(status: string) {
-    return this.csoportFilter = status;
+    return this.kiegFilter = status;
   }
 
   getCsoportok():Array<any> {
     const list = this.sWAddonServ.wAddonsList;
-    const csopUniq = [...new Set(list.map(x => x.csoport).map(x=> x))];
+    const csopUniq = [...new Set(list.filter(x => x.csoport).map(x=> x.elhelyezes).map(x=> x))];
     csopUniq.sort();
     return csopUniq;
   }
 
   getFilteredCsoportok(): Array<any> {
-    if (this.csoportFilter == 'Nincs') {
+    if (this.kiegFilter == 'Nincs') {
       return this.getCsoportok();
     }
-    return [this.csoportFilter];
+    return [this.kiegFilter];
   }
 
-  getFilteredWAddonsList(csoport: string): Array<any> {
-    const filtered = this.wAddonsList.filter(x=>x.ar <= this.moneyFilter && x.csoport == csoport);
+  getFilteredWAddonsList(kieg: string): Array<any> {
+    const filtered = this.wAddonsList.filter(
+      x=>x.ar <= this.moneyFilter && x.csoport == this.csoportFilter && x.elhelyezes == kieg
+      );
     this.sortServ.sortByString(filtered, 'nev');
     return filtered;
   }

@@ -4,7 +4,6 @@ import { ResourcesService } from '../resources/resources.service';
 import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
 import { FormArray } from '@angular/forms';
 import { SelectWeaponService } from 'src/app/elements/modals/select-weapons/select-weapons.service';
-import { SortMeService } from 'src/app/elements/sortme/sort-me.service';
 import { SelectWAddonService } from 'src/app/elements/modals/select-wAddons/select-wAddons.service';
 
 @Component({
@@ -29,8 +28,9 @@ export class WeaponsComponent {
     return this.weaponsServ.weaponsForm.controls['weapons'] as FormArray;
   }
 
-  getWAddons(i: number): FormArray {
-    return this.weapons.at(i).get('addons') as FormArray;
+  getWAddons(i: number): FormArray | null | any {
+    const addons = this.weapons.at(i).get('addons') as FormArray;
+    return addons;
   }
 
   getCsoportok():Array<any> {
@@ -57,6 +57,13 @@ export class WeaponsComponent {
       return elhelyezes.patchValue('viselt')
     }
     return elhelyezes?.patchValue('raktár');
+  }
+
+  getSebKod(sebKod: string){
+    if (sebKod == 'Fizikai') {
+      return 'F';
+    }
+    return 'K';
   }
 
   ngOnInit(): void {

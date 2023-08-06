@@ -16,16 +16,20 @@
 
     <div class="itemCont w100" *ngFor="let a of getFilteredWeaponsList(filteredCs)" (click)="selectWeapon(a._id)">
 
-      <div class="nbl text1 w66">{{a.nev}}</div>
-      <div class="moneyCost text1 w33 center">{{a.ar}} Cr</div>
-      <div class="grayCell text1 w66 center">{{a.tipus}}</div>
-      <div class="grayCell text1 w33 center">{{a.tamadasiModok}}</div>
-      <div class="grayCell text1 w50 center">{{a.ero}}({{a.sebzes}} {{a.sebzesTipus}})</div>
-      <div class="grayCell text1 w50 center">{{a.tar}}</div>
-      <div *ngIf="['Tűzfegyverek','Lőfegyverek','Nehézfegyverek'].includes(a.csoport)" class="grayCell text1 w70 center">Táv:{{a.tav}}/{{a.tav*3}}/{{a.tav*6}}/{{a.tav*9}} m</div>
-      <div *ngIf="!['Tűzfegyverek','Lőfegyverek','Nehézfegyverek'].includes(a.csoport)" class="grayCell text1 w70 center">Táv:{{a.tav}} m</div>
+      <div class="nbl text1 w70">{{a.nev}}</div>
+      <div class="nrd text1 w30 center">{{a.ero}}({{a.sebzes}})</div>
+      <div class="moneyCost text1 w40 center">{{a.ar}} Cr</div>
       <div class="grayCell text1 w30 center">{{a.suly}} Kg</div>
-      <div class="grayCell text1 w100">{{a.megjegyzes}}</div>
+      <div class="nrd text1 w30 center">{{a.sebzesTipus}}</div>
+
+      <div class="grayCell text1 w100 center">{{a.tipus}} // {{a.tar}}</div>
+      <div *ngIf="['Tűzfegyverek','Lőfegyverek','Nehézfegyverek'].includes(a.csoport)" class="grayCell text1 w100 center">
+        Táv:{{a.tav}}/{{a.tav*3}}/{{a.tav*6}}/{{a.tav*9}} m // {{a.tamadasiModok}}
+      </div>
+      <div *ngIf="!['Tűzfegyverek','Lőfegyverek','Nehézfegyverek'].includes(a.csoport)" class="grayCell text1 w100 center">
+        Táv:{{a.tav}} m // {{a.tamadasiModok}}
+      </div>
+      <div *ngIf="a.megjegyzes" class="grayCell text1 w100">{{a.megjegyzes}}</div>
 
     </div>
 
