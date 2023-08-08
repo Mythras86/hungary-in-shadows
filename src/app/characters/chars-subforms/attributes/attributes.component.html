@@ -49,7 +49,8 @@
   <div class="itemCont w50">
     <div class="nbl text1 w80 center">Mágia</div>
     <app-levelcontrol class="w20"
-      [isEnabled]="resServ.getFc('elkolthetoKarma')?.value>3"
+      [isEnabled]="resServ.getFc('elkolthetoKarma')?.value>3
+      && attrServ.getFc('esszencia')?.value > attrServ.getFc('magia')?.value"
       (buttonAction)="lvlContServ.buttonAction(
         'Mágia',
         'van',
@@ -64,7 +65,7 @@
         )"
     ></app-levelcontrol>
     <div class="ngrn text2 w100 center">
-      {{attrServ.getFc('magia')?.value}}
+      {{getMagia()}}
     </div>
   </div>
 

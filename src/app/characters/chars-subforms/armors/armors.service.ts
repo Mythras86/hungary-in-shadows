@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
-import { ArmorsModel } from './armors.model';
+import { AAddonsModel, ArmorsModel } from './armors.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +17,11 @@ export class ArmorsService {
 
   createArmors(): FormGroup {
     const armors = {
-      armorRating: [0, Validators.required],
       armors: this.fb.array([]),
     };
     return this.armorsForm = this.fb.group(armors);
   }
+
 
   setArmors(dataset: any[]): FormArray {
     const armors = (this.armorsForm.get('armors') as FormArray);
@@ -30,15 +30,37 @@ export class ArmorsService {
         this.fb.group({
           _id: e._id,
           nev: e.nev,
-          csoport: e.kategoria,
+          csoport: e.csoport,
           szint: e.szint,
           suly: e.suly,
+          kiegekSulya: e.kiegekSulya,
           ar: e.ar,
+          kiegekAra: e.kiegekAra,
           elhelyezes: e.elhelyezes,
+          felszerelt: Array(e.felszerelt),
           megjegyzes: e.megjegyzes,
+          addons: this.fb.array(this.setAAddons(e.addons))
         }))
-    });
-    return armors;
+      });
+      return armors;
+  }
+
+  setAAddons(data: any[] | null) {
+    let arr:any =[];
+    data?.forEach((a:any) => {
+      arr.push(
+        this.fb.group({
+          _id: [a._id, Validators.required],
+          nev: [a.nev, Validators.required],
+          csoport: [a.csoport, Validators.required],
+          suly: [a.suly, Validators.required],
+          sulySzorzo: [a.sulySzorzo, Validators.required],
+          ar: [a.ar, Validators.required],
+          arSzorzo: [a.arSzorzo, Validators.required],
+          megjegyzes: [a.megjegyzes, Validators.required],
+        })
+      )});
+    return arr;
   }
 
   addArmor(a: ArmorsModel): void {
@@ -51,9 +73,13 @@ export class ArmorsService {
       csoport: [a.csoport, Validators.required],
       szint: [a.szint, Validators.required],
       suly: [a.suly, Validators.required],
+      kiegekSulya: [0, Validators.required],
       ar: [a.ar, Validators.required],
+      kiegekAra: [0, Validators.required],
+      felszerelt: [Array(), Validators.required],
       megjegyzes: [a.megjegyzes, Validators.required],
       elhelyezes: ['raktár', Validators.required],
+      addons: this.fb.array([])
     });
     this.resServ.fizetesTokebol(a.ar);
     (this.armorsForm.get('armors') as FormArray).push(armor);
@@ -61,13 +87,45 @@ export class ArmorsService {
 
   removeArmor(i:number): void {
     const arVissza = (this.armorsForm.get('armors') as FormArray).at(i).get('ar')?.value;
-    this.resServ.fizetesTokebol(-arVissza);
+    const arVisszaKieggel = arVissza + (this.armorsForm.get('armors') as FormArray).at(i).get('kiegekAra')?.value;
+    this.resServ.fizetesTokebol(-arVisszaKieggel);
     (this.armorsForm.get('armors') as FormArray).removeAt(i);
   }
 
-  getFc(fcName:string) {
-    const fc = this.armorsForm.get(fcName);
-    return fc;
+  addAAddon(w: AAddonsModel, i: number): void {
+    if (w.nev == null) {
+      return;
+    }
+    const addon = this.fb.group({
+      _id: [w._id, Validators.required],
+      nev: [w.nev, Validators.required],
+      csoport: [w.csoport, Validators.required],
+      suly: [w.suly, Validators.required],
+      sulySzorzo: [w.sulySzorzo, Validators.required],
+      ar: [w.ar, Validators.required],
+      arSzorzo: [w.arSzorzo, Validators.required],
+      megjegyzes: [w.megjegyzes, Validators.required],
+    });
+    const armor = (this.armorsForm.get('armors') as FormArray).at(i);
+    const kiegAr = Math.round(w.ar + this.getFcArr(i, 'ar')?.value*(w.arSzorzo-1));
+    const kiegSuly = Math.round(w.suly + this.getFcArr(i, 'suly')?.value*(w.sulySzorzo-1));
+    armor.get('kiegekAra')?.patchValue(armor.get('kiegekAra')?.value + kiegAr);
+    armor.get('kiegekSulya')?.patchValue(armor.get('kiegekSulya')?.value + kiegSuly);
+    this.felszerel(i, w._id);
+    this.resServ.fizetesTokebol(kiegAr);
+    return (armor.get('addons') as FormArray).push(addon);
+  }
+
+  removeAAddon(wi:number, ai:number): void {
+    const addon = (this.armorsForm.get('armors') as FormArray).at(wi).get('addons') as FormArray;
+    const arVissza = addon.at(ai).get('ar')?.value;
+    this.resServ.fizetesTokebol(-arVissza);
+    addon.removeAt(ai);
+  }
+
+  felszerel(i:number, id: any) {
+    const armor = (this.armorsForm.get('armors') as FormArray).at(i).get('felszerelt');
+    return armor?.value.push(id);
   }
 
   getFcArr(i:number, fcName:string) {

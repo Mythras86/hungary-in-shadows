@@ -38,7 +38,11 @@
 
         <div *ngIf="w.megjegyzes" class="grayCell text1 w100">{{w.megjegyzes}}</div>
 
-        <button class="ngrn w100 text1 center" *ngIf="['Tűzfegyverek','Lőfegyverek','Közelharci fegyverek'].includes(w.csoport)" type="button" (click)="sAddonServ.openModal(i, w.csoport)">Új Kiegészítő</button>
+        <button class="ngrn w100 text1 center" *ngIf="['Tűzfegyverek','Lőfegyverek','Közelharci fegyverek'].includes(w.csoport)
+        && getLenght(i)<4"
+        type="button" (click)="sWAddonServ.openModal(i, w.csoport, w.felszerelt)">
+          Új Kiegészítő
+        </button>
 
         <div class="w100" formArrayName="addons">
           <div class="w100" [formGroupName]='k' *ngFor="let a of getWAddons(i).value; let k = index">

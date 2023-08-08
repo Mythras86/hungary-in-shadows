@@ -58,23 +58,30 @@ exports.createChar = (req, res, next) => {
     esszencia: req.body.esszencia,
     kockatartalek: req.body.kockatartalek,
     kezdemenyezes: req.body.kezdemenyezes,
-    // szakértelmek
-    skills: req.body.skills,
     // állapot
     asztralisAllapot: req.body.asztralisAllapot,
     fizikaiAllapot: req.body.fizikaiAllapot,
     pinhentsegAllapot: req.body.pinhentsegAllapot,
     taplaltsagAllapot: req.body.taplaltsagAllapot,
+    armorLevel: req.body.armorLevel,
+    // szakértelmek
+    skills: req.body.skills,
     // páncélok
     armors: req.body.armors,
     // kiberverek
-    cybers: req.body.cybers,
-    // eszközök
-    tools: req.body.tools,
-    // ereklyék
     artifacts: req.body.artifacts,
     // varázslatok
+    cybers: req.body.cybers,
+    // robbanószerek
+    explosives: req.body.explosives,
+    // ereklyék
     spells: req.body.spells,
+    // szellemek
+    spirits: req.body.spirits,
+    // eszközök
+    tools: req.body.tools,
+    // fegyverek
+    weapons: req.body.weapons,
   });
   char
   .save()
@@ -153,23 +160,30 @@ exports.updateChar = (req, res, next) => {
     esszencia: req.body.esszencia,
     kockatartalek: req.body.kockatartalek,
     kezdemenyezes: req.body.kezdemenyezes,
-    // szakértelmek
-    skills: req.body.skills,
     // állapot
     asztralisAllapot: req.body.asztralisAllapot,
     fizikaiAllapot: req.body.fizikaiAllapot,
     pinhentsegAllapot: req.body.pinhentsegAllapot,
     taplaltsagAllapot: req.body.taplaltsagAllapot,
+    armorLevel: req.body.armorLevel,
+    // szakértelmek
+    skills: req.body.skills,
     // páncélok
     armors: req.body.armors,
     // kiberverek
-    cybers: req.body.cybers,
-    // eszközök
-    tools: req.body.tools,
-    // ereklyék
     artifacts: req.body.artifacts,
     // varázslatok
+    cybers: req.body.cybers,
+    // robbanószerek
+    explosives: req.body.explosives,
+    // ereklyék
     spells: req.body.spells,
+    // szellemek
+    spirits: req.body.spirits,
+    // eszközök
+    tools: req.body.tools,
+    // fegyverek
+    weapons: req.body.weapons,
   });
   Char.updateOne({_id: req.params._id, creatorId: req.userData.userId }, char)
   .then(result => {

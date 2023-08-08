@@ -57,25 +57,25 @@ const charSchema = mongoose.Schema({
   asztKitMod: { type: Number, required: true},
   //speciális
   magia: { type: Number, required: true},
-  magiaMod: { type: Number, required: true},
   esszencia: { type: Number, required: true},
-  esszenciaMod: { type: Number, required: true},
   kockatartalek: { type: Number, required: true},
-  kockatartalekMod: { type: Number, required: true},
   kezdemenyezes: { type: Number, required: true},
-  kezdemenyezesMod: { type: Number, required: true},
-  // szakértelmek
-  skills: {type: Array, ref: 'Skill'},
   // állapot
   asztralisAllapot: { type: Number, required: true},
   fizikaiAllapot: { type: Number, required: true},
   pinhentsegAllapot: { type: Number, required: true},
   taplaltsagAllapot: { type: Number, required: true},
-  // páncélok
+  armorLevel: { type: Number, required: true},
+  // arrays
+  skills: {type: Array, ref: 'Skill'},
   armors: {type: Array, ref: 'Armor'},
   cybers: {type: Array, ref: 'Cyber'},
   tools: {type: Array, ref: 'Tool'},
   artifacts: {type: Array, ref: 'Artifact'},
+  spells: {type: Array, ref: 'Spell'},
+  explosives: {type: Array, ref: 'Explosive'},
+  spirits: {type: Array, ref: 'Spirit'},
+  weapons: {type: Array, ref: 'Weapon'},
 });
 
 module.exports = mongoose.model("Char", charSchema);

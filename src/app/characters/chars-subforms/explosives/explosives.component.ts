@@ -52,6 +52,14 @@ export class ExplosivesComponent {
     return elhelyezes?.patchValue('raktár');
   }
 
+  getSebKod(sebKod: string){
+    if (sebKod == 'Fizikai') {
+      return 'F';
+    }
+    return 'K';
+  }
+
+
   ngOnInit(): void {
     this.explosivesServ.createExplosives();
   }

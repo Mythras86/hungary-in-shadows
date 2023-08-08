@@ -7,6 +7,13 @@ import { AuthService } from 'src/app/authentication/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SkillsModel } from '../chars-subforms/skills/skills.model';
 import { ArmorsModel } from '../chars-subforms/armors/armors.model';
+import { ArtifactsModel } from '../chars-subforms/artifacts/artifacts.model';
+import { CybersModel } from '../chars-subforms/cybers/cybers.model';
+import { ExplosivesModel } from '../chars-subforms/explosives/explosives.model';
+import { SpellsModel } from '../chars-subforms/spells/spells.model';
+import { SpiritsModel } from '../chars-subforms/spirits/spirits.model';
+import { ToolsModel } from '../chars-subforms/tools/tools.model';
+import { WeaponsModel } from '../chars-subforms/weapons/weapons.model';
 
 const BACKEND_URL = environment.apiUrl + "/char/";
 
@@ -91,15 +98,30 @@ export class CharsMainService {
       esszencia: number,
       kockatartalek: number,
       kezdemenyezes: number,
-      // szakértelmek
-      skills: Array<SkillsModel>,
       // állapot
       asztralisAllapot: number,
       fizikaiAllapot: number,
       pinhentsegAllapot: number,
       taplaltsagAllapot: number,
+      armorLevel: number,
+      // szakértelmek
+      skills: Array<SkillsModel>,
       // páncélok
-      armors: Array<ArmorsModel>
+      armors: Array<ArmorsModel>,
+      // ereklyék
+      artifacts: Array<ArtifactsModel>,
+      // kiberverek
+      cybers: Array<CybersModel>,
+      // robbanószerek
+      explosives: Array<ExplosivesModel>,
+      // varázslatok
+      spells: Array<SpellsModel>,
+      // szellemek
+      spirits: Array<SpiritsModel>,
+      // eszközök
+      tools: Array<ToolsModel>,
+      // fegyverek
+      weapons: Array<WeaponsModel>,
     }>(BACKEND_URL +_id);
   }
 
@@ -161,15 +183,30 @@ export class CharsMainService {
     esszencia: number,
     kockatartalek: number,
     kezdemenyezes: number,
-    // szakértelmek
-    skills: Array<SkillsModel>,
     // állapot
     asztralisAllapot: number,
     fizikaiAllapot: number,
     pinhentsegAllapot: number,
     taplaltsagAllapot: number,
+    armorLevel: number,
+    // szakértelmek
+    skills: Array<SkillsModel>,
     // páncélok
-    armors: Array<ArmorsModel>
+    armors: Array<ArmorsModel>,
+    // ereklyék
+    artifacts: Array<ArtifactsModel>,
+    // kiberverek
+    cybers: Array<CybersModel>,
+    // robbanószerek
+    explosives: Array<ExplosivesModel>,
+    // varázslatok
+    spells: Array<SpellsModel>,
+    // szellemek
+    spirits: Array<SpiritsModel>,
+    // eszközök
+    tools: Array<ToolsModel>,
+    // fegyverek
+    weapons: Array<WeaponsModel>,
   ) {
     const charData = {
       _id: '',
@@ -229,15 +266,30 @@ export class CharsMainService {
       esszencia: esszencia,
       kockatartalek: kockatartalek,
       kezdemenyezes: kezdemenyezes,
-      // szakértelmek
-      skills: skills,
+      armorLevel: armorLevel,
       // állapot
       asztralisAllapot: asztralisAllapot,
       fizikaiAllapot: fizikaiAllapot,
       pinhentsegAllapot: pinhentsegAllapot,
       taplaltsagAllapot: taplaltsagAllapot,
+      // szakértelmek
+      skills: skills,
       // páncélok
       armors: armors,
+      // ereklyék
+      artifacts: artifacts,
+      // kiberverek
+      cybers: cybers,
+      // robbanószerek
+      explosives: explosives,
+      // varázslatok
+      spells: spells,
+      // szellemek
+      spirits: spirits,
+      // eszközök
+      tools: tools,
+      // fegyverek
+      weapons: weapons,
     };
     this.http.post<{ message: string; char: CharModel }>(
       BACKEND_URL + "create", charData).subscribe(response => {
@@ -280,7 +332,7 @@ export class CharsMainService {
     elkolthetoKarma: number,
     elkolthetoToke: number,
     karmabolToke: number,
-      //fizikai
+    //fizikai
     fizEro: number,
     fizEroMod: number,
     fizGyo: number,
@@ -303,15 +355,30 @@ export class CharsMainService {
     esszencia: number,
     kockatartalek: number,
     kezdemenyezes: number,
-    // szakértelmek
-    skills: Array<SkillsModel>,
     // állapot
     asztralisAllapot: number,
     fizikaiAllapot: number,
     pinhentsegAllapot: number,
     taplaltsagAllapot: number,
+    armorLevel: number,
+    // szakértelmek
+    skills: Array<SkillsModel>,
     // páncélok
-    armors: Array<ArmorsModel>
+    armors: Array<ArmorsModel>,
+    // ereklyék
+    artifacts: Array<ArtifactsModel>,
+    // kiberverek
+    cybers: Array<CybersModel>,
+    // robbanószerek
+    explosives: Array<ExplosivesModel>,
+    // varázslatok
+    spells: Array<SpellsModel>,
+    // szellemek
+    spirits: Array<SpiritsModel>,
+    // eszközök
+    tools: Array<ToolsModel>,
+    // fegyverek
+    weapons: Array<WeaponsModel>,
   ) {
     let charData: CharModel;
     charData = {
@@ -349,7 +416,7 @@ export class CharsMainService {
       elkolthetoKarma: elkolthetoKarma,
       elkolthetoToke: elkolthetoToke,
       karmabolToke: karmabolToke,
-          //fizikai
+      //fizikai
       fizEro: fizEro,
       fizEroMod: fizEroMod,
       fizGyo: fizGyo,
@@ -372,15 +439,30 @@ export class CharsMainService {
       esszencia: esszencia,
       kockatartalek: kockatartalek,
       kezdemenyezes: kezdemenyezes,
-      // szakértelmek
-      skills: skills,
       // állapot
       asztralisAllapot: asztralisAllapot,
       fizikaiAllapot: fizikaiAllapot,
       pinhentsegAllapot: pinhentsegAllapot,
       taplaltsagAllapot: taplaltsagAllapot,
+      armorLevel: armorLevel,
+      // szakértelmek
+      skills: skills,
       // páncélok
       armors: armors,
+      // ereklyék
+      artifacts: artifacts,
+      // kiberverek
+      cybers: cybers,
+      // robbanószerek
+      explosives: explosives,
+      // varázslatok
+      spells: spells,
+      // szellemek
+      spirits: spirits,
+      // eszközök
+      tools: tools,
+      // fegyverek
+      weapons: weapons,
       };
     this.http
       .put(BACKEND_URL +_id, charData)

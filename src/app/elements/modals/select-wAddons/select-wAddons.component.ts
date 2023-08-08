@@ -21,6 +21,7 @@ export class SelectWAddonsComponent {
   public moneyFilter: number = 0;
   public csoportFilter: string = '';
   public kiegFilter: string = 'Nincs';
+  public excludeArr: Array<string> = [];
 
   public canBeClosed: boolean = true;
   closeEvent: Subject<any> = new Subject;
@@ -28,6 +29,7 @@ export class SelectWAddonsComponent {
   loadData(modalData: any): void {
     this.moneyFilter = modalData.moneyFilter;
     this.csoportFilter = modalData.csoportFilter;
+    this.excludeArr = modalData.excludeArr;
   }
 
   private wAddonSub!: Subscription;
@@ -39,9 +41,9 @@ export class SelectWAddonsComponent {
 
   getCsoportok():Array<any> {
     const list = this.sWAddonServ.wAddonsList;
-    const csopUniq = [...new Set(list.filter(x => x.csoport).map(x=> x.elhelyezes).map(x=> x))];
-    csopUniq.sort();
-    return csopUniq;
+    const csopUniq = [...new Set(list.filter(x => x.csoport).map(x=> x.kieg).map(x=> x))];
+    const filtered = csopUniq.filter(x=> {return !new Set(this.excludeArr).has(x)}).sort();
+    return filtered;
   }
 
   getFilteredCsoportok(): Array<any> {
@@ -53,7 +55,7 @@ export class SelectWAddonsComponent {
 
   getFilteredWAddonsList(kieg: string): Array<any> {
     const filtered = this.wAddonsList.filter(
-      x=>x.ar <= this.moneyFilter && x.csoport == this.csoportFilter && x.elhelyezes == kieg
+      x=>x.ar <= this.moneyFilter && x.csoport == this.csoportFilter && x.kieg == kieg
       );
     this.sortServ.sortByString(filtered, 'nev');
     return filtered;

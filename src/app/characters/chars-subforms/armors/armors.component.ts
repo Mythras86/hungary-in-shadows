@@ -4,7 +4,8 @@ import { FormArray, FormControl } from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
 import { SelectArmorService } from 'src/app/elements/modals/select-armors/select-armor.service';
 import { HideService } from 'src/app/elements/hide-content/hide-content.service';
-import { SortMeService } from 'src/app/elements/sortme/sort-me.service';
+import { SelectAAddonService } from 'src/app/elements/modals/select-aAddons/select-aAddons.service';
+import { StatusService } from '../status/status.service';
 
 @Component({
   selector: 'app-armors',
@@ -17,7 +18,9 @@ export class ArmorsComponent implements OnInit {
   constructor(
     public armorsServ: ArmorsService,
     public resServ: ResourcesService,
+    public statusServ: StatusService,
     public sArmorServ: SelectArmorService,
+    public sAAddonServ: SelectAAddonService
   ) { }
 
   public get armors(): FormArray | null | any {
@@ -25,6 +28,14 @@ export class ArmorsComponent implements OnInit {
       return null;
     }
     return this.armorsServ.armorsForm.controls['armors'] as FormArray;
+  }
+
+  getAAddons(i: number): FormArray | null | any {
+    const addons = this.armors.at(i).get('addons') as FormArray;
+    if (addons) {
+      return addons;
+    }
+    return null;
   }
 
   getCsoportok():Array<any> {
@@ -48,7 +59,7 @@ export class ArmorsComponent implements OnInit {
     const karakteren:boolean = elhArr.some(x => x.csoport == csoport && x.elhelyezes =='viselt');
 
     const elhelyezes = (this.armorsServ.armorsForm.get('armors') as FormArray).at(i).get('elhelyezes');
-    const changeAr = this.armorsServ.armorsForm.get('armorRating');
+    const changeAr = this.statusServ.statusForm.get('armorLevel');
     const szint = (this.armorsServ.armorsForm.get('armors') as FormArray).at(i).get('szint')?.value;
 
     if (elhelyezes?.value == 'raktár') {

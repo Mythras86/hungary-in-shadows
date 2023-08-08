@@ -18,6 +18,7 @@ export class StatusService {
       fizikaiAllapot: [11, Validators.required],
       pinhentsegAllapot: [4, Validators.required],
       taplaltsagAllapot: [4, Validators.required],
+      armorLevel: [0, Validators.required],
     };
     return this.statusForm = this.fb.group(status);
   }

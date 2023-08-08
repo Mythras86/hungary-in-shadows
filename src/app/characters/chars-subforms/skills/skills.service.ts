@@ -52,7 +52,7 @@ export class SkillsService {
       return skills;
     }
 
-    removeSkill(i:number): void {
+  removeSkill(i:number): void {
     this.resServ.fizetesKarmabol(-2);
     (this.skillsForm.get('skills') as FormArray).removeAt(i);
   }
@@ -60,6 +60,14 @@ export class SkillsService {
   getFc(i:number, fcName:string) {
     const skillpath = ((this.skillsForm.get('skills') as FormArray).at(i) as FormGroup).get(fcName);
     return skillpath;
+  }
+
+  hasASkill(skill: string):boolean {
+    const skillArr = (this.skillsForm.get('skills') as FormArray)?.value;
+    if (skillArr.find((x:any) =>x.nev == skill)) {
+      return true;
+    }
+    return false;
   }
 
   addFirstLanguage(langName:string, langDesc:string, baseLvl: number): void {

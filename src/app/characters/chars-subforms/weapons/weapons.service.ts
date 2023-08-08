@@ -12,7 +12,6 @@ export class WeaponsService {
   constructor(
     private fb: FormBuilder,
     private resServ: ResourcesService,
-    private explosivesServ: ExplosivesService
   ) { }
 
   weaponsForm!: FormGroup;
@@ -40,13 +39,37 @@ export class WeaponsService {
           sebzes: e.sebzes,
           sebzesTipus: e.sebzesTipus,
           suly: e.suly,
+          kiegekSulya: e.kiegekSulya,
           ar: e.ar,
+          kiegekAra: e.kiegekAra,
           elhelyezes: e.elhelyezes,
+          felszerelt: Array(e.felszerelt),
           megjegyzes: e.megjegyzes,
+          addons: this.fb.array(this.setWAddons(e.addons))
         }))
     });
     return weapons;
   }
+
+  setWAddons(data: any[] | null) {
+    let arr:any =[];
+    data?.forEach((w:any) => {
+      arr.push(
+        this.fb.group({
+          _id: [w._id, Validators.required],
+          nev: [w.nev, Validators.required],
+          csoport: [w.csoport, Validators.required],
+          kieg: [w.kieg, Validators.required],
+          suly: [w.suly, Validators.required],
+          sulySzorzo: [w.sulySzorzo, Validators.required],
+          ar: [w.ar, Validators.required],
+          arSzorzo: [w.arSzorzo, Validators.required],
+          megjegyzes: [w.megjegyzes, Validators.required],
+            })
+      )});
+    return arr;
+  }
+
 
   addWeapon(w: WeaponsModel): void {
     if (w.nev == null) {
@@ -91,7 +114,7 @@ export class WeaponsService {
       _id: [w._id, Validators.required],
       nev: [w.nev, Validators.required],
       csoport: [w.csoport, Validators.required],
-      elhelyezes: [w.elhelyezes, Validators.required],
+      kieg: [w.kieg, Validators.required],
       suly: [w.suly, Validators.required],
       sulySzorzo: [w.sulySzorzo, Validators.required],
       ar: [w.ar, Validators.required],
@@ -101,9 +124,9 @@ export class WeaponsService {
     const weapon = (this.weaponsForm.get('weapons') as FormArray).at(i);
     const kiegAr = Math.round(w.ar + this.getFcArr(i, 'ar')?.value*(w.arSzorzo-1));
     const kiegSuly = Math.round(w.suly + this.getFcArr(i, 'suly')?.value*(w.sulySzorzo-1));
-    weapon.get('kiegekAra')?.patchValue(kiegAr);
-    weapon.get('kiegekSulya')?.patchValue(kiegSuly);
-    this.felszerel(i, w.elhelyezes);
+    weapon.get('kiegekAra')?.patchValue(weapon.get('kiegekAra')?.value + kiegAr);
+    weapon.get('kiegekSulya')?.patchValue(weapon.get('kiegekSulya')?.value + kiegSuly);
+    this.felszerel(i, w.kieg);
     this.resServ.fizetesTokebol(kiegAr);
     return (weapon.get('addons') as FormArray).push(addon);
   }
@@ -120,7 +143,7 @@ export class WeaponsService {
     if (weapon?.value.find((x:string)=>x == kieg)) {
       return;
     }
-    return weapon?.value.push(kieg)
+    return weapon?.value.push(kieg);
   }
 
   getFcArr(i:number, fcName:string) {

@@ -23,7 +23,7 @@ export interface WAddonsModel{
   _id: string,
   nev: string,
   csoport: string,
-  elhelyezes: string,
+  kieg: string,
   suly: number,
   sulySzorzo: number,
   ar: number,

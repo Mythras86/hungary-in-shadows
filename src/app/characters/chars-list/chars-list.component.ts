@@ -40,6 +40,13 @@ export class CharsListComponent implements OnInit, OnDestroy {
     });
   }
 
+  getCsoport(creatorId: string): string {
+    if (creatorId === this.userId) {
+      return 'Saját karakterek';
+    }
+    return 'Más karakterek';
+  }
+
   ngOnInit():void {
     this.spinServ.toggleSpinner(false);
     this.charsListServ.getChars();

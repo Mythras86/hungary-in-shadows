@@ -12,6 +12,13 @@ import { SkillsService } from '../chars-subforms/skills/skills.service';
 import { StatusService } from '../chars-subforms/status/status.service';
 import { ArmorsService } from '../chars-subforms/armors/armors.service';
 import { HideService } from 'src/app/elements/hide-content/hide-content.service';
+import { ArtifactsService } from '../chars-subforms/artifacts/artifacts.service';
+import { CybersService } from '../chars-subforms/cybers/cybers.service';
+import { ExplosivesService } from '../chars-subforms/explosives/explosives.service';
+import { SpellsService } from '../chars-subforms/spells/spells.service';
+import { SpiritsService } from '../chars-subforms/spirits/spirits.service';
+import { ToolsService } from '../chars-subforms/tools/tools.service';
+import { WeaponsService } from '../chars-subforms/weapons/weapons.service';
 
 @Component({
   selector: 'app-chars-main',
@@ -31,12 +38,19 @@ export class CharsMainComponent implements OnInit, OnDestroy {
     public spinServ: SpinnerService,
     public hideServ: HideService,
 
-    private detailsServ: DetailsService,
-    private resServ: ResourcesService,
+    private armorsServ: ArmorsService,
+    private artifactsServ: ArtifactsService,
     private attrServ: AttributesService,
-    private skillsServ: SkillsService,
+    private cybersServ: CybersService,
+    private detailsServ: DetailsService,
+    private exploServ: ExplosivesService,
+    private resServ: ResourcesService,
+    public skillsServ: SkillsService,
+    private spellsServ: SpellsService,
+    private spiritsServ: SpiritsService,
     private statusServ: StatusService,
-    private armorsServ: ArmorsService
+    private toolsServ: ToolsService,
+    private weaponsServ: WeaponsService,
   ) {}
 
   mode:string = 'create';
@@ -58,6 +72,13 @@ export class CharsMainComponent implements OnInit, OnDestroy {
     var skills = this.skillsServ.skillsForm;
     var status = this.statusServ.statusForm;
     var armors = this.armorsServ.armorsForm;
+    var artifacts = this.artifactsServ.artifactsForm;
+    var cybers = this.cybersServ.cybersForm;
+    var explosives = this.exploServ.explosivesForm;
+    var spells = this.spellsServ.spellsForm;
+    var spirits = this.spiritsServ.spiritsForm;
+    var tools = this.toolsServ.toolsForm;
+    var weapons = this.weaponsServ.weaponsForm;
     if (main.invalid
      || details.invalid
      || res.invalid
@@ -125,15 +146,22 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         attrs.value.esszencia,
         attrs.value.kockatartalek,
         attrs.value.kezdemenyezes,
-        // szakértelmek
-        skills.value.skills,
         // állapot
         status.value.asztralisAllapot,
         status.value.fizikaiAllapot,
         status.value.pinhentsegAllapot,
         status.value.taplaltsagAllapot,
-        // páncélok
-        armors.value.armors
+        status.value.armorLevel,
+        // arrayok
+        skills.value.skills,
+        armors.value.armors,
+        artifacts.value.artifacts,
+        cybers.value.cybers,
+        explosives.value.explosives,
+        spells.value.spells,
+        spirits.value.spirits,
+        tools.value.tools,
+        weapons.value.weapons
       );
    } else {
       this.charServ.updateOneChar(
@@ -194,15 +222,22 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         attrs.value.esszencia,
         attrs.value.kockatartalek,
         attrs.value.kezdemenyezes,
-        // szakértelmek
-        skills.value.skills,
         // állapot
         status.value.asztralisAllapot,
         status.value.fizikaiAllapot,
         status.value.pinhentsegAllapot,
         status.value.taplaltsagAllapot,
-        // páncélok
-        armors.value.armors
+        status.value.armorRating,
+        // arrayok
+        skills.value.skills,
+        armors.value.armors,
+        artifacts.value.artifacts,
+        cybers.value.cybers,
+        explosives.value.explosives,
+        spells.value.spells,
+        spirits.value.spirits,
+        tools.value.tools,
+        weapons.value.weapons
       )};
     this.router.navigate(["/charslist"]);
   }
@@ -303,9 +338,24 @@ export class CharsMainComponent implements OnInit, OnDestroy {
             asztralisAllapot: w.asztralisAllapot,
             pinhentsegAllapot: w.pinhentsegAllapot,
             taplaltsagAllapot: w.taplaltsagAllapot,
+            armorLevel: w.armorLevel,
           })
           this.armorsServ.armorsForm.addControl('armorsForm', new FormGroup({}));
           (this.armorsServ.armorsForm as FormGroup).addControl('armors', this.armorsServ.setArmors(w.armors));
+          this.artifactsServ.artifactsForm.addControl('artifacts', new FormGroup({}));
+          (this.artifactsServ.artifactsForm as FormGroup).addControl('artifacts', this.artifactsServ.setArtifacts(w.artifacts));
+          this.cybersServ.cybersForm.addControl('cybers', new FormGroup({}));
+          (this.cybersServ.cybersForm as FormGroup).addControl('cybers', this.cybersServ.setCybers(w.cybers));
+          this.exploServ.explosivesForm.addControl('explosives', new FormGroup({}));
+          (this.exploServ.explosivesForm as FormGroup).addControl('explosives', this.exploServ.setExplosives(w.explosives));
+          this.spellsServ.spellsForm.addControl('spellsForm', new FormGroup({}));
+          (this.spellsServ.spellsForm as FormGroup).addControl('spells', this.spellsServ.setSpells(w.spells));
+          this.spiritsServ.spiritsForm.addControl('spiritsForm', new FormGroup({}));
+          (this.spiritsServ.spiritsForm as FormGroup).addControl('spirits', this.spiritsServ.setSpirits(w.spirits));
+          this.toolsServ.toolsForm.addControl('toolsForm', new FormGroup({}));
+          (this.toolsServ.toolsForm as FormGroup).addControl('tools', this.toolsServ.setTools(w.tools));
+          this.weaponsServ.weaponsForm.addControl('weaponsForm', new FormGroup({}));
+          (this.weaponsServ.weaponsForm as FormGroup).addControl('weapons', this.weaponsServ.setWeapons(w.weapons));
         });
       } else {
         this.mode = 'create';

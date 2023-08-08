@@ -48,6 +48,7 @@ export class AuthenticationComponent implements OnInit {
       if (form.invalid) {
         return;
       }
+      this.spinServ.toggleSpinner(true);
       this.authServ.registerUser(form.value.userName, form.value.userEmail, form.value.userPass);
     }
 

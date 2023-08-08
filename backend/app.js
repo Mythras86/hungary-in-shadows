@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/user");
 const charRoutes = require("./routes/char");
 const armorRoutes = require("./routes/armor");
+const armorAddonRoutes = require("./routes/armorAddon");
 const cyberRoutes = require("./routes/cyber");
 const artifactRoutes = require("./routes/artifact");
 const toolRoutes = require("./routes/tool");
@@ -45,6 +46,7 @@ app.use((req, res, next) => {
 app.use ("/api/user", userRoutes);
 app.use ("/api/char", charRoutes);
 app.use ("/api/armor", armorRoutes);
+app.use ("/api/aAddon", armorAddonRoutes);
 app.use ("/api/weapon", weaponRoutes);
 app.use ("/api/wAddon", weaponAddonRoutes);
 app.use ("/api/tool", toolRoutes);

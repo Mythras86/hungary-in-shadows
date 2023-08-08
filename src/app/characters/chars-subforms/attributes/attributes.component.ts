@@ -42,6 +42,15 @@ export class AttributesComponent implements OnInit {
       return false;
   }
 
+  getMagia() {
+    const essz = this.attrServ.getFc('esszencia')?.value;
+    const magia = this.attrServ.getFc('magia')?.value;
+    if (magia>essz) {
+      return Math.floor(essz);
+    }
+    return magia;
+  }
+
   ngOnInit(): void {
     this.attrServ.createAttributes();
   }

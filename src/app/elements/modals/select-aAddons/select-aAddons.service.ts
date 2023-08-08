@@ -4,39 +4,38 @@ import { environment } from 'src/environments/environment';
 import { ModalService } from '../modal.service';
 import { Subject, map } from 'rxjs';
 import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';
-import { SelectWAddonsComponent } from './select-wAddons.component';
-import { WAddonsModel } from 'src/app/characters/chars-subforms/weapons/weapons.model';
-import { WeaponsService } from 'src/app/characters/chars-subforms/weapons/weapons.service';
+import { SelectAAddonsComponent } from './select-aAddons.component';
+import { ArmorsService } from 'src/app/characters/chars-subforms/armors/armors.service';
+import { AAddonsModel } from 'src/app/characters/chars-subforms/armors/armors.model';
 
-const BACKEND_URL = environment.apiUrl + "/wAddon/";
+const BACKEND_URL = environment.apiUrl + "/aAddon/";
 
 @Injectable({
   providedIn: 'root'
 })
-export class SelectWAddonService {
+export class SelectAAddonService {
 
   constructor(
     private http: HttpClient,
     private modalServ: ModalService,
     private resServ: ResourcesService,
-    private weaponsServ: WeaponsService,
+    private armorsServ: ArmorsService,
   ) { }
 
-  public wAddonsList: WAddonsModel[] = [];
-  private wAddonsUpdated = new Subject<{wAddons: WAddonsModel[]}>();
+  public aAddonsList: AAddonsModel[] = [];
+  private aAddonsUpdated = new Subject<{aAddons: AAddonsModel[]}>();
 
-  getWAddons() {
+  getAAddons() {
     return this.http
     .get<{ message: string; addons: any}>(BACKEND_URL + "list")
     .pipe(
       map(w => {
         return {
-          wAddons: (w as any).addons.map((w: any) => {
+          aAddons: (w as any).addons.map((w: any) => {
             return {
               _id: w._id,
               nev: w.addonName,
-              csoport: w.addonCategory,
-              kieg: w.addonPlace,
+              csoport: w.addonPlace,
               suly: w.addonAddWeight,
               sulySzorzo: w.addonMultiWeight,
               ar: w.addonAddPrice,
@@ -48,24 +47,23 @@ export class SelectWAddonService {
       })
       )
       .subscribe((w: any) => {
-      this.wAddonsList = w.wAddons;
-      this.wAddonsUpdated.next({
-        wAddons: [...this.wAddonsList]
+      this.aAddonsList = w.aAddons;
+      this.aAddonsUpdated.next({
+        aAddons: [...this.aAddonsList]
       });
     });
   }
 
-  getWAddonsUpdateListener() {
-    return this.wAddonsUpdated.asObservable();
+  getAAddonsUpdateListener() {
+    return this.aAddonsUpdated.asObservable();
   }
 
-  openModal(i:number, csoport: string, exclude: Array<string>) {
-    this.modalServ.openModal(SelectWAddonsComponent, {
+  openModal(i:number, csoport: string) {
+    this.modalServ.openModal(SelectAAddonsComponent, {
       moneyFilter: this.resServ.getFc('elkolthetoToke').value,
       csoportFilter: csoport,
-      excludeArr: exclude
     }).subscribe(
-      w => this.weaponsServ.addWAddon(w, i)
+      w => this.armorsServ.addAAddon(w, i)
     );
   }
 

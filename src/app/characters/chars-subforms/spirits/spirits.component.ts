@@ -18,7 +18,7 @@ export class SpiritsComponent {
     public resServ: ResourcesService,
     public sSpiritServ: SelectSpiritsService,
     public lvlContServ: LevelcontrolService,
-    public attrServ: AttributesService
+    public attrServ: AttributesService,
   ) { }
 
   public get spirits(): FormArray | null | any {
@@ -36,10 +36,12 @@ export class SpiritsComponent {
     return csopArrUniq;
   }
 
-  getControls() {
-    const controls = (this.spiritsServ.spiritsForm.get('spirits') as FormArray).controls;
-    return controls;
-
+  decSzolgalat(i: number) {
+    const szolgalat = (this.spiritsServ.spiritsForm.get('spirits') as FormArray).at(i).get('szolgalatok');
+    if (szolgalat?.value <= 0) {
+      return;
+    }
+    return szolgalat?.patchValue(szolgalat?.value-1);
   }
 
   ngOnInit(): void {

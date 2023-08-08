@@ -26,18 +26,19 @@ export class CharsListService {
         return {
           chars: w.chars.map((char: CharModel) => {
             return {
-             _id: char._id,
+              _id: char._id,
               creatorName: char.creatorName,
               creatorId: char.creatorId,
-              teljesnev: char.teljesnev,
+              becenev: char.becenev,
               dns: char.dns,
+              anyanyelv: char.anyanyelv,
             };
           })
         };
       })
     )
-    .subscribe(wx => {
-      this.charsList = wx.chars;
+    .subscribe(w => {
+      this.charsList = w.chars;
       this.charsUpdated.next({
         chars: [...this.charsList]
       });

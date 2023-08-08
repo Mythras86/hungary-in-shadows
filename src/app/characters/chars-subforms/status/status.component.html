@@ -56,13 +56,13 @@
   <span class="itemCont w100">
     <div class="w50">
       <div class="ntl text1">Kezdeményezés</div>
-      <div class="text1" [ngClass]="toggleColor(getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot')))">
+      <div class="text2" [ngClass]="toggleColor(getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot')))">
         {{attrServ.getFc('kezdemenyezes')?.value}}*d6 + {{attrServ.getAkcio()+getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot'))}}
       </div>
     </div>
     <div class="w50">
       <div class="ntl text1">Pusztakezes</div>
-      <div class="ngrn text1">
+      <div class="ngrn text2">
         {{getPusztakez()}}
       </div>
     </div>
@@ -71,14 +71,14 @@
   <span class="itemCont w100">
     <div class="w50">
       <div class="ntl text1">Méretkateg.</div>
-      <div class="ngrn text1">
+      <div class="ngrn text2">
         {{getMeretkateg()}}
       </div>
     </div>
     <div class="w50">
       <div class="ntl text1">Páncél</div>
-      <div class="text1" [ngClass]="toggleColor(armorsServ.getFc('armorRating')?.value)">
-        {{armorsServ.getFc('armorRating')?.value}}
+      <div class="text2" [ngClass]="toggleColor(statServ.getFc('armorLevel')?.value)">
+        {{statServ.getFc('armorLevel')?.value}}
       </div>
     </div>
   </span>
@@ -87,13 +87,13 @@
   <span class="itemCont w100">
     <div class="w50">
       <div class="ntl text1">Kocka módosító</div>
-      <div class="text1" [ngClass]="toggleColor(getMaxMod('pinhentsegAllapot', 'taplaltsagAllapot')-3)">
+      <div class="text2" [ngClass]="toggleColor(getMaxMod('pinhentsegAllapot', 'taplaltsagAllapot')-3)">
         {{getMaxMod('pinhentsegAllapot', 'taplaltsagAllapot')-3}}
       </div>
     </div>
     <div class="w50">
       <div class="ntl text1">Célszám módosító</div>
-      <div class="text1" [ngClass]="toggleColor(getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot')))">
+      <div class="text2" [ngClass]="toggleColor(getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot')))">
         {{getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot'))}}
       </div>
     </div>

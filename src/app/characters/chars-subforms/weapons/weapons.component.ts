@@ -18,7 +18,7 @@ export class WeaponsComponent {
     public resServ: ResourcesService,
     public sWeaponServ: SelectWeaponService,
     public lvlContServ: LevelcontrolService,
-    public sAddonServ: SelectWAddonService
+    public sWAddonServ: SelectWAddonService
   ) { }
 
   public get weapons(): FormArray | null | any {
@@ -30,7 +30,10 @@ export class WeaponsComponent {
 
   getWAddons(i: number): FormArray | null | any {
     const addons = this.weapons.at(i).get('addons') as FormArray;
-    return addons;
+    if (addons) {
+      return addons;
+    }
+    return null;
   }
 
   getCsoportok():Array<any> {
@@ -64,6 +67,11 @@ export class WeaponsComponent {
       return 'F';
     }
     return 'K';
+  }
+
+  getLenght(i: number):number {
+    const length: Array<string> = (this.weaponsServ.weaponsForm.get('weapons') as FormArray).at(i).get('felszerelt')?.value;
+    return length.length ?? 0;
   }
 
   ngOnInit(): void {

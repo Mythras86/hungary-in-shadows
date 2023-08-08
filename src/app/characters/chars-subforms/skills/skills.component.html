@@ -18,21 +18,21 @@
         <div class="nbl text1 w50">{{s.nev}}</div>
         <div class="nrng text1 center w20">{{s.kapTul}}</div>
         <app-levelcontrol class="w10"
-          [isEnabled]="resServ.getFc('elkolthetoKarma').value >= 2"
+          [isEnabled]="resServ.getFc('elkolthetoKarma').value >= getKarmaCost(s.csoport)"
           (buttonAction)="lvlContServ.buttonAction(
             s.nev,
             getMegjFromUtil(s.nev),
             5,
             ' Szint',
             0,
-            2,
+            getKarmaCost(s.csoport),
             0,
             skillsServ.getFc(i, 'szint'),
             s.szint,
             6
           )"
         ></app-levelcontrol>
-        <div class="ngrn text1 center w20">{{s.szint}}</div>
+        <div class="ngrn text2 center w20">{{s.szint}}</div>
 
         <button class="w10 deleteItem" type="button" (click)="skillsServ.removeSkill(i)">X</button>
         <div class="grayCell text1 w80">{{s.megjegyzes}}</div>

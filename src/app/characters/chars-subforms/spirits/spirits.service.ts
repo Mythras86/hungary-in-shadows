@@ -27,22 +27,24 @@ export class SpiritsService {
     dataset.forEach(e => {
       spirits.push(
         this.fb.group({
-          spiritName: e.spiritName,
-          spiritCategory: e.spiritCategory,
-          spiritSkills: e.spiritSkills,
-          spiritDesc: e.spiritDesc,
-          spiritFizEro: e.spiritFizEro,
-          spiritFizGyo: e.spiritFizGyo,
-          spiritFizUgy: e.spiritFizUgy,
-          spiritFizAll: e.spiritFizAll,
-          spiritAsztEro: e.spiritAsztEro,
-          spiritAsztGyo: e.spiritAsztGyo,
-          spiritAsztUgy: e.spiritAsztUgy,
-          spiritAsztAll: e.spiritAsztAll,
-          spiritLevel: e.spiritLevel,
-          spiritServices: e.spiritServices,
-          spiritTotalPrice: e.spiritTotalPrice,
-          spiritTotalKarma: e.spiritTotalKarma,
+          _id: e._id,
+          nev: e.nev,
+          csoport: e.csoport,
+          kepessegek: e.kepessegek,
+          fizEro: e.fizEro,
+          fizGyo: e.fizGyo,
+          fizUgy: e.fizUgy,
+          fizKit: e.fizKit,
+          asztEro: e.asztEro,
+          asztGyo: e.asztGyo,
+          asztUgy: e.asztUgy,
+          asztKit: e.asztKit,
+          szint: e.szint,
+          tamadas: e.tamadas,
+          szolgalatok: e.szolgalatok,
+          ar: e.ar,
+          karma: e.karma,
+          megjegyzes: e.megjegyzes
         }))
     });
     return spirits;
@@ -66,19 +68,21 @@ export class SpiritsService {
       asztUgy: [s.asztUgy, Validators.required],
       asztKit: [s.asztKit, Validators.required],
       szint: [1, Validators.required],
+      tamadas: [s.tamadas, Validators.required],
       szolgalatok: [1, Validators.required],
-      ar: [1000, Validators.required],
+      ar: [2000, Validators.required],
       karma: [1, Validators.required],
       megjegyzes: [s.megjegyzes, Validators.required]
     });
-    this.resServ.fizetesTokebol(1000);
+    this.resServ.fizetesTokebol(2000);
     this.resServ.fizetesKarmabol(1);
     (this.spiritsForm.get('spirits') as FormArray).push(spirit);
   }
 
   removeSpirit(i:number): void {
     const szint = (this.spiritsForm.get('spirits') as FormArray).at(i).get('szint')?.value;
-    this.resServ.fizetesTokebol(-1000*szint);
+    const szolgalatok = (this.spiritsForm.get('spirits') as FormArray).at(i).get('szolgalatok')?.value;
+    this.resServ.fizetesTokebol(-1000*szint-1000*szolgalatok);
     this.resServ.fizetesKarmabol(-szint);
     (this.spiritsForm.get('spirits') as FormArray).removeAt(i);
   }

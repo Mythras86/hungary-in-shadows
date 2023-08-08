@@ -51,6 +51,13 @@ export class SkillsComponent implements OnInit {
     return megjegyzes;
   }
 
+  getKarmaCost(csoport: string): number {
+    if (csoport == 'Ismeret' || csoport == 'Nyelvi') {
+      return 1;
+    }
+    return 2;
+  }
+
   anyanyelvChangeDetector() {
     const anyanyelv = this.detailssServ.detailsForm.get('anyanyelv');
     anyanyelv?.valueChanges.subscribe(w =>{

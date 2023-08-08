@@ -16,10 +16,14 @@
       <div class="itemCont" *ngIf="e.csoport == csoport">
 
         <button class="deleteItem w10" type="button" (click)="explosivesServ.removeExplosive(i)">X</button>
-        <div class="nbl w60 text1">{{e.nev}}</div>
+        <div class="nbl w90 text1">{{e.nev}} {{e.tipus}}</div>
+
+        <div class="nrd text1 w40 center">
+          {{e.ero}}
+          ({{e.sebzes}}
+          {{getSebKod(e.sebzesTipus)}})
+        </div>
         <div class="nprpl w30 text1 center" (click)="changePlace(i)">{{e.elhelyezes}}</div>
-        <div class="grayCell text1 w40 center">{{e.tipus}}</div>
-        <div class="moneyCost text1 w30 center">{{e.ar*e.darab}} Cr</div>
         <div class="ngrn text1 w20 center">{{e.darab}} db</div>
         <app-levelcontrol class="w10"
           [isEnabled]="resServ.getFc('elkolthetoToke')?.value > e.ar"
@@ -37,13 +41,9 @@
           )"
         ></app-levelcontrol>
 
-        <div class="grayCell text1 w40 center">
-          {{e.ero}}
-          ({{e.sebzes}}
-          {{e.sebzesTipus}})
-        </div>
-        <div class="grayCell text1 w30 center">Táv: {{e.tav}}</div>
+        <div class="moneyCost text1 w40 center">{{e.ar*e.darab}} Cr</div>
         <div class="grayCell text1 w30 center">{{e.suly*e.darab}} Kg</div>
+        <div class="grayCell text1 w30 center">Sugár: {{e.tav}}</div>
 
         <div *ngIf="e.megjegyzes" class="grayCell text1 w100">{{e.megjegyzes}}</div>
 

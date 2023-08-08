@@ -78,7 +78,7 @@
     <app-tools></app-tools>
   </app-hide-content>
 
-  <app-hide-content
+  <app-hide-content [hidden]="!skillsServ.hasASkill('Kibertechnológia')"
     [arrowClass]="'nrd text2'"
     [keyWord]="'cybers'"
     >
@@ -86,7 +86,7 @@
     <app-cybers></app-cybers>
   </app-hide-content>
 
-  <app-hide-content
+  <app-hide-content [hidden]="!skillsServ.hasASkill('Varázslás')"
     [arrowClass]="'nrd text2'"
     [keyWord]="'spells'"
     >
@@ -94,7 +94,7 @@
     <app-spells></app-spells>
   </app-hide-content>
 
-  <app-hide-content
+  <app-hide-content [hidden]="!skillsServ.hasASkill('Szellem Idézés')"
     [arrowClass]="'nrd text2'"
     [keyWord]="'spirits'"
     >

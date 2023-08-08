@@ -16,8 +16,8 @@
       <div class="itemCont" *ngIf="s.csoport == csoport">
 
         <button class="deleteItem w10" type="button" (click)="spiritsServ.removeSpirit(i)">X</button>
-        <div class="ntl w60 text1">{{s.nev}}</div>
-        <div class="ngrn text1 w20 center">{{s.szint}}</div>
+        <div class="ntl w60 text1 center">{{s.nev}}</div>
+        <div class="ngrn text2 w20 center">{{s.szint}} SZ</div>
         <app-levelcontrol class="w10"
           [isEnabled]="resServ.getFc('elkolthetoKarma')?.value>2
           && resServ.getFc('elkolthetoToke')?.value>=1000 "
@@ -36,25 +36,25 @@
         ></app-levelcontrol>
 
         <span class="spAttrCont w100">
-          <div class="nbl text1 spAttr center">E</div>
-          <div class="nbl text1 spAttr center">Gy</div>
-          <div class="nbl text1 spAttr center">U</div>
-          <div class="nbl text1 spAttr center">Ki</div>
-          <div class="nbl text1 spAttr center">Ka</div>
-          <div class="nbl text1 spAttr center">In</div>
-          <div class="nbl text1 spAttr center">Lo</div>
-          <div class="nbl text1 spAttr center">Ak</div>
+          <div class="nprpl text1 spAttr center">E</div>
+          <div class="nprpl text1 spAttr center">Gy</div>
+          <div class="nprpl text1 spAttr center">U</div>
+          <div class="nprpl text1 spAttr center">Ki</div>
+          <div class="nprpl text1 spAttr center">Ka</div>
+          <div class="nprpl text1 spAttr center">In</div>
+          <div class="nprpl text1 spAttr center">Lo</div>
+          <div class="nprpl text1 spAttr center">Ak</div>
         </span>
 
         <span class="spAttrCont w100">
-          <div class="ngrn text1 spAttr center">{{s.fizEro+s.szint}}</div>
-          <div class="ngrn text1 spAttr center">{{s.fizGyo+s.szint}}</div>
-          <div class="ngrn text1 spAttr center">{{s.fizUgy+s.szint}}</div>
-          <div class="ngrn text1 spAttr center">{{s.fizKit+s.szint}}</div>
-          <div class="ngrn text1 spAttr center">{{s.asztEro+s.szint}}</div>
-          <div class="ngrn text1 spAttr center">{{s.asztGyo+s.szint}}</div>
-          <div class="ngrn text1 spAttr center">{{s.asztUgy+s.szint}}</div>
-          <div class="ngrn text1 spAttr center">{{s.asztKit+s.szint}}</div>
+          <div class="grayCell text1 spAttr center">{{s.fizEro+s.szint}}</div>
+          <div class="grayCell text1 spAttr center">{{s.fizGyo+s.szint}}</div>
+          <div class="grayCell text1 spAttr center">{{s.fizUgy+s.szint}}</div>
+          <div class="grayCell text1 spAttr center">{{s.fizKit+s.szint}}</div>
+          <div class="grayCell text1 spAttr center">{{s.asztEro+s.szint}}</div>
+          <div class="grayCell text1 spAttr center">{{s.asztGyo+s.szint}}</div>
+          <div class="grayCell text1 spAttr center">{{s.asztUgy+s.szint}}</div>
+          <div class="grayCell text1 spAttr center">{{s.asztKit+s.szint}}</div>
         </span>
 
         <div class="itemCont w25">
@@ -79,15 +79,18 @@
         </div>
 
         <div class="itemCont w25">
-          <div class="nbl text1 w100 center">Kocka</div>
+          <div class="nbl text1 w100 center">Sebzés</div>
             <div class="ngrn text2 w100 center">
-              {{spiritsServ.getKockatart(i)}}
+              {{s.szint+3}} ({{s.tamadas}})
             </div>
           </div>
 
-          <div class="w40 ngrn text1 center">
+          <div class="w30 ngrn text1 center">
             {{s.szolgalatok}} szolgálat
           </div>
+
+          <button class="w10 text1 center deleteItem" (click)="decSzolgalat(i)" type="button">&#9660;</button>
+
           <app-levelcontrol class="w10"
             [isEnabled]="resServ.getFc('elkolthetoKarma')?.value>2
             && resServ.getFc('elkolthetoToke')?.value>=1000 "
@@ -100,7 +103,7 @@
               0,
               0,
               spiritsServ.getFcArr(i, 'szolgalatok'),
-              s.szolgalatok-1,
+              s.szolgalatok,
               attrServ.getTulErtek('asztEro')*2
               )"
           ></app-levelcontrol>

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
 import { AttributesService } from '../attributes/attributes.service';
-import { pairwise, startWith } from 'rxjs';
 import { CybersModel } from './cybers.model';
 
 @Injectable({
