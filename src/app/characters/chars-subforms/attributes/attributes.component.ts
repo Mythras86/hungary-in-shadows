@@ -52,6 +52,5 @@ export class AttributesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.attrServ.createAttributes();
   }
 }

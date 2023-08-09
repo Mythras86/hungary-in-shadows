@@ -41,11 +41,6 @@ export class SkillsComponent implements OnInit {
     return csopArrUniq;
   }
 
-  getControls() {
-    const controls = (this.skillsServ.skillsForm.get('skills') as FormArray).controls;
-    return controls;
-  }
-
   getMegjFromUtil(skillnev: string): Array<any> {
     const megjegyzes = skillsUtil.filter(x => x.nev == skillnev).map(x => x.megjegyzes);
     return megjegyzes;
@@ -60,14 +55,16 @@ export class SkillsComponent implements OnInit {
 
   anyanyelvChangeDetector() {
     const anyanyelv = this.detailssServ.detailsForm.get('anyanyelv');
+    const skill = (this.skillsServ.skillsForm.get('skills') as FormArray);
+    const iNyelv = skill?.value.map((x:any)=>x.nev).indexOf('Anyanyelvi beszéd')
+    const iIras = skill?.value.map((x:any)=>x.nev).indexOf('Anyanyelvi Í/O')
     anyanyelv?.valueChanges.subscribe(w =>{
-      this.skillsServ.addFirstLanguage('Anyanyelvi beszéd', w, 4);
-      this.skillsServ.addFirstLanguage('Anyanyelvi Í/O', w, 2);
-    })
+      skill.at(iNyelv).get('megjegyzes')?.patchValue(w),
+      skill.at(iIras).get('megjegyzes')?.patchValue(w)
+    });
   }
 
   ngOnInit(): void {
-    this.skillsServ.createSkills();
     this.anyanyelvChangeDetector();
   }
 

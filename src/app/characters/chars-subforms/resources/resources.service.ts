@@ -15,8 +15,8 @@ export class ResourcesService {
 
   createResources(): FormGroup {
     const resources = {
-      elkolthetoKarma: [350, Validators.required],
-      elkolthetoToke: [100000, Validators.required],
+      elkolthetoKarma: [400, Validators.required],
+      elkolthetoToke: [200000, Validators.required],
       karmabolToke: [0, Validators.required],
     };
     return this.resourcesForm = this.fb.group(resources);
@@ -29,10 +29,13 @@ export class ResourcesService {
   karmabolTokeChangeDetector() {
     const karmabolToke = this.resourcesForm.get('karmabolToke');
     const elkolthetoToke = this.resourcesForm.get('elkolthetoToke');
-    karmabolToke?.valueChanges.pipe(startWith(null), pairwise())
-    .subscribe(([prev, next]: [any, any]) => {
-      elkolthetoToke?.patchValue(elkolthetoToke.value+(next-prev)*7500)
-    });
+    if (this.resourcesForm) {
+      karmabolToke?.valueChanges.pipe(startWith(karmabolToke?.value), pairwise())
+      .subscribe(([prev, next]: [any, any]) => {
+        return elkolthetoToke?.patchValue(elkolthetoToke?.value+(next-prev)*7500)
+      });
+    }
+    return;
   }
 
   fizetesKarmabol(ertek: number):void {

@@ -70,15 +70,23 @@ export class SkillsService {
     return false;
   }
 
-  addFirstLanguage(langName:string, langDesc:string, baseLvl: number): void {
-    const skillsForm = this.fb.group({
-      nev: [langName, Validators.required],
+  addFirstLanguage(): void {
+    const beszed = this.fb.group({
+      nev: ['Anyanyelvi beszéd', Validators.required],
       csoport: ['Nyelvi', Validators.required],
-      megjegyzes: [langDesc],
-      szint: [baseLvl, Validators.required],
+      megjegyzes: [''],
+      szint: [4, Validators.required],
       kapTul: ['Log'],
     });
-    (this.skillsForm.get('skills') as FormArray).push(skillsForm);
+    (this.skillsForm.get('skills') as FormArray).push(beszed);
+    const iras = this.fb.group({
+      nev: ['Anyanyelvi Í/O', Validators.required],
+      csoport: ['Nyelvi', Validators.required],
+      megjegyzes: [''],
+      szint: [2, Validators.required],
+      kapTul: ['Log'],
+    });
+    (this.skillsForm.get('skills') as FormArray).push(iras);
   }
 
 }

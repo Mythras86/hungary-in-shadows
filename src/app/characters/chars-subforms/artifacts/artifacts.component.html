@@ -13,14 +13,12 @@
 
 
     <div class="w100" [formGroupName]='i' *ngFor="let a of artifacts.value; let i = index">
-
       <div class="itemCont" *ngIf="a.csoport == csoport">
-
         <div class="nbl w70 text1">{{a.nev}}</div>
         <div class="ngrn w20 text1 center">{{a.szint}} SZ</div>
         <app-levelcontrol class="w10"
-          [isEnabled]="resServ.getFc('elkolthetoToke')?.value > a.ar
-          && resServ.getFc('elkolthetoKarma')?.value > a.karma
+          [isEnabled]="resServ.getFc('elkolthetoToke')?.value >= a.ar
+          && resServ.getFc('elkolthetoKarma')?.value >= a.karma
           && a.maxSzint > a.szint"
           (buttonAction)="lvlContServ.buttonAction(
             a.nev,

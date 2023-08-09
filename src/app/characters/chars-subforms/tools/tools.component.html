@@ -38,7 +38,21 @@
         <div class="grayCell text1 w30 center">{{t.suly}} Kg</div>
         <div class="moneyCost text1 w30">{{t.ar*t.szint}} Cr</div>
         <div class="nprpl w30 text1 center" (click)="changePlace(i)">{{t.elhelyezes}}</div>
-        <div *ngIf="t.megjegyzes" class="grayCell text1 w100">{{t.megjegyzes}}</div>
+
+        <div class="grayCell text1 w90">{{t.megjegyzes}}</div>
+        <app-input-modal class="w10"
+          [isEnabled]="true"
+          (buttonAction)="inputModServ.buttonAction(
+          toolsServ.getFcArr(i, 'megjegyzes'),
+          'input',
+          'text',
+          t.nev,
+          ['Megjegyzés szerkesztése'],
+          t.megjegyzes,
+          '',
+          ''
+          )"
+        ></app-input-modal>
 
       </div>
 

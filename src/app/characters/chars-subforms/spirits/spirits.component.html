@@ -116,6 +116,21 @@
           </div>
 
         <div class="grayCell text1 w100">{{s.kepessegek}}</div>
+        <div class="grayCell text1 w90">{{s.megjegyzes}}</div>
+        <app-input-modal class="w10"
+        [isEnabled]="true"
+        (buttonAction)="inputModServ.buttonAction(
+        spiritsServ.getFcArr(i, 'megjegyzes'),
+        'input',
+        'text',
+        s.nev,
+        ['Megjegyzés szerkesztése'],
+        s.megjegyzes,
+        '',
+        ''
+        )"
+      ></app-input-modal>
+
       </div>
 
     </div>

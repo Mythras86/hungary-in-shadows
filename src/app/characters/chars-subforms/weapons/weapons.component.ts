@@ -5,6 +5,7 @@ import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelc
 import { FormArray } from '@angular/forms';
 import { SelectWeaponService } from 'src/app/elements/modals/select-weapons/select-weapons.service';
 import { SelectWAddonService } from 'src/app/elements/modals/select-wAddons/select-wAddons.service';
+import { InputModalService } from 'src/app/elements/modals/input-modal/input-modal.service';
 
 @Component({
   selector: 'app-weapons',
@@ -16,8 +17,9 @@ export class WeaponsComponent {
   constructor(
     public weaponsServ: WeaponsService,
     public resServ: ResourcesService,
-    public sWeaponServ: SelectWeaponService,
+    public inputModServ: InputModalService,
     public lvlContServ: LevelcontrolService,
+    public sWeaponServ: SelectWeaponService,
     public sWAddonServ: SelectWAddonService
   ) { }
 
@@ -42,12 +44,6 @@ export class WeaponsComponent {
     const csopArrUniq = [...new Set(csoportArr.map(x=> x))];
     csopArrUniq.sort();
     return csopArrUniq;
-  }
-
-  getControls() {
-    const controls = (this.weaponsServ.weaponsForm.get('weapons') as FormArray).controls;
-    return controls;
-
   }
 
   changePlace(i: number) {
@@ -75,6 +71,5 @@ export class WeaponsComponent {
   }
 
   ngOnInit(): void {
-    this.weaponsServ.createWeapons();
   }
 }

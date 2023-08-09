@@ -38,13 +38,6 @@ export class CybersComponent implements OnInit {
     return csopArrUniq;
   }
 
-  getControls() {
-    const controls = (this.cybersServ.cybersForm.get('cybers') as FormArray).controls;
-    return controls;
-
-  }
-
   ngOnInit(): void {
-    this.cybersServ.createCybers();
   }
 }

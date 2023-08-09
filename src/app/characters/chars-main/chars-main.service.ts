@@ -31,14 +31,6 @@ export class CharsMainService {
 
   mainCharForm!: FormGroup;
 
-  createMainForm(): void {
-    this.mainCharForm = this.fb.group({
-      _id: [''],
-      creatorName: this.authServ.getUserName(),
-      creatorId: this.authServ.getUserId(),
-    });
-  }
-
   getOneChar(_id: string) {
     return this.http.get<{
       _id: string,

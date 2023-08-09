@@ -72,6 +72,4 @@ export const skillsUtil: Array<any> = [
   {megjegyzes: 'van', nev: 'Utcai ismeretek', csoport: 'Ismeret', kapTul: 'van'},
   {megjegyzes: 'van', nev: 'Nyelvismeret', csoport: 'Nyelvi', kapTul: 'van'},
   {megjegyzes: 'van', nev: 'Írás/olvasás', csoport: 'Nyelvi', kapTul: 'van'},
-  {megjegyzes: 'van', nev: 'Anyanyelvi beszéd', csoport: 'Nyelvi', kapTul: 'van', show: false},
-  {megjegyzes: 'van', nev: 'Anyanyelvi Í/O', csoport: 'Nyelvi', kapTul: 'van', show: false},
 ];

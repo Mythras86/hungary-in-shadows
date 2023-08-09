@@ -4,7 +4,7 @@ import { ResourcesService } from '../resources/resources.service';
 import { FormArray } from '@angular/forms';
 import { SelectToolService } from 'src/app/elements/modals/select-tools/select-tools.service';
 import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
-import { SortMeService } from 'src/app/elements/sortme/sort-me.service';
+import { InputModalService } from 'src/app/elements/modals/input-modal/input-modal.service';
 
 @Component({
   selector: 'app-tools',
@@ -18,7 +18,7 @@ export class ToolsComponent implements OnInit {
     public resServ: ResourcesService,
     public stoolServ: SelectToolService,
     public lvlContServ: LevelcontrolService,
-    private sortServ: SortMeService
+    public inputModServ: InputModalService
   ) { }
 
   public get tools(): FormArray | null | any {
@@ -36,12 +36,6 @@ export class ToolsComponent implements OnInit {
     return csopArrUniq;
   }
 
-  getControls() {
-    const controls = (this.toolsServ.toolsForm.get('tools') as FormArray).controls;
-    return controls;
-
-  }
-
   changePlace(i: number) {
     const elhelyezes = (this.toolsServ.toolsForm.get('tools') as FormArray).at(i).get('elhelyezes');
 
@@ -55,6 +49,5 @@ export class ToolsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.toolsServ.createTools();
   }
 }

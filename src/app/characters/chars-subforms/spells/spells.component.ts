@@ -38,11 +38,6 @@ export class SpellsComponent implements OnInit {
     return csopArrUniq;
   }
 
-  getControls() {
-    const controls = (this.spellsServ.spellsForm.get('spells') as FormArray).controls;
-    return controls;
-  }
-
   getSebKod(){
     const tipus = this.spellsServ.spellsForm.get('tipus')?.value;
     if (tipus == 'Mana') {
@@ -52,6 +47,5 @@ export class SpellsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.spellsServ.createSpells();
   }
 }

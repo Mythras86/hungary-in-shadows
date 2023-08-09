@@ -35,12 +35,6 @@ export class ArtifactsComponent implements OnInit {
     return csopArrUniq;
   }
 
-  getControls() {
-    const controls = (this.artifactsServ.artifactsForm.get('artifacts') as FormArray).controls;
-    return controls;
-
-  }
-
   changePlace(i: number) {
     const elhelyezes = (this.artifactsServ.artifactsForm.get('artifacts') as FormArray).at(i).get('elhelyezes');
 
@@ -55,7 +49,6 @@ export class ArtifactsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.artifactsServ.createArtifacts();
   }
 }
 

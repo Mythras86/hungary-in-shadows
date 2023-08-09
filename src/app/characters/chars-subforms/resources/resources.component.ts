@@ -21,7 +21,6 @@ export class ResourcesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.resServ.createResources();
     this.resServ.karmabolTokeChangeDetector();
   }
 }

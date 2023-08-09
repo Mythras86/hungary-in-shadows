@@ -34,12 +34,6 @@ export class ExplosivesComponent {
     return csopArrUniq;
   }
 
-  getControls() {
-    const controls = (this.explosivesServ.explosivesForm.get('explosives') as FormArray).controls;
-    return controls;
-
-  }
-
   changePlace(i: number) {
     const elhelyezes = (this.explosivesServ.explosivesForm.get('explosives') as FormArray).at(i).get('elhelyezes');
 
@@ -61,6 +55,5 @@ export class ExplosivesComponent {
 
 
   ngOnInit(): void {
-    this.explosivesServ.createExplosives();
   }
 }

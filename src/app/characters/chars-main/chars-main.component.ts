@@ -60,30 +60,53 @@ export class CharsMainComponent implements OnInit, OnDestroy {
   userId: string = '';
   private authStatusSub!: Subscription;
 
+  createMainForm(): void {
+    this.charServ.mainCharForm = this.fb.group({
+      _id: [''],
+      creatorName: this.authServ.getUserName(),
+      creatorId: this.authServ.getUserId(),
+    });
+    this.weaponsServ.createWeapons();
+    this.toolsServ.createTools();
+    this.statusServ.createStatus();
+    this.spiritsServ.createSpirits();
+    this.spellsServ.createSpells();
+    this.skillsServ.createSkills();
+    this.resServ.createResources();
+    this.exploServ.createExplosives();
+    this.detailsServ.createDetails();
+    this.cybersServ.createCybers();
+    this.attrServ.createAttributes();
+    this.artifactsServ.createArtifacts();
+    this.armorsServ.createArmors();
+  }
+
+
   getCreatorId():string {
     return this.charServ.mainCharForm.get('creatorId')?.value;
   }
 
   createNewChar() {
-    var main = this.charServ.mainCharForm;
-    var details = this.detailsServ.detailsForm;
-    var res = this.resServ.resourcesForm;
-    var attrs = this.attrServ.attributesForm;
-    var skills = this.skillsServ.skillsForm;
-    var status = this.statusServ.statusForm;
-    var armors = this.armorsServ.armorsForm;
-    var artifacts = this.artifactsServ.artifactsForm;
-    var cybers = this.cybersServ.cybersForm;
-    var explosives = this.exploServ.explosivesForm;
-    var spells = this.spellsServ.spellsForm;
-    var spirits = this.spiritsServ.spiritsForm;
-    var tools = this.toolsServ.toolsForm;
-    var weapons = this.weaponsServ.weaponsForm;
+    const main = this.charServ.mainCharForm;
+    const details = this.detailsServ.detailsForm;
+    const res = this.resServ.resourcesForm;
+    const attrs = this.attrServ.attributesForm;
+    const skills = this.skillsServ.skillsForm;
+    const status = this.statusServ.statusForm;
+    const armors = this.armorsServ.armorsForm;
+    const artifacts = this.artifactsServ.artifactsForm;
+    const cybers = this.cybersServ.cybersForm;
+    const explosives = this.exploServ.explosivesForm;
+    const spells = this.spellsServ.spellsForm;
+    const spirits = this.spiritsServ.spiritsForm;
+    const tools = this.toolsServ.toolsForm;
+    const weapons = this.weaponsServ.weaponsForm;
     if (main.invalid
      || details.invalid
      || res.invalid
      || attrs.invalid
     ) {
+      console.log('invalid')
       return;
    }
    this.spinServ.toggleSpinner(true);
@@ -258,7 +281,6 @@ export class CharsMainComponent implements OnInit, OnDestroy {
       this.spinServ.toggleSpinner(true);
     });
     this.spinServ.toggleSpinner(false);
-    this.charServ.createMainForm();
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if(paramMap.has('_id')) {
         this.mode = 'edit';
@@ -266,12 +288,12 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         this.spinServ.toggleSpinner(true);
         this.charServ.getOneChar(this._id).subscribe(w => {
           this.spinServ.toggleSpinner(false);
-          this.charServ.mainCharForm = this.fb.group({
+          this.charServ.mainCharForm= this.fb.group ({
             _id: w._id,
             creatorName: w.creatorName,
-            creatorId: w.creatorId,
+            creatorId: w.creatorId
           });
-          this.detailsServ.detailsForm = this.fb.group({
+          this.detailsServ.detailsForm= this.fb.group ({
             //szöveges
             teljesnev: w.teljesnev,
             becenev: w.becenev,
@@ -298,15 +320,15 @@ export class CharsMainComponent implements OnInit, OnDestroy {
             kedvenc: w.kedvenc,
             irtozat: w.irtozat,
             vonzalom: w.vonzalom,
-            megjelenes: w.megjelenes,
+            megjelenes: w.megjelenes
           });
-          this.resServ.resourcesForm = this.fb.group({
+          this.resServ.resourcesForm= this.fb.group ({
             //erőforrások
             elkolthetoKarma: w.elkolthetoKarma,
             elkolthetoToke: w.elkolthetoToke,
-            karmabolToke: w.karmabolToke,
+            karmabolToke: w.karmabolToke
           });
-          this.attrServ.attributesForm = this.fb.group({
+          this.attrServ.attributesForm= this.fb.group ({
             //fizikai
             fizEro: w.fizEro,
             fizEroMod: w.fizEroMod,
@@ -329,37 +351,48 @@ export class CharsMainComponent implements OnInit, OnDestroy {
             magia: w.magia,
             esszencia: w.esszencia,
             kockatartalek: w.kockatartalek,
-            kezdemenyezes: w.kezdemenyezes,
+            kezdemenyezes: w.kezdemenyezes
           });
-          this.skillsServ.skillsForm.addControl('skillsForm', new FormGroup({}));
-          (this.skillsServ.skillsForm as FormGroup).addControl('skills', this.skillsServ.setSkills(w.skills));
-          this.statusServ.statusForm = this.fb.group({
+          this.statusServ.statusForm = this.fb.group ({
             fizikaiAllapot: w.fizikaiAllapot,
             asztralisAllapot: w.asztralisAllapot,
             pinhentsegAllapot: w.pinhentsegAllapot,
             taplaltsagAllapot: w.taplaltsagAllapot,
-            armorLevel: w.armorLevel,
+            armorLevel: w.armorLevel
           })
+          this.skillsServ.createSkills();
+          this.skillsServ.skillsForm.addControl('skillsForm', new FormGroup({}));
+          (this.skillsServ.skillsForm as FormGroup).addControl('skills', this.skillsServ.setSkills(w.skills));
+          this.armorsServ.createArmors();
           this.armorsServ.armorsForm.addControl('armorsForm', new FormGroup({}));
           (this.armorsServ.armorsForm as FormGroup).addControl('armors', this.armorsServ.setArmors(w.armors));
+          this.artifactsServ.createArtifacts();
           this.artifactsServ.artifactsForm.addControl('artifacts', new FormGroup({}));
           (this.artifactsServ.artifactsForm as FormGroup).addControl('artifacts', this.artifactsServ.setArtifacts(w.artifacts));
+          this.cybersServ.createCybers();
           this.cybersServ.cybersForm.addControl('cybers', new FormGroup({}));
           (this.cybersServ.cybersForm as FormGroup).addControl('cybers', this.cybersServ.setCybers(w.cybers));
+          this.exploServ.createExplosives();
           this.exploServ.explosivesForm.addControl('explosives', new FormGroup({}));
           (this.exploServ.explosivesForm as FormGroup).addControl('explosives', this.exploServ.setExplosives(w.explosives));
+          this.spellsServ.createSpells();
           this.spellsServ.spellsForm.addControl('spellsForm', new FormGroup({}));
           (this.spellsServ.spellsForm as FormGroup).addControl('spells', this.spellsServ.setSpells(w.spells));
+          this.spiritsServ.createSpirits();
           this.spiritsServ.spiritsForm.addControl('spiritsForm', new FormGroup({}));
           (this.spiritsServ.spiritsForm as FormGroup).addControl('spirits', this.spiritsServ.setSpirits(w.spirits));
+          this.toolsServ.createTools();
           this.toolsServ.toolsForm.addControl('toolsForm', new FormGroup({}));
           (this.toolsServ.toolsForm as FormGroup).addControl('tools', this.toolsServ.setTools(w.tools));
+          this.weaponsServ.createWeapons();
           this.weaponsServ.weaponsForm.addControl('weaponsForm', new FormGroup({}));
           (this.weaponsServ.weaponsForm as FormGroup).addControl('weapons', this.weaponsServ.setWeapons(w.weapons));
         });
       } else {
         this.mode = 'create';
         this._id = '';
+        this.createMainForm();
+        this.skillsServ.addFirstLanguage()
       }
     });
   }

@@ -6,6 +6,7 @@ import { SelectArmorService } from 'src/app/elements/modals/select-armors/select
 import { HideService } from 'src/app/elements/hide-content/hide-content.service';
 import { SelectAAddonService } from 'src/app/elements/modals/select-aAddons/select-aAddons.service';
 import { StatusService } from '../status/status.service';
+import { InputModalService } from 'src/app/elements/modals/input-modal/input-modal.service';
 
 @Component({
   selector: 'app-armors',
@@ -19,6 +20,7 @@ export class ArmorsComponent implements OnInit {
     public armorsServ: ArmorsService,
     public resServ: ResourcesService,
     public statusServ: StatusService,
+    public inputModServ: InputModalService,
     public sArmorServ: SelectArmorService,
     public sAAddonServ: SelectAAddonService
   ) { }
@@ -44,12 +46,6 @@ export class ArmorsComponent implements OnInit {
     const csopArrUniq = [...new Set(csoportArr.map(x=> x))];
     csopArrUniq.sort();
     return csopArrUniq;
-  }
-
-  getControls() {
-    const controls = (this.armorsServ.armorsForm.get('armors') as FormArray).controls;
-    return controls;
-
   }
 
   changePlace(i: number) {
@@ -81,6 +77,5 @@ export class ArmorsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.armorsServ.createArmors();
   }
 }

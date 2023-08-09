@@ -5,7 +5,7 @@
       <div class="w{{100-1/item.meret*1000}} ngrn text1">{{item.nev}}</div>
 
       <app-input-modal class="w{{1/item.meret*1000}}"
-        [isEnabled]="detailsServ.getFc(item.fcName)?.value == (0 || null || '') || item.tipus == 'color'"
+        [isEnabled]="true"
         (buttonAction)="inputModServ.buttonAction(
           detailsServ.getFc(item.fcName),
           item.fcName,

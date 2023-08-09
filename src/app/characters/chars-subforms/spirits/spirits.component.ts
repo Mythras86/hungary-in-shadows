@@ -5,6 +5,7 @@ import { SelectSpiritsService } from 'src/app/elements/modals/select-spirits/sel
 import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
 import { FormArray } from '@angular/forms';
 import { AttributesService } from '../attributes/attributes.service';
+import { InputModalService } from 'src/app/elements/modals/input-modal/input-modal.service';
 
 @Component({
   selector: 'app-spirits',
@@ -16,9 +17,10 @@ export class SpiritsComponent {
   constructor(
     public spiritsServ: SpiritsService,
     public resServ: ResourcesService,
-    public sSpiritServ: SelectSpiritsService,
-    public lvlContServ: LevelcontrolService,
     public attrServ: AttributesService,
+    public lvlContServ: LevelcontrolService,
+    public inputModServ: InputModalService,
+    public sSpiritServ: SelectSpiritsService,
   ) { }
 
   public get spirits(): FormArray | null | any {
@@ -45,6 +47,5 @@ export class SpiritsComponent {
   }
 
   ngOnInit(): void {
-    this.spiritsServ.createSpirits();
   }
 }
