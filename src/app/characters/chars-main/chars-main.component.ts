@@ -250,7 +250,7 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         status.value.fizikaiAllapot,
         status.value.pinhentsegAllapot,
         status.value.taplaltsagAllapot,
-        status.value.armorRating,
+        status.value.armorLevel,
         // arrayok
         skills.value.skills,
         armors.value.armors,

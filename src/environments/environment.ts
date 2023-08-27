@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://localhost:3000/api",
+  apiUrl: "http://shadowhungary-env.eba-zgvasjqe.eu-north-1.elasticbeanstalk.com/api",
 };
 
 /*

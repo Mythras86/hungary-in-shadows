@@ -64,7 +64,8 @@ export class ArmorsComponent implements OnInit {
     if (elhelyezes?.value == 'táska' && !karakteren) {
       return [
         changeAr?.patchValue(changeAr.value + szint),
-        elhelyezes.patchValue('viselt')
+        elhelyezes.patchValue('viselt'),
+        console.log(changeAr)
       ];
     }
     if (elhelyezes?.value == 'viselt') {

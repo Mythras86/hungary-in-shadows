@@ -6,7 +6,7 @@
 
   <div class="w100" *ngFor="let csoport of ['Saját karakterek', 'Más karakterek']">
 
-    <h3 class="ntl w100">{{csoport}}</h3>
+    <h3 *ngIf="userIsAuthenticated" class="ntl w100">{{csoport}}</h3>
 
     <div *ngFor="let char of charsListServ.charsList">
 
@@ -15,14 +15,14 @@
         <div class="nprpl w100 text1">User: {{char.creatorName}}</div>
         <div class="nbl w100 text1">Név: {{char.becenev}}</div>
         <div class="nrng w100 text1">Nyelv: {{char.anyanyelv}}</div>
-        <div class="ngrn w100 text1">Kaszt: {{char.dns}}</div>
+        <div class="ngrn w100 text1">DNS: {{char.dns}}</div>
 
         <div class="buttonCont w100" *ngIf="userId === char.creatorId">
           <button class="nyllw text1 w50" type="button" (click)="onUpdateChar(char._id)">Szerk.</button>
           <button class="nrd text1 w50" (click)="onDeleteChar(char._id)">Törlés</button>
         </div>
         <div class="buttonCont" *ngIf="userId !== char.creatorId">
-          <button class="ngrn text1" type="button" (click)="onUpdateChar(char._id)">Megtekintés</button>
+          <button class="ngrn text1" type="button" [disabled]="userId !== char.creatorId && !userIsAuthenticated" (click)="onUpdateChar(char._id)">Megtekintés</button>
         </div>
 
       </div>

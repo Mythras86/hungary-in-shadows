@@ -16,7 +16,9 @@
 
       <div class="itemCont" *ngIf="c.csoport == csoport">
 
-        <div class="nbl w70 text1">{{c.nev}}</div>
+
+        <button class="deleteItem w10" type="button" (click)="cybersServ.removeCyber(i)">X</button>
+        <div class="nbl w60 text1">{{c.nev}}</div>
         <div class="ngrn w20 text1 center">{{c.szint}} SZ</div>
         <app-levelcontrol class="w10"
           [isEnabled]="resServ.getFc('elkolthetoToke')?.value > c.ar
@@ -35,10 +37,13 @@
             c.maxSzint
           )"
         ></app-levelcontrol>
-        <button class="deleteItem w10" type="button" (click)="cybersServ.removeCyber(i)">X</button>
-        <div class="moneyCost text1 w40">{{c.ar*c.szint}} Cr</div>
-        <div class="essenceCost text1 w20">{{c.esszencia*c.szint}} E</div>
-        <div class="nrng w30 text1 center">max: {{c.maxSzint}} SZ</div>
+
+        <div class="nprpl w20 text1 center">{{getMinoseg(c.minoseg)}}</div>
+        <button [disabled]="c.minoseg == 3" type="button" class="text1 w10 center ngrn" (click)="cybersServ.minosegUp(i)">&#9650;</button>
+        <button [disabled]="c.minoseg == 1" type="button" class="text1 w10 center nrd" (click)="cybersServ.minosegDown(i)">&#9660;</button>
+
+        <div class="moneyCost text1 w40">{{c.ar*c.szint*c.minoseg}} Cr</div>
+        <div class="essenceCost text1 w20">{{cybersServ.getEssValue(i)}} E</div>
         <div *ngIf="c.megjegyzes" class="grayCell text1 w100">{{c.megjegyzes}}</div>
 
       </div>
