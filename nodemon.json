@@ -1,6 +1,7 @@
 {
   "env": {
     "JWT_KEY": "its_a_secret_dont_tell_anyone",
-    "DB_CONNECT": "mongodb+srv://Mythras:Sineas8689Daneya@mydevdb.igiaj.mongodb.net/charsheet"
+    "DB_CONNECT": "mongodb+srv://testUserForAws:vTrWLCEg3Mj5Jfwf@mydevdb.igiaj.mongodb.net/charsheet",
+    "original": "mongodb+srv://Mythras:Sineas8689Daneya@mydevdb.igiaj.mongodb.net/charsheet"
   }
 }
