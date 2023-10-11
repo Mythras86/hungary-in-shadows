@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //apiUrl: "localhost:3000",
-  apiUrl: "http://hungaryinshadows.eu-central-1.elasticbeanstalk.com/",
+  apiUrl: "http://localhost:3000/api",
+  //apiUrl: "http://hungaryinshadows.eu-central-1.elasticbeanstalk.com/",
 };
 
 /*
