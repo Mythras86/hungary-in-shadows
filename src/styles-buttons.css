@@ -1,0 +1,16 @@
+button {
+  justify-content: center;
+  align-items: center;
+}
+
+button:disabled {
+  background-color: lightgray;
+  color: gray;
+  text-shadow: none;
+  box-shadow: none;
+}
+
+.buttonCont {
+  display: flex;
+  flex-flow: row nowrap;
+}

@@ -1,0 +1,92 @@
+.nprpl {
+  color: rgb(255, 125, 255);
+  text-shadow: 0 0 5px rgb(136, 0, 194), 0 0 10px lightpink;
+  background-color: black;
+  box-shadow: 2px 2px 6px purple inset;
+}
+.nbl {
+  color: lightskyblue;
+  text-shadow: 0 0 3px blue, 0 0 5px lightskyblue;
+  background-color: black;
+  box-shadow: 2px 2px 6px blue inset;
+}
+.nyllw {
+  color: rgb(255, 255, 125);
+  text-shadow: 0 0 3px yellow, 0 0 5px lightyellow;
+  background-color: black;
+  box-shadow: 2px 2px 6px yellow inset;
+}
+.nrng {
+  color: rgb(255, 175, 125);
+  text-shadow: 0 0 3px orange, 0 0 5px lightgoldenrodyellow;
+  background-color: black;
+  box-shadow: 2px 2px 6px orange inset;
+}
+.nrd {
+  color: rgb(255, 125, 125);
+  text-shadow: 0 0 3px red, 0 0 5px lightcoral;
+  background-color: black;
+  box-shadow: 2px 2px 6px red inset;
+}
+.ngrn {
+  color: rgb(125, 255, 125);
+  text-shadow: 0 0 3px green, 0 0 5px lightgreen;
+  background-color: black;
+  box-shadow: 2px 2px 6px green inset;
+}
+.ntl {
+  color: rgb(125, 255, 255);
+  text-shadow: 0 0 3px turquoise, 0 0 5px rgb(125, 255, 255);
+  background-color: black;
+  box-shadow: 2px 2px 6px turquoise inset;
+}
+
+.grayCell {
+  color: black;
+  background-color: lightgray;
+  box-shadow: 2px 2px 6px black inset;
+  align-content: center;
+}
+
+.karma {
+  color: white;
+  text-shadow: 0 0 3px black, 0 0 5px darkmagenta;
+  background-color: purple;
+  box-shadow: 2px 2px 6px lightpink inset;
+  justify-content: right;
+  align-content: center;
+}
+
+.money {
+  color: white;
+  text-shadow: 0 0 3px black, 0 0 5px darkgoldenrod;
+  background-color: orange;
+  box-shadow: 2px 2px 6px lightgoldenrodyellow inset;
+  justify-content: right;
+  align-content: center;
+}
+
+.itemGet {
+  color: white;
+  text-shadow: 0 0 3px black, 0 0 5px darkgreen;
+  background-color: green;
+  box-shadow: 2px 2px 6px lightgreen inset;
+  justify-content: center;
+}
+
+.itemEdit {
+  color: white;
+  text-shadow: 0 0 3px black, 0 0 5px darkgoldenrod;
+  background-color: orange;
+  box-shadow: 2px 2px 6px lightgoldenrodyellow inset;
+  justify-content: center;
+}
+
+.itemRemove {
+  color: white;
+  text-shadow: 0 0 3px black, 0 0 5px darkred;
+  background-color: red;
+  box-shadow: 2px 2px 6px lightcoral inset;
+  justify-content: center;
+}
+

@@ -41,6 +41,11 @@ import { SelectSpiritsComponent } from './elements/modals/select-spirits/select-
 import { ExplosivesComponent } from './characters/chars-subforms/explosives/explosives.component';
 import { SelectWAddonsComponent } from './elements/modals/select-wAddons/select-wAddons.component';
 import { SelectAAddonsComponent } from './elements/modals/select-aAddons/select-aAddons.component';
+import { ButtonBuyComponent } from './elements/button-get/button-get.component';
+import { ButtonModifyComponent } from './elements/button-edit/button-edit.component';
+import { ButtonDeleteComponent } from './elements/button-remove/button-remove.component';
+import { FieldKarmaComponent } from './elements/field-karma/field-karma.component';
+import { FieldMoneyComponent } from './elements/field-money/field-money.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +87,12 @@ import { SelectAAddonsComponent } from './elements/modals/select-aAddons/select-
     SelectWeaponsComponent,
     SelectSpiritsComponent,
     SelectWAddonsComponent,
-    SelectAAddonsComponent
+    SelectAAddonsComponent,
+    ButtonBuyComponent,
+    ButtonModifyComponent,
+    ButtonDeleteComponent,
+    FieldKarmaComponent,
+    FieldMoneyComponent
   ],
   imports: [
     BrowserModule,

@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "nx serve",
-    "serve": "HungaryInShadows:serve",
-    "build": "nx build",
-    "watch": "nx build --watch --configuration development",
-    "test": "nx test",
+    "start": "ng serve",
+    "serve": "HungaryInShadows",
+    "build": "build",
+    "watch": "build --watch --configuration development",
+    "test": "test",
     "demon": "nodemon ./backend/server.js"
   },
   "private": true,
@@ -35,11 +35,8 @@
     "@angular-devkit/build-angular": "^15.1.5",
     "@angular-devkit/core": "~15.1.5",
     "@angular-devkit/schematics": "~15.1.5",
-    "@angular/cli": "~15.1.5",
+    "@angular/cli": "^15.2.10",
     "@angular/compiler-cli": "^15.1.0",
-    "@nrwl/angular": "15.9.2",
-    "@nrwl/nx-cloud": "latest",
-    "@nrwl/workspace": "15.9.2",
     "@schematics/angular": "~15.1.5",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.5.0",
@@ -48,8 +45,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-    "nodemon": "^2.0.20",
-    "nx": "16.5.0",
+    "nodemon": "^3.0.1",
     "typescript": "~4.9.4"
   },
   "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.",
@@ -70,8 +66,5 @@
   "bugs": {
     "url": "https://github.com/Mythras86/HungaryInShadows/issues"
   },
-  "homepage": "https://github.com/Mythras86/HungaryInShadows#readme",
-  "nx": {
-    "targets": {}
-  }
+  "homepage": "https://github.com/Mythras86/HungaryInShadows#readme"
 }

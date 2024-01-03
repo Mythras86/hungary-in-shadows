@@ -1,12 +1,26 @@
 <div class="pageCont">
 
   <p class="nrd text1 w100">FIGYELEM! Használat előtt olvasd el!</p>
-  <p class="nrng text1 w100">Az oldal jelenleg csak mobilis nézetre van optimalizálva. Csak mobilon, vagy vizsgálat alatt érdemes megtekinteni!</p>
+  <p class="nrng text1 w100">Az oldal jelenleg csak mobilos nézetre van optimalizálva. Csak mobilon, vagy vizsgálat alatt érdemes megtekinteni!</p>
   <p class="nyllw text1 w100">A karakterkészítő használatához regisztrálni kell és utána be kell lépni.</p>
   <p class="nprpl text1 w100">Regisztrációnál csak kitalált email címet használj, de a formátum legyen helyes!</p>
   <p class="nbl text1 w100">A felhasználói profil szerkesztése még nem elérhető.</p>
   <p class="ntl text1 w100">Karaktereket bármely felhasználó készíthet, módosíthat, vagy törölhet, de az egyéb adatbázisokhoz nincs hozzáférés.</p>
   <p class="ngrn text1 w100">Végül, ez egy hobbiprojekt, tele hibákkal, de tele lehetsőségekkel. Bárki bűvészkedhet vele, de használati útmutatót sajnos nem tudok mellékelni :p Jó szórakozást! :D</p>
 
+  <app-button-get
+  [szoveg] ="'+'"
+  [karmaKtsg] = 10
+  [tokeKtsg] = 20
+  ></app-button-get>
+
+  <app-button-remove
+  [szoveg] ="'-'"
+  [karmaKtsg] = 10
+  [tokeKtsg] = 20
+  ></app-button-remove>
+
+  <app-button-edit
+  ></app-button-edit>
 </div>
 
