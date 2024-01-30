@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { detailsUtil, dnsUtil, nemekUtil, nyelvekUtil} from './details-utility';
 import { DetailsService } from './details.service';
-import { InputModalService } from 'src/app/elements/modals/input-modal/input-modal.service';
+import { InpDetailsService } from 'src/app/elements/Inputs/inp-details/inp-details.service';
 
 @Component({
   selector: 'app-details',
@@ -11,50 +10,19 @@ import { InputModalService } from 'src/app/elements/modals/input-modal/input-mod
 export class DetailsComponent implements OnInit {
 
   constructor(
-    public detailsServ: DetailsService,
-    public inputModServ: InputModalService,
-  ) {}
+    public detailsS: DetailsService,
+    public inpDetailsS: InpDetailsService
+   ) {}
 
-  getDetailsUtil():any {
-    return detailsUtil;
-  }
+   selected: string = '';
 
-  getDefault(fcName: string):any {
-    const valasztottFaj: string = this.detailsServ.detailsForm.get('dns')?.value;
-    if (valasztottFaj !== '') {
-      if (fcName == 'eletkor') {
-        const defAge = dnsUtil.filter(x=>x.dns == valasztottFaj).map(x=>x.defAge)[0];
-        return defAge;
-      }
-      if (fcName == 'magassag') {
-        const defHeight = dnsUtil.filter(x=>x.dns == valasztottFaj).map(x=>x.defHeight)[0];
-        return defHeight;
-      }
-      if (fcName == 'testsuly') {
-        const defWieght = dnsUtil.filter(x=>x.dns == valasztottFaj).map(x=>x.defWieght)[0];
-        return defWieght;
-      }
-      if (fcName == 'kepessegek') {
-        const kepessegek: Array<any> = dnsUtil.filter(x=>x.dns == valasztottFaj).map(x=>x.defKepessegek)[0];
-        return kepessegek;
-      }
+   onSelect(fcName: string):void {
+    if (this.selected == '' || this.selected !== fcName) {
+      this.selected = fcName;
+    } else {
+      this.selected = '';
     }
-    return null;
-  }
-
-  getList(listaNev:string):Array<any> {
-    if (listaNev == 'dns') {
-      const genekLista = dnsUtil.map(x => x.dns);
-      return genekLista;
-    }
-    if (listaNev == 'nem') {
-      return nemekUtil.map(x => x);
-    }
-    if (listaNev == 'anyanyelv') {
-      return nyelvekUtil.map(x => x);
-    }
-    return [];
-  }
+   }
 
   ngOnInit(): void {
   }

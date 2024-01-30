@@ -71,7 +71,6 @@
   text-shadow: 0 0 3px black, 0 0 5px darkgreen;
   background-color: green;
   box-shadow: 2px 2px 6px lightgreen inset;
-  justify-content: center;
 }
 
 .itemEdit {
@@ -79,7 +78,6 @@
   text-shadow: 0 0 3px black, 0 0 5px darkgoldenrod;
   background-color: orange;
   box-shadow: 2px 2px 6px lightgoldenrodyellow inset;
-  justify-content: center;
 }
 
 .itemRemove {
@@ -87,6 +85,8 @@
   text-shadow: 0 0 3px black, 0 0 5px darkred;
   background-color: red;
   box-shadow: 2px 2px 6px lightcoral inset;
-  justify-content: center;
 }
 
+.selected {
+  outline: 3px solid turquoise;
+}

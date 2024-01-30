@@ -4,7 +4,7 @@ import { AttributesService } from '../attributes/attributes.service';
 import { DetailsService } from '../details/details.service';
 import { ArmorsService } from '../armors/armors.service';
 import { ResourcesService } from '../resources/resources.service';
-import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
+import { LevelcontrolService } from 'src/app/elements/Inputs/levelcontrol/levelcontrol.service';
 
 @Component({
   selector: 'app-status',

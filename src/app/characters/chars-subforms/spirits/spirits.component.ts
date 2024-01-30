@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { SpiritsService } from './spirits.service';
 import { ResourcesService } from '../resources/resources.service';
 import { SelectSpiritsService } from 'src/app/elements/modals/select-spirits/select-spirits.service';
-import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
+import { LevelcontrolService } from 'src/app/elements/Inputs/levelcontrol/levelcontrol.service';
 import { FormArray } from '@angular/forms';
 import { AttributesService } from '../attributes/attributes.service';
-import { InputModalService } from 'src/app/elements/modals/input-modal/input-modal.service';
 
 @Component({
   selector: 'app-spirits',
@@ -19,7 +18,6 @@ export class SpiritsComponent {
     public resServ: ResourcesService,
     public attrServ: AttributesService,
     public lvlContServ: LevelcontrolService,
-    public inputModServ: InputModalService,
     public sSpiritServ: SelectSpiritsService,
   ) { }
 

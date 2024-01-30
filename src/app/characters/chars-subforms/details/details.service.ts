@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { detailsUtil, dnsUtil, nemekUtil, nyelvekUtil } from './details-utility';
 
 @Injectable({
   providedIn: 'root'
@@ -45,8 +46,50 @@ export class DetailsService {
       return this.detailsForm = this.fb.group(details);
   }
 
+  getDetailsUtil():any {
+    return detailsUtil;
+  }
+
   getFc(fcName: string):any {
     return this.detailsForm.get(fcName);
   }
+
+  getDefault(fcName: string):any {
+    const valasztottFaj: string = this.detailsForm.get('dns')?.value;
+    if (valasztottFaj !== '') {
+      if (fcName == 'eletkor') {
+        const defAge: string = dnsUtil.filter(x=>x.dns == valasztottFaj).map(x=>x.defAge)[0];
+        return defAge;
+      }
+      if (fcName == 'magassag') {
+        const defHeight: string = dnsUtil.filter(x=>x.dns == valasztottFaj).map(x=>x.defHeight)[0];
+        return defHeight;
+      }
+      if (fcName == 'testsuly') {
+        const defWieght: string = dnsUtil.filter(x=>x.dns == valasztottFaj).map(x=>x.defWieght)[0];
+        return defWieght;
+      }
+      if (fcName == 'kepessegek') {
+        const kepessegek: Array<any> = dnsUtil.filter(x=>x.dns == valasztottFaj).map(x=>x.defKepessegek)[0];
+        return kepessegek;
+      }
+    }
+    return;
+  }
+
+  getList(listaNev:string):Array<any> {
+    if (listaNev == 'DNS') {
+      const genekLista = dnsUtil.map(x => x.dns);
+      return genekLista;
+    }
+    if (listaNev == 'Nem') {
+      return nemekUtil.map(x => x);
+    }
+    if (listaNev == 'Anyanyelv') {
+      return nyelvekUtil.map(x => x);
+    }
+    return [];
+  }
+
 
 }

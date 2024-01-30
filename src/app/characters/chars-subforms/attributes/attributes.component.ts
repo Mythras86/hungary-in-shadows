@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AttributesService } from './attributes.service';
 import { attributesUtil } from './attributes-utility';
 import { ResourcesService } from '../resources/resources.service';
-import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
+import { LevelcontrolService } from 'src/app/elements/Inputs/levelcontrol/levelcontrol.service';
 import { DetailsService } from '../details/details.service';
 import { dnsUtil } from '../details/details-utility';
 

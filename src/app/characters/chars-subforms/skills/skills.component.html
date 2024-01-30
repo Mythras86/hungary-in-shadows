@@ -37,20 +37,6 @@
         <button class="w10 deleteItem" type="button" (click)="skillsServ.removeSkill(i)">X</button>
         <div class="grayCell text1 w80">{{s.megjegyzes}}</div>
 
-        <app-input-modal class="w10"
-          [isEnabled]="true"
-          (buttonAction)="inputModServ.buttonAction(
-          skillsServ.getFc(i, 'megjegyzes'),
-          'input',
-          'text',
-          s.nev,
-          getMegjFromUtil(s.nev),
-          s.megjegyzes,
-          '',
-          ''
-          )"
-        ></app-input-modal>
-
       </div>
 
     </div>

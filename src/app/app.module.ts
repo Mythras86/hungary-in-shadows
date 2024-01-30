@@ -18,8 +18,7 @@ import { DetailsComponent } from './characters/chars-subforms/details/details.co
 import { ResourcesComponent } from './characters/chars-subforms/resources/resources.component';
 import { HideContentComponent } from './elements/hide-content/hide-content.component';
 import { ModalWrapperComponent } from './elements/modals/modal-wrapper.component';
-import { LevelcontrolComponent } from './elements/modals/levelcontrol//levelcontrol.component';
-import { InputModalComponent } from './elements/modals/input-modal/input-modal.component';
+import { LevelcontrolComponent } from './elements/Inputs/levelcontrol/levelcontrol.component';
 import { StatusComponent } from './characters/chars-subforms/status/status.component';
 import { SkillsComponent } from './characters/chars-subforms/skills/skills.component';
 import { SelectSkillsComponent } from './elements/modals/select-skills//select-skills.component';
@@ -41,11 +40,10 @@ import { SelectSpiritsComponent } from './elements/modals/select-spirits/select-
 import { ExplosivesComponent } from './characters/chars-subforms/explosives/explosives.component';
 import { SelectWAddonsComponent } from './elements/modals/select-wAddons/select-wAddons.component';
 import { SelectAAddonsComponent } from './elements/modals/select-aAddons/select-aAddons.component';
-import { ButtonBuyComponent } from './elements/button-get/button-get.component';
-import { ButtonModifyComponent } from './elements/button-edit/button-edit.component';
-import { ButtonDeleteComponent } from './elements/button-remove/button-remove.component';
-import { FieldKarmaComponent } from './elements/field-karma/field-karma.component';
-import { FieldMoneyComponent } from './elements/field-money/field-money.component';
+import { FieldMoneyComponent } from './elements/Fields/field-money/field-money.component';
+import { FieldKarmaComponent } from './elements/Fields/field-karma/field-karma.component';
+import { InpDetailsComponent } from './elements/Inputs/inp-details/inp-details.component';
+import { BtnOptionsComponent } from './elements/Buttons/btn-options/btn-options.component';
 
 @NgModule({
   declarations: [
@@ -58,8 +56,8 @@ import { FieldMoneyComponent } from './elements/field-money/field-money.componen
     HideContentComponent,
 
     ModalWrapperComponent,
-    InputModalComponent,
     LevelcontrolComponent,
+    InpDetailsComponent,
 
     MainComponent,
     CharsListComponent,
@@ -88,11 +86,9 @@ import { FieldMoneyComponent } from './elements/field-money/field-money.componen
     SelectSpiritsComponent,
     SelectWAddonsComponent,
     SelectAAddonsComponent,
-    ButtonBuyComponent,
-    ButtonModifyComponent,
-    ButtonDeleteComponent,
     FieldKarmaComponent,
-    FieldMoneyComponent
+    FieldMoneyComponent,
+    BtnOptionsComponent,
   ],
   imports: [
     BrowserModule,

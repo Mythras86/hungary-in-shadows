@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { resUtil } from './resources-utility';
 import {ResourcesService } from './resources.service';
-import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
+import { LevelcontrolService } from 'src/app/elements/Inputs/levelcontrol/levelcontrol.service';
 import { pairwise, startWith } from 'rxjs';
 
 @Component({

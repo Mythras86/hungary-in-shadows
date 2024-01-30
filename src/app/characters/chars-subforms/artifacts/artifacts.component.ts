@@ -3,7 +3,7 @@ import { ArtifactsService } from './artifacts.service';
 import { ResourcesService } from '../resources/resources.service';
 import { FormArray } from '@angular/forms';
 import { SelectArtifactService } from 'src/app/elements/modals/select-artifacts/select-artifacts.service';
-import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
+import { LevelcontrolService } from 'src/app/elements/Inputs/levelcontrol/levelcontrol.service';
 import { SortMeService } from 'src/app/elements/sortme/sort-me.service';
 
 @Component({

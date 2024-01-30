@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
+import { InpDetailsService } from './inp-details.service';
 
-import { InputModalService } from './input-modal.service';
 
 describe('InputModalService', () => {
-  let service: InputModalService;
+  let service: InpDetailsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(InputModalService);
+    service = TestBed.inject(InpDetailsService);
   });
 
   it('should be created', () => {

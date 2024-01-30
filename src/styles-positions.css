@@ -1,0 +1,15 @@
+.posTR {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.posRel {
+  position: relative;
+}
+
+.center {
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}

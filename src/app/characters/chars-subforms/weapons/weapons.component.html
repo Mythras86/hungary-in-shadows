@@ -37,20 +37,6 @@
         </div>
 
         <div class="grayCell text1 w90">{{w.megjegyzes}}</div>
-        <app-input-modal class="w10"
-          [isEnabled]="true"
-          (buttonAction)="inputModServ.buttonAction(
-          weaponsServ.getFcArr(i, 'megjegyzes'),
-          'input',
-          'text',
-          w.nev,
-          ['Megjegyzés szerkesztése'],
-          w.megjegyzes,
-          '',
-          ''
-          )"
-        ></app-input-modal>
-
 
         <button class="ngrn w100 text1 center" *ngIf="['Tűzfegyverek','Lőfegyverek','Közelharci fegyverek'].includes(w.csoport)
         && getLenght(i)<4"

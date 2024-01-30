@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ModalService } from '../modal.service';
+import { ModalService } from '../../modals/modal.service';
 import { LevelcontrolComponent } from './levelcontrol.component';
 import { FormControl } from '@angular/forms';
 import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';

@@ -23,19 +23,6 @@
         <div class="grayCell text1 w30 center">{{a.suly + a.kiegekSulya}} Kg</div>
         <div class="nprpl w30 text1 center" (click)="changePlace(i)">{{a.elhelyezes}}</div>
         <div class="grayCell text1 w90">{{a.megjegyzes}}</div>
-        <app-input-modal class="w10"
-          [isEnabled]="true"
-          (buttonAction)="inputModServ.buttonAction(
-          armorsServ.getFcArr(i, 'megjegyzes'),
-          'input',
-          'text',
-          a.nev,
-          ['Megjegyzés szerkesztése'],
-          a.megjegyzes,
-          '',
-          ''
-          )"
-        ></app-input-modal>
 
 
         <button class="ngrn w100 text1 center"

@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: "auth", component: AuthenticationComponent, title: "Azonosítás"},
 
   { path: "charslist", component: CharsListComponent, title: "Karakterlista"},
-  { path: "charsheet", component: CharsMainComponent, title: "Karakterlap", canActivate: [AuthGuard]},
+  { path: "charsheet", component: CharsMainComponent, title: "Karakterlap"},
   { path: "editchar/:_id", component: CharsMainComponent, title: "Karakter szerkesztés", canActivate: [AuthGuard]},
 ];
 

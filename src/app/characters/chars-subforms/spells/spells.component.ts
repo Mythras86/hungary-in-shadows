@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SpellsService } from './spells.service';
 import { ResourcesService } from '../resources/resources.service';
-import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
+import { LevelcontrolService } from 'src/app/elements/Inputs/levelcontrol/levelcontrol.service';
 import { FormArray } from '@angular/forms';
 import { SelectSpellService } from 'src/app/elements/modals/select-spells/select-spells.service';
 import { AttributesService } from '../attributes/attributes.service';

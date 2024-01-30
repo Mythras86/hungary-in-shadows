@@ -3,7 +3,7 @@ import { CybersService } from './cybers.service';
 import { ResourcesService } from '../resources/resources.service';
 import { SelectCyberService } from 'src/app/elements/modals/select-cybers/select-cybers.service';
 import { FormArray } from '@angular/forms';
-import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
+import { LevelcontrolService } from 'src/app/elements/Inputs/levelcontrol/levelcontrol.service';
 import { AttributesService } from '../attributes/attributes.service';
 
 @Component({

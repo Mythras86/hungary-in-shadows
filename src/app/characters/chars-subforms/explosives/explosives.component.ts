@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ExplosivesService } from './explosives.service';
 import { ResourcesService } from '../resources/resources.service';
-import { LevelcontrolService } from 'src/app/elements/modals/levelcontrol/levelcontrol.service';
+import { LevelcontrolService } from 'src/app/elements/Inputs/levelcontrol/levelcontrol.service';
 import { FormArray } from '@angular/forms';
 import { SelectWeaponService } from 'src/app/elements/modals/select-weapons/select-weapons.service';
 
