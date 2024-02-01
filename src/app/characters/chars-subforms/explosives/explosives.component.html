@@ -1,7 +1,7 @@
 <div class="pageCont" [formGroup]="explosivesServ.explosivesForm" *ngIf="explosivesServ.explosivesForm">
 
-  <button *ngIf="resServ.getFc('elkolthetoToke').value >= 0" class="ngrn text1" type="button" (click)="sWeaponServ.openModal(true)">Új Robbanóanyag</button>
-  <button *ngIf="resServ.getFc('elkolthetoToke').value < 0" class="grayCell text1" type="button">Nincs elég Tőkéd</button>
+  <button *ngIf="resServ.getFc('szabadToke').value >= 0" class="ngrn text1" type="button" (click)="sWeaponServ.openModal(true)">Új Robbanóanyag</button>
+  <button *ngIf="resServ.getFc('szabadToke').value < 0" class="grayCell text1" type="button">Nincs elég Tőkéd</button>
 
   <div class="w100" formArrayName="explosives" *ngFor='let csoport of getCsoportok()'>
 
@@ -25,21 +25,6 @@
         </div>
         <div class="nprpl w30 text1 center" (click)="changePlace(i)">{{e.elhelyezes}}</div>
         <div class="ngrn text1 w20 center">{{e.darab}} db</div>
-        <app-levelcontrol class="w10"
-          [isEnabled]="resServ.getFc('elkolthetoToke')?.value > e.ar"
-          (buttonAction)="lvlContServ.buttonAction(
-            e.nev,
-            'van',
-            5,
-            ' Darab',
-            e.ar,
-            0,
-            0,
-            explosivesServ.getFcArr(i, 'darab'),
-            e.darab,
-            1000
-          )"
-        ></app-levelcontrol>
 
         <div class="moneyCost text1 w40 center">{{e.ar*e.darab}} Cr</div>
         <div class="grayCell text1 w30 center">{{e.suly*e.darab}} Kg</div>

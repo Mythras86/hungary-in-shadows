@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { resUtil } from './resources-utility';
 import {ResourcesService } from './resources.service';
+import { karmaUtil, tokeUtil } from './resources-utility';
 import { LevelcontrolService } from 'src/app/elements/Inputs/levelcontrol/levelcontrol.service';
-import { pairwise, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-resources',
@@ -12,15 +11,55 @@ import { pairwise, startWith } from 'rxjs';
 export class ResourcesComponent implements OnInit {
 
   constructor(
-    public resServ: ResourcesService,
-    public lvlContServ: LevelcontrolService,
+    public resS: ResourcesService,
+    public lvlContServ: LevelcontrolService
   ) { }
 
-  getResUtil() {
-    return resUtil;
+  private alapKarma = this.resS.resourcesForm.get('alapKarma');
+  private szerzettKarma = this.resS.resourcesForm.get('szerzettKarma');
+  private elkoltottKarma = this.resS.resourcesForm.get('elkoltottKarma');
+  private szabadKarma = this.resS.resourcesForm.get('szabadKarma');
+  private alapToke = this.resS.resourcesForm.get('alapToke');
+  private szerzettToke = this.resS.resourcesForm.get('szerzettToke');
+  private elkoltottToke = this.resS.resourcesForm.get('elkoltottToke');
+  private szabadToke = this.resS.resourcesForm.get('szabadToke');
+
+  getKarmaU() {
+    return karmaUtil;
+  }
+
+  getTokeU() {
+    return tokeUtil;
+  }
+
+  detectChange(): void {
+    this.szerzettKarma?.valueChanges.subscribe(x => this.sumKarma());
+    this.elkoltottKarma?.valueChanges.subscribe(x => this.sumKarma());
+    this.szerzettToke?.valueChanges.subscribe(x => this.sumToke());
+    this.elkoltottToke?.valueChanges.subscribe(x => this.sumToke());
+  }
+
+  sumKarma(): void {
+    this.szabadKarma?.patchValue(this.alapKarma?.value + this.szerzettKarma?.value + this.elkoltottKarma?.value);
+  }
+
+  sumToke(): void {
+    this.szabadToke?.patchValue(this.alapToke?.value + this.szerzettToke?.value + this.elkoltottToke?.value);
+  }
+
+  karmaToToke(szorzo: number) {
+    this.resS.payKarma(1*szorzo);
+    this.resS.getToke(7500*szorzo);
+  }
+
+  TokeToKarma(szorzo: number) {
+    this.resS.payToke(7500*szorzo);
+    this.resS.getKarma(1*szorzo);
   }
 
   ngOnInit(): void {
-    this.resServ.karmabolTokeChangeDetector();
+    this.sumKarma();
+    this.sumToke();
+    this.detectChange();
   }
 }

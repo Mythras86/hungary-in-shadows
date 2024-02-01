@@ -3,7 +3,6 @@ import { ToolsService } from './tools.service';
 import { ResourcesService } from '../resources/resources.service';
 import { FormArray } from '@angular/forms';
 import { SelectToolService } from 'src/app/elements/modals/select-tools/select-tools.service';
-import { LevelcontrolService } from 'src/app/elements/Inputs/levelcontrol/levelcontrol.service';
 
 @Component({
   selector: 'app-tools',
@@ -16,7 +15,6 @@ export class ToolsComponent implements OnInit {
     public toolsServ: ToolsService,
     public resServ: ResourcesService,
     public stoolServ: SelectToolService,
-    public lvlContServ: LevelcontrolService,
   ) { }
 
   public get tools(): FormArray | null | any {

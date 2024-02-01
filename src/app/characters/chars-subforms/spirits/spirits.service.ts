@@ -74,16 +74,16 @@ export class SpiritsService {
       karma: [1, Validators.required],
       megjegyzes: [s.megjegyzes, Validators.required]
     });
-    this.resServ.fizetesTokebol(2000);
-    this.resServ.fizetesKarmabol(1);
+    this.resServ.payToke(2000);
+    this.resServ.payKarma(1);
     (this.spiritsForm.get('spirits') as FormArray).push(spirit);
   }
 
   removeSpirit(i:number): void {
     const szint = (this.spiritsForm.get('spirits') as FormArray).at(i).get('szint')?.value;
     const szolgalatok = (this.spiritsForm.get('spirits') as FormArray).at(i).get('szolgalatok')?.value;
-    this.resServ.fizetesTokebol(-1000*szint-1000*szolgalatok);
-    this.resServ.fizetesKarmabol(-szint);
+    this.resServ.payToke(-1000*szint-1000*szolgalatok);
+    this.resServ.payKarma(-szint);
     (this.spiritsForm.get('spirits') as FormArray).removeAt(i);
   }
 

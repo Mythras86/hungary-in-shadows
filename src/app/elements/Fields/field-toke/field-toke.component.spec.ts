@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FieldMoneyComponent } from './field-money.component';
+import { FieldTokeComponent } from './field-toke.component';
 
-describe('FieldMoneyComponent', () => {
-  let component: FieldMoneyComponent;
-  let fixture: ComponentFixture<FieldMoneyComponent>;
+describe('FieldTokeComponent', () => {
+  let component: FieldTokeComponent;
+  let fixture: ComponentFixture<FieldTokeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FieldMoneyComponent ]
+      declarations: [ FieldTokeComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FieldMoneyComponent);
+    fixture = TestBed.createComponent(FieldTokeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

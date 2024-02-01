@@ -143,8 +143,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         details.value.vonzalom,
         details.value.megjelenes,
         //erőforrások
-        res.value.elkolthetoKarma,
-        res.value.elkolthetoToke,
+        res.value.szabadKarma,
+        res.value.szabadToke,
         res.value.karmabolToke,
         //fizikai
         attrs.value.fizEro,
@@ -219,8 +219,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         details.value.vonzalom,
         details.value.megjelenes,
         //erőforrások
-        res.value.elkolthetoKarma,
-        res.value.elkolthetoToke,
+        res.value.szabadKarma,
+        res.value.szabadToke,
         res.value.karmabolToke,
         //fizikai
         attrs.value.fizEro,
@@ -324,8 +324,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
           });
           this.resServ.resourcesForm= this.fb.group ({
             //erőforrások
-            elkolthetoKarma: w.elkolthetoKarma,
-            elkolthetoToke: w.elkolthetoToke,
+            szabadKarma: w.szabadKarma,
+            szabadToke: w.szabadToke,
             karmabolToke: w.karmabolToke
           });
           this.attrServ.attributesForm= this.fb.group ({

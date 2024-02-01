@@ -3,7 +3,6 @@ import { ModalService } from '../../modals/modal.service';
 import { LevelcontrolComponent } from './levelcontrol.component';
 import { FormControl } from '@angular/forms';
 import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';
-import { AttributesService } from 'src/app/characters/chars-subforms/attributes/attributes.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,47 +11,55 @@ export class LevelcontrolService {
 
   constructor(
     private modalServ: ModalService,
-    private resServ: ResourcesService,
-    private attrServ: AttributesService,
     ) { }
 
+    public fejlec: string = '';
+    public megjegyzes: any = '';
+    public lepes: number = 0;
+    public valto: number = 0;
+    public tokeKtsg: number = 0;
+    public karmaKtsg: number = 0;
+    public forrasControl!: FormControl;
+    public egysegF: string = '';
+    public celControl!: FormControl;
+    public egysegC: string = '';
+    public minErtek: number = 0;
+    public maxErtek: number = 0;
+
     buttonAction(
-      nev: string,
+      fejlec: string,
       megjegyzes: any,
       lepes: number,
-      egyseg: string,
-      ar: number,
-      karma: number,
-      esszencia: number,
-      forrasErtekUtv: any,
+      valto: number,
+      tokeKtsg: number,
+      karmaKtsg: number,
+      forrasControl: any,
+      egysegF: string,
+      celControl: any,
+      egysegC: string,
       minErtek: number,
       maxErtek: number,
       ) {
         this.modalServ.openModal(LevelcontrolComponent, {
-        nev: nev,
+        fejlec: fejlec,
         megjegyzes: megjegyzes,
         lepes: lepes,
-        egyseg: egyseg,
-        ar: ar,
-        karma: karma,
-        esszencia: esszencia,
-        forrasErtekUtv: forrasErtekUtv,
+        valto: valto,
+        tokeKtsg: tokeKtsg,
+        karmaKtsg: karmaKtsg,
+        forrasControl: forrasControl,
+        egysegF: egysegF,
+        celControl: celControl,
+        egysegC: egysegC,
         minErtek: minErtek,
         maxErtek: maxErtek,
       }).subscribe(
-        w => this.updateData(w, ar, karma, esszencia, forrasErtekUtv),
+        w => this.updateData(w),
       );
     }
 
-    updateData(w: number, ar: number, karma: number, esszencia: number, forras: FormControl): void[] {
-      return [
-        // jutalom
-        forras.patchValue(forras.value + w),
-        // kifizetés
-        this.resServ.fizetesTokebol(w*ar),
-        this.resServ.fizetesKarmabol(w*karma),
-        this.attrServ.fizetesEsszenciabol(w*esszencia),
-      ];
+    updateData(w:number): number {
+      return w;
     }
 
 }

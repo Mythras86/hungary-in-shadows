@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SkillsService } from './skills.service';
-import { LevelcontrolService } from 'src/app/elements/Inputs/levelcontrol/levelcontrol.service';
 import { skillsUtil } from './skills.util';
 import { FormArray} from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
@@ -17,7 +16,6 @@ export class SkillsComponent implements OnInit {
   constructor(
     public skillsServ: SkillsService,
     public detailssServ: DetailsService,
-    public lvlContServ: LevelcontrolService,
     public resServ: ResourcesService,
     public selSkillsModalServ: SelectSkillsService,
   ) { }

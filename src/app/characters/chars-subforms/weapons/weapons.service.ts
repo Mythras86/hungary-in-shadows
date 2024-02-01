@@ -95,14 +95,14 @@ export class WeaponsService {
       megjegyzes: [w.megjegyzes, Validators.required],
       addons: this.fb.array([])
     });
-    this.resServ.fizetesTokebol(w.ar);
+    this.resServ.payToke(w.ar);
     return (this.weaponsForm.get('weapons') as FormArray).push(weapon);
   }
 
   removeWeapon(i:number): void {
     const arVissza = (this.weaponsForm.get('weapons') as FormArray).at(i).get('ar')?.value;
     const arVisszaKieggel = arVissza + (this.weaponsForm.get('weapons') as FormArray).at(i).get('kiegekAra')?.value;
-    this.resServ.fizetesTokebol(-arVisszaKieggel);
+    this.resServ.payToke(-arVisszaKieggel);
     (this.weaponsForm.get('weapons') as FormArray).removeAt(i);
   }
 
@@ -127,14 +127,14 @@ export class WeaponsService {
     weapon.get('kiegekAra')?.patchValue(weapon.get('kiegekAra')?.value + kiegAr);
     weapon.get('kiegekSulya')?.patchValue(weapon.get('kiegekSulya')?.value + kiegSuly);
     this.felszerel(i, w.kieg);
-    this.resServ.fizetesTokebol(kiegAr);
+    this.resServ.payToke(kiegAr);
     return (weapon.get('addons') as FormArray).push(addon);
   }
 
   removeWAddon(wi:number, ai:number): void {
     const addon = (this.weaponsForm.get('weapons') as FormArray).at(wi).get('addons') as FormArray;
     const arVissza = addon.at(ai).get('ar')?.value;
-    this.resServ.fizetesTokebol(-arVissza);
+    this.resServ.payToke(-arVissza);
     addon.removeAt(ai);
   }
 

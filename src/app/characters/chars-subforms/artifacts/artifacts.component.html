@@ -1,7 +1,7 @@
 <div class="pageCont" [formGroup]="artifactsServ.artifactsForm" *ngIf="artifactsServ.artifactsForm">
 
-  <button *ngIf="resServ.getFc('elkolthetoToke').value >= 0" class="ngrn text1" type="button" (click)="sArtifServ.openModal()">Új Ereklye</button>
-  <button *ngIf="resServ.getFc('elkolthetoToke').value < 0" class="grayCell text1" type="button">Nincs elég Tőkéd</button>
+  <button *ngIf="resServ.getFc('szabadToke').value >= 0" class="ngrn text1" type="button" (click)="sArtifServ.openModal()">Új Ereklye</button>
+  <button *ngIf="resServ.getFc('szabadToke').value < 0" class="grayCell text1" type="button">Nincs elég Tőkéd</button>
 
   <div class="w100" formArrayName="artifacts" *ngFor='let csoport of getCsoportok()'>
 
@@ -16,23 +16,6 @@
       <div class="itemCont" *ngIf="a.csoport == csoport">
         <div class="nbl w70 text1">{{a.nev}}</div>
         <div class="ngrn w20 text1 center">{{a.szint}} SZ</div>
-        <app-levelcontrol class="w10"
-          [isEnabled]="resServ.getFc('elkolthetoToke')?.value >= a.ar
-          && resServ.getFc('elkolthetoKarma')?.value >= a.karma
-          && a.maxSzint > a.szint"
-          (buttonAction)="lvlContServ.buttonAction(
-            a.nev,
-            'van',
-            5,
-            ' Szint',
-            a.ar,
-            a.karma,
-            0,
-            artifactsServ.getFcArr(i, 'szint'),
-            a.szint,
-            a.maxSzint
-          )"
-        ></app-levelcontrol>
         <button class="deleteItem w10" type="button" (click)="artifactsServ.removeArtifact(i)">X</button>
         <div class="moneyCost text1 w40">{{a.ar*a.szint}} Cr</div>
         <div class="karmaCost text1 w20">{{a.karma*a.szint}} K</div>

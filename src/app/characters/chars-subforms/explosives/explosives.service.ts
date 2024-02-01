@@ -68,14 +68,14 @@ export class ExplosivesService {
       darab: [1, Validators.required],
       megjegyzes: [e.megjegyzes, Validators.required],
     });
-    this.resServ.fizetesTokebol(e.ar);
+    this.resServ.payToke(e.ar);
     (this.explosivesForm.get('explosives') as FormArray).push(explosive);
   }
 
   removeExplosive(i:number): void {
     const arVissza = (this.explosivesForm.get('explosives') as FormArray).at(i).get('ar')?.value;
     const darab = (this.explosivesForm.get('explosives') as FormArray).at(i).get('darab')?.value;
-    this.resServ.fizetesTokebol(-arVissza*darab);
+    this.resServ.payToke(-arVissza*darab);
     (this.explosivesForm.get('explosives') as FormArray).removeAt(i);
   }
 

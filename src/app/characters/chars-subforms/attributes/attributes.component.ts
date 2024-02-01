@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AttributesService } from './attributes.service';
 import { attributesUtil } from './attributes-utility';
 import { ResourcesService } from '../resources/resources.service';
-import { LevelcontrolService } from 'src/app/elements/Inputs/levelcontrol/levelcontrol.service';
 import { DetailsService } from '../details/details.service';
-import { dnsUtil } from '../details/details-utility';
 
 @Component({
   selector: 'app-attributes',
@@ -16,7 +14,6 @@ export class AttributesComponent implements OnInit {
   constructor(
     public attrServ: AttributesService,
     public resServ: ResourcesService,
-    public lvlContServ: LevelcontrolService,
     public detailsServ: DetailsService,
   ) {}
 
@@ -31,7 +28,7 @@ export class AttributesComponent implements OnInit {
   }
 
   buttonStatus(fcName: string, attrMax: number):boolean {
-    const karma = this.resServ.getFc('elkolthetoKarma').value;
+    const karma = this.resServ.getFc('szabadKarma').value;
     const fcvalue = this.attrServ.getFc(fcName).value;
     if (
       karma >= 3

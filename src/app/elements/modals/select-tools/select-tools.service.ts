@@ -59,7 +59,7 @@ export class SelectToolService {
 
     openModal() {
       this.modalServ.openModal(SelectToolsComponent, {
-        moneyFilter: this.resServ.getFc('elkolthetoToke').value,
+        moneyFilter: this.resServ.getFc('szabadToke').value,
       }).subscribe(
         w => this.toolsServ.addTool(w));
     }

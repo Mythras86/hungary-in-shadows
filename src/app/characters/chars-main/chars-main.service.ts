@@ -64,8 +64,8 @@ export class CharsMainService {
       vonzalom: string,
       megjelenes: string,
       //erőforrások
-      elkolthetoKarma: number,
-      elkolthetoToke: number,
+      szabadKarma: number,
+      szabadToke: number,
       karmabolToke: number,
       //fizikai
       fizEro: number,
@@ -149,8 +149,8 @@ export class CharsMainService {
     vonzalom: string,
     megjelenes: string,
     //erőforrások
-    elkolthetoKarma: number,
-    elkolthetoToke: number,
+    szabadKarma: number,
+    szabadToke: number,
     karmabolToke: number,
     //fizikai
     fizEro: number,
@@ -232,8 +232,8 @@ export class CharsMainService {
       vonzalom: vonzalom,
       megjelenes: megjelenes,
       //erőforrások
-      elkolthetoKarma: elkolthetoKarma,
-      elkolthetoToke: elkolthetoToke,
+      szabadKarma: szabadKarma,
+      szabadToke: szabadToke,
       karmabolToke: karmabolToke,
       //fizikai
       fizEro: fizEro,
@@ -321,8 +321,8 @@ export class CharsMainService {
     vonzalom: string,
     megjelenes: string,
     //erőforrások
-    elkolthetoKarma: number,
-    elkolthetoToke: number,
+    szabadKarma: number,
+    szabadToke: number,
     karmabolToke: number,
     //fizikai
     fizEro: number,
@@ -405,8 +405,8 @@ export class CharsMainService {
       vonzalom: vonzalom,
       megjelenes: megjelenes,
       //erőforrások
-      elkolthetoKarma: elkolthetoKarma,
-      elkolthetoToke: elkolthetoToke,
+      szabadKarma: szabadKarma,
+      szabadToke: szabadToke,
       karmabolToke: karmabolToke,
       //fizikai
       fizEro: fizEro,

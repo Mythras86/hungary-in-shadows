@@ -60,7 +60,7 @@ export class SelectAAddonService {
 
   openModal(i:number, csoport: string) {
     this.modalServ.openModal(SelectAAddonsComponent, {
-      moneyFilter: this.resServ.getFc('elkolthetoToke').value,
+      moneyFilter: this.resServ.getFc('szabadToke').value,
       csoportFilter: csoport,
     }).subscribe(
       w => this.armorsServ.addAAddon(w, i)

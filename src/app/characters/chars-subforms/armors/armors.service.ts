@@ -81,14 +81,14 @@ export class ArmorsService {
       elhelyezes: ['raktár', Validators.required],
       addons: this.fb.array([])
     });
-    this.resServ.fizetesTokebol(a.ar);
+    this.resServ.payToke(a.ar);
     (this.armorsForm.get('armors') as FormArray).push(armor);
   }
 
   removeArmor(i:number): void {
     const arVissza = (this.armorsForm.get('armors') as FormArray).at(i).get('ar')?.value;
     const arVisszaKieggel = arVissza + (this.armorsForm.get('armors') as FormArray).at(i).get('kiegekAra')?.value;
-    this.resServ.fizetesTokebol(-arVisszaKieggel);
+    this.resServ.payToke(-arVisszaKieggel);
     (this.armorsForm.get('armors') as FormArray).removeAt(i);
   }
 
@@ -112,14 +112,14 @@ export class ArmorsService {
     armor.get('kiegekAra')?.patchValue(armor.get('kiegekAra')?.value + kiegAr);
     armor.get('kiegekSulya')?.patchValue(armor.get('kiegekSulya')?.value + kiegSuly);
     this.felszerel(i, w._id);
-    this.resServ.fizetesTokebol(kiegAr);
+    this.resServ.payToke(kiegAr);
     return (armor.get('addons') as FormArray).push(addon);
   }
 
   removeAAddon(wi:number, ai:number): void {
     const addon = (this.armorsForm.get('armors') as FormArray).at(wi).get('addons') as FormArray;
     const arVissza = addon.at(ai).get('ar')?.value;
-    this.resServ.fizetesTokebol(-arVissza);
+    this.resServ.payToke(-arVissza);
     addon.removeAt(ai);
   }
 

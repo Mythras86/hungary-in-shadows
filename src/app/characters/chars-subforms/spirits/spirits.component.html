@@ -1,7 +1,7 @@
 <div class="pageCont" [formGroup]="spiritsServ.spiritsForm" *ngIf="spiritsServ.spiritsForm">
 
-  <button *ngIf="resServ.getFc('elkolthetoToke').value >= 0" class="ngrn text1" type="button" (click)="sSpiritServ.openModal()">Új Szellem</button>
-  <button *ngIf="resServ.getFc('elkolthetoToke').value < 0" class="grayCell text1" type="button">Nincs elég Tőkéd</button>
+  <button *ngIf="resServ.getFc('szabadToke').value >= 0" class="ngrn text1" type="button" (click)="sSpiritServ.openModal()">Új Szellem</button>
+  <button *ngIf="resServ.getFc('szabadToke').value < 0" class="grayCell text1" type="button">Nincs elég Tőkéd</button>
 
   <div class="w100" formArrayName="spirits" *ngFor='let csoport of getCsoportok()'>
 
@@ -18,22 +18,6 @@
         <button class="deleteItem w10" type="button" (click)="spiritsServ.removeSpirit(i)">X</button>
         <div class="ntl w60 text1 center">{{s.nev}}</div>
         <div class="ngrn text2 w20 center">{{s.szint}} SZ</div>
-        <app-levelcontrol class="w10"
-          [isEnabled]="resServ.getFc('elkolthetoKarma')?.value>2
-          && resServ.getFc('elkolthetoToke')?.value>=1000 "
-          (buttonAction)="lvlContServ.buttonAction(
-            s.nev,
-            'van',
-            5,
-            ' Szint',
-            1000,
-            1,
-            0,
-            spiritsServ.getFcArr(i, 'szint'),
-            s.szint,
-            attrServ.getTulErtek('asztEro')*2
-          )"
-        ></app-levelcontrol>
 
         <span class="spAttrCont w100">
           <div class="nprpl text1 spAttr center">E</div>
@@ -90,23 +74,6 @@
           </div>
 
           <button class="w10 text1 center deleteItem" (click)="decSzolgalat(i)" type="button">&#9660;</button>
-
-          <app-levelcontrol class="w10"
-            [isEnabled]="resServ.getFc('elkolthetoKarma')?.value>2
-            && resServ.getFc('elkolthetoToke')?.value>=1000 "
-            (buttonAction)="lvlContServ.buttonAction(
-              'Szolgálatok száma',
-              'van',
-              5,
-              ' db',
-              1000,
-              0,
-              0,
-              spiritsServ.getFcArr(i, 'szolgalatok'),
-              s.szolgalatok,
-              attrServ.getTulErtek('asztEro')*2
-              )"
-          ></app-levelcontrol>
 
           <div class="w30 moneyCost text1">
             {{s.ar*s.szint}} Cr

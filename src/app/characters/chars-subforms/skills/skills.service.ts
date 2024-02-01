@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { skillsUtil } from './skills.util';
 import { ResourcesService } from '../resources/resources.service';
 
 @Injectable({
@@ -33,7 +32,7 @@ export class SkillsService {
       szint: [1, Validators.required],
       kapTul: [kapTul],
     });
-    this.resServ.fizetesKarmabol(2);
+    this.resServ.payKarma(2);
     (this.skillsForm.get('skills') as FormArray).push(skills);
   }
 
@@ -53,7 +52,7 @@ export class SkillsService {
     }
 
   removeSkill(i:number): void {
-    this.resServ.fizetesKarmabol(-2);
+    this.resServ.payKarma(-2);
     (this.skillsForm.get('skills') as FormArray).removeAt(i);
   }
 

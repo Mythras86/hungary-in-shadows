@@ -3,7 +3,6 @@ import { CybersService } from './cybers.service';
 import { ResourcesService } from '../resources/resources.service';
 import { SelectCyberService } from 'src/app/elements/modals/select-cybers/select-cybers.service';
 import { FormArray } from '@angular/forms';
-import { LevelcontrolService } from 'src/app/elements/Inputs/levelcontrol/levelcontrol.service';
 import { AttributesService } from '../attributes/attributes.service';
 
 @Component({
@@ -18,7 +17,6 @@ export class CybersComponent implements OnInit {
     public resServ: ResourcesService,
     public attrServ: AttributesService,
     public sCyberServ: SelectCyberService,
-    public lvlContServ: LevelcontrolService,
   ) { }
 
   public get cybers(): FormArray | null | any {

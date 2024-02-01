@@ -32,8 +32,8 @@ exports.createChar = (req, res, next) => {
     vonzalom:req.body.vonzalom,
     megjelenes:req.body.megjelenes,
     //erőforrások
-    elkolthetoKarma: req.body.elkolthetoKarma,
-    elkolthetoToke: req.body.elkolthetoToke,
+    szabadKarma: req.body.szabadKarma,
+    szabadToke: req.body.szabadToke,
     karmabolToke: req.body.karmabolToke,
     //fizikai
     fizEro: req.body.fizEro,
@@ -134,8 +134,8 @@ exports.updateChar = (req, res, next) => {
     vonzalom:req.body.vonzalom,
     megjelenes:req.body.megjelenes,
     //erőforrások
-    elkolthetoKarma: req.body.elkolthetoKarma,
-    elkolthetoToke: req.body.elkolthetoToke,
+    szabadKarma: req.body.szabadKarma,
+    szabadToke: req.body.szabadToke,
     karmabolToke: req.body.karmabolToke,
     //fizikai
     fizEro: req.body.fizEro,

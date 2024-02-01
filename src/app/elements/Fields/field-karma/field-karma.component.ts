@@ -7,6 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class FieldKarmaComponent {
 
-  @Input() value: number = 0;
+  @Input() ertek: number = 0;
 
 }

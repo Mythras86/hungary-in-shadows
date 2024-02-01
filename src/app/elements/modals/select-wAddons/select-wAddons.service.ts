@@ -61,7 +61,7 @@ export class SelectWAddonService {
 
   openModal(i:number, csoport: string, exclude: Array<string>) {
     this.modalServ.openModal(SelectWAddonsComponent, {
-      moneyFilter: this.resServ.getFc('elkolthetoToke').value,
+      moneyFilter: this.resServ.getFc('szabadToke').value,
       csoportFilter: csoport,
       excludeArr: exclude
     }).subscribe(

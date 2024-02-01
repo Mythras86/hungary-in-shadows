@@ -40,8 +40,8 @@ export interface CharModel {
   vonzalom:string,
   megjelenes:string,
   //erőforrások
-  elkolthetoKarma: number,
-  elkolthetoToke: number,
+  szabadKarma: number,
+  szabadToke: number,
   karmabolToke: number
   //fizikai
   fizEro: number,

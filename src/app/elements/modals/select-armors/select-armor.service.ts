@@ -58,7 +58,7 @@ export class SelectArmorService {
   }
 
   openModal() {
-    this.modalServ.openModal(SelectArmorsComponent, {moneyFilter: this.resServ.getFc('elkolthetoToke').value}).subscribe(
+    this.modalServ.openModal(SelectArmorsComponent, {moneyFilter: this.resServ.getFc('szabadToke').value}).subscribe(
       w => this.armorsServ.addArmor(w)
       );
   }

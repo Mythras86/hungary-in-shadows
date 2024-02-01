@@ -13,9 +13,9 @@ import { AttributesService } from 'src/app/characters/chars-subforms/attributes/
 export class LevelcontrolComponent {
 
   constructor(
-    public lvlContServ: LevelcontrolService,
-    public resServ: ResourcesService,
-    public attrServ: AttributesService,
+    public s: LevelcontrolService,
+    public resS: ResourcesService,
+    public attrS: AttributesService,
   ) { }
 
   public canBeClosed: boolean = true;
@@ -23,65 +23,46 @@ export class LevelcontrolComponent {
 
   @Output() buttonAction: EventEmitter<void> = new EventEmitter();
 
-  public nev: string = '';
-  public megjegyzes: any = '';
-  public lepes: number = 0;
-  public egyseg: string = '';
-  public ar: number = 0;
-  public karma: number = 0;
-  public esszencia: number = 0;
-  public forrasErtekUtv!: FormControl;
-  public minErtek: number = 0;
-  public maxErtek: number = 0;
-
   public ertekValtozas: number = 0;
 
-  public isButton: boolean = true;
   @Input() isEnabled: boolean = false;
 
-  toggleIsButton() {
-    this.isButton = !this.isButton;
-  }
-
   loadData(modalData: any): void {
-    this.nev = modalData.nev;
-    this.megjegyzes = modalData.megjegyzes;
-    this.lepes = modalData.lepes;
-    this.egyseg = modalData.egyseg;
-    this.ar = modalData.ar;
-    this.karma = modalData.karma;
-    this.esszencia = modalData.esszencia;
-    this.forrasErtekUtv = modalData.forrasErtekUtv;
-    this.minErtek = modalData.minErtek;
-    this.maxErtek = modalData.maxErtek;
-    this.toggleIsButton();
+    this.s.fejlec = modalData.fejlec;
+    this.s.megjegyzes = modalData.megjegyzes;
+    this.s.lepes = modalData.lepes;
+    this.s.valto = modalData.valto;
+    this.s.tokeKtsg = modalData.tokeKtsg;
+    this.s.karmaKtsg = modalData.karmaKtsg;
+    this.s.forrasControl = modalData.forrasControl;
+    this.s.egysegF = modalData.egysegF;
+    this.s.celControl = modalData.celControl;
+    this.s.egysegC = modalData.egysegC;
+    this.s.minErtek = modalData.minErtek;
+    this.s.maxErtek = modalData.maxErtek;
   }
 
-  changeValue(lepes: number):any {
-    return this.ertekValtozas = this.ertekValtozas*1+1*lepes;
+  changeValue(lepes: number):void {
+    this.ertekValtozas = this.ertekValtozas*1+1*lepes;
   }
 
   buttonDisDec(lepes:number): boolean {
-    if (this.forrasErtekUtv?.value + this.ertekValtozas-lepes < this.minErtek) {
-      return true;
-    }
-    return false;
-  }
-
-  buttonDisInc(maxErtek:number, lepes:number): boolean {
-    if (this.forrasErtekUtv.value+this.ertekValtozas+lepes>maxErtek
-      || this.resServ.getFc('elkolthetoToke')?.value-this.ertekValtozas*this.ar-lepes*this.ar<0
-      || this.resServ.getFc('elkolthetoKarma')?.value-this.ertekValtozas*this.karma-lepes*this.karma<0
-      || this.attrServ.getFc('esszencia')?.value-this.ertekValtozas*this.esszencia-lepes*this.esszencia<0
+    if (
+      this.ertekValtozas-lepes < 0
       ) {
       return true;
     }
     return false;
   }
 
-  essCalc():number | null {
-    const essz = this.attrServ.getFc('esszencia')?.value-this.ertekValtozas*this.esszencia;
-    return Math.round(essz*1000)/1000;
+  buttonDisInc(lepes: number): boolean {
+    if (
+      lepes*this.s.karmaKtsg > (this.s.maxErtek-this.ertekValtozas*this.s.karmaKtsg) ||
+      lepes*this.s.tokeKtsg > (this.s.maxErtek-this.ertekValtozas*this.s.tokeKtsg)
+      ) {
+      return true;
+    }
+    return false;
   }
 
   onSave() {

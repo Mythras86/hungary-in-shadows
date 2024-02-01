@@ -1,7 +1,7 @@
 <div class="pageCont" [formGroup]="spellsServ.spellsForm" *ngIf="spellsServ.spellsForm">
 
-  <button *ngIf="resServ.getFc('elkolthetoToke').value >= 0" class="ngrn text1" type="button" (click)="sSpellServ.openModal()">Új Varázslat</button>
-  <button *ngIf="resServ.getFc('elkolthetoToke').value < 0" class="grayCell text1" type="button">Nincs elég Tőkéd</button>
+  <button *ngIf="resServ.getFc('szabadToke').value >= 0" class="ngrn text1" type="button" (click)="sSpellServ.openModal()">Új Varázslat</button>
+  <button *ngIf="resServ.getFc('szabadToke').value < 0" class="grayCell text1" type="button">Nincs elég Tőkéd</button>
 
   <div class="w100" formArrayName="spells" *ngFor='let csoport of getCsoportok()'>
 
@@ -23,23 +23,6 @@
         </div>
         <div class="nrd text1 w70 center">{{s.kifaradas}}</div>
         <div class="ngrn w20 text1 center">{{s.szint}} SZ</div>
-        <app-levelcontrol class="w10"
-          [isEnabled]="resServ.getFc('elkolthetoToke')?.value > 1000
-          && resServ.getFc('elkolthetoKarma')?.value > 2
-          && attrServ.getFc('magia')?.value+3 > s.szint"
-          (buttonAction)="lvlContServ.buttonAction(
-            s.nev,
-            'van',
-            5,
-            ' Szint',
-            1000,
-            2,
-            0,
-            spellsServ.getFcArr(i, 'szint'),
-            s.szint,
-            attrServ.getFc('magia')?.value+3
-            )"
-        ></app-levelcontrol>
 
         <div class="grayCell text1 w60 center">Célsz.: {{s.celszam}}</div>
         <div class="moneyCost text1 w25">{{1000*s.szint}} Cr</div>

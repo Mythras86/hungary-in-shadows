@@ -56,14 +56,14 @@ export class ToolsService {
       elhelyezes: ['raktár', Validators.required],
       megjegyzes: [t.megjegyzes, Validators.required],
     });
-    this.resServ.fizetesTokebol(t.ar);
+    this.resServ.payToke(t.ar);
     (this.toolsForm.get('tools') as FormArray).push(tool);
   }
 
   removeTool(i:number): void {
     const arVissza = (this.toolsForm.get('tools') as FormArray).at(i).get('ar')?.value;
     const szint = (this.toolsForm.get('tools') as FormArray).at(i).get('szint')?.value;
-    this.resServ.fizetesTokebol(-arVissza*szint);
+    this.resServ.payToke(-arVissza*szint);
     (this.toolsForm.get('tools') as FormArray).removeAt(i);
   }
 

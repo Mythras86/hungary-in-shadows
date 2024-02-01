@@ -15,9 +15,16 @@ export class ResourcesService {
 
   createResources(): FormGroup {
     const resources = {
-      elkolthetoKarma: [400, Validators.required],
-      elkolthetoToke: [200000, Validators.required],
-      karmabolToke: [0, Validators.required],
+      alapKarma: [200, Validators.required],
+      szerzettKarma: [0, Validators.required],
+      elkoltottKarma: [0, Validators.required],
+      szabadKarma: [0, Validators.required],
+
+      alapToke: [50000, Validators.required],
+      szerzettToke: [0, Validators.required],
+      elkoltottToke: [0, Validators.required],
+      szabadToke: [0, Validators.required],
+
     };
     return this.resourcesForm = this.fb.group(resources);
   }
@@ -26,28 +33,24 @@ export class ResourcesService {
     return this.resourcesForm.get(fcName);
   }
 
-  karmabolTokeChangeDetector() {
-    const karmabolToke = this.resourcesForm.get('karmabolToke');
-    const elkolthetoToke = this.resourcesForm.get('elkolthetoToke');
-    if (this.resourcesForm) {
-      karmabolToke?.valueChanges.pipe(startWith(karmabolToke?.value), pairwise())
-      .subscribe(([prev, next]: [any, any]) => {
-        return elkolthetoToke?.patchValue(elkolthetoToke?.value+(next-prev)*7500)
-      });
-    }
-    return;
+  payKarma(ertek: number):void {
+    const elkoltottKarma = this.resourcesForm.get('elkoltottKarma');
+    elkoltottKarma?.patchValue(elkoltottKarma.value - ertek);
   }
 
-  fizetesKarmabol(ertek: number):void {
-    const elkolthetoKarma = this.resourcesForm.get('elkolthetoKarma');
-    const ujErtek = elkolthetoKarma?.patchValue(elkolthetoKarma.value - ertek);
-    return ujErtek;
+  getKarma(ertek: number):void {
+    const szerzettKarma = this.resourcesForm.get('szerzettKarma');
+    szerzettKarma?.patchValue(szerzettKarma.value + ertek);
   }
 
-  fizetesTokebol(ertek: number):void {
-    const elkolthetoToke = this.resourcesForm.get('elkolthetoToke');
-    const ujErtek = elkolthetoToke?.patchValue(elkolthetoToke.value - ertek);
-    return ujErtek;
+  payToke(ertek: number):void {
+    const elkoltottToke = this.resourcesForm.get('elkoltottToke');
+    elkoltottToke?.patchValue(elkoltottToke.value - ertek);
+  }
+
+  getToke(ertek: number):void {
+    const szerzettToke = this.resourcesForm.get('szerzettToke');
+    szerzettToke?.patchValue(szerzettToke.value + ertek);
   }
 
 }

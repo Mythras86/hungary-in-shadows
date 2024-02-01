@@ -61,7 +61,7 @@ export class SelectCyberService {
 
   openModal() {
     this.modalServ.openModal(SelectCybersComponent, {
-      moneyFilter: this.resServ.getFc('elkolthetoToke').value,
+      moneyFilter: this.resServ.getFc('szabadToke').value,
       essenceFilter: this.attrServ.getFc('esszencia').value
     }).subscribe(
       w => this.cybersServ.addCyber(w)

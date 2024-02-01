@@ -18,22 +18,6 @@
         {{attrServ.getTulErtek(attr.fcName)}}
       </div>
 
-      <app-levelcontrol class="w10"
-        [isEnabled]="buttonStatus(attr.fcName, attr.max)"
-        (buttonAction)="lvlContServ.buttonAction(
-          attr.nev,
-          attr.megjegyzes,
-          attr.lepes,
-          attr.egyseg,
-          0,
-          3,
-          0,
-          attrServ.getFc(attr.fcName),
-          attrServ.getFc(attr.fcName)?.value,
-          6
-        )"
-      ></app-levelcontrol>
-
     </div>
   </div>
 
@@ -48,22 +32,6 @@
 
   <div class="itemCont w50">
     <div class="nbl text1 w80 center">Mágia</div>
-    <app-levelcontrol class="w20"
-      [isEnabled]="resServ.getFc('elkolthetoKarma')?.value>3
-      && attrServ.getFc('esszencia')?.value > attrServ.getFc('magia')?.value"
-      (buttonAction)="lvlContServ.buttonAction(
-        'Mágia',
-        'van',
-        6,
-        ' Pont',
-        0,
-        3,
-        0,
-        attrServ.getFc('magia'),
-        attrServ.getFc('magia')?.value,
-        6
-        )"
-    ></app-levelcontrol>
     <div class="ngrn text2 w100 center">
       {{getMagia()}}
     </div>
@@ -78,21 +46,6 @@
 
   <div class="itemCont w50">
     <div class="nbl text1 w80 center">Kockatartalék</div>
-    <app-levelcontrol class="w20"
-      [isEnabled]="resServ.getFc('elkolthetoKarma')?.value>3"
-      (buttonAction)="lvlContServ.buttonAction(
-        'Kockatartalék',
-        'van',
-        5,
-        ' Pont',
-        0,
-        3,
-        0,
-        attrServ.getFc('kockatartalek'),
-        attrServ.getFc('kockatartalek')?.value,
-        6
-      )"
-      ></app-levelcontrol>
       <div class="ngrn text2 w100 center">
         {{attrServ.getFc('kockatartalek')?.value+attrServ.getDnsMod('kockatartalek')}}
       </div>

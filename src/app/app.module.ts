@@ -40,7 +40,7 @@ import { SelectSpiritsComponent } from './elements/modals/select-spirits/select-
 import { ExplosivesComponent } from './characters/chars-subforms/explosives/explosives.component';
 import { SelectWAddonsComponent } from './elements/modals/select-wAddons/select-wAddons.component';
 import { SelectAAddonsComponent } from './elements/modals/select-aAddons/select-aAddons.component';
-import { FieldMoneyComponent } from './elements/Fields/field-money/field-money.component';
+import { FieldTokeComponent } from './elements/Fields/field-toke/field-toke.component';
 import { FieldKarmaComponent } from './elements/Fields/field-karma/field-karma.component';
 import { InpDetailsComponent } from './elements/Inputs/inp-details/inp-details.component';
 import { BtnOptionsComponent } from './elements/Buttons/btn-options/btn-options.component';
@@ -87,7 +87,7 @@ import { BtnOptionsComponent } from './elements/Buttons/btn-options/btn-options.
     SelectWAddonsComponent,
     SelectAAddonsComponent,
     FieldKarmaComponent,
-    FieldMoneyComponent,
+    FieldTokeComponent,
     BtnOptionsComponent,
   ],
   imports: [

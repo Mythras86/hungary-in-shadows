@@ -67,7 +67,7 @@ export class SelectWeaponService {
 
   openModal(status: boolean) {
     this.modalServ.openModal(SelectWeaponsComponent, {
-      moneyFilter: this.resServ.getFc('elkolthetoToke').value,
+      moneyFilter: this.resServ.getFc('szabadToke').value,
       explosives: status
     }).subscribe(
       w => {

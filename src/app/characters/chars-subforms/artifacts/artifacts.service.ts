@@ -56,8 +56,8 @@ export class ArtifactsService {
       elhelyezes: ['raktár', Validators.required],
       megjegyzes: [a.megjegyzes, Validators.required],
     });
-    this.resServ.fizetesTokebol(a.ar);
-    this.resServ.fizetesKarmabol(a.karma);
+    this.resServ.payToke(a.ar);
+    this.resServ.payKarma(a.karma);
     (this.artifactsForm.get('artifacts') as FormArray).push(artifact);
   }
 
@@ -65,8 +65,8 @@ export class ArtifactsService {
     const arVissza = (this.artifactsForm.get('artifacts') as FormArray).at(i).get('ar')?.value;
     const karmaVissza = (this.artifactsForm.get('artifacts') as FormArray).at(i).get('karma')?.value;
     const szint = (this.artifactsForm.get('artifacts') as FormArray).at(i).get('szint')?.value;
-    this.resServ.fizetesTokebol(-arVissza*szint);
-    this.resServ.fizetesKarmabol(-karmaVissza*szint);
+    this.resServ.payToke(-arVissza*szint);
+    this.resServ.payKarma(-karmaVissza*szint);
     (this.artifactsForm.get('artifacts') as FormArray).removeAt(i);
   }
 

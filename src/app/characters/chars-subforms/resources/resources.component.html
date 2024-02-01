@@ -1,37 +1,61 @@
-<div class="pageCont" [formGroup]="resServ.resourcesForm" *ngIf="resServ.resourcesForm">
+<div class="pageCont" [formGroup]="resS.resourcesForm" *ngIf="resS.resourcesForm">
 
-  <div class="itemCont w100" *ngFor='let res of getResUtil()'>
-    <div class="ngrn w40 text1">
-      {{res.nev}}
-    </div>
-    <div *ngIf="res.karmaKtsg" class="karmaCost text1 w10">
-      {{res.karmaKtsg}}
-    </div>
-    <div *ngIf="!res.karmaKtsg" class="karmaCost text1 w10">
-      0
-    </div>
+  <!-- karma értékek -->
 
-    <app-levelcontrol class="w10"
-    [isEnabled]="res.novelheto
-    && resServ.getFc(res.fcName).value < res.maxErtek"
-    (buttonAction)="lvlContServ.buttonAction(
-      res.nev,
-      res.megjegyzes,
-      res.lepes,
-      res.egyseg,
+  <div *ngFor="let res of getKarmaU()" class="w100 itemCont">
+    <div class="w40 text1 nprpl">{{res.nev}}</div>
+    <div class="w60 text1 grayCell">&#x20AD; {{resS.getFc(res.fcName)?.value}}</div>
+  </div>
+
+  <div class="w40 text1 nprpl">Szabad Karma</div>
+  <app-field-karma class="w60"
+  [ertek]="resS.getFc('szabadKarma')?.value"
+  ></app-field-karma>
+
+  <!-- tőke értékek -->
+
+  <div *ngFor="let res of getTokeU()" class="w100 itemCont">
+    <div class="w40 text1 nrng">{{res.nev}}</div>
+    <div class="w60 text1 grayCell">{{resS.getFc(res.fcName)?.value}} N&#xa5;</div>
+  </div>
+
+  <div class="w40 text1 nrng">Szabad Tőke</div>
+  <app-field-toke class="w60"
+  [ertek]="resS.getFc('szabadToke')?.value"
+  ></app-field-toke>
+
+  <div class="w100 buttonCont">
+    <button class="w40 text1 nprpl center" type="button" (click)="lvlContServ.buttonAction(
+      'Karmából Tőke',
+      '&#x20AD; 1 => 7500 N&#xa5;',
+      10,
+      7500,
       0,
       1,
-      0,
-      resServ.getFc(res.fcName),
-      resServ.getFc(res.fcName)?.value,
-      res.maxErtek
+      resS.getFc('szabadKarma'),
+      '&#x20AD;',
+      resS.getFc('szabadToke'),
+      'N&#xa5;',
+      1,
+      resS.getFc('szabadKarma')?.value
     )"
-    ></app-levelcontrol>
+    >&#x20AD; 1 => 7500 N&#xa5;</button>
 
-    <div class="w40 grayCell text1">
-      {{resServ.getFc(res.fcName).value}} {{res.egyseg}}
-    </div>
-
+    <button class="w40 text1 nrng center" type="button" (click)="lvlContServ.buttonAction(
+      'Tőkéből Karma',
+      '7500 N&#xa5; => &#x20AD; 1',
+      10,
+      1,
+      7500,
+      0,
+      resS.getFc('szabadToke'),
+      'N&#xa5;',
+      resS.getFc('szabadKarma'),
+      '&#x20AD;',
+      7500,
+      resS.getFc('szabadToke')?.value
+    )"
+    >7500 N&#xa5; => &#x20AD; 1</button>
   </div>
 
 </div>

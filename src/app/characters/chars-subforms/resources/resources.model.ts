@@ -1,5 +1,11 @@
 export interface ResourcesModel {
-  elkolthetoKarma: number;
-  elkolthetoToke: number;
-  karmabolToke: number;
+  alapKarma: number;
+  szerzettKarma: number;
+  elkoltottKarma: number;
+  szabadKarma: number;
+
+  alapToke: number;
+  szerzettToke: number;
+  elkoltottToke: number;
+  szabadToke: number;
 }

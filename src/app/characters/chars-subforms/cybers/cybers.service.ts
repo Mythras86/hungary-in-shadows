@@ -58,7 +58,7 @@ export class CybersService {
       esszencia: [c.esszencia, Validators.required],
       megjegyzes: [c.megjegyzes, Validators.required],
     });
-    this.resServ.fizetesTokebol(c.ar);
+    this.resServ.payToke(c.ar);
     this.attrServ.fizetesEsszenciabol(c.esszencia);
     (this.cybersForm.get('cybers') as FormArray).push(cyber);
   }
@@ -67,7 +67,7 @@ export class CybersService {
     const arVissza = (this.cybersForm.get('cybers') as FormArray).at(i).get('ar')?.value;
     const esszVissza = (this.cybersForm.get('cybers') as FormArray).at(i).get('esszencia')?.value;
     const szint = (this.cybersForm.get('cybers') as FormArray).at(i).get('szint')?.value;
-    this.resServ.fizetesTokebol(-arVissza*szint);
+    this.resServ.payToke(-arVissza*szint);
     this.attrServ.fizetesEsszenciabol(-esszVissza*szint);
     (this.cybersForm.get('cybers') as FormArray).removeAt(i);
   }
@@ -78,7 +78,7 @@ export class CybersService {
     const essz = (this.cybersForm.get('cybers') as FormArray).at(i).get('esszencia')?.value;
     if ((minoseg?.value+1)<=3) {
       minoseg?.patchValue(minoseg?.value+1);
-      this.resServ.fizetesTokebol(ar);
+      this.resServ.payToke(ar);
       this.attrServ.fizetesEsszenciabol(-essz*0.2);
     }
     return;
@@ -90,7 +90,7 @@ export class CybersService {
     const essz = (this.cybersForm.get('cybers') as FormArray).at(i).get('esszencia')?.value;
     if ((minoseg?.value-1)>=1) {
       minoseg?.patchValue(minoseg?.value-1);
-      this.resServ.fizetesTokebol(-ar);
+      this.resServ.payToke(-ar);
       this.attrServ.fizetesEsszenciabol(essz*0.2);
     }
     return;

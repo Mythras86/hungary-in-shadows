@@ -1,7 +1,7 @@
 <div class="pageCont" [formGroup]="weaponsServ.weaponsForm" *ngIf="weaponsServ.weaponsForm">
 
-  <button *ngIf="resServ.getFc('elkolthetoToke').value >= 0" class="ngrn text1" type="button" (click)="sWeaponServ.openModal(false)">Új Fegyver</button>
-  <button *ngIf="resServ.getFc('elkolthetoToke').value < 0" class="grayCell text1" type="button">Nincs elég Tőkéd</button>
+  <button *ngIf="resServ.getFc('szabadToke').value >= 0" class="ngrn text1" type="button" (click)="sWeaponServ.openModal(false)">Új Fegyver</button>
+  <button *ngIf="resServ.getFc('szabadToke').value < 0" class="grayCell text1" type="button">Nincs elég Tőkéd</button>
 
   <div class="w100" formArrayName="weapons" *ngFor='let csoport of getCsoportok()'>
 

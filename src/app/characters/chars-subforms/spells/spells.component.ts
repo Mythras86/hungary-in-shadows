@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SpellsService } from './spells.service';
 import { ResourcesService } from '../resources/resources.service';
-import { LevelcontrolService } from 'src/app/elements/Inputs/levelcontrol/levelcontrol.service';
 import { FormArray } from '@angular/forms';
 import { SelectSpellService } from 'src/app/elements/modals/select-spells/select-spells.service';
 import { AttributesService } from '../attributes/attributes.service';
-import { SortMeService } from 'src/app/elements/sortme/sort-me.service';
-import { SpellsModel } from './spells.model';
 
 @Component({
   selector: 'app-spells',
@@ -20,7 +17,6 @@ export class SpellsComponent implements OnInit {
     public resServ: ResourcesService,
     public attrServ: AttributesService,
     public sSpellServ: SelectSpellService,
-    public lvlContServ: LevelcontrolService,
   ) { }
 
   public get spells(): FormArray | null | any {

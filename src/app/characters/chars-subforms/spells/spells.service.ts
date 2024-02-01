@@ -60,15 +60,15 @@ export class SpellsService {
       kifaradas: [s.kifaradas, Validators.required],
       megjegyzes: [s.megjegyzes, Validators.required],
     });
-    this.resServ.fizetesTokebol(1000);
-    this.resServ.fizetesKarmabol(2);
+    this.resServ.payToke(1000);
+    this.resServ.payKarma(2);
     (this.spellsForm.get('spells') as FormArray).push(spell);
   }
 
   removeSpell(i:number): void {
     const szint = (this.spellsForm.get('spells') as FormArray).at(i).get('szint')?.value;
-    this.resServ.fizetesTokebol(-1000*szint);
-    this.resServ.fizetesKarmabol(-2*szint);
+    this.resServ.payToke(-1000*szint);
+    this.resServ.payKarma(-2*szint);
     (this.spellsForm.get('spells') as FormArray).removeAt(i);
   }
 
