@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DetailsService } from 'src/app/characters/chars-subforms/details/details.service';
 import { Subject } from 'rxjs';
+import { InpDetailsService } from './inp-details.service';
 
 @Component({
   selector: 'app-inp-details',
@@ -10,7 +11,8 @@ import { Subject } from 'rxjs';
 export class InpDetailsComponent {
 
   constructor(
-    public detailsS: DetailsService
+    public s: InpDetailsService,
+    public detailsS: DetailsService,
   ) {}
 
   @Input() mode: string = '';
@@ -40,18 +42,20 @@ export class InpDetailsComponent {
   }
 
   onSave(id:string) {
-    const input:any = document.getElementById(id);
+    const input:any = (<HTMLInputElement>document.getElementById(id)).value;
     if (this.tipus == 'number') {
-      this.closeEvent.next([id, Math.round(input.value*100)/100]);
+      this.closeEvent.next([id, Math.round(input*100)/100]);
+      this.closeEvent.complete();
+    } else {
+      console.log(input)
+      this.closeEvent.next([id, input]);
       this.closeEvent.complete();
     }
-    this.closeEvent.next([id, input.value]);
-    this.closeEvent.complete();
   }
 
   onClose() {
-    this.closeEvent.next(this.ertek),
-    this.closeEvent.complete()
+    this.closeEvent.next(this.ertek);
+    this.closeEvent.complete();
   }
 
 

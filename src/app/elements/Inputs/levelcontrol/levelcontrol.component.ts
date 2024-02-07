@@ -18,6 +18,19 @@ export class LevelcontrolComponent {
     public attrS: AttributesService,
   ) { }
 
+  public fejlec: string = '';
+  public megjegyzes: any = '';
+  public lepes: number = 0;
+  public valto: number = 0;
+  public tokeKtsg: number = 0;
+  public karmaKtsg: number = 0;
+  public forrasControl!: FormControl;
+  public egysegF: string = '';
+  public celControl!: FormControl;
+  public egysegC: string = '';
+  public minErtek: number = 0;
+  public maxErtek: number = 0;
+
   public canBeClosed: boolean = true;
   closeEvent: Subject<any> = new Subject;
 
@@ -28,18 +41,18 @@ export class LevelcontrolComponent {
   @Input() isEnabled: boolean = false;
 
   loadData(modalData: any): void {
-    this.s.fejlec = modalData.fejlec;
-    this.s.megjegyzes = modalData.megjegyzes;
-    this.s.lepes = modalData.lepes;
-    this.s.valto = modalData.valto;
-    this.s.tokeKtsg = modalData.tokeKtsg;
-    this.s.karmaKtsg = modalData.karmaKtsg;
-    this.s.forrasControl = modalData.forrasControl;
-    this.s.egysegF = modalData.egysegF;
-    this.s.celControl = modalData.celControl;
-    this.s.egysegC = modalData.egysegC;
-    this.s.minErtek = modalData.minErtek;
-    this.s.maxErtek = modalData.maxErtek;
+    this.fejlec = modalData.fejlec;
+    this.megjegyzes = modalData.megjegyzes;
+    this.lepes = modalData.lepes;
+    this.valto = modalData.valto;
+    this.tokeKtsg = modalData.tokeKtsg;
+    this.karmaKtsg = modalData.karmaKtsg;
+    this.forrasControl = modalData.forrasControl;
+    this.egysegF = modalData.egysegF;
+    this.celControl = modalData.celControl;
+    this.egysegC = modalData.egysegC;
+    this.minErtek = modalData.minErtek;
+    this.maxErtek = modalData.maxErtek;
   }
 
   changeValue(lepes: number):void {
@@ -57,8 +70,8 @@ export class LevelcontrolComponent {
 
   buttonDisInc(lepes: number): boolean {
     if (
-      lepes*this.s.karmaKtsg > (this.s.maxErtek-this.ertekValtozas*this.s.karmaKtsg) ||
-      lepes*this.s.tokeKtsg > (this.s.maxErtek-this.ertekValtozas*this.s.tokeKtsg)
+      lepes*this.karmaKtsg > (this.maxErtek-this.ertekValtozas*this.karmaKtsg) ||
+      lepes*this.tokeKtsg > (this.maxErtek-this.ertekValtozas*this.tokeKtsg)
       ) {
       return true;
     }
@@ -66,13 +79,13 @@ export class LevelcontrolComponent {
   }
 
   onSave() {
-    this.closeEvent.next(this.ertekValtozas);
+    this.closeEvent.next([this.ertekValtozas, this.karmaKtsg, this.tokeKtsg, this.valto, this.celControl]);
     this.closeEvent.complete();
   }
 
   onClose() {
-    this.closeEvent.next(null),
-    this.closeEvent.complete()
+    this.closeEvent.next(null);
+    this.closeEvent.complete();
   }
 
   ngOnInit(): void {

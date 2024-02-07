@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { ModalService } from '../../modals/modal.service';
 import { InpDetailsComponent } from './inp-details.component';
 import { DetailsService } from 'src/app/characters/chars-subforms/details/details.service';
@@ -12,6 +12,7 @@ export class InpDetailsService {
     private modalServ: ModalService,
     private detailsS: DetailsService
   ) { }
+
 
   buttonAction(
     mode: string,

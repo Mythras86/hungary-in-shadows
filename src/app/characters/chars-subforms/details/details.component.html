@@ -1,7 +1,7 @@
-<div class="pageCont" [formGroup]="detailsS.detailsForm" *ngIf="detailsS.detailsForm">
+<div class="pageCont" [formGroup]="s.detailsForm" *ngIf="s.detailsForm">
 
   <div class="w{{item.meret}} itemCont posRel"
-  *ngFor="let item of detailsS.getDetailsUtil(); first as isFirst"
+  *ngFor="let item of s.getDetailsUtil(); first as isFirst"
   (click)="onSelect(item.fcName)"
   >
 
@@ -12,8 +12,8 @@
     [egyseg] = "item.egyseg"
     [fcName] = "item.fcName"
     [megjegyzes] = "item.megjegyzes"
-    [ertek] = "detailsS.getFc(item.fcName)?.value"
-    [lista] = "detailsS.getList(item.nev)"
+    [ertek] = "s.getFc(item.fcName)?.value"
+    [lista] = "s.getList(item.fcName)"
     ></app-inp-details>
 
     <app-btn-options *ngIf="selected == item.fcName" class="posTR"
@@ -23,9 +23,9 @@
       item.tipus,
       item.egyseg,
       item.fcName,
-      item.megjegyzes + (detailsS.getDefault(item.fcName) == undefined ? '' : ' ' + detailsS.getDefault(item.fcName)),
-      detailsS.getFc(item.fcName)?.value,
-      detailsS.getList(item.fcName)
+      item.megjegyzes + (s.getDefault(item.fcName) == undefined ? '' : ' ' + s.getDefault(item.fcName)),
+      s.getFc(item.fcName)?.value,
+      s.getList(item.fcName)
       )"
     ></app-btn-options>
 
@@ -35,7 +35,7 @@
     <div class="ngrn text1 w100">
       Különleges képességek
     </div>
-    <div class="grayCell w100 text1" *ngFor="let item of detailsS.getDefault('kepessegek')">
+    <div class="grayCell w100 text1" *ngFor="let item of s.getDefault('kepessegek')">
       {{item}}
     </div>
   </div>

@@ -2,14 +2,14 @@
 
 <!-- fejléc -->
 
-  <div class="ntl text2 center w100">{{s.fejlec}}</div>
-  <div class="nbl text1 w100">{{s.megjegyzes}}</div>
+  <div class="ntl text2 center w100">{{fejlec}}</div>
+  <div class="nbl text1 w100">{{megjegyzes}}</div>
 
 <!-- célérték -->
 
   <div class="w100 text2 grayCell center">
-    {{s.celControl.value + ertekValtozas*s.valto}}
-    {{s.egysegC}}
+    {{celControl.value + ertekValtozas*valto}}
+    {{egysegC}}
   </div>
 
  <!-- gombok lépés 1 -->
@@ -17,51 +17,51 @@
    <button class="w50 ngrn text1" [disabled]="buttonDisInc(1)"
    (click)="changeValue(1)" type="button">
    +
-   {{s.valto}}
-   {{s.egysegC}}
+   {{valto}}
+   {{egysegC}}
   </button>
 
   <button class="w50 nrd text1" [disabled]="buttonDisDec(1)"
   (click)="changeValue(-1)" type="button">
   -
-  {{s.valto}}
-  {{s.egysegC}}
+  {{valto}}
+  {{egysegC}}
 </button>
 
 <!-- gombok lépés érték -->
 
-  <button class="w50 ngrn text1" [disabled]="buttonDisInc(s.lepes)"
-    (click)="changeValue(s.lepes)" type="button">
+  <button class="w50 ngrn text1" [disabled]="buttonDisInc(lepes)"
+    (click)="changeValue(lepes)" type="button">
     +
-    {{s.lepes*s.valto}}
-    {{s.egysegC}}
+    {{lepes*valto}}
+    {{egysegC}}
   </button>
 
-  <button class="w50 nrd text1" [disabled]="buttonDisDec(s.lepes)"
-    (click)="changeValue(-s.lepes)" type="button">
+  <button class="w50 nrd text1" [disabled]="buttonDisDec(lepes)"
+    (click)="changeValue(-lepes)" type="button">
     -
-    {{s.lepes*s.valto}}
-    {{s.egysegC}}
+    {{lepes*valto}}
+    {{egysegC}}
   </button>
 
 <!-- min és max -->
 
-  <div class="nrng w100 center text1">Minimum: {{s.minErtek}} / Maximum: {{s.maxErtek}}</div>
+  <div class="nrng w100 center text1">Minimum: {{minErtek}} / Maximum: {{maxErtek}}</div>
 
 <!--forrásértékek -->
 
-  <div *ngIf="s.tokeKtsg>0" class="w100 itemCont">
-    <div class="nyllw text1 w40 center">Tőke költség</div>
+  <div *ngIf="tokeKtsg>0" class="w100 itemCont">
+    <div class="nrng text1 w40 center">Tőke költség</div>
     <div class="toke text1 w60">
-      {{ertekValtozas*s.tokeKtsg}} {{s.egysegF}} /
-      {{s.forrasControl.value-ertekValtozas*s.tokeKtsg}} {{s.egysegF}}
+      {{ertekValtozas*tokeKtsg}} {{egysegF}} /
+      {{forrasControl.value-ertekValtozas*tokeKtsg}} {{egysegF}}
     </div>
   </div>
-  <div *ngIf="s.karmaKtsg>0" class="w100 itemCont">
+  <div *ngIf="karmaKtsg>0" class="w100 itemCont">
     <div class="nprpl text1 w40 center">Karma költség</div>
     <div class="karma text1 w60">
-      {{ertekValtozas*s.karmaKtsg}} {{s.egysegF}} /
-      {{s.forrasControl.value-ertekValtozas*s.karmaKtsg}} {{s.egysegF}}
+      {{ertekValtozas*karmaKtsg}} {{egysegF}} /
+      {{forrasControl.value-ertekValtozas*karmaKtsg}} {{egysegF}}
     </div>
   </div>
 

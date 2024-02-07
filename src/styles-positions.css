@@ -13,3 +13,9 @@
   justify-content: center;
   text-align: center;
 }
+
+.textR {
+  text-align: right;
+  justify-content: right;
+  align-content: center;
+}

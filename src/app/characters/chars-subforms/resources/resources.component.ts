@@ -47,16 +47,6 @@ export class ResourcesComponent implements OnInit {
     this.szabadToke?.patchValue(this.alapToke?.value + this.szerzettToke?.value + this.elkoltottToke?.value);
   }
 
-  karmaToToke(szorzo: number) {
-    this.resS.payKarma(1*szorzo);
-    this.resS.getToke(7500*szorzo);
-  }
-
-  TokeToKarma(szorzo: number) {
-    this.resS.payToke(7500*szorzo);
-    this.resS.getKarma(1*szorzo);
-  }
-
   ngOnInit(): void {
     this.sumKarma();
     this.sumToke();

@@ -8,5 +8,6 @@ import { Component, Input } from '@angular/core';
 export class FieldTokeComponent {
 
   @Input() ertek: number = 0;
+  @Input() szin: string = 'toke';
 
 }

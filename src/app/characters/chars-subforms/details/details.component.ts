@@ -10,7 +10,7 @@ import { InpDetailsService } from 'src/app/elements/Inputs/inp-details/inp-detai
 export class DetailsComponent implements OnInit {
 
   constructor(
-    public detailsS: DetailsService,
+    public s: DetailsService,
     public inpDetailsS: InpDetailsService
    ) {}
 

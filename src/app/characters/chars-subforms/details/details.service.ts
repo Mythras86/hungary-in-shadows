@@ -77,15 +77,15 @@ export class DetailsService {
     return;
   }
 
-  getList(listaNev:string):Array<any> {
-    if (listaNev == 'DNS') {
+  getList(fcName:string):Array<any> {
+    if (fcName == 'dns') {
       const genekLista = dnsUtil.map(x => x.dns);
       return genekLista;
     }
-    if (listaNev == 'Nem') {
+    if (fcName == 'nem') {
       return nemekUtil.map(x => x);
     }
-    if (listaNev == 'Anyanyelv') {
+    if (fcName == 'anyanyelv') {
       return nyelvekUtil.map(x => x);
     }
     return [];

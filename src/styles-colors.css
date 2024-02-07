@@ -46,6 +46,7 @@
   background-color: lightgray;
   box-shadow: 2px 2px 6px black inset;
   align-content: center;
+  min-height: 1.6rem;
 }
 
 .karma {
@@ -53,8 +54,6 @@
   text-shadow: 0 0 3px black, 0 0 5px darkmagenta;
   background-color: purple;
   box-shadow: 2px 2px 6px lightpink inset;
-  justify-content: right;
-  align-content: center;
 }
 
 .toke {
@@ -62,8 +61,6 @@
   text-shadow: 0 0 3px black, 0 0 5px darkgoldenrod;
   background-color: orange;
   box-shadow: 2px 2px 6px lightgoldenrodyellow inset;
-  justify-content: right;
-  align-content: center;
 }
 
 .itemGet {

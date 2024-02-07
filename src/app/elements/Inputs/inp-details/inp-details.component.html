@@ -1,59 +1,63 @@
-<div class="ngrn text1 w100">
-  {{nev}}
-</div>
+<div class="itemCont w100">
 
-<div *ngIf="mode == 'display'" class="grayCell text1 w100 center" [style.backgroundColor]="(tipus == 'color' ? ertek : 'fff')">
-  {{ertek}} {{egyseg}}
-</div>
+  <div class="ngrn text1 {{mode == 'edit' ? 'w80': 'w100'}}">
+    {{nev}}
+  </div>
 
-<!-- megjegyzés -->
+  <button *ngIf="mode == 'edit'" class="nrd text1 w20" type="button" (click)="onClose()">Vissza</button>
 
-<div *ngIf="mode == 'edit'" class="w100 ntl text1 center">
-  {{megjegyzes}}
-</div>
+  <div *ngIf="mode == 'display'" class="grayCell text1 w100 center" [style.backgroundColor]="(tipus == 'color' ? ertek : 'fff')">
+    {{ertek}} {{egyseg}}
+  </div>
+
+  <!-- megjegyzés -->
+
+  <div *ngIf="mode == 'edit'" class="w100 ntl text1 center">
+    {{megjegyzes}}
+  </div>
 
 
-<!-- input -->
-<input *ngIf="mode == 'edit' && tipus == 'text'" class="w80 grayCell text1 center" [id]="fcName" [type]="tipus" [value]="ertek">
+  <!-- input -->
+  <input *ngIf="mode == 'edit' && tipus == 'text'" class="w100 grayCell text1 center" [id]="fcName" [type]="tipus" [value]="ertek">
 
-<!-- color input -->
-<input *ngIf="mode == 'edit' && tipus == 'color'"
-list="presetcolors"
-class="grayCell text1 center"
-[id]="fcName"
-type="color"
-[value]="ertek">
-<datalist *ngIf="tipus == 'color'" id="presetcolors">
-  <option>#c58c85</option>
-  <option>#ecbcb4</option>
-  <option>#d1a3a4</option>
-  <option>#a1665e</option>
-  <option>#503335</option>
-  <option>#592f2a</option>
-</datalist>
+  <!-- color input -->
+  <input *ngIf="mode == 'edit' && tipus == 'color'"
+  list="presetcolors"
+  class="grayCell text1 center"
+  [id]="fcName"
+  type="color"
+  [value]="ertek">
+  <datalist *ngIf="tipus == 'color'" id="presetcolors">
+    <option>#c58c85</option>
+    <option>#ecbcb4</option>
+    <option>#d1a3a4</option>
+    <option>#a1665e</option>
+    <option>#503335</option>
+    <option>#592f2a</option>
+  </datalist>
 
-<!-- normal number input -->
-<span *ngIf="mode == 'edit' && tipus == 'number'" class="itemCont">
-  <input class="w80 grayCell text1 center" [id]="fcName" type="number" [value]="ertek">
-  <div class="w20 grayCell text1 center">{{egyseg}}</div>
-</span>
+  <!-- normal number input -->
+  <span *ngIf="mode == 'edit' && tipus == 'number'" class="itemCont">
+    <input class="w80 grayCell text1 center" [id]="fcName" type="number" [value]="ertek">
+    <div class="w20 grayCell text1 center">{{egyseg}}</div>
+  </span>
 
-<!-- list input -->
-<select *ngIf="mode == 'edit' && tipus == 'select'" class="w100 grayCell text1 center" [id]="fcName">
-  <option selected [value]="ertek">{{ertek}}</option>
-  <option *ngFor="let listitem of lista" [value]=listitem>{{listitem}}</option>
-</select>
+  <!-- list input -->
+  <select *ngIf="mode == 'edit' && tipus == 'select'" class="w100 grayCell text1 center" [id]="fcName">
+    <option selected [value]="ertek">{{ertek}}</option>
+    <option *ngFor="let listitem of lista" [value]=listitem>{{listitem}}</option>
+  </select>
 
-<!-- input field with list -->
+  <!-- input field with list -->
 
-<input *ngIf="mode == 'edit' && tipus == 'inpselect'" class="w100 grayCell text1 center" type="text1" [attr.list]="fcName" [value]="ertek"/>
-<datalist *ngIf="tipus == 'inpselect'" [id]="fcName">
-  <option *ngFor="let listitem of lista" [value]=listitem>{{listitem}}</option>
-</datalist>
+  <input *ngIf="mode == 'edit' && tipus == 'inpselect'" class="w100 grayCell text1 center" type="text1" [id]="fcName" [attr.list]="fcName+'x'" [value]="ertek"/>
+  <datalist *ngIf="tipus == 'inpselect'" [id]="fcName+'x'">
+    <option *ngFor="let listitem of lista" [value]=listitem>{{listitem}}</option>
+  </datalist>
 
-<!-- gombok -->
+  <!-- gombok -->
 
-<div *ngIf="mode == 'edit'" class="buttonCont">
-  <button class="nrd text1" type="button" (click)="onClose()">Vissza</button>
-  <button class="ngrn text1" type="button" (click)="onSave(fcName)">Mentés</button>
+  <div *ngIf="mode == 'edit'" class="buttonCont">
+    <button class="ngrn text1" type="button" (click)="onSave(fcName)">Mentés</button>
+  </div>
 </div>

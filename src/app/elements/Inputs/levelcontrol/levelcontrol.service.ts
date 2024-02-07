@@ -11,20 +11,8 @@ export class LevelcontrolService {
 
   constructor(
     private modalServ: ModalService,
+    private resS: ResourcesService
     ) { }
-
-    public fejlec: string = '';
-    public megjegyzes: any = '';
-    public lepes: number = 0;
-    public valto: number = 0;
-    public tokeKtsg: number = 0;
-    public karmaKtsg: number = 0;
-    public forrasControl!: FormControl;
-    public egysegF: string = '';
-    public celControl!: FormControl;
-    public egysegC: string = '';
-    public minErtek: number = 0;
-    public maxErtek: number = 0;
 
     buttonAction(
       fejlec: string,
@@ -54,12 +42,18 @@ export class LevelcontrolService {
         minErtek: minErtek,
         maxErtek: maxErtek,
       }).subscribe(
-        w => this.updateData(w),
+        w => this.updateData(w[0], w[1], w[2], w[3], w[4]),
       );
     }
 
-    updateData(w:number): number {
-      return w;
+    updateData(valtozas:number, karmaKtsg: number, tokeKtsg: number, valto: number, celControl:FormControl): any[] {
+      return [
+        // kifizetés
+        this.resS.payKarma(valtozas*karmaKtsg),
+        this.resS.payToke(valtozas*tokeKtsg),
+        // értékszerzés
+        celControl.patchValue(celControl.value + valtozas*valto)
+      ];
     }
 
 }
