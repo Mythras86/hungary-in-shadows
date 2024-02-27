@@ -1,8 +1,8 @@
 <div class="pageCont">
 
-  <form class="itemCont" [formGroup]="loginUserForm" (ngSubmit)="onLogin()">
+  <form class="flexCont" [formGroup]="loginUserForm" (ngSubmit)="onLogin()">
 
-    <div class="ntl text1 w100">Holozz a Főnöknek, megjöttem és kész vagyok beszállni a buliba!</div>
+    <div class="ntl text1 itemCont">Holozz a Főnöknek, megjöttem és kész vagyok beszállni a buliba!</div>
 
     <label class="ntl text1 w80" for="loginEmail">Email Cím</label>
     <input class="grayCell text1 w80" id="loginEmail" type="email" formControlName="userEmail" placeholder="E-amil cím">
@@ -10,14 +10,14 @@
     <input class="grayCell text1 w80" id="loginPass" type="password" formControlName="userPass" placeholder="Jelszó">
 
     <div class="buttonCont">
-      <button class="ngrn text1" type="submit" [disabled]="!loginUserForm.valid">Belépés</button>
+      <button class="itemGet text1" type="submit" [disabled]="!loginUserForm.valid">Belépés</button>
     </div>
 
   </form>
 
-  <form class="itemCont" [formGroup]="regUserForm" (ngSubmit)="onSubmit()">
+  <form class="flexCont" [formGroup]="regUserForm" (ngSubmit)="onSubmit()">
 
-    <div class="nrng text1 w100">Itt az ideje, hogy csatlakozz az Árnyak világához!</div>
+    <div class="nrng text1 itemCont">Itt az ideje, hogy csatlakozz az Árnyak világához!</div>
 
     <label class="nrng text1 w80" for="regNev">Felhasználónév</label>
     <input class="grayCell text1 w80" id="regNev" type="text1" formControlName="userName" placeholder="Név">
@@ -27,7 +27,7 @@
     <input class="grayCell text1 w80" id="regPass" type="password" formControlName="userPass" placeholder="Jelszó">
 
     <div class="buttonCont">
-      <button class="ngrn text1" type="submit" [disabled]="!regUserForm.valid">Regisztráció</button>
+      <button class="itemGet text1" type="submit" [disabled]="!regUserForm.valid">Regisztráció</button>
     </div>
 
   </form>

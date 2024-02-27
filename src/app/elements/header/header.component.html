@@ -1,28 +1,28 @@
-<h1 class="nbl">
-  <div *ngIf="!userIsAuthenticated">
+<h1 class="nbl posRel">
+  <span *ngIf="!userIsAuthenticated">
     Üdv az Árnyak között!
-  </div>
-  <div *ngIf="userIsAuthenticated">
+  </span>
+  <span *ngIf="userIsAuthenticated">
     Üdv újra itt {{headerName()}}!
-  </div>
-  <div class="creator ngrn">
+  </span>
+  <span class="ngrn creator posAbs">
     Karakterlap by Mythras
-  </div>
+  </span>
 </h1>
 
 <nav>
   <ul>
     <li>
-      <a class="nprpl text1" routerLink="/">Főoldal</a>
+      <a class="nprpl text1 center" routerLink="/">Főoldal</a>
     </li>
     <li>
-      <a class="nprpl text1" routerLink="/charslist">Karakterek</a>
+      <a class="nprpl text1 center" routerLink="/charslist">Karakterek</a>
     </li>
     <li *ngIf="!userIsAuthenticated">
-      <a class="nprpl text1" routerLink="/auth">Belépés</a>
+      <a class="nprpl text1 center" routerLink="/auth">Belépés</a>
     </li>
     <li *ngIf="userIsAuthenticated">
-      <a class="nprpl text1" (click)="onLogout()">Kilépés</a>
+      <a class="nprpl text1 center" (click)="onLogout()">Kilépés</a>
     </li>
   </ul>
 </nav>

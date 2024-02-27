@@ -2,8 +2,8 @@
 <form *ngIf="charServ.mainCharForm" [formGroup]="charServ.mainCharForm" (ngSubmit)="createNewChar()">
 
   <div class="buttonCont">
-    <button *ngIf="userIsAuthenticated && userId == getCreatorId()" class="ngrn text1" type="submit">Karakter mentése</button>
-    <button class="nyllw text1" type="button" (click)="backToList()">Vissza</button>
+    <button *ngIf="userIsAuthenticated && userId == getCreatorId()" class="itemGet text1" type="submit">Karakter mentése</button>
+    <button class="itemRemove text1" type="button" (click)="backToList()">Vissza</button>
   </div>
 
   <app-hide-content

@@ -1,11 +1,8 @@
-<div class="footercont">
-
-  <div class="linkcont">
-    <h2>Profil</h2>
-    <a routerLink="/">Főoldal</a>
-    <a routerLink="/chars">Karakterek</a>
-    <a *ngIf="!userIsAuthenticated" routerLink="/login">Belépés</a>
-    <a *ngIf="!userIsAuthenticated" routerLink="/register">Regisztráció</a>
-    <a *ngIf="userIsAuthenticated" (click)="onLogout()">Kilépés</a>
-
+<div class="itemCont grayCell">
+  <h3 class="w100">Profil</h3>
+  <a routerLink="/">Főoldal</a>
+  <a routerLink="/chars">Karakterek</a>
+  <a *ngIf="!userIsAuthenticated" routerLink="/login">Belépés</a>
+  <a *ngIf="!userIsAuthenticated" routerLink="/register">Regisztráció</a>
+  <a *ngIf="userIsAuthenticated" (click)="onLogout()">Kilépés</a>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DetailsService } from './details.service';
 import { InpDetailsService } from 'src/app/elements/Inputs/inp-details/inp-details.service';
+import { ItemSelectService } from 'src/app/elements/item-select/item-select.service';
 
 @Component({
   selector: 'app-details',
@@ -11,18 +12,9 @@ export class DetailsComponent implements OnInit {
 
   constructor(
     public s: DetailsService,
-    public inpDetailsS: InpDetailsService
+    public select: ItemSelectService,
+    public inpDetS: InpDetailsService
    ) {}
-
-   selected: string = '';
-
-   onSelect(fcName: string):void {
-    if (this.selected == '' || this.selected !== fcName) {
-      this.selected = fcName;
-    } else {
-      this.selected = '';
-    }
-   }
 
   ngOnInit(): void {
   }

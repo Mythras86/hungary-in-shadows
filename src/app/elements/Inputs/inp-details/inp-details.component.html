@@ -1,6 +1,6 @@
-<div class="itemCont w100">
+<div class="flexCont w100">
 
-  <div class="ngrn text1 {{mode == 'edit' ? 'w80': 'w100'}}">
+  <div class="ngrn text1 {{mode == 'edit' ? 'w80': 'w100'}}" >
     {{nev}}
   </div>
 
@@ -37,7 +37,7 @@
   </datalist>
 
   <!-- normal number input -->
-  <span *ngIf="mode == 'edit' && tipus == 'number'" class="itemCont">
+  <span *ngIf="mode == 'edit' && tipus == 'number'" class="flexCont">
     <input class="w80 grayCell text1 center" [id]="fcName" type="number" [value]="ertek">
     <div class="w20 grayCell text1 center">{{egyseg}}</div>
   </span>

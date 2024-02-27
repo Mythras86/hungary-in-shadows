@@ -14,7 +14,7 @@
 
     <div class="w100" [formGroupName]='i' *ngFor="let c of cybers.value; let i = index">
 
-      <div class="itemCont" *ngIf="c.csoport == csoport">
+      <div class="flexCont" *ngIf="c.csoport == csoport">
 
 
         <button class="deleteItem w10" type="button" (click)="cybersServ.removeCyber(i)">X</button>

@@ -1,14 +1,22 @@
+* {box-sizing: border-box; padding: 0; margin: 0 auto;font-family:Arial, Helvetica, sans-serif}
+
 @import "styles-colors.css";
 @import "styles-buttons.css";
 @import "styles-positions.css";
+@import "styles-flex.css";
 
-* {box-sizing: border-box; padding: 0; margin: 0 auto;font-family:Arial, Helvetica, sans-serif}
 
-html {background-color: gray}
+html {
+  background-color: black;
+  background-image: url("../src/app/images/fakp.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+  background-attachment: fixed;
+}
 
 body {
-  background-color: gray;
-  width: 100%;
+  min-height: 100vh;
 }
 
 input, label {
@@ -19,27 +27,26 @@ input, label {
 
 h1 {
   font-size: 1.8rem;
-  padding: 0.6rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.2rem;
 }
 
 h2 {
   font-size: 1.6rem;
-  padding: 0.6rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.2rem;
 }
 
 h3 {
   font-size: 1.4rem;
-  padding: 0.6rem 0;
-  margin: 0.5rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.2rem;
 }
 
 a {
@@ -54,50 +61,20 @@ ul, li {
   text-align: center;
 }
 
-.w10 {
-  flex: 0 0 10%;
+ul {
+  display: flex;
+  align-content: space-evenly;
+  flex-flow: row nowrap;
 }
-.w15 {
-  flex: 0 0 15%;
+
+li {
+  flex: 1;
 }
-.w20 {
-  flex: 0 0 20%;
-}
-.w25 {
-  flex: 0 0 25%;
-}
-.w30 {
-  flex: 0 0 30%;
-}
-.w33 {
-  flex: 0 0 33%;
-}
-.w40 {
-  flex: 0 0 40%;
-}
-.w50 {
-  flex: 0 0 50%;
-}
-.w60 {
-  flex: 0 0 60%;
-}
-.w66 {
-  flex: 0 0 66%;
-}
-.w70 {
-  flex: 0 0 70%;
-}
-.w75 {
-  flex: 0 0 75%;
-}
-.w80 {
-  flex: 0 0 80%;
-}
-.w90 {
-  flex: 0 0 90%;
-}
-.w100 {
-  flex: 0 0 100%;
+
+li :hover {
+  cursor: pointer;
+  background-color: orange;
+  color: black;
 }
 
 .text1 {
@@ -114,19 +91,10 @@ ul, li {
   align-items: center;
 }
 
-.pageCont {
-  margin: 0.5rem;
-  display: flex;
-  flex-flow: row wrap;
-  align-content: flex-start;
-  justify-content: space-evenly;
-}
-
-.itemCont {
-  display: flex;
-  flex-flow: row wrap;
-  align-content: flex-start;
-  justify-content: space-evenly;
+.creator {
+  top: 0;
+  right: 0;
+  font-size: 0.5rem;
 }
 
 [hidden] { display: none !important; }

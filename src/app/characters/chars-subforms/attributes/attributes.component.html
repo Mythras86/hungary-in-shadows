@@ -1,56 +1,227 @@
-<div class="pageCont" [formGroup]="attrServ.attributesForm" *ngIf="attrServ.attributesForm">
+<div class="pageCont" [formGroup]="s.attributesForm" *ngIf="s.attributesForm">
 
-  <div class="w100" *ngFor="let csoport of getCsoport()">
+  <!-- Fizikum és Asztrál csoport -->
 
+  <span class="w100 itemCont" *ngFor="let csoport of getCsoport()">
     <h3 class="w100 ntl">{{csoport}}</h3>
 
-    <div class="itemCont w100" *ngFor="let attr of getAttrsByCsoport(csoport)">
-      <div class="nbl w40 text1">
-        {{attr.nev}}
+    <span class="flexCont w100 posRel {{select.toggleClass(a.fcName)}}" *ngFor="let a of getAttrsByCsoport(csoport)" (click)="select.toggleStatus(a.fcName)">
+      <div class="nbl w50 text1">
+        {{a.nev}}
+      </div>
+      <div class="grayCell w20 text1 center">
+        {{s.getFc(a.fcName).value + s.getDnsMod(a.fcName)}} / {{6+ s.getDnsMod(a.fcName)}}
       </div>
       <div class="grayCell w15 text1 center">
-        {{attrServ.getFc(attr.fcName).value}}/6
+        {{s.getFc(a.fcName+'Mod').value}}
+      </div>
+      <div class="ngrn w15 text1 center">
+        {{s.getTulErtek(a.fcName)}}
+      </div>
+
+      <app-btn-options *ngIf="select.status == a.fcName" class="posAbs"
+      (buttonAction)="lvlCS.buttonAction(
+        a.nev,
+        a.megjegyzes,
+        a.lepes,
+        1,
+        0,
+        3,
+        0,
+        s.getFc(a.fcName),
+        a.egyseg,
+        s.getFc(a.fcName).value,
+        a.max
+      )"
+      ></app-btn-options>
+    </span>
+
+  </span>
+
+  <!-- Speciális csoport -->
+
+  <span class="w100 itemCont flexCont">
+    <h3 class="w100 ntl">Speciális</h3>
+
+    <!-- Mágia -->
+
+    <span class="flexCont w100 posRel {{select.toggleClass('magia')}}" (click)="select.toggleStatus('magia')">
+      <div class="nbl w50 text1">
+        Mágia
+      </div>
+      <div class="grayCell w20 text1 center">
+        {{s.getFc('magia').value}} / {{s.getTulErtek('esszencia')-s.getFc('chi').value}}
       </div>
       <div class="grayCell w15 text1 center">
-        {{attrServ.getFc(attr.fcName+'Mod').value}}
+        {{s.getFc('magiaMod').value}}
       </div>
-      <div class="ngrn w20 text1 center">
-        {{attrServ.getTulErtek(attr.fcName)}}
+      <div class="ngrn w15 text1 center">
+        {{s.getTulErtek('magia')}}
       </div>
 
-    </div>
-  </div>
+      <app-btn-options *ngIf="select.status == 'magia'" class="posAbs"
+      (buttonAction)="lvlCS.buttonAction(
+        'Mágia',
+        'van',
+        6,
+        1,
+        0,
+        3,
+        0,
+        s.getFc('magia'),
+        'Szint',
+        s.getFc('magia').value,
+        6
+      )"
+      ></app-btn-options>
+    </span>
 
-  <h3 class="w100 ntl">Speciális</h3>
+      <!-- Chi áramlás -->
 
-  <div class="w50">
-    <div class="nbl text1 center">Esszencia</div>
-    <div class="ngrn text2 center">
-      {{attrServ.getFc('esszencia')?.value}}
-    </div>
-  </div>
-
-  <div class="w50">
-    <div class="nbl text1 center">Mágia</div>
-    <div class="ngrn text2 center">
-      {{getMagia()}}
-    </div>
-  </div>
-
-  <div class="w50">
-    <div class="nbl text1 center">Akció Pontok</div>
-    <div class="ngrn text2 center">
-      {{attrServ.getAkcio()}}
-    </div>
-  </div>
-
-  <div class="w50">
-    <div class="nbl text1 center">Kockatartalék</div>
-      <div class="ngrn text2 center">
-        {{attrServ.getFc('kockatartalek')?.value+attrServ.getDnsMod('kockatartalek')}}
+    <span class="flexCont w100 posRel {{select.toggleClass('chi')}}" (click)="select.toggleStatus('chi')">
+      <div class="nbl w50 text1">
+        Chi áramlás
       </div>
-  </div>
+      <div class="grayCell w20 text1 center">
+        {{s.getFc('chi').value}} / {{s.getTulErtek('esszencia')-s.getFc('magia').value}}
+      </div>
+      <div class="grayCell w15 text1 center">
+        {{s.getFc('chiMod').value}}
+      </div>
+      <div class="ngrn w15 text1 center">
+        {{s.getTulErtek('chi')}}
+      </div>
+
+      <app-btn-options *ngIf="select.status == 'chi'" class="posAbs"
+      (buttonAction)="lvlCS.buttonAction(
+        'Chi áramlás',
+        'van',
+        6,
+        1,
+        0,
+        3,
+        0,
+        s.getFc('chi'),
+        'Szint',
+        s.getFc('chi').value,
+        6
+      )"
+      ></app-btn-options>
+    </span>
+
+    <!-- Kiber kapacitás -->
+
+    <span class="flexCont w100 posRel {{select.toggleClass('cyberCapacity')}}" (click)="select.toggleStatus('cyberCapacity')">
+      <div class="nbl w50 text1">
+        Kiber kapacitás
+      </div>
+      <div class="grayCell w20 text1 center">
+        {{s.getFc('cyberCapacity').value}} / 6
+      </div>
+      <div class="grayCell w15 text1 center">
+        {{s.getFc('cyberCapacityMod').value}}
+      </div>
+      <div class="ngrn w15 text1 center">
+        {{s.getTulErtek('cyberCapacity')}}
+      </div>
+
+      <app-btn-options *ngIf="select.status == 'cyberCapacity'" class="posAbs"
+      (buttonAction)="lvlCS.buttonAction(
+        'Kiber kapacitás',
+        'van',
+        6,
+        1,
+        10000,
+        0,
+        1,
+        s.getFc('cyberCapacity'),
+        'Szint',
+        s.getFc('cyberCapacity').value,
+        6
+      )"
+      ></app-btn-options>
+    </span>
 
 
+    <!-- Kockatartalék -->
+
+    <span class="flexCont w100 posRel {{select.toggleClass('kockatartalek')}}" (click)="select.toggleStatus('kockatartalek')">
+      <div class="nbl w50 text1">
+        Kockatartalék
+      </div>
+      <div class="grayCell w20 text1 center">
+        {{s.getFc('kockatartalek').value+ s.getDnsMod('kockatartalek')}} / {{6 + s.getDnsMod('kockatartalek')}}
+      </div>
+      <div class="grayCell w15 text1 center">
+        {{s.getFc('kockatartalekMod').value}}
+      </div>
+      <div class="ngrn w15 text1 center">
+        {{s.getTulErtek('kockatartalek')}}
+      </div>
+
+      <app-btn-options *ngIf="select.status == 'kockatartalek'" class="posAbs"
+      (buttonAction)="lvlCS.buttonAction(
+        'Kockatartalék',
+        'van',
+        6,
+        1,
+        0,
+        3,
+        1,
+        s.getFc('kockatartalek'),
+        'Szint',
+        s.getFc('kockatartalek').value,
+        6
+      )"
+      ></app-btn-options>
+    </span>
+
+  </span>
+
+
+  <!-- Konstans csoport -->
+
+  <span class="w100 itemCont flexCont">
+    <h3 class="w100 ntl">Konstansok</h3>
+
+    <div class="nbl w50 text1">
+      Esszencia
+    </div>
+    <div class="grayCell w20 text1 center">
+      {{s.getFc('esszencia').value}}
+    </div>
+    <div class="grayCell w15 text1 center">
+      {{s.getFc('esszenciaMod').value}}
+    </div>
+    <div class="ngrn w15 text1 center">
+      {{s.getTulErtek('esszencia')}}
+    </div>
+
+    <div class="nbl w50 text1">
+      Akció pontok
+    </div>
+    <div class="grayCell w20 text1 center">
+      {{s.getAkcio()}}
+    </div>
+    <div class="grayCell w15 text1 center">
+      {{s.getFc('akcioMod').value}}
+    </div>
+    <div class="ngrn w15 text1 center">
+      {{s.getTulErtek('akcio')}}
+    </div>
+
+    <div class="nbl w50 text1">
+      Kezdeményezés
+    </div>
+    <div class="grayCell w20 text1 center">
+      {{s.getFc('kezdemenyezes').value}}
+    </div>
+    <div class="grayCell w15 text1 center">
+      {{s.getFc('kezdemenyezesMod').value}}
+    </div>
+    <div class="ngrn w15 text1 center">
+      {{s.getTulErtek('kezdemenyezes')}}
+    </div>
+  </span>
 
 </div>

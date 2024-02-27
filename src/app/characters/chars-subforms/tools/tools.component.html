@@ -14,7 +14,7 @@
 
     <div class="w100" [formGroupName]='i' *ngFor="let t of tools.value; let i = index">
 
-      <div class="itemCont" *ngIf="t.csoport == csoport">
+      <div class="flexCont" *ngIf="t.csoport == csoport">
 
         <div class="nbl w70 text1">{{t.nev}}</div>
         <div class="ngrn w20 text1 center">{{t.szint}} SZ</div>

@@ -3,7 +3,7 @@
   <button *ngIf="resServ.getFc('szabadKarma').value >= 2" class="ngrn text1" type="button" (click)="selSkillsModalServ.openModal()">Új Szakértelem</button>
   <button *ngIf="resServ.getFc('szabadKarma').value < 2" class="grayCell text1" type="button">Nincs elég Karmád</button>
 
-  <div class="itemCont w100" formArrayName="skills" *ngFor='let csoport of getCsoportok()'>
+  <div class="flexCont w100" formArrayName="skills" *ngFor='let csoport of getCsoportok()'>
 
     <!-- csoportosítás -->
 
@@ -13,7 +13,7 @@
 
     <div class="w100" [formGroupName]='i' *ngFor="let s of skills.value; let i = index">
 
-      <div class="itemCont" *ngIf="s.csoport == csoport">
+      <div class="flexCont" *ngIf="s.csoport == csoport">
 
         <div class="nbl text1 w50">{{s.nev}}</div>
         <div class="nrng text1 center w20">{{s.kapTul}}</div>

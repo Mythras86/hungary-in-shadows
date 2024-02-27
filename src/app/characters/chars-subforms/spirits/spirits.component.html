@@ -13,7 +13,7 @@
 
     <div class="w100" [formGroupName]='i' *ngFor="let s of spirits.value; let i = index">
 
-      <div class="itemCont" *ngIf="s.csoport == csoport">
+      <div class="flexCont" *ngIf="s.csoport == csoport">
 
         <button class="deleteItem w10" type="button" (click)="spiritsServ.removeSpirit(i)">X</button>
         <div class="ntl w60 text1 center">{{s.nev}}</div>
@@ -41,28 +41,28 @@
           <div class="grayCell text1 spAttr center">{{s.asztKit+s.szint}}</div>
         </span>
 
-        <div class="itemCont w25">
+        <div class="flexCont w25">
           <div class="nbl text1 w100 center">Essz</div>
           <div class="ngrn text2 w100 center">
             {{s.szint}}
           </div>
         </div>
 
-        <div class="itemCont w25">
+        <div class="flexCont w25">
           <div class="nbl text1 w100 center">Mágia</div>
           <div class="ngrn text2 w100 center">
             {{s.szint}}
           </div>
         </div>
 
-        <div class="itemCont w25">
+        <div class="flexCont w25">
           <div class="nbl text1 w100 center">AP</div>
           <div class="ngrn text2 w100 center">
             {{spiritsServ.getAkcio(i)}}
           </div>
         </div>
 
-        <div class="itemCont w25">
+        <div class="flexCont w25">
           <div class="nbl text1 w100 center">Sebzés</div>
             <div class="ngrn text2 w100 center">
               {{s.szint+3}} ({{s.tamadas}})

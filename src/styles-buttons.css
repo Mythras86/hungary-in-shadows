@@ -11,9 +11,9 @@ button:disabled {
 }
 
 .buttonCont {
-  margin-top: 1rem;
   margin-bottom: 1rem;
   display: flex;
   flex-flow: row nowrap;
   overflow: hidden;
+  width: 100%;
 }

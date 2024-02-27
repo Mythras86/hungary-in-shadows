@@ -1,11 +1,11 @@
-<div class="pageCont" [formGroup]="s.detailsForm" *ngIf="s.detailsForm">
+<div class="pageCont itemCont" [formGroup]="s.detailsForm" *ngIf="s.detailsForm">
 
-  <div class="w{{item.meret}} itemCont posRel"
+  <div class="w{{item.meret}} flexCont posRel"
   *ngFor="let item of s.getDetailsUtil(); first as isFirst"
-  (click)="onSelect(item.fcName)"
+  (click)="select.toggleStatus(item.fcName)"
   >
 
-    <app-inp-details *ngIf="item.tipus !== 'kepessegek'" class="itemCont w100" [ngClass]="selected == item.fcName ? 'selected':''"
+    <app-inp-details *ngIf="item.tipus !== 'kepessegek'" class="flexCont w100 {{select.toggleClass(item.fcName)}}"
     [mode] = "'display'"
     [nev] = "item.nev"
     [tipus] = "item.tipus"
@@ -16,8 +16,8 @@
     [lista] = "s.getList(item.fcName)"
     ></app-inp-details>
 
-    <app-btn-options *ngIf="selected == item.fcName" class="posTR"
-      (buttonAction)="inpDetailsS.buttonAction(
+    <app-btn-options *ngIf="select.status == item.fcName" class="posAbs"
+    (buttonAction)="inpDetS.buttonAction(
       'edit',
       item.nev,
       item.tipus,
@@ -31,10 +31,11 @@
 
   </div>
 
-  <div class="itemCont w100">
+  <div class="flexCont w100">
     <div class="ngrn text1 w100">
       Különleges képességek
     </div>
+    <div *ngIf="s.getDefault('kepessegek') == null" class="grayCell w100 text1"></div>
     <div class="grayCell w100 text1" *ngFor="let item of s.getDefault('kepessegek')">
       {{item}}
     </div>

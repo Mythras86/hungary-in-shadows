@@ -13,7 +13,7 @@
 
     <div class="w100" [formGroupName]='i' *ngFor="let w of weapons.value; let i = index">
 
-      <div class="itemCont" *ngIf="w.csoport == csoport">
+      <div class="flexCont" *ngIf="w.csoport == csoport">
 
         <button class="deleteItem w10" type="button" (click)="weaponsServ.removeWeapon(i)">X</button>
         <div class="nbl w60 text1">{{w.nev}}</div>

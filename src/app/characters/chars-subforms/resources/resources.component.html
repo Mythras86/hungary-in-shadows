@@ -2,72 +2,75 @@
 
   <!-- karma értékek -->
 
-  <h3 class="w100 ntl">Karma</h3>
+  <span class="flexCont itemCont w100">
+    <h3 class="w100 ntl">Karma</h3>
 
-  <div *ngFor="let res of getKarmaU()" class="w100 itemCont">
-    <div class="w40 text1 nprpl">{{res.nev}}</div>
+    <div *ngFor="let res of getKarmaU()" class="w100 flexCont">
+      <div class="w40 text1 nprpl">{{res.nev}}</div>
+      <app-field-karma class="w60"
+      [ertek]="resS.getFc(res.fcName)?.value"
+      [szin]="'grayCell'"
+      ></app-field-karma>
+    </div>
+
+    <div class="w40 text1 nprpl">Szabad Karma</div>
     <app-field-karma class="w60"
-    [ertek]="resS.getFc(res.fcName)?.value"
-    [szin]="'grayCell'"
+    [ertek]="resS.getFc('szabadKarma')?.value"
     ></app-field-karma>
-  </div>
 
-  <div class="w40 text1 nprpl">Szabad Karma</div>
-  <app-field-karma class="w60"
-  [ertek]="resS.getFc('szabadKarma')?.value"
-  ></app-field-karma>
+  </span>
 
   <div class="buttonCont w100">
     <button class="w50 text1 nprpl center" type="button" (click)="lvlContServ.buttonAction(
       'Karmából Tőke',
-      '&#x20AD; 1 => 7500 N&#xa5;',
+      '&#x262F; 1 => 7500 N&#xa5;',
       10,
       7500,
       0,
       1,
-      resS.getFc('szabadKarma'),
-      '&#x20AD;',
+      0,
       resS.getFc('szerzettToke'),
       'N&#xa5;',
       1,
       resS.getFc('szabadKarma')?.value
       )"
-    >&#x20AD; 1 => 7500 N&#xa5;</button>
+    >1 &#x262F; => 7500 N&#xa5;</button>
   </div>
 
   <!-- tőke értékek -->
 
-  <h3 class="w100 ntl">Tőke</h3>
+  <span class="flexCont itemCont w100">
+    <h3 class="w100 ntl">Tőke</h3>
 
-  <div *ngFor="let res of getTokeU()" class="w100 itemCont">
-    <div class="w40 text1 nrng">{{res.nev}}</div>
+    <div *ngFor="let res of getTokeU()" class="w100 flexCont">
+      <div class="w40 text1 nrng">{{res.nev}}</div>
+      <app-field-toke class="w60"
+      [ertek]="resS.getFc(res.fcName)?.value"
+      [szin]="'grayCell'"
+      ></app-field-toke>
+    </div>
+
+    <div class="w40 text1 nrng">Szabad Tőke</div>
     <app-field-toke class="w60"
-    [ertek]="resS.getFc(res.fcName)?.value"
-    [szin]="'grayCell'"
+    [ertek]="resS.getFc('szabadToke')?.value"
     ></app-field-toke>
-  </div>
-
-  <div class="w40 text1 nrng">Szabad Tőke</div>
-  <app-field-toke class="w60"
-  [ertek]="resS.getFc('szabadToke')?.value"
-  ></app-field-toke>
+  </span>
 
   <div class="buttonCont w100">
     <button class="w50 text1 nrng center" type="button" (click)="lvlContServ.buttonAction(
       'Tőkéből Karma',
-      '7500 N&#xa5; => &#x20AD; 1',
+      '7500 N&#xa5; => &#x262F; 1',
       10,
       1,
       7500,
       0,
-      resS.getFc('szabadToke'),
-      'N&#xa5;',
+      0,
       resS.getFc('szerzettKarma'),
-      '&#x20AD;',
+      '&#x262F;',
       7500,
       resS.getFc('szabadToke')?.value
     )"
-    >7500 N&#xa5; => &#x20AD; 1</button>
+    >7500 N&#xa5; => 1 &#x262F;</button>
   </div>
 
 

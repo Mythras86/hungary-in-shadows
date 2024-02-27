@@ -1,15 +1,17 @@
-<span class="itemCont">
+<span class="flexCont">
 
 <!-- fejléc -->
 
-  <div class="ntl text2 center w100">{{fejlec}}</div>
-  <div class="nbl text1 w100">{{megjegyzes}}</div>
+  <div class="ntl text2 center w80">{{s.fejlec}}</div>
+  <button class="nrd text1 w20" type="button" (click)="onClose()">Vissza</button>
+
+  <div class="nbl text1 w100">{{s.megjegyzes}}</div>
 
 <!-- célérték -->
 
   <div class="w100 text2 grayCell center">
-    {{celControl.value + ertekValtozas*valto}}
-    {{egysegC}}
+    {{s.celControl.value + ertekValtozas*s.valto}}
+    {{s.egyseg}}
   </div>
 
  <!-- gombok lépés 1 -->
@@ -17,51 +19,60 @@
    <button class="w50 ngrn text1" [disabled]="buttonDisInc(1)"
    (click)="changeValue(1)" type="button">
    +
-   {{valto}}
-   {{egysegC}}
+   {{s.valto}}
+   {{s.egyseg}}
   </button>
 
   <button class="w50 nrd text1" [disabled]="buttonDisDec(1)"
   (click)="changeValue(-1)" type="button">
   -
-  {{valto}}
-  {{egysegC}}
+  {{s.valto}}
+  {{s.egyseg}}
 </button>
 
 <!-- gombok lépés érték -->
 
-  <button class="w50 ngrn text1" [disabled]="buttonDisInc(lepes)"
-    (click)="changeValue(lepes)" type="button">
+  <button class="w50 ngrn text1" [disabled]="buttonDisInc(s.lepes)"
+    (click)="changeValue(s.lepes)" type="button">
     +
-    {{lepes*valto}}
-    {{egysegC}}
+    {{s.lepes*s.valto}}
+    {{s.egyseg}}
   </button>
 
-  <button class="w50 nrd text1" [disabled]="buttonDisDec(lepes)"
-    (click)="changeValue(-lepes)" type="button">
+  <button class="w50 nrd text1" [disabled]="buttonDisDec(s.lepes)"
+    (click)="changeValue(-s.lepes)" type="button">
     -
-    {{lepes*valto}}
-    {{egysegC}}
+    {{s.lepes*s.valto}}
+    {{s.egyseg}}
   </button>
 
 <!-- min és max -->
 
-  <div class="nrng w100 center text1">Minimum: {{minErtek}} / Maximum: {{maxErtek}}</div>
+  <div class="nbl w100 center text1">Minimum: {{s.minErtek}} / Maximum: {{s.maxErtek}}</div>
 
 <!--forrásértékek -->
 
-  <div *ngIf="tokeKtsg>0" class="w100 itemCont">
-    <div class="nrng text1 w40 center">Tőke költség</div>
-    <div class="toke text1 w60">
-      {{ertekValtozas*tokeKtsg}} {{egysegF}} /
-      {{forrasControl.value-ertekValtozas*tokeKtsg}} {{egysegF}}
+  <div *ngIf="s.tokeKtsg>0" class="w100 flexCont">
+    <div class="nrng text1 w100 center">Tőke költség</div>
+    <div class="toke text1 w100 center">
+      {{ertekValtozas*s.tokeKtsg}} N&#xa5; /
+      {{resS.getFc('szabadToke').value-ertekValtozas*s.tokeKtsg}} N&#xa5;
     </div>
   </div>
-  <div *ngIf="karmaKtsg>0" class="w100 itemCont">
-    <div class="nprpl text1 w40 center">Karma költség</div>
-    <div class="karma text1 w60">
-      {{ertekValtozas*karmaKtsg}} {{egysegF}} /
-      {{forrasControl.value-ertekValtozas*karmaKtsg}} {{egysegF}}
+
+  <div *ngIf="s.karmaKtsg>0" class="w100 flexCont">
+    <div class="nprpl text1 w100 center">Karma költség</div>
+    <div class="karma text1 w100 center">
+      {{ertekValtozas*s.karmaKtsg}} &#x262F; /
+      {{resS.getFc('szabadKarma').value-ertekValtozas*s.karmaKtsg}} &#x262F;
+    </div>
+  </div>
+
+  <div *ngIf="s.esszKtsg>0" class="w100 flexCont">
+    <div class="nwht text1 w100 center">Esszencia költség</div>
+    <div class="esszencia text1 w100 center">
+      {{ertekValtozas*s.esszKtsg}} Szint /
+      {{attrS.getTulErtek('esszencia')-ertekValtozas*s.esszKtsg}} Szint
     </div>
   </div>
 
@@ -69,6 +80,5 @@
 
   <div class="buttonCont w100">
     <button class="ngrn text1" type="button" (click)="onSave()">Mentés</button>
-    <button class="nrd text1" type="button" (click)="onClose()">Vissza</button>
   </div>
 </span>

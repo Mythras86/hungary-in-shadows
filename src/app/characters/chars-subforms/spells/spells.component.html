@@ -13,7 +13,7 @@
 
     <div class="w100" [formGroupName]='i' *ngFor="let s of spells.value; let i = index">
 
-      <div class="itemCont" *ngIf="s.csoport == csoport">
+      <div class="flexCont" *ngIf="s.csoport == csoport">
 
         <button class="deleteItem w10" type="button" (click)="spellsServ.removeSpell(i)">X</button>
         <div class="nbl w90 text1">

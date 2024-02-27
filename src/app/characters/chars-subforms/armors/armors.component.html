@@ -14,7 +14,7 @@
 
     <div class="w100" [formGroupName]='i' *ngFor="let a of armors.value; let i = index">
 
-      <div class="itemCont" *ngIf="a.csoport == csoport">
+      <div class="flexCont" *ngIf="a.csoport == csoport">
 
         <div class="nbl w70 text1">{{a.nev}}</div>
         <div class="nrng w30 text1 center">{{a.szint}} AR</div>

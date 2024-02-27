@@ -1,7 +1,7 @@
 <div class="pageCont" [formGroup]="statServ.statusForm" *ngIf="statServ.statusForm">
 
   <!-- Asztrális állapot -->
-  <span class="itemCont">
+  <span class="flexCont">
 
     <div class="w30 text1" [ngClass]="toggleColor(getFcValue('asztralisAllapot')-10)" (click)="sendStatus('asztralisAllapot', 11)">Gyógyult</div>
     <div class="w70 ntl text1">Asztrális állapot</div>
@@ -15,7 +15,7 @@
   </span>
 
   <!-- Pihentség állapot -->
-  <span class="itemCont">
+  <span class="flexCont">
 
     <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 4)" (click)="sendStatus('pinhentsegAllapot', 4)" class="w25 text1">Pihent</div>
     <div class="w75 ntl text1">Pihentség</div>
@@ -27,7 +27,7 @@
   </span>
 
   <!-- Fizikai állapot -->
-  <span class="itemCont">
+  <span class="flexCont">
 
     <div class="w30 text1"  [ngClass]="toggleColor(getFcValue('fizikaiAllapot')-10)"(click)="sendStatus('fizikaiAllapot', 11)">Gyógyult</div>
     <div class="w70 ntl text1">Fizikai állapot</div>
@@ -41,7 +41,7 @@
   </span>
 
   <!-- Tápláltság állapot -->
-  <span class="itemCont">
+  <span class="flexCont">
 
     <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 4)" (click)="sendStatus('taplaltsagAllapot', 4)" class="w25 text1">Táplált</div>
     <div class="w75 ntl text1">Tápláltság</div>
@@ -53,7 +53,7 @@
   </span>
 
   <!-- Módosítók -->
-  <span class="itemCont w100">
+  <span class="flexCont w100">
     <div class="w50">
       <div class="ntl text1">Kezdeményezés</div>
       <div class="text2" [ngClass]="toggleColor(getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot')))">
@@ -68,7 +68,7 @@
     </div>
   </span>
 
-  <span class="itemCont w100">
+  <span class="flexCont w100">
     <div class="w50">
       <div class="ntl text1">Méretkateg.</div>
       <div class="ngrn text2">
@@ -84,7 +84,7 @@
   </span>
 
 
-  <span class="itemCont w100">
+  <span class="flexCont w100">
     <div class="w50">
       <div class="ntl text1">Kocka módosító</div>
       <div class="text2" [ngClass]="toggleColor(getMaxMod('pinhentsegAllapot', 'taplaltsagAllapot')-3)">
