@@ -9,7 +9,7 @@ import { HideService } from './hide-content.service';
 export class HideContentComponent {
 
   constructor(
-    public hideServ: HideService
+    public s: HideService
   ) {}
 
   @Input() keyWord: any;

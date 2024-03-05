@@ -1,48 +1,48 @@
 
+<div class="buttonCont margTop1">
+  <button *ngIf="userIsAuthenticated && userId == getCreatorId()" class="itemGet text1" type="submit">Karakter mentése</button>
+  <button class="itemRemove text1" type="button" (click)="backToList()">Vissza</button>
+</div>
+
+<app-hide-content class="w100 margBott1"
+[keyWord]="'mainCharFilter'"
+[arrowClass]="'flex1 nbl text2 center'"
+>
+  <div headText class="flex1 nbl text2 center">
+    Oldalszűrő: {{filter}}
+  </div>
+  <div class="flexCont gap2">
+    <div class="text1 center nprpl gap2 w100" (click)="setFilter('Nincs')">X Nincs</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Jellemzők')">Jellemzők</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Erőforrások')">Erőforrások</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Tulajdonságok')">Tulajdonságok</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Állapotjelző')">Állapotjelző</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Szakértelmek')">Szakértelmek</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Páncélok')">Páncélok</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Fegyverek')">Fegyverek</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Robbanóanyagok')">Robbanóanyagok</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Eszközök')">Eszközök</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Kiberverek')">Kiberverek</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Varázslatok')">Varázslatok</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Szellemek')">Szellemek</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Ereklyék')">Ereklyék</div>
+  </div>
+</app-hide-content>
+
 <form *ngIf="charServ.mainCharForm" [formGroup]="charServ.mainCharForm" (ngSubmit)="createNewChar()">
 
-  <div class="pageCont">
-    <button *ngIf="userIsAuthenticated && userId == getCreatorId()" class="itemGet text1" type="submit">Karakter mentése</button>
-    <button class="itemRemove text1" type="button" (click)="backToList()">Vissza</button>
-  </div>
-
-  <app-hide-content class="w100"
-  [keyWord]="'mainCharFilter'"
-  [arrowClass]="'flex1 nbl text1 center'"
-  >
-    <div headText class="flex1 nbl text1 center">
-      Oldalszűrő: {{filter}}
-    </div>
-    <div class="flexCont gap2">
-      <div class="text1 center nprpl gap2 w100" (click)="setFilter('Nincs')">X Nincs</div>
-      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Jellemzők')">Jellemzők</div>
-      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Erőforrások')">Erőforrások</div>
-      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Tulajdonságok')">Tulajdonságok</div>
-      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Állapotjelző')">Állapotjelző</div>
-      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Szakértelmek')">Szakértelmek</div>
-      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Páncélok')">Páncélok</div>
-      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Fegyverek')">Fegyverek</div>
-      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Robbanóanyagok')">Robbanóanyagok</div>
-      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Eszközök')">Eszközök</div>
-      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Kiberverek')">Kiberverek</div>
-      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Varázslatok')">Varázslatok</div>
-      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Szellemek')">Szellemek</div>
-      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Ereklyék')">Ereklyék</div>
-    </div>
-  </app-hide-content>
-
-    <app-details *ngIf="filter == 'Nincs' || filter == 'Jellemzők'"></app-details>
-    <app-resources *ngIf="filter == 'Nincs' || filter == 'Erőforrások'"></app-resources>
-    <app-attributes *ngIf="filter == 'Nincs' || filter == 'Tulajdonságok'"></app-attributes>
-    <app-status *ngIf="filter == 'Nincs' || filter == 'Állapotjelző'"></app-status>
-    <app-skills *ngIf="filter == 'Nincs' || filter == 'Szakértelmek'"></app-skills>
-    <app-armors *ngIf="filter == 'Nincs' || filter == 'Páncélok'"></app-armors>
-    <app-weapons *ngIf="filter == 'Nincs' || filter == 'Fegyverek'"></app-weapons>
-    <app-explosives *ngIf="filter == 'Nincs' || filter == 'Robbanóanyagok'"></app-explosives>
-    <app-tools *ngIf="filter == 'Nincs' || filter == 'Eszközök'"></app-tools>
-    <app-cybers *ngIf="filter == 'Nincs' || filter == 'Kiberverek'"></app-cybers>
-    <app-spells *ngIf="filter == 'Nincs' || filter == 'Varázslatok'"></app-spells>
-    <app-spirits *ngIf="filter == 'Nincs' || filter == 'Szellemek'"></app-spirits>
-    <app-artifacts *ngIf="filter == 'Nincs' || filter == 'Ereklyék'"></app-artifacts>
+    <app-details [hidden]="filter !== 'Nincs' && filter !== 'Jellemzők'"></app-details>
+    <app-resources [hidden]="filter !== 'Nincs' && filter !== 'Erőforrások'"></app-resources>
+    <app-attributes [hidden]="filter !== 'Nincs' && filter !== 'Tulajdonságok'"></app-attributes>
+    <app-status [hidden]="filter !== 'Nincs' && filter !== 'Állapotjelző'"></app-status>
+    <app-skills [hidden]="filter !== 'Nincs' && filter !== 'Szakértelmek'"></app-skills>
+    <app-armors [hidden]="filter !== 'Nincs' && filter !== 'Páncélok'"></app-armors>
+    <app-weapons [hidden]="filter !== 'Nincs' && filter !== 'Fegyverek'"></app-weapons>
+    <app-explosives [hidden]="filter !== 'Nincs' && filter !== 'Robbanóanyagok'"></app-explosives>
+    <app-tools [hidden]="filter !== 'Nincs' && filter !== 'Eszközök'"></app-tools>
+    <app-cybers [hidden]="filter !== 'Nincs' && filter !== 'Kiberverek'"></app-cybers>
+    <app-spells [hidden]="filter !== 'Nincs' && filter !== 'Varázslatok'"></app-spells>
+    <app-spirits [hidden]="filter !== 'Nincs' && filter !== 'Szellemek'"></app-spirits>
+    <app-artifacts [hidden]="filter !== 'Nincs' && filter !== 'Ereklyék'"></app-artifacts>
 
 </form>

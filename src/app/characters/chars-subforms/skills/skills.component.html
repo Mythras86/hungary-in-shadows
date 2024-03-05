@@ -1,38 +1,39 @@
+<h2 class="ntl">Szakértelmek</h2>
+
 <div class="pageCont" [formGroup]="skillsServ.skillsForm" *ngIf="skillsServ.skillsForm">
 
-  <button *ngIf="resServ.getFc('szabadKarma').value >= 2" class="ngrn text1" type="button" (click)="selSkillsModalServ.openModal()">Új Szakértelem</button>
+  <div class="buttonCont">
+    <button *ngIf="resServ.getFc('szabadKarma').value >= 2" class="ngrn text1" type="button" (click)="selSkillsModalServ.openModal()">Új Szakértelem</button>
+  </div>
 
   <div class="flexCont w100" formArrayName="skills" *ngFor='let csoport of getCsoportok()'>
 
     <!-- csoportosítás -->
 
-    <h3 class="w100 ntl">{{csoport}}</h3>
+    <h3 class="w100 nwht">{{csoport}}</h3>
 
     <!-- csoport konténer -->
 
-    <div class="w100" [formGroupName]='i' *ngFor="let s of skills.value; let i = index"
-    >
+    <div class="w100" [formGroupName]='i' *ngFor="let skill of skills.value; let i = index">
 
-      <div class="flexCont posRel" *ngIf="s.csoport == csoport"
-      [ngClass]="select.toggleClass(s.nev+i)" (click)="select.toggleStatus(s.nev+i)">
-
-        <div class="nbl text1 w60">{{s.nev}}</div>
-        <div class="nrng text1 center w20">{{s.kapTul}}</div>
-        <div class="ngrn text1 center w20">{{s.szint}}</div>
-
-        <div *ngIf="s.megjegyzes !== ''" class="grayCell text1 w100">{{s.megjegyzes}}</div>
-
-        <div *ngIf="select.status == s.nev+i" class="buttonCont w100 posAbs">
+      <span class="posRel" *ngIf="skill.csoport == csoport"
+      [ngClass]="select.toggleClass(skill.nev+i)" (click)="select.toggleStatus(skill.nev+i)">
+        <app-skill class="flexCont"
+        [nev]="skill.nev"
+        [szint]="skill.szint"
+        [kapTul]="skill.kapTul"
+        [kapTupSzint]="0"
+        [megjegyzes]="skill.megjegyzes"
+        >
+        </app-skill>
+        <div buttons *ngIf="select.status == skill.nev+i" class="buttonCont w100 posAbs">
           <button class="text1 itemGet" type="button">Szintlépés</button>
           <button class="text1 itemEdit" type="button">Megjegyzés</button>
           <button class="text1 itemRemove" type="button" (click)="skillsServ.removeSkill(i)">Törlés</button>
         </div>
-
-      </div>
+      </span>
 
     </div>
   </div>
-
-
 
 </div>

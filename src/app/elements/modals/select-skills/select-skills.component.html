@@ -1,7 +1,7 @@
 <div class="pageCont">
 
   <h1 class="nrd w80">Szakértelmek</h1>
-  <button class="deleteItem text2 w20" type="button" (click)="onClose()">X</button>
+  <button class="itemRemove text2 w20" type="button" (click)="onClose()">X</button>
 
   <div class="flexCont w100">
     <div class="nprpl text1 w33" (click)="selectFilter('Nincs')">Nincs</div>
@@ -14,10 +14,12 @@
 
     <h3 class="w100 ntl">{{filteredCs}}</h3>
 
-    <div class="flexCont w100" *ngFor="let skill of getSkills(filteredCs)" (click)="selectSkill(skill.nev, skill.csoport, skill.kapTul)">
+    <div class="w100 itemCont" *ngFor="let skill of getSkills(filteredCs)" (click)="selectSkill(skill.nev, skill.csoport, skill.kapTul)">
 
-      <div class="nbl text1 w70">{{skill.nev}}</div>
-      <div class="nrng text1 w30 center">{{skill.kapTul}}</div>
+      <app-skill class="flexCont"
+      [nev]="skill.nev"
+      [kapTul]="skill.kapTul"
+      ></app-skill>
 
     </div>
 

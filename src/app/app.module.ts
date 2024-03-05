@@ -44,6 +44,7 @@ import { FieldTokeComponent } from './elements/Fields/field-toke/field-toke.comp
 import { FieldKarmaComponent } from './elements/Fields/field-karma/field-karma.component';
 import { InpDetailsComponent } from './elements/Inputs/inp-details/inp-details.component';
 import { BtnOptionsComponent } from './elements/Buttons/btn-options/btn-options.component';
+import { SkillComponent } from './elements/skill/skill.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { BtnOptionsComponent } from './elements/Buttons/btn-options/btn-options.
     ArtifactsComponent,
     WeaponsComponent,
     ExplosivesComponent,
+    SkillComponent,
 
     SelectArmorsComponent,
     SelectArtifactsComponent,

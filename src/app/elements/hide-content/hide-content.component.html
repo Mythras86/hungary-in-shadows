@@ -1,13 +1,12 @@
-<div class="flexCont w100">
+<div class="flexCont w100" (click)="s.toggleStatus(keyWord)">
 
-  <div [ngClass]=arrowClass class="{{!hideServ.checkStatus(keyWord) ? 'arrow' : 'arrow down'}}"
-  (click)="hideServ.toggleStatus(keyWord)">&#10148;</div>
+  <div [ngClass]=arrowClass class="{{!s.checkStatus(keyWord) ? 'arrow' : 'arrow down'}}">&#10148;</div>
 
   <ng-content select="[headText]"></ng-content>
   <ng-content select="[headOther]"></ng-content>
 
 </div>
 
-<span [hidden]="!hideServ.checkStatus(keyWord)">
+<span [hidden]="!s.checkStatus(keyWord)">
   <ng-content></ng-content>
 </span>
