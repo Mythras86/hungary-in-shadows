@@ -1,3 +1,4 @@
+import { NgStyle } from '@angular/common';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -15,6 +16,7 @@ export class ItemSelectService {
    } else {
      this.status = '';
    }
+
   }
 
   toggleClass(fcName: string): string {

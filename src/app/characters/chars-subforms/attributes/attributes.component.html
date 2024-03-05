@@ -1,11 +1,14 @@
+<h2 class="ntl">Tulajdonságok</h2>
+
 <div class="pageCont" [formGroup]="s.attributesForm" *ngIf="s.attributesForm">
 
   <!-- Fizikum és Asztrál csoport -->
 
   <span class="w100 itemCont" *ngFor="let csoport of getCsoport()">
-    <h3 class="w100 ntl">{{csoport}}</h3>
+    <h3 class="w100 nrng">{{csoport}}</h3>
 
-    <span class="flexCont w100 posRel {{select.toggleClass(a.fcName)}}" *ngFor="let a of getAttrsByCsoport(csoport)" (click)="select.toggleStatus(a.fcName)">
+    <span class="flexCont w100 posRel" *ngFor="let a of getAttrsByCsoport(csoport)"
+    [ngClass]="select.toggleClass(a.fcName)" (click)="select.toggleStatus(a.fcName)">
       <div class="nbl w50 text1">
         {{a.nev}}
       </div>
@@ -45,7 +48,7 @@
 
     <!-- Mágia -->
 
-    <span class="flexCont w100 posRel {{select.toggleClass('magia')}}" (click)="select.toggleStatus('magia')">
+    <span class="flexCont w100 posRel" [ngClass]="select.toggleClass('magia')" (click)="select.toggleStatus('magia')">
       <div class="nbl w50 text1">
         Mágia
       </div>
@@ -59,7 +62,7 @@
         {{s.getTulErtek('magia')}}
       </div>
 
-      <app-btn-options *ngIf="select.status == 'magia'" class="posAbs"
+      <app-btn-options *ngIf="select.status == 'magia' && checkEssence('magia')>0" class="posAbs"
       (buttonAction)="lvlCS.buttonAction(
         'Mágia',
         'van',
@@ -71,14 +74,14 @@
         s.getFc('magia'),
         'Szint',
         s.getFc('magia').value,
-        6
+        checkEssence('magia')
       )"
       ></app-btn-options>
     </span>
 
       <!-- Chi áramlás -->
 
-    <span class="flexCont w100 posRel {{select.toggleClass('chi')}}" (click)="select.toggleStatus('chi')">
+    <span class="flexCont w100 posRel" [ngClass]="select.toggleClass('chi')" (click)="select.toggleStatus('chi')">
       <div class="nbl w50 text1">
         Chi áramlás
       </div>
@@ -92,7 +95,7 @@
         {{s.getTulErtek('chi')}}
       </div>
 
-      <app-btn-options *ngIf="select.status == 'chi'" class="posAbs"
+      <app-btn-options *ngIf="select.status == 'chi' && checkEssence('chi')>0" class="posAbs"
       (buttonAction)="lvlCS.buttonAction(
         'Chi áramlás',
         'van',
@@ -104,14 +107,14 @@
         s.getFc('chi'),
         'Szint',
         s.getFc('chi').value,
-        6
+        checkEssence('chi')
       )"
       ></app-btn-options>
     </span>
 
     <!-- Kiber kapacitás -->
 
-    <span class="flexCont w100 posRel {{select.toggleClass('cyberCapacity')}}" (click)="select.toggleStatus('cyberCapacity')">
+    <span class="flexCont w100 posRel" [ngClass]="select.toggleClass('cyberCapacity')" (click)="select.toggleStatus('cyberCapacity')">
       <div class="nbl w50 text1">
         Kiber kapacitás
       </div>
@@ -125,7 +128,7 @@
         {{s.getTulErtek('cyberCapacity')}}
       </div>
 
-      <app-btn-options *ngIf="select.status == 'cyberCapacity'" class="posAbs"
+      <app-btn-options *ngIf="select.status == 'cyberCapacity' && checkEssence('cyberCapacity')>0" class="posAbs"
       (buttonAction)="lvlCS.buttonAction(
         'Kiber kapacitás',
         'van',

@@ -19,7 +19,11 @@
 }
 
 .flex1 {
-  flex: 1;
+  flex: 1 1 auto;
+}
+
+.gap2 {
+  gap: 2px;
 }
 
 .w10 {
@@ -78,6 +82,10 @@
 
 .mainCont > * {
   width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  justify-content: space-evenly;
 }
 
 router-outlet :first-child {
@@ -85,5 +93,7 @@ router-outlet :first-child {
 }
 
 app-footer{
+  width: 100%;
   margin-top: auto;
 }
+

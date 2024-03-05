@@ -1,8 +1,10 @@
-<div class="itemCont grayCell">
+<div class="grayCell w100 posRel">
   <h3 class="w100">Profil</h3>
-  <a routerLink="/">Főoldal</a>
-  <a routerLink="/chars">Karakterek</a>
-  <a *ngIf="!userIsAuthenticated" routerLink="/login">Belépés</a>
-  <a *ngIf="!userIsAuthenticated" routerLink="/register">Regisztráció</a>
-  <a *ngIf="userIsAuthenticated" (click)="onLogout()">Kilépés</a>
+  <a class="buttonCont center" routerLink="/">Főoldal</a>
+  <a class="buttonCont center" routerLink="/charslist">Karakterek</a>
+  <a class="buttonCont center" *ngIf="!userIsAuthenticated" routerLink="/auth">Belépés</a>
+  <a class="buttonCont center" *ngIf="userIsAuthenticated" (click)="onLogout()">Kilépés</a>
+  <span class="ngrn creator">
+    Karakterlap by Mythras
+  </span>
 </div>

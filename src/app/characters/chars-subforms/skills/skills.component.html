@@ -1,7 +1,6 @@
 <div class="pageCont" [formGroup]="skillsServ.skillsForm" *ngIf="skillsServ.skillsForm">
 
   <button *ngIf="resServ.getFc('szabadKarma').value >= 2" class="ngrn text1" type="button" (click)="selSkillsModalServ.openModal()">Új Szakértelem</button>
-  <button *ngIf="resServ.getFc('szabadKarma').value < 2" class="grayCell text1" type="button">Nincs elég Karmád</button>
 
   <div class="flexCont w100" formArrayName="skills" *ngFor='let csoport of getCsoportok()'>
 
@@ -11,16 +10,23 @@
 
     <!-- csoport konténer -->
 
-    <div class="w100" [formGroupName]='i' *ngFor="let s of skills.value; let i = index">
+    <div class="w100" [formGroupName]='i' *ngFor="let s of skills.value; let i = index"
+    >
 
-      <div class="flexCont" *ngIf="s.csoport == csoport">
+      <div class="flexCont posRel" *ngIf="s.csoport == csoport"
+      [ngClass]="select.toggleClass(s.nev+i)" (click)="select.toggleStatus(s.nev+i)">
 
-        <div class="nbl text1 w50">{{s.nev}}</div>
+        <div class="nbl text1 w60">{{s.nev}}</div>
         <div class="nrng text1 center w20">{{s.kapTul}}</div>
-        <div class="ngrn text2 center w20">{{s.szint}}</div>
+        <div class="ngrn text1 center w20">{{s.szint}}</div>
 
-        <button class="w10 deleteItem" type="button" (click)="skillsServ.removeSkill(i)">X</button>
-        <div class="grayCell text1 w80">{{s.megjegyzes}}</div>
+        <div *ngIf="s.megjegyzes !== ''" class="grayCell text1 w100">{{s.megjegyzes}}</div>
+
+        <div *ngIf="select.status == s.nev+i" class="buttonCont w100 posAbs">
+          <button class="text1 itemGet" type="button">Szintlépés</button>
+          <button class="text1 itemEdit" type="button">Megjegyzés</button>
+          <button class="text1 itemRemove" type="button" (click)="skillsServ.removeSkill(i)">Törlés</button>
+        </div>
 
       </div>
 

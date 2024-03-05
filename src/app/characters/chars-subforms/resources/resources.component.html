@@ -1,3 +1,4 @@
+<h2 class="ntl">Erőforrások</h2>
 <div class="pageCont" [formGroup]="resS.resourcesForm" *ngIf="resS.resourcesForm">
 
   <!-- karma értékek -->
@@ -7,14 +8,14 @@
 
     <div *ngFor="let res of getKarmaU()" class="w100 flexCont">
       <div class="w40 text1 nprpl">{{res.nev}}</div>
-      <app-field-karma class="w60"
+      <app-field-karma class="w60 flexCont"
       [ertek]="resS.getFc(res.fcName)?.value"
       [szin]="'grayCell'"
       ></app-field-karma>
     </div>
 
     <div class="w40 text1 nprpl">Szabad Karma</div>
-    <app-field-karma class="w60"
+    <app-field-karma class="w60 flexCont"
     [ertek]="resS.getFc('szabadKarma')?.value"
     ></app-field-karma>
 
@@ -44,14 +45,14 @@
 
     <div *ngFor="let res of getTokeU()" class="w100 flexCont">
       <div class="w40 text1 nrng">{{res.nev}}</div>
-      <app-field-toke class="w60"
+      <app-field-toke class="w60 flexCont"
       [ertek]="resS.getFc(res.fcName)?.value"
       [szin]="'grayCell'"
       ></app-field-toke>
     </div>
 
     <div class="w40 text1 nrng">Szabad Tőke</div>
-    <app-field-toke class="w60"
+    <app-field-toke class="w60 flexCont"
     [ertek]="resS.getFc('szabadToke')?.value"
     ></app-field-toke>
   </span>

@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { CharModel } from './chars-main.model';
-import { AuthService } from 'src/app/authentication/auth.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { SkillsModel } from '../chars-subforms/skills/skills.model';
 import { ArmorsModel } from '../chars-subforms/armors/armors.model';
 import { ArtifactsModel } from '../chars-subforms/artifacts/artifacts.model';
@@ -25,8 +24,6 @@ export class CharsMainService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private authServ: AuthService,
-    private fb: FormBuilder,
   ) { }
 
   mainCharForm!: FormGroup;

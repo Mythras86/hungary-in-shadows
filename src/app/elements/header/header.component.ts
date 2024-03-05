@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/authentication/auth.service';
+import { DetailsService } from 'src/app/characters/chars-subforms/details/details.service';
 
 @Component({
   selector: 'app-header',
@@ -9,16 +11,31 @@ import { AuthService } from 'src/app/authentication/auth.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private detailsS: DetailsService,
+    private route: ActivatedRoute
+    ) { }
 
   public userIsAuthenticated = false;
   private authListenerSubs!: Subscription;
 
-  headerName() {
+  userName() {
     return this.authService.getUserName();
   }
-  headerId() {
+
+  userId() {
     return this.authService.getUserId();
+  }
+
+  getAName() {
+    if (
+      this.detailsS.detailsForm
+      && this.detailsS.getFc('becenev').value !==''
+      ) {
+      return this.detailsS.getFc('becenev').value;
+    }
+    return 'Üdv újra itt '+this.userName()+'!';
   }
 
   onLogout() {

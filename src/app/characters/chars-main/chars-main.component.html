@@ -1,113 +1,48 @@
 
 <form *ngIf="charServ.mainCharForm" [formGroup]="charServ.mainCharForm" (ngSubmit)="createNewChar()">
 
-  <div class="buttonCont">
+  <div class="pageCont">
     <button *ngIf="userIsAuthenticated && userId == getCreatorId()" class="itemGet text1" type="submit">Karakter mentése</button>
     <button class="itemRemove text1" type="button" (click)="backToList()">Vissza</button>
   </div>
 
-  <app-hide-content
-    [arrowClass]="'nrd text2'"
-    [keyWord]="'details'"
-    >
-    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('details')">Jellemzők</h2>
-    <app-details></app-details>
+  <app-hide-content class="w100"
+  [keyWord]="'mainCharFilter'"
+  [arrowClass]="'flex1 nbl text1 center'"
+  >
+    <div headText class="flex1 nbl text1 center">
+      Oldalszűrő: {{filter}}
+    </div>
+    <div class="flexCont gap2">
+      <div class="text1 center nprpl gap2 w100" (click)="setFilter('Nincs')">X Nincs</div>
+      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Jellemzők')">Jellemzők</div>
+      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Erőforrások')">Erőforrások</div>
+      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Tulajdonságok')">Tulajdonságok</div>
+      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Állapotjelző')">Állapotjelző</div>
+      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Szakértelmek')">Szakértelmek</div>
+      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Páncélok')">Páncélok</div>
+      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Fegyverek')">Fegyverek</div>
+      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Robbanóanyagok')">Robbanóanyagok</div>
+      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Eszközök')">Eszközök</div>
+      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Kiberverek')">Kiberverek</div>
+      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Varázslatok')">Varázslatok</div>
+      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Szellemek')">Szellemek</div>
+      <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Ereklyék')">Ereklyék</div>
+    </div>
   </app-hide-content>
 
-  <app-hide-content
-    [arrowClass]="'nrd text2'"
-    [keyWord]="'resources'"
-    >
-    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('resources')">Erőforrások</h2>
-    <app-resources></app-resources>
-  </app-hide-content>
-
-  <app-hide-content
-    [arrowClass]="'nrd text2'"
-    [keyWord]="'attributes'"
-    >
-    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('attributes')">Tulajdonságok</h2>
-    <app-attributes></app-attributes>
-  </app-hide-content>
-
-  <app-hide-content
-    [arrowClass]="'nrd text2'"
-    [keyWord]="'status'"
-    >
-    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('status')">Állapotjelző</h2>
-    <app-status></app-status>
-  </app-hide-content>
-
-  <app-hide-content
-    [arrowClass]="'nrd text2'"
-    [keyWord]="'skills'"
-    >
-    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('skills')">Szakértelmek</h2>
-    <app-skills></app-skills>
-  </app-hide-content>
-
-  <app-hide-content
-    [arrowClass]="'nrd text2'"
-    [keyWord]="'armors'"
-    >
-    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('armors')">Páncélzat</h2>
-    <app-armors></app-armors>
-  </app-hide-content>
-
-  <app-hide-content
-    [arrowClass]="'nrd text2'"
-    [keyWord]="'weapons'"
-    >
-    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('weapons')">Fegyverek</h2>
-    <app-weapons></app-weapons>
-  </app-hide-content>
-
-  <app-hide-content
-    [arrowClass]="'nrd text2'"
-    [keyWord]="'explosives'"
-    >
-    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('explosives')">Robbanóanyagok</h2>
-    <app-explosives></app-explosives>
-  </app-hide-content>
-
-  <app-hide-content
-    [arrowClass]="'nrd text2'"
-    [keyWord]="'tools'"
-    >
-    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('tools')">Eszközök</h2>
-    <app-tools></app-tools>
-  </app-hide-content>
-
-  <app-hide-content [hidden]="!skillsServ.hasASkill('Kibertechnológia')"
-    [arrowClass]="'nrd text2'"
-    [keyWord]="'cybers'"
-    >
-    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('cybers')">Kiberverek</h2>
-    <app-cybers></app-cybers>
-  </app-hide-content>
-
-  <app-hide-content [hidden]="!skillsServ.hasASkill('Varázslás')"
-    [arrowClass]="'nrd text2'"
-    [keyWord]="'spells'"
-    >
-    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('spells')">Varázslatok</h2>
-    <app-spells></app-spells>
-  </app-hide-content>
-
-  <app-hide-content [hidden]="!skillsServ.hasASkill('Szellem Idézés')"
-    [arrowClass]="'nrd text2'"
-    [keyWord]="'spirits'"
-    >
-    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('spirits')">Szellemek</h2>
-    <app-spirits></app-spirits>
-  </app-hide-content>
-
-  <app-hide-content
-    [arrowClass]="'nrd text2'"
-    [keyWord]="'artifacts'"
-    >
-    <h2 headText class="nrd w90" (click)="hideServ.toggleStatus('artifacts')">Ereklyék</h2>
-    <app-artifacts></app-artifacts>
-  </app-hide-content>
+    <app-details *ngIf="filter == 'Nincs' || filter == 'Jellemzők'"></app-details>
+    <app-resources *ngIf="filter == 'Nincs' || filter == 'Erőforrások'"></app-resources>
+    <app-attributes *ngIf="filter == 'Nincs' || filter == 'Tulajdonságok'"></app-attributes>
+    <app-status *ngIf="filter == 'Nincs' || filter == 'Állapotjelző'"></app-status>
+    <app-skills *ngIf="filter == 'Nincs' || filter == 'Szakértelmek'"></app-skills>
+    <app-armors *ngIf="filter == 'Nincs' || filter == 'Páncélok'"></app-armors>
+    <app-weapons *ngIf="filter == 'Nincs' || filter == 'Fegyverek'"></app-weapons>
+    <app-explosives *ngIf="filter == 'Nincs' || filter == 'Robbanóanyagok'"></app-explosives>
+    <app-tools *ngIf="filter == 'Nincs' || filter == 'Eszközök'"></app-tools>
+    <app-cybers *ngIf="filter == 'Nincs' || filter == 'Kiberverek'"></app-cybers>
+    <app-spells *ngIf="filter == 'Nincs' || filter == 'Varázslatok'"></app-spells>
+    <app-spirits *ngIf="filter == 'Nincs' || filter == 'Szellemek'"></app-spirits>
+    <app-artifacts *ngIf="filter == 'Nincs' || filter == 'Ereklyék'"></app-artifacts>
 
 </form>

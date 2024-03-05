@@ -5,6 +5,7 @@ import { FormArray} from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
 import { SelectSkillsService } from 'src/app/elements/modals/select-skills/select-skills.service';
 import { DetailsService } from '../details/details.service';
+import { ItemSelectService } from 'src/app/elements/item-select/item-select.service';
 
 @Component({
   selector: 'app-skills',
@@ -18,6 +19,7 @@ export class SkillsComponent implements OnInit {
     public detailssServ: DetailsService,
     public resServ: ResourcesService,
     public selSkillsModalServ: SelectSkillsService,
+    public select: ItemSelectService
   ) { }
 
   public get skills(): FormArray | null | any {

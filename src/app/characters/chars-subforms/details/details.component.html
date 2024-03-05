@@ -1,11 +1,12 @@
-<div class="pageCont itemCont" [formGroup]="s.detailsForm" *ngIf="s.detailsForm">
+<h2 class="ntl">Jellemzők</h2>
+<div class="pageCont" [formGroup]="s.detailsForm" *ngIf="s.detailsForm">
 
   <div class="w{{item.meret}} flexCont posRel"
   *ngFor="let item of s.getDetailsUtil(); first as isFirst"
-  (click)="select.toggleStatus(item.fcName)"
+  [ngClass]="select.toggleClass(item.fcName)" (click)="select.toggleStatus(item.fcName)"
   >
 
-    <app-inp-details *ngIf="item.tipus !== 'kepessegek'" class="flexCont w100 {{select.toggleClass(item.fcName)}}"
+    <app-inp-details *ngIf="item.tipus !== 'kepessegek'" class="flexCont w100"
     [mode] = "'display'"
     [nev] = "item.nev"
     [tipus] = "item.tipus"

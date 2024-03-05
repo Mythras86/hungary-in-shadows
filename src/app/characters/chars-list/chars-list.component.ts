@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/authentication/auth.service';
 import { SpinnerService } from 'src/app/elements/spinner/spinner.service';
 import { CharsListService } from './chars-list.service';
 import { CharModel } from '../chars-main/chars-main.model';
+import { ItemSelectService } from 'src/app/elements/item-select/item-select.service';
 
 @Component({
   selector: 'app-chars',
@@ -17,7 +18,8 @@ export class CharsListComponent implements OnInit, OnDestroy {
     public charsListServ: CharsListService,
     private authServ: AuthService,
     private router: Router,
-    public spinServ: SpinnerService
+    public spinServ: SpinnerService,
+    public select: ItemSelectService
   ) {}
 
   userIsAuthenticated = false;
@@ -27,7 +29,7 @@ export class CharsListComponent implements OnInit, OnDestroy {
   public charsList: CharModel[] = [];
 
   onNewChar() {
-    (<any>this.router).navigate(["/charsheet"]);
+    (<any>this.router).navigate(["/newchar"]);
   }
 
   onUpdateChar(_id:string) {

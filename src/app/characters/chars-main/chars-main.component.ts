@@ -55,10 +55,24 @@ export class CharsMainComponent implements OnInit, OnDestroy {
 
   mode:string = 'create';
   _id:string = '';
+  filter: string = 'Nincs';
 
   userIsAuthenticated = false;
   userId: string = '';
   private authStatusSub!: Subscription;
+
+  createFilter(): any {
+    const savedFilter = localStorage.getItem('mainCharFilter');
+    if (!savedFilter) {
+      return localStorage.setItem('mainCharFilter', this.filter);
+    }
+    return this.filter = savedFilter;
+  }
+
+  setFilter(keyWord: string):void {
+    localStorage.setItem('mainCharFilter', keyWord);
+    this.filter = keyWord
+  }
 
   createMainForm(): void {
     this.charServ.mainCharForm = this.fb.group({
@@ -270,6 +284,7 @@ export class CharsMainComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.createFilter();
     this.spinServ.toggleSpinner(false);
     this.userId = this.authServ.getUserId();
     this.userIsAuthenticated = this.authServ.getIsAuth();

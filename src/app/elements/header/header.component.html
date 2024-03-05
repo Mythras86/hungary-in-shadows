@@ -1,16 +1,11 @@
-<h1 class="nbl posRel">
-  <span *ngIf="!userIsAuthenticated">
-    Üdv az Árnyak között!
-  </span>
-  <span *ngIf="userIsAuthenticated">
-    Üdv újra itt {{headerName()}}!
-  </span>
-  <span class="ngrn creator posAbs">
-    Karakterlap by Mythras
-  </span>
+<h1 class="nbl w100" *ngIf="!userIsAuthenticated">
+  Üdv az Árnyak között!
+</h1>
+<h1 class="nbl w100" *ngIf="userIsAuthenticated">
+  {{getAName()}}
 </h1>
 
-<nav>
+<nav class="w100">
   <ul>
     <li>
       <a class="nprpl text1 center" routerLink="/">Főoldal</a>

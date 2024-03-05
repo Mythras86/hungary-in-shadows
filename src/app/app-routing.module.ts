@@ -11,8 +11,8 @@ const routes: Routes = [
   { path: "", component: MainComponent, title: "Főoldal" },
   { path: "auth", component: AuthenticationComponent, title: "Azonosítás"},
 
-  { path: "charslist", component: CharsListComponent, title: "Karakterlista"},
-  { path: "charsheet", component: CharsMainComponent, title: "Karakterlap"},
+  { path: "charslist", component: CharsListComponent, title: "Karakterek"},
+  { path: "newchar", component: CharsMainComponent, title: "Új karakter"},
   { path: "editchar/:_id", component: CharsMainComponent, title: "Karakter szerkesztés", canActivate: [AuthGuard]},
 ];
 

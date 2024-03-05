@@ -31,6 +31,19 @@ export class AttributesComponent implements OnInit {
     return filteredAttrs;
   }
 
+  checkEssence(elem: string) {
+    const magia = this.s.getTulErtek('magia');
+    const chi = this.s.getTulErtek('chi');
+    const esszencia = this.s.getTulErtek('esszencia');
+    if (elem == 'magia' || 'chi') {
+      return esszencia-chi-magia;
+    }
+    if (elem == 'cyberCapacity') {
+      return esszencia;
+    }
+    return 0;
+  }
+
   ngOnInit(): void {
   }
 }

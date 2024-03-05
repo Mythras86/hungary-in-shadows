@@ -17,12 +17,14 @@ html {
 
 body {
   min-height: 100vh;
+  display: flex;
 }
 
 input, label {
   border: none;
   width: 100%;
   min-height: 1.2rem;
+  text-align: center;
 }
 
 h1 {
@@ -80,21 +82,18 @@ li :hover {
 .text1 {
   font-size: 1.1rem;
   padding: 0.2rem;
-  display: flex;
-  align-items: center;
 }
 
 .text2 {
   font-size: 1.2rem;
   padding: 0.4rem;
-  display: flex;
-  align-items: center;
 }
 
 .creator {
-  top: 0;
+  position: absolute;
+  bottom: 0;
   right: 0;
-  font-size: 0.5rem;
+  font-size: 0.8rem;
 }
 
 [hidden] { display: none !important; }

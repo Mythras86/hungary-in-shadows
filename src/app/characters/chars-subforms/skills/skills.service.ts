@@ -61,14 +61,6 @@ export class SkillsService {
     return skillpath;
   }
 
-  hasASkill(skill: string):boolean {
-    const skillArr = (this.skillsForm.get('skills') as FormArray)?.value;
-    if (skillArr.find((x:any) =>x.nev == skill)) {
-      return true;
-    }
-    return false;
-  }
-
   addFirstLanguage(): void {
     const beszed = this.fb.group({
       nev: ['Anyanyelvi beszéd', Validators.required],
