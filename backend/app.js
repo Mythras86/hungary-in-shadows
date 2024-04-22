@@ -1,8 +1,8 @@
+const path = require('path');
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require('cors');
-const path = require('path');
 
 const userRoutes = require("./routes/user");
 const charRoutes = require("./routes/char");
@@ -36,22 +36,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/", express.static(path.join(__dirname, "HungaryInShadow")));
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, PUT, DELETE, OPTIONS"
-  );
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.setHeader(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+//   );
+//   res.setHeader(
+//     "Access-Control-Allow-Methods",
+//     "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+//   );
+//   next();
+// });
 
-app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, "HungaryInShadow", "index.html"))
-});
 
 app.use("/api/user", userRoutes);
 app.use("/api/char", charRoutes);
@@ -64,5 +61,9 @@ app.use("/api/cyber", cyberRoutes);
 app.use("/api/spell", spellRoutes);
 app.use("/api/spirit", spiritRoutes);
 app.use("/api/artifact", artifactRoutes);
+
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "HungaryInShadow", "index.html"));
+});
 
 module.exports = app;
