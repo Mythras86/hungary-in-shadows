@@ -12,7 +12,7 @@ import { SpinnerService } from '../../spinner/spinner.service';
 export class SelectArmorsComponent implements OnInit {
 
   constructor(
-    private selArmorServ: SelectArmorService,
+    private s: SelectArmorService,
     private spinServ: SpinnerService
   ) {}
 
@@ -26,15 +26,12 @@ export class SelectArmorsComponent implements OnInit {
     this.moneyFilter = modalData.moneyFilter;
   }
 
-  private armorSub!: Subscription;
-  public armorsList: ArmorsModel[] = [];
-
   selectFilter(status: string) {
     return this.csoportFilter = status;
   }
 
   getCsoportok():Array<any> {
-    const csoport = this.selArmorServ.armorsList.map(x => x.csoport);
+    const csoport = this.s.armorsList.map(x => x.csoport);
     const csopUniq = [...new Set(csoport.map(x=> x))];
     csopUniq.sort();
     return csopUniq;
@@ -48,12 +45,12 @@ export class SelectArmorsComponent implements OnInit {
   }
 
   getFilteredArmorsList(csoport: string): Array<any> {
-    const filtered = this.armorsList.filter(x=>x.ar <= this.moneyFilter).filter(x=> x.csoport == csoport);
+    const filtered = this.s.armorsList.filter(x=>x.ar <= this.moneyFilter).filter(x=> x.csoport == csoport);
     return filtered;
   }
 
   selectArmor(_id: string) {
-    const armor = this.armorsList.filter(x => x._id == _id)[0];
+    const armor = this.s.armorsList.filter(x => x._id == _id)[0];
     this.closeEvent.next(armor);
     this.closeEvent.complete();
   }
@@ -65,11 +62,11 @@ export class SelectArmorsComponent implements OnInit {
 
   ngOnInit(): void {
     this.spinServ.toggleSpinner(false);
-    this.selArmorServ.getArmors();
-    this.armorSub = this.selArmorServ.getArmorsUpdateListener()
+    this.s.getArmors();
+    this.s.getArmorsUpdateListener()
     .subscribe((w: {armors: ArmorsModel[]}) => {
       this.spinServ.toggleSpinner(false);
-      this.armorsList = w.armors;
+      this.s.armorsList = w.armors;
     });
   }
 

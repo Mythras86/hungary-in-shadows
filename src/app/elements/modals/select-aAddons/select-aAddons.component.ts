@@ -13,7 +13,7 @@ import { AAddonsModel } from 'src/app/characters/chars-subforms/armors/armors.mo
 export class SelectAAddonsComponent {
 
   constructor(
-    private sAAddonServ: SelectAAddonService,
+    private s: SelectAAddonService,
     private spinServ: SpinnerService,
     private sortServ: SortMeService
   ) {}
@@ -29,11 +29,8 @@ export class SelectAAddonsComponent {
     this.csoportFilter = modalData.csoportFilter;
   }
 
-  private aAddonSub!: Subscription;
-  public aAddonsList: AAddonsModel[] = [];
-
   getFilteredAAddonsList(): Array<any> {
-    const filtered = this.aAddonsList.filter(
+    const filtered = this.s.aAddonsList.filter(
       x=>x.ar <= this.moneyFilter && x.csoport == this.csoportFilter
       );
     this.sortServ.sortByString(filtered, 'nev');
@@ -41,7 +38,7 @@ export class SelectAAddonsComponent {
   }
 
   selectAAddon(_id: string) {
-    const aAddon = this.aAddonsList.filter(x => x._id == _id)[0];
+    const aAddon = this.s.aAddonsList.filter(x => x._id == _id)[0];
     this.closeEvent.next(aAddon);
     this.closeEvent.complete();
   }
@@ -53,11 +50,11 @@ export class SelectAAddonsComponent {
 
   ngOnInit(): void {
     this.spinServ.toggleSpinner(false);
-    this.sAAddonServ.getAAddons();
-    this.aAddonSub = this.sAAddonServ.getAAddonsUpdateListener()
+    this.s.getAAddons();
+    this.s.getAAddonsUpdateListener()
     .subscribe((w: {aAddons: AAddonsModel[]}) => {
       this.spinServ.toggleSpinner(false);
-      this.aAddonsList = w.aAddons;
+      this.s.aAddonsList = w.aAddons;
     });
   }
 

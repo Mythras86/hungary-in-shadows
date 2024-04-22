@@ -1,0 +1,434 @@
+[{
+  "_id": {
+    "$oid": "62b9b642c59f6451aa45d8b0"
+  },
+  "addonName": "Támadó markolat",
+  "addonCategory": "Közelharci fegyverek",
+  "addonPlace": "kieg3",
+  "addonAddWeight": 0,
+  "addonAddPrice": 300,
+  "addonMultiWeight": 1.1,
+  "addonMultiPrice": 1,
+  "addonDesc": "+1 kocka támadáskor",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9b693c59f6451aa45d8b4"
+  },
+  "addonName": "Markolatvédelem",
+  "addonCategory": "Közelharci fegyverek",
+  "addonPlace": "kieg3",
+  "addonAddWeight": 0,
+  "addonAddPrice": 300,
+  "addonMultiWeight": 1.1,
+  "addonMultiPrice": 1,
+  "addonDesc": "+1 kocka védekezéskor",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9a1183e56ba3b07ff7d0e"
+  },
+  "addonName": "Visszarúgás csillapító III",
+  "addonCategory": "Tűzfegyverek",
+  "addonPlace": "kieg2",
+  "addonAddWeight": 0.75,
+  "addonAddPrice": 700,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1,
+  "addonDesc": "-3 visszarúgás",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9a1b53e56ba3b07ff7d12"
+  },
+  "addonName": "Nagyító I",
+  "addonCategory": "Tűzfegyverek",
+  "addonPlace": "kieg1",
+  "addonAddWeight": 0.25,
+  "addonAddPrice": 500,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1,
+  "addonDesc": "-1 célszám távolsági módosítóra",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9ba9fc59f6451aa45d8e6"
+  },
+  "addonName": "Támadó dizájn",
+  "addonCategory": "Közelharci fegyverek",
+  "addonPlace": "kieg2",
+  "addonAddWeight": 0,
+  "addonAddPrice": 0,
+  "addonMultiWeight": 1.1,
+  "addonMultiPrice": 1.2,
+  "addonDesc": "-1 célszám támadáskor",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9a0553e56ba3b07ff7d02"
+  },
+  "addonName": "Hangtompító",
+  "addonCategory": "Tűzfegyverek",
+  "addonPlace": "kieg2",
+  "addonAddWeight": 0.2,
+  "addonAddPrice": 500,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1,
+  "addonDesc": "+4 célszám a lövés észrevételéhez.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b979523e56ba3b07ff7c9a"
+  },
+  "addonName": "Fegyverkapcsolat",
+  "addonCategory": "Tűzfegyverek",
+  "addonPlace": "kieg3",
+  "addonAddWeight": 1,
+  "addonAddPrice": 600,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1,
+  "addonDesc": "-2 célszám a fegyver próbáira.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9a1fd3e56ba3b07ff7d1a"
+  },
+  "addonName": "Nagyító III",
+  "addonCategory": "Tűzfegyverek",
+  "addonPlace": "kieg1",
+  "addonAddWeight": 0.25,
+  "addonAddPrice": 1100,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1,
+  "addonDesc": "-3 célszám távolsági módosítóra",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9a3eb3e56ba3b07ff7d27"
+  },
+  "addonName": "Ultrahangos célzó",
+  "addonCategory": "Tűzfegyverek",
+  "addonPlace": "kieg1",
+  "addonAddWeight": 0.25,
+  "addonAddPrice": 1300,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1,
+  "addonDesc": "Látási viszonyokból eredő célszám/2",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62bd94a2f7f33a0c0edd0397"
+  },
+  "addonName": "Ares Antioch",
+  "addonCategory": "Tűzfegyverek",
+  "addonPlace": "kieg3",
+  "addonAddWeight": 2,
+  "addonAddPrice": 1700,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1,
+  "addonDesc": "táv 100 / sebzés: gránát / EL  / 1 (rögzített)",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62cc2d7a9258c1a426f90315"
+  },
+  "addonName": "Titán-acél ötvözet",
+  "addonCategory": "Lőfegyverek",
+  "addonPlace": "kieg4",
+  "addonAddWeight": 0,
+  "addonAddPrice": 0,
+  "addonMultiWeight": 0.8,
+  "addonMultiPrice": 1.2,
+  "addonDesc": "+1 kocka",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9a1d83e56ba3b07ff7d16"
+  },
+  "addonName": "Nagyító II",
+  "addonCategory": "Tűzfegyverek",
+  "addonPlace": "kieg1",
+  "addonAddWeight": 0.25,
+  "addonAddPrice": 800,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1,
+  "addonDesc": "-2 célszám távolsági módosítóra",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9b597c59f6451aa45d8a8"
+  },
+  "addonName": "Fejlesztett támadófelület",
+  "addonCategory": "Közelharci fegyverek",
+  "addonPlace": "kieg1",
+  "addonAddWeight": 0,
+  "addonAddPrice": 0,
+  "addonMultiWeight": 1.2,
+  "addonMultiPrice": 1.2,
+  "addonDesc": "+1 sebzés",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9a2bc3e56ba3b07ff7d23"
+  },
+  "addonName": "Lézeres célzó",
+  "addonCategory": "Tűzfegyverek",
+  "addonPlace": "kieg3",
+  "addonAddWeight": 0.25,
+  "addonAddPrice": 500,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1,
+  "addonDesc": "-1 célszám a fegyver próbáira.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b99fb13e56ba3b07ff7ce9"
+  },
+  "addonName": "Válltámasz",
+  "addonCategory": "Tűzfegyverek",
+  "addonPlace": "kieg4",
+  "addonAddWeight": 1,
+  "addonAddPrice": 300,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1,
+  "addonDesc": "-1 visszarúgás",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9a90f3e56ba3b07ff7d5e"
+  },
+  "addonName": "Csőszerkezet fejlesztés",
+  "addonCategory": "Tűzfegyverek",
+  "addonPlace": "kieg2",
+  "addonAddWeight": 0.2,
+  "addonAddPrice": 0,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1.2,
+  "addonDesc": "+2 energiaszin",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9b5efc59f6451aa45d8ac"
+  },
+  "addonName": "Páncéltörő kialakítás",
+  "addonCategory": "Közelharci fegyverek",
+  "addonPlace": "kieg1",
+  "addonAddWeight": 0,
+  "addonAddPrice": 0,
+  "addonMultiWeight": 1.1,
+  "addonMultiPrice": 1.3,
+  "addonDesc": "+2 energiaszint",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62cc2e629258c1a426f90331"
+  },
+  "addonName": "Páncéltörő kialakítás",
+  "addonCategory": "Lőfegyverek",
+  "addonPlace": "kieg2",
+  "addonAddWeight": 0,
+  "addonAddPrice": 0,
+  "addonMultiWeight": 1.1,
+  "addonMultiPrice": 1.3,
+  "addonDesc": "+2 energiaszint",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9b732c59f6451aa45d8b8"
+  },
+  "addonName": "Karbonszálas megerősítés",
+  "addonCategory": "Közelharci fegyverek",
+  "addonPlace": "kieg4",
+  "addonAddWeight": 0,
+  "addonAddPrice": 0,
+  "addonMultiWeight": 0.8,
+  "addonMultiPrice": 1.2,
+  "addonDesc": "-1 sebzés +2 energiaszint",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9b8f5c59f6451aa45d8ce"
+  },
+  "addonName": "Titán-acél ötvözet",
+  "addonCategory": "Közelharci fegyverek",
+  "addonPlace": "kieg4",
+  "addonAddWeight": 0,
+  "addonAddPrice": 0,
+  "addonMultiWeight": 0.9,
+  "addonMultiPrice": 1.5,
+  "addonDesc": "+1 kocka",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9b9c4c59f6451aa45d8de"
+  },
+  "addonName": "Prémium anyaghasználat",
+  "addonCategory": "Tűzfegyverek",
+  "addonPlace": "kieg4",
+  "addonAddWeight": 0,
+  "addonAddPrice": 0,
+  "addonMultiWeight": 0.8,
+  "addonMultiPrice": 1.2,
+  "addonDesc": "+1 kocka",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9bb0fc59f6451aa45d8ef"
+  },
+  "addonName": "Védelmi dizájn",
+  "addonCategory": "Közelharci fegyverek",
+  "addonPlace": "kieg2",
+  "addonAddWeight": 0,
+  "addonAddPrice": 0,
+  "addonMultiWeight": 1.1,
+  "addonMultiPrice": 1.2,
+  "addonDesc": "-1 célszám védekezéskor",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9a0d33e56ba3b07ff7d06"
+  },
+  "addonName": "Visszarúgás csillapító I",
+  "addonCategory": "Tűzfegyverek",
+  "addonPlace": "kieg2",
+  "addonAddWeight": 0.25,
+  "addonAddPrice": 200,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1,
+  "addonDesc": "-1 visszarúgás",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9a8c33e56ba3b07ff7d5a"
+  },
+  "addonName": "Fejlesztett elsütő",
+  "addonCategory": "Tűzfegyverek",
+  "addonPlace": "kieg4",
+  "addonAddWeight": 0.5,
+  "addonAddPrice": 0,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1.2,
+  "addonDesc": "+1 sebzés",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9ba1ec59f6451aa45d8e2"
+  },
+  "addonName": "Tökéletes egyensúly",
+  "addonCategory": "Közelharci fegyverek",
+  "addonPlace": "kieg2",
+  "addonAddWeight": 0,
+  "addonAddPrice": 0,
+  "addonMultiWeight": 1.1,
+  "addonMultiPrice": 1.5,
+  "addonDesc": "-1 célszám a fegyver próbáira",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9a0fa3e56ba3b07ff7d0a"
+  },
+  "addonName": "Visszarúgás csillapító II",
+  "addonCategory": "Tűzfegyverek",
+  "addonPlace": "kieg2",
+  "addonAddWeight": 0.5,
+  "addonAddPrice": 450,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1,
+  "addonDesc": "-2 visszarúgás",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62b9a7a63e56ba3b07ff7d56"
+  },
+  "addonName": "Bővitett tár",
+  "addonCategory": "Tűzfegyverek",
+  "addonPlace": "kieg3",
+  "addonAddWeight": 1,
+  "addonAddPrice": 200,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1,
+  "addonDesc": "+50% töltény, kizárólag táras rendszerekhez ",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62cc2de19258c1a426f90323"
+  },
+  "addonName": "Fejlesztett támadófelület",
+  "addonCategory": "Lőfegyverek",
+  "addonPlace": "kieg3",
+  "addonAddWeight": 0,
+  "addonAddPrice": 0,
+  "addonMultiWeight": 1.2,
+  "addonMultiPrice": 1.2,
+  "addonDesc": "+1 sebzés",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64d00a81e6c914993d1027d4"
+  },
+  "addonName": "Nagyító I",
+  "addonCategory": "Lőfegyverek",
+  "addonPlace": "kieg1",
+  "addonAddWeight": 0.25,
+  "addonAddPrice": 500,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1,
+  "addonDesc": "-1 célszám távolsági módosítóra",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64d00a99e6c914993d1027d5"
+  },
+  "addonName": "Nagyító II",
+  "addonCategory": "Lőfegyverek",
+  "addonPlace": "kieg1",
+  "addonAddWeight": 0.25,
+  "addonAddPrice": 800,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1,
+  "addonDesc": "-2 célszám távolsági módosítóra",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64d00aa6e6c914993d1027d6"
+  },
+  "addonName": "Nagyító III",
+  "addonCategory": "Lőfegyverek",
+  "addonPlace": "kieg1",
+  "addonAddWeight": 0.25,
+  "addonAddPrice": 1100,
+  "addonMultiWeight": 1,
+  "addonMultiPrice": 1,
+  "addonDesc": "-3 célszám távolsági módosítóra",
+  "__v": 0
+}]

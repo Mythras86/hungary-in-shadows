@@ -1,0 +1,528 @@
+[{
+  "_id": {
+    "$oid": "62d939411caa03e2195214a3"
+  },
+  "cyberneticName": "Chipjack",
+  "cyberneticCategory": "Feji kiberver",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 1000,
+  "cyberneticEssence": 0.2,
+  "cyberneticDesc": "Adattároló chipek fogadására alkalmas",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62d93b0b1caa03e2195214d0"
+  },
+  "cyberneticName": "Adatjack",
+  "cyberneticCategory": "Feji kiberver",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 1000,
+  "cyberneticEssence": 0.2,
+  "cyberneticDesc": "Kétirányú kapcsolat kiberkompaitibilis eszközzel",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62d93b9d1caa03e2195214d6"
+  },
+  "cyberneticName": "Adatzár",
+  "cyberneticCategory": "Feji kiberver",
+  "cyberneticMaxLevel": 10,
+  "cyberneticPrice": 1000,
+  "cyberneticEssence": 0.02,
+  "cyberneticDesc": "Feji memóriában tárolt adatok kódolása",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62d93be81caa03e2195214dc"
+  },
+  "cyberneticName": "Tudásbázis csatoló",
+  "cyberneticCategory": "Feji kiberver",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 1000,
+  "cyberneticEssence": 0.1,
+  "cyberneticDesc": "Tudásbázis chipek használatát teszi lehetővé",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62d93c5a1caa03e2195214e0"
+  },
+  "cyberneticName": "Kibermemória",
+  "cyberneticCategory": "Feji kiberver",
+  "cyberneticMaxLevel": 10,
+  "cyberneticPrice": 1500,
+  "cyberneticEssence": 0.1,
+  "cyberneticDesc": "Betölthető programok/tevékenységek számát jelöli",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62d93ca21caa03e2195214e4"
+  },
+  "cyberneticName": "Kiberprocesszor",
+  "cyberneticCategory": "Feji kiberver",
+  "cyberneticMaxLevel": 10,
+  "cyberneticPrice": 2000,
+  "cyberneticEssence": 0.1,
+  "cyberneticDesc": "Egyszerre futtatható tevékenységek számát mutatja",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62d93e161caa03e2195214e8"
+  },
+  "cyberneticName": "Kiberdrive",
+  "cyberneticCategory": "Feji kiberver",
+  "cyberneticMaxLevel": 200,
+  "cyberneticPrice": 100,
+  "cyberneticEssence": 0.005,
+  "cyberneticDesc": "Adatok: 1 egység = 1 szint, vagy 1 óra trid anyag ",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62d93f041caa03e2195214ec"
+  },
+  "cyberneticName": "Kiberfül beültetés",
+  "cyberneticCategory": "Kiberfül",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 4000,
+  "cyberneticEssence": 0.3,
+  "cyberneticDesc": "+0,5 esszencia kiberfül kiegészítőkre",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62d93f911caa03e2195214f0"
+  },
+  "cyberneticName": "Hangvédő",
+  "cyberneticCategory": "Kiberfül",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 3500,
+  "cyberneticEssence": 0.1,
+  "cyberneticDesc": "Káros hangok erejét felére csökkenti",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62d940131caa03e2195214f4"
+  },
+  "cyberneticName": "Halláskiterjesztés",
+  "cyberneticCategory": "Kiberfül",
+  "cyberneticMaxLevel": 3,
+  "cyberneticPrice": 1500,
+  "cyberneticEssence": 0.1,
+  "cyberneticDesc": "Növeli a hallótávot x2/ x4/ x8 szorosára",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62d940461caa03e2195214f8"
+  },
+  "cyberneticName": "Magas frekvenciás hallás",
+  "cyberneticCategory": "Kiberfül",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 3000,
+  "cyberneticEssence": 0.2,
+  "cyberneticDesc": "Ultrahangos tartomány érzékelése",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62d940721caa03e2195214fc"
+  },
+  "cyberneticName": "Alacsonyfrekv. hallás",
+  "cyberneticCategory": "Kiberfül",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 3000,
+  "cyberneticEssence": 0.2,
+  "cyberneticDesc": "Infrahangos tartomány érzékelése",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62d940c11caa03e219521500"
+  },
+  "cyberneticName": "Hangrögzítő",
+  "cyberneticCategory": "Kiberfül",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 7000,
+  "cyberneticEssence": 0.3,
+  "cyberneticDesc": "Hangfelvétel készítése 3 óra / 1 drive",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62d9412a1caa03e219521509"
+  },
+  "cyberneticName": "Hangszűrő",
+  "cyberneticCategory": "Kiberfül",
+  "cyberneticMaxLevel": 5,
+  "cyberneticPrice": 10000,
+  "cyberneticEssence": 0.02,
+  "cyberneticDesc": "Hangok kiszűrése, a zavarást a szinttel csökkenti",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc57b49bf5530ccbce5f3c"
+  },
+  "cyberneticName": "Fényképezőgép",
+  "cyberneticCategory": "Kiberszem",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 5000,
+  "cyberneticEssence": 0.4,
+  "cyberneticDesc": "Kép, videó, vagy trideó készítés",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc58049bf5530ccbce5f40"
+  },
+  "cyberneticName": "Kibernetikus beültetés",
+  "cyberneticCategory": "Kiberszem",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 5000,
+  "cyberneticEssence": 0.2,
+  "cyberneticDesc": "+0,5 esszencia kiberszem kiegészítőkre",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc587c9bf5530ccbce5f44"
+  },
+  "cyberneticName": "Retinakijelző",
+  "cyberneticCategory": "Kiberszem",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 1000,
+  "cyberneticEssence": 0.1,
+  "cyberneticDesc": "Adattárolóból szöveges tartalmak megjelenítése",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc58a59bf5530ccbce5f48"
+  },
+  "cyberneticName": "Retina képkijelző",
+  "cyberneticCategory": "Kiberszem",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 1600,
+  "cyberneticEssence": 0.2,
+  "cyberneticDesc": "Adattárolóból képi tartalmak megjelenítése",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc58eb9bf5530ccbce5f4c"
+  },
+  "cyberneticName": "Felvillanásvédelem",
+  "cyberneticCategory": "Kiberszem",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 2000,
+  "cyberneticEssence": 0.1,
+  "cyberneticDesc": "Zavaró fényforrások energiáját 50%-kal csökkenti",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc59539bf5530ccbce5f50"
+  },
+  "cyberneticName": "Éjszakai látás",
+  "cyberneticCategory": "Kiberszem",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 3000,
+  "cyberneticEssence": 0.2,
+  "cyberneticDesc": "Rossz fényviszonyok módosítóját felére csökkenti",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc5a0b9bf5530ccbce5f54"
+  },
+  "cyberneticName": "Retinaduplikáció",
+  "cyberneticCategory": "Kiberszem",
+  "cyberneticMaxLevel": 10,
+  "cyberneticPrice": 25000,
+  "cyberneticEssence": 0.01,
+  "cyberneticDesc": "Lemásolja egy ember retináját, pontosság = szint",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc5a4a9bf5530ccbce5f58"
+  },
+  "cyberneticName": "Hőlátás",
+  "cyberneticCategory": "Kiberszem",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 3000,
+  "cyberneticEssence": 0.2,
+  "cyberneticDesc": "Infratartományú látást biztosít",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc5a969bf5530ccbce5f5c"
+  },
+  "cyberneticName": "Optikai nagyítás",
+  "cyberneticCategory": "Kiberszem",
+  "cyberneticMaxLevel": 3,
+  "cyberneticPrice": 2000,
+  "cyberneticEssence": 0.1,
+  "cyberneticDesc": "Szintjével csökkenti a távolsági módosítót",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc5ab99bf5530ccbce5f60"
+  },
+  "cyberneticName": "Elektronikus nagyítás",
+  "cyberneticCategory": "Kiberszem",
+  "cyberneticMaxLevel": 3,
+  "cyberneticPrice": 3500,
+  "cyberneticEssence": 0.03,
+  "cyberneticDesc": "Szintjével csökkenti a távolsági módosítót",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc5fbb9bf5530ccbce5f9b"
+  },
+  "cyberneticName": "Műanyag csonterősítés",
+  "cyberneticCategory": "Testi kiberverek",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 7500,
+  "cyberneticEssence": 0.5,
+  "cyberneticDesc": "+1 Kitartás, +2 Energiaszint közelharcra",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc5fdc9bf5530ccbce5f9f"
+  },
+  "cyberneticName": "Alumínium csonterősítés",
+  "cyberneticCategory": "Testi kiberverek",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 25000,
+  "cyberneticEssence": 1.15,
+  "cyberneticDesc": "+1 Kitartás, +2 Energiaszint közelharcra, +1 Páncél",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc5ff79bf5530ccbce5fa3"
+  },
+  "cyberneticName": "Titán csonterősítés",
+  "cyberneticCategory": "Testi kiberverek",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 75000,
+  "cyberneticEssence": 2.25,
+  "cyberneticDesc": "+2 Kitartás, +3 Energiaszint közelharcra, +1 Páncél",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc60269bf5530ccbce5fa7"
+  },
+  "cyberneticName": "Kézi penge (rögzített)",
+  "cyberneticCategory": "Kibervégtagok",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 7500,
+  "cyberneticEssence": 0.1,
+  "cyberneticDesc": "Kézfejbe ültetett, sebzése: (Erő+3)1, fizikai",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc60639bf5530ccbce5fab"
+  },
+  "cyberneticName": "Kézi penge (visszahúzh.)",
+  "cyberneticCategory": "Kibervégtagok",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 10000,
+  "cyberneticEssence": 0.25,
+  "cyberneticDesc": "Kézfejbe ültetett, sebzése: (Erő+3)1, fizikai",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc607e9bf5530ccbce5faf"
+  },
+  "cyberneticName": "Ujjpengék (rögzített)",
+  "cyberneticCategory": "Kibervégtagok",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 4500,
+  "cyberneticEssence": 0.1,
+  "cyberneticDesc": "Ujjakba ültetett, sebzése: (Erő+1)1, fizikai",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc60a69bf5530ccbce5fb3"
+  },
+  "cyberneticName": "Ujjpengék (visszahúzh.)",
+  "cyberneticCategory": "Kibervégtagok",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 9000,
+  "cyberneticEssence": 0.2,
+  "cyberneticDesc": "Ujjakba ültetett, sebzése: (Erő+1)1, fizikai",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc610f9bf5530ccbce5fbc"
+  },
+  "cyberneticName": "Izomhelyettesítés",
+  "cyberneticCategory": "Testi kiberverek",
+  "cyberneticMaxLevel": 4,
+  "cyberneticPrice": 20000,
+  "cyberneticEssence": 1,
+  "cyberneticDesc": "+1 Erő, +1 Ügyesség",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc612f9bf5530ccbce5fc0"
+  },
+  "cyberneticName": "Fegyverkapcsolat",
+  "cyberneticCategory": "Testi kiberverek",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 2500,
+  "cyberneticEssence": 0.2,
+  "cyberneticDesc": "Fegyverkapcsolattal rendelkező fegyverekhez",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc61519bf5530ccbce5fc4"
+  },
+  "cyberneticName": "Alkarpenge (rögzített)",
+  "cyberneticCategory": "Kibervégtagok",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 7000,
+  "cyberneticEssence": 0.1,
+  "cyberneticDesc": "Alkarba ültetett, sebzése: (Erő+1)3, fizikai",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc61bf9bf5530ccbce5fc8"
+  },
+  "cyberneticName": "Alkarpenge (visszahúzh.)",
+  "cyberneticCategory": "Kibervégtagok",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 11500,
+  "cyberneticEssence": 0.3,
+  "cyberneticDesc": "Alkarba ültetett, sebzése: (Erő+1)3, fizikai",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc63cc9bf5530ccbce5fcc"
+  },
+  "cyberneticName": "Gyorsított reflexek",
+  "cyberneticCategory": "Testi kiberverek",
+  "cyberneticMaxLevel": 3,
+  "cyberneticPrice": 60000,
+  "cyberneticEssence": 1,
+  "cyberneticDesc": "+1 Reakció",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc64599bf5530ccbce5fd0"
+  },
+  "cyberneticName": "Huzalozott reflexek",
+  "cyberneticCategory": "Testi kiberverek",
+  "cyberneticMaxLevel": 3,
+  "cyberneticPrice": 120000,
+  "cyberneticEssence": 1,
+  "cyberneticDesc": "Szint * 1d6 Kezdeményezésre",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc65129bf5530ccbce5fde"
+  },
+  "cyberneticName": "Járműirányító rendszer",
+  "cyberneticCategory": "Testi kiberverek",
+  "cyberneticMaxLevel": 3,
+  "cyberneticPrice": 100000,
+  "cyberneticEssence": 1.5,
+  "cyberneticDesc": "Szint* 1d6 minden járművekkel kapcsolatos próbára",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc65d99bf5530ccbce6002"
+  },
+  "cyberneticName": "Levegőszűrő",
+  "cyberneticCategory": "Testi kiberverek",
+  "cyberneticMaxLevel": 10,
+  "cyberneticPrice": 15000,
+  "cyberneticEssence": 0.1,
+  "cyberneticDesc": "Szint értékével csökkenti a káros behatásokat",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc65fa9bf5530ccbce6006"
+  },
+  "cyberneticName": "Vérszűrő",
+  "cyberneticCategory": "Testi kiberverek",
+  "cyberneticMaxLevel": 10,
+  "cyberneticPrice": 10000,
+  "cyberneticEssence": 0.2,
+  "cyberneticDesc": "Szint értékével csökkenti a káros behatásokat",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc67ce9bf5530ccbce600a"
+  },
+  "cyberneticName": "Látható kibervégtag",
+  "cyberneticCategory": "Kibervégtagok",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 15000,
+  "cyberneticEssence": 0.5,
+  "cyberneticDesc": "Kibervégtag beállítás kell hozzá, +1 Esszencia",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc67ff9bf5530ccbce600e"
+  },
+  "cyberneticName": "Szintetikus kibervégtag",
+  "cyberneticCategory": "Kibervégtagok",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 40000,
+  "cyberneticEssence": 0.5,
+  "cyberneticDesc": "Kibervégtag beállítás kell hozzá, +1 Esszencia",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62dc68569bf5530ccbce6012"
+  },
+  "cyberneticName": "Fegyverkapcsolat",
+  "cyberneticCategory": "Kibervégtagok",
+  "cyberneticMaxLevel": 1,
+  "cyberneticPrice": 2500,
+  "cyberneticEssence": 0.2,
+  "cyberneticDesc": "Fegyverkapcsolattal rendelkező fegyverekhez",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "62e309add4f9d51199d87237"
+  },
+  "cyberneticName": "Kibervégtag beállítás",
+  "cyberneticCategory": "Kibervégtagok",
+  "cyberneticMaxLevel": 15,
+  "cyberneticPrice": 15000,
+  "cyberneticEssence": 0,
+  "cyberneticDesc": "A Kibervégtag Erő és Ügyesség értékét adja",
+  "__v": 0
+}]

@@ -130,7 +130,7 @@ export class AuthService {
     localStorage.removeItem("expiration");
     localStorage.removeItem("userId");
     localStorage.removeItem("userName");
-    localStorage.removeItem('mainCharFilter')
+    localStorage.removeItem('mainCharFilter');
   }
 
   private getAuthData() {

@@ -4,13 +4,13 @@ export interface ArmorsModel{
   csoport: string,
   szint: number,
   suly: number,
-  kiegekSulya: number,
+  // kiegekSulya: number,
   ar: number,
-  kiegekAra: number,
-  elhelyezes: string,
+  // kiegekAra: number,
+  // elhelyezes: string,
   megjegyzes: string
-  felszerelt: Array<string>,
-  addons: Array<AAddonsModel>
+  // felszerelt: Array<string>,
+  // addons: Array<AAddonsModel>
 }
 export interface AAddonsModel{
   _id: string,

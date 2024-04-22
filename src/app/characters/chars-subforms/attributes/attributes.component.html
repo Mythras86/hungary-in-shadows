@@ -96,8 +96,8 @@
       </div>
 
       <app-btn-options *ngIf="select.status == 'chi' && checkEssence('chi')>0" class="posAbs"
-      (buttonAction)="lvlCS.buttonAction(
-        'Chi áramlás',
+        (buttonAction)="lvlCS.buttonAction(
+          'Chi áramlás',
         'van',
         6,
         1,
@@ -141,10 +141,9 @@
         'Szint',
         s.getFc('cyberCapacity').value,
         6
-      )"
+        )"
       ></app-btn-options>
     </span>
-
 
     <!-- Kockatartalék -->
 
@@ -170,7 +169,7 @@
         1,
         0,
         3,
-        1,
+        0,
         s.getFc('kockatartalek'),
         'Szint',
         s.getFc('kockatartalek').value,

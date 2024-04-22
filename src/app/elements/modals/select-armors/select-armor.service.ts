@@ -7,6 +7,7 @@ import { ModalService } from '../modal.service';
 import { SelectArmorsComponent } from './select-armors.component';
 import { ArmorsService } from 'src/app/characters/chars-subforms/armors/armors.service';
 import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';
+import { armorsJSON } from './armorsJSON';
 
 const BACKEND_URL = environment.apiUrl + "/armor/";
 
@@ -22,34 +23,53 @@ export class SelectArmorService {
     private resServ: ResourcesService,
   ) { }
 
+
   public armorsList: ArmorsModel[] = [];
   private armorsUpdated = new Subject<{armors: ArmorsModel[]}>();
 
   getArmors() {
-    return this.http
-    .get<{ message: string; armors: any}>(BACKEND_URL + "list")
-    .pipe(
-      map(w => {
+    // return this.http
+    // .get<{ message: string; armors: any}>(BACKEND_URL + "list")
+    // .pipe(
+    //   map(w => {
+    //     return {
+    //       armors: (w as any).armors.map((w: any) => {
+    //         return {
+    //           _id: w._id,
+    //           nev: w.armorName,
+    //           csoport: w.armorCategory,
+    //           szint: w.armorRating,
+    //           suly: w.armorWeight,
+    //           ar: w.armorPrice,
+    //           megjegyzes: w.armorDesc,
+    //         };
+    //       })
+    //     };
+    //   })
+    //   )
+    //   .subscribe((w: any) => {
+    //   this.armorsList = w.armors;
+    //   this.armorsUpdated.next({
+    //     armors: [...this.armorsList],
+    //   });
+    // });
+    const armorsArr: Array<any> = [];
+    Object.assign(armorsArr, armorsJSON)
+    const armors = armorsArr.map(
+      (w: any) => {
         return {
-          armors: (w as any).armors.map((w: any) => {
-            return {
-              _id: w._id,
-              nev: w.armorName,
-              csoport: w.armorCategory,
-              szint: w.armorRating,
-              suly: w.armorWeight,
-              ar: w.armorPrice,
-              megjegyzes: w.armorDesc,
-            };
-          })
-        };
-      })
-      )
-      .subscribe((w: any) => {
-      this.armorsList = w.armors;
-      this.armorsUpdated.next({
-        armors: [...this.armorsList]
-      });
+          _id: w._id,
+          nev: w.armorName,
+          csoport: w.armorCategory,
+          szint: w.armorRating,
+          suly: w.armorWeight,
+          ar: w.armorPrice,
+          megjegyzes: w.armorDesc,
+        }
+    })
+    this.armorsList = armors;
+    this.armorsUpdated.next({
+      armors: [...this.armorsList],
     });
   }
 

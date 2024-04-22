@@ -14,6 +14,7 @@ const spellRoutes = require("./routes/spell");
 const spiritRoutes = require("./routes/spirit");
 const weaponRoutes = require("./routes/weapon");
 const weaponAddonRoutes = require("./routes/weaponAddon");
+const { dirname } = require("@angular-devkit/core");
 
 const app = express();
 
@@ -32,6 +33,7 @@ mongoose
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use("/", express.static(path.join(__dirname, "HungaryInShadow")));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -46,16 +48,20 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use ("/api/user", userRoutes);
-app.use ("/api/char", charRoutes);
-app.use ("/api/armor", armorRoutes);
-app.use ("/api/aAddon", armorAddonRoutes);
-app.use ("/api/weapon", weaponRoutes);
-app.use ("/api/wAddon", weaponAddonRoutes);
-app.use ("/api/tool", toolRoutes);
-app.use ("/api/cyber", cyberRoutes);
-app.use ("/api/spell", spellRoutes);
-app.use ("/api/spirit", spiritRoutes);
-app.use ("/api/artifact", artifactRoutes);
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "HungaryInShadow", "index.html"))
+});
+
+app.use("/api/user", userRoutes);
+app.use("/api/char", charRoutes);
+app.use("/api/armor", armorRoutes);
+app.use("/api/aAddon", armorAddonRoutes);
+app.use("/api/weapon", weaponRoutes);
+app.use("/api/wAddon", weaponAddonRoutes);
+app.use("/api/tool", toolRoutes);
+app.use("/api/cyber", cyberRoutes);
+app.use("/api/spell", spellRoutes);
+app.use("/api/spirit", spiritRoutes);
+app.use("/api/artifact", artifactRoutes);
 
 module.exports = app;
