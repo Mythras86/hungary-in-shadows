@@ -22,7 +22,7 @@ app.use(cors())
 
 mongoose
   .connect(
-    process.env.DB_CONNECT
+    process.env["DB_CONNECT"]
   )
   .then(() => {
     console.log("Connected to database!");
@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/", express.static(path.join(__dirname, "HungaryInShadow")));
 
-app.use((req, res, next) => {
+app.use((req:any, res:any, next:any) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
@@ -61,7 +61,7 @@ app.use("/api/spell", spellRoutes);
 app.use("/api/spirit", spiritRoutes);
 app.use("/api/artifact", artifactRoutes);
 
-app.use((req, res, next) => {
+app.use((req:any, res:any, next:any) => {
   res.sendFile(path.join(__dirname, "HungaryInShadow", "index.html"));
 });
 
