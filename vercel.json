@@ -1,5 +1,4 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/backend" }],
   "builds": [
     {
       "src": "app.js",
