@@ -38,7 +38,6 @@ export class CharsListService {
       })
     )
     .subscribe(w => {
-      console.log(w);
       this.charsList = w.chars;
       this.charsUpdated.next({
         chars: [...this.charsList]

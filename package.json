@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node ./api/server.js",
     "serve": "HungaryInShadows",
     "build": "build",
     "watch": "build --watch --configuration development",
@@ -23,7 +23,9 @@
     "@types/node": "^20.12.7",
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
+    "debug": "^4.3.4",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.2",
