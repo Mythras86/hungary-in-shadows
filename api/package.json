@@ -9,7 +9,7 @@
     "build": "build",
     "watch": "build --watch --configuration development",
     "test": "test",
-    "demon": "nodemon ./backend/server.js"
+    "demon": "nodemon ./api/server.js"
   },
   "private": true,
   "dependencies": {

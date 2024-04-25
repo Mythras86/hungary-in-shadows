@@ -48,7 +48,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
 app.use("/api/user", userRoutes);
 app.use("/api/char", charRoutes);
 app.use("/api/armor", armorRoutes);
