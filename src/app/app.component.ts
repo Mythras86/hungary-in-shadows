@@ -12,6 +12,8 @@ export class AppComponent implements OnInit {
     private authServ: AuthService,
   ) {}
 
+  title:string = 'HungaryInShadows';
+
   ngOnInit(): void {
       this.authServ.autoAuthUser();
   }

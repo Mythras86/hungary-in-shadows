@@ -9,6 +9,7 @@ exports.createCybernetic = (req, res, next) => {
     cyberneticEssence:req.body.cyberneticEssence,
     cyberneticDesc:req.body.cyberneticDesc
   });
+
   cybernetic
     .save()
     .then(createdCybernetic => {
