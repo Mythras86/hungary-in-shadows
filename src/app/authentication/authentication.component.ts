@@ -21,8 +21,8 @@ export class AuthenticationComponent implements OnInit {
 
     prepLoginForm(): void {
       this.loginUserForm = this.fb.group({
-        userEmail: ['', Validators.required],
-        userPass: ['', Validators.required],
+        email: ['', Validators.required],
+        pass: ['', Validators.required],
       })
     }
 
@@ -32,14 +32,14 @@ export class AuthenticationComponent implements OnInit {
         return;
       }
       this.spinServ.toggleSpinner(true);
-      this.authServ.loginUser(form.value.userEmail, form.value.userPass);
+      this.authServ.loginUser(form.value.email, form.value.pass);
     }
 
     prepRegForm(): void {
       this.regUserForm = this.fb.group({
-        userName: ['', Validators.required],
-        userEmail: ['', Validators.required],
-        userPass: ['', Validators.required],
+        name: ['', Validators.required],
+        email: ['', Validators.required],
+        pass: ['', Validators.required],
       });
     }
 
@@ -49,7 +49,7 @@ export class AuthenticationComponent implements OnInit {
         return;
       }
       this.spinServ.toggleSpinner(true);
-      this.authServ.registerUser(form.value.userName, form.value.userEmail, form.value.userPass);
+      this.authServ.registerUser(form.value.name, form.value.email, form.value.pass);
     }
 
     ngOnInit(): void {
