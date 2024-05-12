@@ -17,9 +17,9 @@
           <div class="ngrn w100 text1">DNS: {{char.dns}}</div>
 
           <div *ngIf="select.status == char._id" class="buttonCont w100 posAbs">
-            <button *ngIf="userId === char.creatorId" class="itemEdit text1 w50" type="button" (click)="onUpdateChar(char._id)">Szerk.</button>
-            <button *ngIf="userId === char.creatorId" class="itemRemove text1 w50" (click)="onDeleteChar(char._id)">Törlés</button>
-            <button *ngIf="userId !== char.creatorId" class="itemGet text1" type="button" [disabled]="userId == char.creatorId && !userIsAuthenticated" (click)="onUpdateChar(char._id)">Megtekintés</button>
+            <button *ngIf="_id === char.creatorId" class="itemEdit text1 w50" type="button" (click)="onUpdateChar(char._id)">Szerk.</button>
+            <button *ngIf="_id === char.creatorId" class="itemRemove text1 w50" (click)="onDeleteChar(char._id)">Törlés</button>
+            <button *ngIf="_id !== char.creatorId" class="itemGet text1" type="button" [disabled]="_id == char.creatorId && !userIsAuthenticated" (click)="onUpdateChar(char._id)">Megtekintés</button>
           </div>
         </div>
 

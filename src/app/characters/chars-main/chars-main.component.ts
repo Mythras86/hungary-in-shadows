@@ -54,11 +54,11 @@ export class CharsMainComponent implements OnInit, OnDestroy {
   ) {}
 
   mode:string = 'create';
-  _id:string = '';
+  _idForFilter:string = '';
   filter: string = 'Nincs';
 
   userIsAuthenticated = false;
-  userId: string = '';
+  _id: string = '';
   private authStatusSub!: Subscription;
 
   createFilter(): any {
@@ -286,13 +286,13 @@ export class CharsMainComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.createFilter();
     this.spinServ.toggleSpinner(false);
-    this.userId = this.authServ.getUserId();
+    this._id = this.authServ.getUserId();
     this.userIsAuthenticated = this.authServ.getIsAuth();
     this.authStatusSub = this.authServ
     .getAuthStatusListener()
     .subscribe((isAuthenticated: boolean) => {
       this.userIsAuthenticated = isAuthenticated;
-      this.userId = this.authServ.getUserId();
+      this._id = this.authServ.getUserId();
       this.spinServ.toggleSpinner(true);
     });
     this.spinServ.toggleSpinner(false);

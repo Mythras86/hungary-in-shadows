@@ -23,7 +23,7 @@ export class CharsListComponent implements OnInit, OnDestroy {
   ) {}
 
   userIsAuthenticated = false;
-  userId: string = '';
+  _id: string = '';
   private authStatusSub!: Subscription;
   private charSub!: Subscription;
   public charsList: CharModel[] = [];
@@ -43,7 +43,7 @@ export class CharsListComponent implements OnInit, OnDestroy {
   }
 
   getCsoport(creatorId: string): string {
-    if (creatorId === this.userId) {
+    if (creatorId === this._id) {
       return 'Saját karakterek';
     }
     return 'Más karakterek';
@@ -52,13 +52,13 @@ export class CharsListComponent implements OnInit, OnDestroy {
   ngOnInit():void {
     this.spinServ.toggleSpinner(false);
     this.charsListServ.getChars();
-    this.userId = this.authServ.getUserId();
+    this._id = this.authServ.getUserId();
     this.userIsAuthenticated = this.authServ.getIsAuth();
     this.authStatusSub = this.authServ
       .getAuthStatusListener()
       .subscribe((isAuthenticated: boolean) => {
       this.userIsAuthenticated = isAuthenticated;
-      this.userId = this.authServ.getUserId();
+      this._id = this.authServ.getUserId();
       });
     this.charSub = this.charsListServ.getCharsUpdateListener()
       .subscribe((w: {chars:CharModel[]}) => {

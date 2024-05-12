@@ -20,11 +20,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public userIsAuthenticated = false;
   private authListenerSubs!: Subscription;
 
-  userName() {
+  name() {
     return this.authService.getUserName();
   }
 
-  userId() {
+  _id() {
     return this.authService.getUserId();
   }
 
@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       ) {
       return this.detailsS.getFc('becenev').value;
     }
-    return 'Üdv újra itt '+this.userName()+'!';
+    return 'Üdv újra itt '+this.name()+'!';
   }
 
   onLogout() {

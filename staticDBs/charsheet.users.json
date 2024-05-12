@@ -2,7 +2,7 @@
   "_id": {
     "$oid": "62ead294bec353b770155d50"
   },
-  "userName": "Krisztián",
+  "name": "Krisztián",
   "userEmail": "farkas@farkas.com",
   "userPass": "$2a$17$z1xRGRlagMjTJrGvU8LXieupJiFCofRFGq2bqhxiRx/Lxs.egQo52",
   "__v": 0
@@ -11,7 +11,7 @@
   "_id": {
     "$oid": "64037d88a28577e3d6110b8e"
   },
-  "userName": "Daneya",
+  "name": "Daneya",
   "userEmail": "anita@gmail.hu",
   "userPass": "$2a$17$oIIQxf9wljU2zE5Nq/Z0oeGHy/c17KtKkHixw2nP4siJLSkmZ2vSG",
   "__v": 0
@@ -20,7 +20,7 @@
   "_id": {
     "$oid": "64d1ed4083fe19eb5a69ba84"
   },
-  "userName": "Terra",
+  "name": "Terra",
   "userEmail": "terra@terra.hu",
   "userPass": "$2a$17$ZKCuT/QJGb7U6EhDfLrdM.L9Ys/e4NWukX7r7xSysMvkqujEjUzwe",
   "__v": 0
@@ -29,7 +29,7 @@
   "_id": {
     "$oid": "64d408e0247852d89585a175"
   },
-  "userName": "Piritós",
+  "name": "Piritós",
   "userEmail": "piri@piri.hu",
   "userPass": "$2a$17$cd46ZTx2ds7qu4KbGe8RsOgwjM5vtujHm7CZ9h.7mr/D.xbsMaHUW",
   "__v": 0
@@ -38,7 +38,7 @@
   "_id": {
     "$oid": "64d690bf6493c8c130ea88e1"
   },
-  "userName": "Sylar",
+  "name": "Sylar",
   "userEmail": "sylar@sylar.hu",
   "userPass": "$2a$17$qikWDbmXB2wNyBlUOsg7cuUAPmMgRhk1XL5xkPSkH/Cf748SUlFtS",
   "__v": 0
