@@ -1,17 +1,20 @@
+<!-- konténer -->
+
 <div class="flexCont w100">
 
-  <div class="ngrn text1 {{mode == 'edit' ? 'w80': 'w100'}}" >
+  <!-- fejlác -->
+  <div class="ngrn text1 center {{mode == 'edit' ? 'w80': 'w100'}}" >
     {{nev}}
   </div>
 
-  <button *ngIf="mode == 'edit'" class="nrd text1 w20" type="button" (click)="onClose()">Vissza</button>
+  <!-- visszagomb -->
+  <button *ngIf="mode == 'edit'" class="nrd text1 w20 center" type="button" (click)="onClose()">Vissza</button>
 
   <div *ngIf="mode == 'display'" class="grayCell text1 w100 center" [style.backgroundColor]="(tipus == 'color' ? ertek : 'fff')">
     {{ertek}} {{egyseg}}
   </div>
 
   <!-- megjegyzés -->
-
   <div *ngIf="mode == 'edit'" class="w100 ntl text1 center">
     {{megjegyzes}}
   </div>
@@ -56,8 +59,8 @@
   </datalist>
 
   <!-- gombok -->
+</div>
 
-  <div *ngIf="mode == 'edit'" class="buttonCont">
-    <button class="ngrn text1" type="button" (click)="onSave(fcName)">Mentés</button>
-  </div>
+<div *ngIf="mode == 'edit'" class="buttonCont w100 margTop1">
+  <button class="ngrn text1" type="button" (click)="onSave(fcName)">Mentés</button>
 </div>

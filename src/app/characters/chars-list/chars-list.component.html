@@ -10,7 +10,7 @@
 
       <span class="pageCont" *ngIf="csoport == getCsoport(char.creatorId)">
 
-        <div class="itemCont w100 posRel" [ngClass]="select.toggleClass(char._id)" (click)="select.toggleStatus(char._id)">
+        <div class="w100 posRel" [ngClass]="select.toggleClass(char._id)" (click)="select.toggleStatus(char._id)">
           <div class="nbl w100 text2 center">{{char.becenev}}</div>
           <div class="nprpl w100 text1">User: {{char.creatorName}}</div>
           <div class="nrng w100 text1">Nyelv: {{char.anyanyelv}}</div>

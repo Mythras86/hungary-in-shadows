@@ -18,14 +18,6 @@
     <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Tulajdonságok')">Tulajdonságok</div>
     <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Állapotjelző')">Állapotjelző</div>
     <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Szakértelmek')">Szakértelmek</div>
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Páncélok')">Páncélok</div>
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Fegyverek')">Fegyverek</div>
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Robbanóanyagok')">Robbanóanyagok</div>
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Eszközök')">Eszközök</div>
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Kiberverek')">Kiberverek</div>
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Varázslatok')">Varázslatok</div>
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Szellemek')">Szellemek</div>
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Ereklyék')">Ereklyék</div>
   </div>
 </app-hide-content>
 
@@ -36,13 +28,5 @@
     <app-attributes [hidden]="filter !== 'Nincs' && filter !== 'Tulajdonságok'"></app-attributes>
     <app-status [hidden]="filter !== 'Nincs' && filter !== 'Állapotjelző'"></app-status>
     <app-skills [hidden]="filter !== 'Nincs' && filter !== 'Szakértelmek'"></app-skills>
-    <app-armors [hidden]="filter !== 'Nincs' && filter !== 'Páncélok'"></app-armors>
-    <app-weapons [hidden]="filter !== 'Nincs' && filter !== 'Fegyverek'"></app-weapons>
-    <app-explosives [hidden]="filter !== 'Nincs' && filter !== 'Robbanóanyagok'"></app-explosives>
-    <app-tools [hidden]="filter !== 'Nincs' && filter !== 'Eszközök'"></app-tools>
-    <app-cybers [hidden]="filter !== 'Nincs' && filter !== 'Kiberverek'"></app-cybers>
-    <app-spells [hidden]="filter !== 'Nincs' && filter !== 'Varázslatok'"></app-spells>
-    <app-spirits [hidden]="filter !== 'Nincs' && filter !== 'Szellemek'"></app-spirits>
-    <app-artifacts [hidden]="filter !== 'Nincs' && filter !== 'Ereklyék'"></app-artifacts>
 
 </form>

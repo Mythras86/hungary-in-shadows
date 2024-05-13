@@ -4,7 +4,7 @@
 
   <!-- Fizikum és Asztrál csoport -->
 
-  <span class="w100 itemCont" *ngFor="let csoport of getCsoport()">
+  <span class="w100" *ngFor="let csoport of getCsoport()">
     <h3 class="w100 nwht">{{csoport}}</h3>
 
     <span class="flexCont w100 posRel" *ngFor="let a of getAttrsByCsoport(csoport)"
@@ -43,7 +43,7 @@
 
   <!-- Speciális csoport -->
 
-  <span class="w100 itemCont flexCont">
+  <span class="w100 flexCont">
     <h3 class="w100 nwht">Speciális</h3>
 
     <!-- Mágia -->
@@ -183,7 +183,8 @@
 
   <!-- Konstans csoport -->
 
-  <span class="w100 itemCont flexCont">
+  <span class="w100 flexCont">
+
     <h3 class="w100 nwht">Konstansok</h3>
 
     <div class="nbl w50 text1">
@@ -199,31 +200,6 @@
       {{s.getTulErtek('esszencia')}}
     </div>
 
-    <div class="nbl w50 text1">
-      Akció pontok
-    </div>
-    <div class="grayCell w20 text1 center">
-      {{s.getAkcio()}}
-    </div>
-    <div class="grayCell w15 text1 center">
-      {{s.getFc('akcioMod').value}}
-    </div>
-    <div class="ngrn w15 text1 center">
-      {{s.getTulErtek('akcio')}}
-    </div>
-
-    <div class="nbl w50 text1">
-      Kezdeményezés
-    </div>
-    <div class="grayCell w20 text1 center">
-      {{s.getFc('kezdemenyezes').value}}
-    </div>
-    <div class="grayCell w15 text1 center">
-      {{s.getFc('kezdemenyezesMod').value}}
-    </div>
-    <div class="ngrn w15 text1 center">
-      {{s.getTulErtek('kezdemenyezes')}}
-    </div>
   </span>
 
 </div>

@@ -80,19 +80,11 @@ export class CharsMainComponent implements OnInit, OnDestroy {
       creatorName: this.authServ.getUserName(),
       creatorId: this.authServ.getUserId(),
     });
-    this.weaponsServ.createWeapons();
-    this.toolsServ.createTools();
     this.statusServ.createStatus();
-    this.spiritsServ.createSpirits();
-    this.spellsServ.createSpells();
     this.skillsServ.createSkills();
     this.resServ.createResources();
-    this.exploServ.createExplosives();
     this.detailsServ.createDetails();
-    this.cybersServ.createCybers();
     this.attrServ.createAttributes();
-    this.artifactsServ.createArtifacts();
-    this.armorsServ.createArmors();
   }
 
 
@@ -107,14 +99,6 @@ export class CharsMainComponent implements OnInit, OnDestroy {
     const attrs = this.attrServ.attributesForm;
     const skills = this.skillsServ.skillsForm;
     const status = this.statusServ.statusForm;
-    const armors = this.armorsServ.armorsForm;
-    const artifacts = this.artifactsServ.artifactsForm;
-    const cybers = this.cybersServ.cybersForm;
-    const explosives = this.exploServ.explosivesForm;
-    const spells = this.spellsServ.spellsForm;
-    const spirits = this.spiritsServ.spiritsForm;
-    const tools = this.toolsServ.toolsForm;
-    const weapons = this.weaponsServ.weaponsForm;
     if (main.invalid
      || details.invalid
      || res.invalid
@@ -191,14 +175,6 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         status.value.armorLevel,
         // arrayok
         skills.value.skills,
-        armors.value.armors,
-        artifacts.value.artifacts,
-        cybers.value.cybers,
-        explosives.value.explosives,
-        spells.value.spells,
-        spirits.value.spirits,
-        tools.value.tools,
-        weapons.value.weapons
       );
    } else {
       this.charServ.updateOneChar(
@@ -267,14 +243,6 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         status.value.armorLevel,
         // arrayok
         skills.value.skills,
-        armors.value.armors,
-        artifacts.value.artifacts,
-        cybers.value.cybers,
-        explosives.value.explosives,
-        spells.value.spells,
-        spirits.value.spirits,
-        tools.value.tools,
-        weapons.value.weapons
       )};
     this.router.navigate(["/charslist"]);
   }
@@ -378,30 +346,6 @@ export class CharsMainComponent implements OnInit, OnDestroy {
           this.skillsServ.createSkills();
           this.skillsServ.skillsForm.addControl('skillsForm', new FormGroup({}));
           (this.skillsServ.skillsForm as FormGroup).addControl('skills', this.skillsServ.setSkills(w.skills));
-          this.armorsServ.createArmors();
-          this.armorsServ.armorsForm.addControl('armorsForm', new FormGroup({}));
-          (this.armorsServ.armorsForm as FormGroup).addControl('armors', this.armorsServ.setArmors(w.armors));
-          this.artifactsServ.createArtifacts();
-          this.artifactsServ.artifactsForm.addControl('artifacts', new FormGroup({}));
-          (this.artifactsServ.artifactsForm as FormGroup).addControl('artifacts', this.artifactsServ.setArtifacts(w.artifacts));
-          this.cybersServ.createCybers();
-          this.cybersServ.cybersForm.addControl('cybers', new FormGroup({}));
-          (this.cybersServ.cybersForm as FormGroup).addControl('cybers', this.cybersServ.setCybers(w.cybers));
-          this.exploServ.createExplosives();
-          this.exploServ.explosivesForm.addControl('explosives', new FormGroup({}));
-          (this.exploServ.explosivesForm as FormGroup).addControl('explosives', this.exploServ.setExplosives(w.explosives));
-          this.spellsServ.createSpells();
-          this.spellsServ.spellsForm.addControl('spellsForm', new FormGroup({}));
-          (this.spellsServ.spellsForm as FormGroup).addControl('spells', this.spellsServ.setSpells(w.spells));
-          this.spiritsServ.createSpirits();
-          this.spiritsServ.spiritsForm.addControl('spiritsForm', new FormGroup({}));
-          (this.spiritsServ.spiritsForm as FormGroup).addControl('spirits', this.spiritsServ.setSpirits(w.spirits));
-          this.toolsServ.createTools();
-          this.toolsServ.toolsForm.addControl('toolsForm', new FormGroup({}));
-          (this.toolsServ.toolsForm as FormGroup).addControl('tools', this.toolsServ.setTools(w.tools));
-          this.weaponsServ.createWeapons();
-          this.weaponsServ.weaponsForm.addControl('weaponsForm', new FormGroup({}));
-          (this.weaponsServ.weaponsForm as FormGroup).addControl('weapons', this.weaponsServ.setWeapons(w.weapons));
         });
       } else {
         this.mode = 'create';

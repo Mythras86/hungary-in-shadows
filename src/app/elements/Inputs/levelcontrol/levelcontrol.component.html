@@ -1,4 +1,4 @@
-<span class="flexCont itemCont">
+<span class="flexCont">
 
   <!-- fejléc -->
 
@@ -61,7 +61,7 @@
     <div class="nrng text1 w100 center">Tőke költség</div>
     <div class="toke text1 w100 center">
       {{ertekValtozas*s.tokeKtsg}} N&#xa5; /
-      {{resS.getFc('szabadToke').value-ertekValtozas*s.tokeKtsg}} N&#xa5;
+      {{resS.getSzabadToke()-ertekValtozas*s.tokeKtsg}} N&#xa5;
     </div>
   </div>
 
@@ -69,7 +69,7 @@
     <div class="nprpl text1 w100 center">Karma költség</div>
     <div class="karma text1 w100 center">
       {{ertekValtozas*s.karmaKtsg}} &#x262F; /
-      {{resS.getFc('szabadKarma').value-ertekValtozas*s.karmaKtsg}} &#x262F;
+      {{resS.getSzabadKarma()-ertekValtozas*s.karmaKtsg}} &#x262F;
     </div>
   </div>
 
@@ -85,6 +85,6 @@
 
   <!-- save button -->
 
-  <div class="buttonCont w100">
+  <div class="buttonCont w100 margTop1">
     <button class="itemGet text1" type="button" (click)="onSave()">Mentés</button>
   </div>

@@ -59,8 +59,8 @@ export class SelectArtifactService {
 
   openModal() {
     this.modalServ.openModal(SelectArtifactsComponent, {
-      moneyFilter: this.resServ.getFc('szabadToke').value,
-      karmaFilter: this.resServ.getFc('szabadKarma').value
+      moneyFilter: this.resServ.getSzabadToke(),
+      karmaFilter: this.resServ.getSzabadKarma()
     }).subscribe(
       w => this.artifactsServ.addArtifact(w)
     );

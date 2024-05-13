@@ -3,10 +3,10 @@
 <div class="pageCont" [formGroup]="skillsServ.skillsForm" *ngIf="skillsServ.skillsForm">
 
   <div class="buttonCont">
-    <button *ngIf="resServ.getFc('szabadKarma').value >= 2" class="ngrn text1" type="button" (click)="selSkillsModalServ.openModal()">Új Szakértelem</button>
+    <button *ngIf="resServ.getSzabadKarma() >= 2" class="ngrn text1" type="button" (click)="selSkillsModalServ.openModal()">Új Szakértelem</button>
   </div>
 
-  <div class="flexCont w100" formArrayName="skills" *ngFor='let csoport of getCsoportok()'>
+  <div class="flexCont w100 margBott1" formArrayName="skills" *ngFor='let csoport of getCsoportok()'>
 
     <!-- csoportosítás -->
 

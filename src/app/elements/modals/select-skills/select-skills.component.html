@@ -14,7 +14,7 @@
 
     <h3 class="w100 ntl">{{filteredCs}}</h3>
 
-    <div class="w100 itemCont" *ngFor="let skill of getSkills(filteredCs)" (click)="selectSkill(skill.nev, skill.csoport, skill.kapTul)">
+    <div class="w100" *ngFor="let skill of getSkills(filteredCs)" (click)="selectSkill(skill.nev, skill.csoport, skill.kapTul)">
 
       <app-skill class="flexCont"
       [nev]="skill.nev"

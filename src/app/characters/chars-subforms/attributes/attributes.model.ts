@@ -18,9 +18,15 @@ export interface AttributesModel {
   asztKit: number,
   asztKitMod: number,
   //speciális
-  magia: number,
-  esszencia: number,
   kockatartalek: number,
-  kezdemenyezes: number,
-
+  kockatartalekMod: number,
+  magia: number,
+  magiaMod: number,
+  chi: number,
+  chiMod: number,
+  cyberCapacity: number,
+  cyberCapacityMod: number,
+  //konstans
+  esszencia: number,
+  esszenciaMod: number,
 };

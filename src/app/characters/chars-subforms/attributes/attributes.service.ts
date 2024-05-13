@@ -47,19 +47,12 @@ export class AttributesService {
       //konstans
       esszencia: [6, Validators.required],
       esszenciaMod: [0, Validators.required],
-      akcio: [0, Validators.required],
-      akcioMod: [0, Validators.required],
-      kezdemenyezes: [1, Validators.required],
-      kezdemenyezesMod: [0, Validators.required],
     };
     return this.attributesForm = this.fb.group(attributes);
   }
 
   getFc(fcName: string):any {
-    if (this.attributesForm.get(fcName)?.value !== undefined) {
-      return this.attributesForm.get(fcName);
-    }
-    return console.log(fcName)
+    return this.attributesForm.get(fcName);
   }
 
   getTulErtek(fcName: string): number {

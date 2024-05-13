@@ -1,12 +1,3 @@
-import { ArmorsModel } from "../chars-subforms/armors/armors.model";
-import { ArtifactsModel } from "../chars-subforms/artifacts/artifacts.model";
-import { CybersModel } from "../chars-subforms/cybers/cybers.model";
-import { ExplosivesModel } from "../chars-subforms/explosives/explosives.model";
-import { SpellsModel } from "../chars-subforms/spells/spells.model";
-import { SpiritsModel } from "../chars-subforms/spirits/spirits.model";
-import { ToolsModel } from "../chars-subforms/tools/tools.model";
-import { WeaponsModel } from "../chars-subforms/weapons/weapons.model";
-
 export interface CharModel {
 
   _id: string;
@@ -74,21 +65,5 @@ export interface CharModel {
   pinhentsegAllapot: number,
   taplaltsagAllapot: number,
   armorLevel: number,
-  // páncélok
-  armors: Array<ArmorsModel>,
-  // Ereklyék
-  artifacts: Array<ArtifactsModel>,
-  // kiberverek
-  cybers: Array<CybersModel>,
-  // robbanószerek
-  explosives: Array<ExplosivesModel>,
-  // varázslatok
-  spells: Array<SpellsModel>,
-  // szellemek
-  spirits: Array<SpiritsModel>,
-  // eszközök
-  tools: Array<ToolsModel>,
-  // fegyverek
-  weapons: Array<WeaponsModel>,
 
 }

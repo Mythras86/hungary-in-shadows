@@ -62,8 +62,8 @@ export class SelectSpellService {
 
   openModal() {
     this.modalServ.openModal(SelectSpellsComponent, {
-      moneyFilter: this.resServ.getFc('szabadToke').value,
-      karmaFilter: this.resServ.getFc('szabadKarma').value
+      moneyFilter: this.resServ.getSzabadToke(),
+      karmaFilter: this.resServ.getSzabadKarma()
     }).subscribe(
       w => this.spellsServ.addSpell(w)
     );

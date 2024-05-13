@@ -33,7 +33,7 @@ export class DetailsService {
         hajszin: ['#503335', Validators.required],
         szorszin: ['#503335', Validators.required],
         borszin: ['#ecbcb4', Validators.required],
-        kedvencszin: ['', Validators.required],
+        kedvencszin: ['#999999', Validators.required],
         // hosszú szöveg
         felelem: ['', Validators.required],
         osztonzo: ['', Validators.required],
@@ -89,6 +89,27 @@ export class DetailsService {
       return nyelvekUtil.map(x => x);
     }
     return [];
+  }
+
+  fillWithDummy(): void {
+    this.getFc('teljesnev').patchValue('Szikla Szilárd');
+    this.getFc('becenev').patchValue('Bazalt');
+    this.getFc('alnev').patchValue('Kavics');
+    this.getFc('testalkat').patchValue('Mackós');
+    this.getFc('hajstilus').patchValue('Kopasz');
+    this.getFc('nem').patchValue('Férfi');
+    this.getFc('dns').patchValue('Ember');
+    this.getFc('anyanyelv').patchValue('Magyar');
+    this.getFc('eletkor').patchValue('35');
+    this.getFc('magassag').patchValue('180');
+    this.getFc('testsuly').patchValue('100');
+    this.getFc('felelem').patchValue('van');
+    this.getFc('osztonzo').patchValue('van');
+    this.getFc('gyulolet').patchValue('van');
+    this.getFc('kedvenc').patchValue('van');
+    this.getFc('irtozat').patchValue('van');
+    this.getFc('vonzalom').patchValue('van');
+    this.getFc('megjelenes').patchValue('van');
   }
 
 

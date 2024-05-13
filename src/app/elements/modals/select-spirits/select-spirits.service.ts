@@ -66,8 +66,8 @@ export class SelectSpiritsService {
 
   openModal() {
     this.modalServ.openModal(SelectSpiritsComponent, {
-      moneyFilter: this.resServ.getFc('szabadToke').value,
-      karmaFilter: this.resServ.getFc('szabadKarma').value
+      moneyFilter: this.resServ.getSzabadToke(),
+      karmaFilter: this.resServ.getSzabadKarma()
     }).subscribe(
       w => this.spiritsServ.addSpirit(w)
     );

@@ -1,22 +1,22 @@
 <h2 class="ntl">Erőforrások</h2>
-<div class="pageCont" [formGroup]="resS.resourcesForm" *ngIf="resS.resourcesForm">
+<div class="pageCont" [formGroup]="s.resourcesForm" *ngIf="s.resourcesForm">
 
   <!-- karma értékek -->
 
-  <span class="flexCont itemCont w100">
+  <span class="flexCont w100">
     <h3 class="w100 nwht">Karma</h3>
 
     <div *ngFor="let res of getKarmaU()" class="w100 flexCont">
       <div class="w40 text1 nprpl">{{res.nev}}</div>
       <app-field-karma class="w60 flexCont"
-      [ertek]="resS.getFc(res.fcName)?.value"
+      [ertek]="s.getFc(res.fcName)?.value"
       [szin]="'grayCell'"
       ></app-field-karma>
     </div>
 
     <div class="w40 text1 nprpl">Szabad Karma</div>
     <app-field-karma class="w60 flexCont"
-    [ertek]="resS.getFc('szabadKarma')?.value"
+    [ertek]="s.getSzabadKarma()"
     ></app-field-karma>
 
   </span>
@@ -30,30 +30,30 @@
       0,
       1,
       0,
-      resS.getFc('szerzettToke'),
+      s.getFc('szerzettToke'),
       'N&#xa5;',
       1,
-      resS.getFc('szabadKarma')?.value
+      s.getSzabadKarma()
       )"
     >1 &#x262F; => 7500 N&#xa5;</button>
   </div>
 
   <!-- tőke értékek -->
 
-  <span class="flexCont itemCont w100">
+  <span class="flexCont w100">
     <h3 class="w100 nwht">Tőke</h3>
 
     <div *ngFor="let res of getTokeU()" class="w100 flexCont">
       <div class="w40 text1 nrng">{{res.nev}}</div>
       <app-field-toke class="w60 flexCont"
-      [ertek]="resS.getFc(res.fcName)?.value"
+      [ertek]="s.getFc(res.fcName)?.value"
       [szin]="'grayCell'"
       ></app-field-toke>
     </div>
 
     <div class="w40 text1 nrng">Szabad Tőke</div>
     <app-field-toke class="w60 flexCont"
-    [ertek]="resS.getFc('szabadToke')?.value"
+    [ertek]="s.getSzabadToke()"
     ></app-field-toke>
   </span>
 
@@ -66,10 +66,10 @@
       7500,
       0,
       0,
-      resS.getFc('szerzettKarma'),
+      s.getFc('szerzettKarma'),
       '&#x262F;',
       7500,
-      resS.getFc('szabadToke')?.value
+      s.getSzabadToke()
     )"
     >7500 N&#xa5; => 1 &#x262F;</button>
   </div>

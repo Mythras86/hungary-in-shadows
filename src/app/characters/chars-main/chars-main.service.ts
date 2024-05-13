@@ -95,22 +95,6 @@ export class CharsMainService {
       armorLevel: number,
       // szakértelmek
       skills: Array<SkillsModel>,
-      // páncélok
-      armors: Array<ArmorsModel>,
-      // ereklyék
-      artifacts: Array<ArtifactsModel>,
-      // kiberverek
-      cybers: Array<CybersModel>,
-      // robbanószerek
-      explosives: Array<ExplosivesModel>,
-      // varázslatok
-      spells: Array<SpellsModel>,
-      // szellemek
-      spirits: Array<SpiritsModel>,
-      // eszközök
-      tools: Array<ToolsModel>,
-      // fegyverek
-      weapons: Array<WeaponsModel>,
     }>(BACKEND_URL +_id);
   }
 
@@ -180,22 +164,6 @@ export class CharsMainService {
     armorLevel: number,
     // szakértelmek
     skills: Array<SkillsModel>,
-    // páncélok
-    armors: Array<ArmorsModel>,
-    // ereklyék
-    artifacts: Array<ArtifactsModel>,
-    // kiberverek
-    cybers: Array<CybersModel>,
-    // robbanószerek
-    explosives: Array<ExplosivesModel>,
-    // varázslatok
-    spells: Array<SpellsModel>,
-    // szellemek
-    spirits: Array<SpiritsModel>,
-    // eszközök
-    tools: Array<ToolsModel>,
-    // fegyverek
-    weapons: Array<WeaponsModel>,
   ) {
     const charData = {
       _id: '',
@@ -263,22 +231,6 @@ export class CharsMainService {
       taplaltsagAllapot: taplaltsagAllapot,
       // szakértelmek
       skills: skills,
-      // páncélok
-      armors: armors,
-      // ereklyék
-      artifacts: artifacts,
-      // kiberverek
-      cybers: cybers,
-      // robbanószerek
-      explosives: explosives,
-      // varázslatok
-      spells: spells,
-      // szellemek
-      spirits: spirits,
-      // eszközök
-      tools: tools,
-      // fegyverek
-      weapons: weapons,
     };
     this.http.post<{ message: string; char: CharModel }>(
       BACKEND_URL + "create", charData).subscribe(response => {
@@ -352,22 +304,6 @@ export class CharsMainService {
     armorLevel: number,
     // szakértelmek
     skills: Array<SkillsModel>,
-    // páncélok
-    armors: Array<ArmorsModel>,
-    // ereklyék
-    artifacts: Array<ArtifactsModel>,
-    // kiberverek
-    cybers: Array<CybersModel>,
-    // robbanószerek
-    explosives: Array<ExplosivesModel>,
-    // varázslatok
-    spells: Array<SpellsModel>,
-    // szellemek
-    spirits: Array<SpiritsModel>,
-    // eszközök
-    tools: Array<ToolsModel>,
-    // fegyverek
-    weapons: Array<WeaponsModel>,
   ) {
     let charData: CharModel;
     charData = {
@@ -437,21 +373,6 @@ export class CharsMainService {
       // szakértelmek
       skills: skills,
       // páncélok
-      armors: armors,
-      // ereklyék
-      artifacts: artifacts,
-      // kiberverek
-      cybers: cybers,
-      // robbanószerek
-      explosives: explosives,
-      // varázslatok
-      spells: spells,
-      // szellemek
-      spirits: spirits,
-      // eszközök
-      tools: tools,
-      // fegyverek
-      weapons: weapons,
       };
     this.http
       .put(BACKEND_URL +_id, charData)
