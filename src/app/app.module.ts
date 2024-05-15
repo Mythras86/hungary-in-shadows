@@ -45,6 +45,7 @@ import { FieldKarmaComponent } from './elements/Fields/field-karma/field-karma.c
 import { InpDetailsComponent } from './elements/Inputs/inp-details/inp-details.component';
 import { BtnOptionsComponent } from './elements/Buttons/btn-options/btn-options.component';
 import { SkillComponent } from './elements/skill/skill.component';
+import { ItemsComponent } from './characters/chars-subforms/items/items.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { SkillComponent } from './elements/skill/skill.component';
     FieldKarmaComponent,
     FieldTokeComponent,
     BtnOptionsComponent,
+    ItemsComponent,
   ],
   imports: [
     BrowserModule,

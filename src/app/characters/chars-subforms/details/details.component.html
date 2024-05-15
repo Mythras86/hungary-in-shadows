@@ -1,10 +1,10 @@
 <h2 class="ntl">Jellemzők</h2>
 <div class="pageCont" [formGroup]="s.detailsForm" *ngIf="s.detailsForm">
 
-  <button class="text1 ngrn" type="button" (click)="s.fillWithDummy()">fill with dummy</button>
+  <button class="text1 ngrn" type="button" (click)="fillWithDummy()">fill with dummy</button>
 
   <div class="w{{item.meret}} flexCont posRel"
-  *ngFor="let item of s.getDetailsUtil(); first as isFirst"
+  *ngFor="let item of getDetailsUtil(); first as isFirst"
   [ngClass]="select.toggleClass(item.fcName)" (click)="select.toggleStatus(item.fcName)"
   >
 
@@ -16,7 +16,7 @@
     [fcName] = "item.fcName"
     [megjegyzes] = "item.megjegyzes"
     [ertek] = "s.getFc(item.fcName)?.value"
-    [lista] = "s.getList(item.fcName)"
+    [lista] = "getList(item.fcName)"
     ></app-inp-details>
 
     <app-btn-options *ngIf="select.status == item.fcName" class="posAbs"
@@ -26,9 +26,9 @@
       item.tipus,
       item.egyseg,
       item.fcName,
-      item.megjegyzes + (s.getDefault(item.fcName) == undefined ? '' : ' ' + s.getDefault(item.fcName)),
+      item.megjegyzes + (getDefault(item.fcName) == undefined ? '' : ' ' + getDefault(item.fcName)),
       s.getFc(item.fcName)?.value,
-      s.getList(item.fcName)
+      getList(item.fcName)
       )"
     ></app-btn-options>
 
@@ -38,8 +38,8 @@
     <div class="ngrn text1 w100 center">
       Különleges képességek
     </div>
-    <div *ngIf="s.getDefault('kepessegek') == null" class="grayCell w100 text1"></div>
-    <div class="grayCell w100 text1" *ngFor="let item of s.getDefault('kepessegek')">
+    <div *ngIf="getDefault('kepessegek') == null" class="grayCell w100 text1"></div>
+    <div class="grayCell w100 text1" *ngFor="let item of getDefault('kepessegek')">
       {{item}}
     </div>
   </div>

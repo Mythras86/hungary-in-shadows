@@ -27,4 +27,3 @@ export interface DetailsModel {
   vonzalom:string,
   megjelenes:string,
 };
-
