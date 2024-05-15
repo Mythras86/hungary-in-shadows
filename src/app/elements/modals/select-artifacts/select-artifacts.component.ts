@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SelectArtifactService } from './select-artifacts.service';
 import { SpinnerService } from '../../spinner/spinner.service';
 import { Subject, Subscription } from 'rxjs';
-import { ArtifactsModel } from 'src/app/characters/chars-subforms/artifacts/artifacts.model';
+import { ArtifactsModel } from 'src/app/characters/chars-subforms/items/artifacts/artifacts.model';
 
 @Component({
   selector: 'app-select-artifacts',

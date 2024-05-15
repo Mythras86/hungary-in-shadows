@@ -3,7 +3,7 @@ import { SelectAAddonService } from './select-aAddons.service';
 import { SpinnerService } from '../../spinner/spinner.service';
 import { Subject, Subscription} from 'rxjs';
 import { SortMeService } from '../../sortme/sort-me.service';
-import { AAddonsModel } from 'src/app/characters/chars-subforms/armors/armors.model';
+import { AAddonsModel } from 'src/app/characters/chars-subforms/items/armors/armors.model';
 
 @Component({
   selector: 'app-select-aAddons',

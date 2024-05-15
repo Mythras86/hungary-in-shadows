@@ -22,6 +22,15 @@ export class StatusService {
     return this.statusForm = this.fb.group(status);
   }
 
+  updateStatus(w: any): void {
+    this.statusForm = this.fb.group ({
+      fizikaiAllapot: w.fizikaiAllapot,
+      asztralisAllapot: w.asztralisAllapot,
+      pinhentsegAllapot: w.pinhentsegAllapot,
+      taplaltsagAllapot: w.taplaltsagAllapot,
+    });
+  }
+
   getFc(fcName: string):any {
     return this.statusForm.get(fcName);
   }

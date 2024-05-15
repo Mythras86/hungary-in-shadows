@@ -45,6 +45,38 @@ export class DetailsService {
       return this.detailsForm = this.fb.group(details);
   }
 
+  updateDetails(w: any): void {
+    this.detailsForm = this.fb.group ({
+      //szöveges
+      teljesnev: w.teljesnev,
+      becenev: w.becenev,
+      alnev: w.alnev,
+      testalkat: w.testalkat,
+      hajstilus: w.hajstilus,
+      //értékválasztó
+      nem: w.nem,
+      dns: w.dns,
+      anyanyelv: w.anyanyelv,
+      eletkor: w.eletkor,
+      magassag: w.magassag,
+      testsuly: w.testsuly,
+      //szín
+      szemszin: w.szemszin,
+      hajszin: w.hajszin,
+      szorszin: w.szorszin,
+      borszin: w.borszin,
+      kedvencszin: w.kedvencszin,
+      //hosszú szöveg
+      felelem: w.felelem,
+      osztonzo: w.osztonzo,
+      gyulolet: w.gyulolet,
+      kedvenc: w.kedvenc,
+      irtozat: w.irtozat,
+      vonzalom: w.vonzalom,
+      megjelenes: w.megjelenes
+    });
+  }
+
   getFc(fcName: string):any {
     return this.detailsForm.get(fcName);
   }

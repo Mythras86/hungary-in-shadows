@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArtifactsService } from './artifacts.service';
-import { ResourcesService } from '../resources/resources.service';
+import { ResourcesService } from '../../resources/resources.service';
 import { FormArray } from '@angular/forms';
 import { SelectArtifactService } from 'src/app/elements/modals/select-artifacts/select-artifacts.service';
 

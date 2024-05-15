@@ -5,8 +5,8 @@ import { ModalService } from '../modal.service';
 import { Subject, map } from 'rxjs';
 import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';
 import { SelectSpellsComponent } from './select-spells.component';
-import { SpellsService } from 'src/app/characters/chars-subforms/spells/spells.service';
-import { SpellsModel } from 'src/app/characters/chars-subforms/spells/spells.model';
+import { SpellsService } from 'src/app/characters/chars-subforms/items/spells/spells.service';
+import { SpellsModel } from 'src/app/characters/chars-subforms/items/spells/spells.model';
 
 const BACKEND_URL = environment.apiUrl + "/spell/";
 

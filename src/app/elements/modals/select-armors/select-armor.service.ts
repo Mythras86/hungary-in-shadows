@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject, map } from 'rxjs';
-import { ArmorsModel } from 'src/app/characters/chars-subforms/armors/armors.model';
+import { ArmorsModel } from 'src/app/characters/chars-subforms/items/armors/armors.model';
 import { environment } from 'src/environments/environment';
 import { ModalService } from '../modal.service';
 import { SelectArmorsComponent } from './select-armors.component';
-import { ArmorsService } from 'src/app/characters/chars-subforms/armors/armors.service';
+import { ArmorsService } from 'src/app/characters/chars-subforms/items/armors/armors.service';
 import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';
 import { armorsJSON } from './armorsJSON';
 

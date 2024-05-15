@@ -5,8 +5,8 @@ import { ModalService } from '../modal.service';
 import { Subject, map } from 'rxjs';
 import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';
 import { SelectToolsComponent } from './select-tools.component';
-import { ToolsService } from 'src/app/characters/chars-subforms/tools/tools.service';
-import { ToolsModel } from 'src/app/characters/chars-subforms/tools/tools.model';
+import { ToolsService } from 'src/app/characters/chars-subforms/items/tools/tools.service';
+import { ToolsModel } from 'src/app/characters/chars-subforms/items/tools/tools.model';
 
 const BACKEND_URL = environment.apiUrl + "/tool/";
 

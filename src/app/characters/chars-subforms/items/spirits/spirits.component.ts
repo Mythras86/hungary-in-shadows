@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { SpiritsService } from './spirits.service';
-import { ResourcesService } from '../resources/resources.service';
+import { ResourcesService } from '../../resources/resources.service';
 import { SelectSpiritsService } from 'src/app/elements/modals/select-spirits/select-spirits.service';
 import { FormArray } from '@angular/forms';
-import { AttributesService } from '../attributes/attributes.service';
+import { AttributesService } from '../../attributes/attributes.service';
 
 @Component({
   selector: 'app-spirits',

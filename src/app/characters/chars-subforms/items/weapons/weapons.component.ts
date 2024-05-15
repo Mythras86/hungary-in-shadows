@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { WeaponsService } from './weapons.service';
-import { ResourcesService } from '../resources/resources.service';
+import { ResourcesService } from '../../resources/resources.service';
 import { FormArray } from '@angular/forms';
 import { SelectWeaponService } from 'src/app/elements/modals/select-weapons/select-weapons.service';
 import { SelectWAddonService } from 'src/app/elements/modals/select-wAddons/select-wAddons.service';

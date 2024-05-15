@@ -27,7 +27,6 @@ export class CharsListService {
           chars: w.chars.map((char: CharModel) => {
             return {
               _id: char._id,
-              creatorName: char.creatorName,
               creatorId: char.creatorId,
               becenev: char.becenev,
               dns: char.dns,

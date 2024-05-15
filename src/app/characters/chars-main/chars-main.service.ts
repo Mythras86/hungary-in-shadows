@@ -5,14 +5,7 @@ import { environment } from 'src/environments/environment';
 import { CharModel } from './chars-main.model';
 import { FormGroup } from '@angular/forms';
 import { SkillsModel } from '../chars-subforms/skills/skills.model';
-import { ArmorsModel } from '../chars-subforms/armors/armors.model';
-import { ArtifactsModel } from '../chars-subforms/artifacts/artifacts.model';
-import { CybersModel } from '../chars-subforms/cybers/cybers.model';
-import { ExplosivesModel } from '../chars-subforms/explosives/explosives.model';
-import { SpellsModel } from '../chars-subforms/spells/spells.model';
-import { SpiritsModel } from '../chars-subforms/spirits/spirits.model';
-import { ToolsModel } from '../chars-subforms/tools/tools.model';
-import { WeaponsModel } from '../chars-subforms/weapons/weapons.model';
+import { ItemsModel } from '../chars-subforms/items/items.model';
 
 const BACKEND_URL = environment.apiUrl + "/char/";
 
@@ -29,78 +22,72 @@ export class CharsMainService {
   mainCharForm!: FormGroup;
 
   getOneChar(_id: string) {
-    return this.http.get<{
-      _id: string,
-      creatorName: string,
-      creatorId: string;
-      //szöveges
-      teljesnev: string,
-      becenev: string,
-      alnev: string,
-      testalkat: string,
-      hajstilus: string,
-      //értékválasztó
-      nem: string,
-      dns: string,
-      anyanyelv: string,
-      eletkor: number,
-      magassag: number,
-      testsuly: number,
-      //szín
-      szemszin: string,
-      hajszin: string,
-      szorszin: string,
-      borszin: string,
-      kedvencszin: string,
-      //hosszú szöveg
-      felelem: string,
-      osztonzo: string,
-      gyulolet: string,
-      kedvenc: string,
-      irtozat: string,
-      vonzalom: string,
-      megjelenes: string,
-      //erőforrások
-      szabadKarma: number,
-      szabadToke: number,
-      karmabolToke: number,
-      //fizikai
-      fizEro: number,
-      fizEroMod: number,
-      fizGyo: number,
-      fizGyoMod: number,
-      fizUgy: number,
-      fizUgyMod: number,
-      fizKit: number,
-      fizKitMod: number,
-      //asztrál
-      asztEro: number,
-      asztEroMod: number,
-      asztGyo: number,
-      asztGyoMod: number,
-      asztUgy: number,
-      asztUgyMod: number,
-      asztKit: number,
-      asztKitMod: number,
-      //speciális
-      magia: number,
-      esszencia: number,
-      kockatartalek: number,
-      kezdemenyezes: number,
-      // állapot
-      asztralisAllapot: number,
-      fizikaiAllapot: number,
-      pinhentsegAllapot: number,
-      taplaltsagAllapot: number,
-      armorLevel: number,
-      // szakértelmek
-      skills: Array<SkillsModel>,
-    }>(BACKEND_URL +_id);
+    return this.http.get<CharModel>(BACKEND_URL +_id);
   }
+
+  // getOneChar(_id: string) {
+  //   return this.http.get<{
+  //     _id: string,
+  //     creatorId: string;
+  //     //szöveges
+  //     teljesnev: string,
+  //     becenev: string,
+  //     alnev: string,
+  //     testalkat: string,
+  //     hajstilus: string,
+  //     //értékválasztó
+  //     nem: string,
+  //     dns: string,
+  //     anyanyelv: string,
+  //     eletkor: number,
+  //     magassag: number,
+  //     testsuly: number,
+  //     //szín
+  //     szemszin: string,
+  //     hajszin: string,
+  //     szorszin: string,
+  //     borszin: string,
+  //     kedvencszin: string,
+  //     //hosszú szöveg
+  //     felelem: string,
+  //     osztonzo: string,
+  //     gyulolet: string,
+  //     kedvenc: string,
+  //     irtozat: string,
+  //     vonzalom: string,
+  //     megjelenes: string,
+  //     //erőforrások
+  //     szabadKarma: number,
+  //     szabadToke: number,
+  //     karmabolToke: number,
+  //     //fizikai
+  //     fizEro: number,
+  //     fizGyo: number,
+  //     fizUgy: number,
+  //     fizKit: number,
+  //     //asztrál
+  //     asztEro: number,
+  //     asztGyo: number,
+  //     asztUgy: number,
+  //     asztKit: number,
+  //     //speciális
+  //     magia: number,
+  //     esszencia: number,
+  //     kockatartalek: number,
+  //     kezdemenyezes: number,
+  //     // állapot
+  //     asztralisAllapot: number,
+  //     fizikaiAllapot: number,
+  //     pinhentsegAllapot: number,
+  //     taplaltsagAllapot: number,
+  //     armorLevel: number,
+  //     // szakértelmek
+  //     skills: Array<SkillsModel>,
+  //   }>(BACKEND_URL +_id);
+  // }
 
   addOneChar(
     _id: string,
-    creatorName: string,
     creatorId: string,
     //szöveges
     teljesnev: string,
@@ -130,44 +117,40 @@ export class CharsMainService {
     vonzalom: string,
     megjelenes: string,
     //erőforrások
-    szabadKarma: number,
-    szabadToke: number,
-    karmabolToke: number,
+    alapKarma: number,
+    szerzettKarma: number,
+    elkoltottKarma: number,
+    alapToke: number,
+    szerzettToke: number,
+    elkoltottToke: number,
     //fizikai
     fizEro: number,
-    fizEroMod: number,
     fizGyo: number,
-    fizGyoMod: number,
     fizUgy: number,
-    fizUgyMod: number,
     fizKit: number,
-    fizKitMod: number,
     //asztrál
     asztEro: number,
-    asztEroMod: number,
     asztGyo: number,
-    asztGyoMod: number,
     asztUgy: number,
-    asztUgyMod: number,
     asztKit: number,
-    asztKitMod: number,
     //speciális
-    magia: number,
-    esszencia: number,
     kockatartalek: number,
-    kezdemenyezes: number,
+    magia: number,
+    chi: number,
+    cyberCapacity: number,
+    //konstans
+    esszencia: number,
     // állapot
     asztralisAllapot: number,
     fizikaiAllapot: number,
     pinhentsegAllapot: number,
     taplaltsagAllapot: number,
-    armorLevel: number,
     // szakértelmek
     skills: Array<SkillsModel>,
+    items: Array<ItemsModel>
   ) {
-    const charData = {
+    const charData:CharModel = {
       _id: '',
-      creatorName: '',
       creatorId: '',
       //szöveges
       teljesnev: teljesnev,
@@ -197,33 +180,29 @@ export class CharsMainService {
       vonzalom: vonzalom,
       megjelenes: megjelenes,
       //erőforrások
-      szabadKarma: szabadKarma,
-      szabadToke: szabadToke,
-      karmabolToke: karmabolToke,
+      alapKarma: alapKarma,
+      szerzettKarma: szerzettKarma,
+      elkoltottKarma: elkoltottKarma,
+      alapToke: alapToke,
+      szerzettToke: szerzettToke,
+      elkoltottToke: elkoltottToke,
       //fizikai
       fizEro: fizEro,
-      fizEroMod: fizEroMod,
       fizGyo: fizGyo,
-      fizGyoMod: fizGyoMod,
       fizUgy: fizUgy,
-      fizUgyMod: fizUgyMod,
       fizKit: fizKit,
-      fizKitMod: fizKitMod,
       //asztrál
       asztEro: asztEro,
-      asztEroMod: asztEroMod,
       asztGyo: asztGyo,
-      asztGyoMod: asztGyoMod,
       asztUgy: asztUgy,
-      asztUgyMod: asztUgyMod,
       asztKit: asztKit,
-      asztKitMod: asztKitMod,
       //speciális
-      magia: magia,
-      esszencia: esszencia,
       kockatartalek: kockatartalek,
-      kezdemenyezes: kezdemenyezes,
-      armorLevel: armorLevel,
+      magia: magia,
+      chi: chi,
+      cyberCapacity: cyberCapacity,
+      //konstans
+      esszencia: esszencia,
       // állapot
       asztralisAllapot: asztralisAllapot,
       fizikaiAllapot: fizikaiAllapot,
@@ -231,16 +210,17 @@ export class CharsMainService {
       taplaltsagAllapot: taplaltsagAllapot,
       // szakértelmek
       skills: skills,
+      items: items,
     };
-    this.http.post<{ message: string; char: CharModel }>(
-      BACKEND_URL + "create", charData).subscribe(response => {
-      this.router.navigate(["/charslist"]);
-    });
+    console.log(charData)
+    // this.http.post<{ message: string; char: CharModel }>(
+    //   BACKEND_URL + "create", charData).subscribe(response => {
+    //   this.router.navigate(["/charslist"]);
+    // });
   }
 
   updateOneChar(
     _id: string,
-    creatorName: string,
     creatorId: string,
     //szöveges
     teljesnev: string,
@@ -270,46 +250,42 @@ export class CharsMainService {
     vonzalom: string,
     megjelenes: string,
     //erőforrások
-    szabadKarma: number,
-    szabadToke: number,
-    karmabolToke: number,
+    alapKarma: number,
+    szerzettKarma: number,
+    elkoltottKarma: number,
+    alapToke: number,
+    szerzettToke: number,
+    elkoltottToke: number,
     //fizikai
     fizEro: number,
-    fizEroMod: number,
     fizGyo: number,
-    fizGyoMod: number,
     fizUgy: number,
-    fizUgyMod: number,
     fizKit: number,
-    fizKitMod: number,
     //asztrál
     asztEro: number,
-    asztEroMod: number,
     asztGyo: number,
-    asztGyoMod: number,
     asztUgy: number,
-    asztUgyMod: number,
     asztKit: number,
-    asztKitMod: number,
     //speciális
-    magia: number,
-    esszencia: number,
     kockatartalek: number,
-    kezdemenyezes: number,
+    magia: number,
+    chi: number,
+    cyberCapacity: number,
+    //konstans
+    esszencia: number,
     // állapot
     asztralisAllapot: number,
     fizikaiAllapot: number,
     pinhentsegAllapot: number,
     taplaltsagAllapot: number,
-    armorLevel: number,
     // szakértelmek
     skills: Array<SkillsModel>,
+    items: Array<ItemsModel>,
   ) {
     let charData: CharModel;
     charData = {
       _id: _id,
       creatorId: creatorId,
-      creatorName: creatorName,
       //szöveges
       teljesnev: teljesnev,
       becenev: becenev,
@@ -338,43 +314,40 @@ export class CharsMainService {
       vonzalom: vonzalom,
       megjelenes: megjelenes,
       //erőforrások
-      szabadKarma: szabadKarma,
-      szabadToke: szabadToke,
-      karmabolToke: karmabolToke,
+      alapKarma: alapKarma,
+      szerzettKarma: szerzettKarma,
+      elkoltottKarma: elkoltottKarma,
+      alapToke: alapToke,
+      szerzettToke: szerzettToke,
+      elkoltottToke: elkoltottToke,
       //fizikai
       fizEro: fizEro,
-      fizEroMod: fizEroMod,
       fizGyo: fizGyo,
-      fizGyoMod: fizGyoMod,
       fizUgy: fizUgy,
-      fizUgyMod: fizUgyMod,
       fizKit: fizKit,
-      fizKitMod: fizKitMod,
       //asztrál
       asztEro: asztEro,
-      asztEroMod: asztEroMod,
       asztGyo: asztGyo,
-      asztGyoMod: asztGyoMod,
       asztUgy: asztUgy,
-      asztUgyMod: asztUgyMod,
       asztKit: asztKit,
-      asztKitMod: asztKitMod,
       //speciális
-      magia: magia,
-      esszencia: esszencia,
       kockatartalek: kockatartalek,
-      kezdemenyezes: kezdemenyezes,
+      magia: magia,
+      chi: chi,
+      cyberCapacity: cyberCapacity,
+      //konstans
+      esszencia: esszencia,
       // állapot
       asztralisAllapot: asztralisAllapot,
       fizikaiAllapot: fizikaiAllapot,
       pinhentsegAllapot: pinhentsegAllapot,
       taplaltsagAllapot: taplaltsagAllapot,
-      armorLevel: armorLevel,
       // szakértelmek
       skills: skills,
-      // páncélok
+      // felszerelés
+      items: items
       };
-    this.http
+      this.http
       .put(BACKEND_URL +_id, charData)
       .subscribe(response => {
       this.router.navigate(["/charslist"]);

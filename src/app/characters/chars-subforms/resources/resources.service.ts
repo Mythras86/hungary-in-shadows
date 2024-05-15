@@ -26,6 +26,17 @@ export class ResourcesService {
     return this.resourcesForm = this.fb.group(resources);
   }
 
+  updateResources(w: any): void {
+    this.resourcesForm = this.fb.group ({
+      //erőforrások
+      alapKarma: w.alapKarma,
+      szerzettKarma: w.szerzettKarma,
+      elkoltottKarma: w.elkoltottKarma,
+      alapToke: w.alapToke,
+      szerzettToke: w.szerzettToke,
+      elkoltottToke: w.elkoltottToke
+    });
+  }
 
   getFc(fcName: string):any {
     return this.resourcesForm.get(fcName);

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SelectWeaponService } from './select-weapons.service';
 import { SpinnerService } from '../../spinner/spinner.service';
 import { Subject, Subscription, filter } from 'rxjs';
-import { WeaponsModel } from 'src/app/characters/chars-subforms/weapons/weapons.model';
+import { WeaponsModel } from 'src/app/characters/chars-subforms/items/weapons/weapons.model';
 import { SortMeService } from '../../sortme/sort-me.service';
 
 @Component({

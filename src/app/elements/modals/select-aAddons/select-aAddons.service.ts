@@ -5,8 +5,8 @@ import { ModalService } from '../modal.service';
 import { Subject, map } from 'rxjs';
 import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';
 import { SelectAAddonsComponent } from './select-aAddons.component';
-import { ArmorsService } from 'src/app/characters/chars-subforms/armors/armors.service';
-import { AAddonsModel } from 'src/app/characters/chars-subforms/armors/armors.model';
+import { ArmorsService } from 'src/app/characters/chars-subforms/items/armors/armors.service';
+import { AAddonsModel } from 'src/app/characters/chars-subforms/items/armors/armors.model';
 
 const BACKEND_URL = environment.apiUrl + "/aAddon/";
 

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SelectCyberService } from './select-cybers.service';
 import { SpinnerService } from '../../spinner/spinner.service';
 import { Subject, Subscription } from 'rxjs';
-import { CybersModel } from 'src/app/characters/chars-subforms/cybers/cybers.model';
+import { CybersModel } from 'src/app/characters/chars-subforms/items/cybers/cybers.model';
 
 @Component({
   selector: 'app-select-cybers',

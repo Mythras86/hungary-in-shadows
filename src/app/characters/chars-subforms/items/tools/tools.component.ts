@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToolsService } from './tools.service';
-import { ResourcesService } from '../resources/resources.service';
+import { ResourcesService } from '../../resources/resources.service';
 import { FormArray } from '@angular/forms';
 import { SelectToolService } from 'src/app/elements/modals/select-tools/select-tools.service';
 

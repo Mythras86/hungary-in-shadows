@@ -1,10 +1,10 @@
-  <div class="buttonCont w100">
+  <div class="buttonCont w100 margTop1">
     <button class="itemGet text1" (click)="onNewChar()">Új Karakter</button>
   </div>
 
   <div class="w100" *ngFor="let csoport of ['Saját karakterek', 'Más karakterek']">
 
-    <h3 *ngIf="userIsAuthenticated" class="ntl w100">{{csoport}}</h3>
+    <h3 *ngIf="userIsAuthenticated && charsList == null" class="ntl w100">{{csoport}}</h3>
 
     <div *ngFor="let char of charsListServ.charsList">
 
@@ -12,7 +12,6 @@
 
         <div class="w100 posRel" [ngClass]="select.toggleClass(char._id)" (click)="select.toggleStatus(char._id)">
           <div class="nbl w100 text2 center">{{char.becenev}}</div>
-          <div class="nprpl w100 text1">User: {{char.creatorName}}</div>
           <div class="nrng w100 text1">Nyelv: {{char.anyanyelv}}</div>
           <div class="ngrn w100 text1">DNS: {{char.dns}}</div>
 

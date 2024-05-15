@@ -1,11 +1,13 @@
-<h1 class="nbl w100" *ngIf="!userIsAuthenticated">
+<h1 class="nbl w90" *ngIf="!userIsAuthenticated && !menuOn">
   Üdv az Árnyak között!
 </h1>
-<h1 class="nbl w100" *ngIf="userIsAuthenticated">
+<h1 class="nbl w90" *ngIf="userIsAuthenticated && !menuOn">
   {{getAName()}}
 </h1>
 
-<nav class="w100">
+<div *ngIf="!menuOn" class="ngrn text2 center w10" (click)="toggleMenu()">&#x2630;</div>
+
+<nav *ngIf="menuOn" class="w100"  >
   <ul>
     <li>
       <a class="nprpl text1 center" routerLink="/">Főoldal</a>
@@ -21,3 +23,5 @@
     </li>
   </ul>
 </nav>
+
+<div *ngIf="menuOn" class="itemRemove text2 center w100" (click)="toggleMenu()">Vissza</div>

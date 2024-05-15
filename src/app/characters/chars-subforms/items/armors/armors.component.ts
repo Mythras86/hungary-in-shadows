@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ArmorsService } from './armors.service';
 import { FormArray } from '@angular/forms';
-import { ResourcesService } from '../resources/resources.service';
+import { ResourcesService } from '../../resources/resources.service';
 import { SelectArmorService } from 'src/app/elements/modals/select-armors/select-armor.service';
 import { HideService } from 'src/app/elements/hide-content/hide-content.service';
 import { SelectAAddonService } from 'src/app/elements/modals/select-aAddons/select-aAddons.service';
-import { StatusService } from '../status/status.service';
+import { StatusService } from '../../status/status.service';
 
 @Component({
   selector: 'app-armors',

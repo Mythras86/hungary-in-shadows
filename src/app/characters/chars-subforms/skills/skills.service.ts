@@ -46,10 +46,16 @@ export class SkillsService {
           megjegyzes: e.megjegyzes,
           szint: e.szint,
           kapTul: e.kapTul
-        }))
-      });
-      return skills;
-    }
+      }))
+    });
+    return skills;
+  }
+
+  updateSkills(w: any): void {
+    this.createSkills();
+    this.skillsForm.addControl('skillsForm', new FormGroup({}));
+    (this.skillsForm as FormGroup).addControl('skills', this.setSkills(w.skills));
+  }
 
   removeSkill(i:number): void {
     this.resServ.payKarma(-2);

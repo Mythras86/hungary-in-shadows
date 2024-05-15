@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ModalService } from '../modal.service';
 import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';
-import { SpiritsService } from 'src/app/characters/chars-subforms/spirits/spirits.service';
+import { SpiritsService } from 'src/app/characters/chars-subforms/items/spirits/spirits.service';
 import { Subject, map } from 'rxjs';
-import { SpiritsModel } from 'src/app/characters/chars-subforms/spirits/spirits.model';
+import { SpiritsModel } from 'src/app/characters/chars-subforms/items/spirits/spirits.model';
 import { environment } from 'src/environments/environment';
 import { SelectSpiritsComponent } from './select-spirits.component';
 

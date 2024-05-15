@@ -3,7 +3,7 @@ import { SelectWAddonService } from './select-wAddons.service';
 import { SpinnerService } from '../../spinner/spinner.service';
 import { Subject, Subscription} from 'rxjs';
 import { SortMeService } from '../../sortme/sort-me.service';
-import { WAddonsModel } from 'src/app/characters/chars-subforms/weapons/weapons.model';
+import { WAddonsModel } from 'src/app/characters/chars-subforms/items/weapons/weapons.model';
 
 @Component({
   selector: 'app-select-wAddons',

@@ -20,6 +20,10 @@ body {
   display: flex;
 }
 
+body > * {
+  width: 100%;
+}
+
 input, label {
   border: none;
   width: 100%;

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SelectToolService } from './select-tools.service';
 import { SpinnerService } from '../../spinner/spinner.service';
 import { Subject, Subscription } from 'rxjs';
-import { ToolsModel } from 'src/app/characters/chars-subforms/tools/tools.model';
+import { ToolsModel } from 'src/app/characters/chars-subforms/items/tools/tools.model';
 
 @Component({
   selector: 'app-select-tools',

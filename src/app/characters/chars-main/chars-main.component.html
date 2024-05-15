@@ -1,6 +1,8 @@
+<form *ngIf="charServ.mainCharForm" [formGroup]="charServ.mainCharForm" (ngSubmit)="createNewChar()">
 
 <div class="buttonCont margTop1">
   <button *ngIf="userIsAuthenticated && _id == getCreatorId()" class="itemGet text1" type="submit">Karakter mentése</button>
+  <button class="itemGet text1" type="submit">Karakter mentése</button>
   <button class="itemRemove text1" type="button" (click)="backToList()">Vissza</button>
 </div>
 
@@ -21,7 +23,6 @@
   </div>
 </app-hide-content>
 
-<form *ngIf="charServ.mainCharForm" [formGroup]="charServ.mainCharForm" (ngSubmit)="createNewChar()">
 
     <app-details [hidden]="filter !== 'Nincs' && filter !== 'Jellemzők'"></app-details>
     <app-resources [hidden]="filter !== 'Nincs' && filter !== 'Erőforrások'"></app-resources>

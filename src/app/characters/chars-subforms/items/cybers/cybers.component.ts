@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CybersService } from './cybers.service';
-import { ResourcesService } from '../resources/resources.service';
+import { ResourcesService } from '../../resources/resources.service';
 import { SelectCyberService } from 'src/app/elements/modals/select-cybers/select-cybers.service';
 import { FormArray } from '@angular/forms';
-import { AttributesService } from '../attributes/attributes.service';
+import { AttributesService } from '../../attributes/attributes.service';
 
 @Component({
   selector: 'app-cybers',

@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ModalService } from '../modal.service';
-import { CybersModel } from 'src/app/characters/chars-subforms/cybers/cybers.model';
+import { CybersModel } from 'src/app/characters/chars-subforms/items/cybers/cybers.model';
 import { Subject, map } from 'rxjs';
 import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';
 import { SelectCybersComponent } from './select-cybers.component';
-import { CybersService } from 'src/app/characters/chars-subforms/cybers/cybers.service';
+import { CybersService } from 'src/app/characters/chars-subforms/items/cybers/cybers.service';
 import { AttributesService } from 'src/app/characters/chars-subforms/attributes/attributes.service';
 
 const BACKEND_URL = environment.apiUrl + "/cyber/";

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SelectSpiritsService } from './select-spirits.service';
 import { SpinnerService } from '../../spinner/spinner.service';
 import { Subject, Subscription } from 'rxjs';
-import { SpiritsModel } from 'src/app/characters/chars-subforms/spirits/spirits.model';
+import { SpiritsModel } from 'src/app/characters/chars-subforms/items/spirits/spirits.model';
 
 @Component({
   selector: 'app-select-spirits',

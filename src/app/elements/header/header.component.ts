@@ -17,8 +17,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
     ) { }
 
-  public userIsAuthenticated = false;
+  menuOn: boolean = false;
+  userIsAuthenticated = false;
   private authListenerSubs!: Subscription;
+
+  toggleMenu(): void {
+    this.menuOn = !this.menuOn;
+  }
 
   name() {
     return this.authService.getUserName();

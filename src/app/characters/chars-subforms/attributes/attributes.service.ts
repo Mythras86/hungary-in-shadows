@@ -38,13 +38,39 @@ export class AttributesService {
     return this.attributesForm = this.fb.group(attributes);
   }
 
+  updateAttributes(w: any): void {
+    this.attributesForm = this.fb.group ({
+      // fizikai
+      fizEro: w.fizEro,
+      fizGyo: w.fizGyo,
+      fizUgy: w.fizUgy,
+      fizKit: w.fizKit,
+      // asztrál
+      asztEro: w.asztEro,
+      asztGyo: w.asztGyo,
+      asztUgy: w.asztUgy,
+      asztKit: w.asztKit,
+      // speciális
+      kockatartalek: w.kockatartalek,
+      magia: w.magia,
+      chi: w.chi,
+      cyberCapacity: w.cyberCapacity,
+      // konstans
+      esszencia: w.esszencia,
+    });
+  }
+
   getFc(fcName: string):any {
     return this.attributesForm.get(fcName);
   }
 
+  getMod(fcName: string):number {
+    return 0;
+  }
+
   getTulErtek(fcName: string): number {
     const ertek = this.attributesForm.get(fcName)?.value
-    +this.attributesForm.get(fcName+'Mod')?.value
+    +this.getMod(fcName);
     +this.getDnsMod(fcName);
     return ertek;
   }

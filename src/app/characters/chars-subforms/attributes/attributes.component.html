@@ -16,7 +16,7 @@
         {{s.getFc(a.fcName).value + s.getDnsMod(a.fcName)}} / {{6+ s.getDnsMod(a.fcName)}}
       </div>
       <div class="grayCell w15 text1 center">
-        {{s.getFc(a.fcName+'Mod').value}}
+        {{s.getMod(a.fcName)}}
       </div>
       <div class="ngrn w15 text1 center">
         {{s.getTulErtek(a.fcName)}}
@@ -56,7 +56,7 @@
         {{s.getFc('magia').value}} / {{s.getTulErtek('esszencia')-s.getFc('chi').value}}
       </div>
       <div class="grayCell w15 text1 center">
-        {{s.getFc('magiaMod').value}}
+        {{s.getMod('magia')}}
       </div>
       <div class="ngrn w15 text1 center">
         {{s.getTulErtek('magia')}}
@@ -89,7 +89,7 @@
         {{s.getFc('chi').value}} / {{s.getTulErtek('esszencia')-s.getFc('magia').value}}
       </div>
       <div class="grayCell w15 text1 center">
-        {{s.getFc('chiMod').value}}
+        {{s.getMod('chi')}}
       </div>
       <div class="ngrn w15 text1 center">
         {{s.getTulErtek('chi')}}
@@ -122,7 +122,7 @@
         {{s.getFc('cyberCapacity').value}} / 6
       </div>
       <div class="grayCell w15 text1 center">
-        {{s.getFc('cyberCapacityMod').value}}
+        {{s.getMod('cyberCapacity')}}
       </div>
       <div class="ngrn w15 text1 center">
         {{s.getTulErtek('cyberCapacity')}}
@@ -155,7 +155,7 @@
         {{s.getFc('kockatartalek').value+ s.getDnsMod('kockatartalek')}} / {{6 + s.getDnsMod('kockatartalek')}}
       </div>
       <div class="grayCell w15 text1 center">
-        {{s.getFc('kockatartalekMod').value}}
+        {{s.getMod('kockatartalek')}}
       </div>
       <div class="ngrn w15 text1 center">
         {{s.getTulErtek('kockatartalek')}}
@@ -194,7 +194,7 @@
       {{s.getFc('esszencia').value}}
     </div>
     <div class="grayCell w15 text1 center">
-      {{s.getFc('esszenciaMod').value}}
+      {{s.getMod('esszencia')}}
     </div>
     <div class="ngrn w15 text1 center">
       {{s.getTulErtek('esszencia')}}

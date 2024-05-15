@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SelectSpellService } from './select-spells.service';
 import { SpinnerService } from '../../spinner/spinner.service';
 import { Subject, Subscription } from 'rxjs';
-import { SpellsModel } from 'src/app/characters/chars-subforms/spells/spells.model';
+import { SpellsModel } from 'src/app/characters/chars-subforms/items/spells/spells.model';
 
 @Component({
   selector: 'app-select-spells',

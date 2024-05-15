@@ -5,8 +5,8 @@ import { ModalService } from '../modal.service';
 import { Subject, map } from 'rxjs';
 import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';
 import { SelectArtifactsComponent } from './select-artifacts.component';
-import { ArtifactsService } from 'src/app/characters/chars-subforms/artifacts/artifacts.service';
-import { ArtifactsModel } from 'src/app/characters/chars-subforms/artifacts/artifacts.model';
+import { ArtifactsService } from 'src/app/characters/chars-subforms/items/artifacts/artifacts.service';
+import { ArtifactsModel } from 'src/app/characters/chars-subforms/items/artifacts/artifacts.model';
 
 const BACKEND_URL = environment.apiUrl + "/artifact/";
 

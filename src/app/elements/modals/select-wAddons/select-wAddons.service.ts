@@ -5,8 +5,8 @@ import { ModalService } from '../modal.service';
 import { Subject, map } from 'rxjs';
 import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';
 import { SelectWAddonsComponent } from './select-wAddons.component';
-import { WAddonsModel } from 'src/app/characters/chars-subforms/weapons/weapons.model';
-import { WeaponsService } from 'src/app/characters/chars-subforms/weapons/weapons.service';
+import { WAddonsModel } from 'src/app/characters/chars-subforms/items/weapons/weapons.model';
+import { WeaponsService } from 'src/app/characters/chars-subforms/items/weapons/weapons.service';
 
 const BACKEND_URL = environment.apiUrl + "/wAddon/";
 

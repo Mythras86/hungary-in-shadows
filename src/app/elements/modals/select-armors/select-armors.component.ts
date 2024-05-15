@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
-import { ArmorsModel } from 'src/app/characters/chars-subforms/armors/armors.model';
+import { ArmorsModel } from 'src/app/characters/chars-subforms/items/armors/armors.model';
 import { SelectArmorService } from './select-armor.service';
 import { SpinnerService } from '../../spinner/spinner.service';
 

@@ -5,9 +5,9 @@ import { ModalService } from '../modal.service';
 import { Subject, map } from 'rxjs';
 import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';
 import { SelectWeaponsComponent } from './select-weapons.component';
-import { WeaponsService } from 'src/app/characters/chars-subforms/weapons/weapons.service';
-import { WeaponsModel } from 'src/app/characters/chars-subforms/weapons/weapons.model';
-import { ExplosivesService } from 'src/app/characters/chars-subforms/explosives/explosives.service';
+import { WeaponsService } from 'src/app/characters/chars-subforms/items/weapons/weapons.service';
+import { WeaponsModel } from 'src/app/characters/chars-subforms/items/weapons/weapons.model';
+import { ExplosivesService } from 'src/app/characters/chars-subforms/items/explosives/explosives.service';
 
 const BACKEND_URL = environment.apiUrl + "/weapon/";
 
