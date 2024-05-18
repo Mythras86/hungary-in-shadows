@@ -99,7 +99,6 @@ export class CharsMainComponent implements OnInit, OnDestroy {
    this.spinServ.toggleSpinner(true);
    if (this.mode === 'create') {
       this.charServ.addOneChar(
-        main.value._id,
         main.value.creatorId,
         //szöveges
         details.value.teljesnev,

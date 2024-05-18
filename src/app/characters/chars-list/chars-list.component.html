@@ -2,7 +2,13 @@
     <button class="itemGet text1" (click)="onNewChar()">Új Karakter</button>
   </div>
 
-  <div class="w100" *ngFor="let csoport of ['Saját karakterek', 'Más karakterek']">
+  <div *ngFor="let char of s.charsList">
+    <div class="ngrn text1">{{char.teljesnev}}</div>
+    <div class="ngrn text1">{{char.becenev}}</div>
+    <div class="ngrn text1">{{char.creatorId}}</div>
+  </div>
+
+  <!-- <div class="w100" *ngFor="let csoport of ['Saját karakterek', 'Más karakterek']">
 
     <h3 *ngIf="userIsAuthenticated && charsList == null" class="ntl w100">{{csoport}}</h3>
 
@@ -27,4 +33,4 @@
     </div>
 
 
-  </div>
+  </div> -->

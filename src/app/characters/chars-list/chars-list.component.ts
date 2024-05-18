@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/authentication/auth.service';
 import { SpinnerService } from 'src/app/elements/spinner/spinner.service';
 import { CharsListService } from './chars-list.service';
@@ -15,7 +15,7 @@ import { ItemSelectService } from 'src/app/elements/item-select/item-select.serv
 export class CharsListComponent implements OnInit, OnDestroy {
 
   constructor(
-    public charsListServ: CharsListService,
+    public s: CharsListService,
     private authServ: AuthService,
     private router: Router,
     public spinServ: SpinnerService,
@@ -23,27 +23,39 @@ export class CharsListComponent implements OnInit, OnDestroy {
   ) {}
 
   userIsAuthenticated = false;
-  _id: string = '';
+  userId: string  = '';
   private authStatusSub!: Subscription;
-  private charSub!: Subscription;
-  public charsList: CharModel[] = [];
 
   onNewChar() {
     (<any>this.router).navigate(["/newchar"]);
   }
 
-  onUpdateChar(_id:string) {
-    (<any>this.router).navigate(["/editchar/"+_id]);
-  }
+  // onUpdateChar(_id:string) {
+  //   (<any>this.router).navigate(["/editchar/"+_id]);
+  // }
 
-  onDeleteChar(_id:string) {
-    this.charsListServ.deleteOneChar(_id).subscribe(() => {
-      this.charsListServ.getChars();
-    });
+  // onDeleteChar(_id:string) {
+  //   this.charsListServ.deleteOneChar(_id).subscribe(() => {
+  //     this.charsListServ.getChars();
+  //   });
+  // }
+
+  getCharsList():any {
+    if (this.s.charsList.length == 0) {
+      this.s.getChars().subscribe({
+        next: (chars: CharModel[]) => {
+          this.s.charsList = chars;
+        },
+        error: (error) => {
+          console.log(error)
+        }
+      });
+      return
+    }
   }
 
   getCsoport(creatorId: string): string {
-    if (creatorId === this._id) {
+    if (creatorId === this.userId) {
       return 'Saját karakterek';
     }
     return 'Más karakterek';
@@ -51,25 +63,19 @@ export class CharsListComponent implements OnInit, OnDestroy {
 
   ngOnInit():void {
     this.spinServ.toggleSpinner(false);
-    this.charsListServ.getChars();
-    this._id = this.authServ.getUserId();
+    this.userId = this.authServ.getUserId();
     this.userIsAuthenticated = this.authServ.getIsAuth();
     this.authStatusSub = this.authServ
-      .getAuthStatusListener()
-      .subscribe((isAuthenticated: boolean) => {
+    .getAuthStatusListener()
+    .subscribe((isAuthenticated: boolean) => {
       this.userIsAuthenticated = isAuthenticated;
-      this._id = this.authServ.getUserId();
-      });
-    this.charSub = this.charsListServ.getCharsUpdateListener()
-      .subscribe((w: {chars:CharModel[]}) => {
-        this.spinServ.toggleSpinner(false);
-        this.charsList = w.chars;
-      });
+      this.userId = this.authServ.getUserId();
+    });
+    this.getCharsList();
   }
 
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
-    this.charSub.unsubscribe();
   }
 
 }

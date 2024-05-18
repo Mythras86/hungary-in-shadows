@@ -6,6 +6,7 @@ import { CharModel } from './chars-main.model';
 import { FormGroup } from '@angular/forms';
 import { SkillsModel } from '../chars-subforms/skills/skills.model';
 import { ItemsModel } from '../chars-subforms/items/items.model';
+import { AuthService } from 'src/app/authentication/auth.service';
 
 const BACKEND_URL = environment.apiUrl + "/char/";
 
@@ -17,77 +18,78 @@ export class CharsMainService {
   constructor(
     private http: HttpClient,
     private router: Router,
+    private authS: AuthService
   ) { }
 
   mainCharForm!: FormGroup;
 
   getOneChar(_id: string) {
-    return this.http.get<CharModel>(BACKEND_URL +_id);
+    return this.http.get<{
+      _id: string,
+      creatorId: string,
+      //szöveges
+      teljesnev: string,
+      becenev: string,
+      alnev: string,
+      testalkat: string,
+      hajstilus: string,
+      //értékválasztó
+      nem: string,
+      dns: string,
+      anyanyelv: string,
+      eletkor: number,
+      magassag: number,
+      testsuly: number,
+      //szín
+      szemszin: string,
+      hajszin: string,
+      szorszin: string,
+      borszin: string,
+      kedvencszin: string,
+      //hosszú szöveg
+      felelem: string,
+      osztonzo: string,
+      gyulolet: string,
+      kedvenc: string,
+      irtozat: string,
+      vonzalom: string,
+      megjelenes: string,
+      //erőforrások
+      alapKarma: number,
+      szerzettKarma: number,
+      elkoltottKarma: number,
+      alapToke: number,
+      szerzettToke: number,
+      elkoltottToke: number,
+      //fizikai
+      fizEro: number,
+      fizGyo: number,
+      fizUgy: number,
+      fizKit: number,
+      //asztrál
+      asztEro: number,
+      asztGyo: number,
+      asztUgy: number,
+      asztKit: number,
+      //speciális
+      kockatartalek: number,
+      magia: number,
+      chi: number,
+      cyberCapacity: number,
+      //konstans
+      esszencia: number,
+      // állapot
+      asztralisAllapot: number,
+      fizikaiAllapot: number,
+      pinhentsegAllapot: number,
+      taplaltsagAllapot: number,
+      // szakértelmek
+      skills: Array<SkillsModel>,
+      items: Array<ItemsModel>
+      }>(BACKEND_URL +_id);
   }
 
-  // getOneChar(_id: string) {
-  //   return this.http.get<{
-  //     _id: string,
-  //     creatorId: string;
-  //     //szöveges
-  //     teljesnev: string,
-  //     becenev: string,
-  //     alnev: string,
-  //     testalkat: string,
-  //     hajstilus: string,
-  //     //értékválasztó
-  //     nem: string,
-  //     dns: string,
-  //     anyanyelv: string,
-  //     eletkor: number,
-  //     magassag: number,
-  //     testsuly: number,
-  //     //szín
-  //     szemszin: string,
-  //     hajszin: string,
-  //     szorszin: string,
-  //     borszin: string,
-  //     kedvencszin: string,
-  //     //hosszú szöveg
-  //     felelem: string,
-  //     osztonzo: string,
-  //     gyulolet: string,
-  //     kedvenc: string,
-  //     irtozat: string,
-  //     vonzalom: string,
-  //     megjelenes: string,
-  //     //erőforrások
-  //     szabadKarma: number,
-  //     szabadToke: number,
-  //     karmabolToke: number,
-  //     //fizikai
-  //     fizEro: number,
-  //     fizGyo: number,
-  //     fizUgy: number,
-  //     fizKit: number,
-  //     //asztrál
-  //     asztEro: number,
-  //     asztGyo: number,
-  //     asztUgy: number,
-  //     asztKit: number,
-  //     //speciális
-  //     magia: number,
-  //     esszencia: number,
-  //     kockatartalek: number,
-  //     kezdemenyezes: number,
-  //     // állapot
-  //     asztralisAllapot: number,
-  //     fizikaiAllapot: number,
-  //     pinhentsegAllapot: number,
-  //     taplaltsagAllapot: number,
-  //     armorLevel: number,
-  //     // szakértelmek
-  //     skills: Array<SkillsModel>,
-  //   }>(BACKEND_URL +_id);
-  // }
-
   addOneChar(
-    _id: string,
     creatorId: string,
     //szöveges
     teljesnev: string,
@@ -150,8 +152,7 @@ export class CharsMainService {
     items: Array<ItemsModel>
   ) {
     const charData:CharModel = {
-      _id: '',
-      creatorId: '',
+      creatorId: this.authS.getUserId(),
       //szöveges
       teljesnev: teljesnev,
       becenev: becenev,
@@ -212,11 +213,9 @@ export class CharsMainService {
       skills: skills,
       items: items,
     };
-    console.log(charData)
-    // this.http.post<{ message: string; char: CharModel }>(
-    //   BACKEND_URL + "create", charData).subscribe(response => {
-    //   this.router.navigate(["/charslist"]);
-    // });
+    this.http.post(BACKEND_URL + "new", charData).subscribe(response => {
+      this.router.navigate(["/charslist"]);
+    });
   }
 
   updateOneChar(
