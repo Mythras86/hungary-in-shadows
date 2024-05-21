@@ -62,9 +62,9 @@ export class SkillsService {
     (this.skillsForm.get('skills') as FormArray).removeAt(i);
   }
 
-  getFc(i:number, fcName:string) {
-    const skillpath = ((this.skillsForm.get('skills') as FormArray).at(i) as FormGroup).get(fcName);
-    return skillpath;
+  getFc(i:number, fcName:string): any {
+    const skillPath = ((this.skillsForm.get('skills') as FormArray).at(i) as FormGroup).get(fcName);
+    return skillPath;
   }
 
   addFirstLanguage(): void {

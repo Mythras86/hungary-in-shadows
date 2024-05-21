@@ -1,4 +1,4 @@
-<form *ngIf="charServ.mainCharForm" [formGroup]="charServ.mainCharForm" (ngSubmit)="createNewChar()">
+<form *ngIf="s.mainCharForm" [formGroup]="s.mainCharForm" (ngSubmit)="sendChar()">
 
 <div class="buttonCont margTop1">
   <button *ngIf="userIsAuthenticated && _id == getCreatorId()" class="itemGet text1" type="submit">Karakter mentése</button>

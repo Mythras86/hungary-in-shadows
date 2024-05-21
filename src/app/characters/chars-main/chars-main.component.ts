@@ -14,6 +14,7 @@ import { AttributesService } from '../chars-subforms/attributes/attributes.servi
 import { StatusService } from '../chars-subforms/status/status.service';
 import { SkillsService } from '../chars-subforms/skills/skills.service';
 import { ItemsService } from '../chars-subforms/items/items.service';
+import { CharsListService } from '../chars-list/chars-list.service';
 
 @Component({
   selector: 'app-chars-main',
@@ -25,28 +26,26 @@ import { ItemsService } from '../chars-subforms/items/items.service';
 export class CharsMainComponent implements OnInit, OnDestroy {
 
   constructor (
-    public charServ: CharsMainService,
+    public s: CharsMainService,
     private router: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder,
-    public authServ: AuthService,
-    public spinServ: SpinnerService,
-    public hideServ: HideService,
+    private authS: AuthService,
+    private spinS: SpinnerService,
 
-    public attrServ: AttributesService,
-    public detailsServ: DetailsService,
-    public resServ: ResourcesService,
-    public statusServ: StatusService,
-    public skillsServ: SkillsService,
-    public itemsServ: ItemsService,
+    private attrS: AttributesService,
+    private detailsS: DetailsService,
+    private resS: ResourcesService,
+    private statusS: StatusService,
+    private skillsS: SkillsService,
+    private itemsS: ItemsService,
   ) {}
 
   mode:string = 'create';
-  _idForFilter:string = '';
+  _id:string = '';
   filter: string = 'Nincs';
 
   userIsAuthenticated = false;
-  _id: string = '';
+  userId: string = '';
   private authStatusSub!: Subscription;
 
   createFilter(): any {
@@ -62,32 +61,18 @@ export class CharsMainComponent implements OnInit, OnDestroy {
     this.filter = keyWord
   }
 
-  createMainForm(): void {
-    this.charServ.mainCharForm = this.fb.group({
-      _id: [''],
-      creatorName: this.authServ.getUserName(),
-      creatorId: this.authServ.getUserId(),
-    });
-    this.detailsServ.createDetails();
-    this.resServ.createResources();
-    this.attrServ.createAttributes();
-    this.statusServ.createStatus();
-    this.skillsServ.createSkills();
-    this.itemsServ.createItems();
-  }
-
   getCreatorId():string {
-    return this.charServ.mainCharForm.get('creatorId')?.value;
+    return this.s.mainCharForm.get('creatorId')?.value;
   }
 
-  createNewChar() {
-    const main = this.charServ.mainCharForm;
-    const details = this.detailsServ.detailsForm;
-    const res = this.resServ.resourcesForm;
-    const attrs = this.attrServ.attributesForm;
-    const skills = this.skillsServ.skillsForm;
-    const status = this.statusServ.statusForm;
-    const items = this.itemsServ.itemsForm;
+  sendChar() {
+    const main = this.s.mainCharForm;
+    const details = this.detailsS.detailsForm;
+    const res = this.resS.resourcesForm;
+    const attrs = this.attrS.attributesForm;
+    const status = this.statusS.statusForm;
+    const skills = this.skillsS.skillsForm;
+    const items = this.itemsS.itemsForm;
     if (main.invalid
      || details.invalid
      || res.invalid
@@ -96,10 +81,9 @@ export class CharsMainComponent implements OnInit, OnDestroy {
       console.log('invalid')
       return;
    }
-   this.spinServ.toggleSpinner(true);
+   this.spinS.toggleSpinner(true);
    if (this.mode === 'create') {
-      this.charServ.addOneChar(
-        main.value.creatorId,
+      this.s.addOneChar(
         //szöveges
         details.value.teljesnev,
         details.value.becenev,
@@ -161,9 +145,7 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         items.value.items
       );
    } else {
-      this.charServ.updateOneChar(
-        main.value._id,
-        main.value.creatorId,
+      this.s.updateOneChar(
         //szöveges
         details.value.teljesnev,
         details.value.becenev,
@@ -223,7 +205,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         // arrayok
         skills.value.skills,
         items.value.items
-      )};
+      )
+    };
     this.router.navigate(["/charslist"]);
   }
 
@@ -233,39 +216,37 @@ export class CharsMainComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.createFilter();
-    this.spinServ.toggleSpinner(false);
-    this._id = this.authServ.getUserId();
-    this.userIsAuthenticated = this.authServ.getIsAuth();
-    this.authStatusSub = this.authServ
+    this.spinS.toggleSpinner(false);
+    this.userId = this.authS.getUserId();
+    this.userIsAuthenticated = this.authS.getIsAuth();
+    this.authStatusSub = this.authS
     .getAuthStatusListener()
     .subscribe((isAuthenticated: boolean) => {
       this.userIsAuthenticated = isAuthenticated;
-      this._id = this.authServ.getUserId();
-      this.spinServ.toggleSpinner(true);
+      this.userId = this.authS.getUserId();
+      this.spinS.toggleSpinner(true);
     });
-    this.spinServ.toggleSpinner(false);
+    this.spinS.toggleSpinner(false);
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if(paramMap.has('_id')) {
         this.mode = 'edit';
         this._id = paramMap.get('_id')!;
-        this.spinServ.toggleSpinner(true);
-        this.charServ.getOneChar(this._id).subscribe(w => {
-          this.spinServ.toggleSpinner(false);
-          this.charServ.mainCharForm= this.fb.group ({
-            _id: w._id,
-            creatorId: w.creatorId
-          });
-          this.detailsServ.updateDetails(w);
-          this.resServ.updateResources(w);
-          this.attrServ.updateAttributes(w);
-          this.statusServ.updateStatus(w);
-
+        this.spinS.toggleSpinner(true);
+        this.s.getOneChar(this._id).subscribe(w => {
+          this.spinS.toggleSpinner(false);
+          this.s.updateMainForm(w);
+          this.detailsS.updateDetails(w);
+          this.resS.updateResources(w);
+          this.attrS.updateAttributes(w);
+          this.statusS.updateStatus(w);
+          this.skillsS.updateSkills(w);
+          this.itemsS.updateItems(w);
         });
       } else {
         this.mode = 'create';
         this._id = '';
-        this.createMainForm();
-        this.skillsServ.addFirstLanguage()
+        this.s.createMainForm();
+        this.skillsS.addFirstLanguage()
       }
     });
   }

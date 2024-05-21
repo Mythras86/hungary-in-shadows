@@ -17,3 +17,7 @@ button:disabled {
   width: 100%;
   overflow: visible;
 }
+
+.btnBack {
+  background-color: black;
+}

@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/authentication/auth.service';
 import { SpinnerService } from 'src/app/elements/spinner/spinner.service';
 import { CharsListService } from './chars-list.service';
-import { CharModel } from '../chars-main/chars-main.model';
 import { ItemSelectService } from 'src/app/elements/item-select/item-select.service';
+import { CharModel } from '../chars-main/chars-main.model';
 
 @Component({
   selector: 'app-chars',
@@ -16,9 +16,8 @@ export class CharsListComponent implements OnInit, OnDestroy {
 
   constructor(
     public s: CharsListService,
-    private authServ: AuthService,
-    private router: Router,
-    public spinServ: SpinnerService,
+    private authS: AuthService,
+    public spinS: SpinnerService,
     public select: ItemSelectService
   ) {}
 
@@ -26,32 +25,20 @@ export class CharsListComponent implements OnInit, OnDestroy {
   userId: string  = '';
   private authStatusSub!: Subscription;
 
-  onNewChar() {
-    (<any>this.router).navigate(["/newchar"]);
-  }
+  public charsList: Array<CharModel> = [];
+  private charsListUpd = new BehaviorSubject<CharModel[]>([])
 
-  // onUpdateChar(_id:string) {
-  //   (<any>this.router).navigate(["/editchar/"+_id]);
-  // }
-
-  // onDeleteChar(_id:string) {
-  //   this.charsListServ.deleteOneChar(_id).subscribe(() => {
-  //     this.charsListServ.getChars();
-  //   });
-  // }
-
-  getCharsList():any {
-    if (this.s.charsList.length == 0) {
-      this.s.getChars().subscribe({
-        next: (chars: CharModel[]) => {
-          this.s.charsList = chars;
-        },
-        error: (error) => {
-          console.log(error)
-        }
-      });
-      return
-    }
+  getCharsList(): void {
+    this.s.getCharsList().subscribe({
+      next: (w: CharModel[]) => {
+        this.charsList = w;
+        this.charsListUpd.next([...this.charsList]);
+        this.spinS.toggleSpinner(false);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
   }
 
   getCsoport(creatorId: string): string {
@@ -61,15 +48,29 @@ export class CharsListComponent implements OnInit, OnDestroy {
     return 'Más karakterek';
   }
 
+  deleteChar(_id:string): void {
+    this.spinS.toggleSpinner(true);
+    this.s.deleteChar(_id).subscribe({
+      next: response => {
+        this.charsList = this.charsList.filter(w => w._id !== _id);
+        this.spinS.toggleSpinner(false);
+        console.log(response);
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    });
+  }
+
   ngOnInit():void {
-    this.spinServ.toggleSpinner(false);
-    this.userId = this.authServ.getUserId();
-    this.userIsAuthenticated = this.authServ.getIsAuth();
-    this.authStatusSub = this.authServ
+    this.spinS.toggleSpinner(true);
+    this.userId = this.authS.getUserId();
+    this.userIsAuthenticated = this.authS.getIsAuth();
+    this.authStatusSub = this.authS
     .getAuthStatusListener()
     .subscribe((isAuthenticated: boolean) => {
       this.userIsAuthenticated = isAuthenticated;
-      this.userId = this.authServ.getUserId();
+      this.userId = this.authS.getUserId();
     });
     this.getCharsList();
   }

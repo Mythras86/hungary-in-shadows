@@ -1,30 +1,25 @@
   <div class="buttonCont w100 margTop1">
-    <button class="itemGet text1" (click)="onNewChar()">Új Karakter</button>
+    <button class="itemGet text1" (click)="s.newChar()">Új Karakter</button>
   </div>
 
-  <div *ngFor="let char of s.charsList">
-    <div class="ngrn text1">{{char.teljesnev}}</div>
-    <div class="ngrn text1">{{char.becenev}}</div>
-    <div class="ngrn text1">{{char.creatorId}}</div>
-  </div>
+  <div class="w100" *ngFor="let csoport of ['Saját karakterek', 'Más karakterek']">
 
-  <!-- <div class="w100" *ngFor="let csoport of ['Saját karakterek', 'Más karakterek']">
+    <h3 *ngIf="userIsAuthenticated && charsList !== null" class="ntl w100">{{csoport}}</h3>
 
-    <h3 *ngIf="userIsAuthenticated && charsList == null" class="ntl w100">{{csoport}}</h3>
+    <div *ngFor="let char of charsList">
 
-    <div *ngFor="let char of charsListServ.charsList">
+      <span class="pageCont" *ngIf="csoport == getCsoport(char.creatorId!)">
 
-      <span class="pageCont" *ngIf="csoport == getCsoport(char.creatorId)">
-
-        <div class="w100 posRel" [ngClass]="select.toggleClass(char._id)" (click)="select.toggleStatus(char._id)">
-          <div class="nbl w100 text2 center">{{char.becenev}}</div>
+        <div class="w100 posRel" [ngClass]="select.toggleClass(char._id!)" (click)="select.toggleStatus(char._id!)">
+          <div class="nbl w100 text2 center">{{char.teljesnev}}</div>
           <div class="nrng w100 text1">Nyelv: {{char.anyanyelv}}</div>
           <div class="ngrn w100 text1">DNS: {{char.dns}}</div>
+          <div class="ngrn text1">{{char.creatorId}}</div>
 
-          <div *ngIf="select.status == char._id" class="buttonCont w100 posAbs">
-            <button *ngIf="_id === char.creatorId" class="itemEdit text1 w50" type="button" (click)="onUpdateChar(char._id)">Szerk.</button>
-            <button *ngIf="_id === char.creatorId" class="itemRemove text1 w50" (click)="onDeleteChar(char._id)">Törlés</button>
-            <button *ngIf="_id !== char.creatorId" class="itemGet text1" type="button" [disabled]="_id == char.creatorId && !userIsAuthenticated" (click)="onUpdateChar(char._id)">Megtekintés</button>
+          <div *ngIf="select.status == char._id" class="buttonCont w100 posAbs btnBack">
+            <button *ngIf="userId === char.creatorId" class="itemEdit text1 w40" type="button" (click)="s.updateChar(char._id)">Szerkesztés</button>
+            <button *ngIf="userId === char.creatorId" class="itemRemove text1 w40" (click)="deleteChar(char._id)">Törlés</button>
+            <button *ngIf="userId !== char.creatorId" class="itemGet text1" type="button" [disabled]="userId == char.creatorId && !userIsAuthenticated" (click)="s.updateChar(char._id)">Megtekintés</button>
           </div>
         </div>
 
@@ -33,4 +28,4 @@
     </div>
 
 
-  </div> -->
+  </div>

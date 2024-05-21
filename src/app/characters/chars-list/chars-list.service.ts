@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, of, Subject } from 'rxjs';
+import { BehaviorSubject, map, Observable, of, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CharModel } from '../chars-main/chars-main.model';
+import { Router } from '@angular/router';
 
 const BACKEND_URL = environment.apiUrl + "/char/";
 
@@ -13,16 +14,24 @@ export class CharsListService {
 
   constructor(
     private http: HttpClient,
+    private router: Router,
   ) { }
 
-  charsList: Array<any> = [];
-
-  getChars(): Observable<CharModel[]> {
-    return this.http.get<CharModel[]>(BACKEND_URL + "list")
+  newChar() {
+    (<any>this.router).navigate(["/newchar"]);
   }
 
-  deleteOneChar(_id: string) {
+  updateChar(_id:string) {
+    (<any>this.router).navigate(["/editchar/"+_id]);
+  }
+
+  deleteChar(_id: string) {
     return this.http.delete(BACKEND_URL + _id);
+  }
+
+  getCharsList(): Observable<CharModel[]> {
+    const chars = this.http.get<CharModel[]>(BACKEND_URL + "list");
+    return chars;
   }
 
 

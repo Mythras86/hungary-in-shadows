@@ -8,7 +8,7 @@ import { StatusModel } from "../chars-subforms/status/status.model";
 export interface CharModel extends DetailsModel, AttributesModel, ResourcesModel, StatusModel {
 
   _id?: string;
-  creatorId: string;
+  creatorId?: string;
   skills?: Array<SkillsModel>,
   items?: Array<ItemsModel>,
 
