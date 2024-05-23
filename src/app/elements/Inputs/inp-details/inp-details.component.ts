@@ -58,8 +58,4 @@ export class InpDetailsComponent {
     this.closeEvent.complete();
   }
 
-
-  ngOnInit(): void {
-  }
-
 }

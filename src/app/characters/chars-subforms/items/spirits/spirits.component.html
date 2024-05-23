@@ -1,6 +1,6 @@
-<div class="pageCont" [formGroup]="spiritsServ.spiritsForm" *ngIf="spiritsServ.spiritsForm">
+<div class="flexCont" [formGroup]="spiritsServ.spiritsForm" *ngIf="spiritsServ.spiritsForm">
 
-  <button *ngIf="resServ.getFc('szabadToke').value >= 0" class="ngrn text1" type="button" (click)="sSpiritServ.openModal()">Új Szellem</button>
+  <button *ngIf="resServ.getFc('szabadToke').value >= 0" class="nbl text1" type="button" (click)="sSpiritServ.openModal()">Új Szellem</button>
   <button *ngIf="resServ.getFc('szabadToke').value < 0" class="grayCell text1" type="button">Nincs elég Tőkéd</button>
 
   <div class="w100" formArrayName="spirits" *ngFor='let csoport of getCsoportok()'>
@@ -17,9 +17,9 @@
 
         <button class="deleteItem w10" type="button" (click)="spiritsServ.removeSpirit(i)">X</button>
         <div class="ntl w60 text1 center">{{s.nev}}</div>
-        <div class="ngrn text2 w20 center">{{s.szint}} SZ</div>
+        <div class="nbl text2 w20 center">{{s.szint}} SZ</div>
 
-        <span class="spAttrCont w100">
+        <div class="spAttrCont w100">
           <div class="nprpl text1 spAttr center">E</div>
           <div class="nprpl text1 spAttr center">Gy</div>
           <div class="nprpl text1 spAttr center">U</div>
@@ -28,9 +28,9 @@
           <div class="nprpl text1 spAttr center">In</div>
           <div class="nprpl text1 spAttr center">Lo</div>
           <div class="nprpl text1 spAttr center">Ak</div>
-        </span>
+        </div>
 
-        <span class="spAttrCont w100">
+        <div class="spAttrCont w100">
           <div class="grayCell text1 spAttr center">{{s.fizEro+s.szint}}</div>
           <div class="grayCell text1 spAttr center">{{s.fizGyo+s.szint}}</div>
           <div class="grayCell text1 spAttr center">{{s.fizUgy+s.szint}}</div>
@@ -39,37 +39,37 @@
           <div class="grayCell text1 spAttr center">{{s.asztGyo+s.szint}}</div>
           <div class="grayCell text1 spAttr center">{{s.asztUgy+s.szint}}</div>
           <div class="grayCell text1 spAttr center">{{s.asztKit+s.szint}}</div>
-        </span>
+        </div>
 
         <div class="flexCont w25">
           <div class="nbl text1 w100 center">Essz</div>
-          <div class="ngrn text2 w100 center">
+          <div class="nbl text2 w100 center">
             {{s.szint}}
           </div>
         </div>
 
         <div class="flexCont w25">
           <div class="nbl text1 w100 center">Mágia</div>
-          <div class="ngrn text2 w100 center">
+          <div class="nbl text2 w100 center">
             {{s.szint}}
           </div>
         </div>
 
         <div class="flexCont w25">
           <div class="nbl text1 w100 center">AP</div>
-          <div class="ngrn text2 w100 center">
+          <div class="nbl text2 w100 center">
             {{spiritsServ.getAkcio(i)}}
           </div>
         </div>
 
         <div class="flexCont w25">
           <div class="nbl text1 w100 center">Sebzés</div>
-            <div class="ngrn text2 w100 center">
+            <div class="nbl text2 w100 center">
               {{s.szint+3}} ({{s.tamadas}})
             </div>
           </div>
 
-          <div class="w30 ngrn text1 center">
+          <div class="w30 nbl text1 center">
             {{s.szolgalatok}} szolgálat
           </div>
 

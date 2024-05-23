@@ -5,6 +5,13 @@
   z-index: 10;
 }
 
+.posAbsIn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
+
 .posRel {
   position: relative;
 }

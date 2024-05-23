@@ -1,6 +1,6 @@
-<div class="pageCont" [formGroup]="weaponsServ.weaponsForm" *ngIf="weaponsServ.weaponsForm">
+<div class="flexCont" [formGroup]="weaponsServ.weaponsForm" *ngIf="weaponsServ.weaponsForm">
 
-  <button *ngIf="resServ.getFc('szabadToke').value >= 0" class="ngrn text1" type="button" (click)="sWeaponServ.openModal(false)">Új Fegyver</button>
+  <button *ngIf="resServ.getFc('szabadToke').value >= 0" class="nbl text1" type="button" (click)="sWeaponServ.openModal(false)">Új Fegyver</button>
   <button *ngIf="resServ.getFc('szabadToke').value < 0" class="grayCell text1" type="button">Nincs elég Tőkéd</button>
 
   <div class="w100" formArrayName="weapons" *ngFor='let csoport of getCsoportok()'>
@@ -38,7 +38,7 @@
 
         <div class="grayCell text1 w90">{{w.megjegyzes}}</div>
 
-        <button class="ngrn w100 text1 center" *ngIf="['Tűzfegyverek','Lőfegyverek','Közelharci fegyverek'].includes(w.csoport)
+        <button class="nbl w100 text1 center" *ngIf="['Tűzfegyverek','Lőfegyverek','Közelharci fegyverek'].includes(w.csoport)
         && getLenght(i)<4"
         type="button" (click)="sWAddonServ.openModal(i, w.csoport, w.felszerelt)">
           Új Kiegészítő

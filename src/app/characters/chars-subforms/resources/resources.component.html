@@ -1,28 +1,28 @@
-<h2 class="ntl">Erőforrások</h2>
-<div class="pageCont" [formGroup]="s.resourcesForm" *ngIf="s.resourcesForm">
+
+<div class="flexCont" [formGroup]="s.resourcesForm" *ngIf="s.resourcesForm">
 
   <!-- karma értékek -->
 
-  <span class="flexCont w100">
-    <h3 class="w100 nwht">Karma</h3>
+  <div class="flexCont w100">
+    <h2 class="w100 nwht center margBott1">Karma</h2>
 
     <div *ngFor="let res of getKarmaU()" class="w100 flexCont">
-      <div class="w40 text1 nprpl">{{res.nev}}</div>
-      <app-field-karma class="w60 flexCont"
+      <div class="w50 text1 nprpl">{{res.nev}}</div>
+      <app-field-karma class="w50 flexCont"
       [ertek]="s.getFc(res.fcName)?.value"
       [szin]="'grayCell'"
       ></app-field-karma>
     </div>
 
-    <div class="w40 text1 nprpl">Szabad Karma</div>
-    <app-field-karma class="w60 flexCont"
+    <div class="w50 text1 nprpl">Szabad Karma</div>
+    <app-field-karma class="w50"
     [ertek]="s.getSzabadKarma()"
     ></app-field-karma>
 
-  </span>
+  </div>
 
-  <div class="buttonCont w100">
-    <button class="w50 text1 nprpl center" type="button" (click)="lvlContServ.buttonAction(
+  <div class="buttonCont w100 btnBack">
+    <button class="text1 nprpl center" type="button" (click)="lvlContServ.buttonAction(
       'Karmából Tőke',
       '&#x262F; 1 => 7500 N&#xa5;',
       10,
@@ -40,25 +40,26 @@
 
   <!-- tőke értékek -->
 
-  <span class="flexCont w100">
-    <h3 class="w100 nwht">Tőke</h3>
+  <div class="flexCont w100">
+
+    <h2 class="w100 nwht center margBott1">Tőke</h2>
 
     <div *ngFor="let res of getTokeU()" class="w100 flexCont">
-      <div class="w40 text1 nrng">{{res.nev}}</div>
-      <app-field-toke class="w60 flexCont"
+      <div class="w50 text1 nrng">{{res.nev}}</div>
+      <app-field-toke class="w50 flexCont"
       [ertek]="s.getFc(res.fcName)?.value"
       [szin]="'grayCell'"
       ></app-field-toke>
     </div>
 
-    <div class="w40 text1 nrng">Szabad Tőke</div>
-    <app-field-toke class="w60 flexCont"
+    <div class="w50 text1 nrng">Szabad Tőke</div>
+    <app-field-toke class="w50"
     [ertek]="s.getSzabadToke()"
     ></app-field-toke>
-  </span>
+  </div>
 
-  <div class="buttonCont w100">
-    <button class="w50 text1 nrng center" type="button" (click)="lvlContServ.buttonAction(
+  <div class="buttonCont w100 btnBack">
+    <button class="text1 nrng" type="button" (click)="lvlContServ.buttonAction(
       'Tőkéből Karma',
       '7500 N&#xa5; => &#x262F; 1',
       10,

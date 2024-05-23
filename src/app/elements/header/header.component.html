@@ -1,11 +1,13 @@
-<h1 class="nbl w90" *ngIf="!userIsAuthenticated && !menuOn">
-  Üdv az Árnyak között!
-</h1>
-<h1 class="nbl w90" *ngIf="userIsAuthenticated && !menuOn">
-  {{getAName()}}
-</h1>
+<div class="flexCont w100 posRel">
+  <h2 class="nbl w100 center" *ngIf="!userIsAuthenticated && !menuOn">
+    Üdv az Árnyak között!
+  </h2>
+  <h2 class="nbl w100" *ngIf="userIsAuthenticated && !menuOn">
+    {{getAName()}}
+  </h2>
+  <div *ngIf="!menuOn" class="nyllw text1 center posAbsIn" (click)="toggleMenu()">&#x2630;</div>
+</div>
 
-<div *ngIf="!menuOn" class="ngrn text2 center w10" (click)="toggleMenu()">&#x2630;</div>
 
 <nav *ngIf="menuOn" class="w100"  >
   <ul>

@@ -1,13 +1,11 @@
-<h2 class="ntl">Tulajdonságok</h2>
-
-<div class="pageCont" [formGroup]="s.attributesForm" *ngIf="s.attributesForm">
+<div class="flexCont" [formGroup]="s.attributesForm" *ngIf="s.attributesForm">
 
   <!-- Fizikum és Asztrál csoport -->
 
-  <span class="w100" *ngFor="let csoport of getCsoport()">
-    <h3 class="w100 nwht">{{csoport}}</h3>
+  <div class="w100 margBott1" *ngFor="let csoport of getCsoport()">
+    <h2 class="w100 nwht margBott1">{{csoport}}</h2>
 
-    <span class="flexCont w100 posRel" *ngFor="let a of getAttrsByCsoport(csoport)"
+    <div class="flexCont w100 posRel" *ngFor="let a of getAttrsByCsoport(csoport)"
     [ngClass]="select.toggleClass(a.fcName)" (click)="select.toggleStatus(a.fcName)">
       <div class="nbl w50 text1">
         {{a.nev}}
@@ -18,7 +16,7 @@
       <div class="grayCell w15 text1 center">
         {{s.getMod(a.fcName)}}
       </div>
-      <div class="ngrn w15 text1 center">
+      <div class="nbl w15 text1 center">
         {{s.getTulErtek(a.fcName)}}
       </div>
 
@@ -37,18 +35,18 @@
         a.max
       )"
       ></app-btn-options>
-    </span>
+    </div>
 
-  </span>
+  </div>
 
   <!-- Speciális csoport -->
 
-  <span class="w100 flexCont">
-    <h3 class="w100 nwht">Speciális</h3>
+  <div class="w100 flexCont margBott1">
+    <h2 class="w100 nwht margBott1">Speciális</h2>
 
     <!-- Mágia -->
 
-    <span class="flexCont w100 posRel" [ngClass]="select.toggleClass('magia')" (click)="select.toggleStatus('magia')">
+    <div class="flexCont w100 posRel" [ngClass]="select.toggleClass('magia')" (click)="select.toggleStatus('magia')">
       <div class="nbl w50 text1">
         Mágia
       </div>
@@ -58,7 +56,7 @@
       <div class="grayCell w15 text1 center">
         {{s.getMod('magia')}}
       </div>
-      <div class="ngrn w15 text1 center">
+      <div class="nbl w15 text1 center">
         {{s.getTulErtek('magia')}}
       </div>
 
@@ -77,11 +75,11 @@
         checkEssence('magia')
       )"
       ></app-btn-options>
-    </span>
+    </div>
 
       <!-- Chi áramlás -->
 
-    <span class="flexCont w100 posRel" [ngClass]="select.toggleClass('chi')" (click)="select.toggleStatus('chi')">
+    <div class="flexCont w100 posRel" [ngClass]="select.toggleClass('chi')" (click)="select.toggleStatus('chi')">
       <div class="nbl w50 text1">
         Chi áramlás
       </div>
@@ -91,7 +89,7 @@
       <div class="grayCell w15 text1 center">
         {{s.getMod('chi')}}
       </div>
-      <div class="ngrn w15 text1 center">
+      <div class="nbl w15 text1 center">
         {{s.getTulErtek('chi')}}
       </div>
 
@@ -110,11 +108,11 @@
         checkEssence('chi')
       )"
       ></app-btn-options>
-    </span>
+    </div>
 
     <!-- Kiber kapacitás -->
 
-    <span class="flexCont w100 posRel" [ngClass]="select.toggleClass('cyberCapacity')" (click)="select.toggleStatus('cyberCapacity')">
+    <div class="flexCont w100 posRel" [ngClass]="select.toggleClass('cyberCapacity')" (click)="select.toggleStatus('cyberCapacity')">
       <div class="nbl w50 text1">
         Kiber kapacitás
       </div>
@@ -124,7 +122,7 @@
       <div class="grayCell w15 text1 center">
         {{s.getMod('cyberCapacity')}}
       </div>
-      <div class="ngrn w15 text1 center">
+      <div class="nbl w15 text1 center">
         {{s.getTulErtek('cyberCapacity')}}
       </div>
 
@@ -143,11 +141,11 @@
         6
         )"
       ></app-btn-options>
-    </span>
+    </div>
 
     <!-- Kockatartalék -->
 
-    <span class="flexCont w100 posRel {{select.toggleClass('kockatartalek')}}" (click)="select.toggleStatus('kockatartalek')">
+    <div class="flexCont w100 posRel {{select.toggleClass('kockatartalek')}}" (click)="select.toggleStatus('kockatartalek')">
       <div class="nbl w50 text1">
         Kockatartalék
       </div>
@@ -157,7 +155,7 @@
       <div class="grayCell w15 text1 center">
         {{s.getMod('kockatartalek')}}
       </div>
-      <div class="ngrn w15 text1 center">
+      <div class="nbl w15 text1 center">
         {{s.getTulErtek('kockatartalek')}}
       </div>
 
@@ -176,16 +174,16 @@
         6
       )"
       ></app-btn-options>
-    </span>
+    </div>
 
-  </span>
+  </div>
 
 
   <!-- Konstans csoport -->
 
-  <span class="w100 flexCont">
+  <div class="w100 flexCont margBott1">
 
-    <h3 class="w100 nwht">Konstansok</h3>
+    <h2 class="w100 nwht margBott1">Konstansok</h2>
 
     <div class="nbl w50 text1">
       Esszencia
@@ -196,10 +194,10 @@
     <div class="grayCell w15 text1 center">
       {{s.getMod('esszencia')}}
     </div>
-    <div class="ngrn w15 text1 center">
+    <div class="nbl w15 text1 center">
       {{s.getTulErtek('esszencia')}}
     </div>
 
-  </span>
+  </div>
 
 </div>

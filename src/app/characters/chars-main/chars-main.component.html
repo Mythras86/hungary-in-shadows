@@ -1,12 +1,10 @@
-<form *ngIf="s.mainCharForm" [formGroup]="s.mainCharForm" (ngSubmit)="sendChar()">
-
-<div class="buttonCont margTop1">
+<div class="buttonCont margTop1 btnBack">
   <button *ngIf="userIsAuthenticated && _id == getCreatorId()" class="itemGet text1" type="submit">Karakter mentése</button>
   <button class="itemGet text1" type="submit">Karakter mentése</button>
   <button class="itemRemove text1" type="button" (click)="backToList()">Vissza</button>
 </div>
 
-<app-hide-content class="w100 margBott1"
+<app-hide-content class="w100"
 [keyWord]="'mainCharFilter'"
 [arrowClass]="'flex1 nbl text2 center'"
 >
@@ -23,11 +21,27 @@
   </div>
 </app-hide-content>
 
+<form class="flexCont w100 margTop1" *ngIf="s.mainCharForm" [formGroup]="s.mainCharForm" (ngSubmit)="sendChar()">
 
-    <app-details [hidden]="filter !== 'Nincs' && filter !== 'Jellemzők'"></app-details>
-    <app-resources [hidden]="filter !== 'Nincs' && filter !== 'Erőforrások'"></app-resources>
-    <app-attributes [hidden]="filter !== 'Nincs' && filter !== 'Tulajdonságok'"></app-attributes>
-    <app-status [hidden]="filter !== 'Nincs' && filter !== 'Állapotjelző'"></app-status>
-    <app-skills [hidden]="filter !== 'Nincs' && filter !== 'Szakértelmek'"></app-skills>
+  <div [hidden]="filter !== 'Nincs' && filter !== 'Jellemzők'">
+    <h2 class="ntl w100 center margBott1">Jellemzők</h2>
+    <app-details></app-details>
+  </div>
+  <div [hidden]="filter !== 'Nincs' && filter !== 'Erőforrások'">
+    <h2 class="ntl w100 center margBott1">Erőforrások</h2>
+    <app-resources></app-resources>
+  </div>
+  <div [hidden]="filter !== 'Nincs' && filter !== 'Tulajdonságok'">
+    <h2 class="ntl w100 center margBott1">Tulajdonságok</h2>
+    <app-attributes></app-attributes>
+  </div>
+  <div [hidden]="filter !== 'Nincs' && filter !== 'Állapotjelző'">
+    <h2 class="ntl w100 center margBott1">Állapotjelző</h2>
+    <app-status></app-status>
+  </div>
+  <div [hidden]="filter !== 'Nincs' && filter !== 'Szakértelmek'">
+    <h2 class="ntl w100 center margBott1">Szakértelmek</h2>
+    <app-skills-list></app-skills-list>
+  </div>
 
 </form>

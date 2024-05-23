@@ -1,35 +1,31 @@
-<div class="pageCont">
+<form class="flexCont w100" [formGroup]="loginUserForm" (ngSubmit)="onLogin()">
 
-  <form class="flexCont" [formGroup]="loginUserForm" (ngSubmit)="onLogin()">
+  <h2 class="ntl w100 center text1 margBott1 margTop1">Holozz a Főnöknek, megjöttem és kész vagyok beszállni a buliba!</h2>
 
-    <div class="ntl text1 margBott1">Holozz a Főnöknek, megjöttem és kész vagyok beszállni a buliba!</div>
+  <label class="ntl text1 w90" for="loginEmail">Email Cím</label>
+  <input class="grayCell text1 w90" id="loginEmail" type="email" formControlName="email" placeholder="E-amil cím">
+  <label class="ntl text1 w90" for="loginPass">Jelszó</label>
+  <input class="grayCell text1 w90" id="loginPass" type="password" formControlName="pass" placeholder="Jelszó">
 
-    <label class="ntl text1 w80" for="loginEmail">Email Cím</label>
-    <input class="grayCell text1 w80" id="loginEmail" type="email" formControlName="email" placeholder="E-amil cím">
-    <label class="ntl text1 w80" for="loginPass">Jelszó</label>
-    <input class="grayCell text1 w80" id="loginPass" type="password" formControlName="pass" placeholder="Jelszó">
+  <div class="buttonCont margTop1 btnBack">
+    <button class="itemGet text1" type="submit" [disabled]="!loginUserForm.valid">Belépés</button>
+  </div>
 
-    <div class="buttonCont margTop1">
-      <button class="itemGet text1" type="submit" [disabled]="!loginUserForm.valid">Belépés</button>
-    </div>
+</form>
 
-  </form>
+<form class="flexCont w100" [formGroup]="regUserForm" (ngSubmit)="onSubmit()">
 
-  <form class="flexCont" [formGroup]="regUserForm" (ngSubmit)="onSubmit()">
+  <div class="nrng w100 center text1 margBott1 margTop1">Itt az ideje, hogy csatlakozz az Árnyak világához!</div>
 
-    <div class="nrng text1 margBott1">Itt az ideje, hogy csatlakozz az Árnyak világához!</div>
+  <label class="nrng text1 w90" for="regNev">Felhasználónév</label>
+  <input class="grayCell text1 w90" id="regNev" type="text1" formControlName="name" placeholder="Név">
+  <label class="nrng text1 w90" for="regEmail">Email Cím</label>
+  <input class="grayCell text1 w90" id="regEmail" type="email" formControlName="email" placeholder="E-amil cím">
+  <label class="nrng text1 w90" for="regPass">Jelszó</label>
+  <input class="grayCell text1 w90" id="regPass" type="password" formControlName="pass" placeholder="Jelszó">
 
-    <label class="nrng text1 w80" for="regNev">Felhasználónév</label>
-    <input class="grayCell text1 w80" id="regNev" type="text1" formControlName="name" placeholder="Név">
-    <label class="nrng text1 w80" for="regEmail">Email Cím</label>
-    <input class="grayCell text1 w80" id="regEmail" type="email" formControlName="email" placeholder="E-amil cím">
-    <label class="nrng text1 w80" for="regPass">Jelszó</label>
-    <input class="grayCell text1 w80" id="regPass" type="password" formControlName="pass" placeholder="Jelszó">
+  <div class="buttonCont margTop1 btnBack">
+    <button class="itemGet text1" type="submit" [disabled]="!regUserForm.valid">Regisztráció</button>
+  </div>
 
-    <div class="buttonCont margTop1">
-      <button class="itemGet text1" type="submit" [disabled]="!regUserForm.valid">Regisztráció</button>
-    </div>
-
-  </form>
-
-</div>
+</form>

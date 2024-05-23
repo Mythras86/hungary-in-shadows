@@ -1,6 +1,6 @@
-<div class="pageCont" [formGroup]="spellsServ.spellsForm" *ngIf="spellsServ.spellsForm">
+<div class="flexCont" [formGroup]="spellsServ.spellsForm" *ngIf="spellsServ.spellsForm">
 
-  <button *ngIf="resServ.getFc('szabadToke').value >= 0" class="ngrn text1" type="button" (click)="sSpellServ.openModal()">Új Varázslat</button>
+  <button *ngIf="resServ.getFc('szabadToke').value >= 0" class="nbl text1" type="button" (click)="sSpellServ.openModal()">Új Varázslat</button>
   <button *ngIf="resServ.getFc('szabadToke').value < 0" class="grayCell text1" type="button">Nincs elég Tőkéd</button>
 
   <div class="w100" formArrayName="spells" *ngFor='let csoport of getCsoportok()'>
@@ -22,7 +22,7 @@
           {{s.hatotav}}
         </div>
         <div class="nrd text1 w70 center">{{s.kifaradas}}</div>
-        <div class="ngrn w20 text1 center">{{s.szint}} SZ</div>
+        <div class="nbl w20 text1 center">{{s.szint}} SZ</div>
 
         <div class="grayCell text1 w60 center">Célsz.: {{s.celszam}}</div>
         <div class="moneyCost text1 w25">{{1000*s.szint}} Cr</div>

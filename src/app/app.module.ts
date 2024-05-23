@@ -21,7 +21,6 @@ import { ModalWrapperComponent } from './elements/modals/modal-wrapper.component
 import { LevelcontrolComponent } from './elements/Inputs/levelcontrol/levelcontrol.component';
 import { StatusComponent } from './characters/chars-subforms/status/status.component';
 import { SkillsComponent } from './characters/chars-subforms/skills/skills.component';
-import { SelectSkillsComponent } from './elements/modals/select-skills//select-skills.component';
 import { AttributesComponent } from './characters/chars-subforms/attributes/attributes.component';
 import { ArmorsComponent } from './characters/chars-subforms/items/armors/armors.component';
 import { CybersComponent } from './characters/chars-subforms/items/cybers/cybers.component';
@@ -44,8 +43,9 @@ import { FieldTokeComponent } from './elements/Fields/field-toke/field-toke.comp
 import { FieldKarmaComponent } from './elements/Fields/field-karma/field-karma.component';
 import { InpDetailsComponent } from './elements/Inputs/inp-details/inp-details.component';
 import { BtnOptionsComponent } from './elements/Buttons/btn-options/btn-options.component';
-import { SkillComponent } from './elements/skill/skill.component';
 import { ItemsComponent } from './characters/chars-subforms/items/items.component';
+import { SkillsListComponent } from './characters/chars-subforms/skills/skills-list/skills-list.component';
+import { SkillsSelectComponent } from './characters/chars-subforms/skills/skills-select/skills-select.component';
 
 @NgModule({
   declarations: [
@@ -77,12 +77,10 @@ import { ItemsComponent } from './characters/chars-subforms/items/items.componen
     ArtifactsComponent,
     WeaponsComponent,
     ExplosivesComponent,
-    SkillComponent,
 
     SelectArmorsComponent,
     SelectArtifactsComponent,
     SelectCybersComponent,
-    SelectSkillsComponent,
     SelectToolsComponent,
     SelectSpellsComponent,
     SelectWeaponsComponent,
@@ -93,6 +91,8 @@ import { ItemsComponent } from './characters/chars-subforms/items/items.componen
     FieldTokeComponent,
     BtnOptionsComponent,
     ItemsComponent,
+    SkillsListComponent,
+    SkillsSelectComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,11 @@
-<div class="pageCont" [formGroup]="statServ.statusForm" *ngIf="statServ.statusForm">
+
+<div class="flexCont w100" [formGroup]="statServ.statusForm" *ngIf="statServ.statusForm">
 
   <!-- Asztrális állapot -->
-  <span class="flexCont">
+  <div class="flexCont w100 margBott1">
 
     <div class="w30 text1" [ngClass]="toggleColor(getFcValue('asztralisAllapot')-10)" (click)="sendStatus('asztralisAllapot', 11)">Gyógyult</div>
-    <div class="w70 ntl text1">Asztrális állapot</div>
+    <div class="w70 nwht text1">Asztrális állapot</div>
 
     <div *ngFor="let number of [10,9,8,7,6,5,4,3,2,1]"
     class="w10 text1" [ngClass]="toggleColor(getFcValue('asztralisAllapot')-number)"
@@ -12,25 +13,25 @@
       {{getModosito(number)}}
     </div>
 
-  </span>
+  </div>
 
   <!-- Pihentség állapot -->
-  <span class="flexCont">
+  <div class="flexCont w100 margBott1">
 
     <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 4)" (click)="sendStatus('pinhentsegAllapot', 4)" class="w25 text1">Pihent</div>
-    <div class="w75 ntl text1">Pihentség</div>
-    <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 3)" (click)="sendStatus('pinhentsegAllapot', 3)" class="w25 text1">Rendben</div>
-    <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 2)" (click)="sendStatus('pinhentsegAllapot', 2)" class="w25 text1">Fáradt</div>
-    <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 1)" (click)="sendStatus('pinhentsegAllapot', 1)" class="w25 text1">Kimerült</div>
-    <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 0)" (click)="sendStatus('pinhentsegAllapot', 0)" class="w25 text1">Elgyötört</div>
+    <div class="w75 nwht text1">Pihentség</div>
+    <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 3)" (click)="sendStatus('pinhentsegAllapot', 3)" class="flex1 text1">Rendben</div>
+    <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 2)" (click)="sendStatus('pinhentsegAllapot', 2)" class="flex1 text1">Fáradt</div>
+    <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 1)" (click)="sendStatus('pinhentsegAllapot', 1)" class="flex1 text1">Kimerült</div>
+    <div [ngClass]="toggleKockaMColor('pinhentsegAllapot', 0)" (click)="sendStatus('pinhentsegAllapot', 0)" class="flex1 text1">Elgyötört</div>
 
-  </span>
+  </div>
 
   <!-- Fizikai állapot -->
-  <span class="flexCont">
+  <div class="flexCont w100 margBott1">
 
     <div class="w30 text1"  [ngClass]="toggleColor(getFcValue('fizikaiAllapot')-10)"(click)="sendStatus('fizikaiAllapot', 11)">Gyógyult</div>
-    <div class="w70 ntl text1">Fizikai állapot</div>
+    <div class="w70 nwht text1">Fizikai állapot</div>
 
     <div *ngFor="let number of [10,9,8,7,6,5,4,3,2,1]"
     class="w10 text1" [ngClass]="toggleColor(getFcValue('fizikaiAllapot')-number)"
@@ -38,22 +39,22 @@
       {{getModosito(number)}}
     </div>
 
-  </span>
+  </div>
 
   <!-- Tápláltság állapot -->
-  <span class="flexCont">
+  <div class="flexCont w100 margBott1">
 
     <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 4)" (click)="sendStatus('taplaltsagAllapot', 4)" class="w25 text1">Táplált</div>
-    <div class="w75 ntl text1">Tápláltság</div>
-    <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 3)" (click)="sendStatus('taplaltsagAllapot', 3)" class="w25 text1">Rendben</div>
-    <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 2)" (click)="sendStatus('taplaltsagAllapot', 2)" class="w25 text1">Éhes</div>
-    <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 1)" (click)="sendStatus('taplaltsagAllapot', 1)" class="w25 text1">Nélkülöz</div>
-    <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 0)" (click)="sendStatus('taplaltsagAllapot', 0)" class="w25 text1">Éhező</div>
+    <div class="w75 nwht text1">Tápláltság</div>
+    <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 3)" (click)="sendStatus('taplaltsagAllapot', 3)" class="flex1 text1">Rendben</div>
+    <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 2)" (click)="sendStatus('taplaltsagAllapot', 2)" class="flex1 text1">Éhes</div>
+    <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 1)" (click)="sendStatus('taplaltsagAllapot', 1)" class="flex1 text1">Nélkülöz</div>
+    <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 0)" (click)="sendStatus('taplaltsagAllapot', 0)" class="flex1 text1">Éhező</div>
 
-  </span>
+  </div>
 
   <!-- Módosítók -->
-  <span class="flexCont w100">
+  <div class="flexCont w100">
     <div class="w50">
       <div class="ntl text1">Kezdeményezés</div>
       <div class="text2" [ngClass]="toggleColor(getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot')))">
@@ -62,23 +63,23 @@
     </div>
     <div class="w50">
       <div class="ntl text1">Pusztakezes</div>
-      <div class="ngrn text2">
+      <div class="nbl text2">
         {{getPusztakez()}}
       </div>
     </div>
-  </span>
+  </div>
 
-  <span class="flexCont w100">
+  <div class="flexCont w100">
     <div class="w50">
       <div class="ntl text1">Méretkateg.</div>
-      <div class="ngrn text2">
+      <div class="nbl text2">
         {{getMeretkateg()}}
       </div>
     </div>
-  </span>
+  </div>
 
 
-  <span class="flexCont w100">
+  <div class="flexCont w100">
     <div class="w50">
       <div class="ntl text1">Kocka módosító</div>
       <div class="text2" [ngClass]="toggleColor(getMaxMod('pinhentsegAllapot', 'taplaltsagAllapot')-3)">
@@ -91,6 +92,6 @@
         {{getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot'))}}
       </div>
     </div>
-  </span>
+  </div>
 
 </div>

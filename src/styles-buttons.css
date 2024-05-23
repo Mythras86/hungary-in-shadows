@@ -15,9 +15,11 @@ button:disabled {
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
+  justify-content: space-evenly;
   overflow: visible;
 }
 
 .btnBack {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
 }

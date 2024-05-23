@@ -1,4 +1,4 @@
-<span class="flexCont">
+<div class="flexCont">
 
   <!-- fejléc -->
 
@@ -25,7 +25,7 @@
 
  <!-- gombok lépés 1 -->
 
-  <button class="w50 ngrn text1" [disabled]="buttonDisInc(1)"
+  <button class="w50 nbl text1" [disabled]="buttonDisInc(1)"
   (click)="changeValue(1)" type="button">
    +
    {{s.valto}}
@@ -41,7 +41,7 @@
 
   <!-- gombok lépés érték -->
 
-  <button class="w50 ngrn text1" [disabled]="buttonDisInc(s.lepes)"
+  <button class="w50 nbl text1" [disabled]="buttonDisInc(s.lepes)"
   (click)="changeValue(s.lepes)" type="button">
     +
     {{s.lepes*s.valto}}
@@ -74,14 +74,14 @@
   </div>
 
   <div *ngIf="s.esszKtsg>0" class="w100 flexCont">
-    <div class="nwht text1 w100 center">Esszencia költség</div>
+    <div class="nbl text1 w100 center">Esszencia költség</div>
     <div class="esszencia text1 w100 center">
       {{ertekValtozas*s.esszKtsg}} Szint /
       {{attrS.getTulErtek('esszencia')-ertekValtozas*s.esszKtsg}} Szint
     </div>
   </div>
 
-</span>
+</div>
 
   <!-- save button -->
 

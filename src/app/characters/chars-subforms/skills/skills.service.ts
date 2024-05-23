@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
+import { skillsUtil } from './skills.util';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class SkillsService {
 
   constructor(
     private fb: FormBuilder,
-    private resServ: ResourcesService,
+    private resS: ResourcesService,
   ) { }
 
   skillsForm!: FormGroup;
@@ -21,18 +22,20 @@ export class SkillsService {
     return this.skillsForm = this.fb.group(skills);
   }
 
-  addSkill(nev: string, csoport: string, kapTul: string): void {
+  addSkill(nev: string): void {
     if (nev == null) {
       return;
     }
+
+    const skill = skillsUtil.filter(x => x.nev == nev).map(x => x)[0];
     const skills = this.fb.group({
-      nev: [nev, Validators.required],
-      csoport: [csoport, Validators.required],
+      nev: [skill.nev, Validators.required],
+      csoport: [skill.csoport, Validators.required],
       megjegyzes: [''],
       szint: [1, Validators.required],
-      kapTul: [kapTul],
+      kapTul: [skill.kapTul],
     });
-    this.resServ.payKarma(2);
+    this.resS.payKarma(2);
     (this.skillsForm.get('skills') as FormArray).push(skills);
   }
 
@@ -58,7 +61,7 @@ export class SkillsService {
   }
 
   removeSkill(i:number): void {
-    this.resServ.payKarma(-2);
+    this.resS.payKarma(-2);
     (this.skillsForm.get('skills') as FormArray).removeAt(i);
   }
 

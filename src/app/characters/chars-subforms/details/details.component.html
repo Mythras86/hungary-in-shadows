@@ -1,7 +1,6 @@
-<h2 class="ntl">Jellemzők</h2>
-<div class="pageCont" [formGroup]="s.detailsForm" *ngIf="s.detailsForm">
+<div class="flexCont" [formGroup]="s.detailsForm" *ngIf="s.detailsForm">
 
-  <button class="text1 ngrn" type="button" (click)="fillWithDummy()">fill with dummy</button>
+  <button class="text1 nbl margBott1" type="button" (click)="fillWithDummy()">fill with dummy</button>
 
   <div class="w{{item.meret}} flexCont posRel"
   *ngFor="let item of getDetailsUtil(); first as isFirst"
@@ -19,23 +18,25 @@
     [lista] = "getList(item.fcName)"
     ></app-inp-details>
 
-    <app-btn-options *ngIf="select.status == item.fcName" class="posAbs"
-    (buttonAction)="inpDetS.buttonAction(
-      'edit',
-      item.nev,
-      item.tipus,
-      item.egyseg,
-      item.fcName,
-      item.megjegyzes + (getDefault(item.fcName) == undefined ? '' : ' ' + getDefault(item.fcName)),
-      s.getFc(item.fcName)?.value,
-      getList(item.fcName)
-      )"
-    ></app-btn-options>
+    <div *ngIf="select.status == item.fcName" class="buttonCont posAbs btnBack">
+      <app-btn-options
+      (buttonAction)="inpDetS.buttonAction(
+        'edit',
+        item.nev,
+        item.tipus,
+        item.egyseg,
+        item.fcName,
+        item.megjegyzes + (getDefault(item.fcName) == undefined ? '' : ' ' + getDefault(item.fcName)),
+        s.getFc(item.fcName)?.value,
+        getList(item.fcName)
+        )"
+      ></app-btn-options>
+    </div>
 
   </div>
 
   <div class="flexCont w100">
-    <div class="ngrn text1 w100 center">
+    <div class="nbl text1 w100 center">
       Különleges képességek
     </div>
     <div *ngIf="getDefault('kepessegek') == null" class="grayCell w100 text1"></div>

@@ -4,7 +4,7 @@
   <a class="buttonCont center" routerLink="/charslist">Karakterek</a>
   <a class="buttonCont center" *ngIf="!userIsAuthenticated" routerLink="/auth">Belépés</a>
   <a class="buttonCont center" *ngIf="userIsAuthenticated" (click)="onLogout()">Kilépés</a>
-  <span class="ngrn creator">
+  <div class="nbl creator">
     Karakterlap by Mythras
-  </span>
+  </div>
 </div>

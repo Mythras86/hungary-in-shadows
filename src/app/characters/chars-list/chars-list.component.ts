@@ -29,16 +29,21 @@ export class CharsListComponent implements OnInit, OnDestroy {
   private charsListUpd = new BehaviorSubject<CharModel[]>([])
 
   getCharsList(): void {
-    this.s.getCharsList().subscribe({
-      next: (w: CharModel[]) => {
-        this.charsList = w;
-        this.charsListUpd.next([...this.charsList]);
-        this.spinS.toggleSpinner(false);
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    });
+    if (this.userIsAuthenticated == true) {
+      console.log('yes')
+      this.s.getCharsList().subscribe({
+        next: (w: CharModel[]) => {
+          this.charsList = w;
+          this.charsListUpd.next([...this.charsList]);
+          this.spinS.toggleSpinner(false);
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
+    }
+    this.spinS.toggleSpinner(false);
+    return;
   }
 
   getCsoport(creatorId: string): string {

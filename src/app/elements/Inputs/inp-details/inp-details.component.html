@@ -3,7 +3,7 @@
 <div class="flexCont w100">
 
   <!-- fejlác -->
-  <div class="ngrn text1 center {{mode == 'edit' ? 'w80': 'w100'}}" >
+  <div class="nbl text1 center {{mode == 'edit' ? 'w80': 'w100'}}" >
     {{nev}}
   </div>
 
@@ -40,10 +40,10 @@
   </datalist>
 
   <!-- normal number input -->
-  <span *ngIf="mode == 'edit' && tipus == 'number'" class="flexCont">
+  <div *ngIf="mode == 'edit' && tipus == 'number'" class="flexCont">
     <input class="w80 grayCell text1 center" [id]="fcName" type="number" [value]="ertek">
     <div class="w20 grayCell text1 center">{{egyseg}}</div>
-  </span>
+  </div>
 
   <!-- list input -->
   <select *ngIf="mode == 'edit' && tipus == 'select'" class="w100 grayCell text1 center" [id]="fcName">
@@ -62,5 +62,5 @@
 </div>
 
 <div *ngIf="mode == 'edit'" class="buttonCont w100 margTop1">
-  <button class="ngrn text1" type="button" (click)="onSave(fcName)">Mentés</button>
+  <button class="nbl text1" type="button" (click)="onSave(fcName)">Mentés</button>
 </div>

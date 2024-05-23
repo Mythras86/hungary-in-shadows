@@ -1,6 +1,6 @@
-<div class="pageCont" [formGroup]="explosivesServ.explosivesForm" *ngIf="explosivesServ.explosivesForm">
+<div class="flexCont" [formGroup]="explosivesServ.explosivesForm" *ngIf="explosivesServ.explosivesForm">
 
-  <button *ngIf="resServ.getFc('szabadToke').value >= 0" class="ngrn text1" type="button" (click)="sWeaponServ.openModal(true)">Új Robbanóanyag</button>
+  <button *ngIf="resServ.getFc('szabadToke').value >= 0" class="nbl text1" type="button" (click)="sWeaponServ.openModal(true)">Új Robbanóanyag</button>
   <button *ngIf="resServ.getFc('szabadToke').value < 0" class="grayCell text1" type="button">Nincs elég Tőkéd</button>
 
   <div class="w100" formArrayName="explosives" *ngFor='let csoport of getCsoportok()'>
@@ -24,7 +24,7 @@
           {{getSebKod(e.sebzesTipus)}})
         </div>
         <div class="nprpl w30 text1 center" (click)="changePlace(i)">{{e.elhelyezes}}</div>
-        <div class="ngrn text1 w20 center">{{e.darab}} db</div>
+        <div class="nbl text1 w20 center">{{e.darab}} db</div>
 
         <div class="moneyCost text1 w40 center">{{e.ar*e.darab}} Cr</div>
         <div class="grayCell text1 w30 center">{{e.suly*e.darab}} Kg</div>
