@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node ./api/server.js",
-    "serve": "HungaryInShadows",
+    "serve": "hungary-in-shadows",
     "build": "build",
     "watch": "build --watch --configuration development",
     "test": "test",
@@ -57,7 +57,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mythras86/HungaryInShadows.git"
+    "url": "git+https://github.com/Mythras86/hungary-in-shadows.git"
   },
   "keywords": [
     "shadowrun",
@@ -69,7 +69,7 @@
   "author": "Farkas Krisztian",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Mythras86/HungaryInShadows/issues"
+    "url": "https://github.com/Mythras86/hungary-in-shadows/issues"
   },
-  "homepage": "https://github.com/Mythras86/HungaryInShadows#readme"
+  "homepage": "https://github.com/Mythras86/hungary-in-shadows#readme"
 }

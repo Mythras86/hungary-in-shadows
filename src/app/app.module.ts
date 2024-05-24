@@ -13,39 +13,30 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { AuthInterceptor } from './authentication/auth-interceptor';
 import { SpinnerComponent } from './elements/spinner/spinner.component';
-import { CharsMainComponent } from './characters/chars-main/chars-main.component';
-import { DetailsComponent } from './characters/chars-subforms/details/details.component';
-import { ResourcesComponent } from './characters/chars-subforms/resources/resources.component';
 import { HideContentComponent } from './elements/hide-content/hide-content.component';
 import { ModalWrapperComponent } from './elements/modals/modal-wrapper.component';
 import { LevelcontrolComponent } from './elements/Inputs/levelcontrol/levelcontrol.component';
-import { StatusComponent } from './characters/chars-subforms/status/status.component';
-import { SkillsComponent } from './characters/chars-subforms/skills/skills.component';
-import { AttributesComponent } from './characters/chars-subforms/attributes/attributes.component';
-import { ArmorsComponent } from './characters/chars-subforms/items/armors/armors.component';
-import { CybersComponent } from './characters/chars-subforms/items/cybers/cybers.component';
-import { SpellsComponent } from './characters/chars-subforms/items/spells/spells.component';
-import { ToolsComponent } from './characters/chars-subforms/items/tools/tools.component';
-import { SelectArmorsComponent } from './elements/modals/select-armors/select-armors.component';
-import { SelectCybersComponent } from './elements/modals/select-cybers/select-cybers.component';
-import { SpiritsComponent } from './characters/chars-subforms/items/spirits/spirits.component';
-import { ArtifactsComponent } from './characters/chars-subforms/items/artifacts/artifacts.component';
-import { WeaponsComponent } from './characters/chars-subforms/items/weapons/weapons.component';
-import { SelectArtifactsComponent } from './elements/modals/select-artifacts/select-artifacts.component';
-import { SelectToolsComponent } from './elements/modals/select-tools/select-tools.component';
-import { SelectSpellsComponent } from './elements/modals/select-spells/select-spells.component';
-import { SelectWeaponsComponent } from './elements/modals/select-weapons/select-weapons.component';
-import { SelectSpiritsComponent } from './elements/modals/select-spirits/select-spirits.component';
-import { ExplosivesComponent } from './characters/chars-subforms/items/explosives/explosives.component';
-import { SelectWAddonsComponent } from './elements/modals/select-wAddons/select-wAddons.component';
-import { SelectAAddonsComponent } from './elements/modals/select-aAddons/select-aAddons.component';
 import { FieldTokeComponent } from './elements/Fields/field-toke/field-toke.component';
 import { FieldKarmaComponent } from './elements/Fields/field-karma/field-karma.component';
 import { InpDetailsComponent } from './elements/Inputs/inp-details/inp-details.component';
 import { BtnOptionsComponent } from './elements/Buttons/btn-options/btn-options.component';
-import { ItemsComponent } from './characters/chars-subforms/items/items.component';
-import { SkillsListComponent } from './characters/chars-subforms/skills/skills-list/skills-list.component';
-import { SkillsSelectComponent } from './characters/chars-subforms/skills/skills-select/skills-select.component';
+import { AttributesComponent } from './characters/attributes/attributes.component';
+import { CharsMainComponent } from './characters/chars-main.component';
+import { DetailsComponent } from './characters/details/details.component';
+import { ArmorsComponent } from './characters/items/armors/armors.component';
+import { ArtifactsComponent } from './characters/items/artifacts/artifacts.component';
+import { CybersComponent } from './characters/items/cybers/cybers.component';
+import { ExplosivesComponent } from './characters/items/explosives/explosives.component';
+import { ItemsComponent } from './characters/items/items.component';
+import { SpellsComponent } from './characters/items/spells/spells.component';
+import { SpiritsComponent } from './characters/items/spirits/spirits.component';
+import { ToolsComponent } from './characters/items/tools/tools.component';
+import { WeaponsComponent } from './characters/items/weapons/weapons.component';
+import { ResourcesComponent } from './characters/resources/resources.component';
+import { SkillsListComponent } from './characters/skills/skills-list/skills-list.component';
+import { SkillsSelectComponent } from './characters/skills/skills-select/skills-select.component';
+import { SkillsComponent } from './characters/skills/skills.component';
+import { StatusComponent } from './characters/status/status.component';
 
 @NgModule({
   declarations: [
@@ -69,24 +60,7 @@ import { SkillsSelectComponent } from './characters/chars-subforms/skills/skills
     ResourcesComponent,
     StatusComponent,
     SkillsComponent,
-    ArmorsComponent,
-    CybersComponent,
-    SpellsComponent,
-    ToolsComponent,
-    SpiritsComponent,
-    ArtifactsComponent,
-    WeaponsComponent,
-    ExplosivesComponent,
 
-    SelectArmorsComponent,
-    SelectArtifactsComponent,
-    SelectCybersComponent,
-    SelectToolsComponent,
-    SelectSpellsComponent,
-    SelectWeaponsComponent,
-    SelectSpiritsComponent,
-    SelectWAddonsComponent,
-    SelectAAddonsComponent,
     FieldKarmaComponent,
     FieldTokeComponent,
     BtnOptionsComponent,

@@ -5,7 +5,7 @@ import { AuthService } from 'src/app/authentication/auth.service';
 import { SpinnerService } from 'src/app/elements/spinner/spinner.service';
 import { CharsListService } from './chars-list.service';
 import { ItemSelectService } from 'src/app/elements/item-select/item-select.service';
-import { CharModel } from '../chars-main/chars-main.model';
+import { CharModel } from '../chars-main.model';
 
 @Component({
   selector: 'app-chars',

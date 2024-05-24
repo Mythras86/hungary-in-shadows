@@ -1,3 +1,7 @@
+:host :hover{
+  cursor: pointer;
+}
+
 .down {
   writing-mode: vertical-lr;
 }

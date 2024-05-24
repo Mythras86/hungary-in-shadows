@@ -6,15 +6,14 @@ import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/authentication/auth.service';
 import { SpinnerService } from 'src/app/elements/spinner/spinner.service';
 import { HideService } from 'src/app/elements/hide-content/hide-content.service';
-
+import { AttributesService } from './attributes/attributes.service';
 import { CharsMainService } from './chars-main.service';
-import { DetailsService } from '../chars-subforms/details/details.service';
-import { ResourcesService } from '../chars-subforms/resources/resources.service';
-import { AttributesService } from '../chars-subforms/attributes/attributes.service';
-import { StatusService } from '../chars-subforms/status/status.service';
-import { SkillsService } from '../chars-subforms/skills/skills.service';
-import { ItemsService } from '../chars-subforms/items/items.service';
-import { CharsListService } from '../chars-list/chars-list.service';
+import { DetailsService } from './details/details.service';
+import { ItemsService } from './items/items.service';
+import { ResourcesService } from './resources/resources.service';
+import { SkillsService } from './skills/skills.service';
+import { StatusService } from './status/status.service';
+
 
 @Component({
   selector: 'app-chars-main',

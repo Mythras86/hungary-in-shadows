@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { ModalService } from '../../modals/modal.service';
 import { LevelcontrolComponent } from './levelcontrol.component';
 import { FormControl } from '@angular/forms';
-import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';
-import { AttributesService } from 'src/app/characters/chars-subforms/attributes/attributes.service';
+import { ResourcesService } from 'src/app/characters/resources/resources.service';
+import { AttributesService } from 'src/app/characters/attributes/attributes.service';
 
 @Injectable({
   providedIn: 'root'

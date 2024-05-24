@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { DetailsService } from 'src/app/characters/chars-subforms/details/details.service';
 import { Subject } from 'rxjs';
 import { InpDetailsService } from './inp-details.service';
 import { ItemSelectService } from '../../item-select/item-select.service';
+import { DetailsService } from 'src/app/characters/details/details.service';
 
 @Component({
   selector: 'app-inp-details',

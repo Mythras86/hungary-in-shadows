@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DetailsService } from './details.service';
-import { InpDetailsService } from 'src/app/elements/Inputs/inp-details/inp-details.service';
 import { ItemSelectService } from 'src/app/elements/item-select/item-select.service';
 import { detailsUtil, dnsUtil, nemekUtil, nyelvekUtil } from './details-utility';
+import { InpDetailsService } from 'src/app/elements/Inputs/inp-details/inp-details.service';
 
 @Component({
   selector: 'app-details',

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/authentication/auth.service';
-import { DetailsService } from 'src/app/characters/chars-subforms/details/details.service';
+import { DetailsService } from 'src/app/characters/details/details.service';
 
 @Component({
   selector: 'app-header',

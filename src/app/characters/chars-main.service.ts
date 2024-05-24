@@ -4,16 +4,16 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { CharModel } from './chars-main.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { SkillsModel } from '../chars-subforms/skills/skills.model';
-import { ItemsModel } from '../chars-subforms/items/items.model';
-import { AuthService } from 'src/app/authentication/auth.service';
-import { AttributesService } from '../chars-subforms/attributes/attributes.service';
-import { DetailsService } from '../chars-subforms/details/details.service';
-import { ItemsService } from '../chars-subforms/items/items.service';
-import { ResourcesService } from '../chars-subforms/resources/resources.service';
-import { SkillsService } from '../chars-subforms/skills/skills.service';
-import { StatusService } from '../chars-subforms/status/status.service';
-import { CharsListService } from '../chars-list/chars-list.service';
+import { AuthService } from '../authentication/auth.service';
+import { AttributesService } from './attributes/attributes.service';
+import { CharsListService } from './chars-list/chars-list.service';
+import { DetailsService } from './details/details.service';
+import { ItemsModel } from './items/items.model';
+import { ItemsService } from './items/items.service';
+import { ResourcesService } from './resources/resources.service';
+import { SkillsModel } from './skills/skills.model';
+import { SkillsService } from './skills/skills.service';
+import { StatusService } from './status/status.service';
 
 const BACKEND_URL = environment.apiUrl + "/char/";
 

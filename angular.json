@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "HungaryInShadow": {
+    "hungary-in-shadows": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "HungaryInShadow:build:production"
+              "browserTarget": "hungary-in-shadows:build:production"
             },
             "development": {
-              "browserTarget": "HungaryInShadow:build:development"
+              "browserTarget": "hungary-in-shadows:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "HungaryInShadow:build"
+            "browserTarget": "hungary-in-shadows:build"
           }
         },
         "test": {

@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { LevelcontrolService } from './levelcontrol.service';
-import { FormControl } from '@angular/forms';
-import { ResourcesService } from 'src/app/characters/chars-subforms/resources/resources.service';
-import { AttributesService } from 'src/app/characters/chars-subforms/attributes/attributes.service';
+import { AttributesService } from 'src/app/characters/attributes/attributes.service';
+import { ResourcesService } from 'src/app/characters/resources/resources.service';
 
 @Component({
   selector: 'app-levelcontrol',

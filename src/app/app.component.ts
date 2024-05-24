@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
     private authServ: AuthService,
   ) {}
 
-  title:string = 'HungaryInShadows';
+  title:string = 'hungary-in-shadows';
 
   ngOnInit(): void {
       this.authServ.autoAuthUser();

@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, of, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CharModel } from '../chars-main/chars-main.model';
 import { Router } from '@angular/router';
+import { CharModel } from '../chars-main.model';
+import { Observable } from 'rxjs';
 
 const BACKEND_URL = environment.apiUrl + "/char/";
 

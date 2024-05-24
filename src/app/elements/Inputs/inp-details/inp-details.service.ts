@@ -1,7 +1,7 @@
 import { Injectable, Input } from '@angular/core';
 import { ModalService } from '../../modals/modal.service';
 import { InpDetailsComponent } from './inp-details.component';
-import { DetailsService } from 'src/app/characters/chars-subforms/details/details.service';
+import { DetailsService } from 'src/app/characters/details/details.service';
 
 @Injectable({
   providedIn: 'root'
