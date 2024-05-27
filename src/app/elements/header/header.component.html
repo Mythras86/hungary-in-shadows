@@ -1,26 +1,25 @@
-<div class="flexCont w100 posRel">
-  <h2 class="nbl w100 center" *ngIf="!userIsAuthenticated && !menuOn">
-    Üdv az Árnyak között!
-  </h2>
-  <h2 class="nbl w100" *ngIf="userIsAuthenticated && !menuOn">
-    {{getAName()}}
-  </h2>
-  <div *ngIf="!menuOn" class="nyllw text1 center posAbsIn" (click)="toggleMenu()">&#x2630;</div>
-</div>
+<h2 class="flexCont w100" *ngIf="!menuOn" (click)="toggleMenu()">
+  <span class="nbl w80 center  text2" *ngIf="!userIsAuthenticated && !menuOn">Üdv az Árnyak között!</span>
+  <span class="nbl w80 center" *ngIf="userIsAuthenticated && !menuOn">{{getAName()}}</span>
+  <span class="nyllw w20 center">&#x2630;</span>
+</h2>
 
 
 <nav *ngIf="menuOn" class="w100"  >
-  <ul>
-    <li>
+  <ul class="w100 flexCont">
+    <li class="w100" (click)="toggleMenu()">
       <a class="nprpl text1 center" routerLink="/">Főoldal</a>
     </li>
-    <li>
+    <li class="w100" (click)="toggleMenu()">
       <a class="nprpl text1 center" routerLink="/charslist">Karakterek</a>
     </li>
-    <li *ngIf="!userIsAuthenticated">
+    <li class="w100" (click)="toggleMenu()">
+      <a class="nprpl text1 center" routerLink="/npcs">Nem Játékosok</a>
+    </li>
+    <li *ngIf="!userIsAuthenticated" class="w100" (click)="toggleMenu()">
       <a class="nprpl text1 center" routerLink="/auth">Belépés</a>
     </li>
-    <li *ngIf="userIsAuthenticated">
+    <li *ngIf="userIsAuthenticated" class="w100" (click)="toggleMenu()">
       <a class="nprpl text1 center" (click)="onLogout()">Kilépés</a>
     </li>
   </ul>

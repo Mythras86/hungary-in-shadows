@@ -12,8 +12,6 @@ export class SkillsSelectComponent {
     public s: SkillsSelectService,
   ) {}
 
-  @Output() buttonAction: EventEmitter<void> = new EventEmitter();
-
   public canBeClosed: boolean = true;
   closeEvent: Subject<any> = new Subject;
 

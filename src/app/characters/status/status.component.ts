@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { StatusService } from './status.service';
 import { AttributesService } from '../attributes/attributes.service';
 import { DetailsService } from '../details/details.service';
-import { ArmorsService } from '../items/armors/armors.service';
 import { ResourcesService } from '../resources/resources.service';
 
 @Component({
@@ -16,7 +15,6 @@ export class StatusComponent implements OnInit {
     public statServ: StatusService,
     public attrServ: AttributesService,
     public detailsServ: DetailsService,
-    public armorsServ: ArmorsService,
     public resServ: ResourcesService,
   ) {}
 

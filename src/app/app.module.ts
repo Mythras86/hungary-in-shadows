@@ -23,20 +23,13 @@ import { BtnOptionsComponent } from './elements/Buttons/btn-options/btn-options.
 import { AttributesComponent } from './characters/attributes/attributes.component';
 import { CharsMainComponent } from './characters/chars-main.component';
 import { DetailsComponent } from './characters/details/details.component';
-import { ArmorsComponent } from './characters/items/armors/armors.component';
-import { ArtifactsComponent } from './characters/items/artifacts/artifacts.component';
-import { CybersComponent } from './characters/items/cybers/cybers.component';
-import { ExplosivesComponent } from './characters/items/explosives/explosives.component';
 import { ItemsComponent } from './characters/items/items.component';
-import { SpellsComponent } from './characters/items/spells/spells.component';
-import { SpiritsComponent } from './characters/items/spirits/spirits.component';
-import { ToolsComponent } from './characters/items/tools/tools.component';
-import { WeaponsComponent } from './characters/items/weapons/weapons.component';
 import { ResourcesComponent } from './characters/resources/resources.component';
 import { SkillsListComponent } from './characters/skills/skills-list/skills-list.component';
 import { SkillsSelectComponent } from './characters/skills/skills-select/skills-select.component';
 import { SkillsComponent } from './characters/skills/skills.component';
 import { StatusComponent } from './characters/status/status.component';
+import { NpcsComponent } from './npcs/npcs.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +60,7 @@ import { StatusComponent } from './characters/status/status.component';
     ItemsComponent,
     SkillsListComponent,
     SkillsSelectComponent,
+    NpcsComponent,
   ],
   imports: [
     BrowserModule,

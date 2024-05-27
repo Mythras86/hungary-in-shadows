@@ -3,8 +3,9 @@ import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "./authentication/auth.guard";
 import { AuthenticationComponent } from "./authentication/authentication.component";
 import { CharsListComponent } from "./characters/chars-list/chars-list.component";
-import { CharsMainComponent } from "./characters/chars-main/chars-main.component";
 import { MainComponent } from "./main/main.component";
+import { NpcsComponent } from "./npcs/npcs.component";
+import { CharsMainComponent } from "./characters/chars-main.component";
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: "auth", component: AuthenticationComponent, title: "Azonosítás"},
 
   { path: "charslist", component: CharsListComponent, title: "Karakterek"},
+  { path: "npcs", component: NpcsComponent, title: "Nem Játékosok"},
   { path: "newchar", component: CharsMainComponent, title: "Új karakter"},
   { path: "editchar/:_id", component: CharsMainComponent, title: "Karakter szerkesztés", canActivate: [AuthGuard]},
 ];

@@ -1,17 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ArtifactsComponent } from './artifacts.component';
 
-describe('ArtifactsComponent', () => {
-  let component: ArtifactsComponent;
-  let fixture: ComponentFixture<ArtifactsComponent>;
+import { NpcsComponent } from './npcs.component';
+
+describe('NpcsComponent', () => {
+  let component: NpcsComponent;
+  let fixture: ComponentFixture<NpcsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArtifactsComponent ]
+      declarations: [ NpcsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ArtifactsComponent);
+    fixture = TestBed.createComponent(NpcsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

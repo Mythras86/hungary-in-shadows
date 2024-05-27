@@ -47,24 +47,10 @@ ul, li {
   text-align: center;
 }
 
-ul {
-  display: flex;
-  align-content: space-evenly;
-  flex-flow: row nowrap;
-}
-
-li {
-  flex: 1;
-}
-
 li :hover {
   cursor: pointer;
   background-color: orange;
   color: black;
-}
-
-h2 {
-  padding: 0.5rem;
 }
 
 .text1 {
