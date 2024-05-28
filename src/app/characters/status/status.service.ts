@@ -14,21 +14,25 @@ export class StatusService {
 
   createStatus(): FormGroup {
     const status = {
-      asztralisAllapot: [11, Validators.required],
-      fizikaiAllapot: [11, Validators.required],
-      pinhentsegAllapot: [4, Validators.required],
-      taplaltsagAllapot: [4, Validators.required],
+      asztralisAllapot: [0, Validators.required],
+      fizikaiAllapot: [0, Validators.required],
+      pinhentsegAllapot: [0, Validators.required],
+      taplaltsagAllapot: [0, Validators.required],
     };
     return this.statusForm = this.fb.group(status);
   }
 
   updateStatus(w: any): void {
     this.statusForm = this.fb.group ({
-      fizikaiAllapot: w.fizikaiAllapot,
       asztralisAllapot: w.asztralisAllapot,
+      fizikaiAllapot: w.fizikaiAllapot,
       pinhentsegAllapot: w.pinhentsegAllapot,
       taplaltsagAllapot: w.taplaltsagAllapot,
     });
+  }
+
+  setStatus(i: number, fcName: string):void {
+    this.statusForm.get(fcName)?.patchValue(i);
   }
 
   getFc(fcName: string):any {

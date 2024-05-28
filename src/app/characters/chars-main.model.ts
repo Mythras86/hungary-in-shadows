@@ -9,7 +9,7 @@ export interface CharModel extends DetailsModel, AttributesModel, ResourcesModel
 
   _id?: string;
   creatorId?: string;
-  skills?: Array<SkillsModel>,
-  items?: Array<ItemsModel>,
+  skills?: Array<SkillsModel>;
+  items?: Array<ItemsModel>;
 
 }

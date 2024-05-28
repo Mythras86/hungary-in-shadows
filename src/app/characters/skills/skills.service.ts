@@ -26,7 +26,6 @@ export class SkillsService {
     if (nev == null) {
       return;
     }
-
     const skill = skillsUtil.filter(x => x.nev == nev).map(x => x)[0];
     const skills = this.fb.group({
       nev: [skill.nev, Validators.required],

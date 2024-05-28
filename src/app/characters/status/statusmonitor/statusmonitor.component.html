@@ -1,0 +1,7 @@
+<div class="w70 nwht text1">{{headText}}</div>
+<div class="w30 text1 center" (click)="setStatus(0)" [ngClass]="setColor(0)">Gyógyult</div>
+
+<div *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" [ngClass]="setColor(number)"
+class="text1 center flex1" (click)="setStatus(number)">
+  {{number}}
+</div>

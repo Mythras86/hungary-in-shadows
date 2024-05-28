@@ -12,7 +12,7 @@ import { ResourcesService } from '../resources/resources.service';
 export class StatusComponent implements OnInit {
 
   constructor(
-    public statServ: StatusService,
+    public s: StatusService,
     public attrServ: AttributesService,
     public detailsServ: DetailsService,
     public resServ: ResourcesService,
@@ -37,13 +37,8 @@ export class StatusComponent implements OnInit {
     return 'grayCell';
   }
 
-  sendStatus(fcName: string, i: number) {
-    const sendStatus = this.statServ.statusForm.get(fcName)?.patchValue(i);
-    return sendStatus;
-  }
-
   getFcValue(fcName: string): number {
-    return this.statServ.statusForm.get(fcName)?.value;
+    return this.s.statusForm.get(fcName)?.value;
   }
 
   toggleColor(value: number):string {

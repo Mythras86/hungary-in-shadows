@@ -1,5 +1,6 @@
-:host :hover{
+.items :first-child:hover{
   cursor: pointer;
+  background-color: orange;
 }
 
 .down {

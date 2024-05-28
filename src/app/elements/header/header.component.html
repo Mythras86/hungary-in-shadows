@@ -16,6 +16,9 @@
     <li class="w100" (click)="toggleMenu()">
       <a class="nprpl text1 center" routerLink="/npcs">Nem Játékosok</a>
     </li>
+    <li class="w100" (click)="toggleMenu()">
+      <a class="nprpl text1 center" routerLink="/initiative">Kezdeményezés</a>
+    </li>
     <li *ngIf="!userIsAuthenticated" class="w100" (click)="toggleMenu()">
       <a class="nprpl text1 center" routerLink="/auth">Belépés</a>
     </li>

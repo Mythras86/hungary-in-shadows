@@ -3,7 +3,7 @@
   <button *ngIf="resS.getSzabadKarma() >= 2" class="ngrn text2 center" type="button" (click)="selSkills.buttonAction()">Új Szakértelem</button>
 </div>
 
-<div class="flexCont w100" [formGroup]="s.skillsForm" *ngIf="s.skillsForm">
+<div class="pageCont w100" [formGroup]="s.skillsForm" *ngIf="s.skillsForm">
 
   <div class="flexCont w100 margBott1" formArrayName="skills" *ngFor='let csoport of getCsoportok()'>
 

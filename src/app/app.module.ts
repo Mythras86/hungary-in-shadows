@@ -30,6 +30,8 @@ import { SkillsSelectComponent } from './characters/skills/skills-select/skills-
 import { SkillsComponent } from './characters/skills/skills.component';
 import { StatusComponent } from './characters/status/status.component';
 import { NpcsComponent } from './npcs/npcs.component';
+import { InitiativeComponent } from './initiative/initiative.component';
+import { StatusmonitorComponent } from './characters/status/statusmonitor/statusmonitor.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import { NpcsComponent } from './npcs/npcs.component';
     SkillsListComponent,
     SkillsSelectComponent,
     NpcsComponent,
+    InitiativeComponent,
+    StatusmonitorComponent,
   ],
   imports: [
     BrowserModule,

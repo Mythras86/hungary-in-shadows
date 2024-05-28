@@ -1,9 +1,9 @@
-<div class="grayCell w100 posRel">
-  <h3 class="w100">Profil</h3>
-  <a class="buttonCont center" routerLink="/">Főoldal</a>
-  <a class="buttonCont center" routerLink="/charslist">Karakterek</a>
-  <a class="buttonCont center" *ngIf="!userIsAuthenticated" routerLink="/auth">Belépés</a>
-  <a class="buttonCont center" *ngIf="userIsAuthenticated" (click)="onLogout()">Kilépés</a>
+<div class="grayCell flexCont w100 posRel">
+  <h3 class="w100 center">Profil</h3>
+  <a class="w100 center" routerLink="/">Főoldal</a>
+  <a class="w100 center" routerLink="/charslist">Karakterek</a>
+  <a class="w100 center" *ngIf="!userIsAuthenticated" routerLink="/auth">Belépés</a>
+  <a class="w100 center" *ngIf="userIsAuthenticated" (click)="onLogout()">Kilépés</a>
   <div class="nbl creator">
     Karakterlap by Mythras
   </div>
