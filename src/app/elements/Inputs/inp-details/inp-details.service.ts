@@ -13,7 +13,6 @@ export class InpDetailsService {
     private detailsS: DetailsService
   ) { }
 
-
   buttonAction(
     mode: string,
     nev: string,

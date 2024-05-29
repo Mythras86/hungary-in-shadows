@@ -6,7 +6,6 @@ import { CharModel } from './chars-main.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../authentication/auth.service';
 import { AttributesService } from './attributes/attributes.service';
-import { CharsListService } from './chars-list/chars-list.service';
 import { DetailsService } from './details/details.service';
 import { ItemsModel } from './items/items.model';
 import { ItemsService } from './items/items.service';
@@ -28,7 +27,6 @@ export class CharsMainService {
     private authS: AuthService,
     private fb: FormBuilder,
 
-    private charsListS: CharsListService,
     private detailsS: DetailsService,
     private resS: ResourcesService,
     private attrS: AttributesService,
@@ -250,7 +248,6 @@ export class CharsMainService {
     };
     this.http.post(BACKEND_URL + "new", charData).subscribe(response => {
       this.router.navigate(["/charslist"]);
-      console.log(response);
     });
   }
 

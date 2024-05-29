@@ -1,0 +1,28 @@
+<div class="flexCont" [formGroup]="s.newPlayerForm" *ngIf="s.newPlayerForm">
+
+  <label class="text1 w100 center ngrn" for="nev">Név</label>
+  <input class="text1 w100 center" type="text" id="nev" formControlName="nev">
+
+  <label class="text1 w100 center ngrn" for="pancel">Páncél</label>
+  <input class="text1 w100 center" type="number" id="pancel" formControlName="pancel">
+
+  <label class="text1 w100 center ngrn" for="apPerTurn">Akciópontok</label>
+  <input class="text1 w100 center" type="number" id="apPerTurn" formControlName="apPerTurn">
+
+  <label class="text1 w100 center ngrn" for="alapTulSzint">Alap Tulajdonságok</label>
+  <input class="text1 w100 center" type="number" id="alapTulSzint" formControlName="alapTulSzint">
+
+  <label class="text1 w100 center ngrn" for="szakTulSzint">Szakértő Tulajdonságok</label>
+  <input class="text1 w100 center" type="number" id="szakTulSzint" formControlName="szakTulSzint">
+
+  <label class="text1 w100 center ngrn" for="szakertelemSzint">Szakértelmek</label>
+  <input class="text1 w100 center" type="number" id="szakertelemSzint" formControlName="szakertelemSzint">
+
+  <label class="text1 w100 center ngrn" for="szakteruletSzint">Szakterület</label>
+  <input class="text1 w100 center" type="number" id="szakteruletSzint" formControlName="szakteruletSzint">
+
+  <div class="buttonCont btnBack">
+    <button class="itemGet text1" type="button" (click)="onSave()">Új játékos rögzítése</button>
+    <button class="itemRemove text1" type="button" (click)="onClose()">Vissza</button>
+  </div>
+</div>

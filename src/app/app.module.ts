@@ -32,6 +32,7 @@ import { StatusComponent } from './characters/status/status.component';
 import { NpcsComponent } from './npcs/npcs.component';
 import { InitiativeComponent } from './initiative/initiative.component';
 import { StatusmonitorComponent } from './characters/status/statusmonitor/statusmonitor.component';
+import { NewplayerComponent } from './initiative/newplayer/newplayer.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { StatusmonitorComponent } from './characters/status/statusmonitor/status
     NpcsComponent,
     InitiativeComponent,
     StatusmonitorComponent,
+    NewplayerComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 <div class="buttonCont btnBack" *ngIf="s.initForm">
-  <button class="itemGet text1" type="button" (click)="s.addPlayer()">Új Játékos</button>
+  <button class="itemGet text1" type="button" (click)="newPlayerS.buttonAction()">Új Játékos</button>
   <button class="itemRemove text1" type="button" (click)="s.reset()">Reset</button>
   <button class="itemEdit text1" type="button" (click)="s.nextRound()">Új kör {{s.getCounter()}}</button>
 </div>
@@ -8,9 +8,51 @@
 
   <div class="flexCont w100" formArrayName="players">
 
-    <div class="w100 margBott1 flexCont" [formGroupName]='i' *ngFor="let player of players.value; let i = index">
-      <!-- név -->
-      <div class="text1 w100 ntl">{{player.nev}}</div>
+    <div class="w100 margBott1 flexCont" [formGroupName]='i' *ngFor="let player of sortBy(); let i = index">
+
+      <!-- Név -->
+      <div class="text1 w70 ntl">{{player.nev}}</div>
+      <button class="itemRemove text1 w30" type="button" (click)="s.removePlayer(i)">Törlés</button>
+
+      <!-- Módosítók -->
+      <div class="w70 text1 center nrd">
+        +{{s.getModifiers(i)}} Célszám / -{{s.getModifiers(i)}} Kezd.
+      </div>
+
+      <!-- Páncélérték -->
+      <div class="w30 text1 center nwht">
+        {{player.pancel}} AR
+      </div>
+
+      <!-- Akciópontok -->
+      <div class="w50 text1 center nrng">
+        {{player.ap}} AP ({{player.apPerTurn}})
+      </div>
+
+      <!-- Kezdeményezés -->
+      <div class="w50 text1 center nprpl">
+        {{player.init}} Kezd.
+      </div>
+
+      <!-- Tulajdonságok -->
+      <div class="w50 flexCont">
+        <div class="w100 nbl text1 center">
+          Tulajdonságok
+        </div>
+        <div class="w100 grayCell text1 center">
+          {{player.alapTulSzint}} / {{player.szakTulSzint}}
+        </div>
+      </div>
+
+      <!-- Szakértelmek -->
+      <div class="w50 flexCont">
+        <div class="w100 nbl text1 center">
+          Szakértelmek
+        </div>
+        <div class="w100 grayCell text1 center">
+          {{player.szakertelemSzint}} / {{player.szakteruletSzint}}
+        </div>
+      </div>
 
       <!-- Asztrális állapot -->
       <app-statusmonitor class="flexCont w100"
@@ -26,21 +68,14 @@
       (newStatusCode)="s.setStatus($event, i, 'fizikaiAllapot')"
       ></app-statusmonitor>
 
-      <div class="w50 flexCont">
-        <div class="w100 nbl text1 center">
-          Tulajdonságok
-        </div>
-        <div class="w100 grayCell text1 center">
-          {{s.getFc(i, 'alapTulSzint').value}} / {{s.getFc(i, 'szakTulSzint').value}}
-        </div>
+      <div *ngIf="player.ap > 0 && player.init >= 1" class="buttonCont btnBack">
+        <button class="itemGet text1" type="button" (click)="s.spendAp(i)">Cselekvés</button>
+        <input class="text1 w50" type="number" id='{{"buttonAp"+i}}'>
       </div>
-      <div class="w50 flexCont">
-        <div class="w100 nbl text1 center">
-          Szakértelmek
-        </div>
-        <div class="w100 grayCell text1 center">
-          {{s.getFc(i, 'szakertelemSzint').value}} / {{s.getFc(i, 'szakteruletSzint').value}}
-        </div>
+
+      <div *ngIf="player.ap <= 0 || s.getCounter() == 1 && player.init == 0" class="buttonCont btnBack">
+        <button class="itemEdit text1" type="button" (click)="s.setInit(i)">Új kezd.</button>
+        <input class="text1 w50" type="number" id='{{"buttonInit"+i}}'>
       </div>
 
     </div>
