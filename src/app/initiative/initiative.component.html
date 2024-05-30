@@ -1,17 +1,18 @@
 <div class="buttonCont btnBack" *ngIf="s.initForm">
   <button class="itemGet text1" type="button" (click)="newPlayerS.buttonAction()">Új Játékos</button>
   <button class="itemRemove text1" type="button" (click)="s.reset()">Reset</button>
-  <button class="itemEdit text1" type="button" (click)="s.nextRound()">Új kör {{s.getCounter()}}</button>
 </div>
+
+<div class="w100 text2 nrng center">{{s.turn}} kör / {{s.phase}} fázis</div>
 
 <div class="pageCont w100" [formGroup]="s.initForm" *ngIf="s.initForm">
 
   <div class="flexCont w100" formArrayName="players">
 
-    <div class="w100 margBott1 flexCont" [formGroupName]='i' *ngFor="let player of sortBy(); let i = index">
+    <div class="w100 margBott1 flexCont" [formGroupName]='i' *ngFor="let player of sortedPlayers(); let i = index">
 
       <!-- Név -->
-      <div class="text1 w70 ntl">{{player.nev}}</div>
+      <div class="text1 w70 ntl">{{player.nev}} {{player.status}}</div>
       <button class="itemRemove text1 w30" type="button" (click)="s.removePlayer(i)">Törlés</button>
 
       <!-- Módosítók -->
@@ -68,12 +69,12 @@
       (newStatusCode)="s.setStatus($event, i, 'fizikaiAllapot')"
       ></app-statusmonitor>
 
-      <div *ngIf="player.ap > 0 && player.init >= 1" class="buttonCont btnBack">
+      <div *ngIf="player.status == 2 && s.phase == 2 && player.ap > 0 " class="buttonCont btnBack">
         <button class="itemGet text1" type="button" (click)="s.spendAp(i)">Cselekvés</button>
         <input class="text1 w50" type="number" id='{{"buttonAp"+i}}'>
       </div>
 
-      <div *ngIf="player.ap <= 0 || s.getCounter() == 1 && player.init == 0" class="buttonCont btnBack">
+      <div *ngIf="player.status == 1 && s.phase == 1" class="buttonCont btnBack">
         <button class="itemEdit text1" type="button" (click)="s.setInit(i)">Új kezd.</button>
         <input class="text1 w50" type="number" id='{{"buttonInit"+i}}'>
       </div>

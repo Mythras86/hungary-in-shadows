@@ -12,6 +12,8 @@ export class InitiativeService {
   ) { }
 
   initForm!: FormGroup;
+  turn: number = 1;
+  phase: number = 1;
 
   public get players(): FormArray | null | any {
     if(!this.initForm) {
@@ -22,14 +24,9 @@ export class InitiativeService {
 
   createInitiative(): FormGroup {
     const players = {
-      counter: [1],
       players: this.fb.array([]),
     };
     return this.initForm = this.fb.group(players);
-  }
-
-  getCounter():number {
-    return this.initForm.get('counter')?.value;
   }
 
   getFc(i:number, fcName:string): any {
@@ -37,13 +34,9 @@ export class InitiativeService {
     return playerPath;
   }
 
-  nextRound():void {
-    const form = this.initForm.get('counter');
-    form?.patchValue(form.value+1);
-  }
-
   reset(): void {
-    this.initForm.get('counter')?.setValue(1);
+    this.turn = 1;
+    this.phase = 1;
     this.players.clear();
   }
 
@@ -60,6 +53,7 @@ export class InitiativeService {
       szakteruletSzint: [p.szakteruletSzint],
       asztralisAllapot: [0],
       fizikaiAllapot: [0],
+      status: [1],
     });
     this.players.push(player);
   }
@@ -72,27 +66,67 @@ export class InitiativeService {
     this.players.at(i).get(fcName)?.patchValue(value);
   }
 
-  spendAp(i: number):void {
-    const ap = this.players.at(i).get('ap');
-    const inpValue = +(<HTMLInputElement>document.getElementById('buttonAp'+i)).value;
-    ap?.patchValue(ap.value-inpValue);
-  }
-
   setInit(i: number):void {
     const init = this.players.at(i).get('init');
-    const inpValue = +(<HTMLInputElement>document.getElementById('buttonInit'+i)).value;
     const ap = this.players.at(i).get('ap');
-    const newInit = inpValue - this.getModifiers(i);
-    if (newInit > 0) {
-      init?.patchValue(newInit);
-      const newAp = Math.floor(newInit/5);
-      if (newAp > 0) {
-        ap?.patchValue(ap.value+newAp);
-      }
+    const status = this.players.at(i).get('status');
+    const inpValue = +(<HTMLInputElement>document.getElementById('buttonInit'+i)).value;
+    const result = inpValue - this.getModifiers(i);
+    if (result > 0) {
+      init?.patchValue(result);
+      ap?.patchValue(Math.floor(result/6));
+      status.setValue(2);
     } else {
       init?.patchValue(1);
+      status.patchValue(2);
+    }
+    this.checkInitPhase();
+  }
+
+  checkInitPhase():void {
+    const players = (this.initForm.get('players') as FormArray);
+    const status: Array<number> = Object.values(players.controls).map(x => x.value).map(x => x.status);
+    const ap: Array<number> = Object.values(players.controls).map(x => x.value).map(x => x.ap);
+
+    if (status.every(x=>x == 2)){
+      this.phase = 2;
+    }
+    if (ap.every(x=>x < 1)) {
+      this.callNextTurn();
     }
   }
+
+  spendAp(i: number):void {
+    const ap = this.players.at(i).get('ap');
+    const status = this.players.at(i).get('status');
+    const inpValue = +(<HTMLInputElement>document.getElementById('buttonAp'+i)).value;
+    const result = ap.value-inpValue;
+    if (result <= 0) {
+      ap.patchValue(result);
+      status.patchValue(3);
+    } else {
+      ap.patchValue(result);
+    }
+    this.checkActionPhase();
+  }
+
+  checkActionPhase() {
+    const players = (this.initForm.get('players') as FormArray);
+    const status: Array<number> = Object.values(players.controls).map(x => x.value).map(x => x.status);
+
+    if (status.every(x=>x == 3)){
+      this.callNextTurn()
+      }
+    }
+
+    callNextTurn() {
+      this.players.controls.forEach((w: any) => {
+        w.get('ap').patchValue(w.get('ap').value + w.get('apPerTurn').value);
+        w.get('status').setValue(1);
+      })
+      this.turn = this.turn+1;
+      this.phase = 1;
+    }
 
   getModifiers(i: number): number {
     const asztral = this.players.at(i).get('asztralisAllapot').value;
@@ -116,20 +150,6 @@ export class InitiativeService {
       return 1;
     }
     return 0;
-  }
-
-  nextTurnSub(): void {
-    this.initForm.get('counter')?.valueChanges.subscribe(x => {
-      this.players.controls.forEach((w: any) => {
-        this.newTurn(w);
-      })
-    })
-  }
-
-  newTurn(w: any) {
-    w.get('ap').patchValue(
-      w.get('ap').value + w.get('apPerTurn').value
-    );
   }
 
 }

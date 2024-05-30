@@ -10,5 +10,6 @@ export interface playerModel {
   szakteruletSzint: number;
   asztralisAllapot?: number,
   fizikaiAllapot?: number,
+  status?: number
 
 }
