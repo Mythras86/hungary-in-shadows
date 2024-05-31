@@ -7,17 +7,12 @@
 
 
 html {
-  background-color: black;
-  background-image: url("../src/app/images/fakp.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size:cover;
-  background-attachment: fixed;
   min-height: 100vh;
 }
 
 body {
-  background-color: rgba(0, 0, 0, 0.3);
+  background: black url("../src/app/images/fakp.png") no-repeat fixed center;
+  background-size: cover;
   min-height: 100vh;
   display: flex;
   flex-flow: row wrap;
