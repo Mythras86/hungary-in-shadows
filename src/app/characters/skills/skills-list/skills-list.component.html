@@ -1,6 +1,6 @@
 
 <div class="buttonCont w100 btnBack">
-  <button *ngIf="resS.getSzabadKarma() >= 2" class="ngrn text2 center" type="button" (click)="selSkills.buttonAction()">Új Szakértelem</button>
+  <button *ngIf="resS.getSzabadKarma() >= 2" class="itemGet text1 center" type="button" (click)="selSkills.buttonAction()">Új Szakértelem</button>
 </div>
 
 <div class="pageCont w100" [formGroup]="s.skillsForm" *ngIf="s.skillsForm">
@@ -9,7 +9,7 @@
 
     <!-- csoportosítás -->
 
-    <h3 class="w100 nbl">{{csoport}}</h3>
+    <h2 class="w100 nwht margBott1">{{csoport}}</h2>
 
     <!-- csoport konténer -->
 

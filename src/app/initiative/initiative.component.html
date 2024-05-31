@@ -1,13 +1,13 @@
 <div class="buttonCont btnBack" *ngIf="s.initForm">
   <button class="itemGet text1" type="button" (click)="newPlayerS.buttonAction()">Új Játékos</button>
   <button class="itemEdit text1" type="button" (click)="toggleNpcBar()">Új NPC</button>
-  <button class="itemRemove text1" type="button" (click)="s.reset()">Reset</button>
+  <button class="itemRemove text1" type="button" (click)="reset()">Reset</button>
 </div>
 
 <div class="buttonCont btnBack" *ngIf="npcShowMe">
-  <button class="itemGet text1" type="button" (click)="addGrunt()">Új Grunt</button>
-  <button class="itemGet text1" type="button" (click)="addVeteran()">Új Veterán</button>
-  <button class="itemGet text1" type="button" (click)="addElite()">Új Elite</button>
+  <button class="itemGet text1 flex1" type="button" (click)="addGrunt()">Új Grunt</button>
+  <button class="itemGet text1 flex1" type="button" (click)="addVeteran()">Új Veterán</button>
+  <button class="itemGet text1 flex1" type="button" (click)="addElite()">Új Elite</button>
 </div>
 
 <div class="w100 text2 nrng center">{{s.turn}} kör / {{s.phase}} fázis</div>

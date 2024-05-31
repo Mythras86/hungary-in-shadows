@@ -2,7 +2,7 @@
 <div class="pageCont w100" [formGroup]="s.statusForm" *ngIf="s.statusForm">
 
   <!-- Asztrális állapot -->
-  <app-statusmonitor class="flexCont w100"
+  <app-statusmonitor class="flexCont w100 margBott1"
   [headText]="'Asztrális állapot'"
   [statusCode]="s.getFc('asztralisAllapot').value"
   (newStatusCode)="s.setStatus($event, 'asztralisAllapot')"
@@ -22,7 +22,7 @@
 
   <!-- Fizikai állapot -->
 
-  <app-statusmonitor class="flexCont w100"
+  <app-statusmonitor class="flexCont w100 margBott1"
   [headText]="'Fizikai állapot'"
   [statusCode]="s.getFc('fizikaiAllapot').value"
   (newStatusCode)="s.setStatus($event, 'fizikaiAllapot')"
@@ -41,45 +41,5 @@
 
   </div>
  -->
-  <!-- Módosítók -->
-  <div class="flexCont w100">
-    <div class="w50">
-      <div class="ntl text1">Kezdeményezés</div>
-      <div class="text2" [ngClass]="toggleColor(getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot')))">
-        {{attrServ.getFc('kezdemenyezes')?.value}}*d6 + {{attrServ.getAkcio()+getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot'))}}
-      </div>
-    </div>
-    <div class="w50">
-      <div class="ntl text1">Pusztakezes</div>
-      <div class="nbl text2">
-        {{getPusztakez()}}
-      </div>
-    </div>
-  </div>
-
-  <div class="flexCont w100">
-    <div class="w50">
-      <div class="ntl text1">Méretkateg.</div>
-      <div class="nbl text2">
-        {{getMeretkateg()}}
-      </div>
-    </div>
-  </div>
-
-
-  <div class="flexCont w100">
-    <div class="w50">
-      <div class="ntl text1">Kocka módosító</div>
-      <div class="text2" [ngClass]="toggleColor(getMaxMod('pinhentsegAllapot', 'taplaltsagAllapot')-3)">
-        {{getMaxMod('pinhentsegAllapot', 'taplaltsagAllapot')-3}}
-      </div>
-    </div>
-    <div class="w50">
-      <div class="ntl text1">Célszám módosító</div>
-      <div class="text2" [ngClass]="toggleColor(getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot')))">
-        {{getModosito(getMaxMod('asztralisAllapot', 'fizikaiAllapot'))}}
-      </div>
-    </div>
-  </div>
 
 </div>

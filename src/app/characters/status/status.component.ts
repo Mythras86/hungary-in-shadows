@@ -18,68 +18,6 @@ export class StatusComponent implements OnInit {
     public resServ: ResourcesService,
   ) {}
 
-  toggleKockaMColor(fcName: string, i:number):string {
-    if(i == 4 && this.getFcValue(fcName) == i) {
-      return 'ngrn'
-    }
-    if(i == 3 && this.getFcValue(fcName) == i) {
-      return 'nbl'
-    }
-    if(i == 2 && this.getFcValue(fcName) == i) {
-      return 'nyllw'
-    }
-    if(i == 1 && this.getFcValue(fcName) == i) {
-      return 'nrng'
-    }
-    if(i == 0 && this.getFcValue(fcName) == i) {
-      return 'nrd'
-    }
-    return 'grayCell';
-  }
-
-  getFcValue(fcName: string): number {
-    return this.s.statusForm.get(fcName)?.value;
-  }
-
-  toggleColor(value: number):string {
-    if(value < 0) {
-      return 'nrd';
-    }
-    if(value == 0) {
-      return 'nyllw';
-    }
-    return 'ngrn';
-  }
-
-  getModosito(i: number): number {
-    const terheles = Math.floor(11-i-(11-i)/2-1);
-    if (terheles < 0) {
-      return 0;
-    }
-    return -terheles;
-  }
-
-  getMaxMod(astral: string, body: string): number {
-    const asztral = this.getFcValue(astral);
-    const fizikum = this.getFcValue(body);
-    if (asztral < fizikum) {
-      return asztral;
-    }
-    return fizikum;
-  }
-
-  getPusztakez():string {
-    const ero = this.attrServ.getTulErtek('fizEro');
-    const gyo = this.attrServ.getTulErtek('fizGyo');
-    const ugy = this.attrServ.getTulErtek('fizUgy');
-    const tamEro = Math.round((ero + ugy + this.getMeretkateg())/2);
-    const sebz = Math.round(Math.pow((ero * gyo * this.getMeretkateg()), 0.33));
-    return '1AP / '+tamEro +'('+sebz+' K)';
-  }
-
-  getMeretkateg():number {
-    return this.detailsServ.getFc('magassag')?.value/100;
-  }
 
   ngOnInit(): void {
   }

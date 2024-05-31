@@ -78,6 +78,16 @@ export class InitiativeComponent implements OnInit {
     this.eliteCounter = this.eliteCounter+1;
   }
 
+  reset(): void {
+    this.s.turn = 1;
+    this.s.phase = 1;
+    this.s.players.clear();
+    this.gruntCounter = 1;
+    this.veteranCounter = 1;
+    this.eliteCounter = 1;
+  }
+
+
   ngOnInit(): void {
     this.s.createInitiative();
   }

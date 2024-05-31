@@ -34,12 +34,6 @@ export class InitiativeService {
     return playerPath;
   }
 
-  reset(): void {
-    this.turn = 1;
-    this.phase = 1;
-    this.players.clear();
-  }
-
   addPlayer(p: playerModel): void {
     const player = this.fb.group({
       nev: [p.nev],

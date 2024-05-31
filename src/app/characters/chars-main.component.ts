@@ -46,16 +46,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
   userId: string = '';
   private authStatusSub!: Subscription;
 
-  createFilter(): any {
-    const savedFilter = localStorage.getItem('mainCharFilter');
-    if (!savedFilter) {
-      return localStorage.setItem('mainCharFilter', this.filter);
-    }
-    return this.filter = savedFilter;
-  }
 
   setFilter(keyWord: string):void {
-    localStorage.setItem('mainCharFilter', keyWord);
     this.filter = keyWord
   }
 
@@ -213,7 +205,6 @@ export class CharsMainComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.createFilter();
     this.spinS.toggleSpinner(false);
     this.userId = this.authS.getUserId();
     this.userIsAuthenticated = this.authS.getIsAuth();

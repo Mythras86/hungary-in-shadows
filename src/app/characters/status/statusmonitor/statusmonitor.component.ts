@@ -20,7 +20,7 @@ export class StatusmonitorComponent {
     if(i < this.statusCode) {
       return 'nrd';
     }
-    if(i == this.statusCode) {
+    if(i == this.statusCode && i != 0) {
       return 'nyllw';
     }
     return 'ngrn';
