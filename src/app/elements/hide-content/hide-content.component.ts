@@ -12,7 +12,8 @@ export class HideContentComponent {
     public s: HideService
   ) {}
 
-  @Input() keyWord: any;
+  @Input() keyWord: string = '';
+  @Input() defaultShow: string = '';
 
   @Input() arrowClass: string = '';
 

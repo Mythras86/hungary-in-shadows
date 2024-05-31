@@ -67,15 +67,18 @@ export class InitiativeService {
   }
 
   setInit(i: number):void {
+    const inpValue = +(<HTMLInputElement>document.getElementById('buttonInit'+i)).value;
+    if (inpValue == (null  || '' || undefined || 0)) {
+      return
+    }
     const init = this.players.at(i).get('init');
     const ap = this.players.at(i).get('ap');
     const status = this.players.at(i).get('status');
-    const inpValue = +(<HTMLInputElement>document.getElementById('buttonInit'+i)).value;
     const result = inpValue - this.getModifiers(i);
     if (result > 0) {
       init?.patchValue(result);
-      ap?.patchValue(Math.floor(result/6));
-      status.setValue(2);
+      ap?.patchValue(ap.value + Math.floor(result/6));
+      status.patchValue(2);
     } else {
       init?.patchValue(1);
       status.patchValue(2);
@@ -91,15 +94,18 @@ export class InitiativeService {
     if (status.every(x=>x == 2)){
       this.phase = 2;
     }
-    if (ap.every(x=>x < 1)) {
+    if (ap.every(x=>x < 1) && status.every(x=>x == 2)) {
       this.callNextTurn();
     }
   }
 
   spendAp(i: number):void {
+    const inpValue = +(<HTMLInputElement>document.getElementById('buttonAp'+i)).value;
+    if (inpValue == (null  || '' || undefined || 0)) {
+      return
+    }
     const ap = this.players.at(i).get('ap');
     const status = this.players.at(i).get('status');
-    const inpValue = +(<HTMLInputElement>document.getElementById('buttonAp'+i)).value;
     const result = ap.value-inpValue;
     if (result <= 0) {
       ap.patchValue(result);
@@ -112,21 +118,22 @@ export class InitiativeService {
 
   checkActionPhase() {
     const players = (this.initForm.get('players') as FormArray);
+    const ap: Array<number> = Object.values(players.controls).map(x => x.value).map(x => x.ap);
     const status: Array<number> = Object.values(players.controls).map(x => x.value).map(x => x.status);
 
-    if (status.every(x=>x == 3)){
+    if (status.every(x=>x == 3) || ap.every(x=>x < 1)){
       this.callNextTurn()
-      }
     }
+  }
 
-    callNextTurn() {
-      this.players.controls.forEach((w: any) => {
-        w.get('ap').patchValue(w.get('ap').value + w.get('apPerTurn').value);
-        w.get('status').setValue(1);
-      })
-      this.turn = this.turn+1;
-      this.phase = 1;
-    }
+  callNextTurn() {
+    this.players.controls.forEach((w: any) => {
+      w.get('ap').patchValue(w.get('ap').value + w.get('apPerTurn').value);
+      w.get('status').setValue(1);
+    })
+    this.turn = this.turn+1;
+    this.phase = 1;
+  }
 
   getModifiers(i: number): number {
     const asztral = this.players.at(i).get('asztralisAllapot').value;

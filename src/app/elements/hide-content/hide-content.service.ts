@@ -7,7 +7,7 @@ export class HideService {
 
   public statusArray: Array<any> = []
 
-  toggleStatus(keyWord: any) {
+  toggleStatus(keyWord: string) {
     const check = this.statusArray.includes(keyWord);
     if (check == false) {
       return this.statusArray.push(keyWord);
@@ -15,7 +15,7 @@ export class HideService {
     return this.statusArray = [...this.statusArray.filter(x => x !== keyWord)];
   }
 
-  checkStatus(keyWord: any): boolean {
+  checkStatus(keyWord: string): boolean {
     const check = this.statusArray.includes(keyWord);
     if (check == false) {
       return false;

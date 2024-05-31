@@ -15,7 +15,14 @@ export class InitiativeComponent implements OnInit {
     public newPlayerS: NewplayerService
   ) {}
 
-  sortedPlayers() {
+  showMe: string = '';
+  npcShowMe: boolean = false;
+
+  gruntCounter: number = 1;
+  veteranCounter: number = 1;
+  eliteCounter: number = 1;
+
+  sortedPlayers(): Array<any> {
     if (this.s.phase == 2) {
       this.s.players.setValue(this.s.players.value.sort((a:any, b:any) =>
         {
@@ -37,8 +44,6 @@ export class InitiativeComponent implements OnInit {
           if (a['status'] < b['status']) return -1;
           if (a['init'] > b['init']) return 1;
           if (a['init'] < b['init']) return -1;
-          if (b['ap'] > a['ap']) return 1;
-          if (b['ap'] < a['ap']) return -1;
           return 0;
         }
       ));
@@ -46,10 +51,34 @@ export class InitiativeComponent implements OnInit {
     return this.s.players.value;
   }
 
+  toggleShowMe(player: string): void {
+    if (this.showMe != player) {
+      this.showMe = player;
+      return
+    }
+    this.showMe = '';
+  }
+
+  toggleNpcBar() {
+    this.npcShowMe = !this.npcShowMe;
+  }
+
+  addGrunt() {
+    this.s.addPlayer(this.newPlayerS.newPlayer('Grunt '+this.gruntCounter, 5,3,3,4,3,4));
+    this.gruntCounter = this.gruntCounter+1;
+  }
+
+  addVeteran() {
+    this.s.addPlayer(this.newPlayerS.newPlayer('Veteran '+this.veteranCounter, 7,4,4,5,4,5));
+    this.veteranCounter = this.veteranCounter+1;
+  }
+
+  addElite() {
+    this.s.addPlayer(this.newPlayerS.newPlayer('Elite '+this.eliteCounter, 9,5,5,6,5,6));
+    this.eliteCounter = this.eliteCounter+1;
+  }
+
   ngOnInit(): void {
     this.s.createInitiative();
-    this.s.addPlayer(this.newPlayerS.newPlayer('Bigfoot', 1,2,3,4,5,6));
-    this.s.addPlayer(this.newPlayerS.newPlayer('Csupakabra', 2,3,4,5,6,7));
-    this.s.addPlayer(this.newPlayerS.newPlayer('Nessi', 4,5,4,5,6,7));
   }
 }
