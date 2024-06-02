@@ -22,6 +22,10 @@ export class ModalService {
 
     this.answerData = new Subject<any>();
 
+    // háttér scroll tiltás
+    document.body.style.overflow = "hidden";
+    document.body.style.height = "100%";
+
     return this.answerData;
   }
 
@@ -30,6 +34,9 @@ export class ModalService {
   }
 
   public onComplete(): void {
+    // háttér scroll engedés
+    document.body.style.overflow = "auto";
+    document.body.style.height = "auto";
     this.answerData.complete();
   }
 }

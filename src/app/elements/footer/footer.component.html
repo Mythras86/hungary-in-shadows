@@ -1,6 +1,6 @@
 <div class="grayCell flexCont w100 posRel">
-  <h3 class="w100 center margTop1">Profil</h3>
   <a class="w100 center" routerLink="/">Főoldal</a>
+  <a class="w100 center" routerLink="/profil">Profil</a>
   <a class="w100 center" routerLink="/charslist">Karakterek</a>
   <a class="w100 center margBott1" *ngIf="!userIsAuthenticated" routerLink="/auth">Belépés</a>
   <a class="w100 center margBott1" *ngIf="userIsAuthenticated" (click)="onLogout()">Kilépés</a>

@@ -17,7 +17,7 @@ import { StatusService } from './status/status.service';
 @Component({
   selector: 'app-chars-main',
   templateUrl: './chars-main.component.html',
-  styleUrls: ['./chars-main.component.css'],
+  styleUrls: ['./chars-main.component.scss'],
   providers: [HideService]
 
 })

@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'app-btn-options',
   templateUrl: './btn-options.component.html',
-  styleUrls: ['./btn-options.component.css']
+  styleUrls: ['./btn-options.component.scss']
 })
 export class BtnOptionsComponent {
 

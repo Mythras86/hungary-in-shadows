@@ -10,7 +10,7 @@ import { CharModel } from '../chars-main.model';
 @Component({
   selector: 'app-chars',
   templateUrl: './chars-list.component.html',
-  styleUrls: ['./chars-list.component.css']
+  styleUrls: ['./chars-list.component.scss']
 })
 export class CharsListComponent implements OnInit, OnDestroy {
 

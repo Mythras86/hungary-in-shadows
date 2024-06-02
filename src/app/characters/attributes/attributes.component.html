@@ -3,7 +3,7 @@
   <!-- Fizikum és Asztrál csoport -->
 
   <div class="w100 margBott1" *ngFor="let csoport of getCsoport()">
-    <h2 class="w100 nwht margBott1">{{csoport}}</h2>
+    <h3>{{csoport}}</h3>
 
     <div class="flexCont w100 posRel" *ngFor="let a of getAttrsByCsoport(csoport)"
     [ngClass]="select.toggleClass(a.fcName)" (click)="select.toggleStatus(a.fcName)">
@@ -42,7 +42,7 @@
   <!-- Speciális csoport -->
 
   <div class="w100 flexCont margBott1">
-    <h2 class="w100 nwht margBott1">Speciális</h2>
+    <h3>Speciális</h3>
 
     <!-- Mágia -->
 
@@ -183,7 +183,7 @@
 
   <div class="w100 flexCont margBott1">
 
-    <h2 class="w100 nwht margBott1">Konstansok</h2>
+    <h3>Konstansok</h3>
 
     <div class="nbl w50 text1">
       Esszencia

@@ -10,7 +10,7 @@ import { SkillsSelectService } from '../skills-select/skills-select.service';
 @Component({
   selector: 'app-skills-list',
   templateUrl: './skills-list.component.html',
-  styleUrls: ['./skills-list.component.css']
+  styleUrls: ['./skills-list.component.scss']
 })
 export class SkillsListComponent {
 

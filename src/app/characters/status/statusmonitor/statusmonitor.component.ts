@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'app-statusmonitor',
   templateUrl: './statusmonitor.component.html',
-  styleUrls: ['./statusmonitor.component.css']
+  styleUrls: ['./statusmonitor.component.scss']
 })
 export class StatusmonitorComponent {
 

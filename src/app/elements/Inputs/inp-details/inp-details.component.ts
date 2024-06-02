@@ -7,7 +7,7 @@ import { DetailsService } from 'src/app/characters/details/details.service';
 @Component({
   selector: 'app-inp-details',
   templateUrl: './inp-details.component.html',
-  styleUrls: ['./inp-details.component.css']
+  styleUrls: ['./inp-details.component.scss']
 })
 export class InpDetailsComponent {
 

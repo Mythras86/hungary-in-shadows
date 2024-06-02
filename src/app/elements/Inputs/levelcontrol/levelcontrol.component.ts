@@ -7,7 +7,7 @@ import { ResourcesService } from 'src/app/characters/resources/resources.service
 @Component({
   selector: 'app-levelcontrol',
   templateUrl: './levelcontrol.component.html',
-  styleUrls: ['./levelcontrol.component.css']
+  styleUrls: ['./levelcontrol.component.scss']
 })
 export class LevelcontrolComponent {
 

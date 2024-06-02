@@ -7,7 +7,7 @@ import { NpcsService } from './npcs.service';
 @Component({
   selector: 'app-npcs',
   templateUrl: './npcs.component.html',
-  styleUrls: ['./npcs.component.css']
+  styleUrls: ['./npcs.component.scss']
 })
 export class NpcsComponent implements OnInit {
 

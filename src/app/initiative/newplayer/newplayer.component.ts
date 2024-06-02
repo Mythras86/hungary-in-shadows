@@ -5,7 +5,7 @@ import { NewplayerService } from './newplayer.service';
 @Component({
   selector: 'app-newplayer',
   templateUrl: './newplayer.component.html',
-  styleUrls: ['./newplayer.component.css']
+  styleUrls: ['./newplayer.component.scss']
 })
 export class NewplayerComponent implements OnInit {
 

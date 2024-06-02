@@ -9,7 +9,7 @@ import { LevelcontrolService } from 'src/app/elements/Inputs/levelcontrol/levelc
 @Component({
   selector: 'app-attributes',
   templateUrl: './attributes.component.html',
-  styleUrls: ['./attributes.component.css']
+  styleUrls: ['./attributes.component.scss']
 })
 export class AttributesComponent implements OnInit {
 

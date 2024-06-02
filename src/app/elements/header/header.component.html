@@ -1,8 +1,8 @@
-<h2 class="flexCont w100" *ngIf="!menuOn" (click)="toggleMenu()">
-  <span class="nbl w80 center  text2" *ngIf="!userIsAuthenticated && !menuOn">Üdv az Árnyak között!</span>
-  <span class="nbl w80 center" *ngIf="userIsAuthenticated && !menuOn">{{getAName()}}</span>
-  <span class="nyllw w20 center">&#x2630;</span>
-</h2>
+<div class="flexCont w100" *ngIf="!menuOn" (click)="toggleMenu()">
+  <h2 class="nbl w80 center  text2" *ngIf="!userIsAuthenticated && !menuOn">Üdv az Árnyak között!</h2>
+  <h2 class="nbl w80 center" *ngIf="userIsAuthenticated && !menuOn">{{getAName()}}</h2>
+  <div class="nyllw w20 center">&#x2630;</div>
+</div>
 
 
 <nav *ngIf="menuOn" class="w100"  >

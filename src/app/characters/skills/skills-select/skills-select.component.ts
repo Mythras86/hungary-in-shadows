@@ -5,7 +5,7 @@ import { SkillsSelectService } from './skills-select.service';
 @Component({
   selector: 'app-skills-select',
   templateUrl: './skills-select.component.html',
-  styleUrls: ['./skills-select.component.css']
+  styleUrls: ['./skills-select.component.scss']
 })
 export class SkillsSelectComponent {
   constructor(

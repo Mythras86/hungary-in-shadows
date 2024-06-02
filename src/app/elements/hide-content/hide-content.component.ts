@@ -4,7 +4,7 @@ import { HideService } from './hide-content.service';
 @Component({
   selector: 'app-hide-content',
   templateUrl: './hide-content.component.html',
-  styleUrls: ['./hide-content.component.css'],
+  styleUrls: ['./hide-content.component.scss'],
 })
 export class HideContentComponent {
 

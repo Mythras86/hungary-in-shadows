@@ -6,7 +6,7 @@ import { FormArray } from '@angular/forms';
 @Component({
   selector: 'app-initiative',
   templateUrl: './initiative.component.html',
-  styleUrls: ['./initiative.component.css']
+  styleUrls: ['./initiative.component.scss']
 })
 export class InitiativeComponent implements OnInit {
 
