@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { playerModel } from './player.model';
+import { StatusmonitorService } from '../characters/status/statusmonitor/statusmonitor.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class InitiativeService {
 
   constructor(
     private fb: FormBuilder,
+    public statusMonS: StatusmonitorService
   ) { }
 
   initForm!: FormGroup;
@@ -68,7 +70,7 @@ export class InitiativeService {
     const init = this.players.at(i).get('init');
     const ap = this.players.at(i).get('ap');
     const status = this.players.at(i).get('status');
-    const result = inpValue - this.getModifiers(i);
+    const result = inpValue - this.modifiers(i);
     if (result > 0) {
       init?.patchValue(result);
       ap?.patchValue(ap.value + Math.floor(result/6));
@@ -129,28 +131,8 @@ export class InitiativeService {
     this.phase = 1;
   }
 
-  getModifiers(i: number): number {
-    const asztral = this.players.at(i).get('asztralisAllapot').value;
-    const fizikai = this.players.at(i).get('fizikaiAllapot').value;
-    let bigger = 0;
-    if (asztral >= fizikai) {
-      bigger = asztral;
-    } else {
-      bigger = fizikai;
-    }
-    if (bigger == 10) {
-      return 4;
-    }
-    if (7 < bigger && bigger <= 9) {
-      return 3;
-    }
-    if (4 < bigger && bigger <= 7) {
-      return 2;
-    }
-    if (2 < bigger && bigger <= 4) {
-      return 1;
-    }
-    return 0;
+  modifiers(i: number): number {
+    return this.statusMonS.getModifiers(this.getFc(i, 'asztralisAllapot'), this.getFc(i, 'fizikaiAllapot'));
   }
 
 }

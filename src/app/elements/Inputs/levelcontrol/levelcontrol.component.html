@@ -2,11 +2,11 @@
 
   <!-- fejléc -->
 
-  <div class="ntl text2 center w80">{{s.fejlec}}</div>
+  <div class="ntl text2 center w70">{{s.fejlec}}</div>
 
   <!-- vissza gomb -->
 
-  <button class="itemRemove text1 w20" type="button" (click)="onClose()">Vissza</button>
+  <button class="itemRemove text1 w30" type="button" (click)="onClose()">Vissza</button>
 
   <!-- megjegyzés -->
 
@@ -25,7 +25,7 @@
 
  <!-- gombok lépés 1 -->
 
-  <button class="w50 nbl text1" [disabled]="buttonDisInc(1)"
+  <button class="w50 ngrn text1" [disabled]="buttonDisInc(1)"
   (click)="changeValue(1)" type="button">
    +
    {{s.valto}}
@@ -41,7 +41,7 @@
 
   <!-- gombok lépés érték -->
 
-  <button class="w50 nbl text1" [disabled]="buttonDisInc(s.lepes)"
+  <button class="w50 ngrn text1" [disabled]="buttonDisInc(s.lepes)"
   (click)="changeValue(s.lepes)" type="button">
     +
     {{s.lepes*s.valto}}
@@ -85,6 +85,6 @@
 
   <!-- save button -->
 
-  <div class="buttonCont w100 margTop1">
+  <div class="buttonCont w100 btnBack">
     <button class="itemGet text1" type="button" (click)="onSave()">Mentés</button>
   </div>

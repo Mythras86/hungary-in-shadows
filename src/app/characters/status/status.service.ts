@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { StatusmonitorService } from './statusmonitor/statusmonitor.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ export class StatusService {
 
   constructor(
     private fb: FormBuilder,
+    public statusMonS: StatusmonitorService
   ) { }
 
   statusForm!: FormGroup;
@@ -37,6 +39,10 @@ export class StatusService {
 
   getFc(fcName: string):any {
     return this.statusForm.get(fcName);
+  }
+
+  modifiers(): number {
+    return this.statusMonS.getModifiers(this.getFc('asztralisAllapot'), this.getFc('fizikaiAllapot'))
   }
 
 }

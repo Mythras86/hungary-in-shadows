@@ -63,7 +63,7 @@ export class LevelcontrolService {
         // kifizetés
         this.resS.payKarma(valtozas*this.karmaKtsg),
         this.resS.payToke(valtozas*this.tokeKtsg),
-        this.attrS.getFc('esszenciaMod').patchValue(this.attrS.getFc('esszenciaMod').value-valtozas*this.esszKtsg),
+        this.attrS.getFc('esszencia').patchValue(this.attrS.getFc('esszencia').value-valtozas*this.esszKtsg),
         // értékszerzés
         this.celControl.patchValue(this.celControl.value + valtozas*this.valto)
       ];
