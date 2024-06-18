@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DetailsService } from './details.service';
 import { ItemSelectService } from 'src/app/elements/item-select/item-select.service';
-import { detailsUtil, dnsUtil, nemekUtil, nyelvekUtil } from './details-utility';
+import { detailsInterface, detailsUtil, dnsUtil, nemekUtil, nyelvekUtil } from './details-utility';
 import { InpDetailsService } from 'src/app/elements/Inputs/inp-details/inp-details.service';
 
 @Component({
@@ -15,11 +15,11 @@ export class DetailsComponent implements OnInit {
     public s: DetailsService,
     public select: ItemSelectService,
     public inpDetS: InpDetailsService
-  ) {}
-
-  getDetailsUtil():any {
-    return detailsUtil;
+  ) {
+    this.details = detailsUtil;
   }
+
+  details: Array<detailsInterface> = [];
 
   getDefault(fcName: string):any {
     const valasztottFaj: string = this.s.detailsForm.get('dns')?.value;

@@ -1,12 +1,12 @@
 
-<div class="pageCont" [formGroup]="s.resourcesForm" *ngIf="s.resourcesForm">
+<div class="flexCont" [formGroup]="s.resourcesForm" *ngIf="s.resourcesForm">
 
   <!-- karma értékek -->
 
   <div class="flexCont w100">
     <h3>Karma</h3>
 
-    <div *ngFor="let res of getKarmaU()" class="w100 flexCont">
+    <div *ngFor="let res of karmaUtil" class="w100 flexCont">
       <div class="w50 text1 nprpl">{{res.nev}}</div>
       <app-field-karma class="w50 flexCont"
       [ertek]="s.getFc(res.fcName)?.value"
@@ -16,25 +16,13 @@
 
     <div class="w50 text1 nprpl">Szabad Karma</div>
     <app-field-karma class="w50"
-    [ertek]="s.getSzabadKarma()"
+    [ertek]="szabadKarma"
     ></app-field-karma>
 
   </div>
 
-  <div class="buttonCont w100 btnBack">
-    <button class="text1 nprpl center" type="button" (click)="lvlContServ.buttonAction(
-      'Karmából Tőke',
-      '&#x262F; 1 => 7500 N&#xa5;',
-      10,
-      7500,
-      0,
-      1,
-      0,
-      s.getFc('szerzettToke'),
-      'N&#xa5;',
-      1,
-      s.getSzabadKarma()
-      )"
+  <div class="buttonCont w100 btnBack margBott1">
+    <button class="text1 nprpl center" type="button" (click)="exchangeKarma()"
     >1 &#x262F; => 7500 N&#xa5;</button>
   </div>
 
@@ -44,7 +32,7 @@
 
     <h3>Tőke</h3>
 
-    <div *ngFor="let res of getTokeU()" class="w100 flexCont">
+    <div *ngFor="let res of tokeUtil" class="w100 flexCont">
       <div class="w50 text1 nrng">{{res.nev}}</div>
       <app-field-toke class="w50 flexCont"
       [ertek]="s.getFc(res.fcName)?.value"
@@ -54,25 +42,13 @@
 
     <div class="w50 text1 nrng">Szabad Tőke</div>
     <app-field-toke class="w50"
-    [ertek]="s.getSzabadToke()"
+    [ertek]="szabadToke"
     ></app-field-toke>
-  </div>
 
-  <div class="buttonCont w100 btnBack">
-    <button class="text1 nrng" type="button" (click)="lvlContServ.buttonAction(
-      'Tőkéből Karma',
-      '7500 N&#xa5; => &#x262F; 1',
-      10,
-      1,
-      7500,
-      0,
-      0,
-      s.getFc('szerzettKarma'),
-      '&#x262F;',
-      7500,
-      s.getSzabadToke()
-    )"
-    >7500 N&#xa5; => 1 &#x262F;</button>
+    <div class="buttonCont w100 btnBack">
+      <button class="text1 nrng" type="button" (click)="exchangeToke()"
+      >7500 N&#xa5; => 1 &#x262F;</button>
+    </div>
   </div>
 
 

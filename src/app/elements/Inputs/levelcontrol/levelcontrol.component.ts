@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { LevelcontrolService } from './levelcontrol.service';
 import { AttributesService } from 'src/app/characters/attributes/attributes.service';
 import { ResourcesService } from 'src/app/characters/resources/resources.service';
 
@@ -12,7 +12,6 @@ import { ResourcesService } from 'src/app/characters/resources/resources.service
 export class LevelcontrolComponent {
 
   constructor(
-    public s: LevelcontrolService,
     public resS: ResourcesService,
     public attrS: AttributesService,
   ) { }
@@ -21,23 +20,34 @@ export class LevelcontrolComponent {
   closeEvent: Subject<any> = new Subject;
 
   @Output() buttonAction: EventEmitter<void> = new EventEmitter();
+  @Input() isEnabled: boolean = false;
+
+  fejlec: string = '';
+  megjegyzes: any;
+  lepes: number = 0;
+  valto: number = 0;
+  tokeKtsg: number = 0;
+  karmaKtsg: number = 0;
+  esszKtsg: number = 0;
+  celControl!: FormControl;
+  egyseg: any;
+  minErtek: number = 0;
+  maxErtek: number = 0;
 
   public ertekValtozas: number = 0;
 
-  @Input() isEnabled: boolean = false;
-
   loadData(modalData: any): void {
-    this.s.fejlec = modalData.fejlec;
-    this.s.megjegyzes = modalData.megjegyzes;
-    this.s.lepes = modalData.lepes;
-    this.s.valto = modalData.valto;
-    this.s.tokeKtsg = modalData.tokeKtsg;
-    this.s.karmaKtsg = modalData.karmaKtsg;
-    this.s.esszKtsg = modalData.esszKtsg;
-    this.s.celControl = modalData.celControl;
-    this.s.egyseg = modalData.egyseg;
-    this.s.minErtek = modalData.minErtek;
-    this.s.maxErtek = modalData.maxErtek;
+    this.fejlec = modalData.fejlec;
+    this.megjegyzes = modalData.megjegyzes;
+    this.lepes = modalData.lepes;
+    this.valto = modalData.valto;
+    this.tokeKtsg = modalData.tokeKtsg;
+    this.karmaKtsg = modalData.karmaKtsg;
+    this.esszKtsg = modalData.esszKtsg;
+    this.celControl = modalData.celControl;
+    this.egyseg = modalData.egyseg;
+    this.minErtek = modalData.minErtek;
+    this.maxErtek = modalData.maxErtek;
   }
 
   changeValue(lepes: number):void {
@@ -54,12 +64,7 @@ export class LevelcontrolComponent {
   }
 
   buttonDisInc(lepes: number): boolean {
-    if (
-      lepes*this.s.karmaKtsg > this.resS.getSzabadKarma() -this.ertekValtozas*this.s.karmaKtsg ||
-      lepes*this.s.tokeKtsg > this.resS.getSzabadToke() -this.ertekValtozas*this.s.tokeKtsg ||
-      lepes*this.s.esszKtsg > this.attrS.getTulErtek('esszencia') -this.ertekValtozas*this.s.esszKtsg ||
-      lepes > this.s.maxErtek-this.ertekValtozas
-      ) {
+    if (this.ertekValtozas*this.valto + lepes*this.valto + this.minErtek > this.maxErtek) {
       return true;
     }
     return false;

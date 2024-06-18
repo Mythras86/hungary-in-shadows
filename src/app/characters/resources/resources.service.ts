@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ResourcesFG } from './resources.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,9 @@ export class ResourcesService {
     private fb: FormBuilder,
   ) {}
 
-  resourcesForm!: FormGroup;
+  resourcesForm!: ResourcesFG;
 
-  createResources(): FormGroup {
+  createResources(): ResourcesFG {
     const resources = {
       alapKarma: [200, Validators.required],
       szerzettKarma: [0, Validators.required],
@@ -23,7 +24,7 @@ export class ResourcesService {
       elkoltottToke: [0, Validators.required],
 
     };
-    return this.resourcesForm = this.fb.group(resources);
+    return this.resourcesForm = this.fb.group(resources) as ResourcesFG;
   }
 
   updateResources(w: any): void {
@@ -35,7 +36,7 @@ export class ResourcesService {
       alapToke: w.alapToke,
       szerzettToke: w.szerzettToke,
       elkoltottToke: w.elkoltottToke
-    });
+    }) as ResourcesFG;
   }
 
   getFc(fcName: string):any {

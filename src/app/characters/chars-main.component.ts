@@ -121,8 +121,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         //speciális
         attrs.value.kockatartalek,
         attrs.value.magia,
-        attrs.value.chi,
-        attrs.value.cyberCapacity,
+        attrs.value.chiAramlas,
+        attrs.value.kiberKapacitas,
         // konstans
         attrs.value.esszencia,
         // állapot
@@ -183,8 +183,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         //speciális
         attrs.value.kockatartalek,
         attrs.value.magia,
-        attrs.value.chi,
-        attrs.value.cyberCapacity,
+        attrs.value.chiAramlas,
+        attrs.value.kiberKapacitas,
         // konstans
         attrs.value.esszencia,
         // állapot

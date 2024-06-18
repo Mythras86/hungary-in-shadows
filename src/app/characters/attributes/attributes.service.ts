@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { DetailsService } from '../details/details.service';
 import { dnsUtil } from '../details/details-utility';
+import { AttributesFG, AttributesModel } from './attributes.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AttributesService {
 
+  attributesForm!: AttributesFG;
+
   constructor(
     private fb: FormBuilder,
     private detailsServ: DetailsService,
   ) { }
 
-  attributesForm!: FormGroup;
-
-  createAttributes(): FormGroup {
+  createAttributes(): AttributesFG {
     const attributes = {
       //fizikai
       fizEro: [1, Validators.required],
@@ -28,17 +29,17 @@ export class AttributesService {
       asztUgy: [1, Validators.required],
       asztKit: [1, Validators.required],
       //speciális
-      kockatartalek: [0, Validators.required],
       magia: [0, Validators.required],
-      chi: [0, Validators.required],
-      cyberCapacity: [0, Validators.required],
+      chiAramlas: [0, Validators.required],
+      kiberKapacitas: [0, Validators.required],
+      kockatartalek: [0, Validators.required],
       //konstans
       esszencia: [6, Validators.required],
     };
-    return this.attributesForm = this.fb.group(attributes);
+    return this.attributesForm = this.fb.group(attributes) as AttributesFG;
   }
 
-  updateAttributes(w: any): void {
+  updateAttributes(w: AttributesModel): void {
     this.attributesForm = this.fb.group ({
       // fizikai
       fizEro: w.fizEro,
@@ -51,17 +52,17 @@ export class AttributesService {
       asztUgy: w.asztUgy,
       asztKit: w.asztKit,
       // speciális
-      kockatartalek: w.kockatartalek,
       magia: w.magia,
-      chi: w.chi,
-      cyberCapacity: w.cyberCapacity,
+      chiAramlas: w.chiAramlas,
+      kiberKapacitas: w.kiberKapacitas,
+      kockatartalek: w.kockatartalek,
       // konstans
       esszencia: w.esszencia,
-    });
+    }) as AttributesFG;
   }
 
-  getFc(fcName: string):any {
-    return this.attributesForm.get(fcName);
+  getFc(fcName: string): FormControl {
+    return this.attributesForm.get(fcName) as FormControl;
   }
 
   getMod(fcName: string):number {

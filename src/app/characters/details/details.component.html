@@ -1,9 +1,9 @@
-<div class="pageCont" [formGroup]="s.detailsForm" *ngIf="s.detailsForm">
+<div class="flexCont" [formGroup]="s.detailsForm" *ngIf="s.detailsForm">
 
   <button class="text1 nbl margBott1" type="button" (click)="fillWithDummy()">fill with dummy</button>
 
   <div class="w{{item.meret}} flexCont posRel"
-  *ngFor="let item of getDetailsUtil(); first as isFirst"
+  *ngFor="let item of details; first as isFirst"
   [ngClass]="select.toggleClass(item.fcName)" (click)="select.toggleStatus(item.fcName)"
   >
 

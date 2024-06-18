@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StatusmonitorService } from './statusmonitor/statusmonitor.service';
+import { StatisFG } from './status.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,19 +10,18 @@ export class StatusService {
 
   constructor(
     private fb: FormBuilder,
-    public statusMonS: StatusmonitorService
   ) { }
 
-  statusForm!: FormGroup;
+  statusForm!: StatisFG;
 
-  createStatus(): FormGroup {
+  createStatus(): StatisFG {
     const status = {
       asztralisAllapot: [0, Validators.required],
       fizikaiAllapot: [0, Validators.required],
       pinhentsegAllapot: [0, Validators.required],
       taplaltsagAllapot: [0, Validators.required],
     };
-    return this.statusForm = this.fb.group(status);
+    return this.statusForm = this.fb.group(status) as StatisFG;
   }
 
   updateStatus(w: any): void {
@@ -30,7 +30,7 @@ export class StatusService {
       fizikaiAllapot: w.fizikaiAllapot,
       pinhentsegAllapot: w.pinhentsegAllapot,
       taplaltsagAllapot: w.taplaltsagAllapot,
-    });
+    }) as StatisFG;
   }
 
   setStatus(i: number, fcName: string):void {
@@ -40,9 +40,4 @@ export class StatusService {
   getFc(fcName: string):any {
     return this.statusForm.get(fcName);
   }
-
-  modifiers(): number {
-    return this.statusMonS.getModifiers(this.getFc('asztralisAllapot'), this.getFc('fizikaiAllapot'))
-  }
-
 }

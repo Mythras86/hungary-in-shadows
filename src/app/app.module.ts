@@ -33,6 +33,7 @@ import { NpcsComponent } from './npcs/npcs.component';
 import { InitiativeComponent } from './initiative/initiative.component';
 import { StatusmonitorComponent } from './characters/status/statusmonitor/statusmonitor.component';
 import { NewplayerComponent } from './initiative/newplayer/newplayer.component';
+import { AttributeComponent } from './characters/attributes/attribute/attribute.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { NewplayerComponent } from './initiative/newplayer/newplayer.component';
     InitiativeComponent,
     StatusmonitorComponent,
     NewplayerComponent,
+    AttributeComponent,
   ],
   imports: [
     BrowserModule,

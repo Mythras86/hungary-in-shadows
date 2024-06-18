@@ -1,183 +1,26 @@
-<div class="pageCont" [formGroup]="s.attributesForm" *ngIf="s.attributesForm">
+<div class="flexCont" [formGroup]="s.attributesForm" *ngIf="s.attributesForm">
 
-  <!-- Fizikum és Asztrál csoport -->
+  <!-- Fizikum és Asztrál és Speciális csoport -->
 
-  <div class="w100 margBott1" *ngFor="let csoport of getCsoport()">
-    <h3>{{csoport}}</h3>
+  <div class="w100 margBott1" *ngFor="let elem of csoportok">
+    <h3>{{elem}}</h3>
 
-    <div class="flexCont w100 posRel" *ngFor="let a of getAttrsByCsoport(csoport)"
+    <div class="flexCont w100 posRel" *ngFor="let a of attributes"
     [ngClass]="select.toggleClass(a.fcName)" (click)="select.toggleStatus(a.fcName)">
-      <div class="nbl w50 text1">
-        {{a.nev}}
-      </div>
-      <div class="grayCell w20 text1 center">
-        {{s.getFc(a.fcName).value + s.getDnsMod(a.fcName)}} / {{6+ s.getDnsMod(a.fcName)}}
-      </div>
-      <div class="grayCell w15 text1 center">
-        {{s.getMod(a.fcName)}}
-      </div>
-      <div class="nbl w15 text1 center">
-        {{s.getTulErtek(a.fcName)}}
+      <app-attribute *ngIf="elem == a.csoport"
+      [nev]="a.nev"
+      [fcName]="a.fcName"
+      ></app-attribute>
+
+      <div *ngIf="select.status == a.fcName && elem == a.csoport && s.getFc(a.fcName)?.value < 6" class="buttonCont posAbs btnBack">
+        <app-btn-options
+        (buttonAction)="attrLvlUp(a.fcName)"
+        ></app-btn-options>
       </div>
 
-      <app-btn-options *ngIf="select.status == a.fcName" class="posAbs"
-      (buttonAction)="lvlCS.buttonAction(
-        a.nev,
-        a.megjegyzes,
-        a.lepes,
-        1,
-        0,
-        3,
-        0,
-        s.getFc(a.fcName),
-        a.egyseg,
-        s.getFc(a.fcName).value,
-        a.max
-      )"
-      ></app-btn-options>
     </div>
 
   </div>
-
-  <!-- Speciális csoport -->
-
-  <div class="w100 flexCont margBott1">
-    <h3>Speciális</h3>
-
-    <!-- Mágia -->
-
-    <div class="flexCont w100 posRel" [ngClass]="select.toggleClass('magia')" (click)="select.toggleStatus('magia')">
-      <div class="nbl w50 text1">
-        Mágia
-      </div>
-      <div class="grayCell w20 text1 center">
-        {{s.getFc('magia').value}} / {{s.getTulErtek('esszencia')-s.getFc('chi').value}}
-      </div>
-      <div class="grayCell w15 text1 center">
-        {{s.getMod('magia')}}
-      </div>
-      <div class="nbl w15 text1 center">
-        {{s.getTulErtek('magia')}}
-      </div>
-
-      <app-btn-options *ngIf="select.status == 'magia' && checkEssence('magia')>0" class="posAbs"
-      (buttonAction)="lvlCS.buttonAction(
-        'Mágia',
-        'van',
-        6,
-        1,
-        0,
-        3,
-        0,
-        s.getFc('magia'),
-        'Szint',
-        s.getFc('magia').value,
-        checkEssence('magia')
-      )"
-      ></app-btn-options>
-    </div>
-
-      <!-- Chi áramlás -->
-
-    <div class="flexCont w100 posRel" [ngClass]="select.toggleClass('chi')" (click)="select.toggleStatus('chi')">
-      <div class="nbl w50 text1">
-        Chi áramlás
-      </div>
-      <div class="grayCell w20 text1 center">
-        {{s.getFc('chi').value}} / {{s.getTulErtek('esszencia')-s.getFc('magia').value}}
-      </div>
-      <div class="grayCell w15 text1 center">
-        {{s.getMod('chi')}}
-      </div>
-      <div class="nbl w15 text1 center">
-        {{s.getTulErtek('chi')}}
-      </div>
-
-      <app-btn-options *ngIf="select.status == 'chi' && checkEssence('chi')>0" class="posAbs"
-        (buttonAction)="lvlCS.buttonAction(
-          'Chi áramlás',
-        'van',
-        6,
-        1,
-        0,
-        3,
-        0,
-        s.getFc('chi'),
-        'Szint',
-        s.getFc('chi').value,
-        checkEssence('chi')
-      )"
-      ></app-btn-options>
-    </div>
-
-    <!-- Kiber kapacitás -->
-
-    <div class="flexCont w100 posRel" [ngClass]="select.toggleClass('cyberCapacity')" (click)="select.toggleStatus('cyberCapacity')">
-      <div class="nbl w50 text1">
-        Kiber kapacitás
-      </div>
-      <div class="grayCell w20 text1 center">
-        {{s.getFc('cyberCapacity').value}} / 6
-      </div>
-      <div class="grayCell w15 text1 center">
-        {{s.getMod('cyberCapacity')}}
-      </div>
-      <div class="nbl w15 text1 center">
-        {{s.getTulErtek('cyberCapacity')}}
-      </div>
-
-      <app-btn-options *ngIf="select.status == 'cyberCapacity' && checkEssence('cyberCapacity')>0" class="posAbs"
-      (buttonAction)="lvlCS.buttonAction(
-        'Kiber kapacitás',
-        'van',
-        6,
-        1,
-        10000,
-        0,
-        1,
-        s.getFc('cyberCapacity'),
-        'Szint',
-        s.getFc('cyberCapacity').value,
-        6
-        )"
-      ></app-btn-options>
-    </div>
-
-    <!-- Kockatartalék -->
-
-    <div class="flexCont w100 posRel {{select.toggleClass('kockatartalek')}}" (click)="select.toggleStatus('kockatartalek')">
-      <div class="nbl w50 text1">
-        Kockatartalék
-      </div>
-      <div class="grayCell w20 text1 center">
-        {{s.getFc('kockatartalek').value+ s.getDnsMod('kockatartalek')}} / {{6 + s.getDnsMod('kockatartalek')}}
-      </div>
-      <div class="grayCell w15 text1 center">
-        {{s.getMod('kockatartalek')}}
-      </div>
-      <div class="nbl w15 text1 center">
-        {{s.getTulErtek('kockatartalek')}}
-      </div>
-
-      <app-btn-options *ngIf="select.status == 'kockatartalek'" class="posAbs"
-      (buttonAction)="lvlCS.buttonAction(
-        'Kockatartalék',
-        'van',
-        6,
-        1,
-        0,
-        3,
-        0,
-        s.getFc('kockatartalek'),
-        'Szint',
-        s.getFc('kockatartalek').value,
-        6
-      )"
-      ></app-btn-options>
-    </div>
-
-  </div>
-
 
   <!-- Konstans csoport -->
 
@@ -185,19 +28,10 @@
 
     <h3>Konstansok</h3>
 
-    <div class="nbl w50 text1">
-      Esszencia
-    </div>
-    <div class="grayCell w20 text1 center">
-      {{s.getFc('esszencia').value}}
-    </div>
-    <div class="grayCell w15 text1 center">
-      {{s.getMod('esszencia')}}
-    </div>
-    <div class="nbl w15 text1 center">
-      {{s.getTulErtek('esszencia')}}
-    </div>
-
+    <app-attribute
+    [nev]="'Esszencia'"
+    [fcName]="'esszencia'"
+    ></app-attribute>
   </div>
 
 </div>

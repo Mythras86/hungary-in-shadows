@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DetailsFG } from './details.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,9 @@ export class DetailsService {
     private fb: FormBuilder,
   ) { }
 
-  detailsForm!: FormGroup;
+  detailsForm!: DetailsFG;
 
-  createDetails(): FormGroup {
+  createDetails(): DetailsFG {
     const details = {
       // szöveges
         teljesnev: ['', Validators.required],
@@ -42,7 +43,7 @@ export class DetailsService {
         vonzalom: ['', Validators.required],
         megjelenes: ['', Validators.required],
       };
-      return this.detailsForm = this.fb.group(details);
+      return this.detailsForm = this.fb.group(details) as DetailsFG;
   }
 
   updateDetails(w: any): void {
@@ -74,13 +75,10 @@ export class DetailsService {
       irtozat: w.irtozat,
       vonzalom: w.vonzalom,
       megjelenes: w.megjelenes
-    });
+    }) as DetailsFG;
   }
 
   getFc(fcName: string):any {
     return this.detailsForm.get(fcName);
   }
-
-
-
 }

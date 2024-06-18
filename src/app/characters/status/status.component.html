@@ -1,5 +1,5 @@
 
-<div class="pageCont w100" [formGroup]="s.statusForm" *ngIf="s.statusForm">
+<div class="flexCont" [formGroup]="s.statusForm" *ngIf="s.statusForm">
 
   <!-- Asztrális állapot -->
   <app-statusmonitor class="flexCont w100 margBott1"
@@ -47,7 +47,7 @@
         Kezdeményezés
       </div>
       <div class="nrd">
-        -{{s.modifiers()}}
+        -{{modifiers}}
       </div>
     </div>
 
@@ -56,7 +56,7 @@
         Célszám
       </div>
       <div class="nrd">
-        +{{s.modifiers()}}
+        +{{modifiers}}
       </div>
     </div>
 

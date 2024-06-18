@@ -108,8 +108,8 @@ export class CharsMainService {
       //speciális
       kockatartalek: number,
       magia: number,
-      chi: number,
-      cyberCapacity: number,
+      chiAramlas: number,
+      kiberKapacitas: number,
       //konstans
       esszencia: number,
       // állapot
@@ -171,8 +171,8 @@ export class CharsMainService {
     //speciális
     kockatartalek: number,
     magia: number,
-    chi: number,
-    cyberCapacity: number,
+    chiAramlas: number,
+    kiberKapacitas: number,
     //konstans
     esszencia: number,
     // állapot
@@ -233,8 +233,8 @@ export class CharsMainService {
       //speciális
       kockatartalek: kockatartalek,
       magia: magia,
-      chi: chi,
-      cyberCapacity: cyberCapacity,
+      chiAramlas: chiAramlas,
+      kiberKapacitas: kiberKapacitas,
       //konstans
       esszencia: esszencia,
       // állapot
@@ -299,8 +299,8 @@ export class CharsMainService {
     //speciális
     kockatartalek: number,
     magia: number,
-    chi: number,
-    cyberCapacity: number,
+    chiAramlas: number,
+    kiberKapacitas: number,
     //konstans
     esszencia: number,
     // állapot
@@ -361,8 +361,8 @@ export class CharsMainService {
       //speciális
       kockatartalek: kockatartalek,
       magia: magia,
-      chi: chi,
-      cyberCapacity: cyberCapacity,
+      chiAramlas: chiAramlas,
+      kiberKapacitas: kiberKapacitas,
       //konstans
       esszencia: esszencia,
       // állapot
