@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InitiativeService } from './initiative.service';
 import { NewplayerService } from './newplayer/newplayer.service';
 import { FormArray } from '@angular/forms';
+import { playerModel } from './player.model';
 
 @Component({
   selector: 'app-initiative',
@@ -22,7 +23,7 @@ export class InitiativeComponent implements OnInit {
   veteranCounter: number = 1;
   eliteCounter: number = 1;
 
-  sortedPlayers(): Array<any> {
+  sortedPlayers(): Array<playerModel> {
     if (this.s.phase == 2) {
       this.s.players.setValue(this.s.players.value.sort((a:any, b:any) =>
         {

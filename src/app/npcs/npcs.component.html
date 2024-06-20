@@ -1,4 +1,4 @@
-<div *ngIf="mode == 'list'" class="pageCont w100">
+<div *ngIf="listMode" class="flexCont w100">
   <div class="w100 margBott1" *ngFor="let f of getFrakcio()">
 
     <h3>{{f}}</h3>
@@ -9,14 +9,14 @@
   </div>
 </div>
 
-<div *ngIf="mode == 'one'" class="flexCont w100">
+<div *ngIf="listMode" class="flexCont w100">
   <div *ngFor="let p of getOneNpc()" class="flexCont w100">
 
     <!-- fejléc -->
-    <div class="ntl w70 center text1">{{p.nev}}</div>
+    <div class="ntl w90 center text1">{{p.nev}}</div>
 
     <!-- visszagomb -->
-    <button class="itemRemove text1 w30 center" type="button" (click)="onClose()">Vissza</button>
+    <button class="itemRemove text1 w10 center" type="button" (click)="onClose()">X</button>
 
     <div class="w33">
       <div class="text1 nbl center">DNS</div>

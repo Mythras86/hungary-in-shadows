@@ -15,14 +15,14 @@ export class NpcsComponent implements OnInit {
     public s: NpcsService,
   ) {}
 
-  mode: string = 'list';
+  listMode: boolean = true;
   npcFilter: string = '';
 
   public canBeClosed: boolean = true;
   closeEvent: Subject<any> = new Subject;
 
   loadData(modalData: string): void {
-    this.mode = 'one';
+    this.listMode = false;
     this.npcFilter = modalData;
   }
 

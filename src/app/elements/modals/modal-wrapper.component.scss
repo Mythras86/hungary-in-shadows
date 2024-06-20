@@ -1,3 +1,5 @@
+@import "../../../styles-mixins.scss";
+
 .closed-modal {
   display: none !important;
 }
@@ -20,5 +22,15 @@
     overflow: auto;
     width: 100vw;
     height: 100vh;
+    @include tablet {
+      width: 90vw;
+    }
+    @include tablet-landscape {
+      width: 80vw;
+    }
+    @include desktop {
+      width: 70vw;
+    }
+
   }
 }

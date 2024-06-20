@@ -3,28 +3,28 @@
 <div class="flexCont w100">
 
   <!-- fejlác -->
-  <div class="ngrn text1 center {{mode == 'edit' ? 'w70': 'w100'}}" >
+  <div class="ntl text1 center {{editMode ? 'w90': 'w100'}}" >
     {{nev}}
   </div>
 
   <!-- visszagomb -->
-  <button *ngIf="mode == 'edit'" class="itemRemove text1 w30 center" type="button" (click)="onClose()">Vissza</button>
+  <button *ngIf="editMode" class="itemRemove text1 w10 center" type="button" (click)="onClose()">X</button>
 
-  <div *ngIf="mode == 'display'" class="grayCell text1 w100 center" [style.backgroundColor]="(tipus == 'color' ? ertek : 'fff')">
+  <div *ngIf="!editMode" class="grayCell text1 w100 center" [style.backgroundColor]="(tipus == 'color' ? ertek : 'fff')">
     {{ertek}} {{egyseg}}
   </div>
 
   <!-- megjegyzés -->
-  <div *ngIf="mode == 'edit'" class="w100 ntl text1 center">
+  <div *ngIf="editMode" class="w100 nwht text1 center">
     {{megjegyzes}}
   </div>
 
 
   <!-- input -->
-  <input *ngIf="mode == 'edit' && tipus == 'text'" class="w100 grayCell text1 center" [id]="fcName" [type]="tipus" [value]="ertek">
+  <input *ngIf="editMode && tipus == 'text'" class="w100 grayCell text1 center" [id]="fcName" [type]="tipus" [value]="ertek">
 
   <!-- color input -->
-  <input *ngIf="mode == 'edit' && tipus == 'color'"
+  <input *ngIf="editMode && tipus == 'color'"
   list="presetcolors"
   class="grayCell text1 center"
   [id]="fcName"
@@ -40,20 +40,20 @@
   </datalist>
 
   <!-- normal number input -->
-  <div *ngIf="mode == 'edit' && tipus == 'number'" class="flexCont">
+  <div *ngIf="editMode && tipus == 'number'" class="flexCont">
     <input class="w80 grayCell text1 center" [id]="fcName" type="number" [value]="ertek">
     <div class="w20 grayCell text1 center">{{egyseg}}</div>
   </div>
 
   <!-- list input -->
-  <select *ngIf="mode == 'edit' && tipus == 'select'" class="w100 grayCell text1 center" [id]="fcName">
+  <select *ngIf="editMode && tipus == 'select'" class="w100 grayCell text1 center" [id]="fcName">
     <option selected [value]="ertek">{{ertek}}</option>
     <option *ngFor="let listitem of lista" [value]=listitem>{{listitem}}</option>
   </select>
 
   <!-- input field with list -->
 
-  <input *ngIf="mode == 'edit' && tipus == 'inpselect'" class="w100 grayCell text1 center" type="text1" [id]="fcName" [attr.list]="fcName+'x'" [value]="ertek"/>
+  <input *ngIf="editMode && tipus == 'inpselect'" class="w100 grayCell text1 center" type="text1" [id]="fcName" [attr.list]="fcName+'x'" [value]="ertek"/>
   <datalist *ngIf="tipus == 'inpselect'" [id]="fcName+'x'">
     <option *ngFor="let listitem of lista" [value]=listitem>{{listitem}}</option>
   </datalist>
@@ -61,6 +61,6 @@
   <!-- gombok -->
 </div>
 
-<div *ngIf="mode == 'edit'" class="buttonCont w100 margTop1">
+<div *ngIf="editMode" class="buttonCont w100 margTop1">
   <button class="itemGet text1" type="button" (click)="onSave(fcName)">Mentés</button>
 </div>

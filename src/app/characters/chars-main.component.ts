@@ -38,7 +38,7 @@ export class CharsMainComponent implements OnInit, OnDestroy {
     private itemsS: ItemsService,
   ) {}
 
-  mode:string = 'create';
+  createMode: boolean = true;
   _id:string = '';
   filter: string = 'Nincs';
 
@@ -72,7 +72,7 @@ export class CharsMainComponent implements OnInit, OnDestroy {
       return;
    }
    this.spinS.toggleSpinner(true);
-   if (this.mode === 'create') {
+   if (this.createMode) {
       this.s.addOneChar(
         //szöveges
         details.value.teljesnev,
@@ -218,7 +218,7 @@ export class CharsMainComponent implements OnInit, OnDestroy {
     this.spinS.toggleSpinner(false);
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if(paramMap.has('_id')) {
-        this.mode = 'edit';
+        this.createMode = false;
         this._id = paramMap.get('_id')!;
         this.spinS.toggleSpinner(true);
         this.s.getOneChar(this._id).subscribe(w => {
@@ -232,7 +232,7 @@ export class CharsMainComponent implements OnInit, OnDestroy {
           this.itemsS.updateItems(w);
         });
       } else {
-        this.mode = 'create';
+        this.createMode = true;
         this._id = '';
         this.s.createMainForm();
         this.skillsS.addFirstLanguage()

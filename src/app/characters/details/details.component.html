@@ -1,4 +1,4 @@
-<div class="flexCont" [formGroup]="s.detailsForm" *ngIf="s.detailsForm">
+<div class="flexCont w100" [formGroup]="s.detailsForm" *ngIf="s.detailsForm">
 
   <button class="text1 nbl margBott1" type="button" (click)="fillWithDummy()">fill with dummy</button>
 
@@ -8,7 +8,6 @@
   >
 
     <app-inp-details *ngIf="item.tipus !== 'kepessegek'" class="flexCont w100"
-    [mode] = "'display'"
     [nev] = "item.nev"
     [tipus] = "item.tipus"
     [egyseg] = "item.egyseg"
@@ -20,23 +19,14 @@
 
     <div *ngIf="select.status == item.fcName" class="buttonCont posAbs btnBack">
       <app-btn-options
-      (buttonAction)="inpDetS.buttonAction(
-        'edit',
-        item.nev,
-        item.tipus,
-        item.egyseg,
-        item.fcName,
-        item.megjegyzes + (getDefault(item.fcName) == undefined ? '' : ' ' + getDefault(item.fcName)),
-        s.getFc(item.fcName)?.value,
-        getList(item.fcName)
-        )"
+      (buttonAction)="setDetail(item.fcName)"
       ></app-btn-options>
     </div>
 
   </div>
 
   <div class="flexCont w100">
-    <div class="ngrn text1 w100 center">
+    <div class="ntl text1 w100 center">
       Különleges képességek
     </div>
     <div *ngIf="getDefault('kepessegek') == null" class="grayCell w100 text1"></div>

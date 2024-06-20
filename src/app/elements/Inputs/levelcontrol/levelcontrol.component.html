@@ -2,11 +2,11 @@
 
   <!-- fejléc -->
 
-  <div class="ntl text2 center w70">{{fejlec}}</div>
+  <div class="ntl text2 center w90">{{fejlec}}</div>
 
   <!-- vissza gomb -->
 
-  <button class="itemRemove text1 w30" type="button" (click)="onClose()">Vissza</button>
+  <button class="itemRemove text1 w10" type="button" (click)="onClose()">X</button>
 
   <!-- megjegyzés -->
 
@@ -19,7 +19,7 @@
   <!-- célérték -->
 
   <div class="w100 text2 grayCell center">
-    {{celControl.value + ertekValtozas*valto}}
+    {{celErtek + ertekValtozas*valto}}
     {{egyseg}}
   </div>
 

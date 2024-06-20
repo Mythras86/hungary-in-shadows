@@ -35,7 +35,7 @@ export class ResourcesComponent implements OnInit {
       tokeKtsg: 0,
       karmaKtsg: 1,
       esszKtsg: 0,
-      celControl: this.s.getFc('szerzettToke'),
+      celErtek: this.s.getSzabadToke(),
       egyseg: 'NY',
       minErtek: 0,
       maxErtek: this.s.getSzabadKarma(),
@@ -58,16 +58,16 @@ export class ResourcesComponent implements OnInit {
       fejlec: 'Tőkéből Karma vásárlás',
       megjegyzes: '7500 NY => K 1',
       lepes: 10,
-      valto: 7500,
+      valto: 1,
       tokeKtsg: 7500,
       karmaKtsg: 0,
       esszKtsg: 0,
-      celControl: this.s.getFc('szerzettKarma'),
+      celErtek: this.s.getSzabadKarma(),
       egyseg: 'K',
       minErtek: 0,
       maxErtek: this.s.getSzabadToke(),
       }).subscribe(
-        w => this.updateKarma(w)
+        w => this.updateToke(w)
       );
     }
 
@@ -82,5 +82,11 @@ export class ResourcesComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.s.resourcesForm.valueChanges.subscribe(
+      ()=> {
+        this.szabadKarma = this.s.getSzabadKarma(),
+        this.szabadToke = this.s.getSzabadToke()
+      }
+    )
   }
 }

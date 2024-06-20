@@ -29,7 +29,7 @@ export class LevelcontrolComponent {
   tokeKtsg: number = 0;
   karmaKtsg: number = 0;
   esszKtsg: number = 0;
-  celControl!: FormControl;
+  celErtek: number = 0;
   egyseg: any;
   minErtek: number = 0;
   maxErtek: number = 0;
@@ -44,7 +44,7 @@ export class LevelcontrolComponent {
     this.tokeKtsg = modalData.tokeKtsg;
     this.karmaKtsg = modalData.karmaKtsg;
     this.esszKtsg = modalData.esszKtsg;
-    this.celControl = modalData.celControl;
+    this.celErtek = modalData.celErtek;
     this.egyseg = modalData.egyseg;
     this.minErtek = modalData.minErtek;
     this.maxErtek = modalData.maxErtek;
@@ -64,7 +64,12 @@ export class LevelcontrolComponent {
   }
 
   buttonDisInc(lepes: number): boolean {
-    if (this.ertekValtozas*this.valto + lepes*this.valto + this.minErtek > this.maxErtek) {
+    if (
+      this.karmaKtsg*this.ertekValtozas + this.karmaKtsg*lepes > this.resS.getSzabadKarma() ||
+      this.tokeKtsg*this.ertekValtozas + this.tokeKtsg*lepes > this.resS.getSzabadToke() ||
+      this.esszKtsg*this.ertekValtozas + this.esszKtsg*lepes > this.attrS.getTulErtek('esszencia') ||
+      this.celErtek + this.ertekValtozas*lepes +this.minErtek > this.maxErtek*this.valto
+    ) {
       return true;
     }
     return false;

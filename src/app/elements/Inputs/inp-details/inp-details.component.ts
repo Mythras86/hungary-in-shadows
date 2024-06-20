@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Subject } from 'rxjs';
-import { InpDetailsService } from './inp-details.service';
 import { ItemSelectService } from '../../item-select/item-select.service';
-import { DetailsService } from 'src/app/characters/details/details.service';
 
 @Component({
   selector: 'app-inp-details',
@@ -12,28 +10,24 @@ import { DetailsService } from 'src/app/characters/details/details.service';
 export class InpDetailsComponent {
 
   constructor(
-    public s: InpDetailsService,
-    public detailsS: DetailsService,
     public select: ItemSelectService
   ) {}
 
-  @Input() mode: string = '';
+  @Input() editMode: boolean = false;
   @Input() nev: string = '';
   @Input() tipus: string = '';
   @Input() egyseg: string = '';
   @Input() fcName: string = '';
   @Input() megjegyzes: string = '';
   @Input() meret: string = '';
-  @Input() ertek: string = '';
+  @Input() ertek: any;
   @Input() lista: Array<any> = [];
 
   public canBeClosed: boolean = true;
   closeEvent: Subject<any> = new Subject;
 
-  @Output() buttonAction: EventEmitter<void> = new EventEmitter();
-
   loadData(modalData: any): void {
-    this.mode = modalData.mode;
+    this.editMode = modalData.editMode;
     this.nev = modalData.nev;
     this.tipus = modalData.tipus;
     this.egyseg = modalData.egyseg;
@@ -46,10 +40,10 @@ export class InpDetailsComponent {
   onSave(id:string) {
     const input:any = (<HTMLInputElement>document.getElementById(id)).value;
     if (this.tipus == 'number') {
-      this.closeEvent.next([id, Math.round(input*100)/100]);
+      this.closeEvent.next(Math.round(input*100)/100);
       this.closeEvent.complete();
     } else {
-      this.closeEvent.next([id, input]);
+      this.closeEvent.next(input);
       this.closeEvent.complete();
     }
   }

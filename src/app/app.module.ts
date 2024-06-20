@@ -25,15 +25,15 @@ import { CharsMainComponent } from './characters/chars-main.component';
 import { DetailsComponent } from './characters/details/details.component';
 import { ItemsComponent } from './characters/items/items.component';
 import { ResourcesComponent } from './characters/resources/resources.component';
-import { SkillsListComponent } from './characters/skills/skills-list/skills-list.component';
-import { SkillsSelectComponent } from './characters/skills/skills-select/skills-select.component';
-import { SkillsComponent } from './characters/skills/skills.component';
+import { SkillsComponent } from './characters/skills//skills.component';
 import { StatusComponent } from './characters/status/status.component';
 import { NpcsComponent } from './npcs/npcs.component';
 import { InitiativeComponent } from './initiative/initiative.component';
 import { StatusmonitorComponent } from './characters/status/statusmonitor/statusmonitor.component';
 import { NewplayerComponent } from './initiative/newplayer/newplayer.component';
 import { AttributeComponent } from './characters/attributes/attribute/attribute.component';
+import { SkillComponent } from './characters/skills/skill/skill.component';
+import { DetailComponent } from './characters/details/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -52,23 +52,23 @@ import { AttributeComponent } from './characters/attributes/attribute/attribute.
     MainComponent,
     CharsListComponent,
     CharsMainComponent,
+    AttributeComponent,
     AttributesComponent,
     DetailsComponent,
     ResourcesComponent,
     StatusComponent,
+    SkillComponent,
     SkillsComponent,
 
     FieldKarmaComponent,
     FieldTokeComponent,
     BtnOptionsComponent,
     ItemsComponent,
-    SkillsListComponent,
-    SkillsSelectComponent,
     NpcsComponent,
     InitiativeComponent,
     StatusmonitorComponent,
     NewplayerComponent,
-    AttributeComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,

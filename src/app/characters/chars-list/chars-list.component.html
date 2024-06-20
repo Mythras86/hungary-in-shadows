@@ -2,7 +2,7 @@
     <button class="itemGet text1" (click)="s.newChar()">Új Karakter</button>
   </div>
 
-  <div class="w100 pageCont" *ngFor="let csoport of ['Saját karakterek', 'Más karakterek']">
+  <div class="w100 flexCont" *ngFor="let csoport of ['Saját karakterek', 'Más karakterek']">
 
     <h3 *ngIf="userIsAuthenticated && charsList !== null">{{csoport}}</h3>
 

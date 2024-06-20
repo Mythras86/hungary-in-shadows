@@ -12,7 +12,7 @@
 
 <div class="w100 text2 nrng center">{{s.turn}}. kör / {{s.phase}}. fázis</div>
 
-<div class="pageCont w100" [formGroup]="s.initForm" *ngIf="s.initForm">
+<div class="flexCont w100" [formGroup]="s.initForm" *ngIf="s.initForm">
 
   <div class="flexCont w100" formArrayName="players">
 
@@ -90,7 +90,7 @@
 
         <div class="buttonCont btnBack">
           <!-- gombok cselekvés szett -->
-          <span *ngIf="player.status == 2 && s.phase == 2 && player.ap > 0 && i == 0" class="flexCont">
+          <span *ngIf="player.status == 2 && s.phase == 2 && player.ap! > 0 && i == 0" class="flexCont">
             <button class="itemGet text1" type="button" (click)="s.spendAp(i)">Cselekvés</button>
             <input class="text1 w30" type="number" id='{{"buttonAp"+i}}'>
           </span>

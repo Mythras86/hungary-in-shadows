@@ -56,7 +56,7 @@ export class AttributesComponent implements OnInit {
     tokeKtsg: 0,
     karmaKtsg: 3,
     esszKtsg: 0,
-    celControl: this.s.getFc(fcName),
+    celErtek: this.s.getFc(fcName).value,
     egyseg: attr.egyseg,
     minErtek: this.s.getFc(fcName).value,
     maxErtek: 6,
@@ -73,7 +73,6 @@ export class AttributesComponent implements OnInit {
       this.s.attributesForm.get(fcName)?.patchValue(++valtozas)
     ];
   }
-
 
   ngOnInit(): void {
   }

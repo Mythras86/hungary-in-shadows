@@ -1,7 +1,87 @@
-<div class="nbl text1 flex1">{{nev}}</div>
-<div class="nrng text1 center w20">{{kapTul}}</div>
-<div class="nbl text1 center w20" *ngIf="szint !== 0">{{szint}}</div>
+<!-- fejléc select esetén -->
 
-<div *ngIf="megjegyzes !== ''" class="grayCell text1 w100">{{megjegyzes}}</div>
+<div *ngIf="s.selectMode" class="w90 text2 ntl center">Szakértelmek</div>
+<button *ngIf="s.selectMode" class="itemRemove text1 w10 center" type="button" (click)="onClose()">X</button>
 
-<ng-content select="buttons"></ng-content>
+<!-- új szakértelem -->
+
+<div *ngIf="!s.selectMode && resS.getSzabadKarma() >= 2" class="buttonCont w100 btnBack margBott1">
+  <button class="itemGet text1 center" type="button" (click)="s.selectSkill()">Új Szakértelem</button>
+</div>
+
+<!-- szűrők -->
+
+<app-hide-content class="w100 margBott1"
+  [keyWord]="'skillsFilter'"
+  [arrowClass]="'flex1 nbl text2 center'"
+  >
+  <div headText class="flex1 nbl text2 center">
+    Csoportszűrő: {{filter}}
+  </div>
+  <div class="flexCont gap2">
+    <div class="nprpl text1 center" (click)="setFilter('Nincs')">Nincs</div>
+    <div *ngFor="let csoport of getCsoportok()">
+      <div class="nprpl text1 center" (click)="setFilter(csoport)">{{csoport}}</div>
+    </div>
+  </div>
+</app-hide-content>
+
+<!-- karakterlapon megjelenő form -->
+
+<div class="flexCont w100" [formGroup]="s.skillsForm" *ngIf="s.skillsForm">
+
+  <!-- csoportosítás -->
+
+  <div class="w100" *ngIf="!s.selectMode" formArrayName="skills" >
+    <div class="flexCont" *ngFor='let elem of getCsoportok()'>
+      <h3 class="margTop1">{{elem}}</h3>
+
+      <!-- csoport konténer -->
+
+      <div class="w100" [formGroupName]='i' *ngFor="let skill of sortedSkills(); let i = index">
+
+        <div class="posRel" *ngIf="skill.csoport == elem"
+        [ngClass]="select.toggleClass(skill.nev+i)" (click)="select.toggleStatus(skill.nev+i)">
+          <app-skill class="flexCont"
+          [nev]="skill.nev"
+          [nevKieg]="skill.nevKieg"
+          [szint]="skill.szint"
+          [kapTul]="skill.kapTul"
+          [kapTulSzint]="0"
+          >
+          </app-skill>
+          <div buttons *ngIf="select.status == skill.nev+i" class="buttonCont w100 posAbs btnBack">
+            <button class="text1 itemGet" type="button">Szintlépés</button>
+            <button class="text1 itemRemove" type="button" (click)="s.removeSkill(i)">Törlés</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- select skill esetén -->
+
+  <div *ngIf="s.selectMode" class="w100">
+    <div class="flexCont" *ngFor='let elem of getCsoportok()'>
+      <h3 class="margTop1">{{elem}}</h3>
+
+      <!-- csoport konténer -->
+
+      <div class="w100" *ngFor="let skill of skillsList; let i = index" (click)="onSave(skill.nev, skill.nevKieg)">
+
+        <div class="posRel" *ngIf="skill.csoport == elem">
+          <app-skill class="flexCont"
+          [nev]="skill.nev"
+          [nevKieg]="skill.nevKieg"
+          [kapTul]="skill.kapTul"
+          >
+          </app-skill>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

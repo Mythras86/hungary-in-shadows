@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DetailsService } from './details.service';
 import { ItemSelectService } from 'src/app/elements/item-select/item-select.service';
 import { detailsInterface, detailsUtil, dnsUtil, nemekUtil, nyelvekUtil } from './details-utility';
-import { InpDetailsService } from 'src/app/elements/Inputs/inp-details/inp-details.service';
+import { ModalService } from 'src/app/elements/modals/modal.service';
+import { InpDetailsComponent } from 'src/app/elements/Inputs/inp-details/inp-details.component';
 
 @Component({
   selector: 'app-details',
@@ -14,7 +15,7 @@ export class DetailsComponent implements OnInit {
   constructor(
     public s: DetailsService,
     public select: ItemSelectService,
-    public inpDetS: InpDetailsService
+    private modalS: ModalService,
   ) {
     this.details = detailsUtil;
   }
@@ -78,6 +79,27 @@ export class DetailsComponent implements OnInit {
     this.s.getFc('vonzalom').patchValue('van');
     this.s.getFc('megjelenes').patchValue('van');
   }
+
+  setDetail(fcName: string) {
+    const detail: detailsInterface = detailsUtil.filter(x=>x.fcName == fcName)[0];
+    this.modalS.openModal(InpDetailsComponent, {
+      editMode: true,
+      nev: detail.nev,
+      tipus: detail.tipus,
+      egyseg: detail.egyseg,
+      fcName: detail.fcName,
+      megjegyzes: detail.megjegyzes + (this.getDefault(fcName) == undefined ? '' : ' ' + this.getDefault(fcName)),
+      ertek: this.s.getFc(fcName)?.value,
+      lista: this.getList(fcName),
+    }).subscribe(
+      w => this.updateData(fcName, w)
+      );
+  }
+
+  updateData(fcName: string, value:any) {
+    return this.s.detailsForm.get(fcName)?.patchValue(value);
+  }
+
 
   ngOnInit(): void {
   }

@@ -21,27 +21,21 @@
   </div>
 </app-hide-content>
 
-<form class="flexCont margTop1" *ngIf="s.mainCharForm" [formGroup]="s.mainCharForm" (ngSubmit)="sendChar()">
+<form class="flexCont w100 margTop1" *ngIf="s.mainCharForm" [formGroup]="s.mainCharForm" (ngSubmit)="sendChar()">
 
-  <div [hidden]="filter !== 'Nincs' && filter !== 'Jellemzők'">
-    <h2 class="ntl text2 w100 center margTop1 margBott1">Jellemzők</h2>
-    <app-details></app-details>
-  </div>
-  <div [hidden]="filter !== 'Nincs' && filter !== 'Erőforrások'">
-    <h2 class="ntl text2 w100 center margTop1 margBott1">Erőforrások</h2>
-    <app-resources></app-resources>
-  </div>
-  <div [hidden]="filter !== 'Nincs' && filter !== 'Tulajdonságok'">
-    <h2 class="ntl text2 w100 center margTop1 margBott1">Tulajdonságok</h2>
-    <app-attributes></app-attributes>
-  </div>
-  <div [hidden]="filter !== 'Nincs' && filter !== 'Állapotjelző'">
-    <h2 class="ntl text2 w100 center margTop1 margBott1">Állapotjelző</h2>
-    <app-status></app-status>
-  </div>
-  <div [hidden]="filter !== 'Nincs' && filter !== 'Szakértelmek'">
-    <h2 class="ntl text2 w100 center margTop1 margBott1">Szakértelmek</h2>
-    <app-skills-list></app-skills-list>
-  </div>
+  <h2 *ngIf="filter == 'Nincs' || filter ==  'Jellemzők'" class="ntl text2 w100 center margTop1 margBott1">Jellemzők</h2>
+  <app-details *ngIf="filter == 'Nincs' || filter ==  'Jellemzők'"></app-details>
+
+  <h2 *ngIf="filter == 'Nincs' || filter ==  'Erőforrások'" class="ntl text2 w100 center margTop1 margBott1">Erőforrások</h2>
+  <app-resources *ngIf="filter == 'Nincs' || filter ==  'Erőforrások'"></app-resources>
+
+  <h2 *ngIf="filter == 'Nincs' || filter ==  'Tulajdonságok'" class="ntl text2 w100 center margTop1 margBott1">Tulajdonságok</h2>
+  <app-attributes *ngIf="filter == 'Nincs' || filter ==  'Tulajdonságok'"></app-attributes>
+
+  <h2 *ngIf="filter == 'Nincs' || filter ==  'Állapotjelző'" class="ntl text2 w100 center margTop1 margBott1">Állapotjelző</h2>
+  <app-status *ngIf="filter == 'Nincs' || filter ==  'Állapotjelző'"></app-status>
+
+  <h2 *ngIf="filter == 'Nincs' || filter ==  'Szakértelmek'" class="ntl text2 w100 center margTop1 margBott1">Szakértelmek</h2>
+  <app-skills *ngIf="filter == 'Nincs' || filter ==  'Szakértelmek'"></app-skills>
 
 </form>
