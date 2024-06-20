@@ -29,14 +29,14 @@ export class SkillsService {
     return this.skillsForm = this.fb.group(skills);
   }
 
-  addSkill(nev: string, nevKieg:string): void {
+  addSkill(nev: string): void {
     if (nev == null) {
       return;
     }
     const skill = skillsUtil.filter(x => x.nev == nev).map(x => x)[0];
     const skills = this.fb.group({
       nev: [skill.nev, Validators.required],
-      nevKieg: [nevKieg],
+      nevKieg: [''],
       csoport: [skill.csoport, Validators.required],
       szint: [1, Validators.required],
       kapTul: [skill.kapTul],
@@ -98,11 +98,7 @@ export class SkillsService {
   selectSkill(): void {
     this.selectMode = true;
     this.modalS.openModal(SkillsComponent, '').subscribe(
-      w => this.updateData(w[0], w[1])
+      w => this.addSkill(w)
     );
-  }
-
-  updateData(nev: string, nevKieg: string): void {
-    return this.addSkill(nev, nevKieg);
   }
 }

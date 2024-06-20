@@ -1,4 +1,4 @@
-import { Component, Input, } from '@angular/core';
+import { Component, EventEmitter, Input, Output, } from '@angular/core';
 import { SkillsService } from '../skills.service';
 
 @Component({
@@ -17,5 +17,11 @@ export class SkillComponent {
   @Input() szint?: number = 0;
   @Input() kapTul: string = '';
   @Input() kapTulSzint?: number = 0;
+
+  @Output() onSave: EventEmitter<any> = new EventEmitter();
+
+  onSaveSkill(): void {
+    return this.onSave.emit(this.nev);
+  }
 
 }

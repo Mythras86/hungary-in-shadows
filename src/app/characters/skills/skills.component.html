@@ -63,18 +63,19 @@
   <!-- select skill esetén -->
 
   <div *ngIf="s.selectMode" class="w100">
-    <div class="flexCont" *ngFor='let elem of getCsoportok()'>
+    <div class="flexCont" *ngFor='let elem of skillCsoportok'>
       <h3 class="margTop1">{{elem}}</h3>
 
       <!-- csoport konténer -->
 
-      <div class="w100" *ngFor="let skill of skillsList; let i = index" (click)="onSave(skill.nev, skill.nevKieg)">
+      <div class="w100" *ngFor="let skill of skillsList; let i = index">
 
         <div class="posRel" *ngIf="skill.csoport == elem">
           <app-skill class="flexCont"
           [nev]="skill.nev"
           [nevKieg]="skill.nevKieg"
           [kapTul]="skill.kapTul"
+          (onSave) = "onSave($event)"
           >
           </app-skill>
         </div>

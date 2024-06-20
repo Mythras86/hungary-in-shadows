@@ -1,7 +1,7 @@
-<div class="nbl text1 flex1">{{nev}} {{nevKieg == ''? null : ': '+nevKieg}}</div>
-<!-- <div *ngIf="!s.selectMode" class="nbl text1 flex1">{{nev}} {{nevKieg == ''? null : ': '+nevKieg}}</div>
-<div *ngIf="s.selectMode" class="nbl text1 flex1">{{nev}}</div>
-<input *ngIf="s.selectMode && nevKieg != ''" type="text" class="text1 w20 center" placeholder="{{nevKieg}}"> -->
+
+<div *ngIf="s.selectMode" (click)="onSaveSkill()" class="nbl text1 flex1">{{nev}}</div>
+
+<div *ngIf="!s.selectMode" class="nbl text1 flex1">{{nev}} {{nevKieg == ''? null : ': '+nevKieg}}</div>
 <div class="nrng text1 center w20">{{kapTul}}</div>
 <div class="ngrn text1 center w20" *ngIf="szint !== 0">{{szint}}</div>
 

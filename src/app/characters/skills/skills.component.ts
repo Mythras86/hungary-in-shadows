@@ -22,6 +22,7 @@ export class SkillsComponent {
     public resS: ResourcesService,
   ) {
     this.skillsList = skillsUtil;
+    this.skillCsoportok = [...new Set(skillsUtil.map(x=> x.csoport))];
   }
 
   public canBeClosed: boolean = true;
@@ -30,6 +31,7 @@ export class SkillsComponent {
   filter: string = 'Nincs';
 
   skillsList: Array<SkillInterface> = [];
+  skillCsoportok: Array<string> = [];
 
   loadData(): void {
   }
@@ -38,8 +40,8 @@ export class SkillsComponent {
     this.filter = setToThis;
   }
 
-  onSave(nev:string, nevKieg: string) {
-    this.closeEvent.next([nev, nevKieg]);
+  onSave(data: Array<string>) {
+    this.closeEvent.next([data[0], data[1]]);
     this.closeEvent.complete();
     this.s.selectMode = false;
   }
@@ -69,11 +71,7 @@ export class SkillsComponent {
   }
 
   getCsoportok():Array<string> {
-    const all: Array<any> = [...new Set(skillsUtil.map(x=> x.csoport))];
     const skills: Array<any> = [...new Set(this.skills.value.map((x:SkillsModel) => x.csoport))];
-    if (this.s.selectMode) {
-      return all;
-    }
     return skills;
   }
 
