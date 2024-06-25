@@ -6,6 +6,7 @@ import { DetailsService } from '../details/details.service';
 import { ItemSelectService } from 'src/app/elements/item-select/item-select.service';
 import { ModalService } from 'src/app/elements/modals/modal.service';
 import { LevelcontrolComponent } from 'src/app/elements/Inputs/levelcontrol/levelcontrol.component';
+import { AttributesModel } from './attributes.model';
 
 @Component({
   selector: 'app-attributes',
@@ -25,12 +26,19 @@ export class AttributesComponent implements OnInit {
     this.attributes = attributesUtil;
   }
 
-  attributes: Array<AttrInterface> = [];
+  attributes: Array<any> = [];
   csoportok: Array<string> = [];
 
   getCsoport (): Array<any> {
     const csoport = [...new Set(attributesUtil.map(x => x.csoport))];
     return csoport;
+  }
+
+  getValue(fcName: string): number {
+    if (fcName == 'reakcio') {
+      return this.s.getReakcio();
+    }
+    return this.s.getFc(fcName).value;
   }
 
   checkEssence(elem: string) {
@@ -59,7 +67,7 @@ export class AttributesComponent implements OnInit {
     celErtek: this.s.getFc(fcName).value,
     egyseg: attr.egyseg,
     minErtek: this.s.getFc(fcName).value,
-    maxErtek: 6,
+    maxErtek: attr.max,
     }).subscribe(
       w => this.updateData(w, fcName)
     );
@@ -70,7 +78,7 @@ export class AttributesComponent implements OnInit {
       // kifizetés
       this.resS.payKarma(valtozas*3),
       // értékszerzés
-      this.s.attributesForm.get(fcName)?.patchValue(++valtozas)
+      this.s.attributesForm.get(fcName)?.patchValue(+valtozas)
     ];
   }
 

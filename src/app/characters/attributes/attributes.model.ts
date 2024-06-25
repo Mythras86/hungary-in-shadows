@@ -18,6 +18,8 @@ export interface AttributesModel {
   kockatartalek: number,
   //konstans
   esszencia: number,
+  reakcio: number,
+  kezdemenyezes: number
 };
 
 export interface AttributesFG extends FormGroup {
@@ -40,5 +42,7 @@ export interface AttributesFG extends FormGroup {
     kockatartalek: AbstractControl,
     //konstans
     esszencia: AbstractControl,
+    reakcio: AbstractControl,
+    kezdemenyezes: AbstractControl
   }
 };

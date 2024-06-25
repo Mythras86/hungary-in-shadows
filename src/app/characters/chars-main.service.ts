@@ -112,6 +112,8 @@ export class CharsMainService {
       kiberKapacitas: number,
       //konstans
       esszencia: number,
+      reakcio: number,
+      kezdemenyezes: number,
       // állapot
       asztralisAllapot: number,
       fizikaiAllapot: number,
@@ -175,6 +177,8 @@ export class CharsMainService {
     kiberKapacitas: number,
     //konstans
     esszencia: number,
+    reakcio: number,
+    kezdemenyezes: number,
     // állapot
     asztralisAllapot: number,
     fizikaiAllapot: number,
@@ -237,6 +241,8 @@ export class CharsMainService {
       kiberKapacitas: kiberKapacitas,
       //konstans
       esszencia: esszencia,
+      reakcio: reakcio,
+      kezdemenyezes: kezdemenyezes,
       // állapot
       asztralisAllapot: asztralisAllapot,
       fizikaiAllapot: fizikaiAllapot,
@@ -303,6 +309,8 @@ export class CharsMainService {
     kiberKapacitas: number,
     //konstans
     esszencia: number,
+    reakcio: number,
+    kezdemenyezes: number,
     // állapot
     asztralisAllapot: number,
     fizikaiAllapot: number,
@@ -365,6 +373,8 @@ export class CharsMainService {
       kiberKapacitas: kiberKapacitas,
       //konstans
       esszencia: esszencia,
+      reakcio: reakcio,
+      kezdemenyezes: kezdemenyezes,
       // állapot
       asztralisAllapot: asztralisAllapot,
       fizikaiAllapot: fizikaiAllapot,

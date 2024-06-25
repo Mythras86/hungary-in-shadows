@@ -125,6 +125,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         attrs.value.kiberKapacitas,
         // konstans
         attrs.value.esszencia,
+        attrs.value.reakcio,
+        attrs.value.kezdemenyezes,
         // állapot
         status.value.asztralisAllapot,
         status.value.fizikaiAllapot,
@@ -187,6 +189,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         attrs.value.kiberKapacitas,
         // konstans
         attrs.value.esszencia,
+        attrs.value.reakcio,
+        attrs.value.kezdemenyezes,
         // állapot
         status.value.asztralisAllapot,
         status.value.fizikaiAllapot,

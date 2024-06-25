@@ -35,6 +35,8 @@ export class AttributesService {
       kockatartalek: [0, Validators.required],
       //konstans
       esszencia: [6, Validators.required],
+      reakcio: [0, Validators.required],
+      kezdemenyezes: [1, Validators.required],
     };
     return this.attributesForm = this.fb.group(attributes) as AttributesFG;
   }
@@ -58,6 +60,8 @@ export class AttributesService {
       kockatartalek: w.kockatartalek,
       // konstans
       esszencia: w.esszencia,
+      reakcio: w.reakcio,
+      kezdemenyezes: w.kezdemenyezes,
     }) as AttributesFG;
   }
 
@@ -88,7 +92,7 @@ export class AttributesService {
     return 0;
   }
 
-  getAkcio(): number {
+  getReakcio(): number {
     const gyo = this.getTulErtek('fizGyo');
     const int = this.getTulErtek('asztGyo');
     const akcio = Math.floor((gyo+int)/2);

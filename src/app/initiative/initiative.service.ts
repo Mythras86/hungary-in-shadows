@@ -73,7 +73,7 @@ export class InitiativeService {
     const result = inpValue - this.modifiers(i);
     if (result > 0) {
       init?.patchValue(result);
-      ap?.patchValue(ap.value + Math.floor(result/6));
+      ap?.patchValue(+Math.floor(result/6));
       status.patchValue(2);
     } else {
       init?.patchValue(1);
@@ -124,7 +124,7 @@ export class InitiativeService {
 
   callNextTurn() {
     this.players.controls.forEach((w: any) => {
-      w.get('ap').patchValue(w.get('ap').value + w.get('apPerTurn').value);
+      w.get('ap').patchValue(+w.get('apPerTurn').value);
       w.get('status').setValue(1);
     })
     this.turn = this.turn+1;

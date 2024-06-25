@@ -1,8 +1,10 @@
 
-<div *ngIf="s.selectMode" (click)="onSaveSkill()" class="nbl text1 flex1">{{nev}}</div>
+<div class="nbl text1 w80">{{nev}}</div>
+<div class="ngrn text1 center w20">({{szint}}) {{getTeljesSzint(kapTul)+szint}} </div>
 
-<div *ngIf="!s.selectMode" class="nbl text1 flex1">{{nev}} {{nevKieg == ''? null : ': '+nevKieg}}</div>
-<div class="nrng text1 center w20">{{kapTul}}</div>
-<div class="ngrn text1 center w20" *ngIf="szint !== 0">{{szint}}</div>
+<div *ngFor="let spec of specs">
+  <div class="nwht text1 flex1">{{spec.nev}} {{spec.szint}}</div>
+  <div>{{spec.szint + szint + kapTulSzint}}</div>
+</div>
 
 <ng-content select="buttons"></ng-content>

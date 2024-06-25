@@ -3,9 +3,8 @@ import { FormArray } from '@angular/forms';
 import { DetailsService } from '../details/details.service';
 import { ResourcesService } from '../resources/resources.service';
 import { SkillsService } from './skills.service';
-import { SkillInterface, skillsUtil } from './skills.util';
 import { Subject } from 'rxjs';
-import { SkillsModel } from './skills.model';
+import { SkillsFG, SkillsModel } from './skills.model';
 import { ItemSelectService } from 'src/app/elements/item-select/item-select.service';
 
 @Component({
@@ -21,41 +20,28 @@ export class SkillsComponent {
     private detailsS: DetailsService,
     public resS: ResourcesService,
   ) {
-    this.skillsList = skillsUtil;
-    this.skillCsoportok = [...new Set(skillsUtil.map(x=> x.csoport))];
+    this.csoportok = [
+      'Aktív szakértelmek',
+      'Ismeret szakértelmek',
+      'Nyelvi szakértelmek'
+    ];
   }
 
   public canBeClosed: boolean = true;
   closeEvent: Subject<any> = new Subject;
 
   filter: string = 'Nincs';
-
-  skillsList: Array<SkillInterface> = [];
-  skillCsoportok: Array<string> = [];
-
-  loadData(): void {
-  }
+  csoportok: Array<string> = [];
 
   setFilter(setToThis: string): void {
     this.filter = setToThis;
-  }
-
-  onSave(data: Array<string>) {
-    this.closeEvent.next([data[0], data[1]]);
-    this.closeEvent.complete();
-    this.s.selectMode = false;
-  }
-
-  onClose() {
-    this.closeEvent.complete();
-    this.s.selectMode = false;
   }
 
   public get skills(): FormArray | null | any {
     if(!this.s.skillsForm) {
       return null;
     }
-    return this.s.skillsForm.controls['skills'] as FormArray;
+    return this.s.skillsForm.controls['skills'] as SkillsFG;
   }
 
   sortedSkills(): Array<SkillsModel> {
@@ -70,18 +56,13 @@ export class SkillsComponent {
     return this.skills.value
   }
 
-  getCsoportok():Array<string> {
-    const skills: Array<any> = [...new Set(this.skills.value.map((x:SkillsModel) => x.csoport))];
-    return skills;
-  }
-
   anyanyelvChangeDetector(): void {
     const anyanyelv = this.detailsS.detailsForm.get('anyanyelv');
-    const iNyelv = this.skills.value.map((x:any)=>x.nev).indexOf('Anyanyelvi beszéd')
-    const iIras = this.skills.value.map((x:any)=>x.nev).indexOf('Anyanyelvi Í/O')
+    const iNyelv = this.skills.value.map((x:any)=>x.nev).indexOf('Anyanyelv')
+    const iIras = this.skills.value.map((x:any)=>x.nev).indexOf('Írás/olvasás')
     anyanyelv?.valueChanges.subscribe(w =>{
-      this.skills.at(iNyelv).get('nevKieg')?.patchValue(w),
-      this.skills.at(iIras).get('nevKieg')?.patchValue(w)
+      this.skills.at(iNyelv).get('nev')?.setValue('Anyanyelv: '+w),
+      this.skills.at(iIras).get('nev')?.setValue('Írás/olvasás: '+w)
     });
   }
 

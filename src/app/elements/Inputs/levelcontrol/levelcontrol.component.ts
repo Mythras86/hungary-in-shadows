@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { AttributesService } from 'src/app/characters/attributes/attributes.service';
 import { ResourcesService } from 'src/app/characters/resources/resources.service';
@@ -68,7 +67,7 @@ export class LevelcontrolComponent {
       this.karmaKtsg*this.ertekValtozas + this.karmaKtsg*lepes > this.resS.getSzabadKarma() ||
       this.tokeKtsg*this.ertekValtozas + this.tokeKtsg*lepes > this.resS.getSzabadToke() ||
       this.esszKtsg*this.ertekValtozas + this.esszKtsg*lepes > this.attrS.getTulErtek('esszencia') ||
-      this.celErtek + this.ertekValtozas*lepes +this.minErtek > this.maxErtek*this.valto
+      this.celErtek + this.ertekValtozas*lepes >= this.maxErtek*this.valto
     ) {
       return true;
     }

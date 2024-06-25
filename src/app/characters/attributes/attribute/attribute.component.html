@@ -1,12 +1,18 @@
-<div class="nbl w50 text1">
+<div class="nbl flex1 text1">
   {{nev}}
 </div>
-<div class="grayCell w20 text1 center">
-  {{szint + dnsMod}} / {{6+ dnsMod}}
+
+<div  *ngIf="max > 0" class="grayCell w20 text1 center">
+  {{szint + dnsMod}} / {{max + dnsMod}}
 </div>
+
+<div *ngIf="max == 0" class="grayCell w15 text1 center">
+  {{szint}}
+</div>
+
 <div class="grayCell w15 text1 center">
   {{modosito}}
 </div>
 <div class="ngrn w15 text1 center">
-  {{szint + modosito + dnsMod}}
+  {{teljesErtek}}
 </div>

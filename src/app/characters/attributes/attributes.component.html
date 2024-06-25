@@ -7,12 +7,16 @@
 
     <div class="flexCont w100 posRel" *ngFor="let a of attributes"
     [ngClass]="select.toggleClass(a.fcName)" (click)="select.toggleStatus(a.fcName)">
-      <app-attribute *ngIf="elem == a.csoport"
+    <app-attribute *ngIf="elem == a.csoport"
       [nev]="a.nev"
-      [fcName]="a.fcName"
-      ></app-attribute>
+      [szint]="getValue(a.fcName)"
+      [max]="a.max"
+      [modosito]="s.getMod(a.fcName)"
+      [dnsMod]="s.getDnsMod(a.fcName)"
+      [teljesErtek]="s.getTulErtek(a.fcName)"
+    ></app-attribute>
 
-      <div *ngIf="select.status == a.fcName && elem == a.csoport && s.getFc(a.fcName)?.value < 6" class="buttonCont posAbs btnBack">
+      <div *ngIf="select.status == a.fcName && elem == a.csoport && s.getFc(a.fcName)?.value < 6 && a.lepes > 0" class="buttonCont posAbs btnBack">
         <app-btn-options
         (buttonAction)="attrLvlUp(a.fcName)"
         ></app-btn-options>
@@ -20,18 +24,6 @@
 
     </div>
 
-  </div>
-
-  <!-- Konstans csoport -->
-
-  <div class="w100 flexCont margBott1">
-
-    <h3>Konstansok</h3>
-
-    <app-attribute
-    [nev]="'Esszencia'"
-    [fcName]="'esszencia'"
-    ></app-attribute>
   </div>
 
 </div>

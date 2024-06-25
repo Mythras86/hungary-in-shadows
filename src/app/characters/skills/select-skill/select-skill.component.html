@@ -1,0 +1,31 @@
+<!-- fejléc -->
+<div class="ntl text1 center w90" >
+  Szakértelmek
+</div>
+
+<!-- visszagomb -->
+<button class="itemRemove text1 w10 center" type="button" (click)="onClose()">X</button>
+
+<div class="w100" *ngFor="let elem of csoportok">
+
+  <h3 class="margTop1">{{elem}}</h3>
+
+  <div class="w100 flexCont" *ngFor="let skill of getSkills(elem)">
+    <div class="flex1 text1 nbl" (click)="onSave(skill.nev, skill.multi)">{{skill.nev}}</div>
+    <div class="w10 text1 center nprpl">{{skill.karmaKtsg}}</div>
+    <div class="w30 text1 center nrng">{{getAttrRovid(skill.kapTul)}}</div>
+
+    <input class="text1 w100" type="text"
+    id="{{skill.nev}}"
+    [placeholder]="'Írd be a pontos megnevezést'"
+    *ngIf="skill.multi == true">
+
+  </div>
+
+</div>
+
+
+<!-- <div *ngFor="let spec of skillsSpecUtil">
+  <div>{{spec.nev}}</div>
+  <div>{{spec.karmaKtsg}}</div>
+</div> -->

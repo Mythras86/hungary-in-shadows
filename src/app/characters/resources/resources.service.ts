@@ -44,19 +44,19 @@ export class ResourcesService {
   }
 
   payKarma(ertek: number):void {
-    this.getFc('elkoltottKarma')?.patchValue(this.getFc('elkoltottKarma').value - ertek);
+    this.getFc('elkoltottKarma')?.patchValue(-ertek);
   }
 
   getKarma(ertek: number):void {
-    this.getFc('szerzettKarma')?.patchValue(this.getFc('szerzettKarma').value + ertek);
+    this.getFc('szerzettKarma')?.patchValue(+ertek);
   }
 
   payToke(ertek: number):void {
-    this.getFc('elkoltottToke')?.patchValue(this.getFc('elkoltottToke').value - ertek);
+    this.getFc('elkoltottToke')?.patchValue(-ertek);
   }
 
   getToke(ertek: number):void {
-    this.getFc('szerzettToke')?.patchValue(this.getFc('szerzettToke').value + ertek);
+    this.getFc('szerzettToke')?.patchValue(+ertek);
   }
 
   getSzabadKarma(): number {

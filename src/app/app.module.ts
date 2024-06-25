@@ -34,6 +34,7 @@ import { NewplayerComponent } from './initiative/newplayer/newplayer.component';
 import { AttributeComponent } from './characters/attributes/attribute/attribute.component';
 import { SkillComponent } from './characters/skills/skill/skill.component';
 import { DetailComponent } from './characters/details/detail/detail.component';
+import { SelectSkillComponent } from './characters/skills/select-skill/select-skill.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { DetailComponent } from './characters/details/detail/detail.component';
     StatusmonitorComponent,
     NewplayerComponent,
     DetailComponent,
+    SelectSkillComponent,
   ],
   imports: [
     BrowserModule,
