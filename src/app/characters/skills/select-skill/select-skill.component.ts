@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Subject } from 'rxjs';
-import { SkillInterface, SkillSpecInterface, skillsSpecUtil, skillsUtil } from '../skills.util';
+import { SkillInterface, skillsUtil } from '../skills.util';
 import { attributesUtil } from '../../attributes/attributes-utility';
 
 @Component({
@@ -24,11 +24,6 @@ export class SelectSkillComponent {
   getSkills(csoport: string):Array<SkillInterface> {
     const filteredSkills = skillsUtil.filter(x=>x.csoport == csoport);
     return filteredSkills;
-  }
-
-  getSpecs(skillname: string):Array<SkillSpecInterface> {
-    const filteredSpecs = skillsSpecUtil.filter(x=>x.spec == skillname);
-    return filteredSpecs;
   }
 
   getAttrRovid(fcName: string): string {

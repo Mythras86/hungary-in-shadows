@@ -28,7 +28,7 @@
           </app-skill>
           <div buttons *ngIf="select.status == skill.nev+i" class="buttonCont w100 posAbs btnBack">
             <button class="text1 itemGet" type="button">Szintlépés</button>
-            <button class="text1 itemGet" (click)="s.newSpec(i)" type="button">Specializáció</button>
+            <button *ngIf="skill.csoport == 'Aktív szakértelmek'" class="text1 itemGet" (click)="s.newSpec(skill.nev, i)" type="button">Specializáció</button>
             <button class="text1 itemRemove" type="button" (click)="s.removeSkill(i)">Törlés</button>
           </div>
         </div>

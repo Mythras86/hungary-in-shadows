@@ -1,0 +1,13 @@
+<!-- fejléc -->
+<div class="ntl text1 center w90" >
+  {{mainSkill}} specializációk
+</div>
+
+<!-- visszagomb -->
+<button class="itemRemove text1 w10 center" type="button" (click)="onClose()">X</button>
+
+<div class="w100 flexCont" *ngFor="let spec of getSpecs()">
+  <div class="flex1 text1 nbl" (click)="onSave(spec.nev)">{{spec.nev}}</div>
+  <div class="w10 text1 center nprpl">{{spec.karmaKtsg}}</div>
+
+</div>

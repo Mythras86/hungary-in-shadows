@@ -35,6 +35,7 @@ import { AttributeComponent } from './characters/attributes/attribute/attribute.
 import { SkillComponent } from './characters/skills/skill/skill.component';
 import { DetailComponent } from './characters/details/detail/detail.component';
 import { SelectSkillComponent } from './characters/skills/select-skill/select-skill.component';
+import { SelectSkillSpecComponent } from './characters/skills/select-skill-spec/select-skill-spec.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { SelectSkillComponent } from './characters/skills/select-skill/select-sk
     NewplayerComponent,
     DetailComponent,
     SelectSkillComponent,
+    SelectSkillSpecComponent,
   ],
   imports: [
     BrowserModule,

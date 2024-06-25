@@ -6,6 +6,7 @@ import { SkillSpecFG, SkillsFG } from './skills.model';
 import { ModalService } from 'src/app/elements/modals/modal.service';
 import { SkillsComponent } from './skills.component';
 import { SelectSkillComponent } from './select-skill/select-skill.component';
+import { SelectSkillSpecComponent } from './select-skill-spec/select-skill-spec.component';
 
 @Injectable({
   providedIn: 'root'
@@ -125,9 +126,10 @@ export class SkillsService {
       w => this.addSkill(w[0], w[1])
     );
   }
-  newSpec(i: number): void {
-    this.modalS.openModal(SelectSkillComponent, '').subscribe(
-      w => this.addSkill(w[0], w[1])
+
+  newSpec(nev: string, i: number): void {
+    this.modalS.openModal(SelectSkillSpecComponent, {mainSkill: nev}).subscribe(
+      w => this.addSpec(w, i)
     );
   }
 }
