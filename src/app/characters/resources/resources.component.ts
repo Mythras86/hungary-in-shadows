@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ResourcesService } from './resources.service';
 import { karmaUtil, resInterface, tokeUtil } from './resources-utility';
 import { ModalService } from 'src/app/elements/modals/modal.service';
-import { LevelcontrolComponent } from 'src/app/elements/Inputs/levelcontrol/levelcontrol.component';
+import { LevelcontrolComponent } from 'src/app/elements/levelcontrol/levelcontrol.component';
 
 @Component({
   selector: 'app-resources',
@@ -44,13 +44,11 @@ export class ResourcesComponent implements OnInit {
       );
     }
 
-    updateKarma(valtozas: number): void[] {
-      return [
-        // kifizetés
-        this.s.payKarma(valtozas),
-        // értékszerzés
-        this.s.getToke(valtozas*7500)
-      ];
+    updateKarma(valtozas: number): void {
+      // kifizetés
+      this.s.payKarma(valtozas);
+      // értékszerzés
+      this.s.getToke(valtozas*7500);
     }
 
   exchangeToke():void {
@@ -71,13 +69,11 @@ export class ResourcesComponent implements OnInit {
       );
     }
 
-    updateToke(valtozas: number): void[] {
-      return [
-        // kifizetés
-        this.s.payToke(valtozas*7500),
-        // értékszerzés
-        this.s.getKarma(valtozas)
-      ];
+    updateToke(valtozas: number): void {
+      // kifizetés
+      this.s.payToke(valtozas*7500);
+      // értékszerzés
+      this.s.getKarma(valtozas);
     }
 
 

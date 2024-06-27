@@ -1,6 +1,6 @@
 <div class="flexCont w100" *ngIf="!menuOn" (click)="toggleMenu()">
-  <h2 class="nbl flex1 center  text2" *ngIf="!userIsAuthenticated && !menuOn">Üdv az Árnyak között!</h2>
-  <h2 class="nbl flex1 center" *ngIf="userIsAuthenticated && !menuOn">{{getAName()}}</h2>
+  <div class="nbl flex1 center  text2" *ngIf="!userIsAuthenticated && !menuOn">Üdv az Árnyak között!</div>
+  <div class="nbl flex1 center" *ngIf="userIsAuthenticated && !menuOn">{{getAName()}}</div>
   <div class="menu nyllw center">&#x2630;</div>
 </div>
 

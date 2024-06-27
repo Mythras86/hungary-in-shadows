@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { SkillInterface, skillsUtil } from '../skills.util';
 import { attributesUtil } from '../../attributes/attributes-utility';
@@ -10,20 +10,28 @@ import { attributesUtil } from '../../attributes/attributes-utility';
 })
 export class SelectSkillComponent {
 
-  constructor() {}
+  constructor() {
+    this.csoportok = ['Aktív szakértelmek', 'Ismeret szakértelmek', 'Nyelvi szakértelmek'];
+  }
 
-  csoportok: Array<string> = [
-    'Aktív szakértelmek',
-    'Ismeret szakértelmek',
-    'Nyelvi szakértelmek'
-  ];
+  csoportok: Array<string> = [];
 
   public canBeClosed: boolean = true;
   closeEvent: Subject<any> = new Subject;
 
-  getSkills(csoport: string):Array<SkillInterface> {
-    const filteredSkills = skillsUtil.filter(x=>x.csoport == csoport);
-    return filteredSkills;
+  filter: string = 'Nincs';
+  ownedSkills: Array<string> = []
+  skills: Array<SkillInterface> = []
+  karma: number = 0;
+
+  setFilter(keyWord: string):void {
+    const csoport: Array<string> = ['Aktív szakértelmek', 'Ismeret szakértelmek', 'Nyelvi szakértelmek'];
+    this.filter = keyWord;
+    if (this.filter == 'Nincs') {
+      this.csoportok = csoport;
+    } else {
+      this.csoportok = csoport.filter(x=>x == keyWord);
+    }
   }
 
   getAttrRovid(fcName: string): string {
@@ -31,7 +39,9 @@ export class SelectSkillComponent {
     return rovid;
   }
 
-  loadData() {
+  loadData(modalData: any) {
+    this.ownedSkills = modalData.ownedSkills;
+    this.karma = modalData.karma;
   }
 
   onSave(nev: string, multi: boolean) {
@@ -42,6 +52,9 @@ export class SelectSkillComponent {
       ];
     }
     const input = (<HTMLInputElement>document.getElementById(nev)).value;
+    if (input == '') {
+      return
+    }
     return [
       this.closeEvent.next([nev, input]),
       this.closeEvent.complete()
@@ -52,4 +65,10 @@ export class SelectSkillComponent {
     this.closeEvent.complete();
   }
 
+  getSkills(csoport: string):Array<SkillInterface> {
+    const karmaFilter = skillsUtil.filter(x=>x.karmaKtsg <= this.karma);
+    const skillsByCsoport = karmaFilter.filter(x=>x.csoport == csoport);
+    const filteredSkills = skillsByCsoport.filter(x=> !this.ownedSkills.includes(x.nev));
+    return filteredSkills;
+  }
 }

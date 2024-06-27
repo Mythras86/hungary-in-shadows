@@ -31,11 +31,10 @@ export class AttributesService {
       //speciális
       magia: [0, Validators.required],
       chiAramlas: [0, Validators.required],
-      kiberKapacitas: [0, Validators.required],
       kockatartalek: [0, Validators.required],
       //konstans
       esszencia: [6, Validators.required],
-      reakcio: [0, Validators.required],
+      reakcio: [1, Validators.required],
       kezdemenyezes: [1, Validators.required],
     };
     return this.attributesForm = this.fb.group(attributes) as AttributesFG;
@@ -56,7 +55,6 @@ export class AttributesService {
       // speciális
       magia: w.magia,
       chiAramlas: w.chiAramlas,
-      kiberKapacitas: w.kiberKapacitas,
       kockatartalek: w.kockatartalek,
       // konstans
       esszencia: w.esszencia,
@@ -69,15 +67,14 @@ export class AttributesService {
     return this.attributesForm.get(fcName) as FormControl;
   }
 
-  getMod(fcName: string):number {
-    return 0;
-  }
-
   getTulErtek(fcName: string): number {
     const ertek = this.attributesForm.get(fcName)?.value
-    +this.getMod(fcName);
-    +this.getDnsMod(fcName);
-    return ertek;
+    const teljes = ertek + this.getMod(fcName) + this.getDnsMod(fcName);
+    return teljes;
+  }
+
+  getMod(fcName: string):number {
+    return 0;
   }
 
   getDnsMod(fcName: string):number {
@@ -90,13 +87,6 @@ export class AttributesService {
       return 0;
     }
     return 0;
-  }
-
-  getReakcio(): number {
-    const gyo = this.getTulErtek('fizGyo');
-    const int = this.getTulErtek('asztGyo');
-    const akcio = Math.floor((gyo+int)/2);
-    return akcio;
   }
 
 }

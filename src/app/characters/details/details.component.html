@@ -7,7 +7,7 @@
   [ngClass]="select.toggleClass(item.fcName)" (click)="select.toggleStatus(item.fcName)"
   >
 
-    <app-inp-details *ngIf="item.tipus !== 'kepessegek'" class="flexCont w100"
+    <app-detail *ngIf="item.tipus !== 'kepessegek'" class="flexCont w100"
     [nev] = "item.nev"
     [tipus] = "item.tipus"
     [egyseg] = "item.egyseg"
@@ -15,18 +15,18 @@
     [megjegyzes] = "item.megjegyzes"
     [ertek] = "s.getFc(item.fcName)?.value"
     [lista] = "getList(item.fcName)"
-    ></app-inp-details>
+    ></app-detail>
 
     <div *ngIf="select.status == item.fcName" class="buttonCont posAbs btnBack">
       <app-btn-options
-      (buttonAction)="setDetail(item.fcName)"
+        (buttonAction)="setDetail(item.fcName)"
       ></app-btn-options>
     </div>
 
   </div>
 
   <div class="flexCont w100">
-    <div class="ntl text1 w100 center">
+    <div class="nwht text1 w100 center">
       Különleges képességek
     </div>
     <div *ngIf="getDefault('kepessegek') == null" class="grayCell w100 text1"></div>

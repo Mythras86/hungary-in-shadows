@@ -109,7 +109,6 @@ export class CharsMainService {
       kockatartalek: number,
       magia: number,
       chiAramlas: number,
-      kiberKapacitas: number,
       //konstans
       esszencia: number,
       reakcio: number,
@@ -174,7 +173,6 @@ export class CharsMainService {
     kockatartalek: number,
     magia: number,
     chiAramlas: number,
-    kiberKapacitas: number,
     //konstans
     esszencia: number,
     reakcio: number,
@@ -238,7 +236,6 @@ export class CharsMainService {
       kockatartalek: kockatartalek,
       magia: magia,
       chiAramlas: chiAramlas,
-      kiberKapacitas: kiberKapacitas,
       //konstans
       esszencia: esszencia,
       reakcio: reakcio,
@@ -306,7 +303,6 @@ export class CharsMainService {
     kockatartalek: number,
     magia: number,
     chiAramlas: number,
-    kiberKapacitas: number,
     //konstans
     esszencia: number,
     reakcio: number,
@@ -370,7 +366,6 @@ export class CharsMainService {
       kockatartalek: kockatartalek,
       magia: magia,
       chiAramlas: chiAramlas,
-      kiberKapacitas: kiberKapacitas,
       //konstans
       esszencia: esszencia,
       reakcio: reakcio,

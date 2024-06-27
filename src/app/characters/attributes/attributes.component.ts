@@ -5,7 +5,7 @@ import { ResourcesService } from '../resources/resources.service';
 import { DetailsService } from '../details/details.service';
 import { ItemSelectService } from 'src/app/elements/item-select/item-select.service';
 import { ModalService } from 'src/app/elements/modals/modal.service';
-import { LevelcontrolComponent } from 'src/app/elements/Inputs/levelcontrol/levelcontrol.component';
+import { LevelcontrolComponent } from 'src/app/elements/levelcontrol/levelcontrol.component';
 import { AttributesModel } from './attributes.model';
 
 @Component({
@@ -34,13 +34,6 @@ export class AttributesComponent implements OnInit {
     return csoport;
   }
 
-  getValue(fcName: string): number {
-    if (fcName == 'reakcio') {
-      return this.s.getReakcio();
-    }
-    return this.s.getFc(fcName).value;
-  }
-
   checkEssence(elem: string) {
     const magia = this.s.getTulErtek('magia');
     const chi = this.s.getTulErtek('chi');
@@ -62,26 +55,42 @@ export class AttributesComponent implements OnInit {
     lepes: attr.lepes,
     valto: 1,
     tokeKtsg: 0,
-    karmaKtsg: 3,
+    karmaKtsg: 6,
     esszKtsg: 0,
     celErtek: this.s.getFc(fcName).value,
     egyseg: attr.egyseg,
     minErtek: this.s.getFc(fcName).value,
     maxErtek: attr.max,
     }).subscribe(
-      w => this.updateData(w, fcName)
+      w => this.lvlUp(w, fcName)
     );
   }
 
-  updateData(valtozas: number, fcName: string): any[] {
-    return [
-      // kifizetés
-      this.resS.payKarma(valtozas*3),
-      // értékszerzés
-      this.s.attributesForm.get(fcName)?.patchValue(+valtozas)
-    ];
+  lvlUp(valtozas: number, fcName: string): void {
+    const form = this.s.attributesForm.get(fcName);
+    // kifizetés
+    this.resS.payKarma(valtozas*3);
+    // értékszerzés
+    form?.patchValue(form.value+valtozas);
+  }
+
+  updKezdemenyezes(): void {
+    this.s.attributesForm.get('kezdemenyezes')?.setValue(1);
+  }
+
+  updReakcio(): number {
+    const gyo = this.s.getTulErtek('fizGyo');
+    const int = this.s.getTulErtek('asztGyo');
+    const reakcio = Math.floor((gyo+int)/2);
+    return reakcio;
   }
 
   ngOnInit(): void {
+    this.s.attributesForm.get('fizGyo')?.valueChanges.subscribe(
+      ()=> this.s.attributesForm.get('reakcio')?.setValue(this.updReakcio())
+    );
+    this.s.attributesForm.get('asztGyo')?.valueChanges.subscribe(
+      ()=> this.s.attributesForm.get('reakcio')?.setValue(this.updReakcio())
+    );
   }
 }

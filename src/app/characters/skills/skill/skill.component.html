@@ -1,10 +1,12 @@
 
-<div class="nbl text1 w80">{{nev}}</div>
-<div class="ngrn text1 center w20">({{szint}}) {{getTeljesSzint(kapTul)+szint}} </div>
+<div class="ngrn text1 center w15">{{getTeljesSzint(kapTul)+szint}} </div>
+<div class="nwht text1 center w10">{{szint}}</div>
+<div class="nwht text1 w75">{{nev}} {{setNevKieg}} </div>
 
-<div *ngFor="let spec of specs">
-  <div class="nwht text1 flex1">{{spec.nev}} {{spec.szint}}</div>
-  <div>{{spec.szint + szint + kapTulSzint}}</div>
+<div class="w100 flexCont" *ngFor="let spec of specs">
+  <div class="nprpl text1 w75">&#10503; {{spec.nev}} </div>
+  <div class="nprpl text1 w10 center">{{spec.szint}}</div>
+  <div class="ngrn text1 w15 center">{{spec.szint + getTeljesSzint(kapTul)+szint}}</div>
 </div>
 
 <ng-content select="buttons"></ng-content>

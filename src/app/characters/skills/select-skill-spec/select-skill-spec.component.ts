@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { SkillSpecInterface, skillsSpecUtil } from '../skills.util';
 
@@ -7,7 +7,7 @@ import { SkillSpecInterface, skillsSpecUtil } from '../skills.util';
   templateUrl: './select-skill-spec.component.html',
   styleUrls: ['./select-skill-spec.component.css']
 })
-export class SelectSkillSpecComponent {
+export class SelectSkillSpecComponent implements OnInit {
 
   constructor() {}
 
@@ -21,14 +21,12 @@ export class SelectSkillSpecComponent {
   closeEvent: Subject<any> = new Subject;
 
   mainSkill: string = '';
+  ownedSpecs: Array<string> = [];
+  specs: Array<SkillSpecInterface> = []
 
   loadData(modalData: any): void {
     this.mainSkill = modalData.mainSkill;
-  }
-
-  getSpecs(): Array<SkillSpecInterface> {
-    const specs = skillsSpecUtil.filter(x=>x.spec == this.mainSkill);
-    return specs;
+    this.ownedSpecs = modalData.ownedSpecs;
   }
 
   onSave(nev: string) {
@@ -38,6 +36,16 @@ export class SelectSkillSpecComponent {
 
   onClose() {
     this.closeEvent.complete();
+  }
+
+  getSpecs():Array<SkillSpecInterface> {
+    const specBySkill = skillsSpecUtil.filter(x=>x.spec == this.mainSkill);
+    const filteredSpecs = specBySkill.filter(x=> !this.ownedSpecs.includes(x.nev));
+    return this.specs = filteredSpecs;
+  }
+
+  ngOnInit(): void {
+    this.getSpecs();
   }
 
 }

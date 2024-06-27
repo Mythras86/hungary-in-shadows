@@ -3,7 +3,7 @@ import { DetailsService } from './details.service';
 import { ItemSelectService } from 'src/app/elements/item-select/item-select.service';
 import { detailsInterface, detailsUtil, dnsUtil, nemekUtil, nyelvekUtil } from './details-utility';
 import { ModalService } from 'src/app/elements/modals/modal.service';
-import { InpDetailsComponent } from 'src/app/elements/Inputs/inp-details/inp-details.component';
+import { DetailComponent } from './detail/detail.component';
 
 @Component({
   selector: 'app-details',
@@ -82,7 +82,7 @@ export class DetailsComponent implements OnInit {
 
   setDetail(fcName: string) {
     const detail: detailsInterface = detailsUtil.filter(x=>x.fcName == fcName)[0];
-    this.modalS.openModal(InpDetailsComponent, {
+    this.modalS.openModal(DetailComponent, {
       editMode: true,
       nev: detail.nev,
       tipus: detail.tipus,

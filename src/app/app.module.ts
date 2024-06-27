@@ -15,10 +15,9 @@ import { AuthInterceptor } from './authentication/auth-interceptor';
 import { SpinnerComponent } from './elements/spinner/spinner.component';
 import { HideContentComponent } from './elements/hide-content/hide-content.component';
 import { ModalWrapperComponent } from './elements/modals/modal-wrapper.component';
-import { LevelcontrolComponent } from './elements/Inputs/levelcontrol/levelcontrol.component';
+import { LevelcontrolComponent } from './elements/levelcontrol/levelcontrol.component';
 import { FieldTokeComponent } from './elements/Fields/field-toke/field-toke.component';
 import { FieldKarmaComponent } from './elements/Fields/field-karma/field-karma.component';
-import { InpDetailsComponent } from './elements/Inputs/inp-details/inp-details.component';
 import { BtnOptionsComponent } from './elements/Buttons/btn-options/btn-options.component';
 import { AttributesComponent } from './characters/attributes/attributes.component';
 import { CharsMainComponent } from './characters/chars-main.component';
@@ -49,7 +48,6 @@ import { SelectSkillSpecComponent } from './characters/skills/select-skill-spec/
 
     ModalWrapperComponent,
     LevelcontrolComponent,
-    InpDetailsComponent,
 
     MainComponent,
     CharsListComponent,

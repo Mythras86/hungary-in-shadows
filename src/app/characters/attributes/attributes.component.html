@@ -2,14 +2,14 @@
 
   <!-- Fizikum és Asztrál és Speciális csoport -->
 
-  <div class="w100 margBott1" *ngFor="let elem of csoportok">
-    <h3>{{elem}}</h3>
+  <div class="w100" *ngFor="let elem of csoportok">
+    <h3 class="margTop1">{{elem}}</h3>
 
     <div class="flexCont w100 posRel" *ngFor="let a of attributes"
     [ngClass]="select.toggleClass(a.fcName)" (click)="select.toggleStatus(a.fcName)">
     <app-attribute *ngIf="elem == a.csoport"
       [nev]="a.nev"
-      [szint]="getValue(a.fcName)"
+      [szint]="s.getFc(a.fcName).value"
       [max]="a.max"
       [modosito]="s.getMod(a.fcName)"
       [dnsMod]="s.getDnsMod(a.fcName)"

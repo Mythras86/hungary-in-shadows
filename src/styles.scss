@@ -76,13 +76,17 @@ li :hover {
 }
 
 h2 {
+  @extend .ntl;
+  @extend .margTop1;
+  @extend .center;
+  width: 100%;
   padding: 0.5rem 1rem;
 }
 
 h3 {
-  @extend .nwht;
+  @extend .ntl;
   @extend .margBott1;
-  padding: 0.3rem 0.5rem;
+  padding: 0.5rem;
   width: 100%;
 }
 

@@ -4,7 +4,7 @@
     <h3>{{f}}</h3>
 
     <div *ngFor="let n of getFilteredNpcs(f)">
-      <div class="ntl text1" (click)="s.buttonAction(n.nev)">{{n.nev}}</div>
+      <div class="ntl text1" (click)="showOneNpc(n.nev)">{{n.nev}}</div>
     </div>
   </div>
 </div>

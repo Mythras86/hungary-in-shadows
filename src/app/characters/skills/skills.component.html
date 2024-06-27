@@ -1,7 +1,7 @@
 <!-- új szakértelem -->
 
-<div *ngIf="resS.getSzabadKarma() >= 2" class="buttonCont w100 btnBack margBott1">
-  <button class="itemGet text1 center" type="button" (click)="s.newSkill()">Új Szakértelem</button>
+<div *ngIf="resS.getSzabadKarma() >= 2" class="buttonCont w100 btnBack">
+  <button class="itemGet text1 center" type="button" (click)="newSkill(); select.clearSelected();">Új Szakértelem</button>
 </div>
 
 <div class="flexCont w100" [formGroup]="s.skillsForm" *ngIf="s.skillsForm">
@@ -11,24 +11,26 @@
   <div class="w100" formArrayName="skills" >
     <div class="flexCont" *ngFor='let elem of csoportok'>
 
-      <h3 class="margTop1">{{elem}}</h3>
+      <h3 class="margTop1" *ngIf="csoportCheck(elem)">{{elem}}</h3>
 
       <!-- csoport konténer -->
 
-      <div class="w100" [formGroupName]='i' *ngFor="let skill of sortedSkills(); let i = index">
+      <div class="w100" [formGroupName]='i' *ngFor="let skill of skills.value; let i = index">
 
-        <div class="posRel" *ngIf="skill.csoport == elem"
-        [ngClass]="select.toggleClass(skill.nev+i)" (click)="select.toggleStatus(skill.nev+i)">
+        <div class="posRel margBott1" *ngIf="skill.csoport == elem"
+          [ngClass]="select.toggleClass(skill.nev+i)" (click)="select.toggleStatus(skill.nev+i)">
           <app-skill class="flexCont"
           [nev]="skill.nev"
+          [nevKieg]="skill.nevKieg"
           [szint]="skill.szint"
           [kapTul]="skill.kapTul"
           [kapTulSzint]="0"
+          [specs]="getSpecs(i)"
           >
           </app-skill>
           <div buttons *ngIf="select.status == skill.nev+i" class="buttonCont w100 posAbs btnBack">
-            <button class="text1 itemGet" type="button">Szintlépés</button>
-            <button *ngIf="skill.csoport == 'Aktív szakértelmek'" class="text1 itemGet" (click)="s.newSpec(skill.nev, i)" type="button">Specializáció</button>
+            <button class="text1 itemGet" type="button"  (click)="skillLvlUp(skill.nev, i); select.clearSelected();" >Szintlépés</button>
+            <button *ngIf="skill.multi == false" class="text1 itemGet" (click)="newSpec(skill.nev, i); select.clearSelected();" type="button">Új spec</button>
             <button class="text1 itemRemove" type="button" (click)="s.removeSkill(i)">Törlés</button>
           </div>
         </div>

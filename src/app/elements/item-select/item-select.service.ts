@@ -1,4 +1,3 @@
-import { NgStyle } from '@angular/common';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -10,20 +9,24 @@ export class ItemSelectService {
 
   status: string = '';
 
-  toggleStatus(fcName: string):void {
-   if (this.status == '' || this.status !== fcName) {
-     this.status = fcName;
+  toggleStatus(key: string):void {
+   if (this.status == '' || this.status !== key) {
+     this.status = key;
    } else {
      this.status = '';
    }
 
   }
 
-  toggleClass(fcName: string): string {
-    if (this.status == fcName) {
+  toggleClass(key: string): string {
+    if (this.status == key) {
       return 'selected';
     }
     return '';
+  }
+
+  clearSelected() {
+    this.status = '';
   }
 
 }

@@ -2,7 +2,7 @@
 <div class="flexCont w100" [formGroup]="s.statusForm" *ngIf="s.statusForm">
 
   <!-- Asztrális állapot -->
-  <app-statusmonitor class="flexCont w100 margBott1"
+  <app-statusmonitor class="flexCont w100 margTop1"
   [headText]="'Asztrális állapot'"
   [statusCode]="s.getFc('asztralisAllapot').value"
   (newStatusCode)="s.setStatus($event, 'asztralisAllapot')"
@@ -22,7 +22,7 @@
 
   <!-- Fizikai állapot -->
 
-  <app-statusmonitor class="flexCont w100 margBott1"
+  <app-statusmonitor class="flexCont w100 margTop1"
   [headText]="'Fizikai állapot'"
   [statusCode]="s.getFc('fizikaiAllapot').value"
   (newStatusCode)="s.setStatus($event, 'fizikaiAllapot')"
@@ -42,7 +42,7 @@
   </div>
  -->
 
-    <div class="w50 text1 center nwht">
+    <div class="w50 text1 center nwht margTop1">
       <div>
         Kezdeményezés
       </div>
@@ -51,7 +51,7 @@
       </div>
     </div>
 
-    <div class="w50 text1 center nwht">
+    <div class="w50 text1 center nwht margTop1">
       <div>
         Célszám
       </div>

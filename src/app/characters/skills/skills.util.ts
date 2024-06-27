@@ -16,6 +16,8 @@ export const skillsUtil: Array<SkillInterface> = [
   {multi: false, nev: 'Biotech', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztUgy'},
   {multi: false, nev: 'Elektronika', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztUgy'},
   {multi: false, nev: 'Műszaki', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztUgy'},
+  {multi: true, nev: 'Egzotikus fegyv.', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'fizUgy'},
+  {multi: true, nev: 'Szakma', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'fizUgy'},
   // ismeret
   {multi: true, nev: 'Érdeklődés', csoport: 'Ismeret szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
   {multi: true, nev: '6. világbeli', csoport: 'Ismeret szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
@@ -24,6 +26,7 @@ export const skillsUtil: Array<SkillInterface> = [
   {multi: true, nev: 'Utcai ism.', csoport: 'Ismeret szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
   // nyelvi
   {multi: true, nev: 'Nyelv', csoport: 'Nyelvi szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
+  {multi: false, nev: 'Anyanyelv', csoport: 'Nyelvi szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
   {multi: true, nev: 'Írás/olvasás', csoport: 'Nyelvi szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
 ];
 
@@ -51,7 +54,6 @@ export const skillsSpecUtil: Array<SkillSpecInterface> = [
   {nev: 'Víz alatti harc', spec: 'Közelharc', karmaKtsg: 2},
   {nev: 'Kábítófegyverek', spec: 'Közelharc', karmaKtsg: 2},
   {nev: 'Kiberfegyverek', spec: 'Közelharc', karmaKtsg: 2},
-  {nev: 'Egzotikus közelh. f.', spec: 'Közelharc', karmaKtsg: 2},
 
   {nev: 'Pisztolyok', spec: 'Tűzfegyverek', karmaKtsg: 2},
   {nev: 'Sörétes puskák', spec: 'Tűzfegyverek', karmaKtsg: 2},
@@ -61,7 +63,6 @@ export const skillsSpecUtil: Array<SkillSpecInterface> = [
   {nev: 'Ágyúk', spec: 'Tűzfegyverek', karmaKtsg: 2},
   {nev: 'Lézerfegyverek', spec: 'Tűzfegyverek', karmaKtsg: 2},
   {nev: 'Rakétavetők', spec: 'Tűzfegyverek', karmaKtsg: 2},
-  {nev: 'Egzotikus tűzf.', spec: 'Tűzfegyverek', karmaKtsg: 2},
 
   {nev: 'Tájékozódás', spec: 'Vadonjárás', karmaKtsg: 2},
   {nev: 'Túlélőtechnikák', spec: 'Vadonjárás', karmaKtsg: 2},
@@ -92,8 +93,8 @@ export const skillsSpecUtil: Array<SkillSpecInterface> = [
   {nev: 'Rituális varázslás', spec: 'Varázslás', karmaKtsg: 2},
 
   {nev: 'Kiberharc', spec: 'Kiberháború', karmaKtsg: 2},
-  {nev: 'Elektro-hadviselés', spec: 'Kyberháború', karmaKtsg: 2},
-  {nev: 'Rendszerfeltörés', spec: 'Kyberháború', karmaKtsg: 2},
+  {nev: 'Elektro-hadviselés', spec: 'Kiberháború', karmaKtsg: 2},
+  {nev: 'Rendszerfeltörés', spec: 'Kiberháború', karmaKtsg: 2},
 
   {nev: 'Alkímia', spec: 'Megbűvölés', karmaKtsg: 2},
   {nev: 'Varázstárgy készítés', spec: 'Megbűvölés', karmaKtsg: 2},

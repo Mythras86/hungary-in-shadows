@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { npcUtil } from './npc-utility';
-import { Subject, filter, map } from 'rxjs';
+import { Subject } from 'rxjs';
 import { ModalService } from '../elements/modals/modal.service';
-import { NpcsService } from './npcs.service';
 
 @Component({
   selector: 'app-npcs',
@@ -12,7 +11,7 @@ import { NpcsService } from './npcs.service';
 export class NpcsComponent implements OnInit {
 
   constructor(
-    public s: NpcsService,
+    public modalS: ModalService,
   ) {}
 
   listMode: boolean = true;
@@ -44,6 +43,10 @@ export class NpcsComponent implements OnInit {
     const frakcio = npcUtil.map(x=>x.frakcio);
     const frakcioUnique = [...new Set(frakcio.map(x=> x))];
     return frakcioUnique;
+  }
+
+  showOneNpc(npcNev: string): void {
+    this.modalS.openModal(NpcsComponent, npcNev).subscribe();
   }
 
   ngOnInit(): void {

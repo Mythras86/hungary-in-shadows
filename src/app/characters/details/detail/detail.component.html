@@ -1,1 +1,66 @@
-<p>detail works!</p>
+<!-- konténer -->
+
+<div class="flexCont w100">
+
+  <!-- fejléc -->
+  <div class="nwht text1 center {{editMode ? 'w90': 'w100'}}" >
+    {{nev}}
+  </div>
+
+  <!-- visszagomb -->
+  <button *ngIf="editMode" class="itemRemove text1 w10 center" type="button" (click)="onClose()">X</button>
+
+  <div *ngIf="!editMode" class="grayCell text1 w100 center" [style.backgroundColor]="(tipus == 'color' ? ertek : 'fff')">
+    {{ertek}} {{egyseg}}
+  </div>
+
+  <!-- megjegyzés -->
+  <div *ngIf="editMode" class="w100 nwht text1 center">
+    {{megjegyzes}}
+  </div>
+
+
+  <!-- input -->
+  <input *ngIf="editMode && tipus == 'text'" class="w100 grayCell text1 center" [id]="fcName" [type]="tipus" [value]="ertek">
+
+  <!-- color input -->
+  <input *ngIf="editMode && tipus == 'color'"
+  list="presetcolors"
+  class="grayCell text1 center"
+  [id]="fcName"
+  type="color"
+  [value]="ertek">
+  <datalist *ngIf="tipus == 'color'" id="presetcolors">
+    <option>#c58c85</option>
+    <option>#ecbcb4</option>
+    <option>#d1a3a4</option>
+    <option>#a1665e</option>
+    <option>#503335</option>
+    <option>#592f2a</option>
+  </datalist>
+
+  <!-- normal number input -->
+  <div *ngIf="editMode && tipus == 'number'" class="flexCont">
+    <input class="w80 grayCell text1 center" [id]="fcName" type="number" [value]="ertek">
+    <div class="w20 grayCell text1 center">{{egyseg}}</div>
+  </div>
+
+  <!-- list input -->
+  <select *ngIf="editMode && tipus == 'select'" class="w100 grayCell text1 center" [id]="fcName">
+    <option selected [value]="ertek">{{ertek}}</option>
+    <option *ngFor="let listitem of lista" [value]=listitem>{{listitem}}</option>
+  </select>
+
+  <!-- input field with list -->
+
+  <input *ngIf="editMode && tipus == 'inpselect'" class="w100 grayCell text1 center" type="text1" [id]="fcName" [attr.list]="fcName+'x'" [value]="ertek"/>
+  <datalist *ngIf="tipus == 'inpselect'" [id]="fcName+'x'">
+    <option *ngFor="let listitem of lista" [value]=listitem>{{listitem}}</option>
+  </datalist>
+
+  <!-- gombok -->
+</div>
+
+<div *ngIf="editMode" class="buttonCont w100 margTop1">
+  <button class="itemGet text1" type="button" (click)="onSave(fcName)">Mentés</button>
+</div>

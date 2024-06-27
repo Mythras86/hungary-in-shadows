@@ -12,7 +12,6 @@ export const attributesUtil: Array<AttrInterface> = [
   //speciális
   {csoport: 'Speciális', nev: 'Mágia', rovidnev: 'MAG', fcName:'magia', max: 6, lepes: 6, egyseg: 'Szint', megjegyzes: 'van'},
   {csoport: 'Speciális', nev: 'Chi Áramlás', rovidnev: 'CHI', fcName:'chiAramlas', max: 6, lepes: 6, egyseg: 'Szint', megjegyzes: 'van'},
-  {csoport: 'Speciális', nev: 'Kiber Kapacitás', rovidnev: 'CYB', fcName:'kiberKapacitas', max: 6, lepes: 6, egyseg: 'Szint', megjegyzes: 'van'},
   {csoport: 'Speciális', nev: 'Kockatartalék', rovidnev: 'EDGE', fcName:'kockatartalek', max: 6, lepes: 6, egyseg: 'Szint', megjegyzes: 'van'},
   //konstans
   {csoport: 'Konstans', nev: 'Esszencia', rovidnev: 'ESSZ', fcName:'esszencia', max: 0, lepes: 0, egyseg: 'Szint', megjegyzes: 'van'},

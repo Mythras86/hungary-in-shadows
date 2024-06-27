@@ -122,7 +122,6 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         attrs.value.kockatartalek,
         attrs.value.magia,
         attrs.value.chiAramlas,
-        attrs.value.kiberKapacitas,
         // konstans
         attrs.value.esszencia,
         attrs.value.reakcio,
@@ -186,7 +185,6 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         attrs.value.kockatartalek,
         attrs.value.magia,
         attrs.value.chiAramlas,
-        attrs.value.kiberKapacitas,
         // konstans
         attrs.value.esszencia,
         attrs.value.reakcio,

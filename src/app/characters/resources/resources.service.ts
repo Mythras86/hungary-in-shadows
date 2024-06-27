@@ -9,7 +9,7 @@ export class ResourcesService {
 
   constructor(
     private fb: FormBuilder,
-  ) {}
+  ) { }
 
   resourcesForm!: ResourcesFG;
 
@@ -44,19 +44,23 @@ export class ResourcesService {
   }
 
   payKarma(ertek: number):void {
-    this.getFc('elkoltottKarma')?.patchValue(-ertek);
+    const form = this.getFc('elkoltottKarma');
+    form?.patchValue(form.value-ertek);
   }
 
   getKarma(ertek: number):void {
-    this.getFc('szerzettKarma')?.patchValue(+ertek);
+    const form = this.getFc('szerzettKarma');
+    form?.patchValue(form.value+ertek);
   }
 
   payToke(ertek: number):void {
-    this.getFc('elkoltottToke')?.patchValue(-ertek);
+    const form = this.getFc('elkoltottToke');
+    form?.patchValue(form.value-ertek);
   }
 
   getToke(ertek: number):void {
-    this.getFc('szerzettToke')?.patchValue(+ertek);
+    const form = this.getFc('szerzettToke');
+    form?.patchValue(form.value+ertek);
   }
 
   getSzabadKarma(): number {

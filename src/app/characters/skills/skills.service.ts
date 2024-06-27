@@ -3,10 +3,6 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { ResourcesService } from '../resources/resources.service';
 import { skillsSpecUtil, skillsUtil } from './skills.util';
 import { SkillSpecFG, SkillsFG } from './skills.model';
-import { ModalService } from 'src/app/elements/modals/modal.service';
-import { SkillsComponent } from './skills.component';
-import { SelectSkillComponent } from './select-skill/select-skill.component';
-import { SelectSkillSpecComponent } from './select-skill-spec/select-skill-spec.component';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +12,9 @@ export class SkillsService {
   constructor(
     private fb: FormBuilder,
     private resS: ResourcesService,
-    private modalS: ModalService,
-  ) { }
+ ) { }
 
   skillsForm!: FormGroup;
-
-  selectMode: boolean = false;
 
   createSkills(): FormGroup {
     const skills = {
@@ -30,47 +23,22 @@ export class SkillsService {
     return this.skillsForm = this.fb.group(skills);
   }
 
-  createSpecs(): FormGroup {
-    const specs = {
-      specs: this.fb.array([]),
-    };
-    return this.skillsForm = this.fb.group(specs);
-  }
-
   addSkill(nev: string, nevKieg: string): void {
     const skill = skillsUtil.filter(x => x.nev == nev).map(x => x)[0];
-    let veglegesNev: string = '';
-
     if (nev == null) {
       return;
     }
-    if (nevKieg == '') {
-      veglegesNev = nev;
-    } else {
-      veglegesNev = nev + ': ' + nevKieg;
-    }
     const skills = this.fb.group({
-      nev: [veglegesNev, Validators.required],
+      nev: [nev, Validators.required],
+      nevKieg: [nevKieg, Validators.required],
       csoport: [skill.csoport, Validators.required],
+      multi: [skill.multi],
       szint: [1, Validators.required],
       kapTul: [skill.kapTul],
+      specs: this.fb.array([]),
     }) as SkillsFG;
     this.resS.payKarma(skill.karmaKtsg);
     (this.skillsForm.get('skills') as FormArray).push(skills);
-  }
-
-  addSpec(nev: string, i: number): void {
-    if (nev == null) {
-      return;
-    }
-    const spec = skillsSpecUtil.filter(x => x.nev == nev).map(x => x)[0];
-    const specs = this.fb.group({
-      nev: [spec.nev, Validators.required],
-      spec: [spec.spec, Validators.required],
-      szint: [1, Validators.required],
-    }) as SkillSpecFG;
-    this.resS.payKarma(spec.karmaKtsg);
-    (((this.skillsForm.get('skills') as FormArray).at(i) as FormGroup).get('specs') as FormArray).push(specs);
   }
 
   setSkills(dataset: any[]): FormArray<SkillsFG> {
@@ -79,13 +47,18 @@ export class SkillsService {
       skills.push(
         this.fb.group({
           nev: e.nev,
-          nevKieg: e.nevKieg,
           csoport: e.csoport,
+          multi: e.multi,
           szint: e.szint,
-          kapTul: e.kapTul
-      }))
-    });
-    return skills;
+          kapTul: e.kapTul,
+          specs: this.setSpecs(e.specs)
+        }))
+      });
+      return skills;
+  }
+
+  setSpecs(specs: any[]) {
+
   }
 
   updateSkills(w: any): void {
@@ -107,29 +80,38 @@ export class SkillsService {
   addFirstLanguage(): void {
     const beszed = this.fb.group({
       nev: ['Anyanyelv', Validators.required],
+      nevKieg: ['', Validators.required],
       csoport: ['Nyelvi szakértelmek', Validators.required],
+      multi: false,
       szint: [4, Validators.required],
       kapTul: ['asztUgy'],
+      specs: this.fb.array([]),
     });
     (this.skillsForm.get('skills') as FormArray).push(beszed);
     const iras = this.fb.group({
-      nev: ['Írás / olvasás', Validators.required],
+      nev: ['Írás/olvasás', Validators.required],
+      nevKieg: ['', Validators.required],
       csoport: ['Nyelvi szakértelmek', Validators.required],
+      multi: false,
       szint: [2, Validators.required],
       kapTul: ['asztUgy'],
+      specs: this.fb.array([]),
     });
     (this.skillsForm.get('skills') as FormArray).push(iras);
   }
 
-  newSkill(): void {
-    this.modalS.openModal(SelectSkillComponent, '').subscribe(
-      w => this.addSkill(w[0], w[1])
-    );
+  addSpec(nev: string, i: number): void {
+    const spec = skillsSpecUtil.filter(x => x.nev == nev).map(x => x)[0];
+    if (nev == null) {
+      return;
+    }
+    const specs = this.fb.group({
+      nev: [nev, Validators.required],
+      spec: [spec.spec, Validators.required],
+      szint: [1, Validators.required],
+    }) as SkillSpecFG;
+    this.resS.payKarma(spec.karmaKtsg);
+    (((this.skillsForm.get('skills') as FormArray).at(i) as FormGroup).get('specs') as FormArray).push(specs);
   }
 
-  newSpec(nev: string, i: number): void {
-    this.modalS.openModal(SelectSkillSpecComponent, {mainSkill: nev}).subscribe(
-      w => this.addSpec(w, i)
-    );
-  }
 }

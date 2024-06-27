@@ -14,7 +14,6 @@ export interface AttributesModel {
   //speciális
   magia: number,
   chiAramlas: number,
-  kiberKapacitas: number,
   kockatartalek: number,
   //konstans
   esszencia: number,
@@ -38,7 +37,6 @@ export interface AttributesFG extends FormGroup {
     //speciális
     magia: AbstractControl,
     chiAramlas: AbstractControl,
-    kiberKapacitas: AbstractControl,
     kockatartalek: AbstractControl,
     //konstans
     esszencia: AbstractControl,
