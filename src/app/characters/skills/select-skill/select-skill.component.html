@@ -29,14 +29,14 @@
   <h3 class="margTop1">{{elem}}</h3>
 
   <div class="w100 flexCont" *ngFor="let skill of getSkills(elem)">
-    <div class="flex1 text1 nwht" (click)="onSave(skill.nev, skill.multi)">{{skill.nev}}</div>
+    <div class="flex1 text1 nwht" (click)="onSave(skill.nev, skill.nevKieg)">{{skill.nev}} {{skill.nevKieg}}</div>
     <div class="w10 text1 center nprpl">{{skill.karmaKtsg}}</div>
     <div class="w30 text1 center nrng">{{getAttrRovid(skill.kapTul)}}</div>
 
     <input class="text1 w100" type="text"
-    id="{{skill.nev}}"
+    id="{{skill.nevKieg}}"
     [placeholder]="'Írd be a pontos megnevezést'"
-    *ngIf="skill.multi == true">
+    *ngIf="skill.nev == ''">
 
   </div>
 

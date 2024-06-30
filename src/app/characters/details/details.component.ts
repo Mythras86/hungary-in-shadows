@@ -66,7 +66,7 @@ export class DetailsComponent implements OnInit {
     this.s.getFc('testalkat').patchValue('Mackós');
     this.s.getFc('hajstilus').patchValue('Kopasz');
     this.s.getFc('nem').patchValue('Férfi');
-    this.s.getFc('dns').patchValue('Ember');
+    this.s.getFc('dns').patchValue('Tünde');
     this.s.getFc('anyanyelv').patchValue('Magyar');
     this.s.getFc('eletkor').patchValue('35');
     this.s.getFc('magassag').patchValue('180');

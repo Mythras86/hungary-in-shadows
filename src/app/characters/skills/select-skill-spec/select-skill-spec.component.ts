@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { SkillSpecInterface, skillsSpecUtil } from '../skills.util';
+import { SkillSpecInterface, skillsSpecUtil, skillsUtil } from '../skills.util';
 
 @Component({
   selector: 'app-select-skill-spec',

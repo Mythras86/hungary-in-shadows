@@ -3,6 +3,7 @@ import { SkillsService } from '../skills.service';
 import { SkillSpecModel } from '../skills.model';
 import { attributesUtil } from '../../attributes/attributes-utility';
 import { AttributesService } from '../../attributes/attributes.service';
+import { FormArray, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-skill',
@@ -38,7 +39,7 @@ export class SkillComponent implements OnInit{
     return rovid;
   }
 
-  getTeljesSzint(fcName: string): number {
+  getTulSzint(fcName: string): number {
     const fcValue = this.attrsS.getFc(fcName).value;
     const szint = Math.floor(fcValue/2);
     return szint;

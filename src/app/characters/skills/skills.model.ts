@@ -1,10 +1,9 @@
-import { AbstractControl, FormArray, FormControl, FormGroup } from "@angular/forms";
+import { AbstractControl, FormGroup } from "@angular/forms";
 
 export interface SkillsModel {
   nev: string,
-  nevKieg?: string,
+  nevKieg: string,
   csoport: string,
-  multi: boolean
   szint: number,
   kapTul: string,
   specs?: SkillSpecModel[]
@@ -14,9 +13,8 @@ export interface SkillsFG extends FormGroup {
   value: SkillsModel,
   controls: {
     nev: AbstractControl,
-    nevKieg?: AbstractControl,
+    nevKieg: AbstractControl,
     csoport: AbstractControl,
-    multi: AbstractControl,
     szint: AbstractControl,
     kapTul: AbstractControl,
     specs?: AbstractControl<SkillSpecFG[]>

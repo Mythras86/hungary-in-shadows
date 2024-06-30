@@ -8,8 +8,10 @@ import { ModalService } from 'src/app/elements/modals/modal.service';
 import { SelectSkillComponent } from './select-skill/select-skill.component';
 import { SelectSkillSpecComponent } from './select-skill-spec/select-skill-spec.component';
 import { LevelcontrolComponent } from 'src/app/elements/levelcontrol/levelcontrol.component';
-import { SkillInterface, skillsUtil } from './skills.util';
+import { SkillInterface, skillsSpecUtil, skillsUtil } from './skills.util';
 import { AttributesService } from '../attributes/attributes.service';
+import { SkillSpecModel, SkillsFG, SkillsModel } from './skills.model';
+import { findIndex } from 'rxjs';
 
 @Component({
   selector: 'app-skills',
@@ -40,6 +42,32 @@ export class SkillsComponent {
     return this.s.skillsForm.controls['skills'] as FormArray;
   }
 
+  getSpecs(i: number): Array<SkillSpecModel> {
+    const spec = this.skills.at(i).get('specs').value;
+    return spec;
+  }
+
+  getTulSzint(fcName: string): number {
+    const fcValue = this.attrsS.getFc(fcName).value;
+    const szint = Math.floor(fcValue/2);
+    return szint;
+  }
+
+  // sortSkills(): Array<SkillsModel> {
+  //   const lol = this.skills.value.sort((a:SkillsModel, b:SkillsModel) => {
+  //     const nameA = a.nev.toUpperCase();
+  //     const nameB = b.nev.toUpperCase();
+  //     if (nameA < nameB) {
+  //       return -1;
+  //     }
+  //     if (nameA > nameB) {
+  //       return 1;
+  //     }
+  //     return 0;
+  //   });
+  //   return lol;
+  // }
+
   csoportok: Array<string> = [];
 
   csoportCheck(elem: string): boolean {
@@ -50,13 +78,6 @@ export class SkillsComponent {
       return true;
     }
     return false;
-  }
-
-  getSpecs(i: number): FormArray | null | any {
-    if(!this.s.skillsForm) {
-      return null;
-    }
-    return (((this.s.skillsForm.controls['skills'] as FormArray).at(i) as FormGroup).get('specs') as FormArray)?.value;
   }
 
   newSkill(): void {
@@ -108,6 +129,14 @@ export class SkillsComponent {
       this.skills.at(iNyelv).get('nevKieg')?.setValue(w),
       this.skills.at(iIras).get('nevKieg')?.setValue(w)
     });
+  }
+
+  hasSpec(nev: string): boolean {
+    const spec = skillsSpecUtil.filter(x=>x.spec == nev);
+    if (spec.length == 0) {
+      return false;
+    }
+    return true;
   }
 
   ngOnInit(): void {

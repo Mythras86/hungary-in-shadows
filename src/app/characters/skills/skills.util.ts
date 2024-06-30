@@ -1,33 +1,32 @@
 export const skillsUtil: Array<SkillInterface> = [
-  {multi: false, nev: 'Atlétika', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul:'fizUgy'},
-  {multi: false, nev: 'Rejtőzés', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul:'fizUgy'},
-  {multi: false, nev: 'Közelharc', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul:'fizUgy'},
-  {multi: false, nev: 'Tűzfegyverek', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul:'fizUgy'},
-  {multi: false, nev: 'Vadonjárás', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztGyo'},
-  {multi: false, nev: 'Érzékelés', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztGyo'},
-  {multi: false, nev: 'Járművezetés', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'reakcio'},
-  {multi: false, nev: 'Idézés', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'magia'},
-  {multi: false, nev: 'Asztrálvilág', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztGyo'},
-  {multi: false, nev: 'Varázslás', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'magia'},
-  {multi: false, nev: 'Kiberháború', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztUgy'},
-  {multi: false, nev: 'Megbűvölés', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'magia'},
-  {multi: false, nev: 'Színészet', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztEro'},
-  {multi: false, nev: 'Befolyásolás', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztEro'},
-  {multi: false, nev: 'Biotech', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztUgy'},
-  {multi: false, nev: 'Elektronika', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztUgy'},
-  {multi: false, nev: 'Műszaki', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztUgy'},
-  {multi: true, nev: 'Egzotikus fegyv.', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'fizUgy'},
-  {multi: true, nev: 'Szakma', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'fizUgy'},
+  {nev: 'Atlétika', nevKieg: '', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul:'fizUgy'},
+  {nev: 'Rejtőzés', nevKieg: '', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul:'fizUgy'},
+  {nev: 'Közelharc', nevKieg: '', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul:'fizUgy'},
+  {nev: 'Tűzfegyverek', nevKieg: '', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul:'fizUgy'},
+  {nev: 'Vadonjárás', nevKieg: '', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztGyo'},
+  {nev: 'Érzékelés', nevKieg: '', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztGyo'},
+  {nev: 'Járművezetés', nevKieg: '', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'reakcio'},
+  {nev: 'Idézés', nevKieg: '', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'magia'},
+  {nev: 'Asztrálvilág', nevKieg: '', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztGyo'},
+  {nev: 'Varázslás', nevKieg: '', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'magia'},
+  {nev: 'Kiberháború', nevKieg: '', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztUgy'},
+  {nev: 'Megbűvölés', nevKieg: '', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'magia'},
+  {nev: 'Színészet', nevKieg: '', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztEro'},
+  {nev: 'Befolyásolás', nevKieg: '', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztEro'},
+  {nev: 'Biotech', nevKieg: '', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztUgy'},
+  {nev: 'Elektronika', nevKieg: '', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztUgy'},
+  {nev: 'Műszaki', nevKieg: '', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'asztUgy'},
+  {nev: '', nevKieg: 'Egzotikus fegyv.', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'fizUgy'},
+  {nev: '', nevKieg: 'Szakma', csoport: 'Aktív szakértelmek', karmaKtsg: 3, kapTul: 'fizUgy'},
   // ismeret
-  {multi: true, nev: 'Érdeklődés', csoport: 'Ismeret szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
-  {multi: true, nev: '6. világbeli', csoport: 'Ismeret szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
-  {multi: true, nev: 'Háttér ism.', csoport: 'Ismeret szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
-  {multi: true, nev: 'Iskolai ism.', csoport: 'Ismeret szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
-  {multi: true, nev: 'Utcai ism.', csoport: 'Ismeret szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
+  {nev: '', nevKieg: 'Érdeklődési körök', csoport: 'Ismeret szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
+  {nev: '', nevKieg: '6. világbeli ism.', csoport: 'Ismeret szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
+  {nev: '', nevKieg: 'Háttér ismeretek', csoport: 'Ismeret szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
+  {nev: '', nevKieg: 'Iskolai ismeretek', csoport: 'Ismeret szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
+  {nev: '', nevKieg: 'Utcai ismeretek', csoport: 'Ismeret szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
   // nyelvi
-  {multi: true, nev: 'Nyelv', csoport: 'Nyelvi szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
-  {multi: false, nev: 'Anyanyelv', csoport: 'Nyelvi szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
-  {multi: true, nev: 'Írás/olvasás', csoport: 'Nyelvi szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
+  {nev: '', nevKieg: 'Nyelv', csoport: 'Nyelvi szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
+  {nev: '', nevKieg: 'Írás/olvasás', csoport: 'Nyelvi szakértelmek', karmaKtsg: 2, kapTul: 'asztUgy'},
 ];
 
 export const skillsSpecUtil: Array<SkillSpecInterface> = [
@@ -133,10 +132,10 @@ export const skillsSpecUtil: Array<SkillSpecInterface> = [
 
 export interface SkillInterface {
   nev: string,
+  nevKieg: string,
   csoport: string,
   karmaKtsg: number,
   kapTul: string,
-  multi: boolean
 }
 
 export interface SkillSpecInterface {

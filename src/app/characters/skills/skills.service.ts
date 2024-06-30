@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
-import { skillsSpecUtil, skillsUtil } from './skills.util';
-import { SkillSpecFG, SkillsFG } from './skills.model';
+import { SkillInterface, skillsSpecUtil, skillsUtil } from './skills.util';
+import { SkillSpecFG, SkillsFG, SkillsModel } from './skills.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,15 +24,19 @@ export class SkillsService {
   }
 
   addSkill(nev: string, nevKieg: string): void {
-    const skill = skillsUtil.filter(x => x.nev == nev).map(x => x)[0];
     if (nev == null) {
       return;
+    }
+    let skill: SkillInterface;
+    if (nevKieg == '') {
+      skill = skillsUtil.filter(x => x.nev == nev).map(x => x)[0];
+    } else {
+      skill = skillsUtil.filter(x => x.nevKieg == nevKieg).map(x => x)[0];
     }
     const skills = this.fb.group({
       nev: [nev, Validators.required],
       nevKieg: [nevKieg, Validators.required],
       csoport: [skill.csoport, Validators.required],
-      multi: [skill.multi],
       szint: [1, Validators.required],
       kapTul: [skill.kapTul],
       specs: this.fb.array([]),

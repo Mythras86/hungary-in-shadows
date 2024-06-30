@@ -44,21 +44,21 @@ export class SelectSkillComponent {
     this.karma = modalData.karma;
   }
 
-  onSave(nev: string, multi: boolean) {
-    if (multi == false) {
+  onSave(nev: string, nevKieg: string) {
+    if (nev != '' && nevKieg == '') {
       return [
         this.closeEvent.next([nev, '']),
         this.closeEvent.complete()
-      ];
+      ]
     }
-    const input = (<HTMLInputElement>document.getElementById(nev)).value;
-    if (input == '') {
-      return
+    const input = (<HTMLInputElement>document.getElementById(nevKieg)).value;
+    if (nev == '' && nevKieg != '' && input != '') {
+      return [
+        this.closeEvent.next([input, nevKieg]),
+        this.closeEvent.complete()
+      ]
     }
-    return [
-      this.closeEvent.next([nev, input]),
-      this.closeEvent.complete()
-    ]
+    return
   }
 
   onClose() {

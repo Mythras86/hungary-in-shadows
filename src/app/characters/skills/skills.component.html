@@ -2,6 +2,7 @@
 
 <div *ngIf="resS.getSzabadKarma() >= 2" class="buttonCont w100 btnBack">
   <button class="itemGet text1 center" type="button" (click)="newSkill(); select.clearSelected();">Új Szakértelem</button>
+  <!-- <button class="itemGet text1 center" type="button" (click)="sortSkills()">Rendezés</button> -->
 </div>
 
 <div class="flexCont w100" [formGroup]="s.skillsForm" *ngIf="s.skillsForm">
@@ -19,6 +20,17 @@
 
         <div class="posRel margBott1" *ngIf="skill.csoport == elem"
           [ngClass]="select.toggleClass(skill.nev+i)" (click)="select.toggleStatus(skill.nev+i)">
+
+          <!-- <div class="ngrn text1 center w15">{{0}} </div>
+          <div class="nwht text1 center w10">{{skill.szint}}</div>
+          <div class="nwht text1 w75">{{skill.nev}} {{skill.nevKieg}} </div>
+
+          <div class="w100 flexCont" *ngFor="let spec of skill.specs">
+            <div class="nprpl text1 w75">&#10503; {{spec.nev}} </div>
+            <div class="nprpl text1 w10 center">{{spec.szint}}</div>
+            <div class="ngrn text1 w15 center">{{spec.szint}}</div>
+          </div>
+ -->
           <app-skill class="flexCont"
           [nev]="skill.nev"
           [nevKieg]="skill.nevKieg"
@@ -30,7 +42,7 @@
           </app-skill>
           <div buttons *ngIf="select.status == skill.nev+i" class="buttonCont w100 posAbs btnBack">
             <button class="text1 itemGet" type="button"  (click)="skillLvlUp(skill.nev, i); select.clearSelected();" >Szintlépés</button>
-            <button *ngIf="skill.multi == false" class="text1 itemGet" (click)="newSpec(skill.nev, i); select.clearSelected();" type="button">Új spec</button>
+            <button *ngIf="hasSpec(skill.nev)" class="text1 itemGet" (click)="newSpec(skill.nev, i); select.clearSelected();" type="button">Új spec</button>
             <button class="text1 itemRemove" type="button" (click)="s.removeSkill(i)">Törlés</button>
           </div>
         </div>
