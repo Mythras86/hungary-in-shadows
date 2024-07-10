@@ -230,14 +230,13 @@ export class CharsMainComponent implements OnInit, OnDestroy {
           this.resS.updateResources(w);
           this.attrS.updateAttributes(w);
           this.statusS.updateStatus(w);
-          this.skillsS.updateSkills(w);
-          this.itemsS.updateItems(w);
+          this.skillsS.updateSkills(w.skills);
+          this.itemsS.updateItems(w.items);
         });
       } else {
         this.createMode = true;
         this._id = '';
         this.s.createMainForm();
-        this.skillsS.addFirstLanguage()
       }
     });
   }

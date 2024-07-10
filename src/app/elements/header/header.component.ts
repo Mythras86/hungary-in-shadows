@@ -34,12 +34,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   getAName() {
-    if (
-      this.detailsS.detailsForm
-      && this.detailsS.getFc('becenev').value !==''
-      ) {
-      return this.detailsS.getFc('becenev').value;
-    }
     return 'Üdv újra itt '+this.name()+'!';
   }
 

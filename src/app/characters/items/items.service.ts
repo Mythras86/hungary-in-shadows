@@ -45,8 +45,7 @@ export class ItemsService {
 
   updateItems(w: any): void {
     this.createItems();
-    this.itemsForm.addControl('itemsForm', new FormGroup({}));
-    (this.itemsForm as FormGroup).addControl('items', this.setItems(w.items));
+    this.setItems(w);
   }
 
   removeItem(i:number): void {

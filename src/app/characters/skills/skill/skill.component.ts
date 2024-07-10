@@ -1,9 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SkillsService } from '../skills.service';
-import { SkillSpecModel } from '../skills.model';
-import { attributesUtil } from '../../attributes/attributes-utility';
+import { SkillsModel } from '../skills.model';
 import { AttributesService } from '../../attributes/attributes.service';
+import { ItemSelectService } from 'src/app/elements/item-select/item-select.service';
+import { skillsSpecUtil, skillsUtil } from '../skills.util';
 import { FormArray, FormGroup } from '@angular/forms';
+import { ModalService } from 'src/app/elements/modals/modal.service';
+import { LevelcontrolComponent } from 'src/app/elements/levelcontrol/levelcontrol.component';
+import { ResourcesService } from '../../resources/resources.service';
+import { SelectSkillSpecComponent } from '../select-skill-spec/select-skill-spec.component';
 
 @Component({
   selector: 'app-skill',
@@ -14,38 +19,64 @@ export class SkillComponent implements OnInit{
 
   constructor(
     public s: SkillsService,
+    public select: ItemSelectService,
     private attrsS: AttributesService,
+    private resS: ResourcesService,
+    private modalS: ModalService,
   ) { }
 
-  @Input() nev: string = '';
-  @Input() nevKieg: string = '';
-  @Input() szint: number = 0;
-  @Input() kapTul: string = '';
+  @Input() skill!: SkillsModel;
   @Input() kapTulSzint: number = 0;
+  @Input() i: number = 0;
 
-  @Input() specs: Array<SkillSpecModel> = [];
-
-  setNevKieg: string = '';
-
-  getNevKieg(): string {
-    if (this.nevKieg == '') {
-      return '';
+  public get skills(): FormArray | null | any {
+    if(!this.s.skillsForm) {
+      return null;
     }
-    return ':'+this.nevKieg;
+    return this.s.skillsForm.controls['skills'] as FormArray;
   }
 
-  getAttrRovid(fcName: string): string {
-    const rovid = attributesUtil.filter(x=>x.fcName == fcName).map(x=>x.rovidnev)[0];
-    return rovid;
+  hasSpec(skillId: string):boolean {
+    if (skillsSpecUtil.find(x=>x.specOf == skillId)) {
+      return true;
+    }
+    return false;
   }
 
-  getTulSzint(fcName: string): number {
-    const fcValue = this.attrsS.getFc(fcName).value;
-    const szint = Math.floor(fcValue/2);
-    return szint;
+  skillLvlUp(): void {
+    const skill = skillsUtil.filter(x=>x.id == this.skill.id)[0];
+    this.modalS.openModal(LevelcontrolComponent, {
+    fejlec: skill.nev + ' ' + skill.nevKieg,
+    megjegyzes: 'van',
+    lepes: 5,
+    valto: 1,
+    tokeKtsg: 0,
+    karmaKtsg: skill.karmaKtsg,
+    esszKtsg: 0,
+    celErtek: this.s.getFc(this.i, 'szint').value,
+    egyseg: ' Szint',
+    minErtek: this.s.getFc(this.i, 'szint').value,
+    maxErtek: this.attrsS.getFc(skill.kapTul).value,
+    }).subscribe(
+      w => this.updateSkill(w)
+    );
+  }
+
+  updateSkill(valtozas: number): void {
+    const form = ((this.s.skillsForm.get('skills') as FormArray).at(this.i) as FormGroup).get('szint');
+    // kifizetés
+    this.resS.payKarma(valtozas*3);
+    // értékszerzés
+    form?.patchValue(form.value+valtozas);
+  }
+
+  newSpec(id: string, i: number): void {
+    const ownedSpecs: Array<string> = Object.values(this.skills.controls[i].controls.specs.controls).map((x:any) => x.value).map(x => x.id);;
+    this.modalS.openModal(SelectSkillSpecComponent, {mainSkillId: id, ownedSpecs: ownedSpecs}).subscribe(
+      w => this.s.addSpec(w, i)
+    );
   }
 
   ngOnInit(): void {
-    this.setNevKieg = this.getNevKieg();
   }
 }

@@ -20,17 +20,17 @@ export class SelectSkillSpecComponent implements OnInit {
   public canBeClosed: boolean = true;
   closeEvent: Subject<any> = new Subject;
 
-  mainSkill: string = '';
+  mainSkillId: string = '';
   ownedSpecs: Array<string> = [];
   specs: Array<SkillSpecInterface> = []
 
   loadData(modalData: any): void {
-    this.mainSkill = modalData.mainSkill;
+    this.mainSkillId = modalData.mainSkillId;
     this.ownedSpecs = modalData.ownedSpecs;
   }
 
-  onSave(nev: string) {
-    this.closeEvent.next(nev),
+  onSave(spec: SkillSpecInterface) {
+    this.closeEvent.next(spec),
     this.closeEvent.complete()
   }
 
@@ -39,8 +39,8 @@ export class SelectSkillSpecComponent implements OnInit {
   }
 
   getSpecs():Array<SkillSpecInterface> {
-    const specBySkill = skillsSpecUtil.filter(x=>x.spec == this.mainSkill);
-    const filteredSpecs = specBySkill.filter(x=> !this.ownedSpecs.includes(x.nev));
+    const specBySkill = skillsSpecUtil.filter(x=>x.specOf == this.mainSkillId);
+    const filteredSpecs = specBySkill.filter(x=> !this.ownedSpecs.includes(x.id));
     return this.specs = filteredSpecs;
   }
 

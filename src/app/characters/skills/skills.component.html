@@ -12,39 +12,24 @@
   <div class="w100" formArrayName="skills" >
     <div class="flexCont" *ngFor='let elem of csoportok'>
 
-      <h3 class="margTop1" *ngIf="csoportCheck(elem)">{{elem}}</h3>
-
+      <h3 class="margTop1">{{elem}}</h3>
       <!-- csoport konténer -->
 
       <div class="w100" [formGroupName]='i' *ngFor="let skill of skills.value; let i = index">
 
-        <div class="posRel margBott1" *ngIf="skill.csoport == elem"
-          [ngClass]="select.toggleClass(skill.nev+i)" (click)="select.toggleStatus(skill.nev+i)">
+        <app-skill *ngIf="skill.csoport == elem" class="posRel flexCont"
+        [skill]="skill"
+        [i]="i"
+        >
+        </app-skill>
 
-          <!-- <div class="ngrn text1 center w15">{{0}} </div>
-          <div class="nwht text1 center w10">{{skill.szint}}</div>
-          <div class="nwht text1 w75">{{skill.nev}} {{skill.nevKieg}} </div>
-
-          <div class="w100 flexCont" *ngFor="let spec of skill.specs">
-            <div class="nprpl text1 w75">&#10503; {{spec.nev}} </div>
-            <div class="nprpl text1 w10 center">{{spec.szint}}</div>
-            <div class="ngrn text1 w15 center">{{spec.szint}}</div>
-          </div>
- -->
-          <app-skill class="flexCont"
-          [nev]="skill.nev"
-          [nevKieg]="skill.nevKieg"
-          [szint]="skill.szint"
-          [kapTul]="skill.kapTul"
-          [kapTulSzint]="0"
-          [specs]="getSpecs(i)"
+        <div *ngIf="skill.csoport == elem" class="w100" formArrayName="specs">
+          <app-skillspec class="w100 flexCont" [formGroupName]='j' *ngFor="let spec of skills.controls[i].value.specs; let j = index"
+          [spec]="spec"
+          [i]="i"
+          [j]="j"
           >
-          </app-skill>
-          <div buttons *ngIf="select.status == skill.nev+i" class="buttonCont w100 posAbs btnBack">
-            <button class="text1 itemGet" type="button"  (click)="skillLvlUp(skill.nev, i); select.clearSelected();" >Szintlépés</button>
-            <button *ngIf="hasSpec(skill.nev)" class="text1 itemGet" (click)="newSpec(skill.nev, i); select.clearSelected();" type="button">Új spec</button>
-            <button class="text1 itemRemove" type="button" (click)="s.removeSkill(i)">Törlés</button>
-          </div>
+          </app-skillspec>
         </div>
       </div>
 

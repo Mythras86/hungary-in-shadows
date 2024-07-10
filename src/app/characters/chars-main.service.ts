@@ -119,8 +119,8 @@ export class CharsMainService {
       pinhentsegAllapot: number,
       taplaltsagAllapot: number,
       // arrays
-      skills: Array<SkillsModel>,
-      items: Array<ItemsModel>
+      skills:SkillsModel[],
+      items: ItemsModel[]
       }>(BACKEND_URL +_id);
   }
 
@@ -183,8 +183,8 @@ export class CharsMainService {
     pinhentsegAllapot: number,
     taplaltsagAllapot: number,
     // szakértelmek
-    skills: Array<SkillsModel>,
-    items: Array<ItemsModel>
+    skills: SkillsModel[],
+    items: ItemsModel[]
   ) {
     const charData:CharModel = {
       creatorId: this.authS.getUserId(),
@@ -313,8 +313,8 @@ export class CharsMainService {
     pinhentsegAllapot: number,
     taplaltsagAllapot: number,
     // arrays
-    skills: Array<SkillsModel>,
-    items: Array<ItemsModel>,
+    skills: SkillsModel[],
+    items: ItemsModel[],
   ) {
     let charData: CharModel;
     charData = {
@@ -380,10 +380,9 @@ export class CharsMainService {
       items: items
       };
       this.http
-      .put(BACKEND_URL +this.mainCharForm.get('_id'), charData)
+      .patch(BACKEND_URL +this.mainCharForm.get('_id')?.value, charData)
       .subscribe(response => {
         this.router.navigate(["/charslist"]);
-        console.log(response);
       }
     );
   }

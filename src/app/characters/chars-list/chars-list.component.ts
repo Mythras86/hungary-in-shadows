@@ -30,7 +30,6 @@ export class CharsListComponent implements OnInit, OnDestroy {
 
   getCharsList(): void {
     if (this.userIsAuthenticated == true) {
-      console.log('yes')
       this.s.getCharsList().subscribe({
         next: (w: CharModel[]) => {
           this.charsList = w;
@@ -59,7 +58,6 @@ export class CharsListComponent implements OnInit, OnDestroy {
       next: response => {
         this.charsList = this.charsList.filter(w => w._id !== _id);
         this.spinS.toggleSpinner(false);
-        console.log(response);
       },
       error: (error) => {
         console.log(error)

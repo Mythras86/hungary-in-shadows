@@ -1,12 +1,11 @@
-
-<div class="ngrn text1 center w15">{{getTulSzint(kapTul)+szint}}</div>
-<div class="nwht text1 center w10">{{szint}}</div>
-<div class="nwht text1 w75">{{nev}} {{setNevKieg}} </div>
-
-<div class="w100 flexCont" *ngFor="let spec of specs">
-  <div class="nprpl text1 w75">&#10503; {{spec.nev}} </div>
-  <div class="nprpl text1 w10 center">{{spec.szint}}</div>
-  <div class="ngrn text1 w15 center">{{spec.szint + getTulSzint(kapTul)+szint}}</div>
+<div class="w100 flexCont" [ngClass]="select.toggleClass(skill.id+i)" (click)="select.toggleStatus(skill.id+i)">
+  <div class="ngrn text1 center w15">{{kapTulSzint + skill.szint}}</div>
+  <div class="nwht text1 center w10">{{skill.szint}}</div>
+  <div class="nwht text1 w75">{{skill.nev}} {{skill.nevKieg}}</div>
 </div>
 
-<ng-content select="buttons"></ng-content>
+<div *ngIf="select.status == skill.id+i" class="buttonCont w100 posAbs btnBack">
+  <button class="text1 itemGet" type="button" (click)="skillLvlUp(); select.clearSelected();" >Szintlépés</button>
+  <button *ngIf="hasSpec(skill.id)" class="text1 itemGet" (click)="newSpec(skill.id, i); select.clearSelected();" type="button">Új spec</button>
+  <button class="text1 itemRemove" type="button" (click)="s.removeSkill(i)">Törlés</button>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Subject } from 'rxjs';
 import { SkillInterface, skillsUtil } from '../skills.util';
 import { attributesUtil } from '../../attributes/attributes-utility';
@@ -20,7 +20,7 @@ export class SelectSkillComponent {
   closeEvent: Subject<any> = new Subject;
 
   filter: string = 'Nincs';
-  ownedSkills: Array<string> = []
+  ownedSkillsId: Array<string> = []
   skills: Array<SkillInterface> = []
   karma: number = 0;
 
@@ -40,21 +40,21 @@ export class SelectSkillComponent {
   }
 
   loadData(modalData: any) {
-    this.ownedSkills = modalData.ownedSkills;
+    this.ownedSkillsId = modalData.ownedSkillsId;
     this.karma = modalData.karma;
   }
 
-  onSave(nev: string, nevKieg: string) {
-    if (nev != '' && nevKieg == '') {
+  onSave(skill: SkillInterface) {
+    if (skill.nev != '' && skill.nevKieg == '') {
       return [
-        this.closeEvent.next([nev, '']),
+        this.closeEvent.next([skill, '']),
         this.closeEvent.complete()
       ]
     }
-    const input = (<HTMLInputElement>document.getElementById(nevKieg)).value;
-    if (nev == '' && nevKieg != '' && input != '') {
+    const input = (<HTMLInputElement>document.getElementById(skill.id)).value;
+    if (skill.nev == '' && skill.nevKieg != '' && input != '') {
       return [
-        this.closeEvent.next([input, nevKieg]),
+        this.closeEvent.next([skill, input]),
         this.closeEvent.complete()
       ]
     }
@@ -68,7 +68,7 @@ export class SelectSkillComponent {
   getSkills(csoport: string):Array<SkillInterface> {
     const karmaFilter = skillsUtil.filter(x=>x.karmaKtsg <= this.karma);
     const skillsByCsoport = karmaFilter.filter(x=>x.csoport == csoport);
-    const filteredSkills = skillsByCsoport.filter(x=> !this.ownedSkills.includes(x.nev));
+    const filteredSkills = skillsByCsoport.filter(x=> (!this.ownedSkillsId.includes(x.id) || x.multi == true ));
     return filteredSkills;
   }
 }

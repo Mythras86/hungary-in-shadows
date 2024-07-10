@@ -68,9 +68,9 @@ export class DetailsComponent implements OnInit {
     this.s.getFc('nem').patchValue('Férfi');
     this.s.getFc('dns').patchValue('Tünde');
     this.s.getFc('anyanyelv').patchValue('Magyar');
-    this.s.getFc('eletkor').patchValue('35');
-    this.s.getFc('magassag').patchValue('180');
-    this.s.getFc('testsuly').patchValue('100');
+    this.s.getFc('eletkor').patchValue(35);
+    this.s.getFc('magassag').patchValue(180);
+    this.s.getFc('testsuly').patchValue(100);
     this.s.getFc('felelem').patchValue('van');
     this.s.getFc('osztonzo').patchValue('van');
     this.s.getFc('gyulolet').patchValue('van');
@@ -80,7 +80,7 @@ export class DetailsComponent implements OnInit {
     this.s.getFc('megjelenes').patchValue('van');
   }
 
-  setDetail(fcName: string) {
+  setDetail(fcName: string): void {
     const detail: detailsInterface = detailsUtil.filter(x=>x.fcName == fcName)[0];
     this.modalS.openModal(DetailComponent, {
       editMode: true,
@@ -92,14 +92,9 @@ export class DetailsComponent implements OnInit {
       ertek: this.s.getFc(fcName)?.value,
       lista: this.getList(fcName),
     }).subscribe(
-      w => this.updateData(fcName, w)
-      );
+      w => this.s.detailsForm.get(fcName)?.patchValue(w)
+    );
   }
-
-  updateData(fcName: string, value:any) {
-    return this.s.detailsForm.get(fcName)?.patchValue(value);
-  }
-
 
   ngOnInit(): void {
   }
