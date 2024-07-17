@@ -1,11 +1,10 @@
 <div class="w100 flexCont" [ngClass]="select.toggleClass(skill.id+i)" (click)="select.toggleStatus(skill.id+i)">
-  <div class="ngrn text1 center w15">{{kapTulSzint + skill.szint}}</div>
-  <div class="nwht text1 center w10">{{skill.szint}}</div>
-  <div class="nwht text1 w75">{{skill.nev}} {{skill.nevKieg}}</div>
+  <div class="ngrn text1 center w10">{{getAttrBonus() + skill.szint}}</div>
+  <div class="nwht text1 w90">{{skill.szint}}  / {{kapTulSzint}} {{skill.nev}} {{skill.nevKieg == ''? '': "("+ skill.nevKieg +")"}}</div>
 </div>
 
 <div *ngIf="select.status == skill.id+i" class="buttonCont w100 posAbs btnBack">
-  <button class="text1 itemGet" type="button" (click)="skillLvlUp(); select.clearSelected();" >Szintlépés</button>
-  <button *ngIf="hasSpec(skill.id)" class="text1 itemGet" (click)="newSpec(skill.id, i); select.clearSelected();" type="button">Új spec</button>
-  <button class="text1 itemRemove" type="button" (click)="s.removeSkill(i)">Törlés</button>
+  <button *ngIf="skill.szint < kapTulSzint" class="text1 itemGet" type="button" (click)="skillLvlUp(); select.clearSelected();" >Szintlépés</button>
+  <button *ngIf="hasSpec(skill.id)" class="text1 itemGet" (click)="newSpec(skill.csoport, skill.id, i); select.clearSelected();" type="button">Új spec</button>
+  <button class="text1 itemRemove" type="button" (click)="s.removeSkill(skill.csoport, i)">Törlés</button>
 </div>

@@ -9,31 +9,71 @@
 
   <!-- csoportosítás -->
 
-  <div class="w100" formArrayName="skills" >
-    <div class="flexCont" *ngFor='let elem of csoportok'>
+  <div class="w100" formArrayName="activeSkills" >
 
-      <h3 class="margTop1">{{elem}}</h3>
-      <!-- csoport konténer -->
+      <h3 class="margTop1">Aktív Szakértelmek</h3>
 
-      <div class="w100" [formGroupName]='i' *ngFor="let skill of skills.value; let i = index">
+      <div class="w100" [formGroupName]='i' *ngFor="let a of activeSkills.value; let i = index">
 
-        <app-skill *ngIf="skill.csoport == elem" class="posRel flexCont"
-        [skill]="skill"
-        [i]="i"
-        >
-        </app-skill>
-
-        <div *ngIf="skill.csoport == elem" class="w100" formArrayName="specs">
-          <app-skillspec class="w100 flexCont" [formGroupName]='j' *ngFor="let spec of skills.controls[i].value.specs; let j = index"
-          [spec]="spec"
+        <div class="flexCont margBott1">
+          <app-skill class="w100 posRel flexCont"
+          [skill]="a"
+          [kapTulSzint]="attrS.getTulErtek(a.kapTul)"
           [i]="i"
-          [j]="j"
           >
-          </app-skillspec>
+          </app-skill>
+
+          <div class="w100" formArrayName="specs">
+            <app-skillspec class="w100 posRel flexCont" [formGroupName]='j' *ngFor="let spec of activeSkills.controls[i].value.specs; let j = index"
+            [spec]="spec"
+            [skillSzint]="a.szint"
+            [kapTulSzint]="attrS.getTulErtek(a.kapTul)"
+            [skillCsoport]="a.csoport"
+            [i]="i"
+            [j]="j"
+            >
+            </app-skillspec>
+        </div>
+
         </div>
       </div>
 
-    </div>
+  </div>
+
+  <div class="w100" formArrayName="knowledgeSkills" >
+
+      <h3 class="margTop1">Ismeret Szakértelmek</h3>
+
+      <div class="w100" [formGroupName]='i' *ngFor="let k of knowledgeSkills.value; let i = index">
+
+        <div class="flexCont margBott1">
+          <app-skill class="w100 posRel flexCont"
+          [skill]="k"
+          [kapTulSzint]="attrS.getTulErtek(k.kapTul)"
+          [i]="i"
+          >
+          </app-skill>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="w100" formArrayName="languageSkills" >
+
+      <h3 class="margTop1">Nyelvi Szakértelmek</h3>
+
+      <div class="w100" [formGroupName]='i' *ngFor="let l of languageSkills.value; let i = index">
+
+        <div class="flexCont margBott1">
+          <app-skill class="w100 posRel flexCont"
+          [skill]="l"
+          [kapTulSzint]="attrS.getTulErtek(l.kapTul)"
+          [i]="i"
+          >
+          </app-skill>
+        </div>
+      </div>
+
   </div>
 
 </div>

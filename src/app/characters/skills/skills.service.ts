@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ResourcesService } from '../resources/resources.service';
-import { SkillInterface, SkillSpecInterface, skillsSpecUtil } from './skills.util';
-import { SkillSpecFG, SkillsFG } from './skills.model';
+import { SkillInterface, SkillSpecInterface } from './skills.util';
+import { SkillSpecFG } from './skills.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,9 @@ export class SkillsService {
 
   createSkills(): FormGroup {
     const skills = {
-      skills: this.fb.array([]),
+      activeSkills: this.fb.array([]),
+      knowledgeSkills: this.fb.array([]),
+      languageSkills: this.fb.array([]),
     };
     return this.skillsForm = this.fb.group(skills);
   }
@@ -43,13 +45,13 @@ export class SkillsService {
       specs: this.fb.array([]),
     });
     this.resS.payKarma(skill.karmaKtsg);
-    (this.skillsForm.get('skills') as FormArray).push(skills);
+    (this.skillsForm.get(skill.csoport) as FormArray).push(skills);
   }
 
-  setSkills(skills: any[]): void {
-    const skillsF = (this.skillsForm.get('skills') as FormArray);
+  setSkills(skills: any[], faName: string): void {
+    const skillsFA = (this.skillsForm.get(faName) as FormArray);
     skills.forEach(e => {
-      skillsF.push(
+      skillsFA.push(
         this.fb.group({
           id: e.id,
           nev: e.nev,
@@ -59,7 +61,8 @@ export class SkillsService {
           kapTul: e.kapTul,
           specs: this.fb.array(e.specs.map((x: SkillSpecFG) =>this.setSpecs(x)))
         }))
-      });
+      }
+    );
   }
 
   setSpecs(x:any=null)
@@ -73,22 +76,24 @@ export class SkillsService {
    })
  }
 
-  updateSkills(w: any): void {
+  updateSkills(activeSkills: any, knowledgeSkills: any, languageSkills: any): void {
     this.createSkills();
-    this.setSkills(w);
+    this.setSkills(activeSkills, 'activeSkills');
+    this.setSkills(knowledgeSkills, 'knowledgeSkills');
+    this.setSkills(languageSkills, 'languageSkills');
   }
 
-  removeSkill(i:number): void {
-    (this.skillsForm.get('skills') as FormArray).removeAt(i);
+  removeSkill(skillCsoport:string, i:number): void {
+    (this.skillsForm.get(skillCsoport) as FormArray).removeAt(i);
   }
 
-  getFc(i:number, fcName:string): FormControl {
-    const skillPath = ((this.skillsForm.get('skills') as FormArray).at(i) as FormGroup).get(fcName);
+  getFc(skillCsoport: string, i:number, fcName:string): FormControl {
+    const skillPath = ((this.skillsForm.get(skillCsoport) as FormArray).at(i) as FormGroup).get(fcName);
     return skillPath as FormControl;
   }
 
-  getFcLv2(i:number, j: number, fcName:string): FormControl {
-    const specPath = (((this.skillsForm.get('skills') as FormArray).at(i) as FormGroup).get('specs') as FormArray).at(j).get(fcName);
+  getFcLv2(skillCsoport: string, i:number, j: number, fcName:string): FormControl {
+    const specPath = (((this.skillsForm.get(skillCsoport) as FormArray).at(i) as FormGroup).get('specs') as FormArray).at(j).get(fcName);
     return specPath as FormControl;
   }
 
@@ -102,7 +107,7 @@ export class SkillsService {
       kapTul: ['asztUgy'],
       specs: this.fb.array([]),
     });
-    (this.skillsForm.get('skills') as FormArray).push(beszed);
+    (this.skillsForm.get('languageSkills') as FormArray).push(beszed);
     const iras = this.fb.group({
       id: ['iras', Validators.required],
       nev: [nev, Validators.required],
@@ -112,10 +117,10 @@ export class SkillsService {
       kapTul: ['asztUgy'],
       specs: this.fb.array([]),
     });
-    (this.skillsForm.get('skills') as FormArray).push(iras);
+    (this.skillsForm.get('languageSkills') as FormArray).push(iras);
   }
 
-  addSpec(spec: SkillSpecInterface, i: number): void {
+  addSpec(skillCsoport:string, spec: SkillSpecInterface, i: number): void {
     if (spec == null) {
       return;
     }
@@ -126,11 +131,11 @@ export class SkillsService {
       szint: [1, Validators.required],
     }) as SkillSpecFG;
     this.resS.payKarma(spec.karmaKtsg);
-    (((this.skillsForm.get('skills') as FormArray).at(i) as FormGroup).get('specs') as FormArray).push(specs);
+    (((this.skillsForm.get(skillCsoport) as FormArray).at(i) as FormGroup).get('specs') as FormArray).push(specs);
   }
 
-  removeSpec(i: number, j: number) {
-    (((this.skillsForm.get('skills') as FormArray).at(i) as FormGroup).get('specs') as FormArray).removeAt(j);
+  removeSpec(skillCsoport:string, i: number, j: number) {
+    (((this.skillsForm.get(skillCsoport) as FormArray).at(i) as FormGroup).get('specs') as FormArray).removeAt(j);
   }
 
 }

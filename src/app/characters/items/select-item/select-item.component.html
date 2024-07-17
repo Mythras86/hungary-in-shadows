@@ -1,0 +1,58 @@
+<div class="ngrn text2 center w90" >
+  Eszközök
+</div>
+
+<!-- visszagomb -->
+<button class="itemRemove text1 w10 center" type="button" (click)="onClose()">X</button>
+
+<app-hide-content class="w100"
+[keyWord]="'skillfilter'"
+[arrowClass]="'flex1 nbl text2 center'"
+>
+  <div headText class="flex1 nbl text2 center">
+    {{filter}}
+  </div>
+  <div class="flexCont gap2">
+    <div class="text1 center nprpl gap2 w100" (click)="setFilter('Nincs')">X Nincs</div>
+    <div *ngFor="let elem of getCsoportok()">
+      <div class="text1 center nprpl gap2 flex1" (click)="setFilter(elem)">{{elem}}</div>
+    </div>
+  </div>
+</app-hide-content>
+
+<div *ngFor="let elem of csoportok">
+  <h3 class="margTop1">{{elem}}</h3>
+
+  <div class="w100 flexCont" *ngFor="let item of filteredItems(elem)" (click)="onSave(item)">
+    <div *ngIf="item.tipus" class="w100 nwht text1">{{item.tipus}}</div>
+    <div *ngIf="item.nev" class="w100 grayCell text1">{{item.nev}}</div>
+    <div *ngIf="item.leiras" class="w100 grayCell text1">{{item.leiras}}</div>
+
+    <div *ngIf="item.suly" class="w100 grayCell text1">{{item.suly}}</div>
+    <div *ngIf="item.sulySzorzo" class="w100 grayCell text1">{{item.sulySzorzo}}</div>
+
+    <div *ngIf="item.tokeKtsg" class="w100 grayCell text1">{{item.tokeKtsg}}</div>
+    <div *ngIf="item.karmaKtsg" class="w100 grayCell text1">{{item.karmaKtsg}}</div>
+    <div *ngIf="item.esszenciaKtsg" class="w100 grayCell text1">{{item.esszenciaKtsg}}</div>
+
+    <div *ngIf="item.tokeKtsgPerSzint" class="w100 grayCell text1">{{item.tokeKtsgPerSzint}}</div>
+    <div *ngIf="item.karmaKtsgPerSzint" class="w100 grayCell text1">{{item.karmaKtsgPerSzint}}</div>
+    <div *ngIf="item.esszenciaKtsgPerSzint" class="w100 grayCell text1">{{item.esszenciaKtsgPerSzint}}</div>
+
+    <div *ngIf="item.szint" class="w100 grayCell text1">{{item.szint}}</div>
+    <div *ngIf="item.maxSzint" class="w100 grayCell text1">{{item.maxSzint}}</div>
+
+    <div *ngIf="item.celszam" class="w100 grayCell text1">{{item.celszam}}</div>
+    <div *ngIf="item.celpontokSzama" class="w100 grayCell text1">{{item.celpontokSzama}}</div>
+    <div *ngIf="item.hatosugar" class="w100 grayCell text1">{{item.hatosugar}}</div>
+
+    <div *ngIf="item.felhasznalasNev" class="w100 grayCell text1">{{item.felhasznalasNev}}</div>
+    <div *ngIf="item.felhasznalt" class="w100 grayCell text1">{{item.felhasznalt}}</div>
+    <div *ngIf="item.felhasznalasMax" class="w100 grayCell text1">{{item.felhasznalasMax}}</div>
+
+    <!-- <div *ngIf="item.tavolsag" class="w100 grayCell text1">{{item.tavolsag}}</div>
+    <div *ngIf="item.tamadas" class="w100 grayCell text1">{{item.tamadas}}</div>
+    <div *ngIf="item.tulajdonsagModosito" class="w100 grayCell text1">{{item.tulajdonsagModosito}}</div> -->
+  </div>
+</div>
+

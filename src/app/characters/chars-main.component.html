@@ -19,6 +19,7 @@
     <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Tulajdonságok')">Tulajdonságok</div>
     <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Állapotjelző')">Állapotjelző</div>
     <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Szakértelmek')">Szakértelmek</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Eszközök')">Szakértelmek</div>
   </div>
 </app-hide-content>
 
@@ -37,5 +38,8 @@
 
   <h2 *ngIf="filter == 'Nincs' || filter ==  'Szakértelmek'" >Szakértelmek</h2>
   <app-skills *ngIf="filter == 'Nincs' || filter ==  'Szakértelmek'"></app-skills>
+
+  <h2 *ngIf="filter == 'Nincs' || filter ==  'Eszközök'" >Eszközök</h2>
+  <app-items *ngIf="filter == 'Nincs' || filter ==  'Eszközök'"></app-items>
 
 </form>

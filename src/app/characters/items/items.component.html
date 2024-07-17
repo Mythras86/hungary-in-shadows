@@ -1,1 +1,26 @@
-<p>items works!</p>
+<div class="buttonCont w100 btnBack">
+  <button class="itemGet text1 center" type="button" (click)="newItem(); select.clearSelected();">Új Eszköz</button>
+</div>
+
+<div class="flexCont w100" [formGroup]="s.itemsForm" *ngIf="s.itemsForm">
+
+  <div class="w100" formArrayName="armors" >
+
+      <h3 class="margTop1">Védelem</h3>
+
+      <div class="w100" [formGroupName]='i' *ngFor="let armor of armors.value; let i = index">
+        <div class="w100 ngrn text1">{{armor.nev}}</div>
+      </div>
+
+  </div>
+
+  <div class="w100" formArrayName="armorAddons" >
+
+      <h3 class="margTop1">Védelem</h3>
+
+      <div class="w100" [formGroupName]='i' *ngFor="let armorAddon of armorAddons.value; let i = index">
+        <div class="w100 ngrn text1">{{armorAddon.nev}}</div>
+      </div>
+
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { SkillInterface, skillsUtil } from '../skills.util';
 import { attributesUtil } from '../../attributes/attributes-utility';
@@ -6,12 +6,12 @@ import { attributesUtil } from '../../attributes/attributes-utility';
 @Component({
   selector: 'app-select-skill',
   templateUrl: './select-skill.component.html',
-  styleUrls: ['./select-skill.component.css']
+  styleUrls: ['./select-skill.component.scss']
 })
-export class SelectSkillComponent {
+export class SelectSkillComponent implements OnInit {
 
   constructor() {
-    this.csoportok = ['Aktív szakértelmek', 'Ismeret szakértelmek', 'Nyelvi szakértelmek'];
+    this.csoportok = ['activeSkills', 'knowledgeSkills', 'languageSkills'];
   }
 
   csoportok: Array<string> = [];
@@ -25,7 +25,7 @@ export class SelectSkillComponent {
   karma: number = 0;
 
   setFilter(keyWord: string):void {
-    const csoport: Array<string> = ['Aktív szakértelmek', 'Ismeret szakértelmek', 'Nyelvi szakértelmek'];
+    const csoport: Array<string> = ['activeSkills', 'knowledgeSkills', 'languageSkills'];
     this.filter = keyWord;
     if (this.filter == 'Nincs') {
       this.csoportok = csoport;
@@ -70,5 +70,8 @@ export class SelectSkillComponent {
     const skillsByCsoport = karmaFilter.filter(x=>x.csoport == csoport);
     const filteredSkills = skillsByCsoport.filter(x=> (!this.ownedSkillsId.includes(x.id) || x.multi == true ));
     return filteredSkills;
+  }
+
+  ngOnInit(): void {
   }
 }

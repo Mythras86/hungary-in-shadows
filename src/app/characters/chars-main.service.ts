@@ -119,8 +119,10 @@ export class CharsMainService {
       pinhentsegAllapot: number,
       taplaltsagAllapot: number,
       // arrays
-      skills:SkillsModel[],
-      items: ItemsModel[]
+      activeSkills:SkillsModel[],
+      knowledgeSkills:SkillsModel[],
+      languageSkills:SkillsModel[],
+      armors: ItemsModel[]
       }>(BACKEND_URL +_id);
   }
 
@@ -183,8 +185,10 @@ export class CharsMainService {
     pinhentsegAllapot: number,
     taplaltsagAllapot: number,
     // szakértelmek
-    skills: SkillsModel[],
-    items: ItemsModel[]
+    activeSkills: SkillsModel[],
+    knowledgeSkills: SkillsModel[],
+    languageSkills: SkillsModel[],
+    armors: ItemsModel[]
   ) {
     const charData:CharModel = {
       creatorId: this.authS.getUserId(),
@@ -246,8 +250,10 @@ export class CharsMainService {
       pinhentsegAllapot: pinhentsegAllapot,
       taplaltsagAllapot: taplaltsagAllapot,
       // szakértelmek
-      skills: skills,
-      items: items,
+      activeSkills: activeSkills,
+      knowledgeSkills: knowledgeSkills,
+      languageSkills: languageSkills,
+      armors: armors,
     };
     this.http.post(BACKEND_URL + "new", charData).subscribe(response => {
       this.router.navigate(["/charslist"]);
@@ -313,8 +319,10 @@ export class CharsMainService {
     pinhentsegAllapot: number,
     taplaltsagAllapot: number,
     // arrays
-    skills: SkillsModel[],
-    items: ItemsModel[],
+    activeSkills: SkillsModel[],
+    knowledgeSkills: SkillsModel[],
+    languageSkills: SkillsModel[],
+    armors: ItemsModel[],
   ) {
     let charData: CharModel;
     charData = {
@@ -376,8 +384,10 @@ export class CharsMainService {
       pinhentsegAllapot: pinhentsegAllapot,
       taplaltsagAllapot: taplaltsagAllapot,
       // arrays
-      skills: skills,
-      items: items
+      activeSkills: activeSkills,
+      knowledgeSkills: knowledgeSkills,
+      languageSkills: languageSkills,
+      armors: armors
       };
       this.http
       .patch(BACKEND_URL +this.mainCharForm.get('_id')?.value, charData)

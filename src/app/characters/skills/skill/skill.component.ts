@@ -20,7 +20,7 @@ export class SkillComponent implements OnInit{
   constructor(
     public s: SkillsService,
     public select: ItemSelectService,
-    private attrsS: AttributesService,
+    private attrS: AttributesService,
     private resS: ResourcesService,
     private modalS: ModalService,
   ) { }
@@ -29,11 +29,9 @@ export class SkillComponent implements OnInit{
   @Input() kapTulSzint: number = 0;
   @Input() i: number = 0;
 
-  public get skills(): FormArray | null | any {
-    if(!this.s.skillsForm) {
-      return null;
-    }
-    return this.s.skillsForm.controls['skills'] as FormArray;
+  getAttrBonus(): number {
+    const szint = Math.floor(this.kapTulSzint/2);
+    return szint;
   }
 
   hasSpec(skillId: string):boolean {
@@ -53,27 +51,28 @@ export class SkillComponent implements OnInit{
     tokeKtsg: 0,
     karmaKtsg: skill.karmaKtsg,
     esszKtsg: 0,
-    celErtek: this.s.getFc(this.i, 'szint').value,
+    celErtek: this.s.getFc(skill. csoport, this.i, 'szint').value,
     egyseg: ' Szint',
-    minErtek: this.s.getFc(this.i, 'szint').value,
-    maxErtek: this.attrsS.getFc(skill.kapTul).value,
+    minErtek: this.s.getFc(skill. csoport, this.i, 'szint').value,
+    maxErtek: this.attrS.getFc(skill.kapTul).value,
     }).subscribe(
-      w => this.updateSkill(w)
+      w => this.updateSkill(w, skill.csoport)
     );
   }
 
-  updateSkill(valtozas: number): void {
-    const form = ((this.s.skillsForm.get('skills') as FormArray).at(this.i) as FormGroup).get('szint');
+  updateSkill(valtozas: number, skillCsoport: string): void {
+    const form = ((this.s.skillsForm.get(skillCsoport) as FormArray).at(this.i) as FormGroup).get('szint');
     // kifizetés
     this.resS.payKarma(valtozas*3);
     // értékszerzés
     form?.patchValue(form.value+valtozas);
   }
 
-  newSpec(id: string, i: number): void {
-    const ownedSpecs: Array<string> = Object.values(this.skills.controls[i].controls.specs.controls).map((x:any) => x.value).map(x => x.id);;
+  newSpec(skillCsoport: string, id: string, i: number): void {
+    const ownedSpecs: Array<string> = Object.values(((this.s.skillsForm.get(skillCsoport) as FormArray).at(this.i) as FormGroup)).map((x:any) => x.value).map(x => x.id);
+    console.log(ownedSpecs)
     this.modalS.openModal(SelectSkillSpecComponent, {mainSkillId: id, ownedSpecs: ownedSpecs}).subscribe(
-      w => this.s.addSpec(w, i)
+      w => this.s.addSpec(skillCsoport, w, i)
     );
   }
 

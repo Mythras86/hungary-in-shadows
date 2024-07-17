@@ -22,53 +22,39 @@ export class SkillsComponent {
     public select: ItemSelectService,
     public resS: ResourcesService,
     private detailsS: DetailsService,
-    private attrsS: AttributesService,
+    public attrS: AttributesService,
     public modalS: ModalService,
   ) {
-    this.csoportok = [
-      'Aktív szakértelmek',
-      'Ismeret szakértelmek',
-      'Nyelvi szakértelmek'
-    ];
   }
-  csoportok: Array<string> = [];
 
-  public get skills(): FormArray | null | any {
+  public get activeSkills(): FormArray | null | any {
     if(!this.s.skillsForm) {
       return null;
     }
-    return this.s.skillsForm.controls['skills'] as FormArray;
+    return this.s.skillsForm.controls['activeSkills'] as FormArray;
+  }
+
+  public get knowledgeSkills(): FormArray | null | any {
+    if(!this.s.skillsForm) {
+      return null;
+    }
+    return this.s.skillsForm.controls['knowledgeSkills'] as FormArray;
+  }
+
+  public get languageSkills(): FormArray | null | any {
+    if(!this.s.skillsForm) {
+      return null;
+    }
+    return this.s.skillsForm.controls['languageSkills'] as FormArray;
   }
 
   getSpecs(i: number): FormArray<SkillSpecFG> {
-    const specs = ((this.s.skillsForm.get('skills') as FormArray).at(i) as FormGroup).get('specs') as FormArray;
+    const specs = ((this.s.skillsForm.get('activeSkills') as FormArray).at(i) as FormGroup).get('specs') as FormArray;
     return specs;
   }
 
-  getTulSzint(fcName: string): number {
-    const fcValue = this.attrsS.getFc(fcName).value;
-    const szint = Math.floor(fcValue/2);
-    return szint;
-  }
-
-  // sortSkills(): Array<SkillsModel> {
-  //   const lol = this.skills.value.sort((a:SkillsModel, b:SkillsModel) => {
-  //     const nameA = a.nev.toUpperCase();
-  //     const nameB = b.nev.toUpperCase();
-  //     if (nameA < nameB) {
-  //       return -1;
-  //     }
-  //     if (nameA > nameB) {
-  //       return 1;
-  //     }
-  //     return 0;
-  //   });
-  //   return lol;
-  // }
-
-
   newSkill(): void {
-    const ownedSkillsId: Array<string> = Object.values(this.skills.controls).map((x:any) => x.value).map(x => x.id);
+    const ownedSkillsId: Array<string> = Object.values(this.activeSkills.controls).map((x:any) => x.value).map(x => x.id);
     this.modalS.openModal(SelectSkillComponent, {ownedSkillsId: ownedSkillsId, karma: this.resS.getSzabadKarma()}).subscribe(
       w => this.s.addSkill(w[0], w[1])
     );
@@ -81,9 +67,13 @@ export class SkillsComponent {
 
   ngOnInit(): void {
     this.anyanyelvChangeDetector()
-    this.s.skillsForm.valueChanges.subscribe(
-      ()=>console.log(this.skills.value)
-    )
+    // this.s.skillsForm.valueChanges.subscribe(
+    //   ()=> [
+    //     console.log(this.activeSkills.value),
+    //     console.log(this.knowledgeSkills.value),
+    //     console.log(this.languageSkills.value),
+    //   ]
+    // )
   }
 
 }

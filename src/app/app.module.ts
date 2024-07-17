@@ -36,6 +36,7 @@ import { DetailComponent } from './characters/details/detail/detail.component';
 import { SelectSkillComponent } from './characters/skills/select-skill/select-skill.component';
 import { SelectSkillSpecComponent } from './characters/skills/select-skill-spec/select-skill-spec.component';
 import { SkillspecComponent } from './characters/skills/skillspec/skillspec.component';
+import { SelectItemComponent } from './characters/items/select-item/select-item.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { SkillspecComponent } from './characters/skills/skillspec/skillspec.comp
     SelectSkillComponent,
     SelectSkillSpecComponent,
     SkillspecComponent,
+    SelectItemComponent,
   ],
   imports: [
     BrowserModule,

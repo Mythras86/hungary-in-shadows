@@ -132,7 +132,9 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         status.value.pinhentsegAllapot,
         status.value.taplaltsagAllapot,
         // arrayok
-        skills.value.skills,
+        skills.value.activeSkills,
+        skills.value.knowledgeSkills,
+        skills.value.languageSkills,
         items.value.items
       );
    } else {
@@ -195,7 +197,9 @@ export class CharsMainComponent implements OnInit, OnDestroy {
         status.value.pinhentsegAllapot,
         status.value.taplaltsagAllapot,
         // arrayok
-        skills.value.skills,
+        skills.value.activeSkills,
+        skills.value.knowledgeSkills,
+        skills.value.languageSkills,
         items.value.items
       )
     };
@@ -230,8 +234,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
           this.resS.updateResources(w);
           this.attrS.updateAttributes(w);
           this.statusS.updateStatus(w);
-          this.skillsS.updateSkills(w.skills);
-          this.itemsS.updateItems(w.items);
+          this.skillsS.updateSkills(w.activeSkills, w.knowledgeSkills, w.languageSkills);
+          this.itemsS.updateItems(w.armors);
         });
       } else {
         this.createMode = true;

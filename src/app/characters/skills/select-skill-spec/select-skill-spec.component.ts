@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { SkillSpecInterface, skillsSpecUtil, skillsUtil } from '../skills.util';
+import { SkillSpecInterface, skillsSpecUtil } from '../skills.util';
 
 @Component({
   selector: 'app-select-skill-spec',
   templateUrl: './select-skill-spec.component.html',
-  styleUrls: ['./select-skill-spec.component.css']
+  styleUrls: ['./select-skill-spec.component.scss']
 })
 export class SelectSkillSpecComponent implements OnInit {
 
