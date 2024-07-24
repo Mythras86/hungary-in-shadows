@@ -6,19 +6,33 @@ export interface AttributesModel {
   fizGyo: number,
   fizUgy: number,
   fizKit: number,
+  fizEroMod: number,
+  fizGyoMod: number,
+  fizUgyMod: number,
+  fizKitMod: number,
   //asztrál
   asztEro: number,
   asztGyo: number,
   asztUgy: number,
   asztKit: number,
+  asztEroMod: number,
+  asztGyoMod: number,
+  asztUgyMod: number,
+  asztKitMod: number,
   //speciális
   magia: number,
   chiAramlas: number,
   kockatartalek: number,
+  magiaMod: number,
+  chiAramlasMod: number,
+  kockatartalekMod: number,
   //konstans
   esszencia: number,
   reakcio: number,
   kezdemenyezes: number
+  esszenciaMod: number,
+  reakcioMod: number,
+  kezdemenyezesMod: number
 };
 
 export interface AttributesFG extends FormGroup {

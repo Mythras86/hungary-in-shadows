@@ -12,6 +12,7 @@ import { ItemsService } from './items/items.service';
 import { ResourcesService } from './resources/resources.service';
 import { SkillsService } from './skills/skills.service';
 import { StatusService } from './status/status.service';
+import { CharModel } from './chars-main.model';
 
 
 @Component({
@@ -70,138 +71,101 @@ export class CharsMainComponent implements OnInit, OnDestroy {
     ) {
       console.log('invalid')
       return;
-   }
-   this.spinS.toggleSpinner(true);
-   if (this.createMode) {
-      this.s.addOneChar(
-        //szöveges
-        details.value.teljesnev,
-        details.value.becenev,
-        details.value.alnev,
-        details.value.testalkat,
-        details.value.hajstilus,
-        //értékválasztó
-        details.value.nem,
-        details.value.dns,
-        details.value.anyanyelv,
-        details.value.eletkor,
-        details.value.magassag,
-        details.value.testsuly,
-        //szín
-        details.value.szemszin,
-        details.value.hajszin,
-        details.value.szorszin,
-        details.value.borszin,
-        details.value.kedvencszin,
-        //hosszú szöveg
-        details.value.felelem,
-        details.value.osztonzo,
-        details.value.gyulolet,
-        details.value.kedvenc,
-        details.value.irtozat,
-        details.value.vonzalom,
-        details.value.megjelenes,
-        //erőforrások
-        res.value.alapKarma,
-        res.value.szerzettKarma,
-        res.value.elkoltottKarma,
-        res.value.alapToke,
-        res.value.szerzettToke,
-        res.value.elkoltottToke,
-        //fizikai
-        attrs.value.fizEro,
-        attrs.value.fizGyo,
-        attrs.value.fizUgy,
-        attrs.value.fizKit,
-        //asztrál
-        attrs.value.asztEro,
-        attrs.value.asztGyo,
-        attrs.value.asztUgy,
-        attrs.value.asztKit,
-        //speciális
-        attrs.value.kockatartalek,
-        attrs.value.magia,
-        attrs.value.chiAramlas,
-        // konstans
-        attrs.value.esszencia,
-        attrs.value.reakcio,
-        attrs.value.kezdemenyezes,
-        // állapot
-        status.value.asztralisAllapot,
-        status.value.fizikaiAllapot,
-        status.value.pinhentsegAllapot,
-        status.value.taplaltsagAllapot,
-        // arrayok
-        skills.value.activeSkills,
-        skills.value.knowledgeSkills,
-        skills.value.languageSkills,
-        items.value.items
-      );
-   } else {
-      this.s.updateOneChar(
-        //szöveges
-        details.value.teljesnev,
-        details.value.becenev,
-        details.value.alnev,
-        details.value.testalkat,
-        details.value.hajstilus,
-        //értékválasztó
-        details.value.nem,
-        details.value.dns,
-        details.value.anyanyelv,
-        details.value.eletkor,
-        details.value.magassag,
-        details.value.testsuly,
-        //szín
-        details.value.szemszin,
-        details.value.hajszin,
-        details.value.szorszin,
-        details.value.borszin,
-        details.value.kedvencszin,
-        //hosszú szöveg
-        details.value.felelem,
-        details.value.osztonzo,
-        details.value.gyulolet,
-        details.value.kedvenc,
-        details.value.irtozat,
-        details.value.vonzalom,
-        details.value.megjelenes,
-        //erőforrások
-        res.value.alapKarma,
-        res.value.szerzettKarma,
-        res.value.elkoltottKarma,
-        res.value.alapToke,
-        res.value.szerzettToke,
-        res.value.elkoltottToke,
-        //fizikai
-        attrs.value.fizEro,
-        attrs.value.fizGyo,
-        attrs.value.fizUgy,
-        attrs.value.fizKit,
-        //asztrál
-        attrs.value.asztEro,
-        attrs.value.asztGyo,
-        attrs.value.asztUgy,
-        attrs.value.asztKit,
-        //speciális
-        attrs.value.kockatartalek,
-        attrs.value.magia,
-        attrs.value.chiAramlas,
-        // konstans
-        attrs.value.esszencia,
-        attrs.value.reakcio,
-        attrs.value.kezdemenyezes,
-        // állapot
-        status.value.asztralisAllapot,
-        status.value.fizikaiAllapot,
-        status.value.pinhentsegAllapot,
-        status.value.taplaltsagAllapot,
-        // arrayok
-        skills.value.activeSkills,
-        skills.value.knowledgeSkills,
-        skills.value.languageSkills,
-        items.value.items
-      )
+    }
+    let charData: CharModel;
+    charData = {
+      //szöveges
+      teljesnev: details.value.teljesnev,
+      becenev: details.value.becenev,
+      alnev: details.value.alnev,
+      testalkat: details.value.testalkat,
+      hajstilus: details.value.hajstilus,
+      //értékválasztó
+      nem: details.value.nem,
+      dns: details.value.dns,
+      anyanyelv: details.value.anyanyelv,
+      eletkor: details.value.eletkor,
+      magassag: details.value.magassag,
+      testsuly: details.value.testsuly,
+      //szín
+      szemszin: details.value.szemszin,
+      hajszin: details.value.hajszin,
+      szorszin: details.value.szorszin,
+      borszin: details.value.borszin,
+      kedvencszin: details.value.kedvencszin,
+      //hosszú szöveg
+      felelem: details.value.felelem,
+      osztonzo: details.value.osztonzo,
+      gyulolet: details.value.gyulolet,
+      kedvenc: details.value.kedvenc,
+      irtozat: details.value.irtozat,
+      vonzalom: details.value.vonzalom,
+      megjelenes: details.value.megjelenes,
+      //erőforrások
+      alapKarma: res.value.alapKarma,
+      szerzettKarma: res.value.szerzettKarma,
+      elkoltottKarma: res.value.elkoltottKarma,
+      alapToke: res.value.alapToke,
+      szerzettToke: res.value.szerzettToke,
+      elkoltottToke: res.value.elkoltottToke,
+      //fizikai
+      fizEro: attrs.value.fizEro,
+      fizGyo: attrs.value.fizGyo,
+      fizUgy: attrs.value.fizUgy,
+      fizKit: attrs.value.fizKit,
+      fizEroMod: attrs.value.fizEroMod,
+      fizGyoMod: attrs.value.fizGyoMod,
+      fizUgyMod: attrs.value.fizUgyMod,
+      fizKitMod: attrs.value.fizKitMod,
+      //asztrál
+      asztEro: attrs.value.asztEro,
+      asztGyo: attrs.value.asztGyo,
+      asztUgy: attrs.value.asztUgy,
+      asztKit: attrs.value.asztKit,
+      asztEroMod: attrs.value.asztEroMod,
+      asztGyoMod: attrs.value.asztGyoMod,
+      asztUgyMod: attrs.value.asztUgyMod,
+      asztKitMod: attrs.value.asztKitMod,
+      //speciális
+      kockatartalek: attrs.value.kockatartalek,
+      magia: attrs.value.magia,
+      chiAramlas: attrs.value.chiAramlas,
+      kockatartalekMod: attrs.value.kockatartalekMod,
+      magiaMod: attrs.value.magiaMod,
+      chiAramlasMod: attrs.value.chiAramlasMod,
+      //konstans
+      esszencia: attrs.value.esszencia,
+      reakcio: attrs.value.reakcio,
+      kezdemenyezes: attrs.value.kezdemenyezes,
+      esszenciaMod: attrs.value.esszenciaMod,
+      reakcioMod: attrs.value.reakcioMod,
+      kezdemenyezesMod: attrs.value.kezdemenyezesMod,
+      // állapot
+      asztralisAllapot: status.value.asztralisAllapot,
+      fizikaiAllapot: status.value.fizikaiAllapot,
+      pinhentsegAllapot: status.value.pinhentsegAllapot,
+      taplaltsagAllapot: status.value.taplaltsagAllapot,
+      // szakértelmek
+      activeSkills: skills.value.activeSkills,
+      knowledgeSkills: skills.value.knowledgeSkills,
+      languageSkills: skills.value.languageSkills,
+      // eszközök
+      armors: items.value.armors,
+      armorAddons: items.value.armorAddons,
+      weapons: items.value.weapons,
+      weaponAddons: items.value.weaponAddons,
+      items: items.value.items,
+      cybers: items.value.cybers,
+      explosives: items.value.explosives,
+      artifacts: items.value.artifacts,
+      spells: items.value.spells,
+      spirits: items.value.spirits,
+    };
+    this.spinS.toggleSpinner(true);
+    if (this.createMode) {
+        this.s.addOneChar(charData);
+    } else {
+        this.s.updateOneChar(charData)
     };
     this.router.navigate(["/charslist"]);
   }
@@ -234,8 +198,8 @@ export class CharsMainComponent implements OnInit, OnDestroy {
           this.resS.updateResources(w);
           this.attrS.updateAttributes(w);
           this.statusS.updateStatus(w);
-          this.skillsS.updateSkills(w.activeSkills, w.knowledgeSkills, w.languageSkills);
-          this.itemsS.updateItems(w.armors);
+          this.skillsS.updateSkills(w);
+          this.itemsS.updateItems(w);
         });
       } else {
         this.createMode = true;

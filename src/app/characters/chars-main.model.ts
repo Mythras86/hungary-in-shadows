@@ -13,5 +13,13 @@ export interface CharModel extends DetailsModel, AttributesModel, ResourcesModel
   knowledgeSkills?: Array<SkillsModel>;
   languageSkills?: Array<SkillsModel>;
   armors?: Array<ItemsModel>;
-
+  armorAddons?: Array<ItemsModel>;
+  weapons?: Array<ItemsModel>;
+  weaponAddons?: Array<ItemsModel>;
+  items?: Array<ItemsModel>;
+  cybers?: Array<ItemsModel>;
+  explosives?: Array<ItemsModel>;
+  artifacts?: Array<ItemsModel>;
+  spells?: Array<ItemsModel>;
+  spirits?: Array<ItemsModel>;
 }

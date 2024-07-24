@@ -67,13 +67,6 @@ export class SkillsComponent {
 
   ngOnInit(): void {
     this.anyanyelvChangeDetector()
-    // this.s.skillsForm.valueChanges.subscribe(
-    //   ()=> [
-    //     console.log(this.activeSkills.value),
-    //     console.log(this.knowledgeSkills.value),
-    //     console.log(this.languageSkills.value),
-    //   ]
-    // )
   }
 
 }

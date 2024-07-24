@@ -68,14 +68,12 @@ export class SkillComponent implements OnInit{
     form?.patchValue(form.value+valtozas);
   }
 
-  newSpec(skillCsoport: string, id: string, i: number): void {
-    const ownedSpecs: Array<string> = Object.values(((this.s.skillsForm.get(skillCsoport) as FormArray).at(this.i) as FormGroup)).map((x:any) => x.value).map(x => x.id);
-    console.log(ownedSpecs)
+  newSpec(skillCsoport: string, id: string): void {
+    const ownedSpecs: Array<any> = ((this.s.skillsForm.get(skillCsoport) as FormArray).at(this.i) as FormGroup).get('specs')?.value.map((x: { id: string; })=>x.id);
     this.modalS.openModal(SelectSkillSpecComponent, {mainSkillId: id, ownedSpecs: ownedSpecs}).subscribe(
-      w => this.s.addSpec(skillCsoport, w, i)
+      w => this.s.addSpec(skillCsoport, w, this.i)
     );
   }
-
   ngOnInit(): void {
   }
 }

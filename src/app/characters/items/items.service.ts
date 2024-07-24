@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ItemsModel } from './items.model';
+import { ItemsModel, TamadasModel, TavolsagModel, TulModositoModel } from './items.model';
+import { ResourcesService } from '../resources/resources.service';
+import { AttributesService } from '../attributes/attributes.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,8 @@ export class ItemsService {
 
   constructor(
     private fb: FormBuilder,
+    private resS: ResourcesService,
+    private attrS: AttributesService,
   ) { }
 
   itemsForm!: FormGroup;
@@ -17,6 +21,14 @@ export class ItemsService {
     const items = {
       armors: this.fb.array([]),
       armorAddons: this.fb.array([]),
+      weapons: this.fb.array([]),
+      weaponAddons: this.fb.array([]),
+      items: this.fb.array([]),
+      cybers: this.fb.array([]),
+      explosives: this.fb.array([]),
+      artifacts: this.fb.array([]),
+      spells: this.fb.array([]),
+      spirits: this.fb.array([]),
     }
     return this.itemsForm = this.fb.group(items);
   }
@@ -30,27 +42,22 @@ export class ItemsService {
     _id: [item._id, Validators.required],
     csoport: [item.csoport, Validators.required],
     tipus: [item.tipus, Validators.required],
+    faName: [item.faName, Validators.required],
     nev: [item.nev, Validators.required],
     leiras: [item.leiras, Validators.required],
 
     //súly
     suly: [item.suly],
-    sulySzorzo: [item.sulySzorzo],
 
     //költségek kumulatív
-    tokeKtsg: [item.tokeKtsg],
-    karmaKtsg: [item.karmaKtsg],
-    esszenciaKtsg: [item.esszenciaKtsg],
+    tokeKtsg: [item.tokeKtsg != undefined ? item.tokeKtsg : 0 ],
+    karmaKtsg: [item.karmaKtsg != undefined ? item.karmaKtsg : 0 ],
+    esszenciaKtsg: [item.esszenciaKtsg != undefined ? item.esszenciaKtsg : 0 ],
 
     //költségek per szint
-    tokeKtsgPerSzint: [item.tokeKtsgPerSzint],
-    karmaKtsgPerSzint: [item.karmaKtsgPerSzint],
-    esszenciaKtsgPerSzint: [item.esszenciaKtsgPerSzint],
-
-    //költségek multiplikatív
-    tokeKtsgSzorzo: [item.tokeKtsgSzorzo],
-    karmaKtsgSzorzo: [item.karmaKtsgSzorzo],
-    esszenciaKtsgSzorzo: [item.esszenciaKtsgSzorzo],
+    tokeKtsgPerSzint: [item.tokeKtsgPerSzint != undefined ? item.tokeKtsgPerSzint : 0 ],
+    karmaKtsgPerSzint: [item.karmaKtsgPerSzint != undefined ? item.karmaKtsgPerSzint : 0 ],
+    esszenciaKtsgPerSzint: [item.esszenciaKtsgPerSzint != undefined ? item.esszenciaKtsgPerSzint : 0 ],
 
     //szint és minőség
     szint: [item.szint],
@@ -70,35 +77,117 @@ export class ItemsService {
     felhasznalasMax: [item.felhasznalasMax],
     });
     // pay the cost
-    (this.itemsForm.get(item.csoport) as FormArray).push(newitem);
+    this.resS.payKarma(item.tokeKtsg != undefined ? item.tokeKtsg : 0);
+    this.resS.payToke(item.karmaKtsg != undefined ? item.karmaKtsg : 0);
+    (this.itemsForm.get(item.faName) as FormArray).push(newitem);
   }
 
-  setTavolsag(x: any) {
-
-  }
-
-  setTamadas(x: any) {
-
-  }
-
-  setTulajdonsagModosito(x: any) {
-
-  }
-
-  setItems(dataset: any[]): FormArray<any> {
-    const items = (this.itemsForm.get('items') as FormArray);
-    dataset.forEach(e => {
-      items.push(
+  setItems(items: ItemsModel[], faName: string): void {
+    if (items == undefined) {
+      return;
+    }
+    const itemsFA = (this.itemsForm.get(faName) as FormArray);
+    items.forEach(e => {
+      itemsFA.push(
         this.fb.group({
-      //item attributes
-    }))
+          //alap adatok
+          _id: e._id,
+          csoport: e.csoport,
+          tipus: e.tipus,
+          faName: e.faName,
+          nev: e.nev,
+          leiras: e.leiras,
+
+          //költségek kumulatív
+          tokeKtsg: e.tokeKtsg,
+          karmaKtsg: e.karmaKtsg,
+          esszenciaKtsg: e.esszenciaKtsg,
+
+          //súly
+          suly: e.suly,
+
+          //költségek per szint
+          tokeKtsgPerSzint: e.tokeKtsgPerSzint,
+          karmaKtsgPerSzint: e.karmaKtsgPerSzint,
+          esszenciaKtsgPerSzint: e.esszenciaKtsgPerSzint,
+
+          //szint és minőség
+          szint: e.szint,
+          maxSzint: e.maxSzint,
+
+          celszam: e.celszam,
+          celpontokSzama: e.celpontokSzama,
+          hatosugar: e.hatosugar,
+
+          tavolsag: this.setTavolsag(e.tavolsag),
+
+          tamadas: this.setTamadas(e.tamadas),
+
+          tulajdonsagModosito: this.setTulajdonsagModosito(e.tulajdonsagModosito),
+
+          //felhasználás pl.: e.fegyverbe tár, szellem szolgálat, gyógyszeradag, méreg
+          felhasznalasNev: e.felhasznalasNev,
+          felhasznalt: e.felhasznalt,
+          felhasznalasMax: e.felhasznalasMax,
+        })
+      )
     });
-    return items;
+  }
+
+  setTavolsag(data: any) {
+    if (data == undefined) {
+      return;
+    }
+    this.fb.array(data.map((x: TavolsagModel) => {
+      return this.fb.group({
+        nev: x.nev,
+        ertek: x.ertek,
+        modosito: x.modosito,
+      });
+    }));
+  }
+
+  setTamadas(data: any) {
+    if (data == undefined) {
+      return;
+    }
+    this.fb.array(data.map((x: TamadasModel) => {
+      return this.fb.group({
+        nev: x.nev,
+        akcio: x.akcio,
+        ero: x.ero,
+        sebzes: x.sebzes,
+        sebKod: x.sebKod,
+      });
+    }));
+
+  }
+
+  setTulajdonsagModosito(data: any) {
+    if (data == undefined) {
+      return;
+    }
+    this.fb.array(data.map((x: TulModositoModel) => {
+      return this.fb.group({
+        nev: x.nev,
+        ertek: x.ertek,
+      });
+    }));
+
   }
 
   updateItems(w: any): void {
     this.createItems();
-    this.setItems(w);
+    this.setItems(w.armors, 'armors');
+    this.setItems(w.armorAddons, 'armorAddons');
+    this.setItems(w.weapons, 'weapons');
+    this.setItems(w.weaponAddons, 'weaponAddons');
+    this.setItems(w.items, 'items');
+    this.setItems(w.cybers, 'cybers');
+    this.setItems(w.explosives, 'explosives');
+    this.setItems(w.artifacts, 'artifacts');
+    this.setItems(w.spells, 'spells');
+    this.setItems(w.spirits, 'spirits');
   }
 
   removeItem(i:number): void {

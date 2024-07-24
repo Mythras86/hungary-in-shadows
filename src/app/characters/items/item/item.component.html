@@ -1,0 +1,86 @@
+<app-hide-content class="w100"
+[keyWord]="item._id"
+[arrowClass]="'nwht w10'"
+
+>
+  <div headText class="flexCont w90">
+    <div *ngIf="item.nev" class="nwht text1 flex1">{{item.nev}}</div>
+  </div>
+
+  <div items class="flexCont w100">
+    <div *ngIf="item.suly" class="w50 nbl text1">Súly</div>
+    <div *ngIf="item.suly" class="w50 grayCell textR  text1">{{item.suly}} Kg</div>
+
+    <div *ngIf="item.szint" class="w50 nbl text1">Szint</div>
+    <div *ngIf="item.szint" class="w50 grayCell textR  text1">{{item.szint}} Szint</div>
+
+    <div *ngIf="item.maxSzint" class="w50 nbl text1">Max. Szint</div>
+    <div *ngIf="item.maxSzint" class="w50 grayCell textR  text1">{{item.maxSzint}} Szint</div>
+
+    <div *ngIf="item.celszam" class="w50 nbl text1">Célszám</div>
+    <div *ngIf="item.celszam" class="w50 grayCell textR  text1">{{item.celszam}}</div>
+
+    <div *ngIf="item.celpontokSzama" class="w50 nbl text1">Célpontok száma</div>
+    <div *ngIf="item.celpontokSzama" class="w50 grayCell textR  text1">{{item.celpontokSzama}}</div>
+
+    <div *ngIf="item.hatosugar" class="w50 nbl text1">Hatósugár</div>
+    <div *ngIf="item.hatosugar" class="w50 grayCell textR  text1">{{item.hatosugar}}</div>
+
+    <div *ngIf="item.felhasznalasNev" class="w50 nbl text1">{{item.felhasznalasNev}}</div>
+    <div *ngIf="item.felhasznalt" class="w50 grayCell textR  text1">{{item.felhasznalasMax! - item.felhasznalt!}}</div>
+
+    <!-- <div *ngIf="item.tavolsag" class="w100 grayCell text1">{{item.tavolsag}}</div>
+    <div *ngIf="item.tamadas" class="w100 grayCell text1">{{item.tamadas}}</div>
+    <div *ngIf="item.tulajdonsagModosito" class="w100 grayCell text1">{{item.tulajdonsagModosito}}</div> -->
+
+    <div *ngIf="item.leiras" class="w100 nbl text1 center">Leírás</div>
+    <div *ngIf="item.leiras" class="w100 grayCell text1">{{item.leiras}}</div>
+
+    <div class="w100 flexCont" *ngIf="(tokeKtsgPerSzint || karmaKtsgPerSzint || esszenciaKtsgPerSzint) > 0" >
+      <div class="w100 nbl text1">Költség / Szint</div>
+      <app-field-toke class="w40"
+      [ertek] = "tokeKtsgPerSzint"
+      ></app-field-toke>
+
+      <app-field-karma class="w30"
+      [ertek] = "karmaKtsgPerSzint"
+      ></app-field-karma>
+
+      <app-field-essz class="w30"
+      [ertek] = "esszenciaKtsgPerSzint"
+      ></app-field-essz>
+    </div>
+
+    <div class="w100 flexCont" *ngIf="(tokeKtsgSzorzo || karmaKtsgSzorzo || esszenciaKtsgSzorzo) > 0" >
+      <div class="w100 nbl text1 center">Költség Szorzók</div>
+      <app-field-toke class="w40"
+      [ertek] = "tokeKtsgSzorzo"
+      ></app-field-toke>
+
+      <app-field-karma class="w30"
+      [ertek] = "karmaKtsgSzorzo"
+      ></app-field-karma>
+
+      <app-field-essz class="w30"
+      [ertek] = "esszenciaKtsgSzorzo"
+      ></app-field-essz>
+    </div>
+
+    <div class="w100 flexCont" *ngIf="(tokeKtsg || karmaKtsg || esszenciaKtsg) > 0" >
+      <div class="w100 nbl text1 center">Költségek</div>
+      <app-field-toke class="w40"
+      [ertek] = "tokeKtsg"
+      ></app-field-toke>
+
+      <app-field-karma class="w30"
+      [ertek] = "karmaKtsg"
+      ></app-field-karma>
+
+      <app-field-essz class="w30"
+      [ertek] = "esszenciaKtsg"
+      ></app-field-essz>
+    </div>
+  </div>
+
+
+</app-hide-content>

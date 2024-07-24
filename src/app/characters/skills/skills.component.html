@@ -9,7 +9,7 @@
 
   <!-- csoportosítás -->
 
-  <div class="w100" formArrayName="activeSkills" >
+  <div class="w100" formArrayName="activeSkills" *ngIf="activeSkills.length > 0">
 
       <h3 class="margTop1">Aktív Szakértelmek</h3>
 
@@ -40,7 +40,7 @@
 
   </div>
 
-  <div class="w100" formArrayName="knowledgeSkills" >
+  <div class="w100" formArrayName="knowledgeSkills" *ngIf="knowledgeSkills.length > 0">
 
       <h3 class="margTop1">Ismeret Szakértelmek</h3>
 
@@ -58,7 +58,7 @@
 
   </div>
 
-  <div class="w100" formArrayName="languageSkills" >
+  <div class="w100" formArrayName="languageSkills" *ngIf="languageSkills.length > 0">
 
       <h3 class="margTop1">Nyelvi Szakértelmek</h3>
 

@@ -49,6 +49,9 @@ export class SkillsService {
   }
 
   setSkills(skills: any[], faName: string): void {
+    if (skills == undefined) {
+      return;
+    }
     const skillsFA = (this.skillsForm.get(faName) as FormArray);
     skills.forEach(e => {
       skillsFA.push(
@@ -65,22 +68,21 @@ export class SkillsService {
     );
   }
 
-  setSpecs(x:any=null)
- {
+  setSpecs(x:any=null) {
    x=x || {Z:null}
    return this.fb.group({
       id: x.id,
       nev: x.nev,
       spec: x.spec,
       szint: x.szint,
-   })
+   });
  }
 
-  updateSkills(activeSkills: any, knowledgeSkills: any, languageSkills: any): void {
+  updateSkills(w:any): void {
     this.createSkills();
-    this.setSkills(activeSkills, 'activeSkills');
-    this.setSkills(knowledgeSkills, 'knowledgeSkills');
-    this.setSkills(languageSkills, 'languageSkills');
+    this.setSkills(w.activeSkills, 'activeSkills');
+    this.setSkills(w.knowledgeSkills, 'knowledgeSkills');
+    this.setSkills(w.languageSkills, 'languageSkills');
   }
 
   removeSkill(skillCsoport:string, i:number): void {

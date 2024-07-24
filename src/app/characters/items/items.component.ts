@@ -40,8 +40,8 @@ export class ItemsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.armors.valueChanges.subscribe(
-      ()=> console.log(this.armors)
+    this.armorAddons.valueChanges.subscribe(
+      ()=> console.log(this.armorAddons.value)
     );
   }
 }

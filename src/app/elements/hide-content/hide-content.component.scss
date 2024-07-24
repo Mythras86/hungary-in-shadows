@@ -1,3 +1,9 @@
+@import "../../../styles-flex.scss";
+
+:host {
+  @extend .flexCont;
+}
+
 .items :first-child:hover{
   cursor: pointer;
   background-color: orange;

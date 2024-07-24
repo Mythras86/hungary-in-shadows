@@ -4,17 +4,18 @@ export interface ItemsModel {
   _id: string;
   csoport: string;
   tipus: string;
+  faName: string;
   nev: string;
-  leiras?: string;
-
-  //súly
-  suly?: number;
-  sulySzorzo?: number;
+  leiras: string;
 
   //költségek kumulatív
   tokeKtsg?: number;
   karmaKtsg?: number;
   esszenciaKtsg?: number;
+
+  //súly
+  suly?: number;
+  sulySzorzo?: number;
 
   //költségek per szint
   tokeKtsgPerSzint?: number;
@@ -34,11 +35,11 @@ export interface ItemsModel {
   celpontokSzama?: number;
   hatosugar?: number;
 
-  tavolsag?: Array<Tavolsag>;
+  tavolsag?: Array<TavolsagModel>;
 
-  tamadas?: Array<Tamadas>;
+  tamadas?: Array<TamadasModel>;
 
-  tulajdonsagModosito?: Array<TulajdonsagModosito>;
+  tulajdonsagModosito?: Array<TulModositoModel>;
 
   //felhasználás pl.?: fegyverbe tár, szellem szolgálat, gyógyszeradag, méreg
   felhasznalasNev?: string;
@@ -46,7 +47,7 @@ export interface ItemsModel {
   felhasznalasMax?: number;
 }
 
-export interface Tamadas {
+export interface TamadasModel {
   nev: string;
   akcio: number;
   ero: number;
@@ -54,13 +55,13 @@ export interface Tamadas {
   sebKod: string;
 }
 
-export interface Tavolsag {
+export interface TavolsagModel {
   nev: string;
   ertek: number;
   modosito: number;
 }
 
-export interface TulajdonsagModosito {
+export interface TulModositoModel {
   nev: string;
   ertek: number;
 }

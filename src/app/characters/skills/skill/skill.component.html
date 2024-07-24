@@ -5,6 +5,6 @@
 
 <div *ngIf="select.status == skill.id+i" class="buttonCont w100 posAbs btnBack">
   <button *ngIf="skill.szint < kapTulSzint" class="text1 itemGet" type="button" (click)="skillLvlUp(); select.clearSelected();" >Szintlépés</button>
-  <button *ngIf="hasSpec(skill.id)" class="text1 itemGet" (click)="newSpec(skill.csoport, skill.id, i); select.clearSelected();" type="button">Új spec</button>
+  <button *ngIf="hasSpec(skill.id)" class="text1 itemGet" (click)="newSpec(skill.csoport, skill.id); select.clearSelected();" type="button">Új spec</button>
   <button class="text1 itemRemove" type="button" (click)="s.removeSkill(skill.csoport, i)">Törlés</button>
 </div>
