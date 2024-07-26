@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray } from '@angular/forms';
 import { ItemSelectService } from 'src/app/elements/item-select/item-select.service';
 import { ItemsService } from './items.service';
-import { ModalService } from 'src/app/elements/modals/modal.service';
-import { SelectItemComponent } from './select-item/select-item.component';
 
 @Component({
   selector: 'app-items',
@@ -15,7 +13,6 @@ export class ItemsComponent implements OnInit {
   constructor(
     public s: ItemsService,
     public select: ItemSelectService,
-    private modalS: ModalService,
   ){}
 
   public get armors(): FormArray | null | any {
@@ -32,16 +29,7 @@ export class ItemsComponent implements OnInit {
     return this.s.itemsForm.controls['armorAddons'] as FormArray;
   }
 
-  newItem(){
-    //const ownedItemsId: Array<string> = Object.values(this.items.controls).map((x:any) => x.value).map(x => x.id);
-    this.modalS.openModal(SelectItemComponent, '').subscribe(
-      w => this.s.addItem(w)
-    );
-  }
 
   ngOnInit(): void {
-    this.armorAddons.valueChanges.subscribe(
-      ()=> console.log(this.armorAddons.value)
-    );
   }
 }

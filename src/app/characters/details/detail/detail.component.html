@@ -3,7 +3,10 @@
 <div class="flexCont w100">
 
   <!-- fejléc -->
-  <div class="nwht text1 center {{editMode ? 'w90': 'w100'}}" >
+  <div *ngIf="!editMode" class="nwht text1 center w100" >
+    {{nev}}
+  </div>
+  <div *ngIf="editMode" class="nwht text2 center w90" >
     {{nev}}
   </div>
 
@@ -15,7 +18,7 @@
   </div>
 
   <!-- megjegyzés -->
-  <div *ngIf="editMode" class="w100 nwht text1 center">
+  <div *ngIf="editMode" class="w100 nbl text1 center">
     {{megjegyzes}}
   </div>
 

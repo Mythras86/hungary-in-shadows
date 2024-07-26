@@ -1,10 +1,52 @@
-<div class="w100 flexCont" [ngClass]="select.toggleClass(skill.id+i)" (click)="select.toggleStatus(skill.id+i)">
-  <div class="ngrn text1 center w10">{{getAttrBonus() + skill.szint}}</div>
-  <div class="nwht text1 w90">{{skill.szint}}  / {{kapTulSzint}} {{skill.nev}} {{skill.nevKieg == ''? '': "("+ skill.nevKieg +")"}}</div>
-</div>
+<!-- <div class="w100 flexCont" [ngClass]="select.toggleClass(skill.id+i)" (click)="select.toggleStatus(skill.id+i)">
 
-<div *ngIf="select.status == skill.id+i" class="buttonCont w100 posAbs btnBack">
-  <button *ngIf="skill.szint < kapTulSzint" class="text1 itemGet" type="button" (click)="skillLvlUp(); select.clearSelected();" >Szintlépés</button>
-  <button *ngIf="hasSpec(skill.id)" class="text1 itemGet" (click)="newSpec(skill.csoport, skill.id); select.clearSelected();" type="button">Új spec</button>
-  <button class="text1 itemRemove" type="button" (click)="s.removeSkill(skill.csoport, i)">Törlés</button>
-</div>
+  <app-special-field class="w15"
+  [ertek]="getAttrBonus() + skill.szint"
+  [tipus]="'szint'"
+  [egyeniSzin]="'ngrn'"
+  ></app-special-field>
+
+  <div class="nwht text1 w85">{{skill.szint}}  / {{kapTulSzint}} {{skill.nev}} {{skill.nevKieg == ''? '': "("+ skill.nevKieg +")"}}</div>
+</div> -->
+
+<app-hide-content
+[keyWord]="skill.id+i"
+[arrowColor]="'nwht'"
+[arrowBefore]="false"
+>
+  <div headText class="flexCont">
+
+    <app-special-field class="w20"
+    [ertek]="getAttrBonus() + skill.szint"
+    [tipus]="'szint'"
+    [egyeniSzin]="'ngrn'"
+    ></app-special-field>
+
+    <div class="nwht text1 flex1">
+      {{skill.nev}}
+    </div>
+
+  </div>
+
+  <div items class="flexCont w100">
+    <div class="w50 nbl text1">Névkiegészítő</div>
+    <div class="w50 grayCell text1">{{skill.nevKieg}}</div>
+
+    <div class="w50 nbl text1">Szint</div>
+    <div class="w50 grayCell text1">{{skill.szint}}</div>
+    <div class="w50 nbl text1">Max Szint</div>
+    <div class="w50 grayCell text1">{{kapTulSzint}}</div>
+    <div class="w50 nbl text1">Fő Tulajd.</div>
+    <div class="w50 grayCell text1">{{tulNev}}</div>
+    <div class="w50 nbl text1">Tulajd. búnusz</div>
+    <div class="w50 grayCell text1">{{getAttrBonus()}}</div>
+
+    <div class="buttonCont w100 posAbs btnBack">
+      <button *ngIf="skill.szint < kapTulSzint" class="text1 itemGet" type="button" (click)="skillLvlUp()" >Szintlépés</button>
+      <button *ngIf="hasSpec(skill.id)" class="text1 itemGet" (click)="newSpec(skill.faName, skill.id)" type="button">Új spec</button>
+      <button class="text1 itemRemove" type="button" (click)="s.removeSkill(skill.csoport, i)">Törlés</button>
+    </div>
+  </div>
+
+</app-hide-content>
+

@@ -15,6 +15,7 @@ export class HideContentComponent {
   @Input() keyWord: string = '';
   @Input() defaultShow: string = '';
 
-  @Input() arrowClass: string = '';
+  @Input() arrowColor: string = '';
+  @Input() arrowBefore: boolean = true;
 
 }

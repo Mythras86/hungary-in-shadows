@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FieldTokeComponent } from './field-toke.component';
+import { SpecialFieldComponent } from './special-field.component';
 
-describe('FieldTokeComponent', () => {
-  let component: FieldTokeComponent;
-  let fixture: ComponentFixture<FieldTokeComponent>;
+describe('SpecialFieldComponent', () => {
+  let component: SpecialFieldComponent;
+  let fixture: ComponentFixture<SpecialFieldComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FieldTokeComponent ]
+      declarations: [ SpecialFieldComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FieldTokeComponent);
+    fixture = TestBed.createComponent(SpecialFieldComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

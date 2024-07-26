@@ -1,7 +1,3 @@
-<div class="buttonCont w100 btnBack">
-  <button class="itemGet text1 center" type="button" (click)="newItem(); select.clearSelected();">Új Eszköz</button>
-</div>
-
 <div class="flexCont w100" [formGroup]="s.itemsForm" *ngIf="s.itemsForm">
 
   <div class="flexCont w100" formArrayName="armors" *ngIf="armors.length > 0">

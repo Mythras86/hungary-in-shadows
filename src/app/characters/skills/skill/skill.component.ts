@@ -9,6 +9,7 @@ import { ModalService } from 'src/app/elements/modals/modal.service';
 import { LevelcontrolComponent } from 'src/app/elements/levelcontrol/levelcontrol.component';
 import { ResourcesService } from '../../resources/resources.service';
 import { SelectSkillSpecComponent } from '../select-skill-spec/select-skill-spec.component';
+import { attributesUtil } from '../../attributes/attributes-utility';
 
 @Component({
   selector: 'app-skill',
@@ -28,6 +29,8 @@ export class SkillComponent implements OnInit{
   @Input() skill!: SkillsModel;
   @Input() kapTulSzint: number = 0;
   @Input() i: number = 0;
+
+  tulNev: string = '';
 
   getAttrBonus(): number {
     const szint = Math.floor(this.kapTulSzint/2);
@@ -68,12 +71,21 @@ export class SkillComponent implements OnInit{
     form?.patchValue(form.value+valtozas);
   }
 
-  newSpec(skillCsoport: string, id: string): void {
-    const ownedSpecs: Array<any> = ((this.s.skillsForm.get(skillCsoport) as FormArray).at(this.i) as FormGroup).get('specs')?.value.map((x: { id: string; })=>x.id);
+  newSpec(faName: string, id: string): void {
+    console.log(faName)
+    console.log(id)
+    const ownedSpecs: Array<any> = ((this.s.skillsForm.get(faName) as FormArray).at(this.i) as FormGroup).get('specs')?.value.map((x: { id: string; })=>x.id);
     this.modalS.openModal(SelectSkillSpecComponent, {mainSkillId: id, ownedSpecs: ownedSpecs}).subscribe(
-      w => this.s.addSpec(skillCsoport, w, this.i)
+      w => this.s.addSpec(faName, w, this.i)
     );
   }
+
+  getTulNev(): void {
+    const tul = attributesUtil.filter(x=>x.fcName == this.skill.kapTul)[0];
+    this.tulNev = tul.nev;
+  }
+
   ngOnInit(): void {
+    this.getTulNev();
   }
 }

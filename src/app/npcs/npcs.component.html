@@ -1,86 +1,107 @@
-<div *ngIf="listMode" class="flexCont w100">
-  <div class="w100 margBott1" *ngFor="let f of getFrakcio()">
+<div class="w100 margTop1" *ngFor="let frakcio of frakciok">
 
-    <h3>{{f}}</h3>
+  <h3>{{frakcio}}</h3>
 
-    <div *ngFor="let n of getFilteredNpcs(f)">
-      <div class="ntl text1" (click)="showOneNpc(n.nev)">{{n.nev}}</div>
-    </div>
-  </div>
-</div>
+  <div *ngFor="let tag of getFilteredNpcs(frakcio)">
 
-<div *ngIf="listMode" class="flexCont w100">
-  <div *ngFor="let p of getOneNpc()" class="flexCont w100">
+    <app-hide-content class="margBott1"
+    [keyWord]="tag.nev"
+    [arrowColor]="'nwht'"
+    >
+      <div headText class="flexCont text1 center nwht">{{tag.nev}}</div>
 
-    <!-- fejléc -->
-    <div class="ntl w90 center text1">{{p.nev}}</div>
+      <div items class="flexCont w100">
+        <div class="w33">
+          <div class="text1 nbl center">DNS</div>
+          <div class="text1 grayCell center">{{tag.dns}}</div>
+        </div>
+        <div class="w33">
+          <div class="text1 nbl center">Nem</div>
+          <div class="text1 grayCell center">{{tag.nem}}</div>
+        </div>
+        <div class="w33">
+          <div class="text1 nbl center">Anyanyelv</div>
+          <div class="text1 grayCell center">{{tag.anyanyelv}}</div>
+        </div>
+        <div class="w33">
+          <div class="text1 nbl center">Kor</div>
+          <div class="text1 grayCell center">{{tag.kor}} év</div>
+        </div>
+        <div class="w33">
+          <div class="text1 nbl center">Magasság</div>
+          <div class="text1 grayCell center">{{tag.magassag}} cm</div>
+        </div>
+        <div class="w33">
+          <div class="text1 nbl center">Súly</div>
+          <div class="text1 grayCell center">{{tag.suly}} Kg</div>
+        </div>
+        <div class="w33">
+          <div class="text1 nbl center">Szemszín</div>
+          <div class="text1 grayCell center">{{tag.szemszin}}</div>
+        </div>
+        <div class="w33">
+          <div class="text1 nbl center">Bőrszín</div>
+          <div class="text1 grayCell center">{{tag.borszin}}</div>
+        </div>
+        <div class="w33">
+          <div class="text1 nbl center">Hajszín</div>
+          <div class="text1 grayCell center">{{tag.hajszin}}</div>
+        </div>
+        <div class="w100">
+          <div class="text1 nbl center">Testalkat</div>
+          <div class="text1 grayCell center">{{tag.testalkat}}</div>
+        </div>
+        <div class="w100">
+          <div class="text1 nbl center">Hajstílus</div>
+          <div class="text1 grayCell center">{{tag.hajstilus}}</div>
+        </div>
+        <div class="w100">
+          <div class="text1 nbl center">Kaszt</div>
+          <div class="text1 grayCell center">{{tag.kaszt}}</div>
+        </div>
+        <div class="w50">
+          <div class="text1 nbl center">Alap Tulajd.</div>
+          <app-special-field
+          [ertek]="tag.alapTulSzint"
+          [tipus]="'szint'"
+          ></app-special-field>
+        </div>
+        <div class="w50">
+          <div class="text1 nbl center">Szaktulajd.</div>
+          <app-special-field
+          [ertek]="tag.szakTulSzint"
+          [tipus]="'szint'"
+          ></app-special-field>
+        </div>
+        <div class="w50">
+          <div class="text1 nbl center">Alap Szakért.</div>
+          <app-special-field
+          [ertek]="tag.alapSzakertSzint"
+          [tipus]="'szint'"
+          ></app-special-field>
+        </div>
+        <div class="w50">
+          <div class="text1 nbl center">Szakterület</div>
+          <app-special-field
+          [ertek]="tag.szakteruletSzint"
+          [tipus]="'szint'"
+          ></app-special-field>
+        </div>
+        <div class="w100">
+          <div class="text1 nbl center">Leírás</div>
+          <div class="text1 grayCell center">{{tag.leiras}}</div>
+        </div>
+        <div class="w100">
+          <div class="text1 nbl center">Idézetek</div>
+          <div *ngFor="let idezet of tag.idezetek">
+            <div class="text1 grayCell center">{{idezet}}</div>
+          </div>
+        </div>
 
-    <!-- visszagomb -->
-    <button class="itemRemove text1 w10 center" type="button" (click)="onClose()">X</button>
-
-    <div class="w33">
-      <div class="text1 nbl center">DNS</div>
-      <div class="text1 grayCell center">{{p.dns}}</div>
-    </div>
-    <div class="w33">
-      <div class="text1 nbl center">Nem</div>
-      <div class="text1 grayCell center">{{p.nem}}</div>
-    </div>
-    <div class="w33">
-      <div class="text1 nbl center">Anyanyelv</div>
-      <div class="text1 grayCell center">{{p.anyanyelv}}</div>
-    </div>
-    <div class="w33">
-      <div class="text1 nbl center">Kor</div>
-      <div class="text1 grayCell center">{{p.kor}} év</div>
-    </div>
-    <div class="w33">
-      <div class="text1 nbl center">Magasság</div>
-      <div class="text1 grayCell center">{{p.magassag}} cm</div>
-    </div>
-    <div class="w33">
-      <div class="text1 nbl center">Súly</div>
-      <div class="text1 grayCell center">{{p.suly}} Kg</div>
-    </div>
-    <div class="w30">
-      <div class="text1 nbl center">Bőrszín</div>
-      <div class="text1 grayCell center">{{p.borszin}}</div>
-    </div>
-    <div class="w70">
-      <div class="text1 nbl center">Testalkat</div>
-      <div class="text1 grayCell center">{{p.testalkat}}</div>
-    </div>
-    <div class="w30">
-      <div class="text1 nbl center">Hajszín</div>
-      <div class="text1 grayCell center">{{p.hajszin}}</div>
-    </div>
-    <div class="w70">
-      <div class="text1 nbl center">Hajstílus</div>
-      <div class="text1 grayCell center">{{p.hajstilus}}</div>
-    </div>
-    <div class="w30">
-      <div class="text1 nbl center">Szemszín</div>
-      <div class="text1 grayCell center">{{p.szemszin}}</div>
-    </div>
-    <div class="w70">
-      <div class="text1 nbl center">Kaszt</div>
-      <div class="text1 grayCell center">{{p.kaszt}}</div>
-    </div>
-    <div class="w100">
-      <div class="text1 nbl center">Frakció</div>
-      <div class="text1 grayCell center">{{p.frakcio}}</div>
-    </div>
-    <div class="w100">
-      <div class="text1 nbl center">Leírás</div>
-      <div class="text1 grayCell center">{{p.leiras}}</div>
-    </div>
-    <div class="w100">
-      <div class="text1 nbl center">Idézetek</div>
-      <div *ngFor="let idezet of p.idezetek">
-        <div class="text1 grayCell center">{{idezet}}</div>
       </div>
-    </div>
+    </app-hide-content>
+
+
+
   </div>
-
-
 </div>

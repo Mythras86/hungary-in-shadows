@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ItemsModel, TamadasModel, TavolsagModel, TulModositoModel } from './items.model';
+import { ItemsModel, TamadasModel, TavolsagModel, nevErtekModel } from './items.model';
 import { ResourcesService } from '../resources/resources.service';
 import { AttributesService } from '../attributes/attributes.service';
+import { ModalService } from 'src/app/elements/modals/modal.service';
+import { SelectItemComponent } from './select-item/select-item.component';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +13,11 @@ export class ItemsService {
 
   constructor(
     private fb: FormBuilder,
+    private modalS: ModalService,
+
     private resS: ResourcesService,
     private attrS: AttributesService,
+
   ) { }
 
   itemsForm!: FormGroup;
@@ -31,6 +36,13 @@ export class ItemsService {
       spirits: this.fb.array([]),
     }
     return this.itemsForm = this.fb.group(items);
+  }
+
+  newItem(){
+    //const ownedItemsId: Array<string> = Object.values(this.items.controls).map((x:any) => x.value).map(x => x.id);
+    this.modalS.openModal(SelectItemComponent, '').subscribe(
+      w => this.addItem(w)
+    );
   }
 
   addItem(item: ItemsModel): void {
@@ -77,8 +89,8 @@ export class ItemsService {
     felhasznalasMax: [item.felhasznalasMax],
     });
     // pay the cost
-    this.resS.payKarma(item.tokeKtsg != undefined ? item.tokeKtsg : 0);
-    this.resS.payToke(item.karmaKtsg != undefined ? item.karmaKtsg : 0);
+    this.resS.payToke(item.tokeKtsg != undefined ? item.tokeKtsg : 0);
+    this.resS.payKarma(item.karmaKtsg != undefined ? item.karmaKtsg : 0);
     (this.itemsForm.get(item.faName) as FormArray).push(newitem);
   }
 
@@ -88,49 +100,54 @@ export class ItemsService {
     }
     const itemsFA = (this.itemsForm.get(faName) as FormArray);
     items.forEach(e => {
-      itemsFA.push(
-        this.fb.group({
-          //alap adatok
-          _id: e._id,
-          csoport: e.csoport,
-          tipus: e.tipus,
-          faName: e.faName,
-          nev: e.nev,
-          leiras: e.leiras,
+      itemsFA.push( this.itemsPush(e));
+    });
+  }
 
-          //költségek kumulatív
-          tokeKtsg: e.tokeKtsg,
-          karmaKtsg: e.karmaKtsg,
-          esszenciaKtsg: e.esszenciaKtsg,
+  itemsPush(e: any): FormGroup {
+    return this.fb.group({
+      //alap adatok
+      _id: e._id,
+      csoport: e.csoport,
+      tipus: e.tipus,
+      faName: e.faName,
+      nev: e.nev,
+      leiras: e.leiras,
 
-          //súly
-          suly: e.suly,
+      //költségek kumulatív
+      tokeKtsg: e.tokeKtsg,
+      karmaKtsg: e.karmaKtsg,
+      esszenciaKtsg: e.esszenciaKtsg,
 
-          //költségek per szint
-          tokeKtsgPerSzint: e.tokeKtsgPerSzint,
-          karmaKtsgPerSzint: e.karmaKtsgPerSzint,
-          esszenciaKtsgPerSzint: e.esszenciaKtsgPerSzint,
+      //súly
+      suly: e.suly,
 
-          //szint és minőség
-          szint: e.szint,
-          maxSzint: e.maxSzint,
+      //költségek per szint
+      tokeKtsgPerSzint: e.tokeKtsgPerSzint,
+      karmaKtsgPerSzint: e.karmaKtsgPerSzint,
+      esszenciaKtsgPerSzint: e.esszenciaKtsgPerSzint,
 
-          celszam: e.celszam,
-          celpontokSzama: e.celpontokSzama,
-          hatosugar: e.hatosugar,
+      //szint és minőség
+      szint: e.szint,
+      maxSzint: e.maxSzint,
 
-          tavolsag: this.setTavolsag(e.tavolsag),
+      celszam: e.celszam,
+      celpontokSzama: e.celpontokSzama,
+      hatosugar: e.hatosugar,
 
-          tamadas: this.setTamadas(e.tamadas),
+      kiegeszitoKorlatozas: this.setkiegeszitoKorlatozas(e.kiegeszitoKorlatozas),
+      kiegeszitok: this.setkiegeszitok(e.kiegeszitok),
 
-          tulajdonsagModosito: this.setTulajdonsagModosito(e.tulajdonsagModosito),
+      tavolsag: this.setTavolsag(e.tavolsag),
 
-          //felhasználás pl.: e.fegyverbe tár, szellem szolgálat, gyógyszeradag, méreg
-          felhasznalasNev: e.felhasznalasNev,
-          felhasznalt: e.felhasznalt,
-          felhasznalasMax: e.felhasznalasMax,
-        })
-      )
+      tamadas: this.setTamadas(e.tamadas),
+
+      tulajdonsagModosito: this.setTulajdonsagModosito(e.tulajdonsagModosito),
+
+      //felhasználás pl.: e.fegyverbe tár, szellem szolgálat, gyógyszeradag, méreg
+      felhasznalasNev: e.felhasznalasNev,
+      felhasznalt: e.felhasznalt,
+      felhasznalasMax: e.felhasznalasMax,
     });
   }
 
@@ -160,28 +177,45 @@ export class ItemsService {
         sebKod: x.sebKod,
       });
     }));
-
   }
 
   setTulajdonsagModosito(data: any) {
     if (data == undefined) {
       return;
     }
-    this.fb.array(data.map((x: TulModositoModel) => {
+    this.fb.array(data.map((x: nevErtekModel) => {
       return this.fb.group({
         nev: x.nev,
         ertek: x.ertek,
       });
     }));
+  }
 
+  setkiegeszitoKorlatozas(data: any) {
+    if (data == undefined) {
+      return;
+    }
+    this.fb.array(data.map((x: nevErtekModel) => {
+      return this.fb.group({
+        nev: x.nev,
+        ertek: x.ertek,
+      });
+    }));
+  }
+
+  setkiegeszitok(data: any) {
+    if (data == undefined) {
+      return;
+    }
+    this.fb.array(data.map((x: ItemsModel) =>
+        this.itemsPush(x)
+    ));
   }
 
   updateItems(w: any): void {
     this.createItems();
     this.setItems(w.armors, 'armors');
-    this.setItems(w.armorAddons, 'armorAddons');
     this.setItems(w.weapons, 'weapons');
-    this.setItems(w.weaponAddons, 'weaponAddons');
     this.setItems(w.items, 'items');
     this.setItems(w.cybers, 'cybers');
     this.setItems(w.explosives, 'explosives');

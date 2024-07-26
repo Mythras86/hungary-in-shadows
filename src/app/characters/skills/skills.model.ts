@@ -5,6 +5,7 @@ export interface SkillsModel {
   nev: string;
   nevKieg: string;
   csoport: string;
+  faName: string;
   szint: number;
   kapTul: string;
   specs?: SkillSpecModel[]
@@ -17,6 +18,7 @@ export interface SkillsFG extends FormGroup {
     nev: AbstractControl;
     nevKieg: AbstractControl;
     csoport: AbstractControl;
+    faName: AbstractControl;
     szint: AbstractControl;
     kapTul: AbstractControl;
     specs?: AbstractControl<SkillSpecFG[]>

@@ -1,0 +1,28 @@
+<div *ngIf="menuOpen == false" class="icon itemEdit center" (click)="openMenu()">&#9881;</div>
+
+<div *ngIf="menuOpen == true" class="menu">
+  <div class="menuCont flexCont">
+
+    <!-- fejléc -->
+    <div class="ntl text2 center w90">
+      Karakter menü
+    </div>
+
+    <!-- visszagomb -->
+    <button class="itemRemove text1 w10 center" type="button" (click)="closeMenu()">X</button>
+
+    <div class="buttonCont btnBack margTop1">
+      <div class="itemRemove text1 w100" (click)="backToList(); closeMenu()">Vissza a Karakterlistához</div>
+    </div>
+    <div *ngIf="userIsAuthenticated && mainS.mainCharForm.get('creatorId')?.value == getCreatorId()" class="buttonCont btnBack">
+      <div class="itemGet text1 w100" (click)="mainS.sendChar(); closeMenu()">Karakter mentése</div>
+    </div>
+    <div *ngIf="resS.getSzabadKarma() >= 2" class="buttonCont btnBack">
+      <div class="itemGet text1 w100" (click)="skillsS.newSkill(); select.clearSelected(); closeMenu();">Új Szakértelem</div>
+    </div>
+    <div class="buttonCont btnBack">
+      <div class="itemGet text1 w100" (click)="itemsS.newItem(); select.clearSelected(); closeMenu();">Új Felszerelés</div>
+    </div>
+  </div>
+
+</div>

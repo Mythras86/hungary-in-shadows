@@ -59,7 +59,11 @@
 
   <div *ngIf="tokeKtsg>0" class="w100 flexCont">
     <div class="nrng text1 w100 center">Tőke költség</div>
-    <div class="toke text1 w100 center">
+    <app-special-field
+    [ertek]="'Fizetendő: ' + (ertekValtozas*tokeKtsg) + ' / Maradt: ' + (resS.getSzabadToke()-ertekValtozas*tokeKtsg)"
+    [tipus]="'toke'"
+    ></app-special-field>
+    <div class="ngrn text1 w100 center">
       {{ertekValtozas*tokeKtsg}} N&#xa5; /
       {{resS.getSzabadToke()-ertekValtozas*tokeKtsg}} N&#xa5;
     </div>
@@ -67,18 +71,18 @@
 
   <div *ngIf="karmaKtsg>0" class="w100 flexCont">
     <div class="nprpl text1 w100 center">Karma költség</div>
-    <div class="karma text1 w100 center">
-      {{ertekValtozas*karmaKtsg}} &#x262F; /
-      {{resS.getSzabadKarma()-ertekValtozas*karmaKtsg}} &#x262F;
-    </div>
+    <app-special-field
+    [ertek]="'Fizetendő: ' + (ertekValtozas*karmaKtsg) + ' / Maradt: ' + (this.resS.getSzabadKarma()-ertekValtozas*karmaKtsg)"
+    [tipus]="'karma'"
+    ></app-special-field>
   </div>
 
   <div *ngIf="esszKtsg>0" class="w100 flexCont">
     <div class="nbl text1 w100 center">Esszencia költség</div>
-    <div class="esszencia text1 w100 center">
-      {{ertekValtozas*esszKtsg}} Szint /
-      {{attrS.getTulErtek('esszencia')-ertekValtozas*esszKtsg}} Szint
-    </div>
+    <app-special-field
+    [ertek]="'Fizetendő: ' + (ertekValtozas*esszKtsg) + ' / Maradt: ' + (attrS.getTulErtek('esszencia')-ertekValtozas*esszKtsg)"
+    [tipus]="'esszencia'"
+    ></app-special-field>
   </div>
 
 </div>

@@ -1,12 +1,19 @@
-<div class="flexCont w100" (click)="s.toggleStatus(keyWord)">
+<div class="w100 flexCont" (click)="s.toggleStatus(keyWord)">
 
-  <div [ngClass]=arrowClass class="{{!s.checkStatus(keyWord) ? 'arrow' : 'arrow down'}}">&#10148;</div>
+  <div *ngIf="arrowBefore" [ngClass]=arrowColor class="{{!s.checkStatus(keyWord) ? 'arrow' : 'arrow down'}} flexCont center">
+    &#10148;
+  </div>
 
-  <ng-content select="[headText]"></ng-content>
-  <ng-content select="[headOther]"></ng-content>
+  <div class="flex1">
+    <ng-content select="[headText]"></ng-content>
+  </div>
 
+  <div *ngIf="!arrowBefore" [ngClass]=arrowColor class="{{!s.checkStatus(keyWord) ? 'arrow' : 'arrow down'}} flexCont center">
+    &#10148;
+  </div>
 </div>
 
-<div class="items" [hidden]="!s.checkStatus(keyWord)">
-  <ng-content></ng-content>
+
+<div *ngIf="s.checkStatus(keyWord)" class="w100">
+  <ng-content select="[items]"></ng-content>
 </div>

@@ -35,11 +35,14 @@ export interface ItemsModel {
   celpontokSzama?: number;
   hatosugar?: number;
 
+  kiegeszitoKorlatozas?: Array<nevErtekModel>
+  kiegeszitok?: Array<ItemsModel>;
+
   tavolsag?: Array<TavolsagModel>;
 
   tamadas?: Array<TamadasModel>;
 
-  tulajdonsagModosito?: Array<TulModositoModel>;
+  tulajdonsagModosito?: Array<nevErtekModel>;
 
   //felhasználás pl.?: fegyverbe tár, szellem szolgálat, gyógyszeradag, méreg
   felhasznalasNev?: string;
@@ -61,7 +64,7 @@ export interface TavolsagModel {
   modosito: number;
 }
 
-export interface TulModositoModel {
+export interface nevErtekModel {
   nev: string;
   ertek: number;
 }

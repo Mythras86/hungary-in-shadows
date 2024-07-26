@@ -16,8 +16,6 @@ import { SpinnerComponent } from './elements/spinner/spinner.component';
 import { HideContentComponent } from './elements/hide-content/hide-content.component';
 import { ModalWrapperComponent } from './elements/modals/modal-wrapper.component';
 import { LevelcontrolComponent } from './elements/levelcontrol/levelcontrol.component';
-import { FieldTokeComponent } from './elements/Fields/field-toke/field-toke.component';
-import { FieldKarmaComponent } from './elements/Fields/field-karma/field-karma.component';
 import { BtnOptionsComponent } from './elements/Buttons/btn-options/btn-options.component';
 import { AttributesComponent } from './characters/attributes/attributes.component';
 import { CharsMainComponent } from './characters/chars-main.component';
@@ -37,8 +35,9 @@ import { SelectSkillComponent } from './characters/skills/select-skill/select-sk
 import { SelectSkillSpecComponent } from './characters/skills/select-skill-spec/select-skill-spec.component';
 import { SkillspecComponent } from './characters/skills/skillspec/skillspec.component';
 import { SelectItemComponent } from './characters/items/select-item/select-item.component';
-import { FieldEsszComponent } from './elements/Fields/field-essz/field-essz.component';
 import { ItemComponent } from './characters/items/item/item.component';
+import { SpecialFieldComponent } from './elements/special-field/special-field.component';
+import { FloatingMenuComponent } from './elements/floating-menu/floating-menu.component';
 
 @NgModule({
   declarations: [
@@ -64,8 +63,6 @@ import { ItemComponent } from './characters/items/item/item.component';
     SkillComponent,
     SkillsComponent,
 
-    FieldKarmaComponent,
-    FieldTokeComponent,
     BtnOptionsComponent,
     ItemsComponent,
     NpcsComponent,
@@ -77,8 +74,9 @@ import { ItemComponent } from './characters/items/item/item.component';
     SelectSkillSpecComponent,
     SkillspecComponent,
     SelectItemComponent,
-    FieldEsszComponent,
     ItemComponent,
+    SpecialFieldComponent,
+    FloatingMenuComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,18 +1,13 @@
-<form class="flexCont w100 margTop1" *ngIf="s.mainCharForm" [formGroup]="s.mainCharForm" (ngSubmit)="sendChar()">
-<div class="buttonCont btnBack">
-  <button *ngIf="userIsAuthenticated && _id == getCreatorId()" class="itemGet text1" type="submit">Karakter mentése</button>
-  <button class="itemGet text1" type="submit">Karakter mentése</button>
-  <button class="itemRemove text1" type="button" (click)="backToList()">Vissza</button>
-</div>
+<form class="flexCont w100 margTop1" *ngIf="s.mainCharForm" [formGroup]="s.mainCharForm">
 
 <app-hide-content class="w100"
 [keyWord]="'mainCharFilter'"
-[arrowClass]="'flex1 nbl text2 center'"
+[arrowColor]="'nbl'"
 >
-  <div headText class="flex1 nbl text2 center">
+  <div headText class="nbl text1 flex1">
     Oldalszűrő: {{filter}}
   </div>
-  <div class="flexCont gap2">
+  <div items class="flexCont gap2">
     <div class="text1 center nprpl gap2 w100" (click)="setFilter('Nincs')">X Nincs</div>
     <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Jellemzők')">Jellemzők</div>
     <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Erőforrások')">Erőforrások</div>
@@ -43,3 +38,4 @@
   <app-items *ngIf="filter == 'Nincs' || filter ==  'Eszközök'"></app-items>
 
 </form>
+<app-floating-menu></app-floating-menu>

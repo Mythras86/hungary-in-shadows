@@ -4,8 +4,6 @@ import { DetailsService } from '../details/details.service';
 import { ResourcesService } from '../resources/resources.service';
 import { SkillsService } from './skills.service';
 import { ItemSelectService } from 'src/app/elements/item-select/item-select.service';
-import { ModalService } from 'src/app/elements/modals/modal.service';
-import { SelectSkillComponent } from './select-skill/select-skill.component';
 import { AttributesService } from '../attributes/attributes.service';
 import { SkillSpecFG } from './skills.model';
 import { first } from 'rxjs';
@@ -23,7 +21,6 @@ export class SkillsComponent {
     public resS: ResourcesService,
     private detailsS: DetailsService,
     public attrS: AttributesService,
-    public modalS: ModalService,
   ) {
   }
 
@@ -51,13 +48,6 @@ export class SkillsComponent {
   getSpecs(i: number): FormArray<SkillSpecFG> {
     const specs = ((this.s.skillsForm.get('activeSkills') as FormArray).at(i) as FormGroup).get('specs') as FormArray;
     return specs;
-  }
-
-  newSkill(): void {
-    const ownedSkillsId: Array<string> = Object.values(this.activeSkills.controls).map((x:any) => x.value).map(x => x.id);
-    this.modalS.openModal(SelectSkillComponent, {ownedSkillsId: ownedSkillsId, karma: this.resS.getSzabadKarma()}).subscribe(
-      w => this.s.addSkill(w[0], w[1])
-    );
   }
 
   anyanyelvChangeDetector(): void {

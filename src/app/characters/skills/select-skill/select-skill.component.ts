@@ -11,9 +11,10 @@ import { attributesUtil } from '../../attributes/attributes-utility';
 export class SelectSkillComponent implements OnInit {
 
   constructor() {
-    this.csoportok = ['activeSkills', 'knowledgeSkills', 'languageSkills'];
+    this.csoportok = [...new Set(skillsUtil.map(x => x.csoport))];
   }
 
+  csoportokUtil: Array<any> = [];
   csoportok: Array<string> = [];
 
   public canBeClosed: boolean = true;
@@ -25,13 +26,10 @@ export class SelectSkillComponent implements OnInit {
   karma: number = 0;
 
   setFilter(keyWord: string):void {
-    const csoport: Array<string> = ['activeSkills', 'knowledgeSkills', 'languageSkills'];
-    this.filter = keyWord;
     if (this.filter == 'Nincs') {
-      this.csoportok = csoport;
-    } else {
-      this.csoportok = csoport.filter(x=>x == keyWord);
+      this.csoportok = [...new Set(skillsUtil.map(x => x.csoport))];
     }
+    this.csoportok = this.csoportok.filter(x=>x == keyWord);
   }
 
   getAttrRovid(fcName: string): string {
@@ -65,10 +63,10 @@ export class SelectSkillComponent implements OnInit {
     this.closeEvent.complete();
   }
 
-  getSkills(csoport: string):Array<SkillInterface> {
-    const karmaFilter = skillsUtil.filter(x=>x.karmaKtsg <= this.karma);
-    const skillsByCsoport = karmaFilter.filter(x=>x.csoport == csoport);
-    const filteredSkills = skillsByCsoport.filter(x=> (!this.ownedSkillsId.includes(x.id) || x.multi == true ));
+  getSkills(elem: string):Array<SkillInterface> {
+    const skillsByCsoport = skillsUtil.filter(x=>x.csoport == elem);
+    const karmaFilter = skillsByCsoport.filter(x=>x.karmaKtsg <= this.karma);
+    const filteredSkills = karmaFilter.filter(x=> (!this.ownedSkillsId.includes(x.id) || x.multi == true ));
     return filteredSkills;
   }
 

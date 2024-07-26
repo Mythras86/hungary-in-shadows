@@ -13,6 +13,9 @@
 <div class="grayCell w15 text1 center">
   {{modosito}}
 </div>
-<div class="ngrn w15 text1 center">
-  {{teljesErtek}}
-</div>
+
+<app-special-field class="w15"
+[ertek]="teljesErtek"
+[tipus]="'szint'"
+[egyeniSzin]="'ngrn'"
+></app-special-field>

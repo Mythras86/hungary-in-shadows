@@ -14,16 +14,18 @@
 }
 
 .arrow {
-  display: flex;
-  flex: 0 0 10%;
-  max-width: 10%;
+  flex: 0 0 2rem;
   justify-content: center;
   align-items: center;
+  user-select: none;
+}
+
+.arrow :hover {
+  cursor: pointer;
 }
 
 .head {
-  flex: 1 1 90%;
+  flex: 1;
   justify-content: center;
   align-items: center;
-
 }

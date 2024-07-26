@@ -3,6 +3,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { ResourcesService } from '../resources/resources.service';
 import { SkillInterface, SkillSpecInterface } from './skills.util';
 import { SkillSpecFG } from './skills.model';
+import { ModalService } from 'src/app/elements/modals/modal.service';
+import { SelectSkillComponent } from './select-skill/select-skill.component';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,7 @@ export class SkillsService {
   constructor(
     private fb: FormBuilder,
     private resS: ResourcesService,
+    public modalS: ModalService,
  ) { }
 
   skillsForm!: FormGroup;
@@ -23,6 +26,20 @@ export class SkillsService {
       languageSkills: this.fb.array([]),
     };
     return this.skillsForm = this.fb.group(skills);
+  }
+
+  newSkill(): void {
+    let activeSkills;
+    if(!this.skillsForm) {
+      activeSkills = null;
+    } else {
+      activeSkills = this.skillsForm.controls['activeSkills'] as FormArray;
+    }
+
+    const ownedSkillsId: Array<string> = Object.values(activeSkills!.controls).map((x:any) => x.value).map(x => x.id);
+    this.modalS.openModal(SelectSkillComponent, {ownedSkillsId: ownedSkillsId, karma: this.resS.getSzabadKarma()}).subscribe(
+      w => this.addSkill(w[0], w[1])
+    );
   }
 
   addSkill(skill: SkillInterface, input: string): void {
@@ -39,13 +56,14 @@ export class SkillsService {
       id: [skill.id, Validators.required],
       nev: [veglegesNev, Validators.required],
       nevKieg: [skill.nevKieg, Validators.required],
+      faName: [skill.faName, Validators.required],
       csoport: [skill.csoport, Validators.required],
       szint: [1, Validators.required],
       kapTul: [skill.kapTul, Validators.required],
       specs: this.fb.array([]),
     });
     this.resS.payKarma(skill.karmaKtsg);
-    (this.skillsForm.get(skill.csoport) as FormArray).push(skills);
+    (this.skillsForm.get(skill.faName) as FormArray).push(skills);
   }
 
   setSkills(skills: any[], faName: string): void {
@@ -60,6 +78,7 @@ export class SkillsService {
           nev: e.nev,
           nevKieg: e.nevKieg,
           csoport: e.csoport,
+          faName: e.faName,
           szint: e.szint,
           kapTul: e.kapTul,
           specs: this.fb.array(e.specs.map((x: SkillSpecFG) =>this.setSpecs(x)))
@@ -105,6 +124,7 @@ export class SkillsService {
       nev: [nev, Validators.required],
       nevKieg: ['Nyelv', Validators.required],
       csoport: ['Nyelvi szakértelmek', Validators.required],
+      faName: ['languageSkills', Validators.required],
       szint: [4, Validators.required],
       kapTul: ['asztUgy'],
       specs: this.fb.array([]),
@@ -115,6 +135,7 @@ export class SkillsService {
       nev: [nev, Validators.required],
       nevKieg: ['Írás/olvasás', Validators.required],
       csoport: ['Nyelvi szakértelmek', Validators.required],
+      faName: ['languageSkills', Validators.required],
       szint: [2, Validators.required],
       kapTul: ['asztUgy'],
       specs: this.fb.array([]),
