@@ -22,9 +22,6 @@ export class FloatingMenuComponent implements OnInit {
     private router: Router,
     private spinS: SpinnerService,
 
-    private modalS: ModalService,
-    public select: ItemSelectService,
-
     public mainS: CharsMainService,
     public resS: ResourcesService,
     public skillsS: SkillsService,

@@ -1,41 +1,22 @@
 <form class="flexCont w100 margTop1" *ngIf="s.mainCharForm" [formGroup]="s.mainCharForm">
 
-<app-hide-content class="w100"
-[keyWord]="'mainCharFilter'"
-[arrowColor]="'nbl'"
->
-  <div headText class="nbl text1 flex1">
-    Oldalszűrő: {{filter}}
-  </div>
-  <div items class="flexCont gap2">
-    <div class="text1 center nprpl gap2 w100" (click)="setFilter('Nincs')">X Nincs</div>
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Jellemzők')">Jellemzők</div>
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Erőforrások')">Erőforrások</div>
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Tulajdonságok')">Tulajdonságok</div>
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Állapotjelző')">Állapotjelző</div>
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Szakértelmek')">Szakértelmek</div>
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Eszközök')">Eszközök</div>
-  </div>
-</app-hide-content>
+  <h2 *ngIf="s.filter == '' || s.filter ==  'Jellemzők'" >Jellemzők</h2>
+  <app-details *ngIf="s.filter == '' || s.filter ==  'Jellemzők'"></app-details>
 
+  <h2 *ngIf="s.filter == '' || s.filter ==  'Erőforrások'" >Erőforrások</h2>
+  <app-resources *ngIf="s.filter == '' || s.filter ==  'Erőforrások'"></app-resources>
 
-  <h2 *ngIf="filter == 'Nincs' || filter ==  'Jellemzők'" >Jellemzők</h2>
-  <app-details *ngIf="filter == 'Nincs' || filter ==  'Jellemzők'"></app-details>
+  <h2 *ngIf="s.filter == '' || s.filter ==  'Tulajdonságok'" >Tulajdonságok</h2>
+  <app-attributes *ngIf="s.filter == '' || s.filter ==  'Tulajdonságok'"></app-attributes>
 
-  <h2 *ngIf="filter == 'Nincs' || filter ==  'Erőforrások'" >Erőforrások</h2>
-  <app-resources *ngIf="filter == 'Nincs' || filter ==  'Erőforrások'"></app-resources>
+  <h2 *ngIf="s.filter == '' || s.filter ==  'Állapotjelző'" >Állapotjelző</h2>
+  <app-status *ngIf="s.filter == '' || s.filter ==  'Állapotjelző'"></app-status>
 
-  <h2 *ngIf="filter == 'Nincs' || filter ==  'Tulajdonságok'" >Tulajdonságok</h2>
-  <app-attributes *ngIf="filter == 'Nincs' || filter ==  'Tulajdonságok'"></app-attributes>
+  <h2 *ngIf="s.filter == '' || s.filter ==  'Szakértelmek'" >Szakértelmek</h2>
+  <app-skills *ngIf="s.filter == '' || s.filter ==  'Szakértelmek'"></app-skills>
 
-  <h2 *ngIf="filter == 'Nincs' || filter ==  'Állapotjelző'" >Állapotjelző</h2>
-  <app-status *ngIf="filter == 'Nincs' || filter ==  'Állapotjelző'"></app-status>
-
-  <h2 *ngIf="filter == 'Nincs' || filter ==  'Szakértelmek'" >Szakértelmek</h2>
-  <app-skills *ngIf="filter == 'Nincs' || filter ==  'Szakértelmek'"></app-skills>
-
-  <h2 *ngIf="filter == 'Nincs' || filter ==  'Eszközök'" >Eszközök</h2>
-  <app-items *ngIf="filter == 'Nincs' || filter ==  'Eszközök'"></app-items>
+  <h2 *ngIf="s.filter == '' || s.filter ==  'Eszközök'" >Eszközök</h2>
+  <app-items *ngIf="s.filter == '' || s.filter ==  'Eszközök'"></app-items>
 
 </form>
 <app-floating-menu></app-floating-menu>

@@ -1,6 +1,6 @@
 <div *ngIf="menuOpen == false" class="icon itemEdit center" (click)="openMenu()">&#9881;</div>
 
-<div *ngIf="menuOpen == true" class="menu">
+<div *ngIf="menuOpen == true" class="menu" (click)="closeMenu()">
   <div class="menuCont flexCont">
 
     <!-- fejléc -->
@@ -11,18 +11,31 @@
     <!-- visszagomb -->
     <button class="itemRemove text1 w10 center" type="button" (click)="closeMenu()">X</button>
 
+    <!-- karakterlap szűrők -->
+
+    <div class="text1 center nprpl gap2 w100" (click)="mainS.setFilter('')">X Nincs</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="mainS.setFilter('Jellemzők')">Jellemzők</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="mainS.setFilter('Erőforrások')">Erőforrások</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="mainS.setFilter('Tulajdonságok')">Tulajdonságok</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="mainS.setFilter('Állapotjelző')">Állapotjelző</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="mainS.setFilter('Szakértelmek')">Szakértelmek</div>
+    <div class="text1 center nprpl gap2 flex1" (click)="mainS.setFilter('Eszközök')">Eszközök</div>
+
+
+    <!-- karakter kezelők -->
+    <div *ngIf="userIsAuthenticated && mainS.mainCharForm.get('creatorId')?.value == getCreatorId()" class="buttonCont btnBack">
+      <div class="itemGet text1 w100" (click)="mainS.sendChar()">+ Karakter mentése +</div>
+    </div>
+    <div *ngIf="resS.getSzabadKarma() >= 2" class="buttonCont btnBack">
+      <div class="itemGet text1 w100" (click)="skillsS.newSkill()">Új Szakértelem</div>
+    </div>
+    <div class="buttonCont btnBack">
+      <div class="itemGet text1 w100" (click)="itemsS.newItem()">Új Felszerelés</div>
+    </div>
+
+    <!-- oldalváltás a Karakterlistához -->
     <div class="buttonCont btnBack margTop1">
       <div class="itemRemove text1 w100" (click)="backToList(); closeMenu()">Vissza a Karakterlistához</div>
     </div>
-    <div *ngIf="userIsAuthenticated && mainS.mainCharForm.get('creatorId')?.value == getCreatorId()" class="buttonCont btnBack">
-      <div class="itemGet text1 w100" (click)="mainS.sendChar(); closeMenu()">Karakter mentése</div>
-    </div>
-    <div *ngIf="resS.getSzabadKarma() >= 2" class="buttonCont btnBack">
-      <div class="itemGet text1 w100" (click)="skillsS.newSkill(); select.clearSelected(); closeMenu();">Új Szakértelem</div>
-    </div>
-    <div class="buttonCont btnBack">
-      <div class="itemGet text1 w100" (click)="itemsS.newItem(); select.clearSelected(); closeMenu();">Új Felszerelés</div>
-    </div>
   </div>
-
 </div>

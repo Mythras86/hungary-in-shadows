@@ -54,29 +54,27 @@ export class SkillComponent implements OnInit{
     tokeKtsg: 0,
     karmaKtsg: skill.karmaKtsg,
     esszKtsg: 0,
-    celErtek: this.s.getFc(skill. csoport, this.i, 'szint').value,
+    celErtek: this.s.getFc(skill.faName, this.i, 'szint').value,
     egyseg: ' Szint',
-    minErtek: this.s.getFc(skill. csoport, this.i, 'szint').value,
+    minErtek: this.s.getFc(skill.faName, this.i, 'szint').value,
     maxErtek: this.attrS.getFc(skill.kapTul).value,
     }).subscribe(
-      w => this.updateSkill(w, skill.csoport)
+      w => this.updateSkill(w, skill.faName)
     );
   }
 
-  updateSkill(valtozas: number, skillCsoport: string): void {
-    const form = ((this.s.skillsForm.get(skillCsoport) as FormArray).at(this.i) as FormGroup).get('szint');
+  updateSkill(valtozas: number, faName: string): void {
+    const form = ((this.s.skillsForm.get(faName) as FormArray).at(this.i) as FormGroup).get('szint');
     // kifizetés
     this.resS.payKarma(valtozas*3);
     // értékszerzés
     form?.patchValue(form.value+valtozas);
   }
 
-  newSpec(faName: string, id: string): void {
-    console.log(faName)
-    console.log(id)
-    const ownedSpecs: Array<any> = ((this.s.skillsForm.get(faName) as FormArray).at(this.i) as FormGroup).get('specs')?.value.map((x: { id: string; })=>x.id);
-    this.modalS.openModal(SelectSkillSpecComponent, {mainSkillId: id, ownedSpecs: ownedSpecs}).subscribe(
-      w => this.s.addSpec(faName, w, this.i)
+  newSpec(): void {
+    const ownedSpecs: Array<any> = ((this.s.skillsForm.get(this.skill.faName) as FormArray).at(this.i) as FormGroup).get('specs')?.value.map((x: { id: string; })=>x.id);
+    this.modalS.openModal(SelectSkillSpecComponent, {mainSkill: this.skill, ownedSpecs: ownedSpecs}).subscribe(
+      w => this.s.addSpec(this.skill.faName, w, this.i)
     );
   }
 

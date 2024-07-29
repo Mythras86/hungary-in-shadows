@@ -39,15 +39,10 @@ export class CharsMainComponent implements OnInit, OnDestroy {
   ) {}
 
   _id:string = '';
-  filter: string = 'Nincs';
 
   userIsAuthenticated = false;
   userId: string = '';
   private authStatusSub!: Subscription;
-
-  setFilter(keyWord: string):void {
-    this.filter = keyWord
-  }
 
   ngOnInit(): void {
     this.spinS.toggleSpinner(false);

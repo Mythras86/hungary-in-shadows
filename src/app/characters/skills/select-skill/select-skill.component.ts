@@ -20,16 +20,18 @@ export class SelectSkillComponent implements OnInit {
   public canBeClosed: boolean = true;
   closeEvent: Subject<any> = new Subject;
 
-  filter: string = 'Nincs';
+  filter: string = '';
   ownedSkillsId: Array<string> = []
-  skills: Array<SkillInterface> = []
   karma: number = 0;
 
+  skills: Array<SkillInterface> = []
+
   setFilter(keyWord: string):void {
-    if (this.filter == 'Nincs') {
+    if (keyWord == '') {
       this.csoportok = [...new Set(skillsUtil.map(x => x.csoport))];
+    } else {
+      this.csoportok = [keyWord];
     }
-    this.csoportok = this.csoportok.filter(x=>x == keyWord);
   }
 
   getAttrRovid(fcName: string): string {

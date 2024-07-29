@@ -1,6 +1,6 @@
 <div class="w100 flexCont" (click)="s.toggleStatus(keyWord)">
 
-  <div *ngIf="arrowBefore" [ngClass]=arrowColor class="{{!s.checkStatus(keyWord) ? 'arrow' : 'arrow down'}} flexCont center">
+  <div *ngIf="arrowBefore" [ngClass]=arrowColor class="{{!s.status ? 'arrow' : 'arrow down'}} flexCont center">
     &#10148;
   </div>
 
@@ -8,7 +8,7 @@
     <ng-content select="[headText]"></ng-content>
   </div>
 
-  <div *ngIf="!arrowBefore" [ngClass]=arrowColor class="{{!s.checkStatus(keyWord) ? 'arrow' : 'arrow down'}} flexCont center">
+  <div *ngIf="!arrowBefore" [ngClass]=arrowColor class="{{!s.status ? 'arrow' : 'arrow down'}} flexCont center">
     &#10148;
   </div>
 </div>

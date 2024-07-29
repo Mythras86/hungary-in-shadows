@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { SkillSpecInterface, skillsSpecUtil } from '../skills.util';
+import { SkillsModel } from '../skills.model';
 
 @Component({
   selector: 'app-select-skill-spec',
@@ -20,12 +21,12 @@ export class SelectSkillSpecComponent implements OnInit {
   public canBeClosed: boolean = true;
   closeEvent: Subject<any> = new Subject;
 
-  mainSkillId: string = '';
+  mainSkill!: SkillsModel;
   ownedSpecs: Array<string> = [];
   specs: Array<SkillSpecInterface> = []
 
   loadData(modalData: any): void {
-    this.mainSkillId = modalData.mainSkillId;
+    this.mainSkill = modalData.mainSkill;
     this.ownedSpecs = modalData.ownedSpecs;
   }
 
@@ -39,7 +40,7 @@ export class SelectSkillSpecComponent implements OnInit {
   }
 
   getSpecs():Array<SkillSpecInterface> {
-    const specBySkill = skillsSpecUtil.filter(x=>x.specOf == this.mainSkillId);
+    const specBySkill = skillsSpecUtil.filter(x=>x.specOf == this.mainSkill.id);
     const filteredSpecs = specBySkill.filter(x=> !this.ownedSpecs.includes(x.id));
     return this.specs = filteredSpecs;
   }

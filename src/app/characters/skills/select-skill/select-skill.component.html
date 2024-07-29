@@ -8,22 +8,14 @@
 
 <!-- filter -->
 
-<app-hide-content class="w100 margTop1"
-[keyWord]="'skillfilter'"
-[arrowColor]="'nbl'"
->
-  <div headText class="flex1 nbl text1 center">
-    {{filter}}
-  </div>
-  <div class="flexCont gap2">
-    <div class="text1 center nprpl gap2 w100" (click)="setFilter('Nincs')">X Nincs</div>
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Aktív Szakértelmek')">Aktív</div>
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Ismeret Szakértelmek')">Ismeret</div>
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Nyelvi Szakértelmek')">Nyelvi</div>
-  </div>
-</app-hide-content>
+<div class="flexCont gap2">
+  <div class="text1 center nprpl gap2 w100" (click)="setFilter('')">X Nincs</div>
+  <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Aktív Szakértelmek')">Aktív</div>
+  <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Ismeret Szakértelmek')">Ismeret</div>
+  <div class="text1 center nprpl gap2 flex1" (click)="setFilter('Nyelvi Szakértelmek')">Nyelvi</div>
+</div>
 
-<div [hidden]="elem == filter || filter != 'Nincs'" class="w100" *ngFor="let elem of csoportok">
+<div class="w100" *ngFor="let elem of csoportok">
 
   <h3 class="margTop1">{{elem}}</h3>
 

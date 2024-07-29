@@ -2,6 +2,7 @@ import { Injectable, Type } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { ModalRequest } from './modal-request.interface';
 import { AModal } from './modal.abstract';
+import { HideService } from '../hide-content/hide-content.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class ModalService {
   constructor() { }
 
   public openModal(type: Type<AModal>, modalData: any): Subject<any> {
+
     this.nextModalDataSource.next({
       type,
       modalData

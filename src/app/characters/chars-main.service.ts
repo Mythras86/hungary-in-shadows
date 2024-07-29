@@ -39,6 +39,12 @@ export class CharsMainService {
 
   createMode: boolean = true;
 
+  filter: string = '';
+
+  setFilter(keyWord: string):void {
+    this.filter = keyWord
+  }
+
   createMainForm(): void {
     this.mainCharForm = this.fb.group({
       _id: [''],
