@@ -28,9 +28,11 @@ export class SkillspecComponent implements OnInit {
   @Input() i: number = 0;
   @Input() j: number = 0;
 
+  attrBonus: number = 0;
+
   getAttrBonus(): number {
     const szint = Math.floor(this.kapTulSzint/2);
-    return szint;
+    return this.attrBonus = szint;
   }
 
   specLvlUp(): void {
@@ -61,5 +63,6 @@ export class SkillspecComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAttrBonus();
   }
 }

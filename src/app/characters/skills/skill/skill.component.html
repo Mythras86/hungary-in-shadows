@@ -1,7 +1,7 @@
 <!-- <div class="w100 flexCont" [ngClass]="select.toggleClass(skill.id+i)" (click)="select.toggleStatus(skill.id+i)">
 
   <app-special-field class="w15"
-  [ertek]="getAttrBonus() + skill.szint"
+  [ertek]="attrBonus + skill.szint"
   [tipus]="'szint'"
   [egyeniSzin]="'ngrn'"
   ></app-special-field>
@@ -17,7 +17,7 @@
   <div headText class="flexCont">
 
     <app-special-field class="w20"
-    [ertek]="getAttrBonus() + skill.szint"
+    [ertek]="attrBonus + skill.szint"
     [tipus]="'szint'"
     [egyeniSzin]="'ngrn'"
     ></app-special-field>
@@ -39,11 +39,11 @@
     <div class="w50 nbl text1">Fő Tulajd.</div>
     <div class="w50 grayCell text1">{{tulNev}}</div>
     <div class="w50 nbl text1">Tulajd. búnusz</div>
-    <div class="w50 grayCell text1">{{getAttrBonus()}}</div>
+    <div class="w50 grayCell text1">{{attrBonus}}</div>
 
     <div class="buttonCont w100 btnBack">
       <button *ngIf="skill.szint < kapTulSzint" class="text1 itemGet" type="button" (click)="skillLvlUp()" >Szintlépés</button>
-      <button *ngIf="hasSpec(skill.id)" class="text1 itemGet" (click)="newSpec()" type="button">Új spec</button>
+      <button *ngIf="hasSpec" class="text1 itemGet" (click)="newSpec()" type="button">Új spec</button>
       <button class="text1 itemRemove" type="button" (click)="s.removeSkill(skill.csoport, i)">Törlés</button>
     </div>
   </div>

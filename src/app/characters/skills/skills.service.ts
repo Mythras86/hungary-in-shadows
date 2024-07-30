@@ -19,6 +19,27 @@ export class SkillsService {
 
   skillsForm!: FormGroup;
 
+  public get activeSkills(): FormArray | null | any {
+    if(!this.skillsForm) {
+      return null;
+    }
+    return this.skillsForm.controls['activeSkills'] as FormArray;
+  }
+
+  public get knowledgeSkills(): FormArray | null | any {
+    if(!this.skillsForm) {
+      return null;
+    }
+    return this.skillsForm.controls['knowledgeSkills'] as FormArray;
+  }
+
+  public get languageSkills(): FormArray | null | any {
+    if(!this.skillsForm) {
+      return null;
+    }
+    return this.skillsForm.controls['languageSkills'] as FormArray;
+  }
+
   createSkills(): FormGroup {
     const skills = {
       activeSkills: this.fb.array([]),
@@ -64,6 +85,7 @@ export class SkillsService {
     });
     this.resS.payKarma(skill.karmaKtsg);
     (this.skillsForm.get(skill.faName) as FormArray).push(skills);
+    //(this.skillsForm.get('skills') as FormArray).push(skills);
   }
 
   setSkills(skills: any[], faName: string): void {
@@ -114,7 +136,7 @@ export class SkillsService {
   }
 
   getFcLv2(skillCsoport: string, i:number, j: number, fcName:string): FormControl {
-    const specPath = (((this.skillsForm.get(skillCsoport) as FormArray).at(i) as FormGroup).get('specs') as FormArray).at(j).get(fcName);
+    const specPath = ((((this.skillsForm.get(skillCsoport) as FormArray)?.at(i) as FormGroup).get('specs') as FormArray).at(j) as FormGroup).get(fcName);
     return specPath as FormControl;
   }
 

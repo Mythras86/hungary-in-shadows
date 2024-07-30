@@ -31,17 +31,19 @@ export class SkillComponent implements OnInit{
   @Input() i: number = 0;
 
   tulNev: string = '';
+  attrBonus: number = 0;
+  hasSpec: boolean = false;
 
   getAttrBonus(): number {
     const szint = Math.floor(this.kapTulSzint/2);
-    return szint;
+    return this.attrBonus = szint;
   }
 
-  hasSpec(skillId: string):boolean {
+  doesIthaveSpec(skillId: string):boolean {
     if (skillsSpecUtil.find(x=>x.specOf == skillId)) {
-      return true;
+      return this.hasSpec = true;
     }
-    return false;
+    return this.hasSpec = false;
   }
 
   skillLvlUp(): void {
@@ -85,5 +87,7 @@ export class SkillComponent implements OnInit{
 
   ngOnInit(): void {
     this.getTulNev();
+    this.getAttrBonus();
+    this.doesIthaveSpec(this.skill.id);
   }
 }

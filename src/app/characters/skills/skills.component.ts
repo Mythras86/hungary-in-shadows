@@ -24,27 +24,6 @@ export class SkillsComponent {
   ) {
   }
 
-  public get activeSkills(): FormArray | null | any {
-    if(!this.s.skillsForm) {
-      return null;
-    }
-    return this.s.skillsForm.controls['activeSkills'] as FormArray;
-  }
-
-  public get knowledgeSkills(): FormArray | null | any {
-    if(!this.s.skillsForm) {
-      return null;
-    }
-    return this.s.skillsForm.controls['knowledgeSkills'] as FormArray;
-  }
-
-  public get languageSkills(): FormArray | null | any {
-    if(!this.s.skillsForm) {
-      return null;
-    }
-    return this.s.skillsForm.controls['languageSkills'] as FormArray;
-  }
-
   getSpecs(i: number): FormArray<SkillSpecFG> {
     const specs = ((this.s.skillsForm.get('activeSkills') as FormArray).at(i) as FormGroup).get('specs') as FormArray;
     return specs;

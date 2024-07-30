@@ -2,11 +2,11 @@
 
   <!-- csoportosítás -->
 
-  <div class="w100" formArrayName="activeSkills" *ngIf="activeSkills.length > 0">
+  <div class="w100" formArrayName="activeSkills" *ngIf="s.activeSkills.length > 0">
 
       <h3 class="margTop1">Aktív Szakértelmek</h3>
 
-      <div class="w100 flexCont" [formGroupName]='i' *ngFor="let a of activeSkills.value; let i = index">
+      <div class="w100 flexCont" [formGroupName]='i' *ngFor="let a of s.activeSkills.value; let i = index">
 
         <div class="flexCont margBott1">
           <app-skill class="w100 posRel flexCont"
@@ -17,11 +17,11 @@
           </app-skill>
 
           <div class="w100" formArrayName="specs">
-            <app-skillspec class="w100 posRel flexCont" [formGroupName]='j' *ngFor="let spec of activeSkills.controls[i].value.specs; let j = index"
+            <app-skillspec class="w100 posRel flexCont" [formGroupName]='j' *ngFor="let spec of s.activeSkills.controls[i].value.specs; let j = index"
             [spec]="spec"
             [skillSzint]="a.szint"
             [kapTulSzint]="attrS.getTulErtek(a.kapTul)"
-            [skillCsoport]="a.csoport"
+            [skillCsoport]="a.faName"
             [i]="i"
             [j]="j"
             >
@@ -33,11 +33,11 @@
 
   </div>
 
-  <div class="w100" formArrayName="knowledgeSkills" *ngIf="knowledgeSkills.length > 0">
+  <div class="w100" formArrayName="knowledgeSkills" *ngIf="s.knowledgeSkills.length > 0">
 
       <h3 class="margTop1">Ismeret Szakértelmek</h3>
 
-      <div class="w100" [formGroupName]='i' *ngFor="let k of knowledgeSkills.value; let i = index">
+      <div class="w100" [formGroupName]='i' *ngFor="let k of s.knowledgeSkills.value; let i = index">
 
         <div class="flexCont margBott1">
           <app-skill class="w100 posRel flexCont"
@@ -51,11 +51,11 @@
 
   </div>
 
-  <div class="w100" formArrayName="languageSkills" *ngIf="languageSkills.length > 0">
+  <div class="w100" formArrayName="languageSkills" *ngIf="s.languageSkills.length > 0">
 
       <h3 class="margTop1">Nyelvi Szakértelmek</h3>
 
-      <div class="w100" [formGroupName]='i' *ngFor="let l of languageSkills.value; let i = index">
+      <div class="w100" [formGroupName]='i' *ngFor="let l of s.languageSkills.value; let i = index">
 
         <div class="flexCont margBott1">
           <app-skill class="w100 posRel flexCont"

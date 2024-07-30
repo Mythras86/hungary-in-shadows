@@ -1,9 +1,36 @@
-<div class="w100 flexCont" [ngClass]="select.toggleClass(spec.nev+i+j)" (click)="select.toggleStatus(spec.nev+i+j)">
-  <div class="nprpl text1 w90">&#10503; {{spec.szint}} / 3 {{spec.nev}} </div>
-  <div class="ngrn text1 w10 center">{{spec.szint + skillSzint + getAttrBonus()}}</div>
-</div>
+<app-hide-content
+[keyWord]="spec.nev+i+j"
+[arrowColor]="'nprpl'"
+[arrowBefore]="true"
+>
+  <div headText class="flexCont">
 
-<div *ngIf="select.status == spec.nev+i+j" class="buttonCont w100 posAbs btnBack">
-  <button *ngIf="spec.szint < 3" class="text1 itemGet" type="button" (click)="specLvlUp(); select.clearSelected();" >Szintlépés</button>
-  <button class="text1 itemRemove" type="button" (click)="s.removeSpec(skillCsoport, i, j)">Törlés</button>
-</div>
+    <div class="nprpl text1 flex1">
+      {{spec.nev}}
+    </div>
+
+    <app-special-field class="w20"
+    [ertek]="spec.szint + skillSzint + attrBonus"
+    [tipus]="'szint'"
+    [egyeniSzin]="'ngrn'"
+    ></app-special-field>
+
+  </div>
+
+  <div items class="flexCont w100">
+    <div class="w50 nbl text1">Szint</div>
+    <div class="w50 grayCell text1">{{spec.szint}}</div>
+
+    <div class="w50 nbl text1">Szakértelem</div>
+    <div class="w50 grayCell text1">{{skillSzint}}</div>
+    <div class="w50 nbl text1">Tulajd. Szint</div>
+    <div class="w50 grayCell text1">{{attrBonus}}</div>
+
+    <div class="buttonCont w100 btnBack">
+      <button *ngIf="spec.szint < kapTulSzint" class="text1 itemGet" type="button" (click)="specLvlUp()" >Szintlépés</button>
+      <button class="text1 itemRemove" type="button" (click)="s.removeSpec(skillCsoport, i, j)">Törlés</button>
+    </div>
+  </div>
+
+</app-hide-content>
+
