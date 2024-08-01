@@ -6,7 +6,7 @@
     {{item.nev}}
   </div>
 
-  <div items class="flexCont w100">
+  <div itemCont class="flexCont w100">
 
     <div *ngIf="item.csoport" class="w40 nbl text1">Csoport</div>
     <div *ngIf="item.csoport" class="w60 grayCell text1">{{item.csoport}}</div>
@@ -20,10 +20,10 @@
     [tipus]="'suly'"
     ></app-special-field>
 
-    <div *ngIf="item.szint" class="w40 nbl text1">{{item.faName == 'armors' ? 'Páncélérték' : 'Szint'}}</div>
+    <div *ngIf="item.szint" class="w40 nbl text1">Szint</div>
     <app-special-field *ngIf="item.szint" class="w60"
     [ertek]="item.szint"
-    [tipus]="item.faName == 'armors' ? 'pancel' : 'szint'"
+    [tipus]="'szint'"
     ></app-special-field>
 
     <div *ngIf="item.maxSzint" class="w40 nbl text1">Max. Szint</div>
@@ -44,66 +44,102 @@
     <div *ngIf="item.felhasznalasNev" class="w40 nbl text1">{{item.felhasznalasNev}}</div>
     <div *ngIf="item.felhasznalt" class="w60 grayCell textR  text1">{{item.felhasznalasMax! - item.felhasznalt!}}</div>
 
-    <!-- <div *ngIf="item.tavolsag" class="w100 grayCell text1">{{item.tavolsag}}</div>
-    <div *ngIf="item.tamadas" class="w100 grayCell text1">{{item.tamadas}}</div>
-    <div *ngIf="item.tulajdonsagModosito" class="w100 grayCell text1">{{item.tulajdonsagModosito}}</div> -->
+    <div *ngIf="item.tavolsag?.length! > 0" class="w100">
+      <div class="nbl w100 text1 center">Távolság Módosítók</div>
+      <div *ngFor="let tav of item.tavolsag" class="flexCont w100">
+        <div class="w40 nbl text1">{{item.nev}}</div>
+        <div class="w20 grayCell textR text1">{{tav.ertek}}</div>
+        <div class="w40 grayCell textR text1">{{tav.modosito}}</div>
+      </div>
+    </div>
+
+    <div *ngIf="item.tamadas?.length! > 0" class="w100">
+      <div class="nbl w100 text1 center">Támadások</div>
+      <div *ngFor="let tam of item.tamadas" class="flexCont w100">
+        <div class="w40 nbl text1">{{tam.nev}}</div>
+
+        <app-special-field class="w20"
+        [tipus]="'akcio'"
+        [ertek]="tam.akcio"
+        ></app-special-field>
+
+        <app-special-field class="w40"
+        [tipus]="'sebzes'"
+        [ertek]="tam.ero +' ('+ tam.sebzes +') ' + tam.sebKod "
+        ></app-special-field>
+      </div>
+    </div>
+
+    <div *ngIf="item.tulajdonsagModosito?.length! > 0" class="w100">
+      <div class="nbl w100 text1 center">Tulajdonság Módosítók</div>
+      <div *ngFor="let tm of item.tulajdonsagModosito" class="flexCont w100">
+        <div class="w60 nbl text1">{{getTulNev(tm.nev)}}</div>
+        <app-special-field class="w40"
+        [tipus]="(tm.nev == 'pancel' ? 'pancel' : 'szint')"
+        [ertek]="tm.ertek"
+        ></app-special-field>
+      </div>
+    </div>
 
     <div *ngIf="item.leiras" class="w100 nbl text1 center">Leírás</div>
     <div *ngIf="item.leiras" class="w100 grayCell text1">{{item.leiras}}</div>
 
-    <div *ngIf="item.tokeKtsgPerSzint" class="w40 nbl text1 center">Tőke / Szint</div>
-    <app-special-field class="w60" *ngIf="item.tokeKtsgPerSzint"
+    <div *ngIf="item.tokeKtsgPerSzint" class="w60 nbl text1 center">Tőke / Szint</div>
+    <app-special-field class="w40" *ngIf="item.tokeKtsgPerSzint"
     [ertek] = "item.tokeKtsgPerSzint"
     [tipus]="'toke'"
     ></app-special-field>
 
-    <div *ngIf="item.karmaKtsgPerSzint" class="w40 nbl text1 center">Karma / Szint</div>
-    <app-special-field class="w60" *ngIf="item.karmaKtsgPerSzint"
+    <div *ngIf="item.karmaKtsgPerSzint" class="w60 nbl text1 center">Karma / Szint</div>
+    <app-special-field class="w40" *ngIf="item.karmaKtsgPerSzint"
     [ertek] = "item.karmaKtsgPerSzint"
     [tipus]="'karma'"
     ></app-special-field>
 
-    <div *ngIf="item.esszenciaKtsgPerSzint" class="w40 nbl text1 center">Esszencia / Szint</div>
-    <app-special-field class="w60" *ngIf="item.esszenciaKtsgPerSzint"
+    <div *ngIf="item.esszenciaKtsgPerSzint" class="w60 nbl text1 center">Esszencia / Szint</div>
+    <app-special-field class="w40" *ngIf="item.esszenciaKtsgPerSzint"
     [ertek] = "item.esszenciaKtsgPerSzint"
     [tipus]="'esszencia'"
     ></app-special-field>
 
-    <div *ngIf="item.tokeKtsgSzorzo" class="w40 nbl text1 center">Tőke Szorzó</div>
-    <app-special-field class="w60" *ngIf="item.tokeKtsgSzorzo"
+    <div *ngIf="item.tokeKtsgSzorzo" class="w60 nbl text1 center">Tőke Szorzó</div>
+    <app-special-field class="w40" *ngIf="item.tokeKtsgSzorzo"
     [ertek] = "item.tokeKtsgSzorzo"
     [tipus]="'toke'"
     ></app-special-field>
 
-    <div *ngIf="item.karmaKtsgSzorzo" class="w40 nbl text1 center">Karma Szorzó</div>
-    <app-special-field class="w60" *ngIf="item.karmaKtsgSzorzo"
+    <div *ngIf="item.karmaKtsgSzorzo" class="w60 nbl text1 center">Karma Szorzó</div>
+    <app-special-field class="w40" *ngIf="item.karmaKtsgSzorzo"
     [ertek] = "item.karmaKtsgSzorzo"
     [tipus]="'karma'"
     ></app-special-field>
 
-    <div *ngIf="item.esszenciaKtsgSzorzo" class="w40 nbl text1 center">Esszencia Szorzó</div>
-    <app-special-field class="w60" *ngIf="item.esszenciaKtsgSzorzo"
+    <div *ngIf="item.esszenciaKtsgSzorzo" class="w60 nbl text1 center">Esszencia Szorzó</div>
+    <app-special-field class="w40" *ngIf="item.esszenciaKtsgSzorzo"
     [ertek] = "item.esszenciaKtsgSzorzo"
     [tipus]="'esszencia'"
     ></app-special-field>
 
-    <div *ngIf="item.tokeKtsg" class="w40 nbl text1 center">Tőkeköltség</div>
-    <app-special-field class="w60" *ngIf="item.tokeKtsg"
+    <div *ngIf="item.tokeKtsg" class="w60 nbl text1 center">Tőkeköltség</div>
+    <app-special-field class="w40" *ngIf="item.tokeKtsg"
     [ertek] = "item.tokeKtsg"
     [tipus]="'toke'"
     ></app-special-field>
 
-    <div *ngIf="item.karmaKtsg" class="w40 nbl text1 center">Karmaköltség</div>
-    <app-special-field class="w60" *ngIf="item.karmaKtsg"
+    <div *ngIf="item.karmaKtsg" class="w60 nbl text1 center">Karmaköltség</div>
+    <app-special-field class="w40" *ngIf="item.karmaKtsg"
     [ertek] = "item.karmaKtsg"
     [tipus]="'karma'"
     ></app-special-field>
 
-    <div *ngIf="item.esszenciaKtsg" class="w40 nbl text1 center">Esszenciaköltség</div>
-    <app-special-field class="w60" *ngIf="item.esszenciaKtsg"
+    <div *ngIf="item.esszenciaKtsg" class="w60 nbl text1 center">Esszencia</div>
+    <app-special-field class="w40" *ngIf="item.esszenciaKtsg"
     [ertek] = "item.esszenciaKtsg"
     [tipus]="'esszencia'"
     ></app-special-field>
+
+    <ng-content></ng-content>
   </div>
+
 
 </app-hide-content>

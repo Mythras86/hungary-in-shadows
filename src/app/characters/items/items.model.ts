@@ -1,10 +1,11 @@
+import { AbstractControl, FormGroup } from "@angular/forms";
+
 export interface ItemsModel {
 
   //alap adatok
   _id: string;
   csoport: string;
   tipus: string;
-  faName: string;
   nev: string;
   leiras: string;
 
@@ -68,3 +69,84 @@ export interface nevErtekModel {
   nev: string;
   ertek: number;
 }
+
+export interface ItemsFG extends FormGroup {
+  value: ItemsModel;
+  controls: {
+    //alap adatok
+    _id: AbstractControl;
+    csoport: AbstractControl;
+    tipus: AbstractControl;
+    nev: AbstractControl;
+    leiras: AbstractControl;
+
+    //költségek kumulatív
+    tokeKtsg?: AbstractControl;
+    karmaKtsg?: AbstractControl;
+    esszenciaKtsg?: AbstractControl;
+
+    //súly
+    suly?: AbstractControl;
+    sulySzorzo?: AbstractControl;
+
+    //költségek per szint
+    tokeKtsgPerSzint?: AbstractControl;
+    karmaKtsgPerSzint?: AbstractControl;
+    esszenciaKtsgPerSzint?: AbstractControl;
+
+    //költségek multiplikatív
+    tokeKtsgSzorzo?: AbstractControl;
+    karmaKtsgSzorzo?: AbstractControl;
+    esszenciaKtsgSzorzo?: AbstractControl;
+
+    //szint és minőség
+    szint?: AbstractControl;
+    maxSzint?: AbstractControl;
+
+    celszam?: AbstractControl;
+    celpontokSzama?: AbstractControl;
+    hatosugar?: AbstractControl;
+
+    kiegeszitoKorlatozas?: AbstractControl<nevErtekFG[]>;
+    kiegeszitok?: AbstractControl<ItemsFG[]>;
+
+    tavolsag?: AbstractControl<TavolsagFG[]>;
+
+    tamadas?: AbstractControl<TavolsagFG[]>;
+
+    tulajdonsagModosito?: AbstractControl<nevErtekFG[]>;
+
+    //felhasználás pl.?: fegyverbe tár, szellem szolgálat, gyógyszeradag, méreg
+    felhasznalasNev?: AbstractControl;
+    felhasznalt?: AbstractControl;
+    felhasznalasMax?: AbstractControl;
+  }
+};
+
+export interface TamadasFG extends FormGroup {
+  value: TamadasModel;
+  controls: {
+    nev: AbstractControl;
+    akcio: AbstractControl;
+    ero: AbstractControl;
+    sebzes: AbstractControl;
+    sebKod: AbstractControl;
+  }
+};
+
+export interface TavolsagFG extends FormGroup {
+  value: TavolsagModel;
+  controls: {
+    nev: AbstractControl;
+    ertek: AbstractControl;
+    modosito: AbstractControl;
+  }
+};
+
+export interface nevErtekFG extends FormGroup {
+  value: nevErtekModel;
+  controls: {
+    nev: AbstractControl;
+    ertek: AbstractControl;
+  }
+};

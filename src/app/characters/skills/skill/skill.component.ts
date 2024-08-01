@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { SkillsService } from '../skills.service';
 import { SkillsModel } from '../skills.model';
 import { AttributesService } from '../../attributes/attributes.service';
-import { ItemSelectService } from 'src/app/elements/item-select/item-select.service';
 import { skillsSpecUtil, skillsUtil } from '../skills.util';
 import { FormArray, FormGroup } from '@angular/forms';
 import { ModalService } from 'src/app/elements/modals/modal.service';
@@ -10,6 +9,7 @@ import { LevelcontrolComponent } from 'src/app/elements/levelcontrol/levelcontro
 import { ResourcesService } from '../../resources/resources.service';
 import { SelectSkillSpecComponent } from '../select-skill-spec/select-skill-spec.component';
 import { attributesUtil } from '../../attributes/attributes-utility';
+import { HideService } from 'src/app/elements/hide-content/hide-content.service';
 
 @Component({
   selector: 'app-skill',
@@ -20,7 +20,7 @@ export class SkillComponent implements OnInit{
 
   constructor(
     public s: SkillsService,
-    public select: ItemSelectService,
+    public hide: HideService,
     private attrS: AttributesService,
     private resS: ResourcesService,
     private modalS: ModalService,

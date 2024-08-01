@@ -16,6 +16,7 @@ export class SpecialFieldComponent implements OnInit {
       {nev: 'szint', egyseg: '&starf;'},
       {nev: 'sebzes', egyseg: '&#9876;'},
       {nev: 'suly', egyseg: 'Kg'},
+      {nev: 'akcio', egyseg: 'AP'},
     ];
   }
 

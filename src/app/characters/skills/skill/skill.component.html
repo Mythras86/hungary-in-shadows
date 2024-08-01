@@ -1,20 +1,9 @@
-<!-- <div class="w100 flexCont" [ngClass]="select.toggleClass(skill.id+i)" (click)="select.toggleStatus(skill.id+i)">
-
-  <app-special-field class="w15"
-  [ertek]="attrBonus + skill.szint"
-  [tipus]="'szint'"
-  [egyeniSzin]="'ngrn'"
-  ></app-special-field>
-
-  <div class="nwht text1 w85">{{skill.szint}}  / {{kapTulSzint}} {{skill.nev}} {{skill.nevKieg == ''? '': "("+ skill.nevKieg +")"}}</div>
-</div> -->
-
 <app-hide-content
 [keyWord]="skill.id+i"
 [arrowColor]="'nwht'"
 [arrowBefore]="false"
 >
-  <div headText class="flexCont">
+  <div headText class="nwht text1 w100">
 
     <app-special-field class="w20"
     [ertek]="attrBonus + skill.szint"
@@ -22,13 +11,13 @@
     [egyeniSzin]="'ngrn'"
     ></app-special-field>
 
-    <div class="nwht text1 flex1">
-      {{skill.nev}}
+    <div class="nwht text1 flex1 overflow">
+      {{skill.nev}} {{skill.nevKieg}}
     </div>
 
   </div>
 
-  <div items class="flexCont w100">
+  <div itemCont class="flexCont w100">
     <div class="w50 nbl text1">Névkiegészítő</div>
     <div class="w50 grayCell text1">{{skill.nevKieg}}</div>
 

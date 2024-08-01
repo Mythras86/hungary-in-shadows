@@ -12,7 +12,6 @@ import { ItemsService } from './items/items.service';
 import { ResourcesService } from './resources/resources.service';
 import { SkillsService } from './skills/skills.service';
 import { StatusService } from './status/status.service';
-import { CharModel } from './chars-main.model';
 
 
 @Component({

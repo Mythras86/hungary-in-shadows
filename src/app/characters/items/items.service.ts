@@ -24,16 +24,7 @@ export class ItemsService {
 
   createItems(): FormGroup {
     const items = {
-      armors: this.fb.array([]),
-      armorAddons: this.fb.array([]),
-      weapons: this.fb.array([]),
-      weaponAddons: this.fb.array([]),
       items: this.fb.array([]),
-      cybers: this.fb.array([]),
-      explosives: this.fb.array([]),
-      artifacts: this.fb.array([]),
-      spells: this.fb.array([]),
-      spirits: this.fb.array([]),
     }
     return this.itemsForm = this.fb.group(items);
   }
@@ -54,7 +45,6 @@ export class ItemsService {
     _id: [item._id, Validators.required],
     csoport: [item.csoport, Validators.required],
     tipus: [item.tipus, Validators.required],
-    faName: [item.faName, Validators.required],
     nev: [item.nev, Validators.required],
     leiras: [item.leiras, Validators.required],
 
@@ -91,7 +81,7 @@ export class ItemsService {
     // pay the cost
     this.resS.payToke(item.tokeKtsg != undefined ? item.tokeKtsg : 0);
     this.resS.payKarma(item.karmaKtsg != undefined ? item.karmaKtsg : 0);
-    (this.itemsForm.get(item.faName) as FormArray).push(newitem);
+    (this.itemsForm.get('items') as FormArray).push(newitem);
   }
 
   setItems(items: ItemsModel[], faName: string): void {
@@ -110,7 +100,6 @@ export class ItemsService {
       _id: e._id,
       csoport: e.csoport,
       tipus: e.tipus,
-      faName: e.faName,
       nev: e.nev,
       leiras: e.leiras,
 

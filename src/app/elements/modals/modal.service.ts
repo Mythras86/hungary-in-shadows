@@ -2,7 +2,6 @@ import { Injectable, Type } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { ModalRequest } from './modal-request.interface';
 import { AModal } from './modal.abstract';
-import { HideService } from '../hide-content/hide-content.service';
 
 @Injectable({
   providedIn: 'root'

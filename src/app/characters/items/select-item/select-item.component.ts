@@ -25,36 +25,41 @@ export class SelectItemComponent implements OnInit {
   public canBeClosed: boolean = true;
   closeEvent: Subject<any> = new Subject;
 
-  csoportok: Array<string> = [];
-  filter: string = 'Nincs';
+  filter: string = '';
 
   itemsList: Array<ItemsModel> = [];
   itemsListUpd = new BehaviorSubject<ItemsModel[]>([])
+
+  csoportok: Array<string> = [];
+
+  getCsoportok(): Array<string> {
+    const csoportok = [...new Set(this.itemsList.map(x => x.csoport))];
+    return this.csoportok = csoportok;
+  }
+
+  getTipus(csoport: string): Array<string> {
+    return [...new Set(this.itemsList.filter(x => x.csoport == csoport).map(x => x.tipus))];
+  }
+
+  getFilteredItems(csoport: string, tipus: string): ItemsModel[] {
+    const array = this.itemsList.filter(x=>x.csoport == csoport).filter(x=>x.tipus == tipus).sort(function(a, b){
+      if(a.nev < b.nev) { return -1; }
+      if(a.nev > b.nev) { return 1; }
+      return 0;
+    });
+    return array;
+  }
 
   loadData(modalData: any) {
   }
 
   getItems(): Observable<ItemsModel[]> {
-    const items = this.http.get<ItemsModel[]>(BACKEND_URL + "list");
-    return items;
+    const itemsList = this.http.get<ItemsModel[]>(BACKEND_URL + "list");
+    return itemsList;
   }
 
-  getCsoportok(): Array<string> {
-    const csoportok = [...new Set(this.itemsList.map(x => x.csoport))];
-    return csoportok
-  }
-
-  setFilter(keyWord: string):void {
-    this.filter = keyWord;
-    if (this.filter == 'Nincs') {
-      this.csoportok = this.getCsoportok();
-    } else {
-      this.csoportok = this.csoportok.filter(x=>x == keyWord);
-    }
-  }
-
-  filteredItems(csoport: string): Array<ItemsModel> {
-    return this.itemsList.filter(x=>x.csoport == csoport);
+  setFilter(filter: string): void {
+    this.filter = filter;
   }
 
   onSave(item: ItemsModel) {
@@ -72,7 +77,7 @@ export class SelectItemComponent implements OnInit {
       next: (w: ItemsModel[]) => {
         this.itemsList = w;
         this.itemsListUpd.next([...this.itemsList]);
-        this.csoportok = this.getCsoportok();
+        this.getCsoportok();
         this.spinS.toggleSpinner(false);
       },
       error: (error) => {

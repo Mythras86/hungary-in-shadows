@@ -107,4 +107,11 @@ h3 {
   font-size: 0.8rem;
 }
 
+.overflow {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  min-width: 0px;
+}
+
 [hidden] { display: none !important; }

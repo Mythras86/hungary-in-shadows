@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs';
 import { ModalRequest } from './modal-request.interface';
 import { AModal } from './modal.abstract';
 import { ModalService } from './modal.service';
-import { HideService } from '../hide-content/hide-content.service';
 
 @Component({
   selector: 'app-modal-wrapper',

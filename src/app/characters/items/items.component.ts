@@ -15,20 +15,12 @@ export class ItemsComponent implements OnInit {
     public select: ItemSelectService,
   ){}
 
-  public get armors(): FormArray | null | any {
+  public get items(): FormArray | null | any {
     if(!this.s.itemsForm) {
       return null;
     }
-    return this.s.itemsForm.controls['armors'] as FormArray;
+    return this.s.itemsForm.controls['items'] as FormArray;
   }
-
-  public get armorAddons(): FormArray | null | any {
-    if(!this.s.itemsForm) {
-      return null;
-    }
-    return this.s.itemsForm.controls['armorAddons'] as FormArray;
-  }
-
 
   ngOnInit(): void {
   }

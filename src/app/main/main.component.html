@@ -1,41 +1,55 @@
 <div class="flexCont">
 
-  <div class="ngrn w100 text1 margTop1 margBott1">special-field test</div>
+  <app-hide-content
+  [keyWord]="'mainSite'"
+  [arrowColor]="'ngrn'"
+  >
+    <div headText class="ngrn w100 text1 margTop1 margBott1" [ngClass]="hide.status ? '' : 'overflow'">special-field test de amúgy ez túl hosszú szöveg, hogy kiférjen</div>
 
-  <app-special-field class="w50"
-  [ertek]="123456789"
-  [tipus]="'karma'"
-  ></app-special-field>
+    <div itemCont class="w100">
 
-  <app-special-field class="w50"
-  [ertek]="123456789"
-  [tipus]="'toke'"
-  ></app-special-field>
+      <app-special-field class="w50"
+      [ertek]="123456789"
+      [tipus]="'karma'"
+      ></app-special-field>
 
-  <app-special-field class="w50"
-  [ertek]="123456789"
-  [tipus]="'esszencia'"
-  ></app-special-field>
+      <app-special-field class="w50"
+      [ertek]="123456789"
+      [tipus]="'toke'"
+      ></app-special-field>
 
-  <app-special-field class="w50"
-  [ertek]="123456789"
-  [tipus]="'szint'"
-  ></app-special-field>
+      <app-special-field class="w50"
+      [ertek]="123456789"
+      [tipus]="'esszencia'"
+      ></app-special-field>
 
-  <app-special-field class="w50"
-  [ertek]="123456789"
-  [tipus]="'pancel'"
-  ></app-special-field>
+      <app-special-field class="w50"
+      [ertek]="123456789"
+      [tipus]="'szint'"
+      ></app-special-field>
 
-  <app-special-field class="w50"
-  [ertek]="123456789"
-  [tipus]="'sebzes'"
-  ></app-special-field>
+      <app-special-field class="w50"
+      [ertek]="123456789"
+      [tipus]="'pancel'"
+      ></app-special-field>
 
-  <app-special-field class="w50"
-  [ertek]="123456789"
-  [tipus]="'suly'"
-  ></app-special-field>
+      <app-special-field class="w50"
+      [ertek]="123456789"
+      [tipus]="'sebzes'"
+      ></app-special-field>
+
+      <app-special-field class="w50"
+      [ertek]="123456789"
+      [tipus]="'suly'"
+      ></app-special-field>
+
+      <app-special-field class="w50"
+      [ertek]="123456789"
+      [tipus]="'akcio'"
+      ></app-special-field>
+    </div>
+  </app-hide-content>
+
 
   <p class="margBott1 nrd text1 w100 margTop1">FIGYELEM! Használat előtt olvasd el!</p>
   <p class="margBott1 nrng text1 w100">Az oldal jelenleg csak mobilos nézetre van optimalizálva. Csak mobilon, vagy vizsgálat alatt érdemes megtekinteni!</p>

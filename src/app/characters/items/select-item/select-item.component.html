@@ -5,33 +5,32 @@
 <!-- visszagomb -->
 <button class="itemRemove text1 w10 center" type="button" (click)="onClose()">X</button>
 
-<app-hide-content class="w100 margTop1"
-[keyWord]="'skillfilter'"
-[arrowColor]="'nbl'"
->
-  <div headText class="flex1 nbl text1 center">
-    {{filter}}
-  </div>
-  <div class="flexCont gap2">
-    <div class="text1 center nprpl gap2 w100" (click)="setFilter('Nincs')">X Nincs</div>
-    <div *ngFor="let elem of getCsoportok()">
-      <div class="text1 center nprpl gap2 flex1" (click)="setFilter(elem)">{{elem}}</div>
-    </div>
-  </div>
-</app-hide-content>
-
-<div class="w100" *ngFor="let elem of csoportok">
-  <h3 class="margTop1">{{elem}}</h3>
-
-  <div class="w100 flexCont" *ngFor="let item of filteredItems(elem); let i = index">
-
-    <app-item class="margBott1" [ngClass]="select.toggleClass(item._id+i)" (click)="select.toggleStatus(item._id+i)"
-    [item] = "item"
-    ></app-item>
-
-    <div *ngIf="select.status == item._id+i" class="buttonCont w100 btnBack">
-      <button class="itemGet text1 center" type="button"  (click)="onSave(item)">Megvesz</button>
-    </div>
+<div class="flexCont gap2">
+  <div class="text1 center nprpl gap2 w100" (click)="setFilter('')">X Nincs</div>
+  <div *ngFor="let elem of csoportok">
+    <div class="text1 center nprpl gap2 flex1" (click)="setFilter(elem)">{{elem}}</div>
   </div>
 </div>
 
+<div class="w100" [hidden]="csoport != filter && filter != ''" *ngFor="let csoport of csoportok">
+  <h3 class="margTop1">{{csoport}}</h3>
+
+  <div class="w100" [hidden]="csoport != filter && filter != ''" *ngFor="let tipus of getTipus(csoport)">
+
+    <div class="w50 text1 nbl center margBott1">
+      {{tipus}}
+    </div>
+
+    <div class="w100 flexCont" *ngFor="let item of getFilteredItems(csoport, tipus); let i = index">
+
+      <app-item class="margBott1 w100"
+      [item] = "item"
+      >
+      <div class="buttonCont btnBack">
+        <button type="button" class="itemGet text1">Kiválaszt</button>
+      </div>
+      </app-item>
+
+    </div>
+  </div>
+</div>

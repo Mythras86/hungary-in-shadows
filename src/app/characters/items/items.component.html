@@ -1,26 +1,15 @@
 <div class="flexCont w100" [formGroup]="s.itemsForm" *ngIf="s.itemsForm">
 
-  <div class="flexCont w100" formArrayName="armors" *ngIf="armors.length > 0">
+  <div class="flexCont w100" formArrayName="items" *ngIf="items.length > 0">
 
-      <h3 class="margTop1">Páncélok</h3>
+      <h3 class="margTop1">Felszerelések</h3>
 
-      <div class="w100" [formGroupName]='i' *ngFor="let armor of armors.value; let i = index">
+      <div class="w100" [formGroupName]='i' *ngFor="let item of items.value; let i = index">
         <app-item
-        [item]="armor"
+        [item]="item"
         ></app-item>
       </div>
 
   </div>
 
-  <div class="flexCont w100" formArrayName="armorAddons" *ngIf="armorAddons.length > 0">
-
-      <h3 class="margTop1">Páncélkiegészítők</h3>
-
-      <div class="w100" [formGroupName]='i' *ngFor="let armorAddon of armorAddons.value; let i = index">
-        <app-item
-        [item]="armorAddon"
-        ></app-item>
-      </div>
-
-  </div>
 </div>
