@@ -9,6 +9,7 @@ import { ResourcesService } from 'src/app/characters/resources/resources.service
 import { ItemSelectService } from '../item-select/item-select.service';
 import { SkillsService } from 'src/app/characters/skills/skills.service';
 import { ItemsService } from 'src/app/characters/items/items.service';
+import { HideService } from '../hide-content/hide-content.service';
 
 @Component({
   selector: 'app-floating-menu',
@@ -26,6 +27,7 @@ export class FloatingMenuComponent implements OnInit {
     public resS: ResourcesService,
     public skillsS: SkillsService,
     public itemsS: ItemsService,
+    public hide: HideService,
 
   ) {}
 

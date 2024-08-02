@@ -17,7 +17,12 @@ export const skillsUtil: Array<SkillInterface> = [
   {id: 'elektronika', multi: false, nev: 'Elektronika', nevKieg: '', csoport: 'Aktív Szakértelmek', faName: 'activeSkills', karmaKtsg: 5, kapTul: 'asztUgy'},
   {id: 'muszaki', multi: false, nev: 'Műszaki tudás', nevKieg: '', csoport: 'Aktív Szakértelmek', faName: 'activeSkills', karmaKtsg: 5, kapTul: 'asztUgy'},
   {id: 'egzotikusfegyverek', multi: true, nev: '', nevKieg: 'Egzotikus fegyv.', csoport: 'Aktív Szakértelmek', faName: 'activeSkills', karmaKtsg: 3, kapTul: 'fizUgy'},
-  {id: 'szakma', multi: true, nev: '', nevKieg: 'Szakma', csoport: 'Aktív Szakértelmek', faName: 'activeSkills', karmaKtsg: 3, kapTul: 'fizUgy'},
+  {id: 'szakmaESz', multi: true, nev: '', nevKieg: 'Szakma', csoport: 'Aktív Szakértelmek', faName: 'activeSkills', karmaKtsg: 5, kapTul: 'fizUgy'},
+  {id: 'fizUgyESz', multi: true, nev: '', nevKieg: 'Egyedi, Ügyesség', csoport: 'Aktív Szakértelmek', faName: 'activeSkills', karmaKtsg: 5, kapTul: 'fizUgy'},
+  {id: 'asztUgyESz', multi: true, nev: '', nevKieg: 'Egyedi, Logika', csoport: 'Aktív Szakértelmek', faName: 'activeSkills', karmaKtsg: 5, kapTul: 'asztUgy'},
+  {id: 'asztGyoESz', multi: true, nev: '', nevKieg: 'Egyedi, Intuíció', csoport: 'Aktív Szakértelmek', faName: 'activeSkills', karmaKtsg: 5, kapTul: 'asztGyo'},
+  {id: 'magiaESz', multi: true, nev: '', nevKieg: 'Egyedi, Mágia', csoport: 'Aktív Szakértelmek', faName: 'activeSkills', karmaKtsg: 5, kapTul: 'magia'},
+  {id: 'reakcioESz', multi: true, nev: '', nevKieg: 'Egyedi, Reakció', csoport: 'Aktív Szakértelmek', faName: 'activeSkills', karmaKtsg: 5, kapTul: 'reakcio'},
   // ismeret
   {id: 'erdeklodes', multi: true, nev: '', nevKieg: 'Érdeklődési körök', csoport: 'Ismeret Szakértelmek', faName: 'knowledgeSkills', karmaKtsg: 3, kapTul: 'asztUgy'},
   {id: 'hatodikvilag', multi: true, nev: '', nevKieg: '6. világbeli ism.', csoport: 'Ismeret Szakértelmek', faName: 'knowledgeSkills', karmaKtsg: 3, kapTul: 'asztUgy'},
@@ -130,6 +135,8 @@ export const skillsSpecUtil: Array<SkillSpecInterface> = [
   {id: 'hidromechanika', multi: false, nev: 'Hidromechanika', specOf: 'muszaki', karmaKtsg: 2},
   {id: 'fegyverkovacs', multi: false, nev: 'Fegyverkovács', specOf: 'muszaki', karmaKtsg: 2},
   {id: 'pancelkovacs', multi: false, nev: 'Páncélkovács', specOf: 'muszaki', karmaKtsg: 2},
+
+  {id: 'egyeniSpec', multi: false, nev: '', specOf: '', karmaKtsg: 2},
 ];
 
 export interface SkillInterface {

@@ -3,7 +3,7 @@
 [arrowColor]="'nwht'"
 [arrowBefore]="false"
 >
-  <div headText class="nwht text1 w100">
+  <div headText class="flexContNoWrap">
 
     <app-special-field class="w20"
     [ertek]="attrBonus + skill.szint"
@@ -11,24 +11,38 @@
     [egyeniSzin]="'ngrn'"
     ></app-special-field>
 
-    <div class="nwht text1 flex1 overflow">
-      {{skill.nev}} {{skill.nevKieg}}
+    <div class="flex1">
+      <div class="nwht text1 {{hide.checkStatus(skill.id+i) ? '' : 'overflow'}}">
+        {{skill.nev}} {{skill.nevKieg == '' ? '' : '('+skill.nevKieg+')'}}
+      </div>
     </div>
 
   </div>
 
   <div itemCont class="flexCont w100">
-    <div class="w50 nbl text1">Névkiegészítő</div>
-    <div class="w50 grayCell text1">{{skill.nevKieg}}</div>
+    <div *ngIf="skill.nevKieg != ''" class="w50 nbl text1">Névkiegészítő</div>
+    <div *ngIf="skill.nevKieg != ''" class="w50 grayCell text1">{{skill.nevKieg}}</div>
 
-    <div class="w50 nbl text1">Szint</div>
-    <div class="w50 grayCell text1">{{skill.szint}}</div>
-    <div class="w50 nbl text1">Max Szint</div>
-    <div class="w50 grayCell text1">{{kapTulSzint}}</div>
-    <div class="w50 nbl text1">Fő Tulajd.</div>
-    <div class="w50 grayCell text1">{{tulNev}}</div>
-    <div class="w50 nbl text1">Tulajd. búnusz</div>
-    <div class="w50 grayCell text1">{{attrBonus}}</div>
+    <div class="w60 nbl text1">Aktuális Szint</div>
+    <app-special-field class="w40"
+    [ertek]="skill.szint"
+    [tipus]="'szint'"
+    ></app-special-field>
+
+    <div class="w60 nbl text1">Maximum Szint</div>
+    <app-special-field class="w40"
+    [ertek]="kapTulSzint"
+    [tipus]="'szint'"
+    ></app-special-field>
+
+    <div class="w60 nbl text1">Fő Tulajdonság</div>
+    <div class="w40 nrng text1">{{tulNev}}</div>
+
+    <div class="w60 nbl text1">Tulajdonság búnusz</div>
+    <app-special-field class="w40"
+    [ertek]="attrBonus"
+    [tipus]="'szint'"
+    ></app-special-field>
 
     <div class="buttonCont w100 btnBack">
       <button *ngIf="skill.szint < kapTulSzint" class="text1 itemGet" type="button" (click)="skillLvlUp()" >Szintlépés</button>

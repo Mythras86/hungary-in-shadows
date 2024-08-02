@@ -6,6 +6,13 @@
   width: 100%;
 }
 
+.flexContNoWrap {
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: center;
+  width: 100%;
+}
+
 .flex1 {
   flex: 1 1 auto;
 }
@@ -61,6 +68,7 @@
 }
 .w100 {
   flex: 0 0 100%;
+  max-width: 100%;
 }
 
 .mainCont {

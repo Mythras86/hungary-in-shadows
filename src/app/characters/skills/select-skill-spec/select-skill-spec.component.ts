@@ -31,8 +31,21 @@ export class SelectSkillSpecComponent implements OnInit {
   }
 
   onSave(spec: SkillSpecInterface) {
-    this.closeEvent.next(spec),
-    this.closeEvent.complete()
+    if (spec.nev != '') {
+      return [
+        this.closeEvent.next(spec),
+        this.closeEvent.complete()
+      ];
+    }
+    const input = (<HTMLInputElement>document.getElementById(spec.id)).value;
+    if (spec.nev == '' && input != '') {
+      return [
+        spec.nev = input,
+        this.closeEvent.next(spec),
+        this.closeEvent.complete()
+      ];
+    }
+    return;
   }
 
   onClose() {
@@ -40,7 +53,7 @@ export class SelectSkillSpecComponent implements OnInit {
   }
 
   getSpecs():Array<SkillSpecInterface> {
-    const specBySkill = skillsSpecUtil.filter(x=>x.specOf == this.mainSkill.id);
+    const specBySkill = skillsSpecUtil.filter(x=>x.specOf == this.mainSkill.id || x.specOf == '');
     const filteredSpecs = specBySkill.filter(x=> !this.ownedSpecs.includes(x.id));
     return this.specs = filteredSpecs;
   }

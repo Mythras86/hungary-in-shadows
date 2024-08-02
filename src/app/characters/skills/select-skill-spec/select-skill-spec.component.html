@@ -1,12 +1,37 @@
 <!-- fejléc -->
-<div class="ntl text1 center w90" >
+<div class="ntl text1 center w90 margBott1" >
   {{mainSkill.nev}} specializációk
 </div>
 
 <!-- visszagomb -->
-<button class="itemRemove text1 w10 center" type="button" (click)="onClose()">X</button>
+<button class="itemRemove text1 w10 center margBott1" type="button" (click)="onClose()">X</button>
 
-<div class="w100 flexCont" *ngFor="let spec of getSpecs()">
-  <div class="flex1 text1 nwht" (click)="onSave(spec)">{{spec.nev}}</div>
-  <div class="w10 text1 center nprpl">{{spec.karmaKtsg}}</div>
+<div class="w100 margBott1" *ngFor="let spec of specs">
+
+  <app-hide-content
+  [keyWord]="spec.id"
+  [arrowColor]="'nwht'"
+  >
+
+    <div headText class="w100 text1 nwht">{{spec.nev == '' ? 'Egyéni Specializáció' : spec.nev}}</div>
+
+    <div itemCont class="w100 flexCont">
+      <input class="text1 w100" type="text"
+      *ngIf="spec.id == 'egyeniSpec'"
+      id="{{spec.id}}"
+      [placeholder]="'Írd be a pontos megnevezést'"
+      >
+
+      <div class="nbl w60 text1">Karmaköltség</div>
+      <app-special-field class="w40"
+      [ertek]="spec.karmaKtsg"
+      [tipus]="'karma'"
+      ></app-special-field>
+
+      <div class="buttonCont btnBack">
+        <button class="itemGet text1" type="submit" (click)="onSave(spec)">Kiválaszt</button>
+      </div>
+    </div>
+  </app-hide-content>
+
 </div>

@@ -18,13 +18,24 @@
   </div>
 
   <div itemCont class="flexCont w100">
-    <div class="w50 nbl text1">Szint</div>
-    <div class="w50 grayCell text1">{{spec.szint}}</div>
 
-    <div class="w50 nbl text1">Szakértelem</div>
-    <div class="w50 grayCell text1">{{skillSzint}}</div>
-    <div class="w50 nbl text1">Tulajd. Szint</div>
-    <div class="w50 grayCell text1">{{attrBonus}}</div>
+    <div class="w60 nbl text1">Aktuális Szint</div>
+    <app-special-field class="w40"
+    [ertek]="spec.szint"
+    [tipus]="'szint'"
+    ></app-special-field>
+
+    <div class="w60 nbl text1">Szakértelem Szint</div>
+    <app-special-field class="w40"
+    [ertek]="skillSzint"
+    [tipus]="'szint'"
+    ></app-special-field>
+
+    <div class="w60 nbl text1">Tulajdonság Szint</div>
+    <app-special-field class="w40"
+    [ertek]="attrBonus"
+    [tipus]="'szint'"
+    ></app-special-field>
 
     <div class="buttonCont w100 btnBack">
       <button *ngIf="spec.szint < kapTulSzint" class="text1 itemGet" type="button" (click)="specLvlUp()" >Szintlépés</button>

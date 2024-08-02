@@ -19,16 +19,36 @@
 
   <h3 class="margTop1">{{elem}}</h3>
 
-  <div class="w100 flexCont" *ngFor="let skill of getSkills(elem)">
-    <div class="flex1 text1 nwht" (click)="onSave(skill)">{{skill.nev}} {{skill.nevKieg}}</div>
-    <div class="w10 text1 center nprpl">{{skill.karmaKtsg}}</div>
-    <div class="w30 text1 center nrng">{{getAttrRovid(skill.kapTul)}}</div>
+  <div class="w100 margBott1" *ngFor="let skill of getSkills(elem)">
 
-    <input class="text1 w100" type="text"
-    *ngIf="skill.nev == ''"
-    id="{{skill.id}}"
-    [placeholder]="'Írd be a pontos megnevezést'"
+    <app-hide-content
+    [keyWord]="skill.id"
+    [arrowColor]="'nwht'"
     >
+
+      <div headText class="w100 text1 nwht">{{skill.nev}} {{skill.nevKieg}}</div>
+
+      <div itemCont class="w100 flexCont">
+        <input class="text1 w100" type="text"
+        *ngIf="skill.nev == ''"
+        id="{{skill.id}}"
+        [placeholder]="'Írd be a pontos megnevezést'"
+        >
+        <div class="nbl w60 text1">Karmaköltség</div>
+        <app-special-field class="w40"
+        [ertek]="skill.karmaKtsg"
+        [tipus]="'karma'"
+        ></app-special-field>
+
+        <div class="nbl w60 text1">Kapcsolt Tulajdonság</div>
+        <div class="w40 text1 center nrng">{{getAttrRovid(skill.kapTul)}}</div>
+
+        <div class="buttonCont margBott1 btnBack">
+          <button class="itemGet text1" type="submit" (click)="onSave(skill)">Kiválaszt</button>
+        </div>
+      </div>
+    </app-hide-content>
+
   </div>
 
 </div>

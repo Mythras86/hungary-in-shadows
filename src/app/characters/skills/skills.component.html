@@ -6,27 +6,25 @@
 
       <h3 class="margTop1">Aktív Szakértelmek</h3>
 
-      <div class="w100 flexCont" [formGroupName]='i' *ngFor="let a of s.activeSkills.value; let i = index">
+      <div class="w100 flexCont margBott1" [formGroupName]='i' *ngFor="let a of s.activeSkills.value; let i = index">
 
-        <div class="flexCont margBott1">
-          <app-skill class="w100 posRel flexCont"
-          [skill]="a"
+        <app-skill class="w100"
+        [skill]="a"
+        [kapTulSzint]="attrS.getTulErtek(a.kapTul)"
+        [i]="i"
+        >
+        </app-skill>
+
+        <div class="w100" formArrayName="specs">
+          <app-skillspec [formGroupName]='j' *ngFor="let spec of s.activeSkills.controls[i].value.specs; let j = index"
+          [spec]="spec"
+          [skillSzint]="a.szint"
           [kapTulSzint]="attrS.getTulErtek(a.kapTul)"
+          [skillCsoport]="a.faName"
           [i]="i"
+          [j]="j"
           >
-          </app-skill>
-
-          <div class="w100" formArrayName="specs">
-            <app-skillspec class="w100 posRel flexCont" [formGroupName]='j' *ngFor="let spec of s.activeSkills.controls[i].value.specs; let j = index"
-            [spec]="spec"
-            [skillSzint]="a.szint"
-            [kapTulSzint]="attrS.getTulErtek(a.kapTul)"
-            [skillCsoport]="a.faName"
-            [i]="i"
-            [j]="j"
-            >
-            </app-skillspec>
-        </div>
+          </app-skillspec>
 
         </div>
       </div>

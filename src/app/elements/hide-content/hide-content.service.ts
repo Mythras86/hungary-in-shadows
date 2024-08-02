@@ -32,7 +32,6 @@ export class HideService {
   clearStatus(): void {
     this.statusArray.length = 0;
     this.status = false;
-    console.log(this.statusArray)
   }
 
 }
