@@ -32,6 +32,7 @@ export interface ItemsModel {
   //szint és minőség
   szint?: number;
   maxSzint?: number;
+  pancel?: number;
 
   celszam?: any;
   celpontokSzama?: number;
@@ -94,6 +95,7 @@ export interface ItemsFG extends FormGroup {
     //szint és minőség
     szint?: AbstractControl;
     maxSzint?: AbstractControl;
+    pancel?: AbstractControl;
 
     celszam?: AbstractControl;
     celpontokSzama?: AbstractControl;

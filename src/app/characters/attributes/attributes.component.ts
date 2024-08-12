@@ -55,7 +55,7 @@ export class AttributesComponent implements OnInit {
     lepes: attr.lepes,
     valto: 1,
     tokeKtsg: 0,
-    karmaKtsg: 6,
+    karmaKtsg: 5,
     esszKtsg: 0,
     celErtek: this.s.getFc(fcName).value,
     egyseg: attr.egyseg,
@@ -69,7 +69,7 @@ export class AttributesComponent implements OnInit {
   lvlUp(valtozas: number, fcName: string): void {
     const form = this.s.attributesForm.get(fcName);
     // kifizetés
-    this.resS.payKarma(valtozas*3);
+    this.resS.payKarma(valtozas*5);
     // értékszerzés
     form?.patchValue(form.value+valtozas);
   }

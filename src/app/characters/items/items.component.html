@@ -5,6 +5,8 @@
     <!-- elhelyezés bontás -->
     <div *ngFor="let hely of helyek">
 
+      <h3 class="margTop1 ngrn center">{{hely}}</h3>
+
       <!-- csoportokra bontás -->
       <div class="w100" *ngFor="let csoport of getCsoportok(hely)">
 
@@ -22,10 +24,10 @@
             [i]="i"
             >
               <div class="buttonCont btnBack">
-                <button type="button" class="itemGet text1" (click)="lvlUp(item)">Szintlépés</button>
-                <button type="button" class="itemGet text1" (click)="changePlace(item, 'Viselt')">Felvesz</button>
-                <button type="button" class="itemGet text1" (click)="changePlace(item, 'Táska')">Táskába</button>
-                <button type="button" class="itemGet text1" (click)="changePlace(item, 'Raktár')">Raktárba</button>
+                <button type="button" class="itemGet text1" (click)="lvlUpItem(i, item)">Szintlépés</button>
+                <button type="button" class="itemEdit text1" (click)="changePlace(i, 'Viselt')">Felvesz</button>
+                <button type="button" class="itemEdit text1" (click)="changePlace(i, 'Táska')">Táskába</button>
+                <button type="button" class="itemEdit text1" (click)="changePlace(i, 'Raktár')">Raktárba</button>
               </div>
             </app-item>
 

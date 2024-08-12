@@ -17,14 +17,14 @@
 <!-- csoportokra bontás -->
 <div class="w100" *ngFor="let csoport of csoportok">
 
-  <h3 class="margTop1 center">{{csoport}}</h3>
+  <h3 [hidden]="filter != csoport && filter != ''" class="margTop1 center">{{csoport}}</h3>
 
   <!-- típusokra bontás -->
-  <div *ngFor="let tipus of getTipusok(csoport)">
+  <div [hidden]="filter != csoport && filter != ''" *ngFor="let tipus of getTipusok(csoport)">
 
     <h3 class="margTop1 nbl">{{tipus}}</h3>
 
-    <div class="" *ngFor="let item of itemsList; let i = index">
+    <div class="margTop1" *ngFor="let item of itemsList; let i = index">
       <app-item *ngIf="item.csoport == csoport && item.tipus == tipus"
         [item]="item"
         >

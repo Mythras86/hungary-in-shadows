@@ -24,23 +24,23 @@
 
     <!-- karakter kezelők -->
     <div *ngIf="userIsAuthenticated && mainS.mainCharForm.get('creatorId')?.value == getCreatorId()" class="buttonCont btnBack">
-      <div class="itemGet text1 w100" (click)="mainS.sendChar()">+ Karakter mentése +</div>
+      <div class="itemGet text1 w100 center" (click)="mainS.sendChar()">+ Karakter mentése +</div>
     </div>
     <div *ngIf="resS.getSzabadKarma() >= 2" class="buttonCont btnBack">
-      <div class="itemGet text1 w100" (click)="skillsS.newSkill()">Új Szakértelem</div>
+      <div class="itemGet text1 w100 center" (click)="skillsS.newSkill()">Új Szakértelem</div>
     </div>
     <div class="buttonCont btnBack">
-      <div class="itemGet text1 w100" (click)="itemsS.newItem()">Új Felszerelés</div>
+      <div class="itemGet text1 w100 center" (click)="itemsS.newItem()">Új Felszerelés</div>
     </div>
 
     <!-- kinyitott oldalak becsukása -->
     <div class="buttonCont btnBack">
-      <div class="itemEdit text1 w100" (click)="hide.clearStatus()">Összes becsukása</div>
+      <div class="itemEdit text1 w100 center" (click)="hide.clearStatus()">Összes becsukása</div>
     </div>
 
     <!-- oldalváltás a Karakterlistához -->
     <div class="buttonCont btnBack margTop1">
-      <div class="itemRemove text1 w100" (click)="backToList(); closeMenu()">Vissza a Karakterlistához</div>
+      <div class="itemRemove text1 w100 center" (click)="backToList(); closeMenu()">Vissza a Karakterlistához</div>
     </div>
   </div>
 </div>

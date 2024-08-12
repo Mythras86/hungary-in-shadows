@@ -44,7 +44,7 @@ export class ItemsService {
     tipus: [item.tipus, Validators.required],
     nev: [item.nev, Validators.required],
     leiras: [item.leiras, Validators.required],
-    elhelyezes: [item.elhelyezes, Validators.required],
+    elhelyezes: ["Raktár", Validators.required],
 
     //súly
     suly: [item.suly],
@@ -63,6 +63,7 @@ export class ItemsService {
     //szint és minőség
     szint: [item.szint],
     maxSzint: [item.maxSzint],
+    pancel: [item.pancel],
 
     celszam: [item.celszam],
     celpontokSzama: [item.celpontokSzama],
@@ -126,6 +127,7 @@ export class ItemsService {
       //szint és minőség
       szint: e.szint,
       maxSzint: e.maxSzint,
+      pancel: e.pancel,
 
       celszam: e.celszam,
       celpontokSzama: e.celpontokSzama,

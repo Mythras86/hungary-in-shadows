@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ItemsModel } from '../items.model';
 import { attributesUtil } from '../../attributes/attributes-utility';
+import { HideService } from 'src/app/elements/hide-content/hide-content.service';
 
 @Component({
   selector: 'app-item',
@@ -14,8 +15,9 @@ export class ItemComponent implements OnInit {
 
   tulNev: string = '';
 
-  constructor() {
-  }
+  constructor(
+    public hide: HideService,
+  ) {}
 
   getTulNev(fcName: string): string {
     if (!this.item.tulajdonsagModosito) {

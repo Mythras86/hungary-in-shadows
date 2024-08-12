@@ -3,6 +3,9 @@ import { FormArray } from '@angular/forms';
 import { ItemSelectService } from 'src/app/elements/item-select/item-select.service';
 import { ItemsService } from './items.service';
 import { ItemsModel } from './items.model';
+import { LevelcontrolComponent } from 'src/app/elements/levelcontrol/levelcontrol.component';
+import { ModalService } from 'src/app/elements/modals/modal.service';
+import { ResourcesService } from '../resources/resources.service';
 
 @Component({
   selector: 'app-items',
@@ -14,6 +17,8 @@ export class ItemsComponent implements OnInit {
   constructor(
     public s: ItemsService,
     public select: ItemSelectService,
+    private modalS: ModalService,
+    private resS: ResourcesService,
   ){
     this.helyek = this.getHelyek();
   }
@@ -49,17 +54,51 @@ export class ItemsComponent implements OnInit {
     return newTipusok;
   }
 
-  lvlUp(item: ItemsModel): void {
-
+  lvlUpItem(i: number, item: ItemsModel):void {
+    if (!item) {
+      return;
+    }
+    this.modalS.openModal(LevelcontrolComponent, {
+    fejlec: item.nev,
+    megjegyzes: item.leiras,
+    lepes: item.maxSzint!-1,
+    valto: 1,
+    tokeKtsg: item.tokeKtsgPerSzint,
+    karmaKtsg: item.karmaKtsgPerSzint,
+    esszKtsg: item.esszenciaKtsgPerSzint,
+    celErtek: this.s.getFc(i, 'szint')?.value,
+    egyseg: ' Szint',
+    minErtek: this.s.getFc(i, 'szint')?.value,
+    maxErtek: item.maxSzint,
+    }).subscribe(
+      w => this.lvlUp(w, i, item)
+    );
   }
 
-  changePlace(item: ItemsModel, newPlace: string): void {
+  lvlUp(valtozas: number, i: number, item: ItemsModel): void {
+    const form = this.s.getFc(i, 'szint');
+    // értékszerzés
+    form?.patchValue(form.value+valtozas);
+    // kifizetés
+    if (item.tokeKtsgPerSzint) {
+      this.resS.payToke(valtozas*item.tokeKtsgPerSzint);
+    }
+    if (item.karmaKtsgPerSzint) {
+      this.resS.payKarma(valtozas*item.karmaKtsgPerSzint);
+    }
+  }
+
+  changePlace(i: number, newPlace: string): void {
+    const form = (this.s.itemsForm.get('items') as FormArray).at(i).get('elhelyezes');
+    form?.patchValue(newPlace)
+    console.log(newPlace)
+    console.log(this.items.value)
 
   }
 
   ngOnInit(): void {
     this.items.valueChanges.subscribe(
-      ()=> console.log(0)
+      ()=> this.getHelyek()
     );
   }
 }
