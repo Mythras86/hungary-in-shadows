@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ItemsModel, TamadasModel, TavolsagModel, nevErtekModel } from './items.model';
+import { ItemsModel, nevErtekModel } from './items.model';
 import { ResourcesService } from '../resources/resources.service';
-import { AttributesService } from '../attributes/attributes.service';
 import { ModalService } from 'src/app/elements/modals/modal.service';
 import { SelectItemComponent } from './select-item/select-item.component';
 
@@ -16,8 +15,6 @@ export class ItemsService {
     private modalS: ModalService,
 
     private resS: ResourcesService,
-    private attrS: AttributesService,
-
   ) { }
 
   itemsForm!: FormGroup;
@@ -47,9 +44,11 @@ export class ItemsService {
     tipus: [item.tipus, Validators.required],
     nev: [item.nev, Validators.required],
     leiras: [item.leiras, Validators.required],
+    elhelyezes: [item.elhelyezes, Validators.required],
 
     //súly
     suly: [item.suly],
+    sulySzorzo: [item.sulySzorzo],
 
     //költségek kumulatív
     tokeKtsg: [item.tokeKtsg != undefined ? item.tokeKtsg : 0 ],
@@ -69,8 +68,14 @@ export class ItemsService {
     celpontokSzama: [item.celpontokSzama],
     hatosugar: [item.hatosugar],
 
-    tavolsag: this.fb.array(item.tavolsag!.map((x: any) =>this.setTavolsag(x))),
-    tamadas: this.fb.array(item.tamadas!.map((x: any) =>this.setTamadas(x))),
+    tavolsag: [item.tavolsag],
+
+    tamadas: [item.tamadas],
+    akcio: [item.akcio],
+    ero: [item.ero],
+    sebzes: [item.sebzes],
+    sebKod: [item.sebKod],
+
     tulajdonsagModosito: this.fb.array(item.tulajdonsagModosito!.map((x: any) =>this.setTulajdonsagModosito(x))),
 
     //felhasználás pl.: fegyverbe tár, szellem szolgálat, gyógyszeradag, méreg
@@ -84,17 +89,17 @@ export class ItemsService {
     (this.itemsForm.get('items') as FormArray).push(newitem);
   }
 
-  setItems(items: ItemsModel[], faName: string): void {
+  setItems(items: ItemsModel[]): void {
     if (items == undefined) {
       return;
     }
-    const itemsFA = (this.itemsForm.get(faName) as FormArray);
+    const itemsFA = (this.itemsForm.get('items') as FormArray);
     items.forEach(e => {
       itemsFA.push( this.itemsPush(e));
     });
   }
 
-  itemsPush(e: any): FormGroup {
+  itemsPush(e: ItemsModel): FormGroup {
     return this.fb.group({
       //alap adatok
       _id: e._id,
@@ -102,6 +107,7 @@ export class ItemsService {
       tipus: e.tipus,
       nev: e.nev,
       leiras: e.leiras,
+      elhelyezes: e.elhelyezes,
 
       //költségek kumulatív
       tokeKtsg: e.tokeKtsg,
@@ -110,6 +116,7 @@ export class ItemsService {
 
       //súly
       suly: e.suly,
+      sulySzorzo: e.sulySzorzo,
 
       //költségek per szint
       tokeKtsgPerSzint: e.tokeKtsgPerSzint,
@@ -127,9 +134,13 @@ export class ItemsService {
       kiegeszitoKorlatozas: this.setkiegeszitoKorlatozas(e.kiegeszitoKorlatozas),
       kiegeszitok: this.setkiegeszitok(e.kiegeszitok),
 
-      tavolsag: this.setTavolsag(e.tavolsag),
+      tavolsag: e.tavolsag,
 
-      tamadas: this.setTamadas(e.tamadas),
+      tamadas: e.tamadas,
+      akcio: e.akcio,
+      ero: e.ero,
+      sebzes: e.sebzes,
+      sebKod: e.sebKod,
 
       tulajdonsagModosito: this.setTulajdonsagModosito(e.tulajdonsagModosito),
 
@@ -138,34 +149,6 @@ export class ItemsService {
       felhasznalt: e.felhasznalt,
       felhasznalasMax: e.felhasznalasMax,
     });
-  }
-
-  setTavolsag(data: any) {
-    if (data == undefined) {
-      return;
-    }
-    this.fb.array(data.map((x: TavolsagModel) => {
-      return this.fb.group({
-        nev: x.nev,
-        ertek: x.ertek,
-        modosito: x.modosito,
-      });
-    }));
-  }
-
-  setTamadas(data: any) {
-    if (data == undefined) {
-      return;
-    }
-    this.fb.array(data.map((x: TamadasModel) => {
-      return this.fb.group({
-        nev: x.nev,
-        akcio: x.akcio,
-        ero: x.ero,
-        sebzes: x.sebzes,
-        sebKod: x.sebKod,
-      });
-    }));
   }
 
   setTulajdonsagModosito(data: any) {
@@ -203,14 +186,7 @@ export class ItemsService {
 
   updateItems(w: any): void {
     this.createItems();
-    this.setItems(w.armors, 'armors');
-    this.setItems(w.weapons, 'weapons');
-    this.setItems(w.items, 'items');
-    this.setItems(w.cybers, 'cybers');
-    this.setItems(w.explosives, 'explosives');
-    this.setItems(w.artifacts, 'artifacts');
-    this.setItems(w.spells, 'spells');
-    this.setItems(w.spirits, 'spirits');
+    this.setItems(w);
   }
 
   removeItem(i:number): void {

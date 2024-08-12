@@ -5,6 +5,7 @@
 <!-- visszagomb -->
 <button class="itemRemove text1 w10 center" type="button" (click)="onClose()">X</button>
 
+<!-- lista -->
 <div class="flexCont gap2">
   <div class="text1 center nprpl gap2 w100" (click)="setFilter('')">X Nincs</div>
   <div *ngFor="let elem of csoportok">
@@ -12,25 +13,28 @@
   </div>
 </div>
 
-<div class="w100" [hidden]="csoport != filter && filter != ''" *ngFor="let csoport of csoportok">
-  <h3 class="margTop1">{{csoport}}</h3>
 
-  <div class="w100" [hidden]="csoport != filter && filter != ''" *ngFor="let tipus of getTipus(csoport)">
+<!-- csoportokra bontás -->
+<div class="w100" *ngFor="let csoport of csoportok">
 
-    <div class="w50 text1 nbl center margBott1">
-      {{tipus}}
-    </div>
+  <h3 class="margTop1 center">{{csoport}}</h3>
 
-    <div class="w100 flexCont" *ngFor="let item of getFilteredItems(csoport, tipus); let i = index">
+  <!-- típusokra bontás -->
+  <div *ngFor="let tipus of getTipusok(csoport)">
 
-      <app-item class="margBott1 w100"
-      [item] = "item"
-      >
-      <div class="buttonCont btnBack">
-        <button type="button" class="itemGet text1">Kiválaszt</button>
-      </div>
+    <h3 class="margTop1 nbl">{{tipus}}</h3>
+
+    <div class="" *ngFor="let item of itemsList; let i = index">
+      <app-item *ngIf="item.csoport == csoport && item.tipus == tipus"
+        [item]="item"
+        >
+        <div class="buttonCont btnBack">
+          <button type="button" class="itemGet text1" (click)="onSave(item)">Kiválaszt</button>
+        </div>
       </app-item>
 
     </div>
+
   </div>
+
 </div>

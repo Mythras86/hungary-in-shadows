@@ -24,6 +24,7 @@
     "resolveJsonModule": true,
     "lib": [
       "ES2022",
+      "ES2017",
       "dom"
     ]
   },

@@ -9,7 +9,8 @@ import { attributesUtil } from '../../attributes/attributes-utility';
 })
 export class ItemComponent implements OnInit {
 
-  @Input() item!: ItemsModel;
+  @Input() item!:ItemsModel;
+  @Input() i:number = 0;
 
   tulNev: string = '';
 

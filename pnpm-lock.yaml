@@ -80,7 +80,7 @@ importers:
     devDependencies:
       '@angular-devkit/build-angular':
         specifier: ^15.1.5
-        version: 15.1.6(@angular/compiler-cli@15.1.5(@angular/compiler@15.1.5(@angular/core@15.1.5(rxjs@7.8.0)(zone.js@0.12.0)))(typescript@4.9.5))(debug@4.3.4)(karma@6.4.1(debug@4.3.4))(typescript@4.9.5)
+        version: 15.1.6(@angular/compiler-cli@15.1.5(@angular/compiler@15.1.5(@angular/core@15.1.5(rxjs@7.8.0)(zone.js@0.12.0)))(typescript@5.6.0-dev.20240812))(debug@4.3.4)(karma@6.4.1(debug@4.3.4))(typescript@5.6.0-dev.20240812)
       '@angular-devkit/core':
         specifier: ~15.1.5
         version: 15.1.6(chokidar@3.5.3)
@@ -92,7 +92,7 @@ importers:
         version: 15.2.10(chokidar@3.5.3)
       '@angular/compiler-cli':
         specifier: ^15.1.0
-        version: 15.1.5(@angular/compiler@15.1.5(@angular/core@15.1.5(rxjs@7.8.0)(zone.js@0.12.0)))(typescript@4.9.5)
+        version: 15.1.5(@angular/compiler@15.1.5(@angular/core@15.1.5(rxjs@7.8.0)(zone.js@0.12.0)))(typescript@5.6.0-dev.20240812)
       '@schematics/angular':
         specifier: ~15.1.5
         version: 15.1.6(chokidar@3.5.3)
@@ -121,8 +121,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
       typescript:
-        specifier: ~4.9.4
-        version: 4.9.5
+        specifier: 5.6.0-dev.20240812
+        version: 5.6.0-dev.20240812
 
 packages:
 
@@ -4437,6 +4437,11 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
 
+  typescript@5.6.0-dev.20240812:
+    resolution: {integrity: sha512-TR3m7teVCHUhgqmFTj3TKFevzF4GMWOvesnhjWlBfUn3TRy4Z3xhJ9FzxzeEfupEqNWOagszD1Q0Ym46BtyE2g==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   ua-parser-js@0.7.33:
     resolution: {integrity: sha512-s8ax/CeZdK9R/56Sui0WM6y9OFREJarMRHqLB2EwkovemBxNQ+Bqu8GAsUnVcXKgphb++ghr/B2BZx4mahujPw==}
 
@@ -4754,13 +4759,13 @@ snapshots:
     transitivePeerDependencies:
       - chokidar
 
-  '@angular-devkit/build-angular@15.1.6(@angular/compiler-cli@15.1.5(@angular/compiler@15.1.5(@angular/core@15.1.5(rxjs@7.8.0)(zone.js@0.12.0)))(typescript@4.9.5))(debug@4.3.4)(karma@6.4.1(debug@4.3.4))(typescript@4.9.5)':
+  '@angular-devkit/build-angular@15.1.6(@angular/compiler-cli@15.1.5(@angular/compiler@15.1.5(@angular/core@15.1.5(rxjs@7.8.0)(zone.js@0.12.0)))(typescript@5.6.0-dev.20240812))(debug@4.3.4)(karma@6.4.1(debug@4.3.4))(typescript@5.6.0-dev.20240812)':
     dependencies:
       '@ampproject/remapping': 2.2.0
       '@angular-devkit/architect': 0.1501.6(chokidar@3.5.3)
       '@angular-devkit/build-webpack': 0.1501.6(chokidar@3.5.3)(webpack-dev-server@4.11.1(debug@4.3.4)(webpack@5.75.0(esbuild@0.16.17)))(webpack@5.75.0(esbuild@0.16.17))
       '@angular-devkit/core': 15.1.6(chokidar@3.5.3)
-      '@angular/compiler-cli': 15.1.5(@angular/compiler@15.1.5(@angular/core@15.1.5(rxjs@7.8.0)(zone.js@0.12.0)))(typescript@4.9.5)
+      '@angular/compiler-cli': 15.1.5(@angular/compiler@15.1.5(@angular/core@15.1.5(rxjs@7.8.0)(zone.js@0.12.0)))(typescript@5.6.0-dev.20240812)
       '@babel/core': 7.20.12
       '@babel/generator': 7.20.7
       '@babel/helper-annotate-as-pure': 7.18.6
@@ -4772,7 +4777,7 @@ snapshots:
       '@babel/runtime': 7.20.7
       '@babel/template': 7.20.7
       '@discoveryjs/json-ext': 0.5.7
-      '@ngtools/webpack': 15.1.6(@angular/compiler-cli@15.1.5(@angular/compiler@15.1.5(@angular/core@15.1.5(rxjs@7.8.0)(zone.js@0.12.0)))(typescript@4.9.5))(typescript@4.9.5)(webpack@5.75.0(esbuild@0.16.17))
+      '@ngtools/webpack': 15.1.6(@angular/compiler-cli@15.1.5(@angular/compiler@15.1.5(@angular/core@15.1.5(rxjs@7.8.0)(zone.js@0.12.0)))(typescript@5.6.0-dev.20240812))(typescript@5.6.0-dev.20240812)(webpack@5.75.0(esbuild@0.16.17))
       ansi-colors: 4.1.3
       autoprefixer: 10.4.13(postcss@8.4.21)
       babel-loader: 9.1.2(@babel/core@7.20.12)(webpack@5.75.0(esbuild@0.16.17))
@@ -4812,7 +4817,7 @@ snapshots:
       text-table: 0.2.0
       tree-kill: 1.2.2
       tslib: 2.4.1
-      typescript: 4.9.5
+      typescript: 5.6.0-dev.20240812
       webpack: 5.75.0(esbuild@0.16.17)
       webpack-dev-middleware: 6.0.1(webpack@5.75.0(esbuild@0.16.17))
       webpack-dev-server: 4.11.1(debug@4.3.4)(webpack@5.75.0(esbuild@0.16.17))
@@ -4920,7 +4925,7 @@ snapshots:
       rxjs: 7.8.0
       tslib: 2.5.0
 
-  '@angular/compiler-cli@15.1.5(@angular/compiler@15.1.5(@angular/core@15.1.5(rxjs@7.8.0)(zone.js@0.12.0)))(typescript@4.9.5)':
+  '@angular/compiler-cli@15.1.5(@angular/compiler@15.1.5(@angular/core@15.1.5(rxjs@7.8.0)(zone.js@0.12.0)))(typescript@5.6.0-dev.20240812)':
     dependencies:
       '@angular/compiler': 15.1.5(@angular/core@15.1.5(rxjs@7.8.0)(zone.js@0.12.0))
       '@babel/core': 7.19.3
@@ -4932,7 +4937,7 @@ snapshots:
       reflect-metadata: 0.1.13
       semver: 7.5.4
       tslib: 2.5.0
-      typescript: 4.9.5
+      typescript: 5.6.0-dev.20240812
       yargs: 17.6.2
     transitivePeerDependencies:
       - supports-color
@@ -6340,10 +6345,10 @@ snapshots:
       sparse-bitfield: 3.0.3
     optional: true
 
-  '@ngtools/webpack@15.1.6(@angular/compiler-cli@15.1.5(@angular/compiler@15.1.5(@angular/core@15.1.5(rxjs@7.8.0)(zone.js@0.12.0)))(typescript@4.9.5))(typescript@4.9.5)(webpack@5.75.0(esbuild@0.16.17))':
+  '@ngtools/webpack@15.1.6(@angular/compiler-cli@15.1.5(@angular/compiler@15.1.5(@angular/core@15.1.5(rxjs@7.8.0)(zone.js@0.12.0)))(typescript@5.6.0-dev.20240812))(typescript@5.6.0-dev.20240812)(webpack@5.75.0(esbuild@0.16.17))':
     dependencies:
-      '@angular/compiler-cli': 15.1.5(@angular/compiler@15.1.5(@angular/core@15.1.5(rxjs@7.8.0)(zone.js@0.12.0)))(typescript@4.9.5)
-      typescript: 4.9.5
+      '@angular/compiler-cli': 15.1.5(@angular/compiler@15.1.5(@angular/core@15.1.5(rxjs@7.8.0)(zone.js@0.12.0)))(typescript@5.6.0-dev.20240812)
+      typescript: 5.6.0-dev.20240812
       webpack: 5.75.0(esbuild@0.16.17)
 
   '@nodelib/fs.scandir@2.1.5':
@@ -10096,6 +10101,8 @@ snapshots:
   typed-assert@1.0.9: {}
 
   typescript@4.9.5: {}
+
+  typescript@5.6.0-dev.20240812: {}
 
   ua-parser-js@0.7.33: {}
 

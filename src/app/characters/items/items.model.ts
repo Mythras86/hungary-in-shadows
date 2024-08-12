@@ -8,6 +8,7 @@ export interface ItemsModel {
   tipus: string;
   nev: string;
   leiras: string;
+  elhelyezes: string;
 
   //költségek kumulatív
   tokeKtsg?: number;
@@ -32,16 +33,20 @@ export interface ItemsModel {
   szint?: number;
   maxSzint?: number;
 
-  celszam?: number;
+  celszam?: any;
   celpontokSzama?: number;
   hatosugar?: number;
 
   kiegeszitoKorlatozas?: Array<nevErtekModel>
   kiegeszitok?: Array<ItemsModel>;
 
-  tavolsag?: Array<TavolsagModel>;
+  tavolsag?: any;
 
-  tamadas?: Array<TamadasModel>;
+  tamadas?: string;
+  akcio?: number;
+  ero?: number;
+  sebzes?: number;
+  sebKod?: string;
 
   tulajdonsagModosito?: Array<nevErtekModel>;
 
@@ -49,20 +54,6 @@ export interface ItemsModel {
   felhasznalasNev?: string;
   felhasznalt?: number;
   felhasznalasMax?: number;
-}
-
-export interface TamadasModel {
-  nev: string;
-  akcio: number;
-  ero: number;
-  sebzes: number;
-  sebKod: string;
-}
-
-export interface TavolsagModel {
-  nev: string;
-  ertek: number;
-  modosito: number;
 }
 
 export interface nevErtekModel {
@@ -79,6 +70,7 @@ export interface ItemsFG extends FormGroup {
     tipus: AbstractControl;
     nev: AbstractControl;
     leiras: AbstractControl;
+    elhelyezes: AbstractControl;
 
     //költségek kumulatív
     tokeKtsg?: AbstractControl;
@@ -110,9 +102,13 @@ export interface ItemsFG extends FormGroup {
     kiegeszitoKorlatozas?: AbstractControl<nevErtekFG[]>;
     kiegeszitok?: AbstractControl<ItemsFG[]>;
 
-    tavolsag?: AbstractControl<TavolsagFG[]>;
+    tavolsag?: AbstractControl<number>;
 
-    tamadas?: AbstractControl<TavolsagFG[]>;
+    tamadas?: AbstractControl;
+    akcio?: AbstractControl;
+    ero?: AbstractControl;
+    sebzes?: AbstractControl;
+    sebKod?: AbstractControl;
 
     tulajdonsagModosito?: AbstractControl<nevErtekFG[]>;
 
@@ -120,26 +116,6 @@ export interface ItemsFG extends FormGroup {
     felhasznalasNev?: AbstractControl;
     felhasznalt?: AbstractControl;
     felhasznalasMax?: AbstractControl;
-  }
-};
-
-export interface TamadasFG extends FormGroup {
-  value: TamadasModel;
-  controls: {
-    nev: AbstractControl;
-    akcio: AbstractControl;
-    ero: AbstractControl;
-    sebzes: AbstractControl;
-    sebKod: AbstractControl;
-  }
-};
-
-export interface TavolsagFG extends FormGroup {
-  value: TavolsagModel;
-  controls: {
-    nev: AbstractControl;
-    ertek: AbstractControl;
-    modosito: AbstractControl;
   }
 };
 

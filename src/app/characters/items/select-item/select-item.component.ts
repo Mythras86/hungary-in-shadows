@@ -33,12 +33,13 @@ export class SelectItemComponent implements OnInit {
   csoportok: Array<string> = [];
 
   getCsoportok(): Array<string> {
-    const csoportok = [...new Set(this.itemsList.map(x => x.csoport))];
-    return this.csoportok = csoportok;
+    const newCsoportok = [...new Set(this.itemsList.flatMap(x => x.csoport).sort())];
+    return this.csoportok = newCsoportok;
   }
 
-  getTipus(csoport: string): Array<string> {
-    return [...new Set(this.itemsList.filter(x => x.csoport == csoport).map(x => x.tipus))];
+  getTipusok(csoport: string): Array<string> {
+    const newTipusok = [...new Set(this.itemsList.filter(x => x.csoport == csoport).map(x=>x.tipus).sort())];
+    return newTipusok;
   }
 
   getFilteredItems(csoport: string, tipus: string): ItemsModel[] {
@@ -73,7 +74,7 @@ export class SelectItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.spinS.toggleSpinner(true);
-      this.getItems().subscribe({
+    this.getItems().subscribe({
       next: (w: ItemsModel[]) => {
         this.itemsList = w;
         this.itemsListUpd.next([...this.itemsList]);

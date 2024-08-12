@@ -1,5 +1,5 @@
 <app-hide-content class="w100"
-[keyWord]="item._id"
+[keyWord]="item._id+i"
 [arrowColor]="'nwht'"
 >
   <div headText class="flex1 text1 nwht">
@@ -42,33 +42,22 @@
     <div *ngIf="item.hatosugar" class="w60 grayCell textR  text1">{{item.hatosugar}}</div>
 
     <div *ngIf="item.felhasznalasNev" class="w40 nbl text1">{{item.felhasznalasNev}}</div>
-    <div *ngIf="item.felhasznalt" class="w60 grayCell textR  text1">{{item.felhasznalasMax! - item.felhasznalt!}}</div>
+    <div *ngIf="item.felhasznalasNev" class="w60 grayCell textR  text1">{{item.felhasznalt +' / '+ item.felhasznalasMax}}</div>
 
-    <div *ngIf="item.tavolsag?.length! > 0" class="w100">
-      <div class="nbl w100 text1 center">Távolság Módosítók</div>
-      <div *ngFor="let tav of item.tavolsag" class="flexCont w100">
-        <div class="w40 nbl text1">{{item.nev}}</div>
-        <div class="w20 grayCell textR text1">{{tav.ertek}}</div>
-        <div class="w40 grayCell textR text1">{{tav.modosito}}</div>
-      </div>
-    </div>
+    <div *ngIf="item.tamadas" class="w40 nbl text1">Támadás</div>
+    <div *ngIf="item.tamadas" class="w60 grayCell textR  text1">{{item.tamadas}}</div>
 
-    <div *ngIf="item.tamadas?.length! > 0" class="w100">
-      <div class="nbl w100 text1 center">Támadások</div>
-      <div *ngFor="let tam of item.tamadas" class="flexCont w100">
-        <div class="w40 nbl text1">{{tam.nev}}</div>
+    <div *ngIf="item.sebzes" class="w40 nbl text1">Sebzés</div>
+    <app-special-field *ngIf="item.ero && item.sebzes && item.sebKod" class="w60"
+    [ertek]="item.ero +' ('+ item.sebzes +') '+ item.sebKod"
+    [tipus]="'sebzes'"
+    ></app-special-field>
 
-        <app-special-field class="w20"
-        [tipus]="'akcio'"
-        [ertek]="tam.akcio"
-        ></app-special-field>
+    <div *ngIf="item.akcio" class="w40 nbl text1">Akciópont</div>
+    <div *ngIf="item.akcio" class="w60 grayCell textR  text1">{{item.akcio}}</div>
 
-        <app-special-field class="w40"
-        [tipus]="'sebzes'"
-        [ertek]="tam.ero +' ('+ tam.sebzes +') ' + tam.sebKod "
-        ></app-special-field>
-      </div>
-    </div>
+    <div *ngIf="item.tavolsag" class="w40 nbl text1">Távolság</div>
+    <div *ngIf="item.tavolsag" class="w60 grayCell textR  text1">{{item.tavolsag}}</div>
 
     <div *ngIf="item.tulajdonsagModosito?.length! > 0" class="w100">
       <div class="nbl w100 text1 center">Tulajdonság Módosítók</div>

@@ -1,14 +1,41 @@
 <div class="flexCont w100" [formGroup]="s.itemsForm" *ngIf="s.itemsForm">
 
-  <div class="flexCont w100" formArrayName="items" *ngIf="items.length > 0">
+  <div class="w100" formArrayName="items" *ngIf="items.length > 0">
 
-      <h3 class="margTop1">Felszerelések</h3>
+    <!-- elhelyezés bontás -->
+    <div *ngFor="let hely of helyek">
 
-      <div class="w100" [formGroupName]='i' *ngFor="let item of items.value; let i = index">
-        <app-item
-        [item]="item"
-        ></app-item>
+      <!-- csoportokra bontás -->
+      <div class="w100" *ngFor="let csoport of getCsoportok(hely)">
+
+        <h3 class="margTop1 center">{{csoport}}</h3>
+
+        <!-- típusokra bontás -->
+        <div *ngFor="let tipus of getTipusok(hely, csoport)">
+
+          <h3 class="margTop1 nbl">{{tipus}}</h3>
+
+          <div class="w100" [formGroupName]='i' *ngFor="let item of items.value; let i = index">
+
+            <app-item *ngIf="item.csoport == csoport && item.tipus == tipus"
+            [item]="item"
+            [i]="i"
+            >
+              <div class="buttonCont btnBack">
+                <button type="button" class="itemGet text1" (click)="lvlUp(item)">Szintlépés</button>
+                <button type="button" class="itemGet text1" (click)="changePlace(item, 'Viselt')">Felvesz</button>
+                <button type="button" class="itemGet text1" (click)="changePlace(item, 'Táska')">Táskába</button>
+                <button type="button" class="itemGet text1" (click)="changePlace(item, 'Raktár')">Raktárba</button>
+              </div>
+            </app-item>
+
+          </div>
+        </div>
       </div>
+    </div>
+
+
+
 
   </div>
 
