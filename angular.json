@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "hungary-in-shadows:build:production"
+              "buildTarget": "hungary-in-shadows:build:production"
             },
             "development": {
-              "browserTarget": "hungary-in-shadows:build:development"
+              "buildTarget": "hungary-in-shadows:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hungary-in-shadows:build"
+            "buildTarget": "hungary-in-shadows:build"
           }
         },
         "test": {
