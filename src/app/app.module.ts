@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
 import { HeaderComponent } from './elements/header/header.component';
@@ -39,57 +39,46 @@ import { ItemComponent } from './characters/items/item/item.component';
 import { SpecialFieldComponent } from './elements/special-field/special-field.component';
 import { FloatingMenuComponent } from './elements/floating-menu/floating-menu.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-
-    AuthenticationComponent,
-    HeaderComponent,
-    FooterComponent,
-    SpinnerComponent,
-    HideContentComponent,
-
-    ModalWrapperComponent,
-    LevelcontrolComponent,
-
-    MainComponent,
-    CharsListComponent,
-    CharsMainComponent,
-    AttributeComponent,
-    AttributesComponent,
-    DetailsComponent,
-    ResourcesComponent,
-    StatusComponent,
-    SkillComponent,
-    SkillsComponent,
-
-    BtnOptionsComponent,
-    ItemsComponent,
-    NpcsComponent,
-    InitiativeComponent,
-    StatusmonitorComponent,
-    NewplayerComponent,
-    DetailComponent,
-    SelectSkillComponent,
-    SelectSkillSpecComponent,
-    SkillspecComponent,
-    SelectItemComponent,
-    ItemComponent,
-    SpecialFieldComponent,
-    FloatingMenuComponent,
-  ],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    AppRoutingModule,
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-  ],
-
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        AuthenticationComponent,
+        HeaderComponent,
+        FooterComponent,
+        SpinnerComponent,
+        HideContentComponent,
+        ModalWrapperComponent,
+        LevelcontrolComponent,
+        MainComponent,
+        CharsListComponent,
+        CharsMainComponent,
+        AttributeComponent,
+        AttributesComponent,
+        DetailsComponent,
+        ResourcesComponent,
+        StatusComponent,
+        SkillComponent,
+        SkillsComponent,
+        BtnOptionsComponent,
+        ItemsComponent,
+        NpcsComponent,
+        InitiativeComponent,
+        StatusmonitorComponent,
+        NewplayerComponent,
+        DetailComponent,
+        SelectSkillComponent,
+        SelectSkillSpecComponent,
+        SkillspecComponent,
+        SelectItemComponent,
+        ItemComponent,
+        SpecialFieldComponent,
+        FloatingMenuComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AppRoutingModule], providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule { }
