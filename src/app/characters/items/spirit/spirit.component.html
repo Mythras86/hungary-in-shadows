@@ -1,0 +1,101 @@
+<div class="w25">
+  <div class="w100 text1 center nbl">Erő</div>
+  <app-special-field
+  [tipus]="'szint'"
+  [egyeniSzin]="'ngrn'"
+  [ertek]="FizEro + item.szint!"
+  ></app-special-field>
+</div>
+
+<div class="w25">
+  <div class="w100 text1 center nbl">Gyo</div>
+  <app-special-field
+  [tipus]="'szint'"
+  [egyeniSzin]="'ngrn'"
+  [ertek]="FizGyo + item.szint!"
+  ></app-special-field>
+</div>
+
+<div class="w25">
+  <div class="w100 text1 center nbl">Ügy</div>
+  <app-special-field
+  [tipus]="'szint'"
+  [egyeniSzin]="'ngrn'"
+  [ertek]="FizUgy + item.szint!"
+  ></app-special-field>
+</div>
+
+<div class="w25">
+  <div class="w100 text1 center nbl">Áll</div>
+  <app-special-field
+  [tipus]="'szint'"
+  [egyeniSzin]="'ngrn'"
+  [ertek]="FizAll + item.szint!"
+  ></app-special-field>
+</div>
+
+<div class="w25">
+  <div class="w100 text1 center nbl">Kar</div>
+  <app-special-field
+  [tipus]="'szint'"
+  [egyeniSzin]="'ngrn'"
+  [ertek]="AsztEro + item.szint!"
+  ></app-special-field>
+</div>
+
+<div class="w25">
+  <div class="w100 text1 center nbl">Int</div>
+  <app-special-field
+  [tipus]="'szint'"
+  [egyeniSzin]="'ngrn'"
+  [ertek]="AsztGyo + item.szint!"
+  ></app-special-field>
+</div>
+
+<div class="w25">
+  <div class="w100 text1 center nbl">Log</div>
+  <app-special-field
+  [tipus]="'szint'"
+  [egyeniSzin]="'ngrn'"
+  [ertek]="AsztUgy + item.szint!"
+  ></app-special-field>
+</div>
+
+<div class="w25">
+  <div class="w100 text1 center nbl">Aka</div>
+  <app-special-field
+  [tipus]="'szint'"
+  [egyeniSzin]="'ngrn'"
+  [ertek]="AsztAll + item.szint!"
+  ></app-special-field>
+</div>
+
+<div class="w25">
+  <div class="w100 text1 center nbl">Akció</div>
+  <app-special-field
+  [tipus]="'akcio'"
+  [ertek]="akciopont"
+  ></app-special-field>
+</div>
+
+<div class="w50">
+  <div class="w100 text1 center nbl">Kezdeményezés</div>
+  <app-special-field
+  [tipus]="'suly'"
+  [ertek]="akciopont"
+  [egyeniEgyseg]="'+2d6'"
+  ></app-special-field>
+</div>
+
+<div class="w25">
+  <div class="w100 text1 center nbl">Páncél</div>
+  <app-special-field
+  [tipus]="'pancel'"
+  [ertek]="4 + item.szint!"
+  ></app-special-field>
+</div>
+
+
+
+<div class="w100 nbl text1 center">Képességek</div>
+<div class="w100 grayCell text1">{{kepessegek}}</div>

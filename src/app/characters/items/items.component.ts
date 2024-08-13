@@ -58,18 +58,19 @@ export class ItemsComponent implements OnInit {
     if (!item) {
       return;
     }
+    const szorzo = item.csoport == 'Asztrállények' ? (item.felhasznalasMax!-item.felhasznalt!) : 1
     this.modalS.openModal(LevelcontrolComponent, {
     fejlec: item.nev,
     megjegyzes: item.leiras,
-    lepes: item.maxSzint!-1,
+    lepes: (item.maxSzint ? item.maxSzint-1 : 11),
     valto: 1,
-    tokeKtsg: item.tokeKtsgPerSzint,
+    tokeKtsg: item.tokeKtsgPerSzint! * szorzo!,
     karmaKtsg: item.karmaKtsgPerSzint,
     esszKtsg: item.esszenciaKtsgPerSzint,
     celErtek: this.s.getFc(i, 'szint')?.value,
     egyseg: ' Szint',
     minErtek: this.s.getFc(i, 'szint')?.value,
-    maxErtek: item.maxSzint,
+    maxErtek: item.maxSzint ? item.maxSzint : 12,
     }).subscribe(
       w => this.lvlUp(w, i, item)
     );
@@ -81,7 +82,11 @@ export class ItemsComponent implements OnInit {
     form?.patchValue(form.value+valtozas);
     // kifizetés
     if (item.tokeKtsgPerSzint) {
-      this.resS.payToke(valtozas*item.tokeKtsgPerSzint);
+      if (item.csoport == 'Asztrállények') {
+        this.resS.payToke(valtozas*item.tokeKtsgPerSzint*(item.felhasznalasMax!-item.felhasznalt!));
+      } else {
+        this.resS.payToke(valtozas*item.tokeKtsgPerSzint);
+      }
     }
     if (item.karmaKtsgPerSzint) {
       this.resS.payKarma(valtozas*item.karmaKtsgPerSzint);
@@ -91,9 +96,21 @@ export class ItemsComponent implements OnInit {
   changePlace(i: number, newPlace: string): void {
     const form = (this.s.itemsForm.get('items') as FormArray).at(i).get('elhelyezes');
     form?.patchValue(newPlace)
-    console.log(newPlace)
-    console.log(this.items.value)
+  }
 
+  addHasznalat(i: number, item: ItemsModel):void {
+    const form = (this.s.itemsForm.get('items') as FormArray).at(i).get('felhasznalasMax');
+    form?.patchValue(form.value+1);
+    if (item.tokeKtsg) {
+      if (item.csoport == 'Asztrállények') {
+        this.resS.payToke(item.tokeKtsg*item.szint!);
+      } else {
+        this.resS.payToke(item.tokeKtsg);
+      }
+    }
+    if (item.karmaKtsg) {
+      this.resS.payKarma(item.karmaKtsg);
+    }
   }
 
   ngOnInit(): void {

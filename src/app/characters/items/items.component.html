@@ -25,9 +25,12 @@
             >
               <div class="buttonCont btnBack">
                 <button type="button" class="itemGet text1" (click)="lvlUpItem(i, item)">Szintlépés</button>
-                <button type="button" class="itemEdit text1" (click)="changePlace(i, 'Viselt')">Felvesz</button>
-                <button type="button" class="itemEdit text1" (click)="changePlace(i, 'Táska')">Táskába</button>
-                <button type="button" class="itemEdit text1" (click)="changePlace(i, 'Raktár')">Raktárba</button>
+                <button *ngIf="item.felhasznalasNev" type="button" class="itemGet text1" (click)="addHasznalat(i, item)">+{{item.felhasznalasNev}}</button>
+              </div>
+              <div class="buttonCont btnBack">
+                <button *ngIf="item.elhelyezes != 'Viselt'" type="button" class="itemEdit text1" (click)="changePlace(i, 'Viselt')">Felvesz</button>
+                <button *ngIf="item.elhelyezes != 'Táska'" type="button" class="itemEdit text1" (click)="changePlace(i, 'Táska')">Táskába</button>
+                <button *ngIf="item.elhelyezes != 'Raktár'" type="button" class="itemEdit text1" (click)="changePlace(i, 'Raktár')">Raktárba</button>
               </div>
             </app-item>
 

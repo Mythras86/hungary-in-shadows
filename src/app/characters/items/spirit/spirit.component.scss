@@ -1,0 +1,5 @@
+@import "../../../../styles-flex.scss";
+
+:host {
+  @extend .flexCont;
+}

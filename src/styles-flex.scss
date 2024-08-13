@@ -9,12 +9,12 @@
 .flexContNoWrap {
   display: flex;
   flex-flow: row nowrap;
-  align-content: center;
+  align-content: flex-start;
   width: 100%;
 }
 
 .flex1 {
-  flex: 1 1 auto;
+  flex: 1 1 auto ;
 }
 
 .gap2 {

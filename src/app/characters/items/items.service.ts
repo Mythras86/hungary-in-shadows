@@ -144,7 +144,7 @@ export class ItemsService {
       sebzes: e.sebzes,
       sebKod: e.sebKod,
 
-      tulajdonsagModosito: this.setTulajdonsagModosito(e.tulajdonsagModosito),
+      tulajdonsagModosito: this.fb.array(e.tulajdonsagModosito ? e.tulajdonsagModosito.map(x=> this.setTulajdonsagModosito(x)) : []),
 
       //felhasználás pl.: e.fegyverbe tár, szellem szolgálat, gyógyszeradag, méreg
       felhasznalasNev: e.felhasznalasNev,
@@ -153,17 +153,14 @@ export class ItemsService {
     });
   }
 
-  setTulajdonsagModosito(data: any) {
-    if (data == undefined) {
-      return;
-    }
-    this.fb.array(data.map((x: nevErtekModel) => {
-      return this.fb.group({
-        nev: x.nev,
-        ertek: x.ertek,
-      });
-    }));
+  setTulajdonsagModosito(x:any=null) {
+    x=x || {Z:null}
+    return this.fb.group({
+      nev: x.nev,
+      ertek: x.ertek,
+  });
   }
+
 
   setkiegeszitoKorlatozas(data: any) {
     if (data == undefined) {
