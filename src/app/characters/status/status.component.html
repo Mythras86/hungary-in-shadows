@@ -40,24 +40,44 @@
     <div [ngClass]="toggleKockaMColor('taplaltsagAllapot', 0)" (click)="sendStatus('taplaltsagAllapot', 0)" class="flex1 text1">Éhező</div>
 
   </div>
- -->
+  -->
 
-    <div class="w50 text1 center nwht margTop1">
-      <div>
-        Kezdeményezés
-      </div>
-      <div class="nrd">
-        -{{modifiers}}
-      </div>
+  <div class="w50 flexCont margTop1">
+   <div class="w100 text1 center nwht">
+     Kezdeményezés
     </div>
-
-    <div class="w50 text1 center nwht margTop1">
-      <div>
-        Célszám
-      </div>
-      <div class="nrd">
-        +{{modifiers}}
-      </div>
+    <div class="w100 text1 center" [ngClass]="colorMe(reakcio - modifiers)">
+      {{reakcio - modifiers}} + {{kezdemenyezes}}d6
     </div>
-
   </div>
+
+  <div class="w50 flexCont margTop1">
+    <div class="w100 text1 center nwht ">
+      Célszám
+    </div>
+    <div class="w100 text1 center" [ngClass]="colorMe(0-modifiers)">
+      +{{modifiers}}
+    </div>
+  </div>
+
+  <div class="w50 flexCont margTop1">
+    <div class="w100 text1 center nwht ">
+      Páncélérték
+    </div>
+    <app-special-field class="w100"
+    [tipus]="'pancel'"
+    [ertek]="pancel"
+    ></app-special-field>
+  </div>
+
+  <div class="w50 flexCont margTop1">
+    <div class="w100 text1 center nwht ">
+      Akciópont
+    </div>
+    <app-special-field class="w100"
+    [tipus]="'akcio'"
+    [ertek]="reakcio"
+    ></app-special-field>
+  </div>
+
+</div>

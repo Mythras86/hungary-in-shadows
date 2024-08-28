@@ -6,13 +6,12 @@
 <button class="itemRemove text1 w10 center" type="button" (click)="onClose()">X</button>
 
 <!-- lista -->
-<div class="flexCont gap2">
-  <div class="text1 center nprpl gap2 w100" (click)="setFilter('')">X Nincs</div>
-  <div *ngFor="let elem of csoportok">
-    <div class="text1 center nprpl gap2 flex1" (click)="setFilter(elem)">{{elem}}</div>
+<div class="flexCont">
+  <div class="text1 center nprpl w100" (click)="setFilter('')">X Nincs</div>
+  <div class="flexCont flex2" *ngFor="let elem of csoportok">
+    <div class="text1 center nprpl w100" (click)="setFilter(elem)">{{elem}}</div>
   </div>
 </div>
-
 
 <!-- csoportokra bontás -->
 <div class="w100" *ngFor="let csoport of csoportok">
