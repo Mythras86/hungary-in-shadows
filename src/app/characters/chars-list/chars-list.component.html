@@ -17,7 +17,7 @@
 
           <div *ngIf="select.status == char._id" class="buttonCont w100 posAbs btnBack">
             <button *ngIf="userId === char.creatorId" class="itemEdit text1 w40" type="button" (click)="s.updateChar(char._id)">Szerkesztés</button>
-            <button *ngIf="userId === char.creatorId" class="itemRemove text1 w40" (click)="deleteChar(char._id)">Törlés</button>
+            <button  class="itemRemove text1 w40" (click)="deleteChar(char._id)">Törlés</button>
             <button *ngIf="userId !== char.creatorId" class="itemGet text1" type="button" [disabled]="userId == char.creatorId && !userIsAuthenticated" (click)="s.updateChar(char._id)">Megtekintés</button>
           </div>
 

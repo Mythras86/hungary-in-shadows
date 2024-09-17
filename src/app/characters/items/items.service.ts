@@ -18,6 +18,7 @@ export class ItemsService {
   ) { }
 
   itemsForm!: FormGroup;
+  pancel: number = 0;
 
   createItems(): FormGroup {
     const items = {

@@ -16,27 +16,14 @@ export class StatusComponent implements OnInit {
   constructor(
     public s: StatusService,
     public attrsS: AttributesService,
+    public itemsS: ItemsService,
     private statusMonS: StatusmonitorService,
-    private itemsS: ItemsService,
   ) {  }
 
   modifiers: number = 0;
 
   kezdemenyezes: number = 0;
   reakcio: number = 0;
-  pancel: number = 0;
-
-  get items(): FormArray {
-    return this.itemsS.itemsForm.get('items') as FormArray;
-  }
-
-  getPancel(): void {
-    const sum = this.items.value
-    .filter((x: { elhelyezes: string; })=>x.elhelyezes == 'Viselt')
-    .reduce((prev: number, next: { pancel: string | number; }) => prev + +next.pancel, 0);
-    console.log(sum)
-    this.pancel = sum;
-  }
 
   getModifiers(): void {
     const mods = this.statusMonS.getModifiers(this.s.getFc('asztralisAllapot')?.value, this.s.getFc('fizikaiAllapot')?.value);
@@ -63,7 +50,6 @@ export class StatusComponent implements OnInit {
   ngOnInit(): void {
     this.getModifiers();
     this.getErtekek();
-    this.getPancel();
     this.s.statusForm.valueChanges.subscribe(
       ()=> this.getModifiers()
     );

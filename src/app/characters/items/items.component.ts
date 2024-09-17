@@ -38,6 +38,14 @@ export class ItemsComponent implements OnInit {
     return this.helyek = newHelyek;
   }
 
+  getPancel(): void {
+    const sum = this.items.value
+    .filter((x: { elhelyezes: string; })=>x.elhelyezes == 'Viselt')
+    .reduce((prev: number, next: { pancel: string | number; }) => prev + +next.pancel, 0);
+    console.log(sum)
+    this.s.pancel = sum;
+  }
+
   getCsoportok(hely: string): Array<string> {
     const newCsoportok: Array<any> =
     [... new Set (this.items.value.filter((x: { elhelyezes: string; })=>x.elhelyezes == hely)
@@ -95,7 +103,8 @@ export class ItemsComponent implements OnInit {
 
   changePlace(i: number, newPlace: string): void {
     const form = (this.s.itemsForm.get('items') as FormArray).at(i).get('elhelyezes');
-    form?.patchValue(newPlace)
+    form?.patchValue(newPlace);
+    this.getPancel();
   }
 
   addHasznalat(i: number, item: ItemsModel):void {
@@ -114,8 +123,10 @@ export class ItemsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.items.valueChanges.subscribe(
-      ()=> this.getHelyek()
+    this.items.valueChanges.subscribe(()=>
+      this.getHelyek(),
+      this.getPancel(),
+      console.log('yes')
     );
   }
 }
